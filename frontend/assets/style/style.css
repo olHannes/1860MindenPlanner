@@ -212,7 +212,8 @@ input {
     scroll-snap-type: x mandatory;
     gap: 15px;
     padding-bottom: 10px;
-    justify-content: center;
+    justify-content: flex-start;
+    min-width: 100vw;
     width: 100%;
     max-width: 400px;
     position: absolute;
