@@ -32,23 +32,34 @@
 </div>
 
 <div id="content">
-    <button id="logoutBtn" onclick="logout()">Logout</button>
-
 
     <div id="menue">
+
+        <button id="equipmentBtn">
+            <img src="assets/images/equipment/Parralelbars.png" alt="Equipment image" onclick="togglePanel(1);">
+        </button>
         <button id="settingsBtn">
-            <img src="assets/images/settings_img.png" alt="Button Image" onclick="togglePanel(1);">
+            <img src="assets/images/settings_img.png" alt="Button Image" onclick="togglePanel(0);">
         </button>
     </div>
     
 
+    <!--Setting panel-->
+    <div id="panel0" class="panel">
+        <h2>Account Settings</h2>
 
-    <div id="panel1" class="panel">
-        
+        <button id="logoutBtn" onclick="logout()">Logout</button>
     </div>
 
+    <!--Equipment panel-->
+    <div id="panel1" class="panel">
+        <h2>Equipment</h2>
+    </div>
 
-
+    <!--Member panel-->
+    <div id="panel2" class="panel">
+        <h2>Mitglieder</h2>
+    </div>
 
 </div>
 

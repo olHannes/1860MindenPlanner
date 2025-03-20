@@ -113,12 +113,14 @@ input {
 
 #logoutBtn {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    bottom: 10px;
+    left: 50%;
+    width: 70%;
+    padding: 7px;
+    transform: translateX(-50%);
     background-color: red;
     color: white;
     border: none;
-    padding: 10px 15px;
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
@@ -144,8 +146,11 @@ input {
     padding: 10px;
     box-sizing: border-box;
     z-index: 100;
+    align-items: center;
+    justify-content: space-around;
 }
-#settingsBtn {
+
+#settingsBtn{
     background: none;
     border: none;
     cursor: pointer;
@@ -156,6 +161,20 @@ input {
     height: auto;
 }
 #settingsBtn:hover {
+    transform: rotate(15deg);
+}
+
+#equipmentBtn{
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+#equipmentBtn img {
+    width: 50px;
+    height: auto;
+}
+#equipmentBtn:hover {
     transform: rotate(15deg);
 }
 
@@ -172,4 +191,13 @@ input {
 }
 .panel.visible {
     top: 0;
+}
+
+.panel h2 {
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    font-style: oblique;
+    transform: translateX(-50%);
+    white-space: nowrap;
 }
