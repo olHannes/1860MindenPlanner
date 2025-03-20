@@ -16,17 +16,24 @@
 <div id="login_mask">
     <h2>Login</h2>
     <input type="text" id="username" placeholder="Benutzername"><br><br>
-    <input type="text" id="password" placeholder="Passwort"><br><br>
+    <input type="password" id="password" placeholder="Passwort"><br><br>
     <button onclick="login()" id="loginBtn">Anmelden</button>
-    <button onclick="register()" id="registerBtn">Registrieren</button> 
+    <button onclick="toggleRegistration()" id="registerBtn">Registrieren</button> 
     <p id="errorMsg"></p>
+</div>
+<div id="registration_mask" style="display: none;">
+    <input type="text" id="firstName" placeholder="Vorname"><br><br>
+    <input type="text" id="lastName" placeholder="Nachname"><br><br>
+    <input type="password" id="newPassword" placeholder="Neues Passwort"><br><br>
+    <input type="password" id="confirmPassword" placeholder="Passwort wiederholen"><br><br>
+    <button onclick="register()" id="registerSubmitBtn">Registrieren</button>
+    <button onclick="cancelRegistration()" id="cancelBtn">Abbrechen</button>
+    <p id="errorMsgRegister"></p>
 </div>
 
 <div id="content">
     <button id="logoutBtn" onclick="logout()">Logout</button>
-
 </div>
-
 
 </body>
 </html>

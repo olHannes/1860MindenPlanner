@@ -1,11 +1,63 @@
 window.onload = checkLoginStatus;
 
 
+function toggleRegistration() {
+    document.getElementById("login_mask").style.display = "none";
+    document.getElementById("registration_mask").style.display = "block";
+}
+
+function cancelRegistration() {
+    document.getElementById("login_mask").style.display = "block";
+    document.getElementById("registration_mask").style.display = "none";
+    clearLoginInput();
+}
+
+async function register() {
+    const username = document.getElementById("username").value;
+    const firstName = document.getElementById("firstName").value;
+    const lastName = document.getElementById("lastName").value;
+    const newPassword = document.getElementById("newPassword").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (newPassword !== confirmPassword) {
+        document.getElementById("errorMsgRegister").textContent = "Passwörter stimmen nicht überein!";
+        return;
+    }
+
+    try {
+        const response = await fetch("http://127.0.0.1:5000/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, firstName, lastName, password: newPassword })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.message === "Registrierung erfolgreich!") {
+            cancelRegistration();
+            document.getElementById("errorMsgRegister").textContent = "";
+            clearLoginInput();
+        } else {
+            document.getElementById("errorMsgRegister").textContent = "Benutzername bereits vergeben!";
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        document.getElementById("errorMsgRegister").textContent = "Ein unerwarteter Fehler ist aufgetreten!";
+    }
+}
+
 function clearLoginInput(){
     document.getElementById("username").value = "";
     document.getElementById("password").value = "";
     document.getElementById("errorMsg").textContent = "";
+
+    document.getElementById("errorMsgRegister").textContent = "";
+    document.getElementById("firstName").value = "";
+    document.getElementById("lastName").value = "";
+    document.getElementById("newPassword").value = "";
+    document.getElementById("confirmPassword").value = "";
 }
+
 function checkLoginStatus() {
     const user = localStorage.getItem("user");
     if (user) {
@@ -19,7 +71,6 @@ function checkLoginStatus() {
         document.getElementById("content").style.display = "none";
     }
 }
-
 
 async function login() {
     const username = document.getElementById("username").value;

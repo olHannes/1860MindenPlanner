@@ -66,6 +66,40 @@ input {
     margin-top: 10px;
 }
 
+#registration_mask {
+    background: white;    
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    text-align: center;
+}
+
+#registration_mask h2 {
+    margin-bottom: 20px;
+    color: #2c6693;
+}
+
+#registration_mask button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2c9355;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+#registration_mask button:hover {
+    background-color: #20663c;
+}
+#errorMsgRegister {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
 
 
 #content {

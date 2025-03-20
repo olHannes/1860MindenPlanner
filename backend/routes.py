@@ -1,8 +1,12 @@
 from flask import Blueprint, session, request, jsonify
+from werkzeug.security import generate_password_hash, check_password_hash
 
 main_bp = Blueprint('main', __name__)
 
 active_sessions = {}
+
+# Dummy-Datenbank
+users_db = {}
 
 # Route for user-login
 @main_bp.route('/login', methods=['POST'])
@@ -13,18 +17,23 @@ def login():
     username = data.get('username')
     password = data.get('password')
 
-    if username == "admin" and password == "admin":
-        if username in active_sessions:
-            return jsonify({"message": "Benutzer bereits auf einem anderen Gerät eingeloggt!"}), 403
+    if username in users_db:
+        user = users_db[username]
 
-        session['user'] = username
-        active_sessions[username] = request.remote_addr
+        if check_password_hash(user['password'], password):
+            if username in active_sessions:
+                return jsonify({"message": "Benutzer bereits auf einem anderen Gerät eingeloggt!"}), 403
 
-        return jsonify({"message": "Login successful!"}), 200
+            session['user'] = username
+            active_sessions[username] = request.remote_addr
+            return jsonify({"message": "Login successful!"}), 200
+        else:
+            return jsonify({"message": "Ungültiges Passwort!"}), 401
     else:
-        return jsonify({"message": "Ungültiger Benutzername oder Passwort!"}), 401
+        return jsonify({"message": "Benutzername nicht gefunden!"}), 404
 
 
+# Route for user-logout
 @main_bp.route('/logout', methods=['POST'])
 def logout():
     global active_sessions
@@ -32,16 +41,28 @@ def logout():
     data = request.get_json()
     username = data.get('username')
 
-    print(f"Logout-Anfrage für Benutzer: {username}")
-    print(f"Aktive Sessions vor Logout: {active_sessions}")
-
     if username in active_sessions:
         del active_sessions[username]
-        print(f"Benutzer {username} wurde aus active_sessions entfernt.")
-    else:
-        print(f"Benutzer {username} war nicht in active_sessions!")
 
     session.pop('user', None)
-    print(f"Aktive Sessions nach Logout: {active_sessions}")
 
     return jsonify({"message": "Logged out successfully!"}), 200
+
+
+# Route for user-registration
+@main_bp.route('/register', methods=['POST'])
+def register():
+    data = request.get_json()
+    username = data.get('username')
+    first_name = data.get('firstName')
+    last_name = data.get('lastName')
+    password = data.get('password')
+
+    # Überprüfen, ob der Benutzername schon existiert
+    if username in users_db:
+        return jsonify({"message": "Benutzername bereits vergeben!"}), 400
+
+    hashed_password = generate_password_hash(password)
+    users_db[username] = {'firstName': first_name, 'lastName': last_name, 'password': hashed_password}
+
+    return jsonify({"message": "Registrierung erfolgreich!"}), 200
