@@ -118,7 +118,7 @@ input {
     width: 70%;
     padding: 7px;
     transform: translateX(-50%);
-    background-color: red;
+    background-color: rgb(255, 170, 0);
     color: white;
     border: none;
     cursor: pointer;
@@ -127,8 +127,32 @@ input {
     z-index: 100;
 }
 #logoutBtn:hover {
-    background-color: darkred;
+    background-color: rgb(135, 91, 3);
 }
+
+#profilePicture {
+    display: block;
+    width: 120px;
+    height: 120px; 
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    margin: 60px auto;
+}
+
+#nameView {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c6693;
+}
+
+#nameView span {
+    display: block;
+    margin-top: 5px;
+}
+
 
 
 

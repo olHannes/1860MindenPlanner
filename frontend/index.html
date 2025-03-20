@@ -39,7 +39,7 @@
             <img src="assets/images/equipment/Parralelbars_icon.png" alt="Equipment image" onclick="togglePanel(1);">
         </button>
         <button id="settingsBtn">
-            <img src="assets/images/settings_img.png" alt="Button Image" onclick="togglePanel(0);">
+            <img src="assets/images/system/settings_img.png" alt="Button Image" onclick="togglePanel(0);">
         </button>
     </div>
     
@@ -47,6 +47,13 @@
     <!--Setting panel-->
     <div id="panel0" class="panel">
         <h2>Account Settings</h2>
+
+        <img src="assets/images/system/profile_icon.png" alt="profile picture" id="profilePicture">
+
+        <div id="nameView">
+            <span id="Vorname">Max</span>
+            <span id="Nachname">Mustermann</span>
+        </div>
 
         <button id="logoutBtn" onclick="logout()">Logout</button>
     </div>
