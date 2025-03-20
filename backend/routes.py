@@ -15,11 +15,12 @@ def login():
 
     data = request.get_json()
     username = data.get('username')
+    username = username.lower()
     password = data.get('password')
 
     if username in users_db:
         user = users_db[username]
-
+        
         if check_password_hash(user['password'], password):
             if username in active_sessions:
                 return jsonify({"message": "Benutzer bereits auf einem anderen Gerät eingeloggt!"}), 403
@@ -39,10 +40,11 @@ def logout():
     global active_sessions
 
     data = request.get_json()
-    username = data.get('username')
+    name = data.get('name')
+    name = name.lower()
 
-    if username in active_sessions:
-        del active_sessions[username]
+    if name in active_sessions:
+        del active_sessions[name]
 
     session.pop('user', None)
 
@@ -53,16 +55,16 @@ def logout():
 @main_bp.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
-    username = data.get('username')
     first_name = data.get('firstName')
+    first_name = first_name.lower()
     last_name = data.get('lastName')
+    last_name = last_name.lower()
     password = data.get('password')
 
-    # Überprüfen, ob der Benutzername schon existiert
-    if username in users_db:
+
+    if first_name in users_db:
         return jsonify({"message": "Benutzername bereits vergeben!"}), 400
 
     hashed_password = generate_password_hash(password)
-    users_db[username] = {'firstName': first_name, 'lastName': last_name, 'password': hashed_password}
-
+    users_db[first_name] = {'firstName': first_name, 'lastName': last_name, 'password': hashed_password}
     return jsonify({"message": "Registrierung erfolgreich!"}), 200

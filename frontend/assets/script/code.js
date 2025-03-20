@@ -13,7 +13,6 @@ function cancelRegistration() {
 }
 
 async function register() {
-    const username = document.getElementById("username").value;
     const firstName = document.getElementById("firstName").value;
     const lastName = document.getElementById("lastName").value;
     const newPassword = document.getElementById("newPassword").value;
@@ -28,7 +27,7 @@ async function register() {
         const response = await fetch("http://127.0.0.1:5000/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username, firstName, lastName, password: newPassword })
+            body: JSON.stringify({ firstName, lastName, password: newPassword })
         });
 
         const data = await response.json();
@@ -102,13 +101,13 @@ async function login() {
 
 
 async function logout() {
-    const username = localStorage.getItem("user");
+    const name = localStorage.getItem("user");
 
     try {
         const response = await fetch("http://127.0.0.1:5000/logout", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username })
+            body: JSON.stringify({ name })
         });
 
         if (!response.ok) {
