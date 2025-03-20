@@ -124,3 +124,24 @@ async function logout() {
     }
 }
 
+
+
+
+
+let activePanel = null;
+
+function togglePanel(panelId) {
+    const panel = document.getElementById('panel' + panelId);
+    
+    if (activePanel && activePanel !== panel) {
+        activePanel.classList.remove('visible');
+    }
+    
+    if (!panel.classList.contains('visible')) {
+        panel.classList.add('visible');
+        activePanel = panel;
+    } else {
+        panel.classList.remove('visible');
+        activePanel = null;
+    }
+}
