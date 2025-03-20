@@ -113,7 +113,7 @@ input {
 
 #logoutBtn {
     position: absolute;
-    bottom: 10px;
+    bottom: 50px;
     left: 50%;
     width: 70%;
     padding: 7px;
@@ -129,6 +129,90 @@ input {
 #logoutBtn:hover {
     background-color: rgb(135, 91, 3);
 }
+
+#delBtn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    width: 70%;
+    padding: 7px;
+    transform: translateX(-50%);
+    background-color: rgba(181, 10, 10, 0.993);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    z-index: 100;
+}
+#delBtn:hover {
+    background-color: rgba(90, 7, 7, 0.993);
+}
+
+#requestDelAcc {
+    display: none;
+    position: fixed;
+    z-index: 110;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    padding: 20px;
+    background: #1e1e1e;
+    color: white;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    font-family: Arial, sans-serif;
+}
+
+#requestDelAcc h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+#requestDelAcc h3 {
+    font-size: 16px;
+    font-weight: normal;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+button {
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease-in-out;
+}
+
+.delete-btn {
+    background: #d9534f;
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #c9302c;
+}
+
+.cancel-btn {
+    background: #6c757d;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background: #5a6268;
+}
+
+
+
 
 #profilePicture {
     display: block;

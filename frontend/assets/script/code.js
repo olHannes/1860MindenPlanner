@@ -71,6 +71,24 @@ function checkLoginStatus() {
     }
 }
 
+async function setProfileName() {
+    try {
+        const response = await fetch("http://127.0.0.1:5000/get_user_info", {
+            method: "GET",
+            headers: { "Content-Type": "application/json" }
+        });
+        if (!response.ok) {
+            throw new Error(`Fehler: ${response.status} ${response.statusText}`);
+        }
+        const userInfo = await response.json();
+        document.getElementById('Vorname').textContent=userInfo.first_name;
+        document.getElementById('Nachname').textContent=userInfo.last_name;
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+
+
 async function login() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
@@ -86,6 +104,7 @@ async function login() {
 
         if (response.ok && data.message === "Login successful!") {
             localStorage.setItem("user", username);
+            setProfileName();
             checkLoginStatus();
         } else if (response.status === 403) {
             document.getElementById("errorMsg").textContent = "Benutzer bereits auf einem anderen Gerät eingeloggt!";
@@ -125,6 +144,36 @@ async function logout() {
 }
 
 
+function requestDeleteAcc(){
+    document.getElementById('requestDelAcc').style.display="block";
+}
+function cancelDeleteAcc(){
+    document.getElementById('requestDelAcc').style.display="none";
+}
+async function deleteAccount() {
+    const name = localStorage.getItem("user");
+
+    try {
+        const response = await fetch("http://127.0.0.1:5000/delete_account", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({name})
+        });
+
+        if (!response.ok) {
+            throw new Error(`Account löschen fehlgeschlagen: ${response.status} ${response.statusText}`);
+        }
+
+        const result = await response.json();
+        localStorage.removeItem("user");
+        checkLoginStatus();
+
+        alert("Dein Account wurde erfolgreich gelöscht!");
+    } catch (error) {
+        console.error("Error:", error);
+        document.getElementById("errorMsg").textContent = "Fehler beim Löschen des Accounts!";
+    }
+}
 
 
 

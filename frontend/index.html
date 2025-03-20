@@ -44,6 +44,15 @@
     </div>
     
 
+    <div id="requestDelAcc">
+        <h2>Account löschen</h2>
+        <h3>Bist du sicher, dass du deinen Account löschen möchtest?</h3>
+        <div class="button-group">
+            <button class="delete-btn" onclick="deleteAccount();">Löschen</button>
+            <button class="cancel-btn" onclick="cancelDeleteAcc();">Abbrechen</button>
+        </div>
+    </div>
+    
     <!--Setting panel-->
     <div id="panel0" class="panel">
         <h2>Account Settings</h2>
@@ -55,7 +64,8 @@
             <span id="Nachname">Mustermann</span>
         </div>
 
-        <button id="logoutBtn" onclick="logout()">Logout</button>
+        <button id="logoutBtn" onclick="logout();">Logout</button>
+        <button id="delBtn" onclick="requestDeleteAcc();">Account löschen</button>
     </div>
 
     <!--Equipment panel-->
