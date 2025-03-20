@@ -201,3 +201,62 @@ input {
     transform: translateX(-50%);
     white-space: nowrap;
 }
+
+
+
+
+/** Equipment View **/
+#equipmentView {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 15px;
+    padding-bottom: 10px;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    position: absolute;
+    top: 22%;
+}
+
+.equSlide {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    scroll-snap-align: center;
+    transition: transform 0.2s;
+}
+
+.equSlide:hover {
+    transform: scale(1.05);
+}
+
+.categories img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    object-fit: contain;
+}
+
+.deviceName {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #444;
+}
+
+
+.name-de {
+    font-weight: bold;
+    display: block;
+    font-size: 18px;
+}
+
+.name-en {
+    font-size: 14px;
+    color: #777;
+}
