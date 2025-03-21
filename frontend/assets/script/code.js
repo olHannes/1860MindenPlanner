@@ -11,7 +11,7 @@ let activePanel = null;
 
 function togglePanel(panelId) {
     const panel = document.getElementById('panel' + panelId);
-    
+    console.log(panel);
     if (activePanel && activePanel !== panel) {
         activePanel.classList.remove('visible');
     }
