@@ -176,3 +176,11 @@ def changeData():
         "new_first_name": new_first_name,
         "new_last_name": new_last_name
     }), 200
+
+
+################################################################################################### Get Users
+
+@main_bp.route('/users/getUsers', methods=['GET'])
+def get_users():
+    users = list(users_collection.find({}, {"_id": 0, "firstName": 1, "lastName": 1, "online": 1}))
+    return jsonify(users), 200

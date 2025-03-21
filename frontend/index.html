@@ -38,7 +38,7 @@
             <img src="assets/images/equipment/Parralelbars_icon.png" alt="Equipment image" onclick="togglePanel(1);">
         </button>
         <button id="profilesBtn">
-            <img src="assets/images/system/profile_panel.png" alt="Profile Icon" onclick="togglePanel(2);">
+            <img src="assets/images/system/profile_panel.png" alt="Profile Icon" onclick="showAllUser(); togglePanel(2);">
         </button>
         <button id="settingsBtn">
             <img src="assets/images/system/settings_img.png" alt="Button Image" onclick="togglePanel(0);">
@@ -94,11 +94,7 @@
             </div>
 
             <img src="assets/images/system/profile_icon.png" alt="Device Image" id="DeviceImage">
-
-
         </div>
-
-
 
         <h2>Equipment</h2>
 
@@ -165,8 +161,18 @@
             </div>
 
     </div>
+    </div>
 
-</div>
+    <div id="panel2" class="panel">
+        <h2>Mitglieder</h2>
+        <div id="memberList">
+            <div class="member" onclick="showMemberData();">
+                <img src="assets/images/system/profile_icon.png" alt="profile icon">
+                <span class="name-de">Max</span>
+                <span class="name-en">Mustermann</span>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
