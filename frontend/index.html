@@ -52,7 +52,8 @@
             <button class="cancel-btn" onclick="cancelDeleteAcc();">Abbrechen</button>
         </div>
     </div>
-    
+        
+
     <!--Setting panel-->
     <div id="panel0" class="panel">
         <h2>Account Settings</h2>
@@ -60,13 +61,25 @@
         <img src="assets/images/system/profile_icon.png" alt="profile picture" id="profilePicture">
 
         <div id="nameView">
-            <span id="Vorname">Max</span>
-            <span id="Nachname">Mustermann</span>
+            <div>
+                <span id="Vorname">Vorname</span>
+                <span id="Nachname">Nachname</span>
+                <button id="editNameBtn" onclick="editName();">
+                    ✎ Namen bearbeiten ✎
+                </button>
+            </div>
+        </div>
+
+        <div id="nameEdit" style="display: none;">
+            <input type="text" id="editVorname">
+            <input type="text" id="editNachname">
+            <button id="saveBtn" onclick="saveName();" style="display: none;">Speichern</button>
         </div>
 
         <button id="logoutBtn" onclick="logout();">Logout</button>
         <button id="delBtn" onclick="requestDeleteAcc();">Account löschen</button>
     </div>
+
 
     <!--Equipment panel-->
     <div id="panel1" class="panel">

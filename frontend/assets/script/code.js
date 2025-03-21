@@ -4,7 +4,30 @@ window.onload = function () {
     checkUserStatus();
 };
 
+
+//----------------------------------------------------------------------------------------------------------------- Page change
+
+let activePanel = null;
+
+function togglePanel(panelId) {
+    const panel = document.getElementById('panel' + panelId);
+    
+    if (activePanel && activePanel !== panel) {
+        activePanel.classList.remove('visible');
+    }
+    
+    if (!panel.classList.contains('visible')) {
+        panel.classList.add('visible');
+        activePanel = panel;
+    } else {
+        panel.classList.remove('visible');
+        activePanel = null;
+    }
+}
+
+
 //----------------------------------------------------------------------------------------------------------------- Registration
+
 function toggleRegistration() {
     document.getElementById("login_mask").style.display = "none";
     document.getElementById("registration_mask").style.display = "block";
@@ -28,7 +51,7 @@ async function register() {
     }
 
     try {
-        const response = await fetch("http://127.0.0.1:5000/register", {
+        const response = await fetch("http://127.0.0.1:5000/account/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ firstName, lastName, password: newPassword })
@@ -51,7 +74,6 @@ async function register() {
 }
 
 
-
 //----------------------------------------------------------------------------------------------------------------- Login
 
 async function login() {
@@ -59,7 +81,7 @@ async function login() {
     const password = document.getElementById("password").value;
 
     try {
-        const response = await fetch("http://127.0.0.1:5000/login", {
+        const response = await fetch("http://127.0.0.1:5000/account/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password })
@@ -83,13 +105,15 @@ async function login() {
 }
 
 
+//----------------------------------------------------------------------------------------------------------------- User Status
+
 async function checkUserStatus() {
     const username = localStorage.getItem("user");
 
     if (!username) return;
 
     try {
-        const response = await fetch(`http://127.0.0.1:5000/check_user_status?name=${username}`, {
+        const response = await fetch(`http://127.0.0.1:5000/account/checkUserStatus?name=${username}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         });
@@ -123,7 +147,7 @@ async function logout() {
     }
 
     try {
-        const response = await fetch("http://127.0.0.1:5000/logout", {
+        const response = await fetch("http://127.0.0.1:5000/account/logout", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name: username })
@@ -145,6 +169,7 @@ async function logout() {
 }
 
 
+//----------------------------------------------------------------------------------------------------------------- Auto Logout
 
 window.onbeforeunload = async function () {
     const username = localStorage.getItem("user");
@@ -152,7 +177,7 @@ window.onbeforeunload = async function () {
     if (!username) return;
 
     try {
-        const response = await fetch("http://127.0.0.1:5000/logout", {
+        const response = await fetch("http://127.0.0.1:5000/account/logout", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name: username })
@@ -169,9 +194,7 @@ window.onbeforeunload = async function () {
 };
 
 
-
 //----------------------------------------------------------------------------------------------------------------- Delete Account
-
 
 function requestDeleteAcc(){
     document.getElementById('requestDelAcc').style.display="block";
@@ -183,7 +206,7 @@ async function deleteAccount() {
     const name = localStorage.getItem("user");
 
     try {
-        const response = await fetch("http://127.0.0.1:5000/delete_account", {
+        const response = await fetch("http://127.0.0.1:5000/account/delete", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({name})
@@ -205,6 +228,7 @@ async function deleteAccount() {
         document.getElementById("errorMsg").textContent = "Fehler beim Löschen des Accounts!";
     }
 }
+
 
 //----------------------------------------------------------------------------------------------------------------- Helper Functions for User handling
 
@@ -237,7 +261,7 @@ function checkLoginStatus() {
 async function setProfileName() {
     const name = localStorage.getItem("user");
     try {
-        const response = await fetch(`http://127.0.0.1:5000/get_user_info?name=${name}`, {
+        const response = await fetch(`http://127.0.0.1:5000/account/getUserInfo?name=${name}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         });
@@ -255,29 +279,61 @@ async function setProfileName() {
 }
 
 
+//----------------------------------------------------------------------------------------------------------------- Account Edit
+function editName() {
+    const vorname = document.getElementById('Vorname').textContent;
+    const nachname = document.getElementById('Nachname').textContent;
+
+    document.getElementById('editVorname').placeholder = vorname;
+    document.getElementById('editNachname').placeholder = nachname;
+
+    document.getElementById('editVorname').value = '';
+    document.getElementById('editNachname').value = '';
+
+    document.getElementById('nameView').style.display = 'none';
+    document.getElementById('nameEdit').style.display = 'block';
+    document.getElementById('saveBtn').style.display = 'inline-block';
+}
+
+async function saveName() {
+    const vorname = document.getElementById('editVorname').value || document.getElementById('editVorname').placeholder;
+    const nachname = document.getElementById('editNachname').value || document.getElementById('editNachname').placeholder;
+    const username = localStorage.getItem("user");
+
+    document.getElementById('Vorname').textContent = vorname;
+    document.getElementById('Nachname').textContent = nachname;
+
+    document.getElementById('nameView').style.display = 'block';
+    document.getElementById('nameEdit').style.display = 'none';
+    document.getElementById('saveBtn').style.display = 'none';
 
 
-
-
-
-
-
-
-
-let activePanel = null;
-
-function togglePanel(panelId) {
-    const panel = document.getElementById('panel' + panelId);
-    
-    if (activePanel && activePanel !== panel) {
-        activePanel.classList.remove('visible');
+    if (!username) {
+        console.error("Kein Benutzername im LocalStorage gefunden.");
+        return;
     }
-    
-    if (!panel.classList.contains('visible')) {
-        panel.classList.add('visible');
-        activePanel = panel;
-    } else {
-        panel.classList.remove('visible');
-        activePanel = null;
+
+
+    try {
+        const response = await fetch("http://127.0.0.1:5000/account/changeData", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username: username, new_first_name: vorname, new_last_name: nachname })
+        });
+
+        if (!response.ok) {
+            throw new Error(`Fehler beim Logout: ${response.status} ${response.statusText}`);
+        }
+
+        localStorage.removeItem("user");
+        localStorage.setItem("user", vorname);
+    } catch (error) {
+        console.error("Error beim Verlassen der Seite:", error);
     }
 }
+
+
+
+
+
+

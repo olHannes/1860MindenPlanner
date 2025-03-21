@@ -20,7 +20,7 @@ active_sessions = {}
 
 ################################################################################################### Login
 
-@main_bp.route('/login', methods=['POST'])
+@main_bp.route('/account/login', methods=['POST'])
 def login():
     global active_sessions
     data = request.get_json()
@@ -48,7 +48,7 @@ def login():
 
 ################################################################################################### Auto-Status
 
-@main_bp.route('/check_user_status', methods=['GET'])
+@main_bp.route('/account/checkUserStatus', methods=['GET'])
 def check_user_status():
     global active_sessions
     username = request.args.get('name')
@@ -62,7 +62,7 @@ def check_user_status():
 
 ################################################################################################### Logout
 
-@main_bp.route('/logout', methods=['POST'])
+@main_bp.route('/account/logout', methods=['POST'])
 def logout():
     global active_sessions
     data = request.get_json()
@@ -84,7 +84,7 @@ def logout():
 
 ################################################################################################### Registrierung
 
-@main_bp.route('/register', methods=['POST'])
+@main_bp.route('/account/register', methods=['POST'])
 def register():
     data = request.get_json()
     first_name = data.get('firstName')
@@ -102,7 +102,7 @@ def register():
 
 ################################################################################################### Delete Account
 
-@main_bp.route('/delete_account', methods=['POST'])
+@main_bp.route('/account/delete', methods=['POST'])
 def delete_account():
     global active_sessions
     data = request.get_json()
@@ -124,7 +124,7 @@ def delete_account():
 
 ################################################################################################### Getter -> User Information
 
-@main_bp.route('/get_user_info', methods=['GET'])
+@main_bp.route('/account/getUserInfo', methods=['GET'])
 def get_user_info():
     global active_sessions
     username = request.args.get('name')
@@ -142,3 +142,37 @@ def get_user_info():
         "last_name": user['lastName']
     }), 200
 
+
+################################################################################################### Setter -> User Information
+
+@main_bp.route('/account/changeData', methods=['POST'])
+def changeData():
+    data = request.get_json()
+    username = data.get('username')
+    new_first_name = data.get('new_first_name')
+    new_last_name = data.get('new_last_name')
+
+    if not username or not new_first_name or not new_last_name:
+        return jsonify({"message": "Fehlende Daten!"}), 400
+
+    user = users_collection.find_one({"firstName": username})
+
+    if not user:
+        return jsonify({"message": "Benutzer nicht gefunden!"}), 404
+
+    result = users_collection.update_one(
+        {"firstName": username},
+        {"$set": {"firstName": new_first_name, "lastName": new_last_name}}
+    )
+
+    if result.matched_count == 0:
+        return jsonify({"message": "Fehler beim Aktualisieren der Daten!"}), 500
+    
+    if username in active_sessions:
+        active_sessions[new_first_name] = active_sessions.pop(username)
+
+    return jsonify({
+        "message": "Benutzerdaten erfolgreich aktualisiert",
+        "new_first_name": new_first_name,
+        "new_last_name": new_last_name
+    }), 200

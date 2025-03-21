@@ -111,6 +111,37 @@ input {
 }
 
 
+#editNameBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #2c6693;
+}
+
+#nameEdit input {
+    padding: 5px;
+    margin: 5px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+#saveBtn {
+    padding: 7px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+#saveBtn:hover {
+    background-color: #45a049;
+}
+
 #logoutBtn {
     position: absolute;
     bottom: 50px;
