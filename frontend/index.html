@@ -85,11 +85,26 @@
 
     <!--Equipment panel-->
     <div id="panel1" class="panel">
+
+        <div id="EquipmentExercise">
+            <img src="assets/images/system/back.png" alt="Go Back" onclick="hideExercise();" id="hideExercise">
+            <div id="exerciseTitle">
+                <h2 id="Device-de" class="name-de" style="margin-bottom: 10px;">Titel</h2>
+                <h3 id="Device-en" class="name-en">Title</h3>
+            </div>
+
+            <img src="assets/images/system/profile_icon.png" alt="Device Image" id="DeviceImage">
+
+
+        </div>
+
+
+
         <h2>Equipment</h2>
 
         <div id="equipmentView">
 
-            <div class="equSlide">
+            <div class="equSlide" onclick="openExercise(0);">
                 <div class="categories">
                     <img src="assets/images/equipment/Floor_icon.png" alt="Floor Icon">
                 </div>
@@ -99,9 +114,9 @@
                 </div>
             </div>
             
-            <div class="equSlide">
+            <div class="equSlide" onclick="openExercise(1);">
                 <div class="categories">
-                    <img src="assets/images/equipment/Pommelhorse_icon.png" alt="Floor Icon">
+                    <img src="assets/images/equipment/Pommelhorse_icon.png" alt="Pommelhorse Icon">
                 </div>
                 <div class="deviceName">
                     <span class="name-de">Pauschenpferd</span>
@@ -109,9 +124,9 @@
                 </div>
             </div>
         
-            <div class="equSlide">
+            <div class="equSlide" onclick="openExercise(2);">
                 <div class="categories">
-                    <img src="assets/images/equipment/Rings_icon.png" alt="Floor Icon">
+                    <img src="assets/images/equipment/Rings_icon.png" alt="Rings Icon">
                 </div>
                 <div class="deviceName">
                     <span class="name-de">Ringe</span>
@@ -119,9 +134,9 @@
                 </div>
             </div>
         
-            <div class="equSlide">
+            <div class="equSlide" onclick="openExercise(3);">
                 <div class="categories">
-                    <img src="assets/images/equipment/Vault_icon.png" alt="Floor Icon">
+                    <img src="assets/images/equipment/Vault_icon.png" alt="Vault Icon">
                 </div>
                 <div class="deviceName">
                     <span class="name-de">Sprung</span>
@@ -129,9 +144,9 @@
                 </div>
             </div>
 
-            <div class="equSlide">
+            <div class="equSlide" onclick="openExercise(4);">
                 <div class="categories">
-                    <img src="assets/images/equipment/Parralelbars_icon.png" alt="Floor Icon">
+                    <img src="assets/images/equipment/Parralelbars_icon.png" alt="Parralelbars Icon">
                 </div>
                 <div class="deviceName">
                     <span class="name-de">Barren</span>
@@ -139,9 +154,9 @@
                 </div>
             </div>
 
-            <div class="equSlide">
+            <div class="equSlide" onclick="openExercise(5);">
                 <div class="categories">
-                    <img src="assets/images/equipment/Highbar_icon.png" alt="Floor Icon">
+                    <img src="assets/images/equipment/Highbar_icon.png" alt="Highbar Icon">
                 </div>
                 <div class="deviceName">
                     <span class="name-de">Reck</span>

@@ -337,3 +337,55 @@ async function saveName() {
 
 
 
+
+
+function openExercise(id){
+    document.getElementById('EquipmentExercise').style.display="block";
+    const deviceImage = document.getElementById('DeviceImage');
+    const headerDe = document.getElementById('Device-de');
+    const headerEn = document.getElementById('Device-en');
+    switch (id) {
+        case 0:
+            deviceImage.src = "assets/images/equipment/Floor_icon.png";
+            headerDe.textContent = "Boden";
+            headerEn.textContent = "Floor";
+            break;
+        
+        case 1:
+            deviceImage.src = "assets/images/equipment/Pommelhorse_icon.png";
+            headerDe.textContent = "Pauschenpferd";
+            headerEn.textContent = "Pommel Horse";
+            break;
+        
+        case 2:
+            deviceImage.src = "assets/images/equipment/Rings_icon.png";
+            headerDe.textContent = "Ringe";
+            headerEn.textContent = "Rings";
+            break;
+        
+        case 3:
+            deviceImage.src = "assets/images/equipment/Vault_icon.png";
+            headerDe.textContent = "Sprung";
+            headerEn.textContent = "Vault";
+            break;
+        
+        case 4:
+            deviceImage.src = "assets/images/equipment/Parralelbars_icon.png";
+            headerDe.textContent = "Barren";
+            headerEn.textContent = "Parralel Bars";
+            break;
+        
+        case 5:
+            deviceImage.src = "assets/images/equipment/Highbar_icon.png";
+            headerDe.textContent = "Reck";
+            headerEn.textContent = "High Bar";
+            break;
+        
+            default:
+            break;
+    }
+}
+
+function hideExercise(){
+    document.getElementById('EquipmentExercise').style.display="none";
+}
