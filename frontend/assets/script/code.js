@@ -334,7 +334,46 @@ async function saveName() {
 
 
 
+async function getAllUser() {
+    try {
+        const response = await fetch(`http://127.0.0.1:5000/users/getUsers`, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" }
+        });
 
+        if (!response.ok) {
+            throw new Error(`Fehler: ${response.status} ${response.statusText}`);
+        }
+
+        const userData = await response.json();
+        console.log(userData);
+        return userData;
+    } catch (error) {
+        console.error("Error:", error);
+        return [];
+    }
+}
+
+async function showAllUser() {
+    const memberList = document.getElementById('memberList');
+    memberList.innerHTML = '';
+
+    const data = await getAllUser();
+
+    data.forEach(user => {
+        const memberDiv = document.createElement('div');
+        memberDiv.classList.add('member');
+        memberDiv.onclick = () => showMemberData(user.firstName);
+
+        memberDiv.innerHTML = `
+            <img src="assets/images/system/profile_icon.png" alt="profile icon">
+            <span class="name-de">${user.firstName}</span>
+            <span class="name-en">${user.lastName}</span>
+        `;
+
+        memberList.appendChild(memberDiv);
+    });
+}
 
 
 
