@@ -493,12 +493,11 @@ button {
 }
 
 
-
-.infoBlock {
+#infoBlock {
     position: absolute;
     width: 90%;
     left: 50%;
-    top: 40%;
+    top: 26%;
     transform: translateX(-50%);
     background: #f9f9f9;
     padding: 15px;
@@ -507,17 +506,17 @@ button {
     text-align: left;
 }
 
-.infoBlock h3 {
+#infoBlock h3 {
     color: #444;
     margin-bottom: 8px;
 }
 
-.infoBlock ul {
+#infoBlock ul {
     list-style: none;
     padding: 0;
 }
 
-.infoBlock ul li {
+#infoBlock ul li {
     background: #e3e3e3;
     margin: 5px 0;
     padding: 5px 10px;
@@ -541,4 +540,14 @@ button {
 
 #createRoutineBtn:hover {
     background: #0056b3;
+}
+
+#exerciseCreationPanel {
+    position: absolute;
+    z-index: 16;
+    top: 16%;
+    left: 0;
+    width: 100%;
+    height: 83%;
+    display: none;
 }

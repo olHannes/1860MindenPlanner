@@ -11,7 +11,6 @@ let activePanel = null;
 
 function togglePanel(panelId) {
     const panel = document.getElementById('panel' + panelId);
-    console.log(panel);
     if (activePanel && activePanel !== panel) {
         activePanel.classList.remove('visible');
     }
@@ -382,7 +381,7 @@ function openExercise(id) {
     const deviceImage = document.getElementById('DeviceImage');
     const headerDe = document.getElementById('Device-de');
     const headerEn = document.getElementById('Device-en');
-    const infoBlock = document.querySelector('.infoBlock'); 
+    const infoBlock = document.getElementById('infoBlock'); 
     const createRoutineBtn = document.getElementById('createRoutineBtn');
 
     let deviceData = {};
@@ -521,14 +520,20 @@ function openExercise(id) {
     headerEn.textContent = deviceData.en;
     infoBlock.innerHTML = deviceData.info; 
 
+    infoBlock.style.display="block";
     createRoutineBtn.style.display = "block";
 }
 
 
 function hideExercise(){
     document.getElementById('EquipmentExercise').style.display="none";
+    document.getElementById('infoBlock').style.display="block";
+    document.getElementById('exerciseCreationPanel').style.display="none";
+    document.getElementById('createRoutineBtn').style.display="block";
 }
 
 function createRoutine(){
-
+    document.getElementById('infoBlock').style.display="none";
+    document.getElementById('exerciseCreationPanel').style.display="block";
+    document.getElementById('createRoutineBtn').style.display="none";
 }
