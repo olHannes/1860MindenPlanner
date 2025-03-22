@@ -377,53 +377,158 @@ async function showAllUser() {
 
 
 
-function openExercise(id){
-    document.getElementById('EquipmentExercise').style.display="block";
+function openExercise(id) {
+    document.getElementById('EquipmentExercise').style.display = "block";
     const deviceImage = document.getElementById('DeviceImage');
     const headerDe = document.getElementById('Device-de');
     const headerEn = document.getElementById('Device-en');
+    const infoBlock = document.querySelector('.infoBlock'); 
+    const createRoutineBtn = document.getElementById('createRoutineBtn');
+
+    let deviceData = {};
+
     switch (id) {
         case 0:
-            deviceImage.src = "assets/images/equipment/Floor_icon.png";
-            headerDe.textContent = "Boden";
-            headerEn.textContent = "Floor";
+            deviceData = {
+                img: "assets/images/equipment/Floor_icon.png",
+                de: "Boden",
+                en: "Floor",
+                info: `
+                    <h3>Allgemeine Infos</h3>
+                    <p><b>Anzahl der Elemente:</b> 6 + Abgang</p>
+                    <p><b>Maße der Bodenfläche:</b> 12 x 12m</p>
+                    <p><b>Dauer der Übung:</b> max. 75 Sek.</p>
+                    <h3>Elementegruppen</h3>
+                    <ul>
+                        <li>1: Nicht-akrobatische Elemente</li>
+                        <li>2: Akrobatische Elemente vorwärts</li>
+                        <li>3: Akrobatische Elemente rückwärts</li>
+                    </ul>
+                `
+            };
             break;
-        
+
         case 1:
-            deviceImage.src = "assets/images/equipment/Pommelhorse_icon.png";
-            headerDe.textContent = "Pauschenpferd";
-            headerEn.textContent = "Pommel Horse";
+            deviceData = {
+                img: "assets/images/equipment/Pommelhorse_icon.png",
+                de: "Pauschenpferd",
+                en: "Pommel Horse",
+                info: `
+                    <h3>Allgemeine Infos</h3>
+                    <p><b>Anzahl der Elemente:</b> 6 + Abgang</p>
+                    <p><b>Übungsbeginn:</b> immer mit geschlossenen Beinen</p>
+                    <h3>Elementegruppen</h3>
+                    <ul>
+                        <li>1: Einbeinschwünge und Scheren</li>
+                        <li>2: Kreis- und Thomasflanken, Kehrschwünge, Russenwendeschwünge</li>
+                        <li>3: Wanderelemente (z. B. Tong Fei, Wu Guonian)</li>
+                        <li>4: Abgänge</li>
+                    </ul>
+                `
+            };
             break;
-        
+
         case 2:
-            deviceImage.src = "assets/images/equipment/Rings_icon.png";
-            headerDe.textContent = "Ringe";
-            headerEn.textContent = "Rings";
+            deviceData = {
+                img: "assets/images/equipment/Rings_icon.png",
+                de: "Ringe",
+                en: "Rings",
+                info: `
+                    <h3>Allgemeine Infos</h3>
+                    <p><b>Anzahl der Elemente:</b> 6 + Abgang</p>
+                    <p><b>Übungsbeginn:</b> immer im ruhigen Hang mit gestreckten Armen und Beinen</p>
+                    <h3>Elementegruppen</h3>
+                    <ul>
+                        <li>1: Kippen und Schwungelemente, Schwünge durch den Handstand</li>
+                        <li>2: Kraft- und Halteelemente</li>
+                        <li>3: Schwung zu Kraftelementen</li>
+                        <li>4: Abgänge</li>
+                    </ul>
+                `
+            };
             break;
-        
+
         case 3:
-            deviceImage.src = "assets/images/equipment/Vault_icon.png";
-            headerDe.textContent = "Sprung";
-            headerEn.textContent = "Vault";
+            deviceData = {
+                img: "assets/images/equipment/Vault_icon.png",
+                de: "Sprung",
+                en: "Vault",
+                info: `
+                    <h3>Allgemeine Infos</h3>
+                    <p><b>Anzahl der Sprünge:</b> 2 (auch aus unterschiedlichen Gruppen)</p>
+                    <h3>Sprunggruppen</h3>
+                    <ul>
+                        <li>1: Salti mit oder ohne Drehungen</li>
+                        <li>2: Überschlagssprünge ohne oder mit Drehungen</li>
+                        <li>3: Überschlagsprünge seitwärts und Tsukahara-Sprünge</li>
+                        <li>4: Rondatsprünge</li>
+                    </ul>
+                `
+            };
             break;
-        
+
         case 4:
-            deviceImage.src = "assets/images/equipment/Parralelbars_icon.png";
-            headerDe.textContent = "Barren";
-            headerEn.textContent = "Parralel Bars";
+            deviceData = {
+                img: "assets/images/equipment/Parralelbars_icon.png",
+                de: "Barren",
+                en: "Parallel Bars",
+                info: `
+                    <h3>Allgemeine Infos</h3>
+                    <p><b>Anzahl der Elemente:</b> 6 + Abgang</p>
+                    <p><b>Höhe:</b> 180cm (ab Mattenoberkante), 200cm (ab Boden)</p>
+                    <h3>Elementegruppen</h3>
+                    <ul>
+                        <li>1: Elemente im Stütz oder durch den Stütz auf beiden Holmen</li>
+                        <li>2: Elemente, die im Oberarmstütz beginnen</li>
+                        <li>3: Schwungelemente durch den Hang an 1 oder 2 Holmen</li>
+                        <li>4: Abgänge</li>
+                    </ul>
+                `
+            };
             break;
-        
+
         case 5:
-            deviceImage.src = "assets/images/equipment/Highbar_icon.png";
-            headerDe.textContent = "Reck";
-            headerEn.textContent = "High Bar";
+            deviceData = {
+                img: "assets/images/equipment/Highbar_icon.png",
+                de: "Reck",
+                en: "High Bar",
+                info: `
+                    <h3>Allgemeine Infos</h3>
+                    <p><b>Anzahl der Elemente:</b> 6 + Abgang</p>
+                    <p><b>Höhe:</b> 260cm (ab Mattenoberkante), 280cm (ab Boden)</p>
+                    <h3>Elementegruppen</h3>
+                    <ul>
+                        <li>1: Langhangschwünge mit und ohne Drehungen</li>
+                        <li>2: Flugelemente</li>
+                        <li>3: Stangennahe und Adler-Elemente</li>
+                        <li>4: Abgänge</li>
+                    </ul>
+                `
+            };
             break;
-        
-            default:
-            break;
+
+        default:
+            deviceData = {
+                img: "",
+                de: "Unbekannt",
+                en: "Unknown",
+                info: "<p>Keine Informationen verfügbar.</p>"
+            };
     }
+
+    deviceImage.src = deviceData.img;
+    headerDe.textContent = deviceData.de;
+    headerEn.textContent = deviceData.en;
+    infoBlock.innerHTML = deviceData.info; 
+
+    createRoutineBtn.style.display = "block";
 }
+
 
 function hideExercise(){
     document.getElementById('EquipmentExercise').style.display="none";
+}
+
+function createRoutine(){
+
 }

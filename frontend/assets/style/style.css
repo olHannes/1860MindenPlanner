@@ -491,3 +491,54 @@ button {
     cursor: pointer;
     height: 6%;
 }
+
+
+
+.infoBlock {
+    position: absolute;
+    width: 90%;
+    left: 50%;
+    top: 40%;
+    transform: translateX(-50%);
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 500px;
+    text-align: left;
+}
+
+.infoBlock h3 {
+    color: #444;
+    margin-bottom: 8px;
+}
+
+.infoBlock ul {
+    list-style: none;
+    padding: 0;
+}
+
+.infoBlock ul li {
+    background: #e3e3e3;
+    margin: 5px 0;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+#createRoutineBtn {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+#createRoutineBtn:hover {
+    background: #0056b3;
+}
