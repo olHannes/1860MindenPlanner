@@ -218,10 +218,7 @@ def get_group_elements():
     elif device == "HI":
         elements = list(db_highbarElements.find({}, {'_id': False}))
     
-    if not elements:
-        return jsonify([]), 200
-    
-    if group:
+    if group and group != 'null':
         elements = [el for el in elements if el.get('wertigkeit') == group]
     
     return jsonify(elements), 200

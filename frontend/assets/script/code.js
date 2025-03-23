@@ -519,7 +519,6 @@ function openExercise(id) {
                 en: "Unknown",
                 info: "<p>Keine Informationen verfügbar.</p>"
             };
-            currentDevice=null;
     }
 
     deviceImage.src = deviceData.img;
@@ -533,22 +532,41 @@ function openExercise(id) {
 
 
 function hideExercise(){
+    cancleElementSelection();
     document.getElementById('EquipmentExercise').style.display="none";
     document.getElementById('infoBlock').style.display="block";
     document.getElementById('exerciseCreationPanel').style.display="none";
     document.getElementById('createRoutineBtn').style.display="block";
-    currentDevice=null;
 }
 
 function createRoutine(){
     document.getElementById('infoBlock').style.display="none";
-    document.getElementById('exerciseCreationPanel').style.display="block";
     document.getElementById('createRoutineBtn').style.display="none";
+    document.getElementById('elementSelection').style.display="none";
+    document.getElementById('exerciseCreationPanel').style.display="block";
+
 }
 
 
+
+function selectElement(){
+    document.getElementById('elementSelection').style.display="block";
+    document.getElementById('add-exercise-btn').style.display="none";   
+
+    getElements(null);
+}
+
+function cancleElementSelection(){
+    document.getElementById('elementSelection').style.display="none";
+    document.getElementById('add-exercise-btn').style.display="block";   
+}
+
+
+
+
+
 async function getElements(group) {
-    device = currentDevice;
+    let device = currentDevice;
     try {
         const url = new URL('http://127.0.0.1:5000/elements/getGroupElements');
         const params = { Device: device, Group: group };
@@ -562,7 +580,7 @@ async function getElements(group) {
         
         const elements = await response.json();
         console.log(elements);
-        const container = document.getElementById("showElements");
+        const container = document.getElementById("elementList");
         container.innerHTML = "";
 
         elements.forEach(element => {
@@ -587,3 +605,6 @@ async function getElements(group) {
         console.error("Fehler beim Abrufen der Übungen:", error);
     }
 }
+
+
+
