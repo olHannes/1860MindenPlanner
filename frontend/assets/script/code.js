@@ -374,7 +374,7 @@ async function showAllUser() {
 }
 
 
-
+var currentDevice = null;
 
 function openExercise(id) {
     document.getElementById('EquipmentExercise').style.display = "block";
@@ -405,6 +405,7 @@ function openExercise(id) {
                     </ul>
                 `
             };
+            currentDevice="FL";
             break;
 
         case 1:
@@ -425,6 +426,7 @@ function openExercise(id) {
                     </ul>
                 `
             };
+            currentDevice="PO";
             break;
 
         case 2:
@@ -445,6 +447,7 @@ function openExercise(id) {
                     </ul>
                 `
             };
+            currentDevice="RI";
             break;
 
         case 3:
@@ -464,6 +467,7 @@ function openExercise(id) {
                     </ul>
                 `
             };
+            currentDevice="VA";
             break;
 
         case 4:
@@ -484,6 +488,7 @@ function openExercise(id) {
                     </ul>
                 `
             };
+            currentDevice="PA";
             break;
 
         case 5:
@@ -504,6 +509,7 @@ function openExercise(id) {
                     </ul>
                 `
             };
+            currentDevice="HI";
             break;
 
         default:
@@ -513,6 +519,7 @@ function openExercise(id) {
                 en: "Unknown",
                 info: "<p>Keine Informationen verfügbar.</p>"
             };
+            currentDevice=null;
     }
 
     deviceImage.src = deviceData.img;
@@ -530,25 +537,32 @@ function hideExercise(){
     document.getElementById('infoBlock').style.display="block";
     document.getElementById('exerciseCreationPanel').style.display="none";
     document.getElementById('createRoutineBtn').style.display="block";
+    currentDevice=null;
 }
 
 function createRoutine(){
     document.getElementById('infoBlock').style.display="none";
     document.getElementById('exerciseCreationPanel').style.display="block";
     document.getElementById('createRoutineBtn').style.display="none";
-    getFloorElements();
 }
 
-async function getFloorElements() {
+
+async function getElements(group) {
+    device = currentDevice;
     try {
-        const response = await fetch('http://127.0.0.1:5000/elements/getGroup');
+        const url = new URL('http://127.0.0.1:5000/elements/getGroupElements');
+        const params = { Device: device, Group: group };
+
+        Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+
+        const response = await fetch(url);        
         if (!response.ok) {
             throw new Error(`Fehler beim Laden der Daten: ${response.statusText}`);
         }
         
         const elements = await response.json();
-
-        const container = document.getElementById("exerciseCreationPanel");
+        console.log(elements);
+        const container = document.getElementById("showElements");
         container.innerHTML = "";
 
         elements.forEach(element => {

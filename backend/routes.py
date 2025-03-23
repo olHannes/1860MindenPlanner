@@ -15,9 +15,15 @@ db_user = client['Users']
 users_collection = db_user['users']
 
 db_exercises = client['Exercises']
-exercises_collection = db_exercises['Exercises']
+exercises_collection = db_exercises['User_Exercises']
 
 db_floorElements = db_exercises['Floor']
+db_pommelhorseElements = db_exercises['Pommelhorse']
+db_ringsElements = db_exercises['Rings']
+db_vaultElements = db_exercises['Vault']
+db_parralelbarsElements = db_exercises['Parralelbars']
+db_highbarElements = db_exercises['Highbar']
+
 
 # Globale Session-Tracking-Variable
 active_sessions = {}
@@ -192,7 +198,30 @@ def get_users():
 
 ################################################################################################### Get All Exercises
 
-@main_bp.route('/elements/getGroup', methods=['GET'])
+@main_bp.route('/elements/getGroupElements', methods=['GET'])
 def get_group_elements():
-    elements = list(db_floorElements.find({}, {'_id': False}))
+    device = request.args.get('Device')
+    group = request.args.get('Group')
+    
+    elements = None
+    
+    if device == "FL":
+        elements = list(db_floorElements.find({}, {'_id': False}))
+    elif device == "PO":
+        elements = list(db_pommelhorseElements.find({}, {'_id': False}))
+    elif device == "RI":
+        elements = list(db_ringsElements.find({}, {'_id': False}))
+    elif device == "VA":
+        elements = list(db_vaultElements.find({}, {'_id': False}))
+    elif device == "PA":
+        elements = list(db_parralelbarsElements.find({}, {'_id': False}))
+    elif device == "HI":
+        elements = list(db_highbarElements.find({}, {'_id': False}))
+    
+    if not elements:
+        return jsonify([]), 200
+    
+    if group:
+        elements = [el for el in elements if el.get('wertigkeit') == group]
+    
     return jsonify(elements), 200
