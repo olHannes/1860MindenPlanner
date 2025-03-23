@@ -1,0 +1,209 @@
+[
+    {
+        "id": "FL_A_01",
+        "bezeichnung": "Handstand, Senken i. d. Winkel- o. Grätschwinkelstütz (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_01.png"
+    },
+    {
+        "id": "FL_A_02",
+        "bezeichnung": "Aus dem Grätschstand, heben zum hdst. (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_02.png"
+    },
+    {
+        "id": "FL_A_03",
+        "bezeichnung": "A. d. Bauchlage, Schwingen i. d. Handstand (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_03.png"
+    },
+    {
+        "id": "FL_A_04",
+        "bezeichnung": "Handstand (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_04.png"
+    },
+    {
+        "id": "FL_A_05",
+        "bezeichnung": "Stützwaage m. gegr. Beinen (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_05.png"
+    },
+    {
+        "id": "FL_A_06",
+        "bezeichnung": "1/2 o. 1/1 im Handstand",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_06.png"
+    },
+    {
+        "id": "FL_A_07",
+        "bezeichnung": "From L-sit, etc., turn over backwards to stand",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_07.png"
+    },
+    {
+        "id": "FL_A_08",
+        "bezeichnung": "Überschlag vw. langsam",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_08.png"
+    },
+    {
+        "id": "FL_A_09",
+        "bezeichnung": "Längs o. Seitwärtsspagat",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_09.png"
+    },
+    {
+        "id": "FL_A_10",
+        "bezeichnung": "Alle Standwaagen (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_10.png"
+    },
+    {
+        "id": "FL_A_11",
+        "bezeichnung": "Sprung rw. i. d. Liegestütz vl.",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_11.png"
+    },
+    {
+        "id": "FL_A_12",
+        "bezeichnung": "Schmetterling",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_12.png"
+    },
+    {
+        "id": "FL_A_13",
+        "bezeichnung": "1 Kreisflanke o. gespr. Kreisflanken",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_13.png"
+    },
+    {
+        "id": "FL_A_14",
+        "bezeichnung": "Gespr. Kreis. m. 1/2 Spindel",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_14.png"
+    },
+    {
+        "id": "FL_A_15",
+        "bezeichnung": "Russenwendeschwung mit 360° o. 540°",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_15.png"
+    },
+    {
+        "id": "FL_A_16",
+        "bezeichnung": "Rolle rw. d. d. Handstand m. 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_16.png"
+    },
+    {
+        "id": "FL_A_17",
+        "bezeichnung": "Überschlag vw. o. Hechtüberschlag",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_17.png"
+    },
+    {
+        "id": "FL_A_18",
+        "bezeichnung": "Sprungrolle gehechtet",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_18.png"
+    },
+    {
+        "id": "FL_A_19",
+        "bezeichnung": "Salto vw. geh. o. geb. auch mit 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_19.png"
+    },
+    {
+        "id": "FL_A_20",
+        "bezeichnung": "Salto rw. geh. o. geb.",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_20.png"
+    },
+    {
+        "id": "FL_A_21",
+        "bezeichnung": "Salto rw. geh. o. geb. m. 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_21.png"
+    },
+    {
+        "id": "FL_A_22",
+        "bezeichnung": "Flick-Flack",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_22.png"
+    },
+    {
+        "id": "FL_A_23",
+        "bezeichnung": "Sprung rw. m. 1/2 Drehung gehechtet zum Abrollen vw.",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_23.png"
+    }
+]
