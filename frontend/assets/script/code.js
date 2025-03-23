@@ -536,4 +536,40 @@ function createRoutine(){
     document.getElementById('infoBlock').style.display="none";
     document.getElementById('exerciseCreationPanel').style.display="block";
     document.getElementById('createRoutineBtn').style.display="none";
+    getFloorElements();
+}
+
+async function getFloorElements() {
+    try {
+        const response = await fetch('http://127.0.0.1:5000/elements/getGroup');
+        if (!response.ok) {
+            throw new Error(`Fehler beim Laden der Daten: ${response.statusText}`);
+        }
+        
+        const elements = await response.json();
+
+        const container = document.getElementById("exerciseCreationPanel");
+        container.innerHTML = "";
+
+        elements.forEach(element => {
+            const exerciseDiv = document.createElement("div");
+            exerciseDiv.classList.add("exercise-item");
+
+            const img = document.createElement("img");
+            img.src = element.image_path;
+            img.alt = element.bezeichnung;
+            img.classList.add("exercise-image");
+
+            const title = document.createElement("p");
+            title.textContent = element.bezeichnung;
+            title.classList.add("exercise-title");
+
+            exerciseDiv.appendChild(img);
+            exerciseDiv.appendChild(title);
+
+            container.appendChild(exerciseDiv);
+        });
+    } catch (error) {
+        console.error("Fehler beim Abrufen der Übungen:", error);
+    }
 }

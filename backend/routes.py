@@ -10,10 +10,14 @@ main_bp = Blueprint('main', __name__)
 
 mongo_uri = os.getenv("MONGO_URI")
 client = MongoClient(mongo_uri)
+
 db_user = client['Users']
 users_collection = db_user['users']
+
 db_exercises = client['Exercises']
 exercises_collection = db_exercises['Exercises']
+
+db_floorElements = db_exercises['Floor']
 
 # Globale Session-Tracking-Variable
 active_sessions = {}
@@ -184,3 +188,11 @@ def changeData():
 def get_users():
     users = list(users_collection.find({}, {"_id": 0, "firstName": 1, "lastName": 1, "online": 1}))
     return jsonify(users), 200
+
+
+################################################################################################### Get All Exercises
+
+@main_bp.route('/elements/getGroup', methods=['GET'])
+def get_group_elements():
+    elements = list(db_floorElements.find({}, {'_id': False}))
+    return jsonify(elements), 200
