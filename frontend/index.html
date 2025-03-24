@@ -104,12 +104,16 @@
     
             <div id="elementSelection">
                 <div id="chooseGroup">
-                    <button style="border: solid 1px orange;" onclick="getElements(null);">All</button>
-                    <button onclick="getElements(0.1);">A</button>
-                    <button onclick="getElements(0.2);">B</button>
-                    <button style="opacity: 50%;">C</button>
+                    <button onclick="callElementList(null, this);" style="border: solid 2px rgb(0, 0, 0);">All</button>
+                    <button onclick="callElementList(0.1, this);">A</button>
+                    <button onclick="callElementList(0.2, this);">B</button>
+                    <button onclick="callElementList(0.3, this);" style="opacity: 50%;">C</button>
+                    <button onclick="callElementList(0.4, this);" style="opacity: 50%;">D</button>
+                    <button onclick="callElementList(0.5, this);" style="opacity: 50%;">E</button>
                 </div>
                 <div id="elementList">
+                    <div id="leftColumn"></div>
+                    <div id="rightColumn"></div>
                 </div>
                 <button id="closeElementSelection" onclick="cancleElementSelection();">Abbrechen</button>
             </div>

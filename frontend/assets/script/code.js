@@ -564,8 +564,22 @@ function cancleElementSelection(){
 
 
 
+function callElementList(group, clickedButton) {
+    document.querySelectorAll("#chooseGroup button").forEach(btn => {
+        btn.style.border = "none";
+    });
+    clickedButton.style.border = "solid 2px black";
+    getElements(group);
+}
+
 
 async function getElements(group) {
+    const leftBlock = document.getElementById('leftColumn');
+    const rightBlock = document.getElementById('rightColumn');
+    leftBlock.innerHTML="";
+    rightBlock.innerHTML="";
+    let togglePage=true;
+
     let device = currentDevice;
     try {
         const url = new URL('http://127.0.0.1:5000/elements/getGroupElements');
@@ -579,9 +593,7 @@ async function getElements(group) {
         }
         
         const elements = await response.json();
-        console.log(elements);
-        const container = document.getElementById("elementList");
-        container.innerHTML = "";
+
 
         elements.forEach(element => {
             const exerciseDiv = document.createElement("div");
@@ -599,7 +611,12 @@ async function getElements(group) {
             exerciseDiv.appendChild(img);
             exerciseDiv.appendChild(title);
 
-            container.appendChild(exerciseDiv);
+            if(togglePage){
+                leftBlock.appendChild(exerciseDiv);
+            } else {
+                rightBlock.appendChild(exerciseDiv);
+            }
+            togglePage= !togglePage;
         });
     } catch (error) {
         console.error("Fehler beim Abrufen der Übungen:", error);
