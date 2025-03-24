@@ -374,6 +374,39 @@ async function showAllUser() {
 }
 
 
+async function showMemberData(username) {
+    const userExerciseList = await getUserExercise(username);
+
+    for (const currExercise of userExerciseList) {
+        
+        //create a new Device-Exercise
+        for (const currElement of currExercise){
+            let currentElement = await getElementDetails(currElement.id);
+
+            //create a new Element and add it to the currExercise
+        }
+    }
+}
+
+
+async function getUserExercise(username) {
+    const devices = ["FL", "PO", "RI", "VA", "PA", "HI"];
+    let UserExerciseList = [];
+    for (const currDev of devices) {
+        currentDevice = currDev;
+        var currentExerciseList = await getDbExercise(currentDevice);
+        UserExerciseList.push(currentExercise);
+    }
+    return currentExerciseList;
+}
+
+
+
+
+
+
+
+
 var currentDevice = null;
 
 function openExercise(id) {
@@ -708,6 +741,7 @@ async function getDbExercise(device) {
         if (response.ok) {
             const exerciseData = await response.json();
             console.log("Übung abgerufen:", exerciseData);
+            currentExercise=[];
             exerciseData.elemente.forEach(element => {
                 currentExercise.push(element);
             });
