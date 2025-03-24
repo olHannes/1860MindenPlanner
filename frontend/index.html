@@ -86,7 +86,7 @@
     <!--Equipment panel-->
     <div id="panel1" class="panel">
         <div id="EquipmentExercise">
-            <img src="assets/images/system/back.png" alt="Go Back" onclick="hideExercise();" id="hideExercise">
+            <img src="assets/images/system/back.png" alt="Go Back" onclick="closeDevice();" id="hideExercise">
             <div id="exerciseTitle">
                 <h2 id="Device-de" class="name-de" style="margin-bottom: 10px;">Titel</h2>
                 <h3 id="Device-en" class="name-en">Title</h3>
@@ -101,7 +101,23 @@
 
         <div id="exerciseCreationPanel">
             <button id="add-exercise-btn" onclick="selectElement();">Element hinzufügen</button>
-    
+            
+            <div id="detailedElementInfo">
+                <button id="closeDetailedViewBtn" onclick="closeDetailedView();">X</button>
+                <div style="margin-bottom: 12%;">
+                    <h2 id="elementTitle">Title</h2>
+                </div>
+                <div style="margin-bottom: 5%;">
+                    <img id="elementImage" src="assets/images/system/profile_icon.png" alt="Element Image">
+                </div>
+                <button id="addToList">Hinzufügen</button>
+                <div id="moreInformation">
+                    <p id="elementName">Name</p>
+                    <span id="elementText">ganze Beschreibung</span>
+                    <span id="elementGroup">Group: 1</span>
+                    <span id="elementDifficulty">Difficulty: A</span>
+                </div>
+            </div>
             <div id="elementSelection">
                 <div id="chooseGroup">
                     <button onclick="callElementList(null, this);" style="border: solid 2px rgb(0, 0, 0);">All</button>
@@ -111,6 +127,7 @@
                     <button onclick="callElementList(0.4, this);" style="opacity: 50%;">D</button>
                     <button onclick="callElementList(0.5, this);" style="opacity: 50%;">E</button>
                 </div>
+                
                 <div id="elementList">
                     <div id="leftColumn"></div>
                     <div id="rightColumn"></div>

@@ -530,24 +530,24 @@ function openExercise(id) {
     createRoutineBtn.style.display = "block";
 }
 
-
-function hideExercise(){
-    cancleElementSelection();
-    document.getElementById('EquipmentExercise').style.display="none";
-    document.getElementById('infoBlock').style.display="block";
-    document.getElementById('exerciseCreationPanel').style.display="none";
-    document.getElementById('createRoutineBtn').style.display="block";
-}
-
 function createRoutine(){
     document.getElementById('infoBlock').style.display="none";
     document.getElementById('createRoutineBtn').style.display="none";
     document.getElementById('elementSelection').style.display="none";
+    document.getElementById('detailedElementInfo').style.display="none";
     document.getElementById('exerciseCreationPanel').style.display="block";
-
+    loadExercise();
 }
 
+function closeDevice(){
+    cancleElementSelection();
+    document.getElementById('EquipmentExercise').style.display="none";
+    document.getElementById('exerciseCreationPanel').style.display="none";
+    document.getElementById('detailedElementInfo').style.display="none";
 
+    document.getElementById('infoBlock').style.display="block";
+    document.getElementById('createRoutineBtn').style.display="block";
+}
 
 function selectElement(){
     document.getElementById('elementSelection').style.display="block";
@@ -561,6 +561,33 @@ function cancleElementSelection(){
     document.getElementById('add-exercise-btn').style.display="block";   
 }
 
+
+
+function openDetailedView(element){
+    const container = document.getElementById('detailedElementInfo');
+    const titel = document.getElementById('elementTitle');
+    const lTitle = document.getElementById('elementText');
+    const img = document.getElementById('elementImage');
+    const name = document.getElementById('elementName');
+    const group = document.getElementById('elementGroup');
+    const difficulty = document.getElementById('elementDifficulty');
+
+    titel.innerText = element.bezeichnung;
+    lTitle.innerText = element.bezeichnung;
+    img.src = element.image_path;
+    name.innerText = "Name: " + element.name;
+    if(element.name == ''){
+        name.innerText = "Name: _";
+    }
+    group.innerText = "Elementegruppe: " + element.elementegruppe;
+    difficulty.innerText = "Schwierigkeit: " + element.wertigkeit;
+
+    container.style.display="flex";
+}
+
+function closeDetailedView(){
+    document.getElementById('detailedElementInfo').style.display="none";
+}
 
 
 
@@ -598,6 +625,7 @@ async function getElements(group) {
         elements.forEach(element => {
             const exerciseDiv = document.createElement("div");
             exerciseDiv.classList.add("exercise-item");
+            exerciseDiv.onclick = () => openDetailedView(element);
 
             const img = document.createElement("img");
             img.src = element.image_path;
@@ -624,4 +652,81 @@ async function getElements(group) {
 }
 
 
+let currentExercise = [];
 
+async function loadExercise(){
+    console.log("current Exercise");
+    currentExercise = [];
+    const exerciseData = await getDbExercise(currentDevice);
+    currentExercise.forEach(element => {
+        console.log(element);
+    });
+    //Display Exercises on page
+}
+
+function addToExercise(element){
+    let pos = currentExercise.length;
+    updateDbExercise(currentDevice, pos, element.id);
+    currentExercise.push(element);
+}
+
+
+async function getDbExercise(device) {
+    try {
+        let username = localStorage.getItem("user");
+        if (!username) {
+            throw new Error("Benutzername nicht gefunden.");
+        }
+        console.log(device, " ", username);
+        const response = await fetch(`http://127.0.0.1:5000/exercise/get?device=${device}&vorname=${username}`);
+
+        if (response.ok) {
+            const exerciseData = await response.json();
+            console.log("Übung abgerufen:", exerciseData);
+            exerciseData.elemente.forEach(element => {
+                currentExercise.push(element);
+            });
+            return exerciseData;
+        } else {
+            throw new Error("Fehler beim Abrufen der Übung.");
+        }
+    } catch (error) {
+        console.error("Fehler beim Abrufen der Übung:", error);
+        return null;
+    }
+}
+
+
+async function updateDbExercise(device, position, elementId) {
+    try {
+//        const userResponse = await fetch("/auth/check-login");
+//        const userData = await userResponse.json();
+//
+//        if (!userData.logged_in) {
+//            alert("Nicht angemeldet! Bitte logge dich ein.");
+//            return;
+//        }
+
+        const requestData = {
+            vorname: localStorage.getItem("user"),
+            geraet: device,
+            position: position,
+            element_id: elementId
+        };
+
+        const response = await fetch("http://127.0.0.1:5000/exercise/add", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(requestData)
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            console.log("Übung erfolgreich aktualisiert:", result);
+        } else {
+            console.error("Fehler beim Aktualisieren:", result);
+        }
+    } catch (error) {
+        console.error("Netzwerk- oder Serverfehler:", error);
+    }
+}

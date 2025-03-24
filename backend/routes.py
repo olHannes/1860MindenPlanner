@@ -222,3 +222,63 @@ def get_group_elements():
         elements = [el for el in elements if el.get('wertigkeit') == group]
     
     return jsonify(elements), 200
+
+
+################################################################################################### Update Database Exercise
+
+@main_bp.route('/exercise/add', methods=["POST"])
+def updateExercise():
+    #if not current_user.is_authenticated:
+    #    return jsonify({"error": "Nicht autorisiert"}), 401
+
+    data = request.json
+    vorname = data.get("vorname")
+    geraet = data.get("geraet")
+    position = data.get("position")
+    element_id = data.get("element_id")
+
+    if not vorname or geraet is None or position is None or element_id is None:
+        return jsonify({"error": "Ungültige Anfrage"}), 400
+
+    query = {"vorname": vorname, "geraet": geraet}
+    existing_exercise = exercises_collection.find_one(query)
+
+    if existing_exercise:
+        elemente_liste = existing_exercise["elemente"]
+
+        if element_id in elemente_liste:
+            elemente_liste.remove(element_id)
+
+        while len(elemente_liste) <= position:
+            elemente_liste.append(None)
+
+        elemente_liste[position] = element_id
+
+        exercises_collection.update_one(query, {"$set": {"elemente": elemente_liste}})
+    else:
+        new_exercise = {
+            "vorname": vorname,
+            "geraet": geraet,
+            "elemente": [None] * position + [element_id]
+        }
+        exercises_collection.insert_one(new_exercise)
+
+    return jsonify({"message": "Übung aktualisiert"}), 200
+
+
+@main_bp.route('/exercise/get', methods=["GET"])
+def getExercise():
+    device = request.args.get("device")
+    vorname = request.args.get("vorname")
+
+    if not device or not vorname:
+        return jsonify({"error": "Ungültige Anfrage. Beide Parameter (device und vorname) sind erforderlich."}), 400
+
+    query = {"geraet": device, "vorname": vorname}
+    exercise = exercises_collection.find_one(query)
+
+    if exercise:
+        exercise.pop("_id", None)
+        return jsonify(exercise), 200
+    else:
+        return jsonify({"error": "Keine Übung gefunden."}), 404
