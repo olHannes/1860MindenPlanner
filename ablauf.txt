@@ -1,0 +1,25 @@
+Übung laden:
+-> Elementenliste abrufen (param: Username + gerät)
+-> Array setzen + Elementdetails laden (mit Kürzel)
+-> Darstellung der Daten
+
+Übungen verändern:
+-> Übung laden
+-> Array verändern (Element hinzufügen, verschieben, löschen)
+-> Array in DB speichern
+-> Elementdetails laden (mit Kürzel)
+-> Darstellung der Daten
+
+
+Element details laden:
+-> Element in DB suchen (mit Kürzel)
+-> Metadaten laden
+-> Darstellung der Daten
+
+
+Übungen von einem Nutzer anzeigen:
+-> durch alle Geräte iterieren
+-> in DB nach Übung (mit Username + Gerät) suchen
+-> Daten laden
+-> iterieren und Element details abrufen (mit Kürzel)
+-> Darstellung der Daten
