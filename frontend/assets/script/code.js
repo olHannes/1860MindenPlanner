@@ -530,67 +530,83 @@ function openExercise(id) {
     createRoutineBtn.style.display = "block";
 }
 
-function createRoutine(){
-    document.getElementById('infoBlock').style.display="none";
-    document.getElementById('createRoutineBtn').style.display="none";
-    document.getElementById('elementSelection').style.display="none";
-    document.getElementById('detailedElementInfo').style.display="none";
-    document.getElementById('exerciseCreationPanel').style.display="block";
+
+
+
+
+
+
+// UI-Elemente ein- und ausblenden
+function toggleUIElementVisibility(elements, displayValue) {
+    elements.forEach(element => {
+        document.getElementById(element).style.display = displayValue;
+    });
+}
+
+// Routine erstellen
+function createRoutine() {
+    toggleUIElementVisibility(
+        ['infoBlock', 'createRoutineBtn', 'elementSelection', 'detailedElementInfo'],
+        'none'
+    );
+    document.getElementById('exerciseCreationPanel').style.display = 'block';
+    document.getElementById("selected-exercises-list").innerHTML = "";
     loadExercise();
 }
 
-function closeDevice(){
-    cancleElementSelection();
-    document.getElementById('EquipmentExercise').style.display="none";
-    document.getElementById('exerciseCreationPanel').style.display="none";
-    document.getElementById('detailedElementInfo').style.display="none";
-
-    document.getElementById('infoBlock').style.display="block";
-    document.getElementById('createRoutineBtn').style.display="block";
+// Routine schließen
+function closeDevice() {
+    cancelElementSelection();
+    toggleUIElementVisibility(
+        ['EquipmentExercise', 'exerciseCreationPanel', 'detailedElementInfo'],
+        'none'
+    );
+    toggleUIElementVisibility(['infoBlock', 'createRoutineBtn'], 'block');
 }
 
-function selectElement(){
-    document.getElementById('elementSelection').style.display="block";
-    document.getElementById('add-exercise-btn').style.display="none";   
-
-    getElements(null);
+// Elementauswahl anzeigen
+function selectElement() {
+    document.getElementById('elementSelection').style.display = "block";
+    document.getElementById('add-exercise-btn').style.display = "none";  
+    document.getElementById('allElemBtn').style.border = "solid 2px black";
+    getElements();
 }
 
-function cancleElementSelection(){
-    document.getElementById('elementSelection').style.display="none";
-    document.getElementById('add-exercise-btn').style.display="block";   
+// Elementauswahl abbrechen
+function cancelElementSelection() {
+    document.getElementById('elementSelection').style.display = "none";
+    document.getElementById('add-exercise-btn').style.display = "block";   
 }
 
-
-
-function openDetailedView(element){
+// Detaillierte Ansicht öffnen
+function openDetailedView(element) {
     const container = document.getElementById('detailedElementInfo');
-    const titel = document.getElementById('elementTitle');
-    const lTitle = document.getElementById('elementText');
+    const title = document.getElementById('elementTitle');
+    const description = document.getElementById('elementText');
     const img = document.getElementById('elementImage');
     const name = document.getElementById('elementName');
     const group = document.getElementById('elementGroup');
     const difficulty = document.getElementById('elementDifficulty');
+    const addButton = document.getElementById('addToList');
 
-    titel.innerText = element.bezeichnung;
-    lTitle.innerText = element.bezeichnung;
+    title.innerText = element.bezeichnung;
+    description.innerText = element.bezeichnung;
     img.src = element.image_path;
-    name.innerText = "Name: " + element.name;
-    if(element.name == ''){
-        name.innerText = "Name: _";
-    }
+    name.innerText = element.name || "Name: _";
     group.innerText = "Elementegruppe: " + element.elementegruppe;
     difficulty.innerText = "Schwierigkeit: " + element.wertigkeit;
 
-    container.style.display="flex";
+    addButton.addEventListener("click", () => addToExercise(element));
+
+    container.style.display = "flex";
 }
 
-function closeDetailedView(){
-    document.getElementById('detailedElementInfo').style.display="none";
+// Detaillierte Ansicht schließen
+function closeDetailedView() {
+    document.getElementById('detailedElementInfo').style.display = "none";
 }
 
-
-
+// Gruppen auswählen und laden
 function callElementList(group, clickedButton) {
     document.querySelectorAll("#chooseGroup button").forEach(btn => {
         btn.style.border = "none";
@@ -599,87 +615,96 @@ function callElementList(group, clickedButton) {
     getElements(group);
 }
 
-
+// Elemente abrufen und anzeigen
 async function getElements(group) {
     const leftBlock = document.getElementById('leftColumn');
     const rightBlock = document.getElementById('rightColumn');
-    leftBlock.innerHTML="";
-    rightBlock.innerHTML="";
-    let togglePage=true;
+    leftBlock.innerHTML = "";
+    rightBlock.innerHTML = "";
+    let togglePage = true;
 
     let device = currentDevice;
     try {
         const url = new URL('http://127.0.0.1:5000/elements/getGroupElements');
         const params = { Device: device, Group: group };
-
         Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
-        const response = await fetch(url);        
-        if (!response.ok) {
-            throw new Error(`Fehler beim Laden der Daten: ${response.statusText}`);
-        }
-        
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`Fehler beim Laden der Daten: ${response.statusText}`);
+
         const elements = await response.json();
-
-
         elements.forEach(element => {
-            const exerciseDiv = document.createElement("div");
-            exerciseDiv.classList.add("exercise-item");
-            exerciseDiv.onclick = () => openDetailedView(element);
-
-            const img = document.createElement("img");
-            img.src = element.image_path;
-            img.alt = element.bezeichnung;
-            img.classList.add("exercise-image");
-
-            const title = document.createElement("p");
-            title.textContent = element.bezeichnung;
-            title.classList.add("exercise-title");
-
-            exerciseDiv.appendChild(img);
-            exerciseDiv.appendChild(title);
-
-            if(togglePage){
-                leftBlock.appendChild(exerciseDiv);
-            } else {
-                rightBlock.appendChild(exerciseDiv);
-            }
-            togglePage= !togglePage;
+            const exerciseDiv = createElementDiv(element, togglePage);
+            togglePage ? leftBlock.appendChild(exerciseDiv) : rightBlock.appendChild(exerciseDiv);
+            togglePage = !togglePage;
         });
     } catch (error) {
         console.error("Fehler beim Abrufen der Übungen:", error);
     }
 }
 
+// Funktion zur Erstellung eines Elements
+function createElementDiv(element, togglePage) {
+    const exerciseDiv = document.createElement("div");
+    exerciseDiv.classList.add("exercise-item");
+    exerciseDiv.onclick = () => openDetailedView(element);
 
+    const img = document.createElement("img");
+    img.src = element.image_path;
+    img.alt = element.bezeichnung;
+    img.classList.add("exercise-image");
+
+    const title = document.createElement("p");
+    title.textContent = element.bezeichnung;
+    title.classList.add("exercise-title");
+
+    exerciseDiv.appendChild(img);
+    exerciseDiv.appendChild(title);
+    return exerciseDiv;
+}
+
+// Übung laden
 let currentExercise = [];
 
-async function loadExercise(){
+async function loadExercise() {
     console.log("current Exercise");
     currentExercise = [];
     const exerciseData = await getDbExercise(currentDevice);
-    currentExercise.forEach(element => {
-        console.log(element);
-    });
-    //Display Exercises on page
+
+    if (exerciseData && Array.isArray(exerciseData.elemente)) {
+        const validElements = exerciseData.elemente.filter(element => element !== null); 
+
+        for (const element of validElements) {
+            try {
+                const elementDetails = await getElementDetails(element.id);
+                if (elementDetails) {
+                    const exerciseItem = createExerciseItem(elementDetails, validElements.indexOf(element));
+                    document.getElementById("selected-exercises-list").appendChild(exerciseItem);
+                }
+            } catch (error) {
+                console.error("Fehler beim Abrufen des Elements:", error);
+            }
+        }
+    } else {
+        console.error("Keine gültigen Übungsdaten gefunden.");
+    }
 }
 
-function addToExercise(element){
-    let pos = currentExercise.length;
-    updateDbExercise(currentDevice, pos, element.id);
+// Übungselemente hinzufügen
+function addToExercise(element) {
+    document.getElementById('detailedElementInfo').style.display="none";
     currentExercise.push(element);
+    updateDbExercise(currentDevice);
 }
 
-
+// Übung aus der Datenbank abrufen
 async function getDbExercise(device) {
     try {
         let username = localStorage.getItem("user");
-        if (!username) {
-            throw new Error("Benutzername nicht gefunden.");
-        }
+        if (!username) throw new Error("Benutzername nicht gefunden.");
         console.log(device, " ", username);
-        const response = await fetch(`http://127.0.0.1:5000/exercise/get?device=${device}&vorname=${username}`);
 
+        const response = await fetch(`http://127.0.0.1:5000/exercise/get?device=${device}&vorname=${username}`);
         if (response.ok) {
             const exerciseData = await response.json();
             console.log("Übung abgerufen:", exerciseData);
@@ -696,22 +721,13 @@ async function getDbExercise(device) {
     }
 }
 
-
-async function updateDbExercise(device, position, elementId) {
+// Übung in der Datenbank aktualisieren
+async function updateDbExercise(device) {
     try {
-//        const userResponse = await fetch("/auth/check-login");
-//        const userData = await userResponse.json();
-//
-//        if (!userData.logged_in) {
-//            alert("Nicht angemeldet! Bitte logge dich ein.");
-//            return;
-//        }
-
         const requestData = {
             vorname: localStorage.getItem("user"),
             geraet: device,
-            position: position,
-            element_id: elementId
+            elemente: currentExercise                                               //Nur Kürzel verwenden
         };
 
         const response = await fetch("http://127.0.0.1:5000/exercise/add", {
@@ -729,4 +745,57 @@ async function updateDbExercise(device, position, elementId) {
     } catch (error) {
         console.error("Netzwerk- oder Serverfehler:", error);
     }
+}
+
+// Elementdetails abrufen
+async function getElementDetails(elementId) {
+    try {
+        const response = await fetch(`http://127.0.0.1:5000/exercise/get_element?id=${elementId}&currentDevice=${currentDevice}`);
+        const elementDetails = await response.json();
+        if (response.ok && elementDetails) {
+            return elementDetails;
+        } else {
+            console.error("Element konnte nicht abgerufen werden:", elementId);
+            return null;
+        }
+    } catch (error) {
+        console.error("Fehler beim Abrufen des Elements:", error);
+        return null;
+    }
+}
+
+// Übungselemente im Interface erstellen
+function createExerciseItem(elementDetails, index) {
+    const exerciseItem = document.createElement("div");
+    exerciseItem.classList.add("exercise-item");
+
+    const exerciseNumber = document.createElement("div");
+    exerciseNumber.classList.add("exercise-number");
+    exerciseNumber.innerText = index + 1;
+
+    const exerciseImage = document.createElement("img");
+    exerciseImage.classList.add("exercise-image");
+    exerciseImage.src = elementDetails.image_path || "default-image.png";
+
+    const exerciseTitle = document.createElement("div");
+    exerciseTitle.classList.add("exercise-title");
+    exerciseTitle.innerText = elementDetails.bezeichnung || "Unbekannter Titel";
+
+    const trashIcon = document.createElement("span");
+    trashIcon.classList.add("trash-icon");
+    trashIcon.innerHTML = "&#128465;";
+    trashIcon.addEventListener("click", () => removeElementFromExercise(index));
+
+    exerciseItem.appendChild(exerciseNumber);
+    exerciseItem.appendChild(exerciseImage);
+    exerciseItem.appendChild(exerciseTitle);
+    exerciseItem.appendChild(trashIcon);
+    
+    return exerciseItem;
+}
+
+// Übungselement entfernen
+function removeElementFromExercise(index) {
+    currentExercise.splice(index, 1);
+    updateDbExercise(currentDevice);
 }

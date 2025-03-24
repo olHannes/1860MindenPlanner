@@ -196,84 +196,92 @@ def get_users():
     return jsonify(users), 200
 
 
-################################################################################################### Get All Exercises
+
+
+
+
+
+
+
+
+
+# Hilfsfunktion zum Abrufen von Geräten
+def get_device_collection(device):
+    device_collections = {
+        "FL": db_floorElements,
+        "PO": db_pommelhorseElements,
+        "RI": db_ringsElements,
+        "VA": db_vaultElements,
+        "PA": db_parralelbarsElements,
+        "HI": db_highbarElements
+    }
+    return device_collections.get(device)
+
+###################################################################################################
+# Route: Get All Elements
 
 @main_bp.route('/elements/getGroupElements', methods=['GET'])
 def get_group_elements():
     device = request.args.get('Device')
     group = request.args.get('Group')
+
+    print("Get All Elements: ", device, ", ", group)
     
-    elements = None
+    if not device:
+        return jsonify({"error": "Gerät ist erforderlich."}), 400
     
-    if device == "FL":
-        elements = list(db_floorElements.find({}, {'_id': False}))
-    elif device == "PO":
-        elements = list(db_pommelhorseElements.find({}, {'_id': False}))
-    elif device == "RI":
-        elements = list(db_ringsElements.find({}, {'_id': False}))
-    elif device == "VA":
-        elements = list(db_vaultElements.find({}, {'_id': False}))
-    elif device == "PA":
-        elements = list(db_parralelbarsElements.find({}, {'_id': False}))
-    elif device == "HI":
-        elements = list(db_highbarElements.find({}, {'_id': False}))
+    collection = get_device_collection(device)
+    if collection is None:
+        return jsonify({"error": f"Unbekanntes Gerät: {device}"}), 400
+    
+    elements = list(collection.find({}, {'_id': False}))
     
     if group and group != 'null':
         elements = [el for el in elements if el.get('wertigkeit') == group]
     
     return jsonify(elements), 200
 
-
-################################################################################################### Update Database Exercise
+###################################################################################################
+# Route: Update Database Exercise
 
 @main_bp.route('/exercise/add', methods=["POST"])
-def updateExercise():
-    #if not current_user.is_authenticated:
-    #    return jsonify({"error": "Nicht autorisiert"}), 401
-
+def update_exercise():
     data = request.json
     vorname = data.get("vorname")
     geraet = data.get("geraet")
-    position = data.get("position")
-    element_id = data.get("element_id")
+    elemente = data.get("elemente")
 
-    if not vorname or geraet is None or position is None or element_id is None:
-        return jsonify({"error": "Ungültige Anfrage"}), 400
-
+    print("Update User Exercise: ", vorname, ", ", geraet, ", ", elemente)
+    print("##################################################################################\n##################################################################################\n##################################################################################\n")
+    
+    if not vorname or geraet is None or elemente is None:
+        return jsonify({"error": "Ungültige Anfrage. Alle Felder (vorname, geraet, elemente) sind erforderlich."}), 400
+    
     query = {"vorname": vorname, "geraet": geraet}
-    existing_exercise = exercises_collection.find_one(query)
+    exercises_collection.delete_one(query)
+    
+    new_exercise = {
+        "vorname": vorname,
+        "geraet": geraet,
+        "elemente": elemente
+    }
+    exercises_collection.insert_one(new_exercise)
+    
+    return jsonify({"message": "Übung erfolgreich aktualisiert"}), 200
 
-    if existing_exercise:
-        elemente_liste = existing_exercise["elemente"]
-
-        if element_id in elemente_liste:
-            elemente_liste.remove(element_id)
-
-        while len(elemente_liste) <= position:
-            elemente_liste.append(None)
-
-        elemente_liste[position] = element_id
-
-        exercises_collection.update_one(query, {"$set": {"elemente": elemente_liste}})
-    else:
-        new_exercise = {
-            "vorname": vorname,
-            "geraet": geraet,
-            "elemente": [None] * position + [element_id]
-        }
-        exercises_collection.insert_one(new_exercise)
-
-    return jsonify({"message": "Übung aktualisiert"}), 200
-
+###################################################################################################
+# Route: Get Exercise Details
 
 @main_bp.route('/exercise/get', methods=["GET"])
-def getExercise():
+def get_exercise():
     device = request.args.get("device")
     vorname = request.args.get("vorname")
 
+    print("get Exercise Details: ", device, ", ", vorname)
+
     if not device or not vorname:
         return jsonify({"error": "Ungültige Anfrage. Beide Parameter (device und vorname) sind erforderlich."}), 400
-
+    
     query = {"geraet": device, "vorname": vorname}
     exercise = exercises_collection.find_one(query)
 
@@ -282,3 +290,28 @@ def getExercise():
         return jsonify(exercise), 200
     else:
         return jsonify({"error": "Keine Übung gefunden."}), 404
+
+###################################################################################################
+# Route: Get Element by ID
+
+@main_bp.route('/exercise/get_element', methods=["GET"])
+def get_element():
+    element_id = request.args.get("id")
+    current_device = request.args.get("currentDevice")
+
+    print("get Element by ID: ", element_id, "; Dev: ", current_device)
+
+    if not element_id or not current_device:
+        return jsonify({"error": "Ungültige Anfrage. Beide Parameter (id und currentDevice) sind erforderlich."}), 400
+    
+    collection = get_device_collection(current_device)
+    if collection is None:
+        return jsonify({"error": f"Unbekanntes Gerät: {current_device}"}), 400
+    
+    element = collection.find_one({"id": element_id}, {'_id': False})
+
+    if element:
+        return jsonify(element), 200
+    else:
+        return jsonify({"error": "Kein Element gefunden mit der angegebenen id und dem aktuellen Gerät."}), 404
+    
