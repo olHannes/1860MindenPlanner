@@ -456,8 +456,9 @@ async function showMemberData(username) {
             let tbody = document.createElement("tbody");
 
             let totalDifficulty = 0;
-            let elementGroups = new Set();
+            let elementGroups = new Map();
             let hasDismount = false;
+            let seenElements = new Map();
 
             for (let i = 0; i < exercises.elemente.length; i++) {
                 let element = exercises.elemente[i];
@@ -473,7 +474,7 @@ async function showMemberData(username) {
 
                 let imgCell = document.createElement("td");
                 let img = document.createElement("img");
-                img.src = element.image_path || "assets/images/placeholder.png";
+                img.src = element.image_path || "assets/images/system/profile_icon.png";
                 img.alt = element.bezeichnung;
                 img.style.maxWidth = "100px";
                 imgCell.appendChild(img);
@@ -483,10 +484,15 @@ async function showMemberData(username) {
 
                 totalDifficulty += parseFloat(element.wertigkeit) || 0;
                 if (element.elementegruppe) {
-                    elementGroups.add(element.elementegruppe);
+                    elementGroups.set(element.elementegruppe, (elementGroups.get(element.elementegruppe) || 0) + 1);
                 }
                 if (element.dismount) {
                     hasDismount = true;
+                }
+                
+                // Prüfe doppelte Elemente
+                if (element.bezeichnung) {
+                    seenElements.set(element.bezeichnung, (seenElements.get(element.bezeichnung) || 0) + 1);
                 }
             }
             table.appendChild(tbody);
@@ -499,21 +505,45 @@ async function showMemberData(username) {
             summary.className = "exercise-summary";
 
             let totalElements = exercises.elemente.length;
-            let groupList = [...elementGroups].sort().join(", ");
+            let groupList = [...elementGroups.keys()].sort().join(", ");
             let isComplete = missingGroups.length === 0 && hasDismount;
+
+            let warningReasons = [];
+            if (totalElements > 7) {
+                warningReasons.push("⚠️ Übung enthält mehr als 7 Elemente");
+            }
+            if (totalDifficulty < 0.3) {
+                warningReasons.push("⚠️ Sehr niedrige Schwierigkeit");
+            }
+            if (totalDifficulty > 1) {
+                warningReasons.push("⚠️ Sehr hohe Schwierigkeit");
+            }
+            for (let [group, count] of elementGroups.entries()) {
+                if (count > 3) {
+                    warningReasons.push(`⚠️ Elementgruppe ${group} kommt sehr oft vor (${count}x).`);
+                }
+            }
+            
+            let duplicateElements = [...seenElements.entries()]
+                .filter(([_, count]) => count > 1)
+                .map(([name, count]) => `${name} (${count}x)`);
+            if (duplicateElements.length > 0) {
+                warningReasons.push(`⚠️ Doppelte Elemente: ${duplicateElements.join(", ")}`);
+            }
 
             let missingReasons = [];
             if (totalElements < 7) {
-                missingReasons.push(`Zu wenig Elemente: ${totalElements}`);
+                missingReasons.push(`❌ Zu wenig Elemente: ${totalElements}`);
             }
             if (missingGroups.length > 0) {
-                missingReasons.push(`Fehlende Gruppen: ${missingGroups.join(", ")}`);
+                missingReasons.push(`❌ Fehlende Gruppen: ${missingGroups.join(", ")}`);
             }
             if (!hasDismount) {
-                missingReasons.push("Kein Abgang vorhanden");
+                missingReasons.push("❌ Kein Abgang vorhanden");
             }
 
             summary.innerHTML = `
+                ${warningReasons.length > 0 ? `<p style="color: orange;"><strong>⚠️ Warnungen:</strong> ${warningReasons.join(" | ")}</p>` : ""}
                 <p><strong>Gesamtanzahl der Elemente:</strong> ${totalElements}</p>
                 <p><strong>Gesamte Schwierigkeit:</strong> ${totalDifficulty.toFixed(2)}</p>
                 <p><strong>Elementgruppen:</strong> ${groupList || "Keine"}</p>
@@ -522,7 +552,7 @@ async function showMemberData(username) {
                         ${isComplete ? "✅ Ja" : "❌ Nein"}
                     </span>
                 </p>
-                ${!isComplete ? `<p style="color:red;"><strong>Grund:</strong> ${missingReasons.join(" | ")}</p>` : ""}
+                ${!isComplete ? `<p style="color:red;"><strong>Fehler:</strong> ${missingReasons.join(" | ")}</p>` : ""}
             `;
             exerciseDiv.appendChild(summary);
         } else {
@@ -533,6 +563,7 @@ async function showMemberData(username) {
         exerciseContainer.appendChild(exerciseDiv);
     }
 }
+
 
 
 
