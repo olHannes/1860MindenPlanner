@@ -9,6 +9,39 @@ body {
     margin: 0;
 }
 
+#loadingContainer{
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+}
+#loadingBackground {
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.422);
+}
+.loader {
+    width: 70px;
+    height: 70px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+
 .goBack-Btn {
     height: 5%;
     width: auto;
@@ -294,7 +327,7 @@ button {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.488);
-    max-width: 600px;
+    width: 77%;
     position: fixed;
     left: 50%;
     bottom: 45%;
@@ -873,7 +906,7 @@ p {
 }
 
 .exercise-image {
-    max-width: 60px;
+    width: 82%;
     height: auto;
     border-radius: 5px;
 }
@@ -886,7 +919,14 @@ p {
     max-width: 150px;
     overflow: hidden;
     text-overflow: ellipsis;
+    
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-height: 1.5em;
+    max-height: 4.5em;
 }
+
 
 .trash-icon {
     font-size: 20px;

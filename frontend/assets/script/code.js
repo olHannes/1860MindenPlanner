@@ -5,6 +5,15 @@ window.onload = function () {
 };
 
 
+function showLoader(){
+    document.getElementById('loadingBackground').style.display="block";
+    document.getElementById('loadingContainer').style.display="block";
+}
+function hideLoader(){
+    document.getElementById('loadingBackground').style.display="none";
+    document.getElementById('loadingContainer').style.display="none";
+}
+
 //----------------------------------------------------------------------------------------------------------------- Page change
 
 let activePanel = null;
@@ -50,6 +59,7 @@ async function register() {
     }
 
     try {
+        showLoader();
         const response = await fetch("http://127.0.0.1:5000/account/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -58,6 +68,7 @@ async function register() {
 
         const data = await response.json();
 
+        hideLoader();
         if (response.ok && data.message === "Registrierung erfolgreich!") {
             cancelRegistration();
             document.getElementById("errorMsgRegister").textContent = "";
@@ -79,6 +90,7 @@ async function login() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
+    showLoader();
     try {
         const response = await fetch("http://127.0.0.1:5000/account/login", {
             method: "POST",
@@ -87,6 +99,7 @@ async function login() {
         });
 
         const data = await response.json();
+        hideLoader();
 
         if (response.ok && data.message === "Login erfolgreich!") {
             localStorage.setItem("user", username);
@@ -111,6 +124,7 @@ async function checkUserStatus() {
 
     if (!username) return;
 
+    showLoader();
     try {
         const response = await fetch(`http://127.0.0.1:5000/account/checkUserStatus?name=${username}`, {
             method: "GET",
@@ -122,7 +136,7 @@ async function checkUserStatus() {
         }
 
         const data = await response.json();
-        console.log(data.message);
+        hideLoader();
 
         if (data.message === "Benutzer offline, Status zurückgesetzt!") {
             localStorage.removeItem("user");
@@ -145,6 +159,7 @@ async function logout() {
         return;
     }
 
+    showLoader();
     try {
         const response = await fetch("http://127.0.0.1:5000/account/logout", {
             method: "POST",
@@ -153,6 +168,7 @@ async function logout() {
         });
 
         const data = await response.json();
+        hideLoader();
 
         if (response.ok && data.message === "Erfolgreich ausgeloggt!") {
             localStorage.removeItem("user");
@@ -175,6 +191,7 @@ window.onbeforeunload = async function () {
 
     if (!username) return;
 
+    showLoader();
     try {
         const response = await fetch("http://127.0.0.1:5000/account/logout", {
             method: "POST",
@@ -185,7 +202,7 @@ window.onbeforeunload = async function () {
         if (!response.ok) {
             throw new Error(`Fehler beim Logout: ${response.status} ${response.statusText}`);
         }
-
+        hideLoader();
         localStorage.removeItem("user");
     } catch (error) {
         console.error("Error beim Verlassen der Seite:", error);
@@ -204,6 +221,7 @@ function cancelDeleteAcc(){
 async function deleteAccount() {
     const name = localStorage.getItem("user");
 
+    showLoader();
     try {
         const response = await fetch("http://127.0.0.1:5000/account/delete", {
             method: "POST",
@@ -216,6 +234,7 @@ async function deleteAccount() {
         }
 
         const result = await response.json();
+        hideLoader();
         localStorage.removeItem("user");
         checkLoginStatus();
 
@@ -259,6 +278,7 @@ function checkLoginStatus() {
 
 async function setProfileName() {
     const name = localStorage.getItem("user");
+    showLoader();
     try {
         const response = await fetch(`http://127.0.0.1:5000/account/getUserInfo?name=${name}`, {
             method: "GET",
@@ -268,8 +288,9 @@ async function setProfileName() {
         if (!response.ok) {
             throw new Error(`Fehler: ${response.status} ${response.statusText}`);
         }
-
         const userInfo = await response.json();
+        hideLoader();
+
         document.getElementById('Vorname').textContent = userInfo.first_name;
         document.getElementById('Nachname').textContent = userInfo.last_name;
         document.getElementById('welcomeUser').textContent = "Willkommen "+userInfo.first_name; 
@@ -313,7 +334,7 @@ async function saveName() {
         return;
     }
 
-
+    showLoader();
     try {
         const response = await fetch("http://127.0.0.1:5000/account/changeData", {
             method: "POST",
@@ -325,6 +346,7 @@ async function saveName() {
             throw new Error(`Fehler beim Logout: ${response.status} ${response.statusText}`);
         }
 
+        hideLoader();
         localStorage.removeItem("user");
         localStorage.setItem("user", vorname);
     } catch (error) {
@@ -335,6 +357,7 @@ async function saveName() {
 
 
 async function getAllUser() {
+    showLoader();
     try {
         const response = await fetch(`http://127.0.0.1:5000/users/getUsers`, {
             method: "GET",
@@ -344,8 +367,8 @@ async function getAllUser() {
         if (!response.ok) {
             throw new Error(`Fehler: ${response.status} ${response.statusText}`);
         }
-
         const userData = await response.json();
+        hideLoader();
         return userData;
     } catch (error) {
         console.error("Error:", error);
@@ -358,7 +381,6 @@ async function showAllUser() {
     memberList.innerHTML = '';
 
     const data = await getAllUser();
-
     data.forEach(user => {
         const memberDiv = document.createElement('div');
         memberDiv.classList.add('member');
@@ -390,6 +412,7 @@ let currentDevice = null;
 // get the exercise for a special user and device
 async function requestUserExercise(username, device) {
     currentExercise = [];
+    showLoader();
     try {
         if (!username || !device) throw new Error("Exercise request failed: Invalid params");
         const response = await fetch(`http://127.0.0.1:5000/exercise/get?device=${device}&vorname=${username}`);
@@ -405,14 +428,17 @@ async function requestUserExercise(username, device) {
                     }
                 });
             }
+            hideLoader();
             return exerciseData;
         } 
         if (response.status === 404) {
             console.log(`${device}-leer`);
+            hideLoader();
             return null;
         }
         throw new Error("Error while fetching the user-exercise.");
     } catch (error) {
+        hideLoader();
         console.error("/exercise/get error: ", error);
         return null;
     }
@@ -634,6 +660,7 @@ function openDevicePanel(id) {
     const createRoutineBtn = document.getElementById('createRoutineBtn');
 
     let deviceData = {};
+    currentExercise = [];
 
     switch (id) {
         case 0:
@@ -811,13 +838,21 @@ function closeDevice() {
 }
 
 async function loadCurrentExercise(username, device) {
-    let currentExercise = await requestUserExercise(username, device);
+    if (username == null || device == null) {
+        console.log("Invalid Arguments for loading current Exercise", username, ", ", device);
+        return;
+    }
 
-    console.log("Die Aktuelle Übung ist wie folgt:");
-    console.log(currentExercise);
+    let currentExercise = await requestUserExercise(username, device);
+    console.log("Die Aktuelle Übung ist wie folgt:", currentExercise);
+
+    if (!currentExercise || !Array.isArray(currentExercise.elemente)) {
+        console.warn("Keine gültige Übung gefunden.");
+        return;
+    }
 
     let elementDetailsList = await Promise.all(
-        currentExercise.map(el => getElementDetails(el.id))
+        currentExercise.elemente.map(el => getElementDetails(el))
     );
 
     const exerciseContainer = document.getElementById("selected-exercises-list");
@@ -828,6 +863,7 @@ async function loadCurrentExercise(username, device) {
         exerciseContainer.appendChild(exerciseItem);
     });
 }
+
 
 // Übungselemente im Interface erstellen
 function addElementToExercise(elementDetails, index) {
@@ -909,6 +945,7 @@ async function getElements(difficulty) {
     let togglePage = true;
 
     let device = currentDevice;
+    showLoader();
     try {
         const url = new URL('http://127.0.0.1:5000/elements/getGroupElements');
         const params = { Device: device, Group: difficulty };
@@ -918,12 +955,14 @@ async function getElements(difficulty) {
         if (!response.ok) throw new Error(`Fehler beim Laden der Daten: ${response.statusText}`);
 
         const elements = await response.json();
+        hideLoader();
         elements.forEach(element => {
             const exerciseDiv = createElementDiv(element, togglePage);
             togglePage ? leftBlock.appendChild(exerciseDiv) : rightBlock.appendChild(exerciseDiv);
             togglePage = !togglePage;
         });
     } catch (error) {
+        hideLoader();
         console.error("Fehler beim Abrufen der Übungen:", error);
     }
 }
@@ -960,7 +999,8 @@ function openDetailedView(element) {
     group.innerText = "Elementegruppe: " + element.elementegruppe;
     difficulty.innerText = "Schwierigkeit: " + element.wertigkeit;
 
-    addButton.addEventListener("click", () => addToExercise(element));
+    addButton.replaceWith(addButton.cloneNode(true));
+    document.getElementById('addToList').addEventListener("click", () => addToExercise(element));
 
     container.style.display = "flex";
 }
@@ -972,11 +1012,12 @@ function closeDetailedView() {
 
 // Elementdetails abrufen
 async function getElementDetails(elementId) {
+    showLoader();
     try {
         const deviceCode = elementId.substring(0, 2);
         const response = await fetch(`http://127.0.0.1:5000/exercise/get_element?id=${elementId}&currentDevice=${deviceCode}`);
         const elementDetails = await response.json();
-
+        hideLoader();
         if (response.ok && elementDetails) {
             return elementDetails;
         } else {
@@ -984,6 +1025,7 @@ async function getElementDetails(elementId) {
             return null;
         }
     } catch (error) {
+        hideLoader();
         console.error("Fehler beim Abrufen des Elements:", error);
         return null;
     }
@@ -1000,57 +1042,49 @@ async function getElementDetails(elementId) {
 function addToExercise(element) {
     document.getElementById('detailedElementInfo').style.display="none";
     currentExercise.push(element.id);
-    updateDbExercise(currentDevice);
+    safeUpdateExercise(currentExercise);
 }
 
-// Übung aus der Datenbank abrufen
-async function getDbExercise_(device) {
-    try {
-        let username = localStorage.getItem("user");
-        if (!username) throw new Error("Benutzername nicht gefunden.");
-        console.log(device, " ", username);
+// config Exercise and send it to backend
+async function safeUpdateExercise(elementList) {
+    const username = localStorage.getItem("user");
+    const device = currentDevice;
 
-        const response = await fetch(`http://127.0.0.1:5000/exercise/get?device=${device}&vorname=${username}`);
-        if (response.ok) {
-            const exerciseData = await response.json();
-            console.log("Übung abgerufen:", exerciseData);
-            currentExercise=[];
-            exerciseData.elemente.forEach(element => {
-                currentExercise.push(element.id);
-            });
-            return exerciseData;
-        } else {
-            throw new Error("Fehler beim Abrufen der Übung.");
-        }
-    } catch (error) {
-        console.error("Fehler beim Abrufen der Übung:", error);
-        return null;
+    console.log(currentExercise);
+
+    if (!username || !device) {
+        console.error("Benutzername oder Gerät nicht gefunden.");
+        return;
     }
-}
-
-// Übung in der Datenbank aktualisieren
-async function updateDbExercise(device) {
+    const filteredElements = elementList.filter(element => element !== null && element !== undefined);
+    if (filteredElements.length === 0) {
+        console.warn("Keine gültigen Elemente zum Senden.");
+        return;
+    }
+    const payload = {
+        vorname: username,
+        geraet: device,
+        elemente: filteredElements
+    };
+    showLoader();
     try {
-        const requestData = {
-            vorname: localStorage.getItem("user"),
-            geraet: device,
-            elemente: currentExercise                                               //Nur Kürzel verwenden
-        };
-
         const response = await fetch("http://127.0.0.1:5000/exercise/update", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(requestData)
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
         });
 
-        const result = await response.json();
+        const data = await response.json();
+        hideLoader();
         if (response.ok) {
-            console.log("Übung erfolgreich aktualisiert:", result);
+            console.log("Übung erfolgreich aktualisiert:", data.message);
         } else {
-            console.error("Fehler beim Aktualisieren:", result);
+            console.error("Fehler beim Aktualisieren:", data.error);
         }
     } catch (error) {
-        console.error("Netzwerk- oder Serverfehler:", error);
+        hideLoader();
+        console.error("Fehler bei der Anfrage:", error);
     }
 }
-

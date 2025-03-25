@@ -251,23 +251,18 @@ def update_exercise():
     geraet = data.get("geraet")
     elemente = data.get("elemente")
 
-    print(elemente)
-
-    print("Update User Exercise: ", vorname, ", ", geraet, ", ", elemente) 
     if not vorname or geraet is None or elemente is None:
         return jsonify({"error": "Ungültige Anfrage. Alle Felder (vorname, geraet, elemente) sind erforderlich."}), 400
     
     query = {"vorname": vorname, "geraet": geraet}
-    exercises_collection.delete_one(query)
     
-    new_exercise = {
-        "vorname": vorname,
-        "geraet": geraet,
-        "elemente": elemente
-    }
-    exercises_collection.insert_one(new_exercise)
-    
-    return jsonify({"message": "Übung erfolgreich aktualisiert"}), 200
+    update_data = {"$set": {"elemente": elemente}}
+    result = exercises_collection.update_one(query, update_data, upsert=True)
+
+    if result.matched_count > 0:
+        return jsonify({"message": "Übung erfolgreich aktualisiert"}), 200
+    else:
+        return jsonify({"message": "Neue Übung angelegt"}), 201
 
 ###################################################################################################
 # Route: Get Exercise
