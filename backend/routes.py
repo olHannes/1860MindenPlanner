@@ -244,16 +244,16 @@ def get_group_elements():
 ###################################################################################################
 # Route: Update Database Exercise
 
-@main_bp.route('/exercise/add', methods=["POST"])
+@main_bp.route('/exercise/update', methods=["POST"])
 def update_exercise():
     data = request.json
     vorname = data.get("vorname")
     geraet = data.get("geraet")
     elemente = data.get("elemente")
 
-    print("Update User Exercise: ", vorname, ", ", geraet, ", ", elemente)
-    print("##################################################################################\n##################################################################################\n##################################################################################\n")
-    
+    print(elemente)
+
+    print("Update User Exercise: ", vorname, ", ", geraet, ", ", elemente) 
     if not vorname or geraet is None or elemente is None:
         return jsonify({"error": "Ungültige Anfrage. Alle Felder (vorname, geraet, elemente) sind erforderlich."}), 400
     
@@ -270,14 +270,14 @@ def update_exercise():
     return jsonify({"message": "Übung erfolgreich aktualisiert"}), 200
 
 ###################################################################################################
-# Route: Get Exercise Details
+# Route: Get Exercise
 
 @main_bp.route('/exercise/get', methods=["GET"])
 def get_exercise():
     device = request.args.get("device")
     vorname = request.args.get("vorname")
 
-    print("get Exercise Details: ", device, ", ", vorname)
+    print("get Exercise: ", device, ", ", vorname)
 
     if not device or not vorname:
         return jsonify({"error": "Ungültige Anfrage. Beide Parameter (device und vorname) sind erforderlich."}), 400
