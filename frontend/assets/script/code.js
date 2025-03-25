@@ -374,30 +374,217 @@ async function showAllUser() {
 }
 
 
-async function showMemberData(username) {
-    const userExerciseList = await getUserExercise(username);
 
-    for (const currExercise of userExerciseList) {
-        
-        //create a new Device-Exercise
-        for (const currElement of currExercise){
-            let currentElement = await getElementDetails(currElement.id);
+//-----------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------- Ab hier: Übung handling
+//-----------------------------------------------------------------------------------------------------------------
 
-            //create a new Element and add it to the currExercise
-        }
-    }
-}
+let currentExercise = [];
+let currentDevice = null;
 
-
+// show all Exercises of a choosen User
+//-----------------------------------------------------------------------------------------------------------------
 async function getUserExercise(username) {
+    // Geräte-Liste definieren
     const devices = ["FL", "PO", "RI", "VA", "PA", "HI"];
-    let UserExerciseList = [];
+    let userExerciseList = [];
+
     for (const currDev of devices) {
         currentDevice = currDev;
-        var currentExerciseList = await getDbExercise(currentDevice);
-        UserExerciseList.push(currentExercise);
+        var currentExerciseList = await requestUserExercise(username, currentDevice);
+        console.log("##################\n",currentExerciseList);
+        if (currentExerciseList) {
+            userExerciseList.push({ device: currDev, exercises: currentExerciseList });
+        } else {
+            userExerciseList.push({ device: currDev, exercises: null });
+        }
     }
-    return currentExerciseList;
+    return userExerciseList;
+}
+
+async function showMemberData(username) {
+    document.getElementById('memberExerciseList').style.display = "block";
+    
+    let memberExerciseList = document.getElementById('memberExerciseList');
+    memberExerciseList.innerHTML = `
+        <button onclick="hideMemberExerciseList();" id="hideMemberExercise">
+            <img src="assets/images/system/back.png" alt="Go Back Btn" class="goBack-Btn">
+        </button>
+        <h2 id="memberName">${username}</h2>
+        <div id="exerciseContainer"></div>
+    `;
+
+    const userExerciseList = await getUserExercise(username);
+    const deviceNames = {
+        "FL": "Boden",
+        "PO": "Pauschenpferd",
+        "RI": "Ringe",
+        "VA": "Sprung",
+        "PA": "Barren",
+        "HI": "Reck"
+    };
+
+    const requiredGroups = {
+        "FL": new Set(["1", "2", "3"]), 
+        "PO": new Set(["1", "2", "3", "4"]), 
+        "RI": new Set(["1", "2", "3", "4"]), 
+        "VA": new Set([]), 
+        "PA": new Set(["1", "2", "3", "4"]), 
+        "HI": new Set(["1", "2", "3", "4"]) 
+    };
+
+    let exerciseContainer = document.getElementById('exerciseContainer');
+
+    for (const { device, exercises } of userExerciseList) {
+        let deviceButton = document.createElement("button");
+        deviceButton.className = "device-button";
+        deviceButton.innerText = deviceNames[device];
+        deviceButton.setAttribute("onclick", `toggleExercise('${device}')`);
+        
+        let exerciseDiv = document.createElement("div");
+        exerciseDiv.id = `exercise-${device}`;
+        exerciseDiv.style.display = "none";
+
+        if (exercises && exercises.elemente) {
+            let table = document.createElement("table");
+            table.className = "exercise-table";
+            
+            let thead = document.createElement("thead");
+            thead.innerHTML = "<tr><th>Nr</th><th>Name</th><th>Bild</th></tr>";
+            table.appendChild(thead);
+
+            let tbody = document.createElement("tbody");
+
+            let totalDifficulty = 0;
+            let elementGroups = new Set();
+            let hasDismount = false;
+
+            for (let i = 0; i < exercises.elemente.length; i++) {
+                let element = exercises.elemente[i];
+                let row = document.createElement("tr");
+
+                let numCell = document.createElement("td");
+                numCell.innerText = i + 1;
+                row.appendChild(numCell);
+
+                let nameCell = document.createElement("td");
+                nameCell.innerText = element.bezeichnung;
+                row.appendChild(nameCell);
+
+                let imgCell = document.createElement("td");
+                let img = document.createElement("img");
+                img.src = element.image_path || "assets/images/placeholder.png";
+                img.alt = element.bezeichnung;
+                img.style.maxWidth = "100px";
+                imgCell.appendChild(img);
+                row.appendChild(imgCell);
+
+                tbody.appendChild(row);
+
+                totalDifficulty += parseFloat(element.wertigkeit) || 0;
+                if (element.elementegruppe) {
+                    elementGroups.add(element.elementegruppe);
+                }
+                if (element.dismount) {
+                    hasDismount = true;
+                }
+            }
+            table.appendChild(tbody);
+            exerciseDiv.appendChild(table);
+
+            let requiredGroupSet = requiredGroups[device];
+            let missingGroups = [...requiredGroupSet].filter(group => !elementGroups.has(group));
+
+            let summary = document.createElement("div");
+            summary.className = "exercise-summary";
+
+            let totalElements = exercises.elemente.length;
+            let groupList = [...elementGroups].sort().join(", ");
+            let isComplete = missingGroups.length === 0 && hasDismount;
+
+            let missingReasons = [];
+            if (totalElements < 7) {
+                missingReasons.push(`Zu wenig Elemente: ${totalElements}`);
+            }
+            if (missingGroups.length > 0) {
+                missingReasons.push(`Fehlende Gruppen: ${missingGroups.join(", ")}`);
+            }
+            if (!hasDismount) {
+                missingReasons.push("Kein Abgang vorhanden");
+            }
+
+            summary.innerHTML = `
+                <p><strong>Gesamtanzahl der Elemente:</strong> ${totalElements}</p>
+                <p><strong>Gesamte Schwierigkeit:</strong> ${totalDifficulty.toFixed(2)}</p>
+                <p><strong>Elementgruppen:</strong> ${groupList || "Keine"}</p>
+                <p><strong>Übung vollständig:</strong> 
+                    <span style="color: ${isComplete ? "green" : "red"}; font-weight: bold;">
+                        ${isComplete ? "✅ Ja" : "❌ Nein"}
+                    </span>
+                </p>
+                ${!isComplete ? `<p style="color:red;"><strong>Grund:</strong> ${missingReasons.join(" | ")}</p>` : ""}
+            `;
+            exerciseDiv.appendChild(summary);
+        } else {
+            exerciseDiv.innerHTML = `<p>Keine Übungen gefunden</p>`;
+        }
+
+        exerciseContainer.appendChild(deviceButton);
+        exerciseContainer.appendChild(exerciseDiv);
+    }
+}
+
+
+
+
+
+function toggleExercise(device) {
+    let exerciseDiv = document.getElementById(`exercise-${device}`);
+    exerciseDiv.style.display = exerciseDiv.style.display === "none" ? "block" : "none";
+}
+
+function hideMemberExerciseList() {
+    let memberExerciseList = document.getElementById('memberExerciseList');
+    memberExerciseList.style.display = "none";
+    memberExerciseList.innerHTML = "";
+}
+
+
+
+
+
+async function requestUserExercise(username, device) {
+    // Frontend-Liste leeren
+    currentExercise = [];
+
+    try {
+        if (!username || !device) throw new Error("Exercise request failed: Invalid params");
+
+        const response = await fetch(`http://127.0.0.1:5000/exercise/get?device=${device}&vorname=${username}`);
+        
+        if (response.ok) {
+            const exerciseData = await response.json();
+            
+            if (exerciseData.elemente) {
+                exerciseData.elemente.forEach(element => {
+                    console.log("-> ", element);
+                    currentExercise.push(element.id);
+                });
+            }
+            return exerciseData;
+        } 
+        
+        if (response.status === 404) {
+            console.log(`${device}-leer`);
+            return null;
+        }
+        
+        throw new Error("Error while fetching the user-exercise.");
+        
+    } catch (error) {
+        console.error("/exercise/get error: ", error);
+        return null;
+    }
 }
 
 
@@ -405,11 +592,7 @@ async function getUserExercise(username) {
 
 
 
-
-
-var currentDevice = null;
-
-function openExercise(id) {
+function openDevicePanel(id) {
     document.getElementById('EquipmentExercise').style.display = "block";
     const deviceImage = document.getElementById('DeviceImage');
     const headerDe = document.getElementById('Device-de');
@@ -640,16 +823,17 @@ function closeDetailedView() {
 }
 
 // Gruppen auswählen und laden
-function callElementList(group, clickedButton) {
+function getFilteredElementList(difficulty, clickedButton) {
     document.querySelectorAll("#chooseGroup button").forEach(btn => {
         btn.style.border = "none";
     });
+
     clickedButton.style.border = "solid 2px black";
-    getElements(group);
+    getElements(difficulty);
 }
 
 // Elemente abrufen und anzeigen
-async function getElements(group) {
+async function getElements(difficulty) {
     const leftBlock = document.getElementById('leftColumn');
     const rightBlock = document.getElementById('rightColumn');
     leftBlock.innerHTML = "";
@@ -659,7 +843,7 @@ async function getElements(group) {
     let device = currentDevice;
     try {
         const url = new URL('http://127.0.0.1:5000/elements/getGroupElements');
-        const params = { Device: device, Group: group };
+        const params = { Device: device, Group: difficulty };
         Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
         const response = await fetch(url);
@@ -697,8 +881,6 @@ function createElementDiv(element, togglePage) {
 }
 
 // Übung laden
-let currentExercise = [];
-
 async function loadExercise() {
     console.log("current Exercise");
     currentExercise = [];

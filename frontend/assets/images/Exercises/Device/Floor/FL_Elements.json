@@ -149,7 +149,7 @@
         "name": "",
         "elementegruppe": "2",
         "wertigkeit": "0.1",
-        "dismount": false,
+        "dismount": true,
         "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_17.png"
     },
     {
@@ -158,7 +158,7 @@
         "name": "",
         "elementegruppe": "2",
         "wertigkeit": "0.1",
-        "dismount": false,
+        "dismount": true,
         "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_18.png"
     },
     {
@@ -167,7 +167,7 @@
         "name": "",
         "elementegruppe": "2",
         "wertigkeit": "0.1",
-        "dismount": false,
+        "dismount": true,
         "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_19.png"
     },
     {
@@ -176,7 +176,7 @@
         "name": "",
         "elementegruppe": "3",
         "wertigkeit": "0.1",
-        "dismount": false,
+        "dismount": true,
         "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_20.png"
     },
     {
@@ -185,7 +185,7 @@
         "name": "",
         "elementegruppe": "3",
         "wertigkeit": "0.1",
-        "dismount": false,
+        "dismount": true,
         "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_21.png"
     },
     {
@@ -194,7 +194,7 @@
         "name": "",
         "elementegruppe": "3",
         "wertigkeit": "0.1",
-        "dismount": false,
+        "dismount": true,
         "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_22.png"
     },
     {
@@ -203,7 +203,7 @@
         "name": "",
         "elementegruppe": "3",
         "wertigkeit": "0.1",
-        "dismount": false,
+        "dismount": true,
         "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_23.png"
     }
 
@@ -361,7 +361,7 @@
         "name": "",
         "elementegruppe": "2",
         "wertigkeit": "0.2",
-        "dismount": false,
+        "dismount": true,
         "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_17.png"
     }   
     ,{
@@ -370,7 +370,7 @@
         "name": "",
         "elementegruppe": "2",
         "wertigkeit": "0.2",
-        "dismount": false,
+        "dismount": true,
         "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_18.png"
     }
     ,{
@@ -379,7 +379,7 @@
         "name": "",
         "elementegruppe": "2",
         "wertigkeit": "0.2",
-        "dismount": false,
+        "dismount": true,
         "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_19.png"
     }   
     ,{
@@ -388,7 +388,7 @@
         "name": "",
         "elementegruppe": "3",
         "wertigkeit": "0.2",
-        "dismount": false,
+        "dismount": true,
         "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_20.png"
     }
     ,{
@@ -397,7 +397,7 @@
         "name": "",
         "elementegruppe": "3",
         "wertigkeit": "0.2",
-        "dismount": false,
+        "dismount": true,
         "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_21.png"
     }
     ,{
@@ -406,7 +406,7 @@
         "name": "",
         "elementegruppe": "3",
         "wertigkeit": "0.2",
-        "dismount": false,
+        "dismount": true,
         "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_22.png"
     }
 ]

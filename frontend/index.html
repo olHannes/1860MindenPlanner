@@ -86,7 +86,7 @@
     <!--Equipment panel-->
     <div id="panel1" class="panel">
         <div id="EquipmentExercise">
-            <img src="assets/images/system/back.png" alt="Go Back" onclick="closeDevice();" id="hideExercise">
+            <img src="assets/images/system/back.png" alt="Go Back" onclick="closeDevice();" id="hideExercise" class="goBack-Btn">
             <div id="exerciseTitle">
                 <h2 id="Device-de" class="name-de" style="margin-bottom: 10px;">Titel</h2>
                 <h3 id="Device-en" class="name-en">Title</h3>
@@ -120,12 +120,12 @@
             </div>
             <div id="elementSelection">
                 <div id="chooseGroup">
-                    <button onclick="callElementList(null, this);" style="border: solid 2px rgb(0, 0, 0);" id="allElemBtn">All</button>
-                    <button onclick="callElementList(0.1, this);">A</button>
-                    <button onclick="callElementList(0.2, this);">B</button>
-                    <button onclick="callElementList(0.3, this);" style="opacity: 50%;">C</button>
-                    <button onclick="callElementList(0.4, this);" style="opacity: 50%;">D</button>
-                    <button onclick="callElementList(0.5, this);" style="opacity: 50%;">E</button>
+                    <button onclick="getFilteredElementList(null, this);" style="border: solid 2px rgb(0, 0, 0);" id="allElemBtn">All</button>
+                    <button onclick="getFilteredElementList(0.1, this);">A</button>
+                    <button onclick="getFilteredElementList(0.2, this);">B</button>
+                    <button onclick="getFilteredElementList(0.3, this);" style="opacity: 50%;">C</button>
+                    <button onclick="getFilteredElementList(0.4, this);" style="opacity: 50%;">D</button>
+                    <button onclick="getFilteredElementList(0.5, this);" style="opacity: 50%;">E</button>
                 </div>
                 
                 <div id="elementList">
@@ -146,7 +146,7 @@
 
         <div id="equipmentView">
 
-            <div class="equSlide" onclick="openExercise(0);">
+            <div class="equSlide" onclick="openDevicePanel(0);">
                 <div class="categories">
                     <img src="assets/images/equipment/Floor_icon.png" alt="Floor Icon">
                 </div>
@@ -156,7 +156,7 @@
                 </div>
             </div>
             
-            <div class="equSlide" onclick="openExercise(1);">
+            <div class="equSlide" onclick="openDevicePanel(1);">
                 <div class="categories">
                     <img src="assets/images/equipment/Pommelhorse_icon.png" alt="Pommelhorse Icon">
                 </div>
@@ -166,7 +166,7 @@
                 </div>
             </div>
         
-            <div class="equSlide" onclick="openExercise(2);">
+            <div class="equSlide" onclick="openDevicePanel(2);">
                 <div class="categories">
                     <img src="assets/images/equipment/Rings_icon.png" alt="Rings Icon">
                 </div>
@@ -176,7 +176,7 @@
                 </div>
             </div>
         
-            <div class="equSlide" onclick="openExercise(3);">
+            <div class="equSlide" onclick="openDevicePanel(3);">
                 <div class="categories">
                     <img src="assets/images/equipment/Vault_icon.png" alt="Vault Icon">
                 </div>
@@ -186,7 +186,7 @@
                 </div>
             </div>
 
-            <div class="equSlide" onclick="openExercise(4);">
+            <div class="equSlide" onclick="openDevicePanel(4);">
                 <div class="categories">
                     <img src="assets/images/equipment/Parralelbars_icon.png" alt="Parralelbars Icon">
                 </div>
@@ -196,7 +196,7 @@
                 </div>
             </div>
 
-            <div class="equSlide" onclick="openExercise(5);">
+            <div class="equSlide" onclick="openDevicePanel(5);">
                 <div class="categories">
                     <img src="assets/images/equipment/Highbar_icon.png" alt="Highbar Icon">
                 </div>
@@ -211,6 +211,14 @@
 
     <div id="panel2" class="panel">
         <h2>Mitglieder</h2>
+        <div id="memberExerciseList">
+            <button onclick="hideMemberExerciseList();" id="hideMemberExercise">
+                <img src="assets/images/system/back.png" alt="Go Back Btn" class="goBack-Btn">
+            </button>
+            <h2 id="memberName">Name</h2>
+            <div id="exerciseContainer"></div>
+        </div>
+        
         <div id="memberList">
             <div class="member" onclick="showMemberData();">
                 <img src="assets/images/system/profile_icon.png" alt="profile icon">

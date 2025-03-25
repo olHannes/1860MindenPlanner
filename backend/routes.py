@@ -285,6 +285,7 @@ def get_exercise():
     query = {"geraet": device, "vorname": vorname}
     exercise = exercises_collection.find_one(query)
 
+    print("Aktuelle Übung: ", exercise)
     if exercise:
         exercise.pop("_id", None)
         return jsonify(exercise), 200
