@@ -272,6 +272,7 @@ async function setProfileName() {
         const userInfo = await response.json();
         document.getElementById('Vorname').textContent = userInfo.first_name;
         document.getElementById('Nachname').textContent = userInfo.last_name;
+        document.getElementById('welcomeUser').textContent = "Willkommen "+userInfo.first_name; 
     } catch (error) {
         console.error("Error:", error);
     }

@@ -34,9 +34,15 @@
 
 <div id="content">
 
+    <div id="mainPage">
+        <h1 id="welcomeUser">Willkommen, Nutzer!</h1>
+        <p>Auf dieser Seite kannst du eine Übung / Kür zusammenstellen. Unten im Menü kannst du zwischen der Übungsgestaltung, der Übersicht der anderen Nutzer und den Profileinstellungen wechseln. Der aktuelle Code-of-Points (COP: 2022-2024) kannst du über den Download Button herunterladen.</p>
+        <a href="../Code_of_Points__GT-Maenner_2022-2024.pdf" class="download-btn" download>Download PDF</a>
+    </div>
+
     <div id="menue">
         <button id="equipmentBtn">
-            <img src="assets/images/equipment/Parralelbars_icon.png" alt="Equipment image" onclick="togglePanel(1);">
+            <img src="assets/images/equipment/Pommelhorse_icon.png" alt="Equipment image" onclick="togglePanel(1);">
         </button>
         <button id="profilesBtn">
             <img src="assets/images/system/profile_panel.png" alt="Profile Icon" onclick="showAllUser(); togglePanel(2);">
@@ -219,7 +225,6 @@
             <h2 id="memberName">Name</h2>
             <div id="exerciseContainer"></div>
         </div>
-        <button onclick="exportToImage()">Übersicht als Bild exportieren</button>
         
         <div id="memberList">
             <div class="member" onclick="showMemberData();">
