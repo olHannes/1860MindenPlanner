@@ -23,6 +23,9 @@ db = client['Users']
 users_collection = db['users']
 
 
+@app.route("/")
+def home():
+    return "Server is running!"
 
 app.register_blueprint(routes.main_bp)
 
