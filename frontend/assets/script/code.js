@@ -410,7 +410,7 @@ async function showAllUser() {
         memberDiv.onclick = () => showMemberData(user.firstName);
 
         memberDiv.innerHTML = `
-            <img src="assets/images/system/profile_icon.png" alt="profile icon">
+            <img src="frontend/assets/images/system/profile_icon.png" alt="profile icon">
             <span class="name-de">${user.firstName}</span>
             <span class="name-en">${user.lastName}</span>
         `;
@@ -494,7 +494,7 @@ async function showMemberData(username) {
     let memberExerciseList = document.getElementById('memberExerciseList');
     memberExerciseList.innerHTML = `
         <button onclick="hideMemberExerciseList();" id="hideMemberExercise">
-            <img src="assets/images/system/back.png" alt="Go Back Btn" class="goBack-Btn">
+            <img src="frontend/assets/images/system/back.png" alt="Go Back Btn" class="goBack-Btn">
         </button>
         <h2 id="memberName">${username}</h2>
         <div id="exerciseContainer"></div>
@@ -565,7 +565,7 @@ async function showMemberData(username) {
 
                 let imgCell = document.createElement("td");
                 let img = document.createElement("img");
-                img.src = element.image_path || "assets/images/system/profile_icon.png";
+                img.src = element.image_path || "frontend/assets/images/system/profile_icon.png";
                 img.alt = element.bezeichnung;
                 img.style.maxWidth = "100px";
                 imgCell.appendChild(img);
@@ -690,7 +690,7 @@ function openDevicePanel(id) {
     switch (id) {
         case 0:
             deviceData = {
-                img: "assets/images/equipment/Floor_icon.png",
+                img: "frontend/assets/images/equipment/Floor_icon.png",
                 de: "Boden",
                 en: "Floor",
                 info: `
@@ -711,7 +711,7 @@ function openDevicePanel(id) {
 
         case 1:
             deviceData = {
-                img: "assets/images/equipment/Pommelhorse_icon.png",
+                img: "frontend/assets/images/equipment/Pommelhorse_icon.png",
                 de: "Pauschenpferd",
                 en: "Pommel Horse",
                 info: `
@@ -732,7 +732,7 @@ function openDevicePanel(id) {
 
         case 2:
             deviceData = {
-                img: "assets/images/equipment/Rings_icon.png",
+                img: "frontend/assets/images/equipment/Rings_icon.png",
                 de: "Ringe",
                 en: "Rings",
                 info: `
@@ -753,7 +753,7 @@ function openDevicePanel(id) {
 
         case 3:
             deviceData = {
-                img: "assets/images/equipment/Vault_icon.png",
+                img: "frontend/assets/images/equipment/Vault_icon.png",
                 de: "Sprung",
                 en: "Vault",
                 info: `
@@ -773,7 +773,7 @@ function openDevicePanel(id) {
 
         case 4:
             deviceData = {
-                img: "assets/images/equipment/Parralelbars_icon.png",
+                img: "frontend/assets/images/equipment/Parralelbars_icon.png",
                 de: "Barren",
                 en: "Parallel Bars",
                 info: `
@@ -794,7 +794,7 @@ function openDevicePanel(id) {
 
         case 5:
             deviceData = {
-                img: "assets/images/equipment/Highbar_icon.png",
+                img: "frontend/assets/images/equipment/Highbar_icon.png",
                 de: "Reck",
                 en: "High Bar",
                 info: `

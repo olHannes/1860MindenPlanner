@@ -6,7 +6,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_01.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_01.png"
     },
     {
         "id": "FL_A_02",
@@ -15,7 +15,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_02.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_02.png"
     },
     {
         "id": "FL_A_03",
@@ -24,7 +24,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_03.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_03.png"
     },
     {
         "id": "FL_A_04",
@@ -33,7 +33,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_04.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_04.png"
     },
     {
         "id": "FL_A_05",
@@ -42,7 +42,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_05.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_05.png"
     },
     {
         "id": "FL_A_06",
@@ -51,7 +51,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_06.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_06.png"
     },
     {
         "id": "FL_A_07",
@@ -60,7 +60,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_07.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_07.png"
     },
     {
         "id": "FL_A_08",
@@ -69,7 +69,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_08.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_08.png"
     },
     {
         "id": "FL_A_09",
@@ -78,7 +78,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_09.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_09.png"
     },
     {
         "id": "FL_A_10",
@@ -87,7 +87,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_10.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_10.png"
     },
     {
         "id": "FL_A_11",
@@ -96,7 +96,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_11.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_11.png"
     },
     {
         "id": "FL_A_12",
@@ -105,7 +105,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_12.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_12.png"
     },
     {
         "id": "FL_A_13",
@@ -114,7 +114,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_13.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_13.png"
     },
     {
         "id": "FL_A_14",
@@ -123,7 +123,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_14.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_14.png"
     },
     {
         "id": "FL_A_15",
@@ -132,7 +132,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_15.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_15.png"
     },
     {
         "id": "FL_A_16",
@@ -141,7 +141,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_16.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_16.png"
     },
     {
         "id": "FL_A_17",
@@ -150,7 +150,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_17.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_17.png"
     },
     {
         "id": "FL_A_18",
@@ -159,7 +159,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_18.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_18.png"
     },
     {
         "id": "FL_A_19",
@@ -168,7 +168,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_19.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_19.png"
     },
     {
         "id": "FL_A_20",
@@ -177,7 +177,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_20.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_20.png"
     },
     {
         "id": "FL_A_21",
@@ -186,7 +186,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_21.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_21.png"
     },
     {
         "id": "FL_A_22",
@@ -195,7 +195,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_22.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_22.png"
     },
     {
         "id": "FL_A_23",
@@ -204,7 +204,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "assets/images/Exercises/Device/Floor/A/FL_A_23.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/A/FL_A_23.png"
     }
 
 
@@ -218,7 +218,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_01.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_01.png"
     }
     ,{
         "id": "FL_B_02",
@@ -227,7 +227,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_02.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_02.png"
     }
     ,{
         "id": "FL_B_03",
@@ -236,7 +236,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_03.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_03.png"
     },
     {
         "id": "FL_B_04",
@@ -245,7 +245,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_04.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_04.png"
     },
     {
         "id": "FL_B_05",
@@ -254,7 +254,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_05.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_05.png"
     },
     {
         "id": "FL_B_06",
@@ -263,7 +263,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_06.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_06.png"
     },
     {
         "id": "FL_B_07",
@@ -272,7 +272,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_07.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_07.png"
     },
     {
         "id": "FL_B_08",
@@ -281,7 +281,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_08.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_08.png"
     },
     {
         "id": "FL_B_09",
@@ -290,7 +290,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_09.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_09.png"
     },
     {
         "id": "FL_B_10",
@@ -299,7 +299,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_10.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_10.png"
     },
     {
         "id": "FL_B_11",
@@ -308,7 +308,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_11.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_11.png"
     },
     {
         "id": "FL_B_12",
@@ -317,7 +317,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_12.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_12.png"
     },
     {
         "id": "FL_B_13",
@@ -326,7 +326,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_13.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_13.png"
     },
     {
         "id": "FL_B_14",
@@ -335,7 +335,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_14.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_14.png"
     },
     {
         "id": "FL_B_15",
@@ -344,7 +344,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_15.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_15.png"
     },
     {
         "id": "FL_B_16",
@@ -353,7 +353,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_16.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_16.png"
     }    
     ,{
         "id": "FL_B_17",
@@ -362,7 +362,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.2",
         "dismount": true,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_17.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_17.png"
     }   
     ,{
         "id": "FL_B_18",
@@ -371,7 +371,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.2",
         "dismount": true,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_18.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_18.png"
     }
     ,{
         "id": "FL_B_19",
@@ -380,7 +380,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.2",
         "dismount": true,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_19.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_19.png"
     }   
     ,{
         "id": "FL_B_20",
@@ -389,7 +389,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.2",
         "dismount": true,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_20.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_20.png"
     }
     ,{
         "id": "FL_B_21",
@@ -398,7 +398,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.2",
         "dismount": true,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_21.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_21.png"
     }
     ,{
         "id": "FL_B_22",
@@ -407,6 +407,6 @@
         "elementegruppe": "3",
         "wertigkeit": "0.2",
         "dismount": true,
-        "image_path": "assets/images/Exercises/Device/Floor/B/FL_B_22.png"
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_22.png"
     }
 ]
