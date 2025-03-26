@@ -31,6 +31,27 @@ function togglePanel(panelId) {
         panel.classList.remove('visible');
         activePanel = null;
     }
+    resetAllPanels();
+}
+
+function resetAllPanels(){
+    currentExercise=[];
+    currentDevice="";
+
+    document.getElementById('requestDelAcc').style.display="none";
+    document.getElementById('nameEdit').style.display="none";
+
+    document.getElementById('EquipmentExercise').style.display="none";
+    document.getElementById('exerciseCreationPanel').style.display="none";
+    document.getElementById('detailedElementInfo').style.display="none";
+
+    document.getElementById('leftColumn').innerHTML="";
+    document.getElementById('rightColumn').innerHTML="";
+
+    document.getElementById('memberExerciseList').style.display="none";
+    document.getElementById('memberExerciseList').innerHTML="";
+
+    
 }
 
 //----------------------------------------------------------------------------------------------------------------- Registration
