@@ -20,39 +20,49 @@ let activePanel = null;
 
 function togglePanel(panelId) {
     const panel = document.getElementById('panel' + panelId);
+
     if (activePanel && activePanel !== panel) {
         activePanel.classList.remove('visible');
     }
-    
-    if (!panel.classList.contains('visible')) {
+    if (!panel.classList.contains('visible')){
+        console.log("direkt beim öffnen");
+        resetPanel(panelId);
         panel.classList.add('visible');
         activePanel = panel;
     } else {
         panel.classList.remove('visible');
+
         activePanel = null;
     }
-    resetAllPanels();
 }
 
-function resetAllPanels(){
-    currentExercise=[];
-    currentDevice="";
+function resetPanel(panelId) {
+    switch (parseInt(panelId, 10)) {
+        case 0:
+            console.log("Reset für Panel 0");
+            document.getElementById('nameEdit').style.display="none";
+            document.getElementById('requestDelAcc').style.display="none";
+            document.getElementById('nameView').style.display = 'block';
+            break;
+        case 1:
+            console.log("Reset für Panel 1");
+            document.getElementById('elementSelection').style.display="none";
+            document.getElementById('exerciseCreationPanel').style.display="none";
+            document.getElementById('EquipmentExercise').style.display="none";
+            document.getElementById('add-exercise-btn').style.display = "block";  
 
-    document.getElementById('requestDelAcc').style.display="none";
-    document.getElementById('nameEdit').style.display="none";
-
-    document.getElementById('EquipmentExercise').style.display="none";
-    document.getElementById('exerciseCreationPanel').style.display="none";
-    document.getElementById('detailedElementInfo').style.display="none";
-
-    document.getElementById('leftColumn').innerHTML="";
-    document.getElementById('rightColumn').innerHTML="";
-
-    document.getElementById('memberExerciseList').style.display="none";
-    document.getElementById('memberExerciseList').innerHTML="";
-
-    
+            break;
+        case 2:
+            console.log("Reset für Panel 2");
+            document.getElementById('memberExerciseList').style.display="none";
+            document.getElementById('memberExerciseList').innerHTML="";
+            break;
+        default:
+            console.log("Unbekanntes Panel");
+            break;
+    }
 }
+
 
 //----------------------------------------------------------------------------------------------------------------- Registration
 
@@ -674,9 +684,11 @@ function hideMemberExerciseList() {
 //-----------------------------------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------
 
+let pageDepth = 0;
 
 // open a device and display basic information
 function openDevicePanel(id) {
+    pageDepth = 0;
     document.getElementById('EquipmentExercise').style.display = "block";
     const deviceImage = document.getElementById('DeviceImage');
     const headerDe = document.getElementById('Device-de');
@@ -843,6 +855,7 @@ function toggleUIElementVisibility(elements, displayValue) {
 
 // show Routine Creation Panel
 function createRoutine() {
+    pageDepth = 1;
     toggleUIElementVisibility(
         ['infoBlock', 'createRoutineBtn', 'elementSelection', 'detailedElementInfo'],
         'none'
@@ -854,12 +867,20 @@ function createRoutine() {
 
 // hide Routine Creation Panel
 function closeDevice() {
-    cancelElementSelection();
-    toggleUIElementVisibility(
-        ['EquipmentExercise', 'exerciseCreationPanel', 'detailedElementInfo'],
-        'none'
-    );
-    toggleUIElementVisibility(['infoBlock', 'createRoutineBtn'], 'block');
+    if(pageDepth == 2){
+        document.getElementById('elementSelection').style.display="none";
+        document.getElementById('detailedElementInfo').style.display="none";
+        document.getElementById('add-exercise-btn').style.display="block";
+        loadCurrentExercise(localStorage.getItem("user"), currentDevice);
+    }
+    else if(pageDepth == 1){
+        document.getElementById('exerciseCreationPanel').style.display="none";
+        document.getElementById('infoBlock').style.display="block";
+    }
+    else if(pageDepth == 0){
+        togglePanel(1);
+    }
+    pageDepth-=1;
 }
 
 
@@ -1032,6 +1053,7 @@ function updateExerciseOrder() {
 
 // show all-Elements Panel
 function selectElement() {
+    pageDepth = 2;
     document.getElementById('elementSelection').style.display = "block";
     document.getElementById('add-exercise-btn').style.display = "none";  
     document.getElementById('allElemBtn').style.border = "solid 2px black";
@@ -1097,16 +1119,6 @@ async function getElements(difficulty) {
         hideLoader();
         console.error("Fehler beim Abrufen der Übungen:", error);
     }
-}
-
-// cancel element selection and hide panel
-function cancelElementSelection() {
-    document.getElementById('elementSelection').style.display = "none";
-    document.getElementById('add-exercise-btn').style.display = "block"; 
-    const leftBlock = document.getElementById('leftColumn');
-    const rightBlock = document.getElementById('rightColumn');
-    leftBlock.innerHTML = "";
-    rightBlock.innerHTML = "";  
 }
 
 
