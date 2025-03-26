@@ -1,0 +1,393 @@
+[
+    {
+        "id": "HI_A_01",
+        "bezeichnung": "Stemme rw. i. d. Handstand",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/A/HI_A_01.png"
+    },
+    {
+        "id": "HI_A_02",
+        "bezeichnung": "Stemme rw. i. d. Handstand m. 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/A/HI_A_02.png"
+    },
+    {
+        "id": "HI_A_03",
+        "bezeichnung": "Riesenumschwung vw.",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/A/HI_A_03.png"
+    },
+    {
+        "id": "HI_A_04",
+        "bezeichnung": "Riesenumschwung vw. m. 1/2 Drehung d. d. Handstand",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/A/HI_A_04.png"
+    },
+    {
+        "id": "HI_A_05",
+        "bezeichnung": "Riesenumschwung rw.",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/A/HI_A_05.png"
+    },
+    {
+        "id": "HI_A_06",
+        "bezeichnung": "Riesenumschwung rw. m. 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/A/HI_A_06.png"
+    },
+    {
+        "id": "HI_A_07",
+        "bezeichnung": "Riesenumschwung rw. gespr. i. d. Kgr.",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/A/HI_A_07.png"
+    },
+    {
+        "id": "HI_A_08",
+        "bezeichnung": "Riesenumschwung rw. m. Einschultern b. Abschwung u. Ausschultern z. Handstand",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/A/HI_A_08.png"
+    },
+    {
+        "id": "HI_A_09",
+        "bezeichnung": "Hang- o. Stützkippe i. d. Handstand",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/A/HI_A_09.png"
+    },
+    {
+        "id": "HI_A_10",
+        "bezeichnung": "A. d. Hang o. Stütz, Felgunterschwung d. d. Handstand",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/A/HI_A_10.png"
+    },
+    {
+        "id": "HI_A_11",
+        "bezeichnung": "A. d. Hang o. Stütz, Felgunterschwung gespr. i. d. Handstand",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/A/HI_A_11.png"
+    },
+    {
+        "id": "HI_A_12",
+        "bezeichnung": "Überschlag rl. rw. i. d. Hang rl.",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/A/HI_A_12.png"
+    },
+    {
+        "id": "HI_A_13",
+        "bezeichnung": "Bückumschwung vw. m. Rückgrätschen i. d. Hang o. i. d. Stütz.",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/A/HI_A_13.png"
+    },
+    {
+        "id": "HI_A_14",
+        "bezeichnung": "Salto vw. geb. o. gestr. - auch mit 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/A/HI_A_14.png"
+    },
+    {
+        "id": "HI_A_15",
+        "bezeichnung": "Salto rw. geb. o. gestr., auch m. 1/2 o. 1/1 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/A/HI_A_15.png"
+    },
+    {
+        "id": "HI_A_16",
+        "bezeichnung": "Hecht gegr., Hecht o. Hecht m. 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/A/HI_A_16.png"
+    }
+
+
+
+
+    ,{
+        "id": "HI_B_01", 
+        "bezeichnung": "Stemme rw. i. d. Handstand m. 1/1 Drehung, a. z. Zwiegriff", 
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_01.png" 
+    },
+    {
+        "id": "HI_B_02", 
+        "bezeichnung": "Rückschwung u. Pirouette i. d. Hang", 
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_02.png" 
+    },
+    {
+        "id": "HI_B_03", 
+        "bezeichnung": "Riesenumschwung vw. m. 1/1 Drehung i. d. Mix-Ellgriff", 
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_03.png" 
+    },
+    {
+        "id": "HI_B_04", 
+        "bezeichnung": "Riesenumschwung vw. gespr. o. m. 1/2 Drehung", 
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_04.png" 
+    },
+    {
+        "id": "HI_B_05", 
+        "bezeichnung": "Einarmiger Riesenumschwung vw. i. Kgr. (360°)", 
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_05.png" 
+    },
+    {
+        "id": "HI_B_06", 
+        "bezeichnung": "Einarmiger Riesenumschwung rw. (360°)", 
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_06.png" 
+    },
+    {
+        "id": "HI_B_07", 
+        "bezeichnung": "Riesenumschwung rw. gespr.", 
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_07.png" 
+    },
+    {
+        "id": "HI_B_08", 
+        "bezeichnung": "Riesenumschwung rw. gespr. m. 1/2 Drehung i. d. Ellgriff", 
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_08.png" 
+    },
+    {
+        "id": "HI_B_09", 
+        "bezeichnung": "Riesenumschwung rw. m. 1/2 Drehung i. d. Ellgriff", 
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_09.png" 
+    },
+    {
+        "id": "HI_B_10", 
+        "bezeichnung": "Riesenumschwung rw. gespr. i. d. Ellgriff", 
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_10.png" 
+    },
+    {
+        "id": "HI_B_11", 
+        "bezeichnung": "Riesenumschwung m. Ellgriff", 
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_11.png" 
+    },
+    {
+        "id": "HI_B_12", 
+        "bezeichnung": "Steinemann Stemme m. 1/2 Drehung i. d. Stütz", 
+        "name": "Ono",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_12.png" 
+    },
+    {
+        "id": "HI_B_13", 
+        "bezeichnung": "Stemme rw. u. Vorgrätschen i. d. Hang rl.", 
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_13.png" 
+    },
+    {
+        "id": "HI_B_14", 
+        "bezeichnung": "Stemme rw. u. Bücke gespr. m. 1/2 Drehung i. d. Hang", 
+        "name": "Voronin",
+        "elementegruppe": "2",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_14.png" 
+    },
+    {
+        "id": "HI_B_15", 
+        "bezeichnung": "Stemme rw. u. Kehre m. 1/4 Drehung i. d. Hang", 
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_15.png" 
+    },
+    {
+        "id": "HI_B_16", 
+        "bezeichnung": "A. d. Hdst., Felge vw. d. d. Hdst.", 
+        "name": "Weiler",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_16.png" 
+    },
+    {
+        "id": "HI_B_17", 
+        "bezeichnung": "Grätschumschwung vw. d. d. Hdst.", 
+        "name": "Endo",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_17.png" 
+    },
+    {
+        "id": "HI_B_18", 
+        "bezeichnung": "Free circle bwd. straddle thr. hdst.", 
+        "name": "Stalder",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_18.png" 
+    },
+    {
+        "id": "HI_B_19", 
+        "bezeichnung": "Stalder gesprungen d. d. Handstand", 
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_19.png" 
+    },
+    {
+        "id": "HI_B_20", 
+        "bezeichnung": "A. d. Hang rl., Stemme vw. i. d. Stütz rl.", 
+        "name": "Steinemann",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_20.png" 
+    },
+    {
+        "id": "HI_B_21", 
+        "bezeichnung": "Steinemann Stemme m. Rückflanken i. d. Stütz o. Hang", 
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_21.png" 
+    },
+    {
+        "id": "HI_B_22", 
+        "bezeichnung": "Bückumschwung vw. m. Rückgrätschen d. d. Handstand", 
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_22.png" 
+    },
+    {
+        "id": "HI_B_23", 
+        "bezeichnung": "Salto vw. gestr. m. 1/1 o. 3/2 Drehung", 
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_23.png" 
+    },
+    {
+        "id": "HI_B_24", 
+        "bezeichnung": "Salto rw. gestr. m. 3/2 o. 2/1 Drehung", 
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_24.png" 
+    },
+    {
+        "id": "HI_B_25", 
+        "bezeichnung": "Doppelsalto rw. geh. o. geh.", 
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_25.png" 
+    },
+    {
+        "id": "HI_B_26", 
+        "bezeichnung": "Doppelsalto rw. geh. über die Stange", 
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_26.png" 
+    },
+    {
+        "id": "HI_B_27", 
+        "bezeichnung": "Hecht m. 1/1 o. 3/2 Drehung", 
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.2", 
+        "dismount": false,
+        "image_path": "assets/images/Exercises/Device/Highbar/B/HI_B_27.png" 
+    }
+]
