@@ -1172,10 +1172,6 @@ async function safeUpdateExercise(elementList) {
         return;
     }
     const filteredElements = elementList.filter(element => element !== null && element !== undefined);
-    if (filteredElements.length === 0) {
-        console.warn("Keine gültigen Elemente zum Senden.");
-        return;
-    }
     const payload = {
         vorname: username,
         geraet: device,
