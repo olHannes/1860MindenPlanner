@@ -978,9 +978,16 @@ function updateExerciseOrder() {
         row.querySelector("td:first-child").innerText = index + 1;
         newOrder.push(row.getAttribute("data-index"));
     });
-
-    console.log("Neue Reihenfolge:", newOrder);
-    // Hier kannst du die neue Reihenfolge speichern (API-Call oder localStorage)
+    console.log("Übung vor der geänderten Reihenfolge: ", currentExercise);
+    
+    let tempList = [];
+    newOrder.forEach(elementIndex => {
+        if(currentExercise.length>= elementIndex && currentExercise.at(elementIndex)){
+            tempList.push(currentExercise.at(elementIndex));
+        }
+    });
+    currentExercise = tempList;
+    console.log("Übung nach der neuen Reihenfolge: ", currentExercise);
 
     safeUpdateExercise(currentExercise);
 }
