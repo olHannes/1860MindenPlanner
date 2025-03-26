@@ -871,6 +871,7 @@ function closeDevice() {
         document.getElementById('elementSelection').style.display="none";
         document.getElementById('detailedElementInfo').style.display="none";
         document.getElementById('add-exercise-btn').style.display="block";
+        document.getElementById('selected-exercises-list').style.display="flex";
         loadCurrentExercise(localStorage.getItem("user"), currentDevice);
     }
     else if(pageDepth == 1){
@@ -1096,6 +1097,7 @@ async function getElements(difficulty) {
     const rightBlock = document.getElementById('rightColumn');
     leftBlock.innerHTML = "";
     rightBlock.innerHTML = "";
+    document.getElementById('selected-exercises-list').style.display="none";
     let togglePage = true;
 
     let device = currentDevice;
