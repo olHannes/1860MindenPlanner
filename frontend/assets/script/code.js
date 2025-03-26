@@ -90,7 +90,7 @@ async function register() {
 
     try {
         showLoader();
-        const response = await fetch("http://127.0.0.1:5000/account/register", {
+        const response = await fetch("https://one860mindenplanner.onrender.com/account/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ firstName, lastName, password: newPassword })
@@ -121,7 +121,7 @@ async function login() {
 
     showLoader();
     try {
-        const response = await fetch("http://127.0.0.1:5000/account/login", {
+        const response = await fetch("https://one860mindenplanner.onrender.com/account/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password })
@@ -155,7 +155,7 @@ async function checkUserStatus() {
 
     showLoader();
     try {
-        const response = await fetch(`http://127.0.0.1:5000/account/checkUserStatus?name=${username}`, {
+        const response = await fetch(`https://one860mindenplanner.onrender.com/account/checkUserStatus?name=${username}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         });
@@ -191,7 +191,7 @@ async function logout() {
 
     showLoader();
     try {
-        const response = await fetch("http://127.0.0.1:5000/account/logout", {
+        const response = await fetch("https://one860mindenplanner.onrender.com/account/logout", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name: username })
@@ -224,7 +224,7 @@ window.onbeforeunload = async function () {
 
     showLoader();
     try {
-        const response = await fetch("http://127.0.0.1:5000/account/logout", {
+        const response = await fetch("https://one860mindenplanner.onrender.com/account/logout", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name: username })
@@ -254,7 +254,7 @@ async function deleteAccount() {
     const name = localStorage.getItem("user");
     showLoader();
     try {
-        const response = await fetch("http://127.0.0.1:5000/account/delete", {
+        const response = await fetch("https://one860mindenplanner.onrender.com/account/delete", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({name})
@@ -312,7 +312,7 @@ async function setProfileName() {
     const name = localStorage.getItem("user");
     showLoader();
     try {
-        const response = await fetch(`http://127.0.0.1:5000/account/getUserInfo?name=${name}`, {
+        const response = await fetch(`https://one860mindenplanner.onrender.com/account/getUserInfo?name=${name}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         });
@@ -367,7 +367,7 @@ async function saveName() {
         return;
     }
     try {
-        const response = await fetch("http://127.0.0.1:5000/account/changeData", {
+        const response = await fetch("https://one860mindenplanner.onrender.com/account/changeData", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username: username, new_first_name: vorname, new_last_name: nachname })
@@ -390,7 +390,7 @@ async function saveName() {
 async function getAllUser() {
     showLoader();
     try {
-        const response = await fetch(`http://127.0.0.1:5000/users/getUsers`, {
+        const response = await fetch(`https://one860mindenplanner.onrender.com/users/getUsers`, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         });
@@ -448,7 +448,7 @@ async function requestUserExercise(username, device) {
     showLoader();
     try {
         if (!username || !device) throw new Error("Exercise request failed: Invalid params");
-        const response = await fetch(`http://127.0.0.1:5000/exercise/get?device=${device}&vorname=${username}`);
+        const response = await fetch(`https://one860mindenplanner.onrender.com/exercise/get?device=${device}&vorname=${username}`);
         
         if (response.ok) {
             const exerciseData = await response.json();
@@ -1103,7 +1103,7 @@ async function getElements(difficulty) {
     let device = currentDevice;
     showLoader();
     try {
-        const url = new URL('http://127.0.0.1:5000/elements/getGroupElements');
+        const url = new URL('https://one860mindenplanner.onrender.com/elements/getGroupElements');
         const params = { Device: device, Group: difficulty };
         Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -1161,7 +1161,7 @@ async function getElementDetails(elementId) {
     showLoader();
     try {
         const deviceCode = elementId.substring(0, 2);
-        const response = await fetch(`http://127.0.0.1:5000/exercise/get_element?id=${elementId}&currentDevice=${deviceCode}`);
+        const response = await fetch(`https://one860mindenplanner.onrender.com/exercise/get_element?id=${elementId}&currentDevice=${deviceCode}`);
         const elementDetails = await response.json();
         hideLoader();
         if (response.ok && elementDetails) {
@@ -1214,7 +1214,7 @@ async function safeUpdateExercise(elementList) {
     };
     showLoader();
     try {
-        const response = await fetch("http://127.0.0.1:5000/exercise/update", {
+        const response = await fetch("https://one860mindenplanner.onrender.com/exercise/update", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
