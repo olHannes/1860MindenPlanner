@@ -45,6 +45,7 @@ def login():
 
         if check_password_hash(user['password'], password):
             users_collection.update_one({"firstName": username}, {"$set": {"online": 1}})
+
             active_sessions[username] = request.remote_addr
             session['user'] = username
             

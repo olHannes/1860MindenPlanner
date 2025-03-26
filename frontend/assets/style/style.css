@@ -943,6 +943,63 @@ p {
 
 
 
+.exercise-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.exercise-table th, .exercise-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.exercise-table th {
+    background-color: #f4f4f4;
+}
+
+.exercise-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border: 1px solid #ddd;
+    margin: 5px 0;
+}
+
+.trash-icon {
+    cursor: pointer;
+    color: red;
+    font-size: 18px;
+}
+
+.exercise-table tr {
+    cursor: grab;
+}
+
+.exercise-table tr:active {
+    background-color: #f0f0f0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #memberExerciseList {

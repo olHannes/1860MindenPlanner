@@ -33,7 +33,6 @@ function togglePanel(panelId) {
     }
 }
 
-
 //----------------------------------------------------------------------------------------------------------------- Registration
 
 function toggleRegistration() {
@@ -67,7 +66,6 @@ async function register() {
         });
 
         const data = await response.json();
-
         hideLoader();
         if (response.ok && data.message === "Registrierung erfolgreich!") {
             cancelRegistration();
@@ -78,11 +76,11 @@ async function register() {
             document.getElementById("errorMsgRegister").textContent = "Benutzername bereits vergeben!";
         }
     } catch (error) {
+        hideLoader();
         console.error("Error:", error);
         document.getElementById("errorMsgRegister").textContent = "Ein unerwarteter Fehler ist aufgetreten!";
     }
 }
-
 
 //----------------------------------------------------------------------------------------------------------------- Login
 
@@ -111,11 +109,11 @@ async function login() {
             document.getElementById("errorMsg").textContent = "Ungültiger Benutzername oder Passwort!";
         }
     } catch (error) {
+        hideLoader();
         console.error("Error:", error);
         document.getElementById("errorMsg").textContent = "Ein unerwarteter Fehler ist aufgetreten!";
     }
 }
-
 
 //----------------------------------------------------------------------------------------------------------------- User Status
 
@@ -144,6 +142,7 @@ async function checkUserStatus() {
         }
 
     } catch (error) {
+        hideLoader();
         console.error("Error:", error);
     }
 }
@@ -178,6 +177,7 @@ async function logout() {
         }
 
     } catch (error) {
+        hideLoader();
         console.error("Error:", error);
         document.getElementById("errorMsg").textContent = "Fehler beim Logout!";
     }
@@ -202,9 +202,10 @@ window.onbeforeunload = async function () {
         if (!response.ok) {
             throw new Error(`Fehler beim Logout: ${response.status} ${response.statusText}`);
         }
-        hideLoader();
         localStorage.removeItem("user");
+        hideLoader();
     } catch (error) {
+        hideLoader();
         console.error("Error beim Verlassen der Seite:", error);
     }
 };
@@ -220,7 +221,6 @@ function cancelDeleteAcc(){
 }
 async function deleteAccount() {
     const name = localStorage.getItem("user");
-
     showLoader();
     try {
         const response = await fetch("http://127.0.0.1:5000/account/delete", {
@@ -242,6 +242,7 @@ async function deleteAccount() {
         document.getElementById('requestDelAcc').style.display="none";
 
     } catch (error) {
+        hideLoader();
         console.error("Error:", error);
         document.getElementById("errorMsg").textContent = "Fehler beim Löschen des Accounts!";
     }
@@ -289,12 +290,13 @@ async function setProfileName() {
             throw new Error(`Fehler: ${response.status} ${response.statusText}`);
         }
         const userInfo = await response.json();
-        hideLoader();
-
+        
         document.getElementById('Vorname').textContent = userInfo.first_name;
         document.getElementById('Nachname').textContent = userInfo.last_name;
         document.getElementById('welcomeUser').textContent = "Willkommen "+userInfo.first_name; 
+        hideLoader();
     } catch (error) {
+        hideLoader();
         console.error("Error:", error);
     }
 }
@@ -327,14 +329,12 @@ async function saveName() {
     document.getElementById('nameView').style.display = 'block';
     document.getElementById('nameEdit').style.display = 'none';
     document.getElementById('saveBtn').style.display = 'none';
-
+    showLoader();
 
     if (!username) {
         console.error("Kein Benutzername im LocalStorage gefunden.");
         return;
     }
-
-    showLoader();
     try {
         const response = await fetch("http://127.0.0.1:5000/account/changeData", {
             method: "POST",
@@ -346,14 +346,14 @@ async function saveName() {
             throw new Error(`Fehler beim Logout: ${response.status} ${response.statusText}`);
         }
 
-        hideLoader();
         localStorage.removeItem("user");
         localStorage.setItem("user", vorname);
+        hideLoader();
     } catch (error) {
+        hideLoader();
         console.error("Error beim Verlassen der Seite:", error);
     }
 }
-
 
 
 async function getAllUser() {
@@ -371,6 +371,7 @@ async function getAllUser() {
         hideLoader();
         return userData;
     } catch (error) {
+        hideLoader();
         console.error("Error:", error);
         return [];
     }
@@ -380,6 +381,7 @@ async function showAllUser() {
     const memberList = document.getElementById('memberList');
     memberList.innerHTML = '';
 
+    showLoader();
     const data = await getAllUser();
     data.forEach(user => {
         const memberDiv = document.createElement('div');
@@ -394,6 +396,7 @@ async function showAllUser() {
 
         memberList.appendChild(memberDiv);
     });
+    hideLoader();
 }
 
 
@@ -401,7 +404,6 @@ async function showAllUser() {
 //-----------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------- Ab hier: Übung handling
 //-----------------------------------------------------------------------------------------------------------------
-
 
 
 let currentExercise = [];
@@ -423,12 +425,12 @@ async function requestUserExercise(username, device) {
             if (exerciseData.elemente) {
                 exerciseData.elemente.forEach(element => {
                     if (element != null){
-                        console.log("-> ", element);
-                        currentExercise.push(element.id);
+                        currentExercise.push(element);
                     }
                 });
             }
             hideLoader();
+            console.log("loaded Exercise: ", currentExercise);
             return exerciseData;
         } 
         if (response.status === 404) {
@@ -450,6 +452,7 @@ async function getAllUserExercise(username) {
     const devices = ["FL", "PO", "RI", "VA", "PA", "HI"];
     let userExerciseList = [];
 
+    showLoader();
     for (const currDev of devices) {
         currentDevice = currDev;
         var currentExerciseList = await requestUserExercise(username, currentDevice);
@@ -459,6 +462,7 @@ async function getAllUserExercise(username) {
             userExerciseList.push({ device: currDev, exercises: null });
         }
     }
+    hideLoader();
     return userExerciseList;
 }
 
@@ -837,63 +841,163 @@ function closeDevice() {
     toggleUIElementVisibility(['infoBlock', 'createRoutineBtn'], 'block');
 }
 
+
+
+
+
+
+
 async function loadCurrentExercise(username, device) {
-    if (username == null || device == null) {
+    if (!username || !device) {
         console.log("Invalid Arguments for loading current Exercise", username, ", ", device);
         return;
     }
 
-    let currentExercise = await requestUserExercise(username, device);
+    await requestUserExercise(username, device);
     console.log("Die Aktuelle Übung ist wie folgt:", currentExercise);
 
-    if (!currentExercise || !Array.isArray(currentExercise.elemente)) {
+    if (!currentExercise || !Array.isArray(currentExercise)) {
         console.warn("Keine gültige Übung gefunden.");
         return;
     }
 
     let elementDetailsList = await Promise.all(
-        currentExercise.elemente.map(el => getElementDetails(el))
+        currentExercise.map(el => getElementDetails(el))
     );
 
     const exerciseContainer = document.getElementById("selected-exercises-list");
     exerciseContainer.innerHTML = "";
 
+    let table = document.createElement("table");
+    table.className = "exercise-table";
+    table.setAttribute("id", "exerciseTable");
+
+    let thead = document.createElement("thead");
+    thead.innerHTML = `<tr><th>Nr</th><th>Name</th><th>Bild</th><th>Aktionen</th></tr>`;
+    table.appendChild(thead);
+
+    let tbody = document.createElement("tbody");
+    tbody.setAttribute("id", "exerciseTbody");
+
     elementDetailsList.forEach((elementDetails, index) => {
-        const exerciseItem = addElementToExercise(elementDetails, index);
-        exerciseContainer.appendChild(exerciseItem);
+        const row = createExerciseRow(elementDetails, index);
+        tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody);
+    exerciseContainer.appendChild(table);
+
+    makeTableDraggable();
+}
+
+
+function createExerciseRow(elementDetails, index) {
+    let row = document.createElement("tr");
+    row.setAttribute("data-index", index);
+    row.draggable = true;
+
+    let numCell = document.createElement("td");
+    numCell.innerText = index + 1;
+    
+    let nameCell = document.createElement("td");
+    nameCell.innerText = elementDetails.bezeichnung || "Unbekannter Titel";
+
+    let imgCell = document.createElement("td");
+    let img = document.createElement("img");
+    img.src = elementDetails.image_path || "default-image.png";
+    img.style.maxWidth = "80px";
+    imgCell.appendChild(img);
+
+    let actionCell = document.createElement("td");
+    let trashIcon = document.createElement("span");
+    trashIcon.innerHTML = "🗑️";
+    trashIcon.style.cursor = "pointer";
+    trashIcon.addEventListener("click", () => removeElementFromExercise(index));
+    actionCell.appendChild(trashIcon);
+
+    row.appendChild(numCell);
+    row.appendChild(nameCell);
+    row.appendChild(imgCell);
+    row.appendChild(actionCell);
+
+    return row;
+}
+
+function removeElementFromExercise(index) {
+    console.log("delete Element ", index+1, " from: ", currentExercise);
+    if (!currentExercise) {
+        console.error("Fehler: currentExercise ist nicht definiert oder enthält keine Elemente.");
+        return;
+    }
+    currentExercise.splice(index, 1);
+
+    let tableBody = document.getElementById("exerciseTbody");
+    tableBody.innerHTML = "";
+
+    currentExercise.forEach((elementId, newIndex) => {
+        getElementDetails(elementId).then(elementDetails => {
+            let row = createExerciseRow(elementDetails, newIndex);
+            tableBody.appendChild(row);
+        });
+    });
+
+    console.log("Element erfolgreich gelöscht: ", currentExercise);
+    safeUpdateExercise(currentExercise);
+}
+
+
+function makeTableDraggable() {
+    const tbody = document.getElementById("exerciseTbody");
+    let draggedRow = null;
+
+    tbody.addEventListener("dragstart", (event) => {
+        draggedRow = event.target;
+        draggedRow.style.opacity = 0.5;
+    });
+
+    tbody.addEventListener("dragover", (event) => {
+        event.preventDefault();
+        let targetRow = event.target.closest("tr");
+        if (targetRow && targetRow !== draggedRow) {
+            let rect = targetRow.getBoundingClientRect();
+            let next = (event.clientY - rect.top) / (rect.bottom - rect.top) > 0.5;
+            tbody.insertBefore(draggedRow, next ? targetRow.nextSibling : targetRow);
+        }
+    });
+
+    tbody.addEventListener("dragend", () => {
+        draggedRow.style.opacity = 1;
+        draggedRow = null;
+        updateExerciseOrder();
     });
 }
 
+function updateExerciseOrder() {
+    let newOrder = [];
+    document.querySelectorAll("#exerciseTbody tr").forEach((row, index) => {
+        row.querySelector("td:first-child").innerText = index + 1;
+        newOrder.push(row.getAttribute("data-index"));
+    });
 
-// Übungselemente im Interface erstellen
-function addElementToExercise(elementDetails, index) {
-    const exerciseItem = document.createElement("div");
-    exerciseItem.classList.add("exercise-item");
+    console.log("Neue Reihenfolge:", newOrder);
+    // Hier kannst du die neue Reihenfolge speichern (API-Call oder localStorage)
 
-    const exerciseNumber = document.createElement("div");
-    exerciseNumber.classList.add("exercise-number");
-    exerciseNumber.innerText = index + 1;
-
-    const exerciseImage = document.createElement("img");
-    exerciseImage.classList.add("exercise-image");
-    exerciseImage.src = elementDetails.image_path || "default-image.png";
-
-    const exerciseTitle = document.createElement("div");
-    exerciseTitle.classList.add("exercise-title");
-    exerciseTitle.innerText = elementDetails.bezeichnung || "Unbekannter Titel";
-
-    const trashIcon = document.createElement("span");
-    trashIcon.classList.add("trash-icon");
-    trashIcon.innerHTML = "&#128465;";
-    trashIcon.addEventListener("click", () => removeElementFromExercise(index));
-
-    exerciseItem.appendChild(exerciseNumber);
-    exerciseItem.appendChild(exerciseImage);
-    exerciseItem.appendChild(exerciseTitle);
-    exerciseItem.appendChild(trashIcon);
-    
-    return exerciseItem;
+    safeUpdateExercise(currentExercise);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //-----------------------------------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------
@@ -1045,6 +1149,10 @@ function addToExercise(element) {
     safeUpdateExercise(currentExercise);
 }
 
+function deleteElementFromExercise(index){
+
+}
+
 // config Exercise and send it to backend
 async function safeUpdateExercise(elementList) {
     const username = localStorage.getItem("user");
@@ -1087,4 +1195,43 @@ async function safeUpdateExercise(elementList) {
         hideLoader();
         console.error("Fehler bei der Anfrage:", error);
     }
+}
+
+
+
+
+
+
+//#################################################################
+
+
+// Übungselemente im Interface erstellen
+function addElementToExercise(elementDetails, index) {
+    return;
+    const exerciseItem = document.createElement("div");
+    exerciseItem.classList.add("exercise-item");
+
+    const exerciseNumber = document.createElement("div");
+    exerciseNumber.classList.add("exercise-number");
+    exerciseNumber.innerText = index + 1;
+
+    const exerciseImage = document.createElement("img");
+    exerciseImage.classList.add("exercise-image");
+    exerciseImage.src = elementDetails.image_path || "default-image.png";
+
+    const exerciseTitle = document.createElement("div");
+    exerciseTitle.classList.add("exercise-title");
+    exerciseTitle.innerText = elementDetails.bezeichnung || "Unbekannter Titel";
+
+    const trashIcon = document.createElement("span");
+    trashIcon.classList.add("trash-icon");
+    trashIcon.innerHTML = "&#128465;";
+    trashIcon.addEventListener("click", () => removeElementFromExercise(index));
+
+    exerciseItem.appendChild(exerciseNumber);
+    exerciseItem.appendChild(exerciseImage);
+    exerciseItem.appendChild(exerciseTitle);
+    exerciseItem.appendChild(trashIcon);
+    
+    return exerciseItem;
 }
