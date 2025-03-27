@@ -17,15 +17,6 @@ function sendHeartbeat() {
 }
 setInterval(sendHeartbeat, 30000);
 
-function cleanupSessions() {
-    fetch('https://one860mindenplanner.onrender.com/account/cleanup_sessions', { method: 'POST' })
-    .then(response => response.json())
-    .then(data => console.log("Cleanup durchgeführt:", data))
-    .catch(error => console.error("Fehler beim Cleanup:", error));
-}
-setInterval(cleanupSessions, 600000);
-
-
 
 function showLoader(){
     document.getElementById('loadingBackground').style.display="block";

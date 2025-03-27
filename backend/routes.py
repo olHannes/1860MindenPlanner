@@ -46,13 +46,10 @@ def heartbeat():
     else:
         return jsonify({"error": "Kein Benutzername angegeben!"}), 400
 
-
-@main_bp.route('/account/cleanup_sessions', methods=['POST'])
 def cleanup_sessions():
     timeout = timedelta(minutes=2)
     now = datetime.now(timezone.utc)
 
-    # Alle Sessions finden, die länger als 2 Minuten inaktiv sind
     inactive_sessions = sessions_collection.find({
         "last_active": {"$lt": now - timeout}
     })
@@ -64,16 +61,14 @@ def cleanup_sessions():
 
         print(f"Session expired: {username}")
 
-        # Benutzer als offline markieren
         users_collection.update_one(
             {"firstName": username},
             {"$set": {"online": 0}}
         )
-
-        # Session aus der Datenbank löschen
         sessions_collection.delete_one({"username": username})
 
-    return jsonify({"message": "Bereinigung abgeschlossen", "expired_users": expired_users}), 200
+    print(f"Bereinigung abgeschlossen: {len(expired_users)} Nutzer ausgeloggt.")
+
 
 
 
@@ -84,6 +79,8 @@ def login():
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
+
+    cleanup_sessions()
 
     user = users_collection.find_one({"firstName": username})
     print("Try Login for: ", username, " | DB-Query: ", user, " | status: ", user.get('online'))
