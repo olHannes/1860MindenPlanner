@@ -16,6 +16,7 @@ client = MongoClient(mongo_uri)
 db_user = client['Users']
 users_collection = db_user['users']
 sessions_collection = db_user['active_sessions']
+issues_collection = db_user['issues']
 
 
 db_exercises = client['Exercises']
@@ -171,6 +172,60 @@ def register():
     return jsonify({"message": "Registrierung erfolgreich!"}), 200
 
 
+################################################################################################### Report erstellen
+
+@main_bp.route('/report/issue', methods=['POST'])
+def createReport():
+    data = request.get_json()
+    username = data.get('username')
+    reportTitle = data.get('reportTitle')
+    report = data.get('report')
+    
+    if not username or not reportTitle or not report:
+        return jsonify({"message": "Fehlende Daten!"}), 400
+
+    if issues_collection.find_one({"reportTitle": reportTitle}):
+        return jsonify({"message": "Report existiert bereits"}), 400
+
+    timestamp = datetime.now(timezone.utc)
+
+    print(f"Create Report: {username}_{reportTitle}")
+    issues_collection.insert_one({
+        'reportTitle': reportTitle,
+        'report': report,
+        'username': username,
+        'timestamp': timestamp
+    })
+
+    return jsonify({"message": "Report erfolgreich erstellt"}), 200
+
+
+################################################################################################### Reports auslesen
+
+@main_bp.route('/report/all', methods=['GET'])
+def getAllReports():
+    reports = list(issues_collection.find({}, {'_id': 0}))
+    return jsonify(reports), 200
+
+
+################################################################################################### Report löschen
+
+@main_bp.route('/report/delete', methods=['DELETE'])
+def deleteReport():
+    data = request.get_json()
+    reportTitle = data.get('reportTitle')
+
+    if not reportTitle:
+        return jsonify({"message": "ReportTitle fehlt!"}), 400
+
+    result = issues_collection.delete_one({"reportTitle": reportTitle})
+
+    if result.deleted_count == 0:
+        return jsonify({"message": "Report nicht gefunden"}), 404
+
+    return jsonify({"message": f"Report '{reportTitle}' erfolgreich gelöscht"}), 200
+
+
 ################################################################################################### Delete Account
 
 @main_bp.route('/account/delete', methods=['POST'])
@@ -277,7 +332,7 @@ def get_device_collection(device):
     }
     return device_collections.get(device)
 
-###################################################################################################
+#################################################################################################### Get Elements
 # Route: Get All Elements
 
 @main_bp.route('/elements/getGroupElements', methods=['GET'])
@@ -301,7 +356,7 @@ def get_group_elements():
     
     return jsonify(elements), 200
 
-###################################################################################################
+################################################################################################### Update Exercise
 # Route: Update Database Exercise
 
 @main_bp.route('/exercise/update', methods=["POST"])
@@ -324,7 +379,7 @@ def update_exercise():
     else:
         return jsonify({"message": "Neue Übung angelegt"}), 201
 
-###################################################################################################
+################################################################################################### Get Exercise
 # Route: Get Exercise
 
 @main_bp.route('/exercise/get', methods=["GET"])
@@ -347,7 +402,7 @@ def get_exercise():
     else:
         return jsonify({"error": "Keine Übung gefunden."}), 404
 
-###################################################################################################
+################################################################################################### Get detailed Element
 # Route: Get Element by ID
 
 @main_bp.route('/exercise/get_element', methods=["GET"])

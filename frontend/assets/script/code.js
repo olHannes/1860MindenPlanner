@@ -258,9 +258,11 @@ window.onbeforeunload = async function () {
 
 function requestDeleteAcc(){
     document.getElementById('requestDelAcc').style.display="block";
+    document.getElementById('loadingBackground').style.display="block";
 }
 function cancelDeleteAcc(){
     document.getElementById('requestDelAcc').style.display="none";
+    document.getElementById('loadingBackground').style.display="none";
 }
 async function deleteAccount() {
     const name = localStorage.getItem("user");
@@ -397,6 +399,85 @@ async function saveName() {
         console.error("Error beim Verlassen der Seite:", error);
     }
 }
+
+
+
+
+
+// Funktion zum Anzeigen des Report-Formulars
+function createReport() {
+    document.getElementById('reportTitle').value = "";
+    document.getElementById('reportTxt').value = "";
+    document.getElementById('createReport').style.display = "block";
+    document.getElementById('loadingBackground').style.display="block";
+}
+
+// Funktion zum Abbrechen des Report-Formulars
+function cancleReport() {
+    document.getElementById('reportTitle').value = "";
+    document.getElementById('reportTxt').value = "";
+    document.getElementById('loadingBackground').style.display="none";
+    document.getElementById('createReport').style.display = "none";
+}
+
+// Funktion zum Absenden des Reports
+async function submitReport() {
+    const reportTitle = document.getElementById('reportTitle').value.trim();
+    const reportTxt = document.getElementById('reportTxt').value.trim();
+    const username = localStorage.getItem("user");
+
+    if (!username) {
+        cancleReport();
+        return;
+    }
+
+    if (!reportTitle || !reportTxt) {
+        alert("Es muss sowohl ein Titel als auch eine Fehlerbeschreibung vergeben werden!");
+        cancleReport();
+        return;
+    }
+
+    const data = {
+        username: username,
+        reportTitle: reportTitle,
+        report: reportTxt
+    };
+
+    showLoader();
+    try {
+        const response = await fetch('https://one860mindenplanner.onrender.com/report/issue', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+        hideLoader();
+        if (response.ok) {
+            cancleReport();
+        } else {
+            alert(result.message || "Fehler beim Erstellen des Reports.");
+        }
+    } catch (error) {
+        hideLoader();
+        console.error("Fehler beim Senden des Reports:", error);
+        alert("Es gab einen Fehler beim Senden des Reports.");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 async function getAllUser() {

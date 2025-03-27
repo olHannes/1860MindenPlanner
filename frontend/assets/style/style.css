@@ -195,6 +195,96 @@ input {
     background-color: #45a049;
 }
 
+
+/*Report Objects*/
+#reportIssue {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 130px;
+    color: red;
+    background-color: #cccccc;
+}
+
+/* Grundstil für das Formular */
+#createReport {
+    display: none;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 500px;
+    background-color: #9c1d1d;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+#createReport h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#createReport input,
+#createReport textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box;
+}
+
+#createReport textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+#createReport button {
+    color: white;
+    background-color: #ff5733;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-size: 18px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#createReport button:hover {
+    background-color: #e03e00;
+    transform: translateY(-2px);
+}
+
+#createReport #cancleReport {
+    background-color: #888;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#createReport #cancleReport:hover {
+    background-color: #666;
+    transform: translateY(-2px);
+}
+
+
+
+
+
 #logoutBtn {
     position: absolute;
     bottom: 50px;
@@ -236,7 +326,7 @@ input {
 #requestDelAcc {
     display: none;
     position: fixed;
-    z-index: 110;
+    z-index: 1000;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

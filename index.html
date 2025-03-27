@@ -17,6 +17,24 @@
     </div>
     
 
+    <div id="requestDelAcc">
+        <h2>Account löschen</h2>
+        <h3>Bist du sicher, dass du deinen Account löschen möchtest?</h3>
+        <div class="button-group">
+            <button class="delete-btn" onclick="deleteAccount();">Löschen</button>
+            <button class="cancel-btn" onclick="cancelDeleteAcc();">Abbrechen</button>
+        </div>
+    </div>
+
+    <div id="createReport">
+        <h2>Fehler melden</h2>
+        <input type="text" id="reportTitle" placeholder="Titel des Reports">
+        <textarea id="reportTxt" placeholder="Fehlerbeschreibung"></textarea>
+        <button id="submitReport" onclick="submitReport()" disabled>Report erstellen</button>
+        <button id="cancleReport" onclick="cancleReport()">Abbrechen</button>
+    </div>
+    
+
     
 <div id="headline">
     <h1>SV 1860 Minden</h1>
@@ -60,16 +78,6 @@
     </div>
     
 
-    <div id="requestDelAcc">
-        <h2>Account löschen</h2>
-        <h3>Bist du sicher, dass du deinen Account löschen möchtest?</h3>
-        <div class="button-group">
-            <button class="delete-btn" onclick="deleteAccount();">Löschen</button>
-            <button class="cancel-btn" onclick="cancelDeleteAcc();">Abbrechen</button>
-        </div>
-    </div>
-        
-
     <!--Setting panel-->
     <div id="panel0" class="panel">
         <h2>Account Settings</h2>
@@ -91,7 +99,8 @@
             <input type="text" id="editNachname">
             <button id="saveBtn" onclick="saveName();" style="display: none;">Speichern</button>
         </div>
-
+        
+        <button id="reportIssue" onclick="createReport();">Fehler melden!</button>
         <button id="logoutBtn" onclick="logout();">Logout</button>
         <button id="delBtn" onclick="requestDeleteAcc();">Account löschen</button>
     </div>
