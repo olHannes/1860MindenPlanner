@@ -71,6 +71,7 @@ def login():
     password = data.get('password')
 
     user = users_collection.find_one({"firstName": username})
+    print("Try Login for: ", username, " | DB-Query: ", user, " | status: ", user.get('online'))
     
     if user:
         if user.get('online') == 1:
@@ -113,6 +114,7 @@ def logout():
     data = request.get_json()
     username = data.get('name')
 
+    print("Try Logout for: ", username)
     if not username:
         return jsonify({"message": "Kein Benutzername angegeben!"}), 400
 
@@ -140,6 +142,7 @@ def register():
     if users_collection.find_one({"firstName": first_name}):
         return jsonify({"message": "Benutzername bereits vergeben!"}), 400
 
+    print("Try to register: ", first_name, " ", last_name)
     hashed_password = generate_password_hash(password)
     users_collection.insert_one({'firstName': first_name, 'lastName': last_name, 'password': hashed_password, 'online': 0})
 
@@ -153,6 +156,8 @@ def delete_account():
     global active_sessions
     data = request.get_json()
     username = data.get('name')
+
+    print("Try to delete: ", username)
 
     user = users_collection.find_one({"firstName": username})
 
@@ -174,6 +179,8 @@ def delete_account():
 def get_user_info():
     global active_sessions
     username = request.args.get('name')
+
+    print("Try to get User-Info: ", username)
 
     if not username or username not in active_sessions:
         return jsonify({"message": "Benutzer nicht eingeloggt!"}), 401
@@ -197,6 +204,8 @@ def changeData():
     username = data.get('username')
     new_first_name = data.get('new_first_name')
     new_last_name = data.get('new_last_name')
+
+    print("Try to change User-Data from user: ", username, " to: ", new_first_name, " ", new_last_name)
 
     if not username or not new_first_name or not new_last_name:
         return jsonify({"message": "Fehlende Daten!"}), 400
@@ -229,12 +238,8 @@ def changeData():
 @main_bp.route('/users/getUsers', methods=['GET'])
 def get_users():
     users = list(users_collection.find({}, {"_id": 0, "firstName": 1, "lastName": 1, "online": 1}))
+    print("Try to get All Users: ", users)
     return jsonify(users), 200
-
-
-
-
-
 
 
 
