@@ -624,12 +624,6 @@ async function showMemberData(username) {
             if (totalElements > 7) {
                 warningReasons.push("⚠️ Übung enthält mehr als 7 Elemente");
             }
-            if (totalDifficulty < 0.3) {
-                warningReasons.push("⚠️ Sehr niedrige Schwierigkeit");
-            }
-            if (totalDifficulty > 1) {
-                warningReasons.push("⚠️ Sehr hohe Schwierigkeit");
-            }
             for (let [group, count] of elementGroups.entries()) {
                 if (count > 3) {
                     warningReasons.push(`⚠️ Elementgruppe ${group} kommt sehr oft vor (${count}x).`);
@@ -1250,41 +1244,3 @@ async function safeUpdateExercise(elementList) {
     }
 }
 
-
-
-
-
-
-//#################################################################
-
-
-// Übungselemente im Interface erstellen
-function addElementToExercise(elementDetails, index) {
-    return;
-    const exerciseItem = document.createElement("div");
-    exerciseItem.classList.add("exercise-item");
-
-    const exerciseNumber = document.createElement("div");
-    exerciseNumber.classList.add("exercise-number");
-    exerciseNumber.innerText = index + 1;
-
-    const exerciseImage = document.createElement("img");
-    exerciseImage.classList.add("exercise-image");
-    exerciseImage.src = elementDetails.image_path || "default-image.png";
-
-    const exerciseTitle = document.createElement("div");
-    exerciseTitle.classList.add("exercise-title");
-    exerciseTitle.innerText = elementDetails.bezeichnung || "Unbekannter Titel";
-
-    const trashIcon = document.createElement("span");
-    trashIcon.classList.add("trash-icon");
-    trashIcon.innerHTML = "&#128465;";
-    trashIcon.addEventListener("click", () => removeElementFromExercise(index));
-
-    exerciseItem.appendChild(exerciseNumber);
-    exerciseItem.appendChild(exerciseImage);
-    exerciseItem.appendChild(exerciseTitle);
-    exerciseItem.appendChild(trashIcon);
-    
-    return exerciseItem;
-}
