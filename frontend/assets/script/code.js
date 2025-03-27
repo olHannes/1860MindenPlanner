@@ -732,6 +732,7 @@ function openDevicePanel(id) {
                     </ul>
                 `
             };
+            createRoutineBtn.style.bottom="0";
             currentDevice="FL";
             break;
 
@@ -753,6 +754,7 @@ function openDevicePanel(id) {
                     </ul>
                 `
             };
+            createRoutineBtn.style.bottom="0";
             currentDevice="PO";
             break;
 
@@ -774,6 +776,7 @@ function openDevicePanel(id) {
                     </ul>
                 `
             };
+            createRoutineBtn.style.bottom="0";
             currentDevice="RI";
             break;
 
@@ -794,6 +797,7 @@ function openDevicePanel(id) {
                     </ul>
                 `
             };
+            createRoutineBtn.style.bottom="0";
             currentDevice="VA";
             break;
 
@@ -815,6 +819,7 @@ function openDevicePanel(id) {
                     </ul>
                 `
             };
+            createRoutineBtn.style.bottom="-1%";
             currentDevice="PA";
             break;
 
@@ -836,6 +841,7 @@ function openDevicePanel(id) {
                     </ul>
                 `
             };
+            createRoutineBtn.style.bottom="0";
             currentDevice="HI";
             break;
 
@@ -846,6 +852,7 @@ function openDevicePanel(id) {
                 en: "Unknown",
                 info: "<p>Keine Informationen verfügbar.</p>"
             };
+            createRoutineBtn.style.bottom="0";
     }
 
     deviceImage.src = deviceData.img;
