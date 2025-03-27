@@ -5,13 +5,26 @@ window.onload = function () {
 };
 
 
-setInterval(() => {
-    fetch("https://one860mindenplanner.onrender.com/account/heartbeat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+function sendHeartbeat() {
+    fetch('https://one860mindenplanner.onrender.com/account/heartbeat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: localStorage.getItem("user") })
-    });
-}, 30000);
+    })
+    .then(response => response.json())
+    .then(data => console.log("Heartbeat gesendet:", data))
+    .catch(error => console.error("Fehler beim Senden des Heartbeats:", error));
+}
+setInterval(sendHeartbeat, 30000);
+
+function cleanupSessions() {
+    fetch('https://one860mindenplanner.onrender.com/account/cleanup_sessions', { method: 'POST' })
+    .then(response => response.json())
+    .then(data => console.log("Cleanup durchgeführt:", data))
+    .catch(error => console.error("Fehler beim Cleanup:", error));
+}
+setInterval(cleanupSessions, 600000);
+
 
 
 function showLoader(){
@@ -178,7 +191,6 @@ async function checkUserStatus() {
 
         if (data.message === "Benutzer offline, Status zurückgesetzt!") {
             localStorage.removeItem("user");
-            window.location.href = "/login";
         }
 
     } catch (error) {

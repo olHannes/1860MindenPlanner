@@ -47,27 +47,33 @@ def heartbeat():
         return jsonify({"error": "Kein Benutzername angegeben!"}), 400
 
 
-def cleanup_inactive_users():
+@main_bp.route('/account/cleanup_sessions', methods=['POST'])
+def cleanup_sessions():
     timeout = timedelta(minutes=2)
+    now = datetime.now(timezone.utc)
 
-    while True:
-        now = datetime.now(timezone.utc)
-        inactive_sessions = sessions_collection.find({
-            "last_active": {"$lt": now - timeout}
-        })
+    # Alle Sessions finden, die länger als 2 Minuten inaktiv sind
+    inactive_sessions = sessions_collection.find({
+        "last_active": {"$lt": now - timeout}
+    })
 
-        for session in inactive_sessions:
-            username = session["username"]
-            print(f"Session expired: {username}")
+    expired_users = []
+    for session in inactive_sessions:
+        username = session["username"]
+        expired_users.append(username)
 
-            users_collection.update_one(
-                {"firstName": username},
-                {"$set": {"online": 0}}
-            )
+        print(f"Session expired: {username}")
 
-            sessions_collection.delete_one({"username": username})
+        # Benutzer als offline markieren
+        users_collection.update_one(
+            {"firstName": username},
+            {"$set": {"online": 0}}
+        )
 
-        time.sleep(30)
+        # Session aus der Datenbank löschen
+        sessions_collection.delete_one({"username": username})
+
+    return jsonify({"message": "Bereinigung abgeschlossen", "expired_users": expired_users}), 200
 
 
 

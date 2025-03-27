@@ -33,6 +33,4 @@ app.register_blueprint(routes.main_bp)
 
 if __name__ == '__main__':
     port = int(os.getenv("PORT", 10000))
-    cleanup_thread = threading.Thread(target=routes.cleanup_inactive_users, daemon=True)
-    cleanup_thread.start()
     app.run(host="0.0.0.0", port=port, debug=False)
