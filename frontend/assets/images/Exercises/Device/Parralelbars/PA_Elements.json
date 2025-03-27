@@ -1,0 +1,458 @@
+[
+    {
+        "id": "PA_A_01",
+        "bezeichnung": "Alle Handstände auf 1 oder 2 Holmen (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/A/PA_A_01.png"
+    },
+    {
+        "id": "PA_A_02",
+        "bezeichnung": "Alle Winkelstütze auf 1 oder 2 Holmen (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/A/PA_A_02.png"
+    },
+    {
+        "id": "PA_A_03",
+        "bezeichnung": "Vorgrätschen i. d. Stütz o. Winkelstütz (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/A/PA_A_03.png"
+    },
+    {
+        "id": "PA_A_04",
+        "bezeichnung": "Rückgrätschen i. d. Stütz",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/A/PA_A_04.png"
+    },
+    {
+        "id": "PA_A_05",
+        "bezeichnung": "Alle Hadstände mit 1/2 Drehung (auch m. 2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/A/PA_A_05.png"
+    },
+    {
+        "id": "PA_A_06",
+        "bezeichnung": "Stemme vw. i. d. Stütz",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/A/PA_A_06.png"
+    },
+    {
+        "id": "PA_A_07",
+        "bezeichnung": "Stemme vw. m. 1/4 Drehung i. d. Hang a. 1 Holm",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/A/PA_A_07.png"
+    },
+    {
+        "id": "PA_A_08",
+        "bezeichnung": "Stemme rw. u. Vorgrätschen o. Vorflanken i. d. Stütz mit gebeugten Armen",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/A/PA_A_08.png"
+    },
+    {
+        "id": "PA_A_09",
+        "bezeichnung": "Schwebekippe",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/A/PA_A_09.png"
+    },
+    {
+        "id": "PA_A_10",
+        "bezeichnung": "Schwabenkippe i. d. Oberarmhang",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/A/PA_A_10.png"
+    },
+    {
+        "id": "PA_A_11",
+        "bezeichnung": "Felge m. Wandern i. d. Hang",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/A/PA_A_11.png"
+    },
+    {
+        "id": "PA_A_12",
+        "bezeichnung": "Felge vw. i. d. Stütz",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/A/PA_A_12.png"
+    },
+    {
+        "id": "PA_A_13",
+        "bezeichnung": "Salto vw. geb. o. gestr. auch mit 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.1",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/A/PA_A_13.png"
+    },
+    {
+        "id": "PA_A_14",
+        "bezeichnung": "Salto rw. geb. o. gestr. auch mit 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.1",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/A/PA_A_14.png"
+    },
+    {
+        "id": "PA_A_15",
+        "bezeichnung": "A. d. Hang a. Holmende, Salto rw. gestr.",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.1",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/A/PA_A_15.png"
+    },
+
+    
+
+
+
+
+    {
+        "id": "PA_B_01",
+        "bezeichnung": "A. d. Beugestütz, Stemme vw. u. 1/2 Drehung gespr. i. d. Stütz",
+        "name": "Kato",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_01.png"
+    },
+    {
+        "id": "PA_B_02",
+        "bezeichnung": "Vorschwung m. 1/1 Drehung i. d. Oberarmhang",
+        "name": "Carminucci",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_02.png"
+    },
+    {
+        "id": "PA_B_03",
+        "bezeichnung": "Rückgrätschen i. d. Handstand",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_03.png"
+    },
+    {
+        "id": "PA_B_04",
+        "bezeichnung": "Rückgrätschen u. Salto vw. i. d. Oberarmhang",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_04.png"
+    },
+    {
+        "id": "PA_B_05",
+        "bezeichnung": "Jedes Heben m. geb. Armen u. gestr. Hüften, o. gestr. Armen u. geb. Hüften i. d. Hdst. a. 1 o. 2 Holmen (2s) auch gegrätscht",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_05.png"
+    },
+    {
+        "id": "PA_B_06",
+        "bezeichnung": "Vorschwung i. d. Handstand, Umspringen i. d. Stütz",
+        "name": "Carballo",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_06.png"
+    },
+    {
+        "id": "PA_B_07",
+        "bezeichnung": "Handstand m. 1/4 Drehung u. Abschwingen m. 1/4 Drehung i. d. Stütz",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_07.png"
+    },
+    {
+        "id": "PA_B_08",
+        "bezeichnung": "Stützkehre rw. i. d. Stütz",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_08.png"
+    },
+    {
+        "id": "PA_B_09",
+        "bezeichnung": "Healy i. d. Oberarmhang (auch a. d. Handstand a. 1 Holm)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_09.png"
+    },
+    {
+        "id": "PA_B_10",
+        "bezeichnung": "Rückschwung m. gespr. 1/2 Drehung i. d. Handstand",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_10.png"
+    },
+    {
+        "id": "PA_B_11",
+        "bezeichnung": "Alle 1/1 Drehungen i. Handstand",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_11.png"
+    },
+    {
+        "id": "PA_B_12",
+        "bezeichnung": "A. d. Handstand a. 1 Holm 1/2 Drehung o. 3/4 Drehung vw. o. rw. i. d. Handstand",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_12.png"
+    },
+    {
+        "id": "PA_B_13",
+        "bezeichnung": "5/4 Salto vw. geh. o. geb. i. d. Oberarmhang",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_13.png"
+    },
+    {
+        "id": "PA_B_14",
+        "bezeichnung": "Salto vw. geh. o. geb. m. 1/4 Drehung i. d. Seithang",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_14.png"
+    },
+    {
+        "id": "PA_B_15",
+        "bezeichnung": "Stemme vw. u. Rückgrätschen i. d. Handstand",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_15.png"
+    },
+    {
+        "id": "PA_B_16",
+        "bezeichnung": "A. d. Oberarmhang, Rolle rw. m. 1/2 Drehung o. Stemme vw. u. Kato Sprung i. d. Stütz",
+        "name": "Watanabe",
+        "elementegruppe": "2",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_16.png"
+    },
+    {
+        "id": "PA_B_17",
+        "bezeichnung": "Rolle rw. z. Hdst. m. gestr. Armen",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_17.png"
+    },
+    {
+        "id": "PA_B_18",
+        "bezeichnung": "Rolle rw. m. Übergrätschen i. d. Oberarmhang",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_18.png"
+    },
+    {
+        "id": "PA_B_19",
+        "bezeichnung": "Stemme rw. i. d. Handstand (o. m. 1/2 Drehung)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_19.png"
+    },
+    {
+        "id": "PA_B_20",
+        "bezeichnung": "Stemme rw. m. 1/2 Drehung u. Rückgrätschen i. d. Oberarmhang",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_20.png"
+    },
+    {
+        "id": "PA_B_21",
+        "bezeichnung": "Stemme rw. m. 1/2 Drehung i. d. Stütz",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_21.png"
+    },
+    {
+        "id": "PA_B_22",
+        "bezeichnung": "Stemme rw. u. Vorgrätschen o. Vorflanken i. d. Stütz mit gestreckten Armen",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_22.png"
+    },
+    {
+        "id": "PA_B_23",
+        "bezeichnung": "Moy geb. m. Rückgrätschen und 1/2 Drehung i. d. Oberarmhang (auch m. geschl. Beinen)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_23.png"
+    },
+    {
+        "id": "PA_B_24",
+        "bezeichnung": "Moy mit gebeugten Beinen i. d. Stütz (auch mit Grifflösen)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_24.png"
+    },
+    {
+        "id": "PA_B_25",
+        "bezeichnung": "Abschwingen m. Salto gestr. i. d. Hang",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_25.png"
+    },
+    {
+        "id": "PA_B_26",
+        "bezeichnung": "Riesenumschwung rw. m. Vorgrätschen i. d. Oberarmhang",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_26.png"
+    },
+    {
+        "id": "PA_B_27",
+        "bezeichnung": "Schwebekippe m. 1/2 Drehung i. d. Stütz",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_27.png"
+    },
+    {
+        "id": "PA_B_28",
+        "bezeichnung": "Schwebekippe z. Rückgrätschen i. d. Handstand a. 1 o. 2 Holmen",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_28.png"
+    },
+    {
+        "id": "PA_B_29",
+        "bezeichnung": "Schwebekippe a. 1 Holm d. d. Grätschwinkelstütz i. d. Handstand",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_29.png"
+    },
+    {
+        "id": "PA_B_30",
+        "bezeichnung": "Schwebekippe a. 1 Holm d. d. Spitzwinkelstütz u. gespr. m. 1/2 Drehung i. d. Hang a. d. angeren Holm",
+        "name": "Li Donghua",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_30.png"
+    },
+    {
+        "id": "PA_B_31",
+        "bezeichnung": "Schwabenkippe i. d. Stütz",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_31.png"
+    },
+    {
+        "id": "PA_B_32",
+        "bezeichnung": "Schwabenkippe m. 1/2 Drehung i. d. Oberarmhang",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_32.png"
+    },
+    {
+        "id": "PA_B_33",
+        "bezeichnung": "Felge i. d. Stütz",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_33.png"
+    },
+    {
+        "id": "PA_B_34",
+        "bezeichnung": "Felge vw. m. 1/2 Drehung i. d. Stütz",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_34.png"
+    },
+    {
+        "id": "PA_B_35",
+        "bezeichnung": "Doppelsalto rw. geh. v. Holmende",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.2",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/B/PA_B_35.png"
+    }
+]

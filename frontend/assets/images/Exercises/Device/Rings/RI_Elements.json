@@ -1,0 +1,421 @@
+[
+    {
+        "id": "RI_A_01",
+        "bezeichnung": "Stemme vw. i. d. Stütz",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_01.png"
+    },
+    {
+        "id": "RI_A_02",
+        "bezeichnung": "Aus der Stützwaage, Schwalbe o. Rückschwung i. Stütz - Rolle vw. zum Rückschwung im Hang",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_02.png"
+    },
+    {
+        "id": "RI_A_03",
+        "bezeichnung": "A. d. Hang, Unterschwung m. Schultern über d. Ringen",
+        "name": "Nakayama",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_03.png"
+    },
+    {
+        "id": "RI_A_04",
+        "bezeichnung": "A. d. Hang, Felgaufschwung i. d. Stütz",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_04.png"
+    },
+    {
+        "id": "RI_A_05",
+        "bezeichnung": "Auskugeln rw. Geb. oder gestr.",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_05.png"
+    },
+    {
+        "id": "RI_A_06",
+        "bezeichnung": "Stemme rw. Zum Stütz",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_06.png"
+    },
+    {
+        "id": "RI_A_07",
+        "bezeichnung": "Einkugeln geb. oder gestr.",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_07.png"
+    },
+    {
+        "id": "RI_A_08",
+        "bezeichnung": "A. d. Hang langsames Einkugeln",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_08.png"
+    },
+    {
+        "id": "RI_A_09",
+        "bezeichnung": "Kippe i. d. Stütz",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_09.png"
+    },
+    {
+        "id": "RI_A_10",
+        "bezeichnung": "Kreuzkippe mit geb. Armen zum Stütz",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_10.png"
+    },
+    {
+        "id": "RI_A_11",
+        "bezeichnung": "Vorschwung i. Stütz, Ablegen zum Rückschwung i. Hang",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_11.png"
+    },
+    {
+        "id": "RI_A_12",
+        "bezeichnung": "A. d. Stütz o. Kreuzhang, Felge rückw. geb. o. gestr. mit geb. Armen z. Stütz",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_12.png"
+    },
+    {
+        "id": "RI_A_13",
+        "bezeichnung": "Winkelstütz (2s) o. Grätschwinkelstütz (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_13.png"
+    },
+    {
+        "id": "RI_A_14",
+        "bezeichnung": "Hangwaage rl. (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_14.png"
+    },
+    {
+        "id": "RI_A_15",
+        "bezeichnung": "Hangwaage vl. (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_15.png"
+    },
+    {
+        "id": "RI_A_16",
+        "bezeichnung": "Stützwaage gegr. (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_16.png"
+    },
+    {
+        "id": "RI_A_17",
+        "bezeichnung": "Heben m. geb. Hüften u. geb. Armen i. d. Handstand (2s) auch mit gegrätschten Beinen",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_17.png"
+    },
+    {
+        "id": "RI_A_18",
+        "bezeichnung": "Felge vw. geb. m. geb. Armen i. d. Stütz",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.1",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_18.png"
+    },
+    {
+        "id": "RI_A_19",
+        "bezeichnung": "Salto vw. geb. o. gestr. (auch mit 1/2 Drehung)",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.1",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_19.png"
+    },
+    {
+        "id": "RI_A_20",
+        "bezeichnung": "Salto rw. geb. o. gestr. (auch mit 1/2 Drehung)",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.1",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_19.png"
+    }
+
+
+
+
+
+    ,{
+        "id": "RI_B_01",
+        "bezeichnung": "mit Kontersalto vw. zum Rückschwung im Hang",
+        "name": "Chechi",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_01.png"
+    },
+    {
+        "id": "RI_B_02",
+        "bezeichnung": "Felgaufschwung d. d. Hdst.",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_02.png"
+    },
+    {
+        "id": "RI_B_03",
+        "bezeichnung": "Felgaufschwung i. d. Stütz m. gegr. u. auf den Handgelenken aufgestützen Beinen (2s)",
+        "name": "Deltchev",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_03.png"
+    },
+    {
+        "id": "RI_B_04",
+        "bezeichnung": "Stemme rw. durch d. Hdst.",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_04.png"
+    },
+    {
+        "id": "RI_B_05",
+        "bezeichnung": "Rückschwung u. Überschlag vw. i. d. Stütz",
+        "name": "Honma",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_05.png"
+    },
+    {
+        "id": "RI_B_06",
+        "bezeichnung": "Kreuzkippe zum Stütz",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_06.png"
+    },
+    {
+        "id": "RI_B_07",
+        "bezeichnung": "Stemme rw. i. d. Grätschwinkelstütz (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_07.png"
+    },
+    {
+        "id": "RI_B_08",
+        "bezeichnung": "Kreuzkippe o. Felge rw. mit geb. Armen z. Hdst.",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_08.png"
+    },
+    {
+        "id": "RI_B_09",
+        "bezeichnung": "A. d. Stütz Rückschwung i. d. Handstand (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_09.png"
+    },
+    {
+        "id": "RI_B_10",
+        "bezeichnung": "Spitzwinkelstütz (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_10.png"
+    },
+    {
+        "id": "RI_B_11",
+        "bezeichnung": "Alle Kreuzhänge (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_11.png"
+    },
+    {
+        "id": "RI_B_12",
+        "bezeichnung": "H. m. gestr. Hü. u. geb. Armen o. m. geb. Hü. u. gestr. Armen o. a. Grätschwinkelstütz i. d. Hdst (2s) a. m. gegr. Beinen",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_12.png"
+    },
+    {
+        "id": "RI_B_13",
+        "bezeichnung": "Felge vw. gestr. m. geb. Armen i. d. Stütz",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_13.png"
+    },
+    {
+        "id": "RI_B_14",
+        "bezeichnung": "Langsame Felge rw. m. gestr. Armen u. gestr. Körper i. d. Winkelstütz (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_14.png"
+    },
+    {
+        "id": "RI_B_15",
+        "bezeichnung": "Zugstemme m. geb. Armen i. d. Hangwaage rl. (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_15.png"
+    },
+    {
+        "id": "RI_B_16",
+        "bezeichnung": "A. d. Kreuzh. o. Kreuz. m. Vorhalte, Drehen vw. i. d. Hangwaage rl. (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_16.png"
+    },
+    {
+        "id": "RI_B_17",
+        "bezeichnung": "A. d. Handstand, Senken waagerecht i. d. Hangwaage rl. (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_17.png"
+    },
+    {
+        "id": "RI_B_18",
+        "bezeichnung": "A. d. Hdst. langsames Absenken d. d. Kopfkreuz in den Sturzhan",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_18.png"
+    },
+    {
+        "id": "RI_B_19",
+        "bezeichnung": "Stemme vw. i. d. Winkelstütz (2s)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_19.png"
+    },
+    {
+        "id": "RI_B_20",
+        "bezeichnung": "Kippe i. d. Winkelstütz (2s)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_20.png"
+    },
+    {
+        "id": "RI_B_21",
+        "bezeichnung": "Rückschwung u. Überschlag vw. geb. i. d. Winkelstütz (2s)",
+        "name": "Honma",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_21.png"
+    },
+    {
+        "id": "RI_B_22",
+        "bezeichnung": "Felgaufschwung i. d. Stützwaage gegr. (2s)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_22.png"
+    },
+    {
+        "id": "RI_B_23",
+        "bezeichnung": "Stemme rw. i. d. Stützwaage (2s)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.2",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_23.png"
+    },
+    {
+        "id": "RI_B_24",
+        "bezeichnung": "Salto vw. geb. o. gestr. mit 1/1 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.2",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_24.png"
+    },
+    {
+        "id": "RI_B_25",
+        "bezeichnung": "Salto rückwärts geb. o. gestr. mit 1/1 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.2",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_25.png"
+    },
+    {
+        "id": "RI_B_26",
+        "bezeichnung": "Doppelsalto rw. geh. o. geb.",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.2",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_26.png"
+    }
+]
