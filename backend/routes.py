@@ -15,6 +15,8 @@ client = MongoClient(mongo_uri)
 
 db_user = client['Users']
 users_collection = db_user['users']
+sessions_collection = db_user['active_sessions']
+
 
 db_exercises = client['Exercises']
 exercises_collection = db_exercises['User_Exercises']
@@ -27,45 +29,52 @@ db_parralelbarsElements = db_exercises['Parralelbars']
 db_highbarElements = db_exercises['Highbar']
 
 
-# Globale Session-Tracking-Variable
-active_sessions = {}
-active_users = {}
-
-
 
 ################################################################################################### Auto Logout via Hearbeat
 @main_bp.route('/account/heartbeat', methods=['POST'])
 def heartbeat():
     data = request.get_json()
     username = data.get("username")
-    print("hearbeat: ", username)
+    print("Heartbeat: ", username)
 
     if username:
-        active_users[username] = datetime.now(timezone.utc)
+        sessions_collection.update_one(
+            {"username": username},
+            {"$set": {"last_active": datetime.now(timezone.utc)}}
+        )
         return jsonify({"message": "Heartbeat received"}), 200
     else:
         return jsonify({"error": "Kein Benutzername angegeben!"}), 400
 
-def cleanup_inactive_users():
-    global active_users
-    while True:
-        timeout = timedelta(minutes=2)
-        now = datetime.now(timezone.utc)
-        inactive_users = [user for user, last_seen in active_users.items() if now - last_seen > timeout]
 
-        for user in inactive_users:
-            print("clean inactive user: ", user)
-            users_collection.update_one({"firstName": user}, {"$set": {"online": 0}})
-            active_users.pop(user, None)
-            active_sessions.pop(user, None)
+def cleanup_inactive_users():
+    timeout = timedelta(minutes=2)
+
+    while True:
+        now = datetime.now(timezone.utc)
+        inactive_sessions = sessions_collection.find({
+            "last_active": {"$lt": now - timeout}
+        })
+
+        for session in inactive_sessions:
+            username = session["username"]
+            print(f"Session expired: {username}")
+
+            users_collection.update_one(
+                {"firstName": username},
+                {"$set": {"online": 0}}
+            )
+
+            sessions_collection.delete_one({"username": username})
+
         time.sleep(30)
+
 
 
 ################################################################################################### Login
 
 @main_bp.route('/account/login', methods=['POST'])
 def login():
-    global active_sessions, active_users
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
@@ -78,13 +87,22 @@ def login():
             return jsonify({"message": "Benutzer bereits eingeloggt!"}), 403
 
         if check_password_hash(user['password'], password):
-            users_collection.update_one({"firstName": username}, {"$set": {"online": 1}})
+            #Update session-collection
+            sessions_collection.update_one(
+            {"username": username},
+            {"$set": {
+                "ip": request.remote_addr,
+                "last_active": datetime.now(timezone.utc)
+            }},
+            upsert=True
+            )
 
-            active_sessions[username] = request.remote_addr
-            active_users[username] = datetime.now(timezone.utc)
+            #Update Online Status
+            users_collection.update_one(
+                {"firstName": username},
+                {"$set": {"online": 1}}
+            )
             session['user'] = username
-            
-            print(f"Active Sessions: {active_sessions}")
             return jsonify({"message": "Login erfolgreich!"}), 200
         else:
             return jsonify({"message": "Ungültiges Passwort!"}), 401
@@ -96,38 +114,39 @@ def login():
 
 @main_bp.route('/account/checkUserStatus', methods=['GET'])
 def check_user_status():
-    global active_sessions
     username = request.args.get('name')
 
-    if not username or username not in active_sessions:
+    if not username:
+        return jsonify({"message": "Kein Benutzername angegeben!"}), 400
+
+    session = sessions_collection.find_one({"username": username})
+    
+    if session:
+        return jsonify({"message": "Benutzer online!"}), 200
+    else:
         users_collection.update_one({"firstName": username}, {"$set": {"online": 0}})
         return jsonify({"message": "Benutzer offline, Status zurückgesetzt!"}), 200
 
-    return jsonify({"message": "Benutzer online!"}), 200
 
 
 ################################################################################################### Logout
 
 @main_bp.route('/account/logout', methods=['POST'])
 def logout():
-    global active_sessions, active_users
     data = request.get_json()
     username = data.get('name')
 
-    print("Try Logout for: ", username)
     if not username:
         return jsonify({"message": "Kein Benutzername angegeben!"}), 400
 
-    if username in active_sessions:
-        del active_sessions[username]
-        del active_users[username]
-        users_collection.update_one({"firstName": username}, {"$set": {"online": 0}})
-        session.pop('user', None)
+    print("Try Logout for:", username)
 
-        print(f"Active Sessions after logout: {active_sessions}")
-        return jsonify({"message": "Erfolgreich ausgeloggt!"}), 200
-    else:
-        return jsonify({"message": "Kein Benutzer eingeloggt oder Benutzername stimmt nicht!"}), 400
+    sessions_collection.delete_one({"username": username})
+    users_collection.update_one({"firstName": username}, {"$set": {"online": 0}})
+    session.pop('user', None)
+
+    return jsonify({"message": "Erfolgreich ausgeloggt!"}), 200
+
 
 
 ################################################################################################### Registrierung
@@ -164,8 +183,6 @@ def delete_account():
     if not user:
         return jsonify({"message": "Benutzername nicht gefunden!"}), 404
 
-    if username in active_sessions:
-        del active_sessions[username]
 
     users_collection.delete_one({"firstName": username})
     session.pop('user', None)
@@ -177,12 +194,11 @@ def delete_account():
 
 @main_bp.route('/account/getUserInfo', methods=['GET'])
 def get_user_info():
-    global active_sessions
     username = request.args.get('name')
 
     print("Try to get User-Info: ", username)
 
-    if not username or username not in active_sessions:
+    if not username or not sessions_collection.find_one({"username": username}):
         return jsonify({"message": "Benutzer nicht eingeloggt!"}), 401
 
     user = users_collection.find_one({"firstName": username})
@@ -205,7 +221,7 @@ def changeData():
     new_first_name = data.get('new_first_name')
     new_last_name = data.get('new_last_name')
 
-    print("Try to change User-Data from user: ", username, " to: ", new_first_name, " ", new_last_name)
+    print("Try to change User-Data from user:", username, "to:", new_first_name, new_last_name)
 
     if not username or not new_first_name or not new_last_name:
         return jsonify({"message": "Fehlende Daten!"}), 400
@@ -215,16 +231,16 @@ def changeData():
     if not user:
         return jsonify({"message": "Benutzer nicht gefunden!"}), 404
 
-    result = users_collection.update_one(
+    users_collection.update_one(
         {"firstName": username},
         {"$set": {"firstName": new_first_name, "lastName": new_last_name}}
     )
 
-    if result.matched_count == 0:
-        return jsonify({"message": "Fehler beim Aktualisieren der Daten!"}), 500
-    
-    if username in active_sessions:
-        active_sessions[new_first_name] = active_sessions.pop(username)
+    # Falls der User eingeloggt ist, aktualisieren wir auch seine Session
+    sessions_collection.update_one(
+        {"username": username},
+        {"$set": {"username": new_first_name}}
+    )
 
     return jsonify({
         "message": "Benutzerdaten erfolgreich aktualisiert",
