@@ -889,6 +889,8 @@ function closeDevice() {
         document.getElementById('createRoutineBtn').style.display="block";
     }
     else if(pageDepth == 0){
+        document.getElementById('EquipmentExercise').style.display="none";
+    } else {
         togglePanel(1);
     }
     pageDepth-=1;
