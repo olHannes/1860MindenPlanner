@@ -330,7 +330,7 @@ button {
     width: 77%;
     position: fixed;
     left: 50%;
-    bottom: 45%;
+    bottom: 35%;
     transform: translateX(-50%);
 }
 h1 {
@@ -575,7 +575,7 @@ p {
     position: absolute;
     width: 90%;
     left: 50%;
-    top: 26%;
+    top: 20%;
     transform: translateX(-50%);
     background: #f9f9f9;
     padding: 15px;
@@ -640,6 +640,7 @@ p {
     width: 80%;
     position: relative;
     left: 50%;
+    top: 3%;
     transform: translateX(-50%);
     color: white;
     background-color: green;
@@ -668,7 +669,7 @@ p {
 
 #chooseGroup {
     position: relative;
-    top: 0;
+    top: 1%;
     width: 100%;
     display: flex;
     justify-content: space-evenly;
@@ -698,7 +699,7 @@ p {
     flex-grow: 1;
     display: flex;
     width: 100%;
-    height: 85%;
+    height: 80%;
     overflow-y: auto;
     justify-content: space-evenly;
 }
@@ -886,6 +887,8 @@ p {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    position: absolute;
+    top: 10%;
 }
 
 .exercise-item {
