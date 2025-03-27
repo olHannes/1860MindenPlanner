@@ -532,15 +532,6 @@ async function showMemberData(username) {
         "HI": "Reck"
     };
 
-    const requiredGroups = {
-        "FL": new Set(["1", "2", "3"]), 
-        "PO": new Set(["1", "2", "3", "4"]), 
-        "RI": new Set(["1", "2", "3", "4"]), 
-        "VA": new Set([]), 
-        "PA": new Set(["1", "2", "3", "4"]), 
-        "HI": new Set(["1", "2", "3", "4"]) 
-    };
-
     let exerciseContainer = document.getElementById('exerciseContainer');
 
     for (const { device, exercises } of userExerciseList) {
@@ -562,94 +553,36 @@ async function showMemberData(username) {
             table.appendChild(thead);
 
             let tbody = document.createElement("tbody");
-
-            let totalDifficulty = 0;
-            let elementGroups = new Map();
-            let hasDismount = false;
-            let seenElements = new Map();
+            let elements = [];
 
             for (let i = 0; i < exercises.elemente.length; i++) {
                 let element = exercises.elemente[i];
-                if(element==null){
-                    continue;
-                }
-                element = await getElementDetails(element);
-                if(!element) continue;
-                let row = document.createElement("tr");
-
-                let numCell = document.createElement("td");
-                numCell.innerText = i + 1;
-                row.appendChild(numCell);
-
-                let nameCell = document.createElement("td");
-                nameCell.innerText = element.bezeichnung;
-                row.appendChild(nameCell);
-
-                let imgCell = document.createElement("td");
-                let img = document.createElement("img");
-                img.src = element.image_path || "frontend/assets/images/system/profile_icon.png";
-                img.alt = element.bezeichnung;
-                img.style.maxWidth = "100px";
-                imgCell.appendChild(img);
-                row.appendChild(imgCell);
-
-                tbody.appendChild(row);
-
-                totalDifficulty += parseFloat(element.wertigkeit) || 0;
-                if (element.elementegruppe) {
-                    elementGroups.set(element.elementegruppe, (elementGroups.get(element.elementegruppe) || 0) + 1);
-                }
-                if (element.dismount) {
-                    hasDismount = true;
-                }
+                if (!element) continue;
                 
-                if (element.bezeichnung) {
-                    seenElements.set(element.bezeichnung, (seenElements.get(element.bezeichnung) || 0) + 1);
-                }
+                element = await getElementDetails(element);
+                if (!element) continue;
+                
+                elements.push(element);
+
+                let row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${i + 1}</td>
+                    <td>${element.bezeichnung}</td>
+                    <td><img src="${element.image_path || "frontend/assets/images/system/profile_icon.png"}" alt="${element.bezeichnung}" style="max-width: 100px;"></td>
+                `;
+                tbody.appendChild(row);
             }
             table.appendChild(tbody);
             exerciseDiv.appendChild(table);
 
-            let requiredGroupSet = requiredGroups[device];
-            let missingGroups = [...requiredGroupSet].filter(group => !elementGroups.has(group));
+            // ✅ Validierung der Übung mit validRoutine()
+            let { warnings, errors, totalDifficulty, totalElements, groupList, isComplete } = validRoutine(elements, device);
 
+            // ⚠️ Fehler und Warnungen anzeigen
             let summary = document.createElement("div");
             summary.className = "exercise-summary";
-
-            let totalElements = exercises.elemente.length;
-            let groupList = [...elementGroups.keys()].sort().join(", ");
-            let isComplete = missingGroups.length === 0 && hasDismount;
-
-            let warningReasons = [];
-            if (totalElements > 7) {
-                warningReasons.push("⚠️ Übung enthält mehr als 7 Elemente");
-            }
-            for (let [group, count] of elementGroups.entries()) {
-                if (count > 3) {
-                    warningReasons.push(`⚠️ Elementgruppe ${group} kommt sehr oft vor (${count}x).`);
-                }
-            }
-            
-            let duplicateElements = [...seenElements.entries()]
-                .filter(([_, count]) => count > 1)
-                .map(([name, count]) => `${name} (${count}x)`);
-            if (duplicateElements.length > 0) {
-                warningReasons.push(`⚠️ Doppelte Elemente: ${duplicateElements.join(", ")}`);
-            }
-
-            let missingReasons = [];
-            if (totalElements < 7) {
-                missingReasons.push(`❌ Zu wenig Elemente: ${totalElements}`);
-            }
-            if (missingGroups.length > 0) {
-                missingReasons.push(`❌ Fehlende Gruppen: ${missingGroups.join(", ")}`);
-            }
-            if (!hasDismount) {
-                missingReasons.push("❌ Kein Abgang vorhanden");
-            }
-
             summary.innerHTML = `
-                ${warningReasons.length > 0 ? `<p style="color: orange;"><strong>⚠️ Warnungen:</strong> ${warningReasons.join(" | ")}</p>` : ""}
+                ${warnings.length > 0 ? `<p style="color: orange;"><strong>⚠️ Warnungen:</strong> ${warnings.join(" | ")}</p>` : ""}
                 <p><strong>Gesamtanzahl der Elemente:</strong> ${totalElements}</p>
                 <p><strong>Gesamte Schwierigkeit:</strong> ${totalDifficulty.toFixed(2)}</p>
                 <p><strong>Elementgruppen:</strong> ${groupList || "Keine"}</p>
@@ -658,7 +591,7 @@ async function showMemberData(username) {
                         ${isComplete ? "✅ Ja" : "❌ Nein"}
                     </span>
                 </p>
-                ${!isComplete ? `<p style="color:red;"><strong>Fehler:</strong> ${missingReasons.join(" | ")}</p>` : ""}
+                ${errors.length > 0 ? `<p style="color:red;"><strong>Fehler:</strong> ${errors.join(" | ")}</p>` : ""}
             `;
             exerciseDiv.appendChild(summary);
         } else {
@@ -669,6 +602,81 @@ async function showMemberData(username) {
         exerciseContainer.appendChild(exerciseDiv);
     }
 }
+
+/**
+ * Überprüft eine Übung auf Vollständigkeit und Regelverstöße.
+ * @param {Array} elements - Liste der Elemente einer Übung.
+ * @param {string} device - Das Gerät (z. B. "FL", "PO").
+ * @returns {Object} Enthält Warnungen, Fehler und Statistik zur Übung.
+ */
+function validRoutine(elements, device) {
+    const requiredGroups = {
+        "FL": new Set(["1", "2", "3"]), 
+        "PO": new Set(["1", "2", "3", "4"]), 
+        "RI": new Set(["1", "2", "3", "4"]), 
+        "VA": new Set([]), 
+        "PA": new Set(["1", "2", "3", "4"]), 
+        "HI": new Set(["1", "2", "3", "4"]) 
+    };
+
+    let totalDifficulty = 0;
+    let elementGroups = new Map();
+    let hasDismount = false;
+    let seenElements = new Map();
+    let warnings = [];
+    let errors = [];
+
+    for (let element of elements) {
+        totalDifficulty += parseFloat(element.wertigkeit) || 0;
+
+        if (element.elementegruppe) {
+            elementGroups.set(element.elementegruppe, (elementGroups.get(element.elementegruppe) || 0) + 1);
+        }
+        if (element.dismount) {
+            hasDismount = true;
+        }
+        if (element.bezeichnung) {
+            seenElements.set(element.bezeichnung, (seenElements.get(element.bezeichnung) || 0) + 1);
+        }
+    }
+
+    let requiredGroupSet = requiredGroups[device] || new Set();
+    let missingGroups = [...requiredGroupSet].filter(group => !elementGroups.has(group));
+
+    let totalElements = elements.length;
+    let groupList = [...elementGroups.keys()].sort().join(", ");
+    let isComplete = missingGroups.length === 0 && hasDismount;
+
+    // 🟠 WARNUNGEN:
+    if (totalElements > 7) {
+        warnings.push("⚠️ Übung enthält mehr als 7 Elemente");
+    }
+    for (let [group, count] of elementGroups.entries()) {
+        if (count > 3) {
+            warnings.push(`⚠️ Elementgruppe ${group} kommt sehr oft vor (${count}x).`);
+        }
+    }
+    let duplicateElements = [...seenElements.entries()]
+        .filter(([_, count]) => count > 1)
+        .map(([name, count]) => `${name} (${count}x)`);
+    if (duplicateElements.length > 0) {
+        warnings.push(`⚠️ Doppelte Elemente: ${duplicateElements.join(", ")}`);
+    }
+
+    // 🔴 FEHLER:
+    if (totalElements < 7) {
+        errors.push(`❌ Zu wenig Elemente: ${totalElements}`);
+    }
+    if (missingGroups.length > 0) {
+        errors.push(`❌ Fehlende Gruppen: ${missingGroups.join(", ")}`);
+    }
+    if (!hasDismount) {
+        errors.push("❌ Kein Abgang vorhanden");
+    }
+
+    return { warnings, errors, totalDifficulty, totalElements, groupList, isComplete };
+}
+
 
 //-----------------------------------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------
@@ -939,6 +947,14 @@ async function loadCurrentExercise(username, device) {
     table.appendChild(tbody);
     exerciseContainer.appendChild(table);
 
+    // 🟢 Hier wird der Summary-Bereich hinzugefügt
+    let summaryContainer = document.createElement("div");
+    summaryContainer.id = "exercise-summary-container";
+    exerciseContainer.appendChild(summaryContainer);
+
+    // 🟢 Validierung der aktuellen Übung aufrufen
+    updateExerciseSummary();
+
     makeTableDraggable();
 }
 
@@ -975,6 +991,7 @@ function createExerciseRow(elementDetails, index) {
     return row;
 }
 
+
 function removeElementFromExercise(index) {
     console.log("delete Element ", index+1, " from: ", currentExercise);
     if (!currentExercise) {
@@ -995,6 +1012,9 @@ function removeElementFromExercise(index) {
 
     console.log("Element erfolgreich gelöscht: ", currentExercise);
     safeUpdateExercise(currentExercise);
+
+    // 🟢 Validierung nach Entfernen eines Elements aktualisieren
+    updateExerciseSummary();
 }
 
 
@@ -1024,6 +1044,7 @@ function makeTableDraggable() {
     });
 }
 
+
 function updateExerciseOrder() {
     let newOrder = [];
     document.querySelectorAll("#exerciseTbody tr").forEach((row, index) => {
@@ -1034,7 +1055,7 @@ function updateExerciseOrder() {
     
     let tempList = [];
     newOrder.forEach(elementIndex => {
-        if(currentExercise.length>= elementIndex && currentExercise.at(elementIndex)){
+        if (currentExercise.length >= elementIndex && currentExercise.at(elementIndex)) {
             tempList.push(currentExercise.at(elementIndex));
         }
     });
@@ -1042,6 +1063,38 @@ function updateExerciseOrder() {
     console.log("Übung nach der neuen Reihenfolge: ", currentExercise);
 
     safeUpdateExercise(currentExercise);
+
+    // 🟢 Nach jeder Änderung der Reihenfolge die Validierung aktualisieren
+    updateExerciseSummary();
+}
+
+
+/**
+ * Aktualisiert die Übungs-Zusammenfassung mit validRoutine()
+ */
+async function updateExerciseSummary() {
+    let elementDetailsList = await Promise.all(
+        currentExercise.map(el => getElementDetails(el))
+    );
+
+    let device = "FL"; // 🟢 Hier kannst du das Gerät setzen (z.B. über Parameter übergeben)
+    let { warnings, errors, totalDifficulty, totalElements, groupList, isComplete } = validRoutine(elementDetailsList, device);
+
+    let summaryContainer = document.getElementById("exercise-summary-container");
+    if (!summaryContainer) return;
+
+    summaryContainer.innerHTML = `
+        ${warnings.length > 0 ? `<p style="color: orange;"><strong>⚠️ Warnungen:</strong> ${warnings.join(" | ")}</p>` : ""}
+        <p><strong>Gesamtanzahl der Elemente:</strong> ${totalElements}</p>
+        <p><strong>Gesamte Schwierigkeit:</strong> ${totalDifficulty.toFixed(2)}</p>
+        <p><strong>Elementgruppen:</strong> ${groupList || "Keine"}</p>
+        <p><strong>Übung vollständig:</strong> 
+            <span style="color: ${isComplete ? "green" : "red"}; font-weight: bold;">
+                ${isComplete ? "✅ Ja" : "❌ Nein"}
+            </span>
+        </p>
+        ${errors.length > 0 ? `<p style="color:red;"><strong>Fehler:</strong> ${errors.join(" | ")}</p>` : ""}
+    `;
 }
 
 
