@@ -886,6 +886,7 @@ function closeDevice() {
     else if(pageDepth == 1){
         document.getElementById('exerciseCreationPanel').style.display="none";
         document.getElementById('infoBlock').style.display="block";
+        document.getElementById('createRoutineBtn').style.display="block";
     }
     else if(pageDepth == 0){
         togglePanel(1);
