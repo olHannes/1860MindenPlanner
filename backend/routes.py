@@ -3,6 +3,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from dotenv import load_dotenv
 import os
 from pymongo import MongoClient
+from datetime import datetime, timezone, timedelta
+import time
 
 load_dotenv()
 
@@ -27,12 +29,43 @@ db_highbarElements = db_exercises['Highbar']
 
 # Globale Session-Tracking-Variable
 active_sessions = {}
+active_users = {}
+
+
+
+################################################################################################### Auto Logout via Hearbeat
+@main_bp.route('/account/heartbeat', methods=['POST'])
+def heartbeat():
+    data = request.get_json()
+    username = data.get("username")
+    print("hearbeat: ", username)
+
+    if username:
+        active_users[username] = datetime.now(timezone.utc)
+        return jsonify({"message": "Heartbeat received"}), 200
+    else:
+        return jsonify({"error": "Kein Benutzername angegeben!"}), 400
+
+def cleanup_inactive_users():
+    global active_users
+    while True:
+        timeout = timedelta(minutes=2)
+        now = datetime.now(timezone.utc)
+        inactive_users = [user for user, last_seen in active_users.items() if now - last_seen > timeout]
+
+        for user in inactive_users:
+            print("clean inactive user: ", user)
+            users_collection.update_one({"firstName": user}, {"$set": {"online": 0}})
+            active_users.pop(user, None)
+            active_sessions.pop(user, None)
+        time.sleep(30)
+
 
 ################################################################################################### Login
 
 @main_bp.route('/account/login', methods=['POST'])
 def login():
-    global active_sessions
+    global active_sessions, active_users
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
@@ -47,6 +80,7 @@ def login():
             users_collection.update_one({"firstName": username}, {"$set": {"online": 1}})
 
             active_sessions[username] = request.remote_addr
+            active_users[username] = datetime.now(timezone.utc)
             session['user'] = username
             
             print(f"Active Sessions: {active_sessions}")
@@ -75,7 +109,7 @@ def check_user_status():
 
 @main_bp.route('/account/logout', methods=['POST'])
 def logout():
-    global active_sessions
+    global active_sessions, active_users
     data = request.get_json()
     username = data.get('name')
 
@@ -84,6 +118,7 @@ def logout():
 
     if username in active_sessions:
         del active_sessions[username]
+        del active_users[username]
         users_collection.update_one({"firstName": username}, {"$set": {"online": 0}})
         session.pop('user', None)
 

@@ -5,6 +5,15 @@ window.onload = function () {
 };
 
 
+setInterval(() => {
+    fetch("https://one860mindenplanner.onrender.com/account/heartbeat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: localStorage.getItem("user") })
+    });
+}, 30000);
+
+
 function showLoader(){
     document.getElementById('loadingBackground').style.display="block";
     document.getElementById('loadingContainer').style.display="block";
