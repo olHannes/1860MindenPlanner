@@ -1327,20 +1327,43 @@ async function updateExerciseSummary() {
 }
 
 
+//----------------------------------------------------------------------------------------------------------------- show Element selection
+
+function selectElement() {
+    pageDepth = 2;
+    document.getElementById('elementSelection').style.display = "block";
+    document.getElementById('add-exercise-btn').style.display = "none";  
+    document.getElementById('allElemBtn').style.border = "solid 2px black";
+    getElements(null, null);
+}
 
 
+//----------------------------------------------------------------------------------------------------------------- Apply Filter
 
+let activeFilter_difficulty=null;
+let activeFilter_group = null;
 
-
-
-
-
-
-
+function getFilteredElementList(difficulty, group, clickedButton) {
+    let pDifficulty;
+    let pGroup;
+    if(difficulty==0){
+        pDifficulty = activeFilter_difficulty;
+    } else {
+        pDifficulty = difficulty;
+    }
+    if(group == 0){
+        pGroup = activeFilter_group;
+    } else {
+        pGroup = group;
+    }
+    getElements(pDifficulty, pGroup);
+}
 
 
 function openFilter() {
     document.getElementById("filterWrapper").classList.add("show");
+    activeFilter_difficulty = null;
+    activeFilter_group = null;
 }
 
 function closeFilter() {
@@ -1362,45 +1385,9 @@ function filterByGroup(group) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//----------------------------------------------------------------------------------------------------------------- show Element selection
-
-function selectElement() {
-    pageDepth = 2;
-    document.getElementById('elementSelection').style.display = "block";
-    document.getElementById('add-exercise-btn').style.display = "none";  
-    document.getElementById('allElemBtn').style.border = "solid 2px black";
-    getElements(null);
-}
-
-
-//----------------------------------------------------------------------------------------------------------------- Apply Filter
-
-function getFilteredElementList(difficulty, clickedButton) {
-    document.querySelectorAll("#chooseGroup button").forEach(btn => {
-        btn.style.border = "none";
-    });
-
-    clickedButton.style.border = "solid 2px black";
-    getElements(difficulty);
-}
-
-
 //----------------------------------------------------------------------------------------------------------------- get filtered Elements
 
-async function getElements(difficulty) {
+async function getElements(difficulty, group) {
     const leftBlock = document.getElementById('leftColumn');
     const rightBlock = document.getElementById('rightColumn');
     leftBlock.innerHTML = "";
@@ -1412,7 +1399,7 @@ async function getElements(difficulty) {
     showLoader();
     try {
         const url = new URL('https://one860mindenplanner.onrender.com/elements/getGroupElements');
-        const params = { Device: device, Group: difficulty };
+        const params = { Device: device, Difficulty: difficulty , Group: group};
         Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
         const response = await fetch(url);

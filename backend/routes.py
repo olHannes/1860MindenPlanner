@@ -338,9 +338,10 @@ def get_device_collection(device):
 @main_bp.route('/elements/getGroupElements', methods=['GET'])
 def get_group_elements():
     device = request.args.get('Device')
+    difficulty = request.args.get('Difficulty')
     group = request.args.get('Group')
 
-    print("Get All Elements: ", device, ", ", group)
+    print("Get All Elements: ", device, ", ", group, ", ", difficulty)
     
     if not device:
         return jsonify({"error": "Gerät ist erforderlich."}), 400
@@ -350,11 +351,15 @@ def get_group_elements():
         return jsonify({"error": f"Unbekanntes Gerät: {device}"}), 400
     
     elements = list(collection.find({}, {'_id': False}))
-    
+
+    if difficulty and difficulty != 'null':
+        elements = [el for el in elements if str(el.get('wertigkeit')) == str(difficulty)]
+
     if group and group != 'null':
-        elements = [el for el in elements if el.get('wertigkeit') == group]
-    
+        elements = [el for el in elements if str(el.get('elementegruppe')) == str(group)]
+
     return jsonify(elements), 200
+
 
 ################################################################################################### Update Exercise
 # Route: Update Database Exercise
