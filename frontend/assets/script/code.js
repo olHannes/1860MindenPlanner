@@ -1327,6 +1327,56 @@ async function updateExerciseSummary() {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+function openFilter() {
+    document.getElementById("filterPanel").classList.add("show");
+}
+
+function closeFilter() {
+    document.getElementById("filterPanel").classList.remove("show");
+}
+
+function getFilteredElementList(difficulty, button) {
+    document.querySelectorAll("#filterDifficulty button").forEach(btn => btn.classList.remove("active-filter"));
+    button.classList.add("active-filter");
+    
+    console.log("Gefiltert nach Schwierigkeit:", difficulty);
+}
+
+function filterByGroup(group) {
+    document.querySelectorAll("#filterGroup button").forEach(btn => btn.classList.remove("active-filter"));
+    event.target.classList.add("active-filter");
+
+    console.log("Gefiltert nach Gruppe:", group);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //----------------------------------------------------------------------------------------------------------------- show Element selection
 
 function selectElement() {
