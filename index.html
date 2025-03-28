@@ -198,21 +198,21 @@
                 
                         <h3>Filter nach Schwierigkeit</h3>
                         <div id="filterDifficulty" class="filter-group">
-                            <button onclick="getFilteredElementList(null, this);" id="allElemBtn" class="active-filter">Alle</button>
-                            <button onclick="getFilteredElementList(0.05, this);">NE</button>
-                            <button onclick="getFilteredElementList(0.1, this);">A</button>
-                            <button onclick="getFilteredElementList(0.2, this);">B</button>
-                            <button onclick="getFilteredElementList(0.3, this);">C</button>
-                            <button onclick="getFilteredElementList(0.4, this);">D</button>
-                            <button onclick="getFilteredElementList(0.5, this);">E</button>
+                            <button onclick="filterByDifficulty(null, this);" id="allElemBtn" class="active-filter">Alle</button>
+                            <button onclick="filterByDifficulty(0.05, this);">NE</button>
+                            <button onclick="filterByDifficulty(0.1, this);">A</button>
+                            <button onclick="filterByDifficulty(0.2, this);">B</button>
+                            <button onclick="filterByDifficulty(0.3, this);">C</button>
+                            <button onclick="filterByDifficulty(0.4, this);">D</button>
+                            <button onclick="filterByDifficulty(0.5, this);">E</button>
                         </div>
                 
                         <h3>Filter nach Gruppe</h3>
                         <div id="filterGroup" class="filter-group">
-                            <button onclick="filterByGroup(1);">1</button>
-                            <button onclick="filterByGroup(2);">2</button>
-                            <button onclick="filterByGroup(3);">3</button>
-                            <button onclick="filterByGroup(4);">4</button>
+                            <button onclick="filterByGroup(1, this);">1</button>
+                            <button onclick="filterByGroup(2, this);">2</button>
+                            <button onclick="filterByGroup(3, this);">3</button>
+                            <button onclick="filterByGroup(4, this);">4</button>
                         </div>
                     </div>
                 </div>        

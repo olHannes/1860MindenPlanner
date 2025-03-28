@@ -1337,30 +1337,33 @@ function selectElement() {
     getElements(null, null);
 }
 
-
-//----------------------------------------------------------------------------------------------------------------- Apply Filter
-
-let activeFilter_difficulty=null;
+let activeFilter_difficulty = null;
 let activeFilter_group = null;
 
-function getFilteredElementList(difficulty, group, clickedButton) {
-    let pDifficulty;
-    let pGroup;
-    if(difficulty==0){
-        pDifficulty = activeFilter_difficulty;
-    } else {
-        pDifficulty = difficulty;
+function getFilteredElementList(difficulty, group) {
+    let pDifficulty = (difficulty !== null) ? difficulty : activeFilter_difficulty;
+    let pGroup = (group !== null) ? group : activeFilter_group;
+
+    if (pDifficulty !== activeFilter_difficulty || pGroup !== activeFilter_group) {
+        activeFilter_difficulty = pDifficulty;
+        activeFilter_group = pGroup;
+
+        getElements(pDifficulty, pGroup);
     }
-    if(group == 0){
-        pGroup = activeFilter_group;
-    } else {
-        pGroup = group;
-    }
-    getElements(pDifficulty, pGroup);
 }
 
-
 function openFilter() {
+    const filterDiv1 = document.getElementById('filterDifficulty');
+    const filterDiv2 = document.getElementById('filterGroup');
+    const buttons1 = filterDiv1.querySelectorAll('button');
+    const buttons2 = filterDiv2.querySelectorAll('button');
+
+    buttons1.forEach((button, index) => {
+        button.style.backgroundColor="#444";
+    });
+    buttons2.forEach((button, index) => {
+        button.style.backgroundColor="#444";
+    });
     document.getElementById("filterWrapper").classList.add("show");
     activeFilter_difficulty = null;
     activeFilter_group = null;
@@ -1370,19 +1373,28 @@ function closeFilter() {
     document.getElementById("filterWrapper").classList.remove("show");
 }
 
-function getFilteredElementList(difficulty, button) {
-    document.querySelectorAll("#filterDifficulty button").forEach(btn => btn.classList.remove("active-filter"));
-    button.classList.add("active-filter");
-    
-    console.log("Gefiltert nach Schwierigkeit:", difficulty);
+function filterByDifficulty(difficulty, pressedBtn) {
+    const filterDifficulty = document.getElementById('filterDifficulty');
+    const buttons = filterGroup.querySelectorAll('button');
+
+    buttons.forEach((button, index) => {
+        button.style.backgroundColor="#444";
+    });
+    pressedBtn.style.backgroundColor="#777777";
+    getFilteredElementList(difficulty, activeFilter_group);
 }
 
-function filterByGroup(group) {
-    document.querySelectorAll("#filterGroup button").forEach(btn => btn.classList.remove("active-filter"));
-    event.target.classList.add("active-filter");
+function filterByGroup(group, pressedBtn) {
+    const filterGroup = document.getElementById('filterGroup');
+    const buttons = filterGroup.querySelectorAll('button');
 
-    console.log("Gefiltert nach Gruppe:", group);
+    buttons.forEach((button, index) => {
+        button.style.backgroundColor="#444";
+    });
+    pressedBtn.style.backgroundColor="#777777";
+    getFilteredElementList(activeFilter_difficulty, group);
 }
+
 
 
 //----------------------------------------------------------------------------------------------------------------- get filtered Elements
