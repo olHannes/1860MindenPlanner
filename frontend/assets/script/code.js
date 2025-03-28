@@ -18,13 +18,21 @@ function sendHeartbeat() {
 setInterval(sendHeartbeat, 30000);
 
 
+let loaderTimeout=null;
 function showLoader(){
+    clearTimeout(loaderTimeout);
     document.getElementById('loadingBackground').style.display="block";
     document.getElementById('loadingContainer').style.display="block";
+
+    loaderTimeout = setTimeout(function() {
+        document.getElementById('loadingMsg').style.display = "block";
+    }, 5000);
 }
 function hideLoader(){
     document.getElementById('loadingBackground').style.display="none";
     document.getElementById('loadingContainer').style.display="none";
+    clearTimeout(loaderTimeout);
+    document.getElementById('loadingMsg').style.display = "none";
 }
 
 //----------------------------------------------------------------------------------------------------------------- Page change
@@ -38,7 +46,6 @@ function togglePanel(panelId) {
         activePanel.classList.remove('visible');
     }
     if (!panel.classList.contains('visible')){
-        console.log("direkt beim öffnen");
         resetPanel(panelId);
         panel.classList.add('visible');
         activePanel = panel;
@@ -831,7 +838,6 @@ function validRoutine(elements, device) {
         let element = elements[i];
 
         totalDifficulty += parseFloat(element.wertigkeit) || 0;
-        console.log("current Difficulty: ", totalDifficulty);
 
         if (element.elementegruppe) {
             elementGroups.set(element.elementegruppe, (elementGroups.get(element.elementegruppe) || 0) + 1);
@@ -1274,7 +1280,6 @@ function updateExerciseOrder() {
         row.querySelector("td:first-child").innerText = index + 1;
         newOrder.push(row.getAttribute("data-index"));
     });
-    console.log("Übung vor der geänderten Reihenfolge: ", currentExercise);
     
     let tempList = [];
     newOrder.forEach(elementIndex => {
@@ -1287,20 +1292,16 @@ function updateExerciseOrder() {
 
     safeUpdateExercise(currentExercise);
 
-    // 🟢 Nach jeder Änderung der Reihenfolge die Validierung aktualisieren
     updateExerciseSummary();
 }
 
 
-/**
- * Aktualisiert die Übungs-Zusammenfassung mit validRoutine()
- */
 async function updateExerciseSummary() {
     let elementDetailsList = await Promise.all(
         currentExercise.map(el => getElementDetails(el))
     );
 
-    let device = "FL"; // 🟢 Hier kannst du das Gerät setzen (z.B. über Parameter übergeben)
+    let device = "FL";
     let { warnings, errors, totalDifficulty, totalElements, groupList, isComplete } = validRoutine(elementDetailsList, device);
 
     let summaryContainer = document.getElementById("exercise-summary-container");

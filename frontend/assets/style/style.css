@@ -15,8 +15,9 @@ body {
     position: absolute;
     z-index: 1000;
     left: 50%;
-    top: 40%;
+    top: 50%;
     transform: translate(-50%, -50%);
+    color: white;
 }
 #loadingBackground {
     display: none;
@@ -42,6 +43,17 @@ body {
     100% { transform: rotate(360deg); }
   }
   
+  #loadingMsg {
+    display: none;
+    color: white;
+    background-color: rgb(124, 0, 0);
+    width: 90%;
+    border-radius: 15px;
+    text-align: center;
+    z-index: 1000;
+    position: absolute;
+    bottom: 10%;
+  }
 
 #AdminPage {
     position: absolute;
@@ -517,10 +529,10 @@ button {
     bottom: 35%;
     transform: translateX(-50%);
 }
-h1 {
+#welcomeUser {
     color: #2c3e50;
 }
-p {
+#welcomeTxt {
     font-size: 16px;
     color: #555;
     margin-bottom: 20px;
