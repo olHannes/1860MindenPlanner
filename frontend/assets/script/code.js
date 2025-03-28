@@ -143,6 +143,12 @@ async function login() {
         const data = await response.json();
         hideLoader();
 
+        if(response.ok && username == "admin"){
+            localStorage.setItem("user", username);
+            loadAdminReports();
+            return;
+        }
+
         if (response.ok && data.message === "Login erfolgreich!") {
             localStorage.setItem("user", username);
             setProfileName();
@@ -195,7 +201,6 @@ async function checkUserStatus() {
 
 async function logout() {
     const username = localStorage.getItem("user");
-    console.log(username);
     if (!username) {
         document.getElementById("errorMsg").textContent = "Kein Benutzer eingeloggt!";
         return;
@@ -214,9 +219,11 @@ async function logout() {
 
         if (response.ok && data.message === "Erfolgreich ausgeloggt!") {
             localStorage.removeItem("user");
+            document.getElementById('AdminPage').style.display="none";
             checkLoginStatus();
         } else {
             document.getElementById("errorMsg").textContent = data.message || "Unbekannter Fehler!";
+            document.getElementById('AdminPage').style.display="none";
         }
 
     } catch (error) {
@@ -430,19 +437,16 @@ async function submitReport() {
         cancleReport();
         return;
     }
-
     if (!reportTitle || !reportTxt) {
         alert("Es muss sowohl ein Titel als auch eine Fehlerbeschreibung vergeben werden!");
         cancleReport();
         return;
     }
-
     const data = {
         username: username,
         reportTitle: reportTitle,
         report: reportTxt
     };
-
     showLoader();
     try {
         const response = await fetch('https://one860mindenplanner.onrender.com/report/issue', {
@@ -466,8 +470,108 @@ async function submitReport() {
         alert("Es gab einen Fehler beim Senden des Reports.");
     }
 }
+async function deleteReport(reportTitle) {
+    showLoader();
+    try {
+        const response = await fetch('https://one860mindenplanner.onrender.com/report/delete', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ reportTitle })
+        });
+        const result = await response.json();
+        if (!response.ok) {
+            alert(`Fehler: ${result.message}`);
+            hideLoader();
+            return;
+        }
+        hideLoader();
+        loadAdminReports();
+    } catch (error) {
+        hideLoader();
+        console.error("Fehler beim Löschen des Reports:", error);
+        alert("Ein unerwarteter Fehler ist aufgetreten.");
+    }
+}
 
 
+
+async function loadAdminReports() {
+    document.getElementById('AdminPage').style.display = "block";
+    showLoader();
+
+    try {
+        const response = await fetch('https://one860mindenplanner.onrender.com/report/all');
+        if (!response.ok) {
+            throw new Error('Fehler beim Abrufen der Reports');
+        }
+
+        const reports = await response.json();
+        if (!Array.isArray(reports) || reports.length === 0) {
+            console.warn("Keine Reports gefunden.");
+            document.getElementById('reportContainer').innerHTML=" ";
+            hideLoader();
+            return;
+        }
+
+        let adminPage = document.getElementById('AdminPage');
+        let existingContainer = document.getElementById('reportContainer');
+
+        if (existingContainer) {
+            existingContainer.remove();
+        }
+
+        let container = document.createElement('div');
+        container.id = "reportContainer";
+        container.className = "admin-report-container";
+
+        reports.forEach(report => {
+            let reportSection = document.createElement('div');
+            reportSection.className = "report-section";
+
+            let infoDiv = document.createElement('div');
+            infoDiv.className = "report-info";
+            infoDiv.innerHTML = `
+                <span class="report-timestamp">${new Date(report.timestamp).toLocaleString()}</span>
+                <span class="report-user">${report.username || "Unbekannt"}</span>
+            `;
+
+            let deleteButton = document.createElement('button');
+            deleteButton.className = "delete-button";
+            deleteButton.innerHTML = "🗑️";
+            deleteButton.onclick = () => deleteReport(report.reportTitle);
+
+            infoDiv.appendChild(deleteButton);
+
+            let table = document.createElement('table');
+            table.className = "report-table";
+
+            table.innerHTML = `
+                <tr>
+                    <th>Titel</th>
+                    <td>${report.reportTitle || "Kein Titel"}</td>
+                </tr>
+                <tr>
+                    <th>Text</th>
+                    <td>${report.report || "Kein Text"}</td>
+                </tr>
+            `;
+
+            reportSection.appendChild(infoDiv);
+            reportSection.appendChild(table);
+
+            container.appendChild(reportSection);
+        });
+
+        let logoutButton = document.getElementById('AdminLogout');
+        adminPage.insertBefore(container, logoutButton);
+
+    } catch (error) {
+        console.error("Fehler beim Laden der Reports:", error);
+    }
+    hideLoader();
+}
 
 
 

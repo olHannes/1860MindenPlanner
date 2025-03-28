@@ -15,6 +15,11 @@
     <div id="loadingContainer">
         <div class="loader"></div>
     </div>
+
+    <div id="AdminPage">
+        <h2>Welcome Admin</h2>
+        <button onclick="logout();" id="AdminLogout">Logout</button>
+    </div>
     
 
     <div id="requestDelAcc">
@@ -30,7 +35,7 @@
         <h2>Fehler melden</h2>
         <input type="text" id="reportTitle" placeholder="Titel des Reports">
         <textarea id="reportTxt" placeholder="Fehlerbeschreibung"></textarea>
-        <button id="submitReport" onclick="submitReport()" disabled>Report erstellen</button>
+        <button id="submitReport" onclick="submitReport()">Report erstellen</button>
         <button id="cancleReport" onclick="cancleReport()">Abbrechen</button>
     </div>
     
