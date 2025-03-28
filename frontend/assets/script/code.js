@@ -1339,13 +1339,12 @@ async function updateExerciseSummary() {
 
 
 
-
 function openFilter() {
-    document.getElementById("filterPanel").classList.add("show");
+    document.getElementById("filterWrapper").classList.add("show");
 }
 
 function closeFilter() {
-    document.getElementById("filterPanel").classList.remove("show");
+    document.getElementById("filterWrapper").classList.remove("show");
 }
 
 function getFilteredElementList(difficulty, button) {
@@ -1361,7 +1360,6 @@ function filterByGroup(group) {
 
     console.log("Gefiltert nach Gruppe:", group);
 }
-
 
 
 

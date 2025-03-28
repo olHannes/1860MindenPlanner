@@ -190,38 +190,38 @@
 
             <!--Panel View for adding an Element-->
             <div id="elementSelection">
-                <div id="filterPanel">
-                    <button onclick="closeFilter();" class="back-button">
-                        <img src="frontend/assets/images/system/back.png" alt="Go Back">
-                    </button>
+                <div id="filterWrapper">
+                    <div id="filterPanel">
+                        <button onclick="closeFilter();" class="back-button">
+                            <img src="frontend/assets/images/system/back.png" alt="Go Back">
+                        </button>
                 
-                    <h3>Filter nach Schwierigkeit</h3>
-                    <div id="filterDifficulty" class="filter-group">
-                        <button onclick="getFilteredElementList(null, this);" id="allElemBtn" class="active-filter">Alle</button>
-                        <button onclick="getFilteredElementList(0.05, this);">NE</button>
-                        <button onclick="getFilteredElementList(0.1, this);">A</button>
-                        <button onclick="getFilteredElementList(0.2, this);">B</button>
-                        <button onclick="getFilteredElementList(0.3, this);">C</button>
-                        <button onclick="getFilteredElementList(0.4, this);">D</button>
-                        <button onclick="getFilteredElementList(0.5, this);">E</button>
+                        <h3>Filter nach Schwierigkeit</h3>
+                        <div id="filterDifficulty" class="filter-group">
+                            <button onclick="getFilteredElementList(null, this);" id="allElemBtn" class="active-filter">Alle</button>
+                            <button onclick="getFilteredElementList(0.05, this);">NE</button>
+                            <button onclick="getFilteredElementList(0.1, this);">A</button>
+                            <button onclick="getFilteredElementList(0.2, this);">B</button>
+                            <button onclick="getFilteredElementList(0.3, this);">C</button>
+                            <button onclick="getFilteredElementList(0.4, this);">D</button>
+                            <button onclick="getFilteredElementList(0.5, this);">E</button>
+                        </div>
+                
+                        <h3>Filter nach Gruppe</h3>
+                        <div id="filterGroup" class="filter-group">
+                            <button onclick="filterByGroup(1);">1</button>
+                            <button onclick="filterByGroup(2);">2</button>
+                            <button onclick="filterByGroup(3);">3</button>
+                            <button onclick="filterByGroup(4);">4</button>
+                        </div>
                     </div>
-                
-                    <h3>Filter nach Gruppe</h3>
-                    <div id="filterGroup" class="filter-group">
-                        <button onclick="filterByGroup(1);">1</button>
-                        <button onclick="filterByGroup(2);">2</button>
-                        <button onclick="filterByGroup(3);">3</button>
-                        <button onclick="filterByGroup(4);">4</button>
-                    </div>
-                </div>
-                
+                </div>        
                 <button id="editFilter" onclick="openFilter();">Filter</button>
                 
                 <div id="elementList">
                     <div id="leftColumn"></div>
                     <div id="rightColumn"></div>
                 </div>
-                <button id="closeElementSelection" onclick="closeDevice();">Abbrechen</button>
             </div>
             
             <div id="selected-exercises-list">
