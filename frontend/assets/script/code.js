@@ -76,6 +76,17 @@ function resetPanel(panelId) {
     }
 }
 
+function toggleDownloadPanel(){
+    const dPanel = document.getElementById('downloadPage');
+    const mPanel = document.getElementById('mainPage');
+    if(dPanel.style.display=="block"){
+        dPanel.style.display="none";
+        mPanel.style.display="block";
+    } else {
+        dPanel.style.display="block";
+        mPanel.style.display="none";
+    }
+}
 
 //----------------------------------------------------------------------------------------------------------------- Registration
 
