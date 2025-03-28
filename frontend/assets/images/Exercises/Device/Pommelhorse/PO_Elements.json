@@ -153,7 +153,7 @@
         "name": "",
         "elementegruppe": "1",
         "wertigkeit": "0.2",
-        "dismount": true,
+        "dismount": false,
         "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/B/PO_B_01.png"
     },
     {
@@ -162,7 +162,7 @@
         "name": "",
         "elementegruppe": "1",
         "wertigkeit": "0.2",
-        "dismount": true,
+        "dismount": false,
         "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/B/PO_B_02.png"
     },
     {
@@ -171,7 +171,7 @@
         "name": "",
         "elementegruppe": "1",
         "wertigkeit": "0.2",
-        "dismount": true,
+        "dismount": false,
         "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/B/PO_B_03.png"
     },
     {
@@ -180,7 +180,7 @@
         "name": "",
         "elementegruppe": "1",
         "wertigkeit": "0.2",
-        "dismount": true,
+        "dismount": false,
         "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/B/PO_B_04.png"
     },
     {
@@ -189,7 +189,7 @@
         "name": "",
         "elementegruppe": "1",
         "wertigkeit": "0.2",
-        "dismount": true,
+        "dismount": false,
         "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/B/PO_B_05.png"
     },
     {

@@ -806,6 +806,8 @@ async function showMemberData(username) {
  * @returns {Object} Enthält Warnungen, Fehler und Statistik zur Übung.
  */
 function validRoutine(elements, device) {
+    console.log("check if the Routine is valid: ", device, "; ", elements);
+
     const requiredGroups = {
         "FL": new Set(["1", "2", "3"]), 
         "PO": new Set(["1", "2", "3", "4"]), 
@@ -822,14 +824,24 @@ function validRoutine(elements, device) {
     let warnings = [];
     let errors = [];
 
-    for (let element of elements) {
+    // Abgang muss immer am Ende sein
+    let isDismountAtEnd = false;
+
+    for (let i = 0; i < elements.length; i++) {
+        let element = elements[i];
+
         totalDifficulty += parseFloat(element.wertigkeit) || 0;
+        console.log("current Difficulty: ", totalDifficulty);
 
         if (element.elementegruppe) {
             elementGroups.set(element.elementegruppe, (elementGroups.get(element.elementegruppe) || 0) + 1);
         }
+
         if (element.dismount) {
             hasDismount = true;
+            if (i === elements.length - 1) {
+                isDismountAtEnd = true;
+            }
         }
         if (element.bezeichnung) {
             seenElements.set(element.bezeichnung, (seenElements.get(element.bezeichnung) || 0) + 1);
@@ -841,9 +853,9 @@ function validRoutine(elements, device) {
 
     let totalElements = elements.length;
     let groupList = [...elementGroups.keys()].sort().join(", ");
-    let isComplete = missingGroups.length === 0 && hasDismount;
+    let isComplete = missingGroups.length === 0 && hasDismount && totalElements >= 7 && isDismountAtEnd;
 
-    // 🟠 WARNUNGEN:
+    // WARNUNGEN:
     if (totalElements > 7) {
         warnings.push("⚠️ Übung enthält mehr als 7 Elemente");
     }
@@ -859,7 +871,11 @@ function validRoutine(elements, device) {
         warnings.push(`⚠️ Doppelte Elemente: ${duplicateElements.join(", ")}`);
     }
 
-    // 🔴 FEHLER:
+    // Fehlererkennung
+    if (device === "PO" && totalElements === 0) {
+        errors.push("❌ Keine Elemente im Sprung.");
+    }
+
     if (totalElements < 7) {
         errors.push(`❌ Zu wenig Elemente: ${totalElements}`);
     }
@@ -869,9 +885,13 @@ function validRoutine(elements, device) {
     if (!hasDismount) {
         errors.push("❌ Kein Abgang vorhanden");
     }
+    if (!isDismountAtEnd) {
+        errors.push("❌ Der Abgang muss am Ende der Übung sein.");
+    }
 
     return { warnings, errors, totalDifficulty, totalElements, groupList, isComplete };
 }
+
 
 
 //-----------------------------------------------------------------------------------------------------------------
