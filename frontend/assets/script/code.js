@@ -1,10 +1,8 @@
-//window.onload = checkLoginStatus;
-
 window.onload = function () {
     checkUserStatus();
 };
 
-
+//----------------------------------------------------------------------------------------------------------------- heartbeat - hold server alive
 function sendHeartbeat() {
     fetch('https://one860mindenplanner.onrender.com/account/heartbeat', {
         method: 'POST',
@@ -18,6 +16,7 @@ function sendHeartbeat() {
 setInterval(sendHeartbeat, 30000);
 
 
+//----------------------------------------------------------------------------------------------------------------- handle loader
 let loaderTimeout=null;
 function showLoader(){
     clearTimeout(loaderTimeout);
@@ -51,10 +50,12 @@ function togglePanel(panelId) {
         activePanel = panel;
     } else {
         panel.classList.remove('visible');
-
         activePanel = null;
     }
 }
+
+
+//----------------------------------------------------------------------------------------------------------------- Panel clear
 
 function resetPanel(panelId) {
     switch (parseInt(panelId, 10)) {
@@ -83,6 +84,9 @@ function resetPanel(panelId) {
     }
 }
 
+
+//----------------------------------------------------------------------------------------------------------------- Panel toggle
+
 function toggleDownloadPanel(){
     const dPanel = document.getElementById('downloadPage');
     const mPanel = document.getElementById('mainPage');
@@ -94,6 +98,7 @@ function toggleDownloadPanel(){
         mPanel.style.display="none";
     }
 }
+
 
 //----------------------------------------------------------------------------------------------------------------- Registration
 
@@ -144,6 +149,7 @@ async function register() {
     }
 }
 
+
 //----------------------------------------------------------------------------------------------------------------- Login
 
 async function login() {
@@ -182,6 +188,7 @@ async function login() {
         document.getElementById("errorMsg").textContent = "Ein unerwarteter Fehler ist aufgetreten!";
     }
 }
+
 
 //----------------------------------------------------------------------------------------------------------------- User Status
 
@@ -319,7 +326,7 @@ async function deleteAccount() {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------- Helper Functions for User handling
+//----------------------------------------------------------------------------------------------------------------- Clear Input form
 
 function clearLoginInput(){
     document.getElementById("username").value = "";
@@ -332,6 +339,9 @@ function clearLoginInput(){
     document.getElementById("newPassword").value = "";
     document.getElementById("confirmPassword").value = "";
 }
+
+
+//----------------------------------------------------------------------------------------------------------------- toggle login panel
 
 function checkLoginStatus() {
     const user = localStorage.getItem("user");
@@ -346,6 +356,9 @@ function checkLoginStatus() {
         document.getElementById("content").style.display = "none";
     }
 }
+
+
+//----------------------------------------------------------------------------------------------------------------- set Profile Data
 
 async function setProfileName() {
     const name = localStorage.getItem("user");
@@ -373,6 +386,7 @@ async function setProfileName() {
 
 
 //----------------------------------------------------------------------------------------------------------------- Account Edit
+
 function editName() {
     const vorname = document.getElementById('Vorname').textContent;
     const nachname = document.getElementById('Nachname').textContent;
@@ -426,10 +440,8 @@ async function saveName() {
 }
 
 
+//----------------------------------------------------------------------------------------------------------------- User - Report
 
-
-
-// Funktion zum Anzeigen des Report-Formulars
 function createReport() {
     document.getElementById('reportTitle').value = "";
     document.getElementById('reportTxt').value = "";
@@ -437,7 +449,6 @@ function createReport() {
     document.getElementById('loadingBackground').style.display="block";
 }
 
-// Funktion zum Abbrechen des Report-Formulars
 function cancleReport() {
     document.getElementById('reportTitle').value = "";
     document.getElementById('reportTxt').value = "";
@@ -445,7 +456,6 @@ function cancleReport() {
     document.getElementById('createReport').style.display = "none";
 }
 
-// Funktion zum Absenden des Reports
 async function submitReport() {
     const reportTitle = document.getElementById('reportTitle').value.trim();
     const reportTxt = document.getElementById('reportTxt').value.trim();
@@ -488,32 +498,9 @@ async function submitReport() {
         alert("Es gab einen Fehler beim Senden des Reports.");
     }
 }
-async function deleteReport(reportTitle) {
-    showLoader();
-    try {
-        const response = await fetch('https://one860mindenplanner.onrender.com/report/delete', {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ reportTitle })
-        });
-        const result = await response.json();
-        if (!response.ok) {
-            alert(`Fehler: ${result.message}`);
-            hideLoader();
-            return;
-        }
-        hideLoader();
-        loadAdminReports();
-    } catch (error) {
-        hideLoader();
-        console.error("Fehler beim Löschen des Reports:", error);
-        alert("Ein unerwarteter Fehler ist aufgetreten.");
-    }
-}
 
 
+//----------------------------------------------------------------------------------------------------------------- Admin - Report Handling
 
 async function loadAdminReports() {
     document.getElementById('AdminPage').style.display = "block";
@@ -561,7 +548,6 @@ async function loadAdminReports() {
             deleteButton.onclick = () => deleteReport(report.reportTitle);
 
             infoDiv.appendChild(deleteButton);
-
             let table = document.createElement('table');
             table.className = "report-table";
 
@@ -575,10 +561,8 @@ async function loadAdminReports() {
                     <td>${report.report || "Kein Text"}</td>
                 </tr>
             `;
-
             reportSection.appendChild(infoDiv);
             reportSection.appendChild(table);
-
             container.appendChild(reportSection);
         });
 
@@ -591,16 +575,33 @@ async function loadAdminReports() {
     hideLoader();
 }
 
+async function deleteReport(reportTitle) {
+    showLoader();
+    try {
+        const response = await fetch('https://one860mindenplanner.onrender.com/report/delete', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ reportTitle })
+        });
+        const result = await response.json();
+        if (!response.ok) {
+            alert(`Fehler: ${result.message}`);
+            hideLoader();
+            return;
+        }
+        hideLoader();
+        loadAdminReports();
+    } catch (error) {
+        hideLoader();
+        console.error("Fehler beim Löschen des Reports:", error);
+        alert("Ein unerwarteter Fehler ist aufgetreten.");
+    }
+}
 
 
-
-
-
-
-
-
-
-
+//----------------------------------------------------------------------------------------------------------------- get User List
 
 async function getAllUser() {
     showLoader();
@@ -646,18 +647,17 @@ async function showAllUser() {
 }
 
 
-
 //-----------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------- Ab hier: Übung handling
 //-----------------------------------------------------------------------------------------------------------------
 
-
+//globale field for current status
 let currentExercise = [];
 let currentDevice = null;
 
 
+//----------------------------------------------------------------------------------------------------------------- request exercise of a user
 
-// get the exercise for a special user and device
 async function requestUserExercise(username, device) {
     currentExercise = [];
     showLoader();
@@ -692,9 +692,10 @@ async function requestUserExercise(username, device) {
     }
 }
 
-// show all Exercises of a choosen User
+
+//----------------------------------------------------------------------------------------------------------------- get all Routines of a user
+
 async function getAllUserExercise(username) {
-    // Geräte-Liste definieren
     const devices = ["FL", "PO", "RI", "VA", "PA", "HI"];
     let userExerciseList = [];
 
@@ -712,7 +713,9 @@ async function getAllUserExercise(username) {
     return userExerciseList;
 }
 
-// use getAllUserExercise and requestUserExercise to create the inner HTML to show the users data
+
+//----------------------------------------------------------------------------------------------------------------- load Routine of User and validate it
+
 async function showMemberData(username) {
     document.getElementById('memberExerciseList').style.display = "block";
     
@@ -778,10 +781,10 @@ async function showMemberData(username) {
             table.appendChild(tbody);
             exerciseDiv.appendChild(table);
 
-            // ✅ Validierung der Übung mit validRoutine()
+            // ✅ Validierung
             let { warnings, errors, totalDifficulty, totalElements, groupList, isComplete } = validRoutine(elements, device);
 
-            // ⚠️ Fehler und Warnungen anzeigen
+            // ⚠️ Fehler und Warnungen
             let summary = document.createElement("div");
             summary.className = "exercise-summary";
             summary.innerHTML = `
@@ -806,12 +809,9 @@ async function showMemberData(username) {
     }
 }
 
-/**
- * Überprüft eine Übung auf Vollständigkeit und Regelverstöße.
- * @param {Array} elements - Liste der Elemente einer Übung.
- * @param {string} device - Das Gerät (z. B. "FL", "PO").
- * @returns {Object} Enthält Warnungen, Fehler und Statistik zur Übung.
- */
+
+//----------------------------------------------------------------------------------------------------------------- validate Routine
+
 function validRoutine(elements, device) {
     console.log("check if the Routine is valid: ", device, "; ", elements);
 
@@ -831,7 +831,6 @@ function validRoutine(elements, device) {
     let warnings = [];
     let errors = [];
 
-    // Abgang muss immer am Ende sein
     let isDismountAtEnd = false;
 
     for (let i = 0; i < elements.length; i++) {
@@ -894,17 +893,12 @@ function validRoutine(elements, device) {
     if (!isDismountAtEnd) {
         errors.push("❌ Der Abgang muss am Ende der Übung sein.");
     }
-
     return { warnings, errors, totalDifficulty, totalElements, groupList, isComplete };
 }
 
 
+//----------------------------------------------------------------------------------------------------------------- Handle Devices (open/close)
 
-//-----------------------------------------------------------------------------------------------------------------
-//-----------------------------------------------------------------------------------------------------------------
-
-
-// toggle function to display and hide the devices
 function toggleExercise(device) {
     let exerciseDiv = document.getElementById(`exercise-${device}`);
     exerciseDiv.style.display = exerciseDiv.style.display === "none" ? "block" : "none";
@@ -917,12 +911,13 @@ function hideMemberExerciseList() {
 }
 
 
-//-----------------------------------------------------------------------------------------------------------------
-//-----------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------- Handle back-Btn
 
 let pageDepth = 0;
 
-// open a device and display basic information
+
+//----------------------------------------------------------------------------------------------------------------- Open Device (info-setter)
+
 function openDevicePanel(id) {
     pageDepth = 0;
     document.getElementById('EquipmentExercise').style.display = "block";
@@ -1086,7 +1081,9 @@ function openDevicePanel(id) {
     createRoutineBtn.style.display = "block";
 }
 
-// UI-Elemente ein- und ausblenden
+
+//----------------------------------------------------------------------------------------------------------------- toggle Visibility
+
 function toggleUIElementVisibility(elements, displayValue) {
     elements.forEach(element => {
         document.getElementById(element).style.display = displayValue;
@@ -1094,9 +1091,8 @@ function toggleUIElementVisibility(elements, displayValue) {
 }
 
 
-//-----------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------- Handle Routine Panel
 
-// show Routine Creation Panel
 function createRoutine() {
     pageDepth = 1;
     toggleUIElementVisibility(
@@ -1108,7 +1104,6 @@ function createRoutine() {
     loadCurrentExercise(localStorage.getItem("user"), currentDevice);
 }
 
-// hide Routine Creation Panel
 function closeDevice() {
     if(pageDepth == 2){
         document.getElementById('elementSelection').style.display="none";
@@ -1131,10 +1126,7 @@ function closeDevice() {
 }
 
 
-
-
-
-
+//----------------------------------------------------------------------------------------------------------------- Load safed Exercise
 
 async function loadCurrentExercise(username, device) {
     if (!username || !device) {
@@ -1176,17 +1168,15 @@ async function loadCurrentExercise(username, device) {
     table.appendChild(tbody);
     exerciseContainer.appendChild(table);
 
-    // 🟢 Hier wird der Summary-Bereich hinzugefügt
     let summaryContainer = document.createElement("div");
     summaryContainer.id = "exercise-summary-container";
     exerciseContainer.appendChild(summaryContainer);
-
-    // 🟢 Validierung der aktuellen Übung aufrufen
     updateExerciseSummary();
-
     makeTableDraggable();
 }
 
+
+//----------------------------------------------------------------------------------------------------------------- Create Table
 
 function createExerciseRow(elementDetails, index) {
     let row = document.createElement("tr");
@@ -1221,6 +1211,8 @@ function createExerciseRow(elementDetails, index) {
 }
 
 
+//----------------------------------------------------------------------------------------------------------------- remove Element from routine
+
 function removeElementFromExercise(index) {
     console.log("delete Element ", index+1, " from: ", currentExercise);
     if (!currentExercise) {
@@ -1241,11 +1233,20 @@ function removeElementFromExercise(index) {
 
     console.log("Element erfolgreich gelöscht: ", currentExercise);
     safeUpdateExercise(currentExercise);
-
-    // 🟢 Validierung nach Entfernen eines Elements aktualisieren
     updateExerciseSummary();
 }
 
+
+//----------------------------------------------------------------------------------------------------------------- add Element to Routine
+
+function addToExercise(element) {
+    document.getElementById('detailedElementInfo').style.display="none";
+    currentExercise.push(element.id);
+    safeUpdateExercise(currentExercise);
+}
+
+
+//----------------------------------------------------------------------------------------------------------------- enable dragAndDrop
 
 function makeTableDraggable() {
     const tbody = document.getElementById("exerciseTbody");
@@ -1274,6 +1275,8 @@ function makeTableDraggable() {
 }
 
 
+//----------------------------------------------------------------------------------------------------------------- change Routine Order
+
 function updateExerciseOrder() {
     let newOrder = [];
     document.querySelectorAll("#exerciseTbody tr").forEach((row, index) => {
@@ -1291,10 +1294,12 @@ function updateExerciseOrder() {
     console.log("Übung nach der neuen Reihenfolge: ", currentExercise);
 
     safeUpdateExercise(currentExercise);
-
     updateExerciseSummary();
 }
 
+
+
+//----------------------------------------------------------------------------------------------------------------- Update Routine Summary
 
 async function updateExerciseSummary() {
     let elementDetailsList = await Promise.all(
@@ -1322,23 +1327,8 @@ async function updateExerciseSummary() {
 }
 
 
+//----------------------------------------------------------------------------------------------------------------- show Element selection
 
-
-
-
-
-
-
-
-
-
-
-
-
-//-----------------------------------------------------------------------------------------------------------------
-//-----------------------------------------------------------------------------------------------------------------
-
-// show all-Elements Panel
 function selectElement() {
     pageDepth = 2;
     document.getElementById('elementSelection').style.display = "block";
@@ -1347,7 +1337,9 @@ function selectElement() {
     getElements(null);
 }
 
-// apply filter to elements
+
+//----------------------------------------------------------------------------------------------------------------- Apply Filter
+
 function getFilteredElementList(difficulty, clickedButton) {
     document.querySelectorAll("#chooseGroup button").forEach(btn => {
         btn.style.border = "none";
@@ -1357,27 +1349,9 @@ function getFilteredElementList(difficulty, clickedButton) {
     getElements(difficulty);
 }
 
-// create an element
-function createElementDiv(element, togglePage) {
-    const exerciseDiv = document.createElement("div");
-    exerciseDiv.classList.add("exercise-item");
-    exerciseDiv.onclick = () => openDetailedView(element);
 
-    const img = document.createElement("img");
-    img.src = element.image_path;
-    img.alt = element.bezeichnung;
-    img.classList.add("exercise-image");
+//----------------------------------------------------------------------------------------------------------------- get filtered Elements
 
-    const title = document.createElement("p");
-    title.textContent = element.bezeichnung;
-    title.classList.add("exercise-title");
-
-    exerciseDiv.appendChild(img);
-    exerciseDiv.appendChild(title);
-    return exerciseDiv;
-}
-
-// request Element List (include filter) and create the inner HTML
 async function getElements(difficulty) {
     const leftBlock = document.getElementById('leftColumn');
     const rightBlock = document.getElementById('rightColumn');
@@ -1410,10 +1384,27 @@ async function getElements(difficulty) {
 }
 
 
-//-----------------------------------------------------------------------------------------------------------------
-//-----------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------- Handle Detailed element view
 
-// Detaillierte Ansicht öffnen
+function createElementDiv(element, togglePage) {
+    const exerciseDiv = document.createElement("div");
+    exerciseDiv.classList.add("exercise-item");
+    exerciseDiv.onclick = () => openDetailedView(element);
+
+    const img = document.createElement("img");
+    img.src = element.image_path;
+    img.alt = element.bezeichnung;
+    img.classList.add("exercise-image");
+
+    const title = document.createElement("p");
+    title.textContent = element.bezeichnung;
+    title.classList.add("exercise-title");
+
+    exerciseDiv.appendChild(img);
+    exerciseDiv.appendChild(title);
+    return exerciseDiv;
+}
+
 function openDetailedView(element) {
     const container = document.getElementById('detailedElementInfo');
     const title = document.getElementById('elementTitle');
@@ -1437,12 +1428,10 @@ function openDetailedView(element) {
     container.style.display = "flex";
 }
 
-// Detaillierte Ansicht schließen
 function closeDetailedView() {
     document.getElementById('detailedElementInfo').style.display = "none";
 }
 
-// Elementdetails abrufen
 async function getElementDetails(elementId) {
     showLoader();
     try {
@@ -1464,24 +1453,8 @@ async function getElementDetails(elementId) {
 }
 
 
-//-----------------------------------------------------------------------------------------------------------------
-//-----------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------- safe Routine
 
-
-
-
-// Übungselemente hinzufügen
-function addToExercise(element) {
-    document.getElementById('detailedElementInfo').style.display="none";
-    currentExercise.push(element.id);
-    safeUpdateExercise(currentExercise);
-}
-
-function deleteElementFromExercise(index){
-
-}
-
-// config Exercise and send it to backend
 async function safeUpdateExercise(elementList) {
     const username = localStorage.getItem("user");
     const device = currentDevice;
@@ -1520,4 +1493,3 @@ async function safeUpdateExercise(elementList) {
         console.error("Fehler bei der Anfrage:", error);
     }
 }
-

@@ -11,6 +11,7 @@
 </head>
 <body>
 
+    <!--Loading Animation + darker Background-->
     <div id="loadingBackground"></div>
     <div id="loadingContainer">
         <div class="loader"></div>
@@ -19,13 +20,13 @@
         <p>Aufgrund der längeren Inaktivität kann es bis zu 50 Sekunden dauern, bis der Server wieder online ist.</p>
     </div>
     
-
+    <!--Admin Page for Report View-->
     <div id="AdminPage">
         <h2>Welcome Admin</h2>
         <button onclick="logout();" id="AdminLogout">Logout</button>
     </div>
     
-
+    <!--Secure Window for Account deletion-->
     <div id="requestDelAcc">
         <h2>Account löschen</h2>
         <h3>Bist du sicher, dass du deinen Account löschen möchtest?</h3>
@@ -35,6 +36,7 @@
         </div>
     </div>
 
+    <!--Window for Report creation-->
     <div id="createReport">
         <h2>Fehler melden</h2>
         <input type="text" id="reportTitle" placeholder="Titel des Reports">
@@ -45,6 +47,7 @@
     
 
     
+    <!--Login and Register Page-->
 <div id="headline">
     <h1>SV 1860 Minden</h1>
 </div>
@@ -56,6 +59,7 @@
     <button onclick="toggleRegistration()" id="registerBtn">Registrieren</button> 
     <p id="errorMsg"></p>
 </div>
+
 <div id="registration_mask" style="display: none;">
     <input type="text" id="firstName" placeholder="Vorname"><br><br>
     <input type="text" id="lastName" placeholder="Nachname"><br><br>
@@ -66,8 +70,11 @@
     <p id="errorMsgRegister"></p>
 </div>
 
+
+<!--Content Page (only when logged in)-->
 <div id="content">
 
+    <!--Download container-->
     <div id="downloadPage">
         <h2>Hier findest du die Tabellen zum Download</h2>
         <h3>Boden</h3>
@@ -93,12 +100,15 @@
         <div class="seperator"></div>
         <a class="hide-download-btn" onclick="toggleDownloadPanel();" >Hide Download</a>
     </div>
+
+    <!--Main Page with Welcome Text-->
     <div id="mainPage">
         <h1 id="welcomeUser">Willkommen, Nutzer!</h1>
         <p id="welcomeTxt">Auf dieser Seite kannst du eine Übung / Kür zusammenstellen. Unten im Menü kannst du zwischen der Übungsgestaltung, der Übersicht der anderen Nutzer und den Profileinstellungen wechseln. Der aktuelle Code-of-Points (COP: 2022-2024) kannst du über den Download Button herunterladen.</p>
         <a class="download-btn" onclick="toggleDownloadPanel();" >GoTo Download</a>
     </div>
 
+    <!--Bottom Menue for navigation-->
     <div id="menue">
         <button id="equipmentBtn">
             <img src="frontend/assets/images/equipment/Pommelhorse_icon.png" alt="Equipment image" onclick="togglePanel(1);">
@@ -112,7 +122,7 @@
     </div>
     
 
-    <!--Setting panel-->
+    <!--Account Settings Page-->
     <div id="panel0" class="panel">
         <h2>Account Settings</h2>
 
@@ -128,19 +138,21 @@
             </div>
         </div>
 
+        <!--Windows for Name edits-->
         <div id="nameEdit" style="display: none;">
             <input type="text" id="editVorname">
             <input type="text" id="editNachname">
             <button id="saveBtn" onclick="saveName();" style="display: none;">Speichern</button>
         </div>
         
+        <!--Buttons for Report, Logout, Acc-Delete-->
         <button id="reportIssue" onclick="createReport();">Fehler melden!</button>
         <button id="logoutBtn" onclick="logout();">Logout</button>
         <button id="delBtn" onclick="requestDeleteAcc();">Account löschen</button>
     </div>
 
 
-    <!--Equipment panel-->
+    <!--Panel for Routine Creation-->
     <div id="panel1" class="panel">
         <div id="EquipmentExercise">
             <img src="frontend/assets/images/system/back.png" alt="Go Back" onclick="closeDevice();" id="hideExercise" class="goBack-Btn">
@@ -175,6 +187,8 @@
                     <span id="elementDifficulty">Difficulty: A</span>
                 </div>
             </div>
+
+            <!--Panel View for adding an Element-->
             <div id="elementSelection">
                 <div id="chooseGroup">
                     <button onclick="getFilteredElementList(null, this);" style="border: solid 2px rgb(0, 0, 0);" id="allElemBtn">All</button>
@@ -192,7 +206,6 @@
                 <button id="closeElementSelection" onclick="closeDevice();">Abbrechen</button>
             </div>
             
-
             <div id="selected-exercises-list">
 
             </div>
@@ -200,9 +213,7 @@
 
 
         <h2>Equipment</h2>
-
         <div id="equipmentView">
-
             <div class="equSlide" onclick="openDevicePanel(0);">
                 <div class="categories">
                     <img src="frontend/assets/images/equipment/Floor_icon.png" alt="Floor Icon">
