@@ -105,6 +105,7 @@ function toggleDownloadPanel(){
 function toggleRegistration() {
     document.getElementById("login_mask").style.display = "none";
     document.getElementById("registration_mask").style.display = "block";
+    clearLoginInput();
 }
 
 function cancelRegistration() {
@@ -351,6 +352,7 @@ function checkLoginStatus() {
         document.getElementById("content").style.display = "block";
         clearLoginInput();
     } else {
+        clearLoginInput();
         document.getElementById("login_mask").style.display = "block";
         document.getElementById("headline").style.display = "block";
         document.getElementById("content").style.display = "none";
@@ -502,6 +504,16 @@ async function submitReport() {
 
 //----------------------------------------------------------------------------------------------------------------- Admin - Report Handling
 
+
+function goToAdminReportContainer(){
+    document.getElementById('reportContainer').innerHTML=" ";
+    loadAdminReports();
+}
+function goToAdminUserContainer(){
+    document.getElementById('reportContainer').innerHTML=" ";
+    loadAdminUsers();
+}
+
 async function loadAdminReports() {
     document.getElementById('AdminPage').style.display = "block";
     showLoader();
@@ -597,6 +609,101 @@ async function deleteReport(reportTitle) {
         hideLoader();
         console.error("Fehler beim Löschen des Reports:", error);
         alert("Ein unerwarteter Fehler ist aufgetreten.");
+    }
+}
+
+
+async function loadAdminUsers() {
+    document.getElementById('AdminPage').style.display = "block";
+    showLoader();
+
+    try {
+        const users = await getAllUser();
+        if (!Array.isArray(users) || users.length === 0) {
+            console.warn("Keine Benutzer gefunden.");
+            document.getElementById('userContainer').innerHTML = "Keine Benutzer vorhanden.";
+            hideLoader();
+            return;
+        }
+
+        let adminPage = document.getElementById('AdminPage');
+        let existingContainer = document.getElementById('userContainer');
+
+        if (existingContainer) {
+            existingContainer.remove();
+        }
+
+        let container = document.createElement('div');
+        container.id = "userContainer";
+        container.className = "admin-report-container";
+
+        users.forEach(user => {
+            let userSection = document.createElement('div');
+            userSection.className = "report-section";
+
+            let infoDiv = document.createElement('div');
+            infoDiv.className = "report-info";
+            infoDiv.innerHTML = `
+                <span class="report-user">${user.firstName || "Unbekannt"}</span>
+            `;
+
+            let deleteButton = document.createElement('button');
+            deleteButton.className = "delete-button";
+            deleteButton.innerHTML = "🗑️";
+            deleteButton.onclick = () => deleteAdminUser(user.firstName);
+
+            infoDiv.appendChild(deleteButton);
+
+            let table = document.createElement('table');
+            table.className = "report-table";
+
+            table.innerHTML = `
+                <tr>
+                    <th>Username</th>
+                    <td>${user.firstName || "Kein Benutzername"}</td>
+                </tr>
+                <tr>
+                    <th>Nachname</th>
+                    <td>${user.lastName || "Kein Nachname"}</td>
+                </tr>
+            `;
+
+            userSection.appendChild(infoDiv);
+            userSection.appendChild(table);
+            container.appendChild(userSection);
+        });
+
+        let logoutButton = document.getElementById('AdminLogout');
+        adminPage.insertBefore(container, logoutButton);
+
+    } catch (error) {
+        console.error("Fehler beim Laden der Benutzer:", error);
+    }
+    hideLoader();
+}
+
+
+
+async function deleteAdminUser(username) {
+    const name = username;
+    showLoader();
+    try {
+        const response = await fetch("https://one860mindenplanner.onrender.com/account/delete", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({name})
+        });
+        if (!response.ok) {
+            throw new Error(`Account löschen fehlgeschlagen: ${response.status} ${response.statusText}`);
+        }
+        const result = await response.json();
+        hideLoader();
+        alert("Der Account '"+ username+ "' wurde gelöscht!");
+        goToAdminUserContainer();
+    } catch (error) {
+        hideLoader();
+        console.error("Error:", error);
+        document.getElementById("errorMsg").textContent = "Fehler beim Löschen des Accounts!";
     }
 }
 

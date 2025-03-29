@@ -74,7 +74,7 @@ body {
     width: 50dvw;
     position: absolute;
     left: 50%;
-    bottom: 10%;
+    bottom: 8dvh;
     transform: translateX(-50%);
     color: white;
     background-color: red;
@@ -84,7 +84,24 @@ body {
 }
 
 
+#adminAnzeige {
+    width: 100%;
+    height: 80dvh;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#adminPageButtonContainer {
+    position: absolute;
+    bottom: 13dvh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
 .admin-report-container {
+    position: absolute;
     width: 90%;
     max-width: 100%;
     height: 70dvh;

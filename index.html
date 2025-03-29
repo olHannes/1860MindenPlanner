@@ -23,6 +23,14 @@
     <!--Admin Page for Report View-->
     <div id="AdminPage">
         <h2>Welcome Admin</h2>
+        <div id="adminAnzeige">
+
+        </div>
+
+        <div id="adminPageButtonContainer">
+            <button onclick="goToAdminUserContainer();">Users</button>
+            <button onclick="goToAdminReportContainer();">Reports</button>
+        </div>
         <button onclick="logout();" id="AdminLogout">Logout</button>
     </div>
     
@@ -66,7 +74,7 @@
     <input type="password" id="newPassword" placeholder="Neues Passwort"><br><br>
     <input type="password" id="confirmPassword" placeholder="Passwort wiederholen"><br><br>
     <button onclick="register()" id="registerSubmitBtn">Registrieren</button>
-    <button onclick="cancelRegistration()" id="cancelBtn">Abbrechen</button>
+    <button onclick="cancelRegistration()" id="cancelBtn" style="background-color: red;">Abbrechen</button>
     <p id="errorMsgRegister"></p>
 </div>
 
