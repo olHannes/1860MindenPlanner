@@ -74,7 +74,7 @@ body {
     width: 50dvw;
     position: absolute;
     left: 50%;
-    bottom: 8dvh;
+    bottom: 3dvh;
     transform: translateX(-50%);
     color: white;
     background-color: red;
@@ -94,7 +94,7 @@ body {
 
 #adminPageButtonContainer {
     position: absolute;
-    bottom: 13dvh;
+    bottom: 10dvh;
     left: 50%;
     transform: translateX(-50%);
 }
