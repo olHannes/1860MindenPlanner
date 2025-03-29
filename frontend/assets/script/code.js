@@ -60,13 +60,12 @@ function togglePanel(panelId) {
 function resetPanel(panelId) {
     switch (parseInt(panelId, 10)) {
         case 0:
-            console.log("Reset für Panel 0");
             document.getElementById('nameEdit').style.display="none";
+            document.getElementById('passwordEdit').style.display="none";
             document.getElementById('requestDelAcc').style.display="none";
             document.getElementById('nameView').style.display = 'block';
             break;
         case 1:
-            console.log("Reset für Panel 1");
             document.getElementById('elementSelection').style.display="none";
             document.getElementById('exerciseCreationPanel').style.display="none";
             document.getElementById('EquipmentExercise').style.display="none";
@@ -74,7 +73,6 @@ function resetPanel(panelId) {
 
             break;
         case 2:
-            console.log("Reset für Panel 2");
             document.getElementById('memberExerciseList').style.display="none";
             document.getElementById('memberExerciseList').innerHTML="";
             break;
@@ -450,10 +448,9 @@ function editPassword(){
 }
 
 async function updatePassword(username, newPassword) {
-    console.log("username: ", username, ", password", password);
     if (!username || !newPassword) {
-        alert("Bitte Benutzername und Passwort eingeben!");
         document.getElementById('passwordEdit').style.display = "none";
+        document.getElementById('nameView').style.display = "block";
         return;
     }
     try {
@@ -471,11 +468,12 @@ async function updatePassword(username, newPassword) {
         if (!response.ok) {
             throw new Error(data.message || "Fehler beim Aktualisieren des Passworts");
         }
-        alert("Passwort erfolgreich aktualisiert!");
     } catch (error) {
         console.error("Fehler beim Aktualisieren des Passworts:", error);
         alert("Fehler: " + error.message);
     }
+    document.getElementById('passwordEdit').style.display = "none";
+    document.getElementById('nameView').style.display = "block";   
 }
 
 

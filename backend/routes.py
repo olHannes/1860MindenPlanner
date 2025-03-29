@@ -177,10 +177,8 @@ def register():
 @main_bp.route('/account/updatePassword', methods=['POST'])
 def update_password():
     data = request.get_json()
-    first_name = data.get('firstName')  # Hier den richtigen Key verwenden!
+    first_name = data.get('firstName')
     new_password = data.get('newPassword')
-
-    print("username: ", first_name, ", password: ", new_password)
 
     if not first_name or not new_password:
         return jsonify({"message": "Vorname und neues Passwort sind erforderlich!"}), 400
