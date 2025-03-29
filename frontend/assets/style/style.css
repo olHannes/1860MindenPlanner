@@ -289,7 +289,7 @@ input {
 
                         /*Account Editing*/
 #editNameBtn {
-    margin-top: 45px;
+    margin-top: 10px;
     background: none;
     border: none;
     cursor: pointer;
@@ -343,7 +343,7 @@ input {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 130px;
+    bottom: 13dvh;
     color: red;
     background-color: #cccccc;
 }

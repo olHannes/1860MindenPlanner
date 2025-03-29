@@ -444,6 +444,7 @@ async function saveName() {
 function editPassword(){
     document.getElementById('nameView').style.display = 'none';
     document.getElementById('passwordEdit').style.display = 'block';
+    document.getElementById('editPassword_1').value = "";
     document.getElementById('safeBtn2').style.display = 'inline-block';
 }
 
