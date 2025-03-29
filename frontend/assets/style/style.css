@@ -289,6 +289,7 @@ input {
 
                         /*Account Editing*/
 #editNameBtn {
+    margin-top: 45px;
     background: none;
     border: none;
     cursor: pointer;
@@ -304,7 +305,7 @@ input {
     border: 1px solid #ccc;
 }
 
-#saveBtn {
+.safeBtn {
     padding: 7px 15px;
     background-color: #4CAF50;
     color: white;
@@ -315,9 +316,26 @@ input {
     transform: translateX(-50%);
 }
 
-#saveBtn:hover {
+.safeBtn:hover {
     background-color: #45a049;
 }
+
+#editPasswordBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #2c6693;
+}
+
+#passwordEdit input {
+    padding: 5px;
+    margin: 5px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
 
 
 /*Report Objects*/

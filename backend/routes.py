@@ -172,6 +172,27 @@ def register():
     return jsonify({"message": "Registrierung erfolgreich!"}), 200
 
 
+################################################################################################### update Password
+
+@main_bp.route('/account/updatePassword', methods=['POST'])
+def update_password():
+    data = request.get_json()
+    first_name = data.get('username')
+    new_password = data.get('newPassword')
+
+    if not first_name or not new_password:
+        return jsonify({"message": "Vorname und neues Passwort sind erforderlich!"}), 400
+
+    user = users_collection.find_one({"firstName": first_name})
+    if not user:
+        return jsonify({"message": "Benutzer nicht gefunden!"}), 404
+    
+    hashed_password = generate_password_hash(new_password)
+    users_collection.update_one({"firstName": first_name}, {"$set": {"password": hashed_password}})
+    
+    return jsonify({"message": "Passwort erfolgreich aktualisiert!"}), 200
+
+
 ################################################################################################### Report erstellen
 
 @main_bp.route('/report/issue', methods=['POST'])

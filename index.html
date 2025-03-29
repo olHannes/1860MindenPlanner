@@ -143,6 +143,9 @@
                 <button id="editNameBtn" onclick="editName();">
                     ✎ Namen bearbeiten ✎
                 </button>
+                <button id="editPasswordBtn" onclick="editPassword();">
+                    Passwort bearbeiten
+                </button>
             </div>
         </div>
 
@@ -150,7 +153,12 @@
         <div id="nameEdit" style="display: none;">
             <input type="text" id="editVorname">
             <input type="text" id="editNachname">
-            <button id="saveBtn" onclick="saveName();" style="display: none;">Speichern</button>
+            <button class="safeBtn" id="safeBtn1" onclick="saveName();" style="display: none;">Speichern</button>
+        </div>
+
+        <div id="passwordEdit" style="display: none;">
+            <input type="text" id="editPassword_1" placeholder="neues Passwort">
+            <button class="safeBtn" id="safeBtn2" onclick="updatePassword(localStorage.getItem('user'), document.getElementById('editPassword_1').value);" style="display: none;">Speichern</button>
         </div>
         
         <!--Buttons for Report, Logout, Acc-Delete-->

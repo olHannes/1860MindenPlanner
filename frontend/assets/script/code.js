@@ -401,7 +401,7 @@ function editName() {
 
     document.getElementById('nameView').style.display = 'none';
     document.getElementById('nameEdit').style.display = 'block';
-    document.getElementById('saveBtn').style.display = 'inline-block';
+    document.getElementById('safeBtn1').style.display = 'inline-block';
 }
 
 async function saveName() {
@@ -414,7 +414,7 @@ async function saveName() {
 
     document.getElementById('nameView').style.display = 'block';
     document.getElementById('nameEdit').style.display = 'none';
-    document.getElementById('saveBtn').style.display = 'none';
+    document.getElementById('safeBtn2').style.display = 'none';
     showLoader();
 
     if (!username) {
@@ -440,6 +440,43 @@ async function saveName() {
         console.error("Error beim Verlassen der Seite:", error);
     }
 }
+
+
+
+function editPassword(){
+    document.getElementById('nameView').style.display = 'none';
+    document.getElementById('passwordEdit').style.display = 'block';
+    document.getElementById('safeBtn2').style.display = 'inline-block';
+}
+
+async function updatePassword(username, newPassword) {
+    if (!username || !newPassword) {
+        alert("Bitte Benutzername und Passwort eingeben!");
+        document.getElementById('passwordEdit').style.display = "none";
+        return;
+    }
+    try {
+        const response = await fetch('https://one860mindenplanner.onrender.com/account/updatePassword', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                firstName: username,
+                newPassword: newPassword
+            })
+        });
+        const data = await response.json();
+        if (!response.ok) {
+            throw new Error(data.message || "Fehler beim Aktualisieren des Passworts");
+        }
+        alert("Passwort erfolgreich aktualisiert!");
+    } catch (error) {
+        console.error("Fehler beim Aktualisieren des Passworts:", error);
+        alert("Fehler: " + error.message);
+    }
+}
+
 
 
 //----------------------------------------------------------------------------------------------------------------- User - Report
