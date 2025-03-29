@@ -450,6 +450,7 @@ function editPassword(){
 }
 
 async function updatePassword(username, newPassword) {
+    console.log("username: ", username, ", password", password);
     if (!username || !newPassword) {
         alert("Bitte Benutzername und Passwort eingeben!");
         document.getElementById('passwordEdit').style.display = "none";
