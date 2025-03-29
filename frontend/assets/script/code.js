@@ -1345,6 +1345,7 @@ async function loadCurrentExercise(username, device) {
 
 //----------------------------------------------------------------------------------------------------------------- Create Table
 
+
 function createExerciseRow(elementDetails, index) {
     let row = document.createElement("tr");
     row.setAttribute("data-index", index);
@@ -1363,10 +1364,24 @@ function createExerciseRow(elementDetails, index) {
     imgCell.appendChild(img);
 
     let actionCell = document.createElement("td");
+    
     let trashIcon = document.createElement("span");
     trashIcon.innerHTML = "🗑️";
     trashIcon.style.cursor = "pointer";
     trashIcon.addEventListener("click", () => removeElementFromExercise(index));
+    
+    let upArrow = document.createElement("span");
+    upArrow.innerHTML = "⬆️";
+    upArrow.style.cursor = "pointer";
+    upArrow.addEventListener("click", () => moveElementUp(index));
+
+    let downArrow = document.createElement("span");
+    downArrow.innerHTML = "⬇️";
+    downArrow.style.cursor = "pointer";
+    downArrow.addEventListener("click", () => moveElementDown(index));
+
+    actionCell.appendChild(upArrow);
+    actionCell.appendChild(downArrow);
     actionCell.appendChild(trashIcon);
 
     row.appendChild(numCell);
@@ -1463,7 +1478,6 @@ function updateExerciseOrder() {
     safeUpdateExercise(currentExercise);
     updateExerciseSummary();
 }
-
 
 
 //----------------------------------------------------------------------------------------------------------------- Update Routine Summary
