@@ -179,6 +179,7 @@ def update_password():
     data = request.get_json()
     first_name = data.get('username')
     new_password = data.get('newPassword')
+    print("username: ", first_name, ", password: ", new_password)
 
     if not first_name or not new_password:
         return jsonify({"message": "Vorname und neues Passwort sind erforderlich!"}), 400
