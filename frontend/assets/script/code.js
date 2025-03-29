@@ -440,7 +440,6 @@ async function saveName() {
 }
 
 
-
 function editPassword(){
     document.getElementById('nameView').style.display = 'none';
     document.getElementById('passwordEdit').style.display = 'block';
@@ -677,6 +676,7 @@ async function loadAdminUsers() {
         users.forEach(user => {
             let userSection = document.createElement('div');
             userSection.className = "report-section";
+            userSection.onclick = () => changeUserAdminPwd(user.firstName); // Klick ruft die Funktion auf
 
             let infoDiv = document.createElement('div');
             infoDiv.className = "report-info";
@@ -687,7 +687,10 @@ async function loadAdminUsers() {
             let deleteButton = document.createElement('button');
             deleteButton.className = "delete-button";
             deleteButton.innerHTML = "🗑️";
-            deleteButton.onclick = () => deleteAdminUser(user.firstName);
+            deleteButton.onclick = (event) => {
+                event.stopPropagation();
+                deleteAdminUser(user.firstName);
+            };
 
             infoDiv.appendChild(deleteButton);
 
@@ -721,6 +724,7 @@ async function loadAdminUsers() {
 
 
 
+
 async function deleteAdminUser(username) {
     const name = username;
     showLoader();
@@ -743,6 +747,25 @@ async function deleteAdminUser(username) {
         document.getElementById("errorMsg").textContent = "Fehler beim Löschen des Accounts!";
     }
 }
+
+
+
+function changeUserAdminPwd(username){
+    document.getElementById('adminPwdChange_name').innerText=username;
+    openPwdChange();
+}
+
+function openPwdChange() {
+    document.getElementById('adminPwdChange_pwd').value="";
+    document.getElementById("adminPwdChangeWrapper").classList.add("show");
+}
+
+function closePwdChange() {
+    document.getElementById("adminPwdChangeWrapper").classList.remove("show");
+}
+
+
+
 
 
 //----------------------------------------------------------------------------------------------------------------- get User List

@@ -22,6 +22,15 @@
     
     <!--Admin Page for Report View-->
     <div id="AdminPage">
+        <div id="adminPwdChangeWrapper">
+            <div id="adminPwdChange">
+                <h3>Passwort ändern</h3>
+                <p id="adminPwdChange_name">Nutzername</p>
+                <input type="text" id="adminPwdChange_pwd" placeholder="neues Passwort">
+                <button id="adminPwdChange_safe" onclick="updatePassword(document.getElementById('adminPwdChange_name').innerText, document.getElementById('adminPwdChange_pwd').value); closePwdChange();">Passwort Update</button>
+            </div>
+        </div>
+        
         <h2>Welcome Admin</h2>
         <div id="adminAnzeige">
 
