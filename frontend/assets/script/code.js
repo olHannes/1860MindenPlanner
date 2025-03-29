@@ -893,7 +893,7 @@ async function showMemberData(username) {
         exerciseDiv.id = `exercise-${device}`;
         exerciseDiv.style.display = "none";
 
-        if (exercises && exercises.elemente) {
+        if (exercises && exercises.elemente && exercises.elemente.length > 0) {
             let table = document.createElement("table");
             table.className = "exercise-table";
             
