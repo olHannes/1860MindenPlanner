@@ -660,7 +660,7 @@ button {
     position: absolute;
     display: none;
     left: 50%;
-    top: 17dvh;
+    top: 20dvh;
     transform: translateX(-50%);
     z-index: 1;
     width: 50dvw;
