@@ -1646,7 +1646,7 @@ function openDetailedView(element) {
     title.innerText = element.bezeichnung;
     description.innerText = element.bezeichnung;
     img.src = element.image_path;
-    name.innerText = element.name || "Name: _";
+    name.innerText = element.name || "Name: ";
     group.innerText = "Elementegruppe: " + element.elementegruppe;
     difficulty.innerText = "Schwierigkeit: " + element.wertigkeit;
 
