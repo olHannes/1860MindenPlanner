@@ -1,5 +1,199 @@
 [
     {
+        "id": "PA_NE_01",
+        "bezeichnung": "Stützkehre vorwärts (waagerecht)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_01.png"
+    },
+    {
+        "id": "PA_NE_02",
+        "bezeichnung": "Tschechenkehre, Tschechenwende oder Drehwende (auch als Angang)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_02.png"
+    },
+    {
+        "id": "PA_NE_03",
+        "bezeichnung": "Salto vorwärts in den Oberarmstütz",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_03.png"
+    },
+    {
+        "id": "PA_NE_04",
+        "bezeichnung": "Ellenbogenstützwaage (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_04.png"
+    },
+    {
+        "id": "PA_NE_05",
+        "bezeichnung": "Kreisflanke",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_05.png"
+    },
+    {
+        "id": "PA_NE_06",
+        "bezeichnung": "Taucherrolle (nur LK 4)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_06.png"
+    },
+    {
+        "id": "PA_NE_07",
+        "bezeichnung": "Oberarmstand (2s) oder Schulterstand (2s) (in LK 4: 2 Elemente)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_07.png"
+    },
+    {
+        "id": "PA_NE_08",
+        "bezeichnung": "Oberarmkippe (auch in den Grätschsitz o. Außenquersitz in der LK 4)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_08.png"
+    },
+    {
+        "id": "PA_NE_09",
+        "bezeichnung": "Rolle rückwärts in den Hang oder Stütz",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_09.png"
+    },
+    {
+        "id": "PA_NE_10",
+        "bezeichnung": "Stemme rückwärts in den Stütz",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_10.png"
+    },
+    {
+        "id": "PA_NE_11",
+        "bezeichnung": "Moystemme in den Oberarmstütz",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_11.png"
+    },
+    {
+        "id": "PA_NE_12",
+        "bezeichnung": "Fallkippe in den Stütz",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_12.png"
+    },
+    {
+        "id": "PA_NE_13",
+        "bezeichnung": "Felgumschwung in den Oberarmstütz",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_13.png"
+    },
+    {
+        "id": "PA_NE_14",
+        "bezeichnung": "Salto vorwärts gehockt (auch mit 1/2 o. 1/1 Drehung)",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.05",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_14.png"
+    },
+    {
+        "id": "PA_NE_15",
+        "bezeichnung": "Salto rückwärts gehockt (auch mit 1/2 o. 1/1 Drehung)",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.05",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_15.png"
+    },
+    {
+        "id": "PA_NE_16",
+        "bezeichnung": "Fechterflanke/-kehre aus dem Außenquersitz (nur LK 4)",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.05",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_16.png"
+    },
+    {
+        "id": "PA_NE_17",
+        "bezeichnung": "Holländer o. Abgrätschen/-hocken",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.05",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_17.png"
+    },
+    {
+        "id": "PA_NE_18",
+        "bezeichnung": "Drehkehre/-wende gehockt, gebückt, gestreckt",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.05",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_18.png"
+    },
+    {
+        "id": "PA_NE_19",
+        "bezeichnung": "Handstand auf 1 Holm, Abgrätschen/-hocken",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.05",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_19.png"
+    },
+    {
+        "id": "PA_NE_20",
+        "bezeichnung": "Wende mit 1/2 Drehung Wendekehre",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.05",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_20.png"
+    },
+    {
+        "id": "PA_NE_21",
+        "bezeichnung": "Kehre mit 1/2 Drehung (Kehrwende)",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.05",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/NE/PA_NE_21.png"
+    },
+
+
+
+
+
+    {
         "id": "PA_A_01",
         "bezeichnung": "Alle Handstände auf 1 oder 2 Holmen (2s)",
         "name": "",
