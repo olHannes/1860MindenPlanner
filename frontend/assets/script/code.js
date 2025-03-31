@@ -16,7 +16,9 @@ function sendHeartbeat() {
 setInterval(sendHeartbeat, 30000);
 
 
+
 //----------------------------------------------------------------------------------------------------------------- handle loader
+
 let loaderTimeout=null;
 function showLoader(){
     clearTimeout(loaderTimeout);
@@ -34,10 +36,13 @@ function hideLoader(){
     document.getElementById('loadingMsg').style.display = "none";
 }
 
-//----------------------------------------------------------------------------------------------------------------- Page change
+
+
+//----------------------------------------------------------------------------------------------------------------- Page Handling
 
 let activePanel = null;
 
+// Open / Close
 function togglePanel(panelId) {
     const panel = document.getElementById('panel' + panelId);
 
@@ -54,9 +59,7 @@ function togglePanel(panelId) {
     }
 }
 
-
-//----------------------------------------------------------------------------------------------------------------- Panel clear
-
+// Reset
 function resetPanel(panelId) {
     switch (parseInt(panelId, 10)) {
         case 0:
@@ -82,9 +85,7 @@ function resetPanel(panelId) {
     }
 }
 
-
-//----------------------------------------------------------------------------------------------------------------- Panel toggle
-
+// Download Panel
 function toggleDownloadPanel(){
     const dPanel = document.getElementById('downloadPage');
     const mPanel = document.getElementById('mainPage');
@@ -98,20 +99,24 @@ function toggleDownloadPanel(){
 }
 
 
-//----------------------------------------------------------------------------------------------------------------- Registration
 
+//----------------------------------------------------------------------------------------------------------------- Registration Handling
+
+// registration window
 function toggleRegistration() {
     document.getElementById("login_mask").style.display = "none";
     document.getElementById("registration_mask").style.display = "block";
     clearLoginInput();
 }
 
+// cancle registration
 function cancelRegistration() {
     document.getElementById("login_mask").style.display = "block";
     document.getElementById("registration_mask").style.display = "none";
     clearLoginInput();
 }
 
+// register new User
 async function register() {
     const firstName = document.getElementById("firstName").value;
     const lastName = document.getElementById("lastName").value;
@@ -149,8 +154,10 @@ async function register() {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------- Login
 
+//----------------------------------------------------------------------------------------------------------------- Login Handling
+
+// login User
 async function login() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
@@ -188,9 +195,7 @@ async function login() {
     }
 }
 
-
-//----------------------------------------------------------------------------------------------------------------- User Status
-
+// Update User Status
 async function checkUserStatus() {
     const username = localStorage.getItem("user");
 
@@ -220,9 +225,73 @@ async function checkUserStatus() {
     }
 }
 
+// clear Login / Registration Inputs
+function clearLoginInput(){
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("errorMsg").textContent = "";
 
-//----------------------------------------------------------------------------------------------------------------- Logout
+    document.getElementById("errorMsgRegister").textContent = "";
+    document.getElementById("firstName").value = "";
+    document.getElementById("lastName").value = "";
+    document.getElementById("newPassword").value = "";
+    document.getElementById("confirmPassword").value = "";
+}
 
+// toggle panel view after login
+function checkLoginStatus() {
+    const user = localStorage.getItem("user");
+    if (user) {
+        document.getElementById("login_mask").style.display = "none";
+        document.getElementById("headline").style.display = "none";
+        document.getElementById("content").style.display = "block";
+        clearLoginInput();
+    } else {
+        clearLoginInput();
+        document.getElementById("login_mask").style.display = "block";
+        document.getElementById("headline").style.display = "block";
+        document.getElementById("content").style.display = "none";
+    }
+}
+
+// initialize profile config
+async function setProfileName() {
+    const name = localStorage.getItem("user");
+    showLoader();
+    try {
+        const response = await fetch(`https://one860mindenplanner.onrender.com/account/getUserInfo?name=${name}`, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Fehler: ${response.status} ${response.statusText}`);
+        }
+        const userInfo = await response.json();
+        
+        document.getElementById('Vorname').textContent = userInfo.first_name;
+        document.getElementById('Nachname').textContent = userInfo.last_name;
+        document.getElementById('welcomeUser').textContent = "Willkommen "+userInfo.first_name; 
+
+        const profileImg = document.getElementById('profilePicture');
+        if (profileImg && userInfo.color_code && userInfo.color_code !== "#000000") {
+            profileImg.style.filter = `drop-shadow(0px 0px 5px ${userInfo.color_code})`;
+        } else if (profileImg) {
+            profileImg.style.filter = "";
+        }
+
+        hideLoader();
+    } catch (error) {
+        hideLoader();
+        console.error("Error:", error);
+    }
+}
+
+
+
+//----------------------------------------------------------------------------------------------------------------- Logout Handling
+
+// User Logout
 async function logout() {
     const username = localStorage.getItem("user");
     if (!username) {
@@ -257,9 +326,7 @@ async function logout() {
     }
 }
 
-
-//----------------------------------------------------------------------------------------------------------------- Auto Logout
-
+// Auto Logout
 window.onbeforeunload = async function () {
     const username = localStorage.getItem("user");
 
@@ -285,16 +352,22 @@ window.onbeforeunload = async function () {
 };
 
 
-//----------------------------------------------------------------------------------------------------------------- Delete Account
 
+//----------------------------------------------------------------------------------------------------------------- Delete-Account Handling
+
+// secure Window
 function requestDeleteAcc(){
     document.getElementById('requestDelAcc').style.display="block";
     document.getElementById('loadingBackground').style.display="block";
 }
+
+// cancle
 function cancelDeleteAcc(){
     document.getElementById('requestDelAcc').style.display="none";
     document.getElementById('loadingBackground').style.display="none";
 }
+
+// Delete Account
 async function deleteAccount() {
     const name = localStorage.getItem("user");
     showLoader();
@@ -325,76 +398,11 @@ async function deleteAccount() {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------- Clear Input form
-
-function clearLoginInput(){
-    document.getElementById("username").value = "";
-    document.getElementById("password").value = "";
-    document.getElementById("errorMsg").textContent = "";
-
-    document.getElementById("errorMsgRegister").textContent = "";
-    document.getElementById("firstName").value = "";
-    document.getElementById("lastName").value = "";
-    document.getElementById("newPassword").value = "";
-    document.getElementById("confirmPassword").value = "";
-}
-
-
-//----------------------------------------------------------------------------------------------------------------- toggle login panel
-
-function checkLoginStatus() {
-    const user = localStorage.getItem("user");
-    if (user) {
-        document.getElementById("login_mask").style.display = "none";
-        document.getElementById("headline").style.display = "none";
-        document.getElementById("content").style.display = "block";
-        clearLoginInput();
-    } else {
-        clearLoginInput();
-        document.getElementById("login_mask").style.display = "block";
-        document.getElementById("headline").style.display = "block";
-        document.getElementById("content").style.display = "none";
-    }
-}
-
-
-//----------------------------------------------------------------------------------------------------------------- set Profile Data
-
-async function setProfileName() {
-    const name = localStorage.getItem("user");
-    showLoader();
-    try {
-        const response = await fetch(`https://one860mindenplanner.onrender.com/account/getUserInfo?name=${name}`, {
-            method: "GET",
-            headers: { "Content-Type": "application/json" }
-        });
-
-        if (!response.ok) {
-            throw new Error(`Fehler: ${response.status} ${response.statusText}`);
-        }
-        const userInfo = await response.json();
-        
-        document.getElementById('Vorname').textContent = userInfo.first_name;
-        document.getElementById('Nachname').textContent = userInfo.last_name;
-        document.getElementById('welcomeUser').textContent = "Willkommen "+userInfo.first_name; 
-
-        const profileImg = document.getElementById('profilePicture');
-        if (profileImg && userInfo.color_code && userInfo.color_code !== "#000000") {
-            profileImg.style.filter = `drop-shadow(0px 0px 5px ${userInfo.color_code})`;
-        } else if (profileImg) {
-            profileImg.style.filter = "";
-        }
-
-        hideLoader();
-    } catch (error) {
-        hideLoader();
-        console.error("Error:", error);
-    }
-}
 
 
 //----------------------------------------------------------------------------------------------------------------- Account Edit
 
+// name Edit
 function editName() {
     const vorname = document.getElementById('Vorname').textContent;
     const nachname = document.getElementById('Nachname').textContent;
@@ -410,6 +418,7 @@ function editName() {
     document.getElementById('safeBtn1').style.display = 'inline-block';
 }
 
+// safe Name-Edit
 async function saveName() {
     const vorname = document.getElementById('editVorname').value || document.getElementById('editVorname').placeholder;
     const nachname = document.getElementById('editNachname').value || document.getElementById('editNachname').placeholder;
@@ -448,6 +457,7 @@ async function saveName() {
 }
 
 
+// password edit
 function editPassword(){
     document.getElementById('nameView').style.display = 'none';
     document.getElementById('passwordEdit').style.display = 'block';
@@ -455,6 +465,7 @@ function editPassword(){
     document.getElementById('safeBtn2').style.display = 'inline-block';
 }
 
+// safe password-Edit
 async function updatePassword(username, newPassword) {
     if (!username || !newPassword) {
         document.getElementById('passwordEdit').style.display = "none";
@@ -485,7 +496,7 @@ async function updatePassword(username, newPassword) {
 }
 
 
-
+// color-Editing Container handling
 function toggleColorContainer(){
     if(document.getElementById('colorContainer').style.display=="flex"){
         hideColorContainer();
@@ -500,6 +511,7 @@ function hideColorContainer(){
     document.getElementById('colorContainer').style.display="none";
 }
 
+// update User-Color
 async function changeUserColor(color) {
     
     showLoader();
@@ -540,8 +552,7 @@ async function changeUserColor(color) {
 
 
 
-
-//----------------------------------------------------------------------------------------------------------------- User - Report
+//----------------------------------------------------------------------------------------------------------------- Report Handling <User>
 
 function createReport() {
     document.getElementById('reportTitle').value = "";
@@ -601,16 +612,12 @@ async function submitReport() {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------- Admin - Report Handling
+//----------------------------------------------------------------------------------------------------------------- Report Handling <Admin>
 
 
 function goToAdminReportContainer(){
     document.getElementById('reportContainer').innerHTML=" ";
     loadAdminReports();
-}
-function goToAdminUserContainer(){
-    document.getElementById('reportContainer').innerHTML=" ";
-    loadAdminUsers();
 }
 
 async function loadAdminReports() {
@@ -712,6 +719,14 @@ async function deleteReport(reportTitle) {
 }
 
 
+
+//----------------------------------------------------------------------------------------------------------------- User Handling <Admin>
+
+function goToAdminUserContainer(){
+    document.getElementById('reportContainer').innerHTML=" ";
+    loadAdminUsers();
+}
+
 async function loadAdminUsers() {
     document.getElementById('AdminPage').style.display = "block";
     showLoader();
@@ -785,9 +800,6 @@ async function loadAdminUsers() {
     hideLoader();
 }
 
-
-
-
 async function deleteAdminUser(username) {
     const name = username;
     showLoader();
@@ -811,8 +823,6 @@ async function deleteAdminUser(username) {
     }
 }
 
-
-
 function changeUserAdminPwd(username){
     document.getElementById('adminPwdChange_name').innerText=username;
     openPwdChange();
@@ -826,8 +836,6 @@ function openPwdChange() {
 function closePwdChange() {
     document.getElementById("adminPwdChangeWrapper").classList.remove("show");
 }
-
-
 
 
 
@@ -884,7 +892,7 @@ async function showAllUser() {
 
 
 //-----------------------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------------------- Ab hier: Übung handling
+//----------------------------------------------------------------------------------------------------------------- Ab hier: Routine handling
 //-----------------------------------------------------------------------------------------------------------------
 
 //globale field for current status
@@ -1414,7 +1422,6 @@ async function loadCurrentExercise(username, device) {
 
 //----------------------------------------------------------------------------------------------------------------- Create Table
 
-
 function createExerciseRow(elementDetails, index) {
     let row = document.createElement("tr");
     row.setAttribute("data-index", index);
@@ -1500,6 +1507,7 @@ function addToExercise(element) {
 //----------------------------------------------------------------------------------------------------------------- enable dragAndDrop
 
 function makeTableDraggable() {
+    return; // temp. disabled
     const tbody = document.getElementById("exerciseTbody");
     let draggedRow = null;
 
@@ -1549,6 +1557,39 @@ function updateExerciseOrder() {
 }
 
 
+function moveElementUp(index){
+    showLoader();
+    let routineLength = currentExercise.length;
+    if(index <= 0) {
+        console.warn("Das Element ist bereits ganz oben");
+        hideLoader();
+        return;
+    }
+    let preUpper = currentExercise[index-1];
+    currentExercise[index-1] = currentExercise[index];
+    currentExercise[index] = preUpper;
+    safeUpdateExercise(currentExercise);
+    loadCurrentExercise(localStorage.getItem("user"), currentDevice);
+    hideLoader();
+}
+
+function moveElementDown(index){
+    showLoader();
+    let routineLength = currentExercise.length;
+    if(index >= routineLength-1){
+        console.warn("Das Element ist bereits ganz unten");
+        hideLoader();
+        return;
+    }
+    let temp = currentExercise[index+1];
+    currentExercise[index+1] = currentExercise[index];
+    currentExercise[index] = temp;
+    safeUpdateExercise(currentExercise);
+    loadCurrentExercise(localStorage.getItem("user"), currentDevice);
+    hideLoader();
+}
+
+
 //----------------------------------------------------------------------------------------------------------------- Update Routine Summary
 
 async function updateExerciseSummary() {
@@ -1586,6 +1627,9 @@ function selectElement() {
     document.getElementById('allElemBtn').style.border = "solid 2px black";
     getElements(null, null);
 }
+
+
+//----------------------------------------------------------------------------------------------------------------- Element-Filter Handling
 
 let activeFilter_difficulty = null;
 let activeFilter_group = null;
@@ -1644,7 +1688,6 @@ function filterByGroup(group, pressedBtn) {
     pressedBtn.style.backgroundColor="#777777";
     getFilteredElementList(activeFilter_difficulty, group);
 }
-
 
 
 //----------------------------------------------------------------------------------------------------------------- get filtered Elements
