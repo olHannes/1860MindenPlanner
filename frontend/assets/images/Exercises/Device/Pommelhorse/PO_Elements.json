@@ -1,5 +1,153 @@
 [
     {
+        "id": "PO_NE_01",
+        "bezeichnung": "zweite Schere vorwärts in direkter Folge",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_01.png"
+    },
+    {
+        "id": "PO_NE_02",
+        "bezeichnung": "zweite Schere rückwärts in direkter Folge",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_02.png"
+    },
+    {
+        "id": "PO_NE_03",
+        "bezeichnung": "Unterspreizen oder -kreisen rückwärts (360°)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_03.png"
+    },
+    {
+        "id": "PO_NE_04",
+        "bezeichnung": "Unterspreizen oder -kreisen vorwärts (360°) (auch als Angang)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_04.png"
+    },
+    {
+        "id": "PO_NE_05",
+        "bezeichnung": "Schweiz einfach",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_05.png"
+    },
+    {
+        "id": "PO_NE_06",
+        "bezeichnung": "Seitspreizen mit Wanderhüpfen 1/3 (ohne Schere)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_06.png"
+    },
+    {
+        "id": "PO_NE_07",
+        "bezeichnung": "zweite Kreisflanke in direkter Folge",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_07.png"
+    },
+    {
+        "id": "PO_NE_08",
+        "bezeichnung": "Kreisflanke im Wechselstütz",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_08.png"
+    },
+    {
+        "id": "PO_NE_09",
+        "bezeichnung": "Tschechenkehre als Angang",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_09.png"
+    },
+    {
+        "id": "PO_NE_10",
+        "bezeichnung": "Tschechenkehre in den Stütz rücklings",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_10.png"
+    },
+    {
+        "id": "PO_NE_11",
+        "bezeichnung": "Kehre in den Stütz rücklings",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_11.png"
+    },
+    {
+        "id": "PO_NE_12",
+        "bezeichnung": "Wander- oder Drehspreizen",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_12.png"
+    },
+    {
+        "id": "PO_NE_13",
+        "bezeichnung": "Wandern seitwärts 1/3 (in den Stütz rücklings)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_13.png"
+    },
+    {
+        "id": "PO_NE_14",
+        "bezeichnung": "Kehre mit 90° aus der Kreisflanke",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_14.png"
+    },
+    {
+        "id": "PO_NE_15",
+        "bezeichnung": "Rückflanken mit 1/4 Drehung in den Querstand",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.05",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_15.png"
+    },
+    {
+        "id": "PO_NE_16",
+        "bezeichnung": "90°-Wende aus der Flanke oder einem anderen Element",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_16.png"
+    },
+    
+
+
+
+    {
         "id": "PO_A_01",
         "bezeichnung": "Schere vw.",
         "name": "",
