@@ -656,6 +656,32 @@ button {
     margin: 60px auto;
 }
 
+#colorContainer {
+    position: absolute;
+    display: none;
+    left: 50%;
+    top: 17dvh;
+    transform: translateX(-50%);
+    z-index: 1;
+    width: 50dvw;
+    justify-content: space-between;
+    background-color: #ffffff70;
+}
+
+.colorPick {
+    width: 7vw;
+    height: 7vw;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 5px;
+    border: 2px solid #000;
+}
+
+.colorPick:hover {
+    border: 2px solid #fff;
+}
+
+
 #nameView {
     text-align: center;
     margin-top: 15px;

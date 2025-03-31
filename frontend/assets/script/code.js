@@ -377,6 +377,14 @@ async function setProfileName() {
         document.getElementById('Vorname').textContent = userInfo.first_name;
         document.getElementById('Nachname').textContent = userInfo.last_name;
         document.getElementById('welcomeUser').textContent = "Willkommen "+userInfo.first_name; 
+
+        const profileImg = document.getElementById('profilePicture');
+        if (profileImg && userInfo.color_code && userInfo.color_code !== "#000000") {
+            profileImg.style.filter = `drop-shadow(0px 0px 5px ${userInfo.color_code})`;
+        } else if (profileImg) {
+            profileImg.style.filter = "";
+        }
+
         hideLoader();
     } catch (error) {
         hideLoader();
@@ -475,6 +483,61 @@ async function updatePassword(username, newPassword) {
     document.getElementById('passwordEdit').style.display = "none";
     document.getElementById('nameView').style.display = "block";   
 }
+
+
+
+function toggleColorContainer(){
+    if(document.getElementById('colorContainer').style.display=="flex"){
+        hideColorContainer();
+    } else {
+        displayColorContainer();
+    }
+}
+function displayColorContainer(){
+    document.getElementById('colorContainer').style.display="flex";
+}
+function hideColorContainer(){
+    document.getElementById('colorContainer').style.display="none";
+}
+
+async function changeUserColor(color) {
+    
+    showLoader();
+    let username = localStorage.getItem("user");
+    if (!username || !color) {
+        console.error("Fehlende Parameter: Benutzername oder Farbe");
+        return;
+    }
+    try {
+        const response = await fetch("https://one860mindenplanner.onrender.com/account/user/colorChange", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                firstName: username,
+                colorCode: color
+            })
+        });
+        const result = await response.json();
+        if (!response.ok) {
+            throw new Error(result.message || `Fehler: ${response.status}`);
+        }
+        console.log("Farbcode erfolgreich aktualisiert:", color);
+        const profileImg = document.getElementById('profilePicture');
+        if (profileImg && color !== "#000000") {
+            profileImg.style.filter = `drop-shadow(0px 0px 5px ${color})`;
+        } else if (profileImg) {
+            profileImg.style.filter = "";
+        }
+        
+    } catch (error) {
+        console.error("Fehler beim Ändern der Farbe:", error);
+    }
+    hideLoader();
+    hideColorContainer();
+}
+
 
 
 
@@ -802,8 +865,13 @@ async function showAllUser() {
         memberDiv.classList.add('member');
         memberDiv.onclick = () => showMemberData(user.firstName);
 
-        memberDiv.innerHTML = `
-            <img src="frontend/assets/images/system/profile_icon.png" alt="profile icon">
+        const profileImg = document.createElement('img');
+        profileImg.src = "frontend/assets/images/system/profile_icon.png";
+        profileImg.alt = "profile icon";
+        profileImg.style.filter = `drop-shadow(0px 0px 5px ${user.color_code})`;
+
+        memberDiv.appendChild(profileImg);
+        memberDiv.innerHTML += `
             <span class="name-de">${user.firstName}</span>
             <span class="name-en">${user.lastName}</span>
         `;
@@ -812,6 +880,7 @@ async function showAllUser() {
     });
     hideLoader();
 }
+
 
 
 //-----------------------------------------------------------------------------------------------------------------

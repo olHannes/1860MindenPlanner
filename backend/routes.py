@@ -167,7 +167,7 @@ def register():
 
     print("Try to register: ", first_name, " ", last_name)
     hashed_password = generate_password_hash(password)
-    users_collection.insert_one({'firstName': first_name, 'lastName': last_name, 'password': hashed_password, 'online': 0})
+    users_collection.insert_one({'firstName': first_name, 'lastName': last_name, 'password': hashed_password, 'online': 0, 'color_code': '#000000'})
 
     return jsonify({"message": "Registrierung erfolgreich!"}), 200
 
@@ -287,7 +287,8 @@ def get_user_info():
 
     return jsonify({
         "first_name": user['firstName'],
-        "last_name": user['lastName']
+        "last_name": user['lastName'],
+        "color_code": user.get('color_code', '#000000') 
     }), 200
 
 
@@ -315,7 +316,6 @@ def changeData():
         {"$set": {"firstName": new_first_name, "lastName": new_last_name}}
     )
 
-    # Falls der User eingeloggt ist, aktualisieren wir auch seine Session
     sessions_collection.update_one(
         {"username": username},
         {"$set": {"username": new_first_name}}
@@ -328,16 +328,39 @@ def changeData():
     }), 200
 
 
+################################################################################################### set Color Code
+
+@main_bp.route('/account/user/colorChange', methods=['POST'])
+def change_user_color():
+    data = request.get_json()
+    first_name = data.get('firstName')
+    new_color = data.get('colorCode')
+    
+    if not isinstance(new_color, str) or not new_color.startswith('#') or len(new_color) != 7:
+        return jsonify({"message": "Ungültiges Farbformat! Verwende das Format '#xxxxxx'."}), 400
+    
+    user = users_collection.find_one({"firstName": first_name})
+    if not user:
+        return jsonify({"message": "Benutzer nicht gefunden!"}), 404
+    
+    users_collection.update_one({"firstName": first_name}, {"$set": {"color_code": new_color}})
+    
+    return jsonify({"message": "Farbcode erfolgreich aktualisiert!"}), 200
+
+
 ################################################################################################### Get Users
 
 @main_bp.route('/users/getUsers', methods=['GET'])
 def get_users():
-    users = list(users_collection.find({}, {"_id": 0, "firstName": 1, "lastName": 1, "online": 1}))
+    users = list(users_collection.find({}, {"_id": 0, "firstName": 1, "lastName": 1, "online": 1, "color_code": 1}))
     print("Try to get All Users: ", users)
     return jsonify(users), 200
 
 
 
+###################################################################################################
+###################################################################################################
+###################################################################################################
 
 
 

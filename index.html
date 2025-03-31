@@ -146,8 +146,15 @@
     <div id="panel0" class="panel">
         <h2>Account Settings</h2>
 
-        <img src="frontend/assets/images/system/profile_icon.png" alt="profile picture" id="profilePicture">
+        <img src="frontend/assets/images/system/profile_icon.png" alt="profile picture" id="profilePicture" onclick="toggleColorContainer();">
 
+        <div id="colorContainer">
+            <div id="color1" class="colorPick" style="background-color: #FF5733;" onclick="changeUserColor('#FF5733');"></div>
+            <div id="color2" class="colorPick" style="background-color: #28A745;" onclick="changeUserColor('#28A745');"></div>
+            <div id="color3" class="colorPick" style="background-color: #007BFF;" onclick="changeUserColor('#007BFF');"></div>
+            <div id="color4" class="colorPick" style="background-color: #FFC107;" onclick="changeUserColor('#FFC107');"></div>
+            <div id="color5" class="colorPick" style="background-color: #6F42C1;" onclick="changeUserColor('#6F42C1');"></div>            
+        </div>
         <div id="nameView">
             <div>
                 <span id="Vorname">Vorname</span>
