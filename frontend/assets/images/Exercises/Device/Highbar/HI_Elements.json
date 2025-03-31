@@ -1,5 +1,188 @@
 [
     {
+        "id": "HI_NE_01",
+        "bezeichnung": "Stemme rückwärts in den Stütz",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_01.png"
+    },
+    {
+        "id": "HI_NE_02",
+        "bezeichnung": "gesprungene Pendeldrehung (min. 45°)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_02.png"
+    },
+    {
+        "id": "HI_NE_03",
+        "bezeichnung": "Umspringen aus Vor- oder Rückschwung",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_03.png"
+    },
+    {
+        "id": "HI_NE_04",
+        "bezeichnung": "Kippaufschwung, Überkehren in den Hang",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_04.png"
+    },
+    {
+        "id": "HI_NE_05",
+        "bezeichnung": "Langhangkippe in den Stütz (auch Laufkippe o. gespreizt in der LK 4)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_05.png"
+    },
+    {
+        "id": "HI_NE_06",
+        "bezeichnung": "Fallkippe in den Stütz",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_06.png"
+    },
+    {
+        "id": "HI_NE_07",
+        "bezeichnung": "Hüftumschwung rückwärts mit geschlossenen o. gespreizten Beinen (in LK 4 zwei versch. Elemente)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_07.png"
+    },
+    {
+        "id": "HI_NE_08",
+        "bezeichnung": "Hüftumschwung vorwärts mit geschlossenen o. gespreizten Beinen (in LK 4 zwei versch. Elemente)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_08.png"
+    },
+    {
+        "id": "HI_NE_9",
+        "bezeichnung": "Felgumschung (min. waagerecht)",
+        "name": "freie Felge",
+        "elementegruppe": "3",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_09.png"
+    },
+    {
+        "id": "HI_NE_10",
+        "bezeichnung": "Felgabschwung (frei, aufgegrätscht o. aufgebückt) mit 1/2 Drehung in den Vorschwung",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_10.png"
+    },
+    {
+        "id": "HI_NE_11",
+        "bezeichnung": "Aufgrätsch- oder Aufbückumschwung zum Handstand",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_11.png"
+    },
+    {
+        "id": "HI_NE_12",
+        "bezeichnung": "Kippaufschwung rücklings vorwärts / rückwärts (auch gespreizt) (in LK 4 2 Elemente)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_12.png"
+    },
+    {
+        "id": "HI_NE_13",
+        "bezeichnung": "Aufschwung (Hüftaufzug) oder Riesenfelgaufschwung in den Stütz",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_03.png"
+    },
+    {
+        "id": "HI_NE_14",
+        "bezeichnung": "Vorschwung im Hang rücklings, 1/2 Drehung in den Hang o. Stütz",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_14.png"
+    },
+    {
+        "id": "HI_NE_15",
+        "bezeichnung": "Felab- o. Aufschwung, Umspringen in den Ellgriff und Aufstemmen beim Rückschwung in Stützhöhe",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_15.png"
+    },
+    {
+        "id": "HI_NE_16",
+        "bezeichnung": "Grätschumschwung vw. (Endo) oder rückwärts (Stalder) min. waagerecht",
+        "name": "Endo / Stalder",
+        "elementegruppe": "3",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/system/profile_icon.png"
+    },
+    {
+        "id": "HI_NE_17",
+        "bezeichnung": "Hocke, Bücke oder Grätsche",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.05",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_17.png"
+    },
+    {
+        "id": "HI_NE_18",
+        "bezeichnung": "Salto rückwärts gehockt (auch mit 1/2 Drehung)",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.05",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_18.png"
+    },
+    {
+        "id": "HI_NE_19",
+        "bezeichnung": "Felgabschwung (frei, aufgegrätscht o. aufgebückt, auch mit 1/2 Drehung oder Salto vw.)",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.05",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_19.png"
+    },
+    {
+        "id": "HI_NE_20",
+        "bezeichnung": "Salto vw. gehockt (auch mit 1/2 Drehung)",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.05",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_20ö.png"
+    },
+
+
+
+    {
         "id": "HI_A_01",
         "bezeichnung": "Stemme rw. i. d. Handstand",
         "name": "",
