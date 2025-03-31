@@ -1,5 +1,127 @@
 [
     {
+        "id": "FL_NE_01",
+        "bezeichnung": "Winkel- oder Grätschwinkelstütz (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/NE/FL_NE_01.png"
+    },
+    {
+        "id": "FL_NE_02",
+        "bezeichnung": "Ellenbogenstützwaage (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/NE/FL_NE_02.png"
+    },
+    {
+        "id": "FL_NE_03",
+        "bezeichnung": "Sprung in den Liegestütz (auch mit 1/2 Drehung)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/NE/FL_NE_03.png"
+    },
+    {
+        "id": "FL_NE_04",
+        "bezeichnung": "Sprung oder Drehung auf einem Bein (min. 1/1 Drehung)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/NE/FL_NE_04.png"
+    },
+    {
+        "id": "FL_NE_05",
+        "bezeichnung": "flüchtiger Handstand (auch mit Abrollen)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/NE/FL_NE_05.png"
+    },
+    {
+        "id": "FL_NE_06",
+        "bezeichnung": "Rolle rückwärts durch den Handstand",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/NE/FL_NE_06.png"
+    },
+    {
+        "id": "FL_NE_07",
+        "bezeichnung": "Healy",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/NE/FL_NE_07.png"
+    },
+    {
+        "id": "FL_NE_08",
+        "bezeichnung": "Handstützüberschlag seitwärts (Rad)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/NE/FL_NE_08.png"
+    },
+    {
+        "id": "FL_NE_09",
+        "bezeichnung": "Bogengang rückwärts",
+        "name": "Menichelli",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/NE/FL_NE_09.png"
+    },
+    {
+        "id": "FL_NE_10",
+        "bezeichnung": "Variante des Breakdance",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/NE/FL_NE_10.png"
+    },
+    {
+        "id": "FL_NE_11",
+        "bezeichnung": "Kopfstand (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/NE/FL_NE_11.png"
+    },
+    {
+        "id": "FL_NE_12",
+        "bezeichnung": "Sprung- / Flugrolle",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/NE/FL_NE_12.png"
+    },
+    {
+        "id": "FL_NE_13",
+        "bezeichnung": "Rondat",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/NE/FL_NE_13.png"
+    },
+
+
+
+
+
+    {
         "id": "FL_A_01",
         "bezeichnung": "Handstand, Senken i. d. Winkel- o. Grätschwinkelstütz (2s)",
         "name": "",
