@@ -1,5 +1,83 @@
 [
     {
+        "id": "RI_NE_01",
+        "bezeichnung": "Rückschwung im Stütz zum Ablegen in den Hang",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/NE/RI_NE_01.png"
+    },
+    {
+        "id": "RI_NE_02",
+        "bezeichnung": "Langsames gestrecktes Senken über die Hangwaage rücklings in den Hang rücklings",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/NE/RI_NE_02.png"
+    },
+    {
+        "id": "RI_NE_03",
+        "bezeichnung": "gestrecktes Heben in den Strecksturzhang (durch die Hangwaage vorlings) -> Beugen der Arme erlaubt",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/NE/RI_NE_03.png"
+    },
+    {
+        "id": "RI_NE_04",
+        "bezeichnung": "Zugstemme in den Stütz",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/NE/RI_NE_04.png"
+    },
+    {
+        "id": "RI_NE_05",
+        "bezeichnung": "Rückschwung in die Hangwaage rücklings (2s)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.05",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/NE/RI_NE_05.png"
+    },
+    {
+        "id": "RI_NE_06",
+        "bezeichnung": "Salto vorwärts gehockt (auch mit 1/2 oder 1/1 Drehung)",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.05",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/NE/RI_NE_06.png"
+    },
+    {
+        "id": "RI_NE_07",
+        "bezeichnung": "Salto rückwärts gehockt (auch mit 1/2 oder 1/1 Drehung)",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.05",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/NE/RI_NE_07.png"
+    },
+    {
+        "id": "RI_NE_08",
+        "bezeichnung": "Stemme rückwärts und Salto rückwärts gehockt",
+        "name": "Köste",
+        "elementegruppe": "4",
+        "wertigkeit": "0.05",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/NE/RI_NE_08.png"
+    },
+
+
+
+
+
+
+    {
         "id": "RI_A_01",
         "bezeichnung": "Stemme vw. i. d. Stütz",
         "name": "",
