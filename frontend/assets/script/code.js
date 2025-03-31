@@ -869,6 +869,7 @@ async function showAllUser() {
     showLoader();
     const data = await getAllUser();
     data.forEach(user => {
+        if (user.firstName === "admin") return; 
         const memberDiv = document.createElement('div');
         memberDiv.classList.add('member');
         memberDiv.onclick = () => showMemberData(user.firstName);
