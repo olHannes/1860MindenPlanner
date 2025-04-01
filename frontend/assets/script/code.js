@@ -1444,6 +1444,12 @@ async function loadCurrentExercise(username, device, remote) {
     table.appendChild(tbody);
     exerciseContainer.appendChild(table);
 
+    let safeButton = document.createElement("button");
+    safeButton.innerText="Übung speichern";
+    safeButton.id="safeRoutineBtn";
+    safeButton.addEventListener("click", safeExercise);
+    exerciseContainer.appendChild(safeButton);
+
     let summaryContainer = document.createElement("div");
     summaryContainer.id = "exercise-summary-container";
     exerciseContainer.appendChild(summaryContainer);

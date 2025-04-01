@@ -1576,7 +1576,10 @@ button {
 }
 
 
-
+#safeRoutineBtn {
+    color: white;
+    background-color: #8c7c34;
+}
 
 
 #exercise-summary-container {
