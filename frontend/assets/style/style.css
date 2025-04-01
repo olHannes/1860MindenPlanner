@@ -1584,11 +1584,23 @@ button {
     cursor: pointer;
     font-size: 18px;
     margin-top: 5px;
+    display: flex;
 }
 
 .device-button:hover {
     background-color: #bbb;
 }
+
+.device-name {
+    text-align: left;
+    flex-grow: 1;
+}
+
+.device-difficulty {
+    text-align: right;
+    font-weight: bold;
+}
+
 
 .exercise-table {
     width: 100%;

@@ -988,9 +988,18 @@ async function showMemberData(username) {
     for (const { device, exercises } of userExerciseList) {
         let deviceButton = document.createElement("button");
         deviceButton.className = "device-button";
-        deviceButton.innerText = deviceNames[device];
+
+        let deviceNameSpan = document.createElement("span");
+        deviceNameSpan.className = "device-name";
+        deviceNameSpan.innerText = deviceNames[device];
+
+        let difficultySpan = document.createElement("span");
+        difficultySpan.className = "device-difficulty";
+
+        deviceButton.appendChild(deviceNameSpan);
+        deviceButton.appendChild(difficultySpan);
         deviceButton.setAttribute("onclick", `toggleExercise('${device}')`);
-        
+
         let exerciseDiv = document.createElement("div");
         exerciseDiv.id = `exercise-${device}`;
         exerciseDiv.style.display = "none";
@@ -1028,6 +1037,9 @@ async function showMemberData(username) {
 
             // ✅ Validierung
             let { warnings, errors, totalDifficulty, totalElements, groupList, isComplete } = validRoutine(elements, device);
+
+            //set total difficulty to device Btn
+            difficultySpan.innerText = totalDifficulty.toFixed(2);
 
             // ⚠️ Fehler und Warnungen
             let summary = document.createElement("div");
