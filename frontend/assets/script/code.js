@@ -1374,7 +1374,7 @@ function createRoutine() {
     );
     document.getElementById('exerciseCreationPanel').style.display = 'block';
     document.getElementById("selected-exercises-list").innerHTML = "";
-    loadCurrentExercise(localStorage.getItem("user"), currentDevice);
+    loadCurrentExercise(localStorage.getItem("user"), currentDevice, true);
 }
 
 function closeDevice() {
@@ -1383,12 +1383,14 @@ function closeDevice() {
         document.getElementById('detailedElementInfo').style.display="none";
         document.getElementById('add-exercise-btn').style.display="block";
         document.getElementById('selected-exercises-list').style.display="flex";
-        loadCurrentExercise(localStorage.getItem("user"), currentDevice);
+        loadCurrentExercise(localStorage.getItem("user"), currentDevice, false);
+        safeExercise();
     }
     else if(pageDepth == 1){
         document.getElementById('exerciseCreationPanel').style.display="none";
         document.getElementById('infoBlock').style.display="block";
         document.getElementById('createRoutineBtn').style.display="block";
+        safeExercise();
     }
     else if(pageDepth == 0){
         document.getElementById('EquipmentExercise').style.display="none";
@@ -1401,13 +1403,14 @@ function closeDevice() {
 
 //----------------------------------------------------------------------------------------------------------------- Load safed Exercise
 
-async function loadCurrentExercise(username, device) {
+async function loadCurrentExercise(username, device, remote) {
     if (!username || !device) {
         console.log("Invalid Arguments for loading current Exercise", username, ", ", device);
         return;
     }
-
-    await requestUserExercise(username, device);
+    if(remote){
+        await requestUserExercise(username, device);
+    }
     console.log("Die Aktuelle Übung ist wie folgt:", currentExercise);
 
     if (!currentExercise || !Array.isArray(currentExercise)) {
@@ -1445,7 +1448,6 @@ async function loadCurrentExercise(username, device) {
     summaryContainer.id = "exercise-summary-container";
     exerciseContainer.appendChild(summaryContainer);
     updateExerciseSummary();
-    makeTableDraggable();
 }
 
 
@@ -1469,24 +1471,30 @@ function createExerciseRow(elementDetails, index) {
     imgCell.appendChild(img);
 
     let actionCell = document.createElement("td");
-    
-    let trashIcon = document.createElement("span");
-    trashIcon.innerHTML = "🗑️";
-    trashIcon.style.cursor = "pointer";
-    trashIcon.addEventListener("click", () => removeElementFromExercise(index));
-    
-    let upArrow = document.createElement("span");
+    actionCell.className = "action-cell";
+
+    let arrowContainer = document.createElement("div");
+    arrowContainer.className = "arrow-container";
+
+    let upArrow = document.createElement("button");
     upArrow.innerHTML = "⬆️";
-    upArrow.style.cursor = "pointer";
+    upArrow.className = "arrow-btn";
     upArrow.addEventListener("click", () => moveElementUp(index));
 
-    let downArrow = document.createElement("span");
+    let downArrow = document.createElement("button");
     downArrow.innerHTML = "⬇️";
-    downArrow.style.cursor = "pointer";
+    downArrow.className = "arrow-btn";
     downArrow.addEventListener("click", () => moveElementDown(index));
 
-    actionCell.appendChild(upArrow);
-    actionCell.appendChild(downArrow);
+    arrowContainer.appendChild(upArrow);
+    arrowContainer.appendChild(downArrow);
+
+    let trashIcon = document.createElement("button");
+    trashIcon.innerHTML = "🗑️";
+    trashIcon.className = "delete-btn";
+    trashIcon.addEventListener("click", () => removeElementFromExercise(index));
+
+    actionCell.appendChild(arrowContainer);
     actionCell.appendChild(trashIcon);
 
     row.appendChild(numCell);
@@ -1496,6 +1504,7 @@ function createExerciseRow(elementDetails, index) {
 
     return row;
 }
+
 
 
 //----------------------------------------------------------------------------------------------------------------- remove Element from routine
@@ -1519,7 +1528,7 @@ function removeElementFromExercise(index) {
     });
 
     console.log("Element erfolgreich gelöscht: ", currentExercise);
-    safeUpdateExercise(currentExercise);
+    //safeUpdateExercise(currentExercise);
     updateExerciseSummary();
 }
 
@@ -1529,62 +1538,11 @@ function removeElementFromExercise(index) {
 function addToExercise(element) {
     document.getElementById('detailedElementInfo').style.display="none";
     currentExercise.push(element.id);
-    safeUpdateExercise(currentExercise);
-}
-
-
-//----------------------------------------------------------------------------------------------------------------- enable dragAndDrop
-
-function makeTableDraggable() {
-    return; // temp. disabled
-    const tbody = document.getElementById("exerciseTbody");
-    let draggedRow = null;
-
-    tbody.addEventListener("dragstart", (event) => {
-        draggedRow = event.target;
-        draggedRow.style.opacity = 0.5;
-    });
-
-    tbody.addEventListener("dragover", (event) => {
-        event.preventDefault();
-        let targetRow = event.target.closest("tr");
-        if (targetRow && targetRow !== draggedRow) {
-            let rect = targetRow.getBoundingClientRect();
-            let next = (event.clientY - rect.top) / (rect.bottom - rect.top) > 0.5;
-            tbody.insertBefore(draggedRow, next ? targetRow.nextSibling : targetRow);
-        }
-    });
-
-    tbody.addEventListener("dragend", () => {
-        draggedRow.style.opacity = 1;
-        draggedRow = null;
-        updateExerciseOrder();
-    });
+    updateExerciseSummary();
 }
 
 
 //----------------------------------------------------------------------------------------------------------------- change Routine Order
-
-function updateExerciseOrder() {
-    let newOrder = [];
-    document.querySelectorAll("#exerciseTbody tr").forEach((row, index) => {
-        row.querySelector("td:first-child").innerText = index + 1;
-        newOrder.push(row.getAttribute("data-index"));
-    });
-    
-    let tempList = [];
-    newOrder.forEach(elementIndex => {
-        if (currentExercise.length >= elementIndex && currentExercise.at(elementIndex)) {
-            tempList.push(currentExercise.at(elementIndex));
-        }
-    });
-    currentExercise = tempList;
-    console.log("Übung nach der neuen Reihenfolge: ", currentExercise);
-
-    safeUpdateExercise(currentExercise);
-    updateExerciseSummary();
-}
-
 
 function moveElementUp(index){
     showLoader();
@@ -1597,8 +1555,7 @@ function moveElementUp(index){
     let preUpper = currentExercise[index-1];
     currentExercise[index-1] = currentExercise[index];
     currentExercise[index] = preUpper;
-    safeUpdateExercise(currentExercise);
-    loadCurrentExercise(localStorage.getItem("user"), currentDevice);
+    loadCurrentExercise(localStorage.getItem("user"), currentDevice, false);
     hideLoader();
 }
 
@@ -1613,8 +1570,7 @@ function moveElementDown(index){
     let temp = currentExercise[index+1];
     currentExercise[index+1] = currentExercise[index];
     currentExercise[index] = temp;
-    safeUpdateExercise(currentExercise);
-    loadCurrentExercise(localStorage.getItem("user"), currentDevice);
+    loadCurrentExercise(localStorage.getItem("user"), currentDevice, false);
     hideLoader();
 }
 
@@ -1626,7 +1582,7 @@ async function updateExerciseSummary() {
         currentExercise.map(el => getElementDetails(el))
     );
 
-    let device = "FL";
+    let device = currentDevice;
     let { warnings, errors, totalDifficulty, totalElements, groupList, isComplete } = validRoutine(elementDetailsList, device);
 
     let summaryContainer = document.getElementById("exercise-summary-container");
@@ -1634,9 +1590,9 @@ async function updateExerciseSummary() {
 
     summaryContainer.innerHTML = `
         ${warnings.length > 0 ? `<p style="color: orange;"><strong>⚠️ Warnungen:</strong> ${warnings.join(" | ")}</p>` : ""}
-        <p><strong>Gesamtanzahl der Elemente:</strong> ${totalElements}</p>
+        <p><strong>Anzahl der Elemente:</strong> ${totalElements}</p>
         <p><strong>Gesamte Schwierigkeit:</strong> ${totalDifficulty.toFixed(2)}</p>
-        <p><strong>Elementgruppen:</strong> ${groupList || "Keine"}</p>
+        <p><strong>vorhandene Elementgruppen:</strong> ${groupList || "Keine"}</p>
         <p><strong>Übung vollständig:</strong> 
             <span style="color: ${isComplete ? "green" : "red"}; font-weight: bold;">
                 ${isComplete ? "✅ Ja" : "❌ Nein"}
@@ -1823,12 +1779,13 @@ async function getElementDetails(elementId) {
 
 
 //----------------------------------------------------------------------------------------------------------------- safe Routine
+function safeExercise(){
+    safeUpdateExercise(currentExercise);
+}
 
 async function safeUpdateExercise(elementList) {
     const username = localStorage.getItem("user");
     const device = currentDevice;
-
-    console.log(currentExercise);
 
     if (!username || !device) {
         console.error("Benutzername oder Gerät nicht gefunden.");

@@ -1569,6 +1569,11 @@ button {
     background-color: #f0f0f0;
 }
 
+.action-cell {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
 
 
 
