@@ -333,6 +333,22 @@ input {
     background-color: #45a049;
 }
 
+.cancleBtn {
+    padding: 7px 15px;
+    background-color: #7f2c2c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 50%;
+    margin-top: 5px;
+    transform: translateX(-50%);
+}
+
+.cancleBtn:hover {
+    background-color: #4a1c1c;
+}
+
 #editPasswordBtn {
     position: absolute;
     white-space: nowrap;

@@ -171,11 +171,13 @@
                     <input type="text" id="editVorname">
                     <input type="text" id="editNachname">
                     <button class="safeBtn" id="safeBtn1" onclick="saveName();" style="display: none;">Speichern</button>
+                    <button class="cancleBtn" id="cancleBtn1" onclick="cancleEdits();" style="display: none;">Abbrechen</button>
                 </div>
 
                 <div id="passwordEdit" style="display: none;">
                     <input type="text" id="editPassword_1" placeholder="neues Passwort">
                     <button class="safeBtn" id="safeBtn2" onclick="updatePassword(localStorage.getItem('user'), document.getElementById('editPassword_1').value);" style="display: none;">Speichern</button>
+                    <button class="cancleBtn" id="cancleBtn2" onclick="cancleEdits();" style="display: none;">Abbrechen</button>
                 </div>
             </div>
         </div>

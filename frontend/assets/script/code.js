@@ -416,9 +416,9 @@ function editName() {
     document.getElementById('editVorname').value = '';
     document.getElementById('editNachname').value = '';
 
-    document.getElementById('nameView').style.display = 'none';
     document.getElementById('nameEdit').style.display = 'block';
     document.getElementById('safeBtn1').style.display = 'inline-block';
+    document.getElementById('cancleBtn1').style.display = 'inline-block';
 }
 
 // safe Name-Edit
@@ -462,10 +462,10 @@ async function saveName() {
 
 // password edit
 function editPassword(){
-    document.getElementById('nameView').style.display = 'none';
     document.getElementById('passwordEdit').style.display = 'block';
     document.getElementById('editPassword_1').value = "";
     document.getElementById('safeBtn2').style.display = 'inline-block';
+    document.getElementById('cancleBtn2').style.display = 'inline-block';
 }
 
 // safe password-Edit
@@ -497,6 +497,12 @@ async function updatePassword(username, newPassword) {
     document.getElementById('passwordEdit').style.display = "none";
     document.getElementById('nameView').style.display = "block";   
 }
+
+function cancleEdits(){
+    document.getElementById('nameEdit').style.display="none";
+    document.getElementById('passwordEdit').style.display="none";
+}
+
 
 
 // color-Editing Container handling
