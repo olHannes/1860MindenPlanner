@@ -1,0 +1,375 @@
+[
+    {
+        "id": "VA_2_01",
+        "bezeichnung": "Überschlag vw.",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "1.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_01.png"
+    },
+    {
+        "id": "VA_2_02",
+        "bezeichnung": "Überschlag vw. m. 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "1.8",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_02.png"
+    },
+    {
+        "id": "VA_2_03",
+        "bezeichnung": "Überschlag vw. m. 1/1 Drehung",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "2.0",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_03.png"
+    },
+    {
+        "id": "VA_2_04",
+        "bezeichnung": "Überschlag vw. m. 3/2 Drehung",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "2.2",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_04.png"
+    },
+    {
+        "id": "VA_2_05",
+        "bezeichnung": "Überschlag vw. m. 2/1 Drehung",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "2.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_05.png"
+    },
+    {
+        "id": "VA_2_06",
+        "bezeichnung": "Überschlag vw. u. Salto vw. geh.",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "2.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_06.png"
+    },
+    {
+        "id": "VA_2_07",
+        "bezeichnung": "Überschlag vw. u. Salto vw. geh. m. 1/2 Drehung (o. Cuervo geh.)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "2.8",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_07.png"
+    },
+    {
+        "id": "VA_2_08",
+        "bezeichnung": "Überschlag vw. u. Salto vw. geb.",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "2.8",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_08.png"
+    },
+    {
+        "id": "VA_2_09",
+        "bezeichnung": "Überschlag vw. u. Salto vw. geb. m. 1/2 Drehung (o. Cuervo geb.)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "2.8",
+        "dismount": true,
+        "image_path": "frontend/assets/images/system/profile_icon.png"
+    },
+    {
+        "id": "VA_2_10",
+        "bezeichnung": "Überschlag vw. u. Salto vw. gestr.",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "3.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_10.png"
+    },
+    {
+        "id": "VA_2_11",
+        "bezeichnung": "Überschlag vw. u. Salto vw. gestr. m. 1/2 Drehung (Cuervo gestr.)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "4.0",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_11.png"
+    },
+
+
+
+
+
+
+    {
+        "id": "VA_3_01",
+        "bezeichnung": "Überschlag sw. m. 1/4 Drehung",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "1.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_01.png"
+    },
+    {
+        "id": "VA_3_02",
+        "bezeichnung": "Überschlag sw. m. 3/4 Drehung",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "1.8",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_02.png"
+    },
+    {
+        "id": "VA_3_03",
+        "bezeichnung": "Überschlag sw. m. 5/4 Drehung",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "2.0",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_03.png"
+    },
+    {
+        "id": "VA_3_04",
+        "bezeichnung": "Überschlag sw. m. 1/4 Drehung u. Salto rw. geh.",
+        "name": "Tsukahara",
+        "elementegruppe": "3",
+        "wertigkeit": "2.2",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_04.png"
+    },
+    {
+        "id": "VA_3_05",
+        "bezeichnung": "Tsukahara geb.",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "2.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_05.png"
+    },
+    {
+        "id": "VA_3_06",
+        "bezeichnung": "Tsukahara geh. m. 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "2.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_06.png"
+    },
+    {
+        "id": "VA_3_07",
+        "bezeichnung": "Überschlag sw. m. 1/4 Drehung u. Salto vw. geh. m. 1/2 Drehung o. Tsukahara geh. m. 1/1 Drehung",
+        "name": "Kasamatsu",
+        "elementegruppe": "3",
+        "wertigkeit": "2.8",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_07.png"
+    },
+    {
+        "id": "VA_3_08",
+        "bezeichnung": "Tsukahara gestr.",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "3.2",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_08.png"
+    },
+    {
+        "id": "VA_3_09",
+        "bezeichnung": "Tsukahara gestr. m. 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "3.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_09.png"
+    },
+    {
+        "id": "VA_3_10",
+        "bezeichnung": "Tsukahara gestr. m. 1/1 Drehung o. Kasamatsu gestr.",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "4.0",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_10.png"
+    },
+    {
+        "id": "VA_3_11",
+        "bezeichnung": "Tsukahara geh. m. Salto rw. geh. ",
+        "name": "Yeo",
+        "elementegruppe": "3",
+        "wertigkeit": "5.2",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_11.png"
+    },
+    {
+        "id": "VA_3_12",
+        "bezeichnung": "Tsukahara geb. m. Salto rw. geb.",
+        "name": "Lu Yu Fu",
+        "elementegruppe": "3",
+        "wertigkeit": "5.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_12.png"
+    },
+    {
+        "id": "VA_3_13",
+        "bezeichnung": "Doppel Tsukahara geh. m. 1/1 Drehung",
+        "name": "Ri Se Gwang",
+        "elementegruppe": "3",
+        "wertigkeit": "6.0",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_13.png"
+    },
+    
+
+
+
+
+
+    {
+        "id": "VA_4_01",
+        "bezeichnung": "Rondat u. Überschlag rw.",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "1.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_01.png"
+    },
+    {
+        "id": "VA_4_02",
+        "bezeichnung": "Rondat u. Überschlag rw. m. 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "1.8",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_02.png"
+    },
+    {
+        "id": "VA_4_03",
+        "bezeichnung": "Rondat u. Überschlag rw. m. 1/1 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "2.0",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_03.png"
+    },
+    {
+        "id": "VA_4_04",
+        "bezeichnung": "Rondat u. Überschlag rw. u. Salto rw. geh.",
+        "name": "Yurchenko",
+        "elementegruppe": "4",
+        "wertigkeit": "2.2",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_04.png"
+    },
+    {
+        "id": "VA_4_05",
+        "bezeichnung": "Yurchenko geh. m. 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "2.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_05.png"
+    },
+    {
+        "id": "VA_4_06",
+        "bezeichnung": "Yurchenko geh. m. 1/1 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "2.8",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_06.png"
+    },
+    {
+        "id": "VA_4_07",
+        "bezeichnung": "Yurchenko geh. m. 3/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "3.0",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_07.png"
+    },
+    {
+        "id": "VA_4_08",
+        "bezeichnung": "Yurchenko geh. m. 2/1 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "3.2",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_08.png"
+    },
+    {
+        "id": "VA_4_09",
+        "bezeichnung": "Yurchenko geb.",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "2.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_09.png"
+    },
+    {
+        "id": "VA_4_10",
+        "bezeichnung": "Yurchenko gestr.",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "3.2",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_10.png"
+    },
+    {
+        "id": "VA_4_11",
+        "bezeichnung": "Yurchenko gestr. m. 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "3.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_11.png"
+    },
+    {
+        "id": "VA_4_12",
+        "bezeichnung": "Yurchenko gestr. m. 1/1 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "4.0",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_12.png"
+    },
+    {
+        "id": "VA_4_13",
+        "bezeichnung": "Yurchenko gestr. m. 3/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "4.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_13.png"
+    },
+    {
+        "id": "VA_4_14",
+        "bezeichnung": "Yurchenko gestr. m. 2/1 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "4.8",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_14.png"
+    },
+    {
+        "id": "VA_4_15",
+        "bezeichnung": "Yurchenko gestr. m. 5/2 Drehung",
+        "name": "Shewfelt",
+        "elementegruppe": "4",
+        "wertigkeit": "5.2",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_15.png"
+    },
+    {
+        "id": "VA_4_16",
+        "bezeichnung": "Yurchenko gestr. m. 3/1 Drehung",
+        "name": "Shirai - KIM Hee Hoon",
+        "elementegruppe": "4",
+        "wertigkeit": "5.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_16.png"
+    }
+
+]
