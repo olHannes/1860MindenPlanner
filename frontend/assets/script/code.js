@@ -274,10 +274,13 @@ async function setProfileName() {
         document.getElementById('welcomeUser').textContent = "Willkommen "+userInfo.first_name; 
 
         const profileImg = document.getElementById('profilePicture');
-        if (profileImg && userInfo.color_code && userInfo.color_code !== "#000000") {
+        const profileImg_2 = document.getElementById('profilePictureOptions');
+        if (profileImg && profileImg_2 && userInfo.color_code && userInfo.color_code !== "#000000") {
             profileImg.style.filter = `drop-shadow(0px 0px 5px ${userInfo.color_code})`;
-        } else if (profileImg) {
+            profileImg_2.style.filter = `drop-shadow(0px 0px 5px ${userInfo.color_code})`;
+        } else if (profileImg && profileImg_2) {
             profileImg.style.filter = "";
+            profileImg_2.style.filter = "";
         }
 
         hideLoader();
@@ -497,18 +500,20 @@ async function updatePassword(username, newPassword) {
 
 
 // color-Editing Container handling
-function toggleColorContainer(){
-    if(document.getElementById('colorContainer').style.display=="flex"){
-        hideColorContainer();
+function toggleOptionsContainer(){
+    if(document.getElementById('accountOptionsWrapper').style.display=="block"){
+        hideOptionsContainer();
     } else {
-        displayColorContainer();
+        displayOptionsContainer();
     }
 }
-function displayColorContainer(){
-    document.getElementById('colorContainer').style.display="flex";
+function displayOptionsContainer(){
+    document.getElementById('passwordEdit').style.display="none";
+    document.getElementById('nameEdit').style.display="none";
+    document.getElementById('accountOptionsWrapper').style.display="block";
 }
-function hideColorContainer(){
-    document.getElementById('colorContainer').style.display="none";
+function hideOptionsContainer(){
+    document.getElementById('accountOptionsWrapper').style.display="none";
 }
 
 // update User-Color
@@ -535,12 +540,14 @@ async function changeUserColor(color) {
         if (!response.ok) {
             throw new Error(result.message || `Fehler: ${response.status}`);
         }
-        console.log("Farbcode erfolgreich aktualisiert:", color);
         const profileImg = document.getElementById('profilePicture');
-        if (profileImg && color !== "#000000") {
+        const profileImg_2 = document.getElementById('profilePictureOptions');
+        if (profileImg && profileImg_2 && color !== "#000000") {
             profileImg.style.filter = `drop-shadow(0px 0px 5px ${color})`;
-        } else if (profileImg) {
+            profileImg_2.style.filter = `drop-shadow(0px 0px 5px ${color})`;
+        } else if (profileImg && profileImg_2) {
             profileImg.style.filter = "";
+            profileImg_2.style.filter = "";
         }
         
     } catch (error) {

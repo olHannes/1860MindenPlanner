@@ -144,43 +144,55 @@
 
     <!--Account Settings Page-->
     <div id="panel0" class="panel">
-        <h2>Account Settings</h2>
-
-        <img src="frontend/assets/images/system/profile_icon.png" alt="profile picture" id="profilePicture" onclick="toggleColorContainer();">
-
-        <div id="colorContainer">
-            <div id="color1" class="colorPick" style="background-color: #FF5733;" onclick="changeUserColor('#FF5733');"></div>
-            <div id="color2" class="colorPick" style="background-color: #28A745;" onclick="changeUserColor('#28A745');"></div>
-            <div id="color3" class="colorPick" style="background-color: #007BFF;" onclick="changeUserColor('#007BFF');"></div>
-            <div id="color4" class="colorPick" style="background-color: #FFC107;" onclick="changeUserColor('#FFC107');"></div>
-            <div id="color5" class="colorPick" style="background-color: #6F42C1;" onclick="changeUserColor('#6F42C1');"></div>            
-        </div>
-        <div id="nameView">
-            <div>
-                <span id="Vorname">Vorname</span>
-                <span id="Nachname">Nachname</span>
+        <div id="accountOptionsWrapper">
+            <div id="accountOptions">
+                <h3 style="text-align: center;">Account Options</h3>
+                <button><img src="frontend/assets/images/system/back.png" alt="goBack-Btn" class="goBack-Btn" onclick="hideOptionsContainer();"></button>
+                
+                <img src="frontend/assets/images/system/profile_icon.png" alt="profile picture" id="profilePictureOptions" class="profilePicture" onclick="toggleOptionsContainer();">
+                
+                <div id="colorContainer">
+                    <div id="color1" class="colorPick" style="background-color: #FF5733;" onclick="changeUserColor('#FF5733');"></div>
+                    <div id="color2" class="colorPick" style="background-color: #28A745;" onclick="changeUserColor('#28A745');"></div>
+                    <div id="color3" class="colorPick" style="background-color: #007BFF;" onclick="changeUserColor('#007BFF');"></div>
+                    <div id="color4" class="colorPick" style="background-color: #FFC107;" onclick="changeUserColor('#FFC107');"></div>
+                    <div id="color5" class="colorPick" style="background-color: #6F42C1;" onclick="changeUserColor('#6F42C1');"></div>            
+                </div>
+            
                 <button id="editNameBtn" onclick="editName();">
                     ✎ Namen bearbeiten ✎
                 </button>
                 <button id="editPasswordBtn" onclick="editPassword();">
                     ✎ Passwort bearbeiten ✎
-                </button>
+                </button>   
+
+                    <!--Windows for Name edits-->
+                <div id="nameEdit" style="display: none;">
+                    <input type="text" id="editVorname">
+                    <input type="text" id="editNachname">
+                    <button class="safeBtn" id="safeBtn1" onclick="saveName();" style="display: none;">Speichern</button>
+                </div>
+
+                <div id="passwordEdit" style="display: none;">
+                    <input type="text" id="editPassword_1" placeholder="neues Passwort">
+                    <button class="safeBtn" id="safeBtn2" onclick="updatePassword(localStorage.getItem('user'), document.getElementById('editPassword_1').value);" style="display: none;">Speichern</button>
+                </div>
             </div>
         </div>
 
-        <!--Windows for Name edits-->
-        <div id="nameEdit" style="display: none;">
-            <input type="text" id="editVorname">
-            <input type="text" id="editNachname">
-            <button class="safeBtn" id="safeBtn1" onclick="saveName();" style="display: none;">Speichern</button>
+        <h2>Account Settings</h2>
+
+        <img src="frontend/assets/images/system/profile_icon.png" alt="profile picture" id="profilePicture" class="profilePicture">
+        <div id="nameView">
+            <div>
+                <span id="Vorname">Vorname</span>
+                <span id="Nachname">Nachname</span>
+            </div>
         </div>
 
-        <div id="passwordEdit" style="display: none;">
-            <input type="text" id="editPassword_1" placeholder="neues Passwort">
-            <button class="safeBtn" id="safeBtn2" onclick="updatePassword(localStorage.getItem('user'), document.getElementById('editPassword_1').value);" style="display: none;">Speichern</button>
-            </div>
         
         <!--Buttons for Report, Logout, Acc-Delete-->
+        <button id="userOptions" onclick="displayOptionsContainer();">Daten bearbeiten</button>
         <button id="reportIssue" onclick="createReport();">Fehler melden!</button>
         <button id="logoutBtn" onclick="logout();">Logout</button>
         <button id="delBtn" onclick="requestDeleteAcc();">Account löschen</button>
