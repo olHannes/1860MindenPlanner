@@ -1384,13 +1384,11 @@ function closeDevice() {
         document.getElementById('add-exercise-btn').style.display="block";
         document.getElementById('selected-exercises-list').style.display="flex";
         loadCurrentExercise(localStorage.getItem("user"), currentDevice, false);
-        safeExercise();
     }
     else if(pageDepth == 1){
         document.getElementById('exerciseCreationPanel').style.display="none";
         document.getElementById('infoBlock').style.display="block";
         document.getElementById('createRoutineBtn').style.display="block";
-        safeExercise();
     }
     else if(pageDepth == 0){
         document.getElementById('EquipmentExercise').style.display="none";
@@ -1408,6 +1406,7 @@ async function loadCurrentExercise(username, device, remote) {
         console.log("Invalid Arguments for loading current Exercise", username, ", ", device);
         return;
     }
+    showLoader();
     if(remote){
         await requestUserExercise(username, device);
     }
@@ -1454,6 +1453,7 @@ async function loadCurrentExercise(username, device, remote) {
     summaryContainer.id = "exercise-summary-container";
     exerciseContainer.appendChild(summaryContainer);
     updateExerciseSummary();
+    hideLoader();
 }
 
 
