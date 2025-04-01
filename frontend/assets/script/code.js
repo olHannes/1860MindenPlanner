@@ -1048,7 +1048,7 @@ async function showMemberData(username) {
                 ${warnings.length > 0 ? `<p style="color: orange;"><strong>⚠️ Warnungen:</strong> ${warnings.join(" | ")}</p>` : ""}
                 <p><strong>Gesamtanzahl der Elemente:</strong> ${totalElements}</p>
                 <p><strong>Gesamte Schwierigkeit:</strong> ${totalDifficulty.toFixed(2)}</p>
-                <p><strong>Elementgruppen:</strong> ${groupList || "Keine"}</p>
+                <p><strong>vorhandene Elementgruppen:</strong> ${groupList || "Keine"}</p>
                 <p><strong>Übung vollständig:</strong> 
                     <span style="color: ${isComplete ? "green" : "red"}; font-weight: bold;">
                         ${isComplete ? "✅ Ja" : "❌ Nein"}
@@ -1137,6 +1137,9 @@ function validRoutine(elements, device) {
     if (device === "PO" && totalElements === 0) {
         errors.push("❌ Keine Elemente im Sprung.");
     }
+    if (device === "PO" && totalElements > 1) {
+        errors.push("❌ Eine Sprung-Übung besteht nur aus einem Element.");
+    }
 
     if (totalElements < 7) {
         errors.push(`❌ Zu wenig Elemente: ${totalElements}`);
@@ -1147,7 +1150,7 @@ function validRoutine(elements, device) {
     if (!hasDismount) {
         errors.push("❌ Kein Abgang vorhanden");
     }
-    if (!isDismountAtEnd) {
+    if (hasDismount && !isDismountAtEnd) {
         errors.push("❌ Der Abgang muss am Ende der Übung sein.");
     }
     return { warnings, errors, totalDifficulty, totalElements, groupList, isComplete };
