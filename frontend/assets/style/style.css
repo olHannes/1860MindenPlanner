@@ -710,6 +710,7 @@ button {
 
 #accountOptionsWrapper {
     position: absolute;
+    display: none;
     z-index: 1100;
     left: 0;
     top: 0;
@@ -737,7 +738,7 @@ button {
     position: absolute;
     display: flex;
     left: 50%;
-    top: 38dvh;
+    top: 40dvh;
     transform: translateX(-50%);
     z-index: 1;
     width: 50dvw;
