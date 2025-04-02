@@ -911,6 +911,7 @@ async function showAllUser() {
 
 //globale field for current status
 let currentExercise = [];
+let currentExerciseDetailedList = [];
 let currentDevice = null;
 
 
@@ -918,6 +919,7 @@ let currentDevice = null;
 
 async function requestUserExercise(username, device) {
     currentExercise = [];
+    currentExerciseDetailedList = [];
     showLoader();
     try {
         if (!username || !device) throw new Error("Exercise request failed: Invalid params");
@@ -933,6 +935,10 @@ async function requestUserExercise(username, device) {
                     }
                 });
             }
+            currentExerciseDetailedList = await Promise.all(
+                currentExercise.map(el => getElementDetails(el))
+            );
+
             hideLoader();
             console.log("loaded Exercise: ", currentExercise);
             return exerciseData;
@@ -1051,7 +1057,6 @@ async function showMemberData(username) {
             // ✅ Validierung
             let { warnings, errors, totalDifficulty, totalElements, groupList, isComplete } = validRoutine(elements, device);
 
-            //set total difficulty to device Btn
             difficultySpan.innerText = totalDifficulty.toFixed(2);
 
             // ⚠️ Fehler und Warnungen
@@ -1203,6 +1208,7 @@ function openDevicePanel(id) {
 
     let deviceData = {};
     currentExercise = [];
+    currentExerciseDetailedList = [];
 
     switch (id) {
         case 0:
@@ -1390,6 +1396,7 @@ function closeDevice() {
         document.getElementById('exerciseCreationPanel').style.display="none";
         document.getElementById('infoBlock').style.display="block";
         document.getElementById('createRoutineBtn').style.display="block";
+        safeExercise();
     }
     else if(pageDepth == 0){
         document.getElementById('EquipmentExercise').style.display="none";
@@ -1418,10 +1425,6 @@ async function loadCurrentExercise(username, device, remote) {
         return;
     }
 
-    let elementDetailsList = await Promise.all(
-        currentExercise.map(el => getElementDetails(el))
-    );
-
     const exerciseContainer = document.getElementById("selected-exercises-list");
     exerciseContainer.innerHTML = "";
 
@@ -1436,7 +1439,7 @@ async function loadCurrentExercise(username, device, remote) {
     let tbody = document.createElement("tbody");
     tbody.setAttribute("id", "exerciseTbody");
 
-    elementDetailsList.forEach((elementDetails, index) => {
+    currentExerciseDetailedList.forEach((elementDetails, index) => {
         const row = createExerciseRow(elementDetails, index);
         tbody.appendChild(row);
     });
@@ -1518,80 +1521,90 @@ function createExerciseRow(elementDetails, index) {
 //----------------------------------------------------------------------------------------------------------------- remove Element from routine
 
 function removeElementFromExercise(index) {
-    console.log("delete Element ", index+1, " from: ", currentExercise);
-    if (!currentExercise) {
+    if (!currentExercise || !currentExerciseDetailedList) {
         console.error("Fehler: currentExercise ist nicht definiert oder enthält keine Elemente.");
         return;
     }
     currentExercise.splice(index, 1);
+    currentExerciseDetailedList.splice(index, 1);
 
     let tableBody = document.getElementById("exerciseTbody");
     tableBody.innerHTML = "";
 
-    currentExercise.forEach((elementId, newIndex) => {
-        getElementDetails(elementId).then(elementDetails => {
-            let row = createExerciseRow(elementDetails, newIndex);
-            tableBody.appendChild(row);
-        });
-    });
+    currentExerciseDetailedList.forEach((el, newIndex) => {
+        let row = createExerciseRow(el, newIndex);
+        tableBody.appendChild(row);
+    })
 
     console.log("Element erfolgreich gelöscht: ", currentExercise);
-    //safeUpdateExercise(currentExercise);
+    console.log("Element erfolgreich gelöscht: ", currentExerciseDetailedList);
     updateExerciseSummary();
 }
 
 
 //----------------------------------------------------------------------------------------------------------------- add Element to Routine
 
-function addToExercise(element) {
+async function addToExercise(element) {
     document.getElementById('detailedElementInfo').style.display="none";
     currentExercise.push(element.id);
+    let detailedInfo = await getElementDetails(element.id);
+    currentExerciseDetailedList.push(detailedInfo);
+
     updateExerciseSummary();
 }
 
 
 //----------------------------------------------------------------------------------------------------------------- change Routine Order
 
-function moveElementUp(index){
+async function moveElementUp(index) {
     showLoader();
-    let routineLength = currentExercise.length;
-    if(index <= 0) {
+    
+    if (index <= 0) {
         console.warn("Das Element ist bereits ganz oben");
         hideLoader();
         return;
     }
-    let preUpper = currentExercise[index-1];
-    currentExercise[index-1] = currentExercise[index];
-    currentExercise[index] = preUpper;
-    loadCurrentExercise(localStorage.getItem("user"), currentDevice, false);
+
+    [currentExercise[index - 1], currentExercise[index]] = [currentExercise[index], currentExercise[index - 1]];
+    [currentExerciseDetailedList[index - 1], currentExerciseDetailedList[index]] = 
+        [currentExerciseDetailedList[index], currentExerciseDetailedList[index - 1]];
+
+    await loadCurrentExercise(localStorage.getItem("user"), currentDevice, false);
+
     hideLoader();
 }
 
-function moveElementDown(index){
+async function moveElementDown(index) {
     showLoader();
+    
     let routineLength = currentExercise.length;
-    if(index >= routineLength-1){
+    if (index >= routineLength - 1) {
         console.warn("Das Element ist bereits ganz unten");
         hideLoader();
         return;
     }
-    let temp = currentExercise[index+1];
-    currentExercise[index+1] = currentExercise[index];
-    currentExercise[index] = temp;
-    loadCurrentExercise(localStorage.getItem("user"), currentDevice, false);
+
+    let newExercise = [...currentExercise];
+    let newExerciseDetailed = [...currentExerciseDetailedList];
+
+    [newExercise[index], newExercise[index + 1]] = [newExercise[index + 1], newExercise[index]];
+    [newExerciseDetailed[index], newExerciseDetailed[index + 1]] = [newExerciseDetailed[index + 1], newExerciseDetailed[index]];
+
+    currentExercise = newExercise;
+    currentExerciseDetailedList = newExerciseDetailed;
+
+    await loadCurrentExercise(localStorage.getItem("user"), currentDevice, false);
+    
     hideLoader();
 }
+
 
 
 //----------------------------------------------------------------------------------------------------------------- Update Routine Summary
 
 async function updateExerciseSummary() {
-    let elementDetailsList = await Promise.all(
-        currentExercise.map(el => getElementDetails(el))
-    );
-
     let device = currentDevice;
-    let { warnings, errors, totalDifficulty, totalElements, groupList, isComplete } = validRoutine(elementDetailsList, device);
+    let { warnings, errors, totalDifficulty, totalElements, groupList, isComplete } = validRoutine(currentExerciseDetailedList, device);
 
     let summaryContainer = document.getElementById("exercise-summary-container");
     if (!summaryContainer) return;
