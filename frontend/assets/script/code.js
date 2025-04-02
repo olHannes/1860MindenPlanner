@@ -1128,7 +1128,11 @@ function validRoutine(elements, device) {
 
     let totalElements = elements.length;
     let groupList = [...elementGroups.keys()].sort().join(", ");
-    let isComplete = missingGroups.length === 0 && hasDismount && totalElements >= 7 && isDismountAtEnd;
+    let isComplete = 
+    device === "VA" 
+        ? totalElements === 1 
+        : missingGroups.length === 0 && hasDismount && totalElements >= 7 && isDismountAtEnd;
+
 
     // WARNUNGEN:
     if (totalElements > 7) {
@@ -1147,14 +1151,11 @@ function validRoutine(elements, device) {
     }
 
     // Fehlererkennung
-    if (device === "PO" && totalElements === 0) {
-        errors.push("❌ Keine Elemente im Sprung.");
-    }
-    if (device === "PO" && totalElements > 1) {
+    if (device === "VA" && totalElements > 1) {
         errors.push("❌ Eine Sprung-Übung besteht nur aus einem Element.");
     }
-
-    if (totalElements < 7) {
+    if (totalElements < 7 && device != "VA") {
+        console.log(totalElements," ", device)
         errors.push(`❌ Zu wenig Elemente: ${totalElements}`);
     }
     if (missingGroups.length > 0) {
