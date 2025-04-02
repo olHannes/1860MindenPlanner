@@ -1519,7 +1519,7 @@ function createExerciseRow(elementDetails, index) {
 
 //----------------------------------------------------------------------------------------------------------------- remove Element from routine
 
-function removeElementFromExercise(index) {
+async function removeElementFromExercise(index) {
     if (!currentExercise || !currentExerciseDetailedList) {
         console.error("Fehler: currentExercise ist nicht definiert oder enthält keine Elemente.");
         return;
@@ -1527,16 +1527,8 @@ function removeElementFromExercise(index) {
     currentExercise.splice(index, 1);
     currentExerciseDetailedList.splice(index, 1);
 
-    let tableBody = document.getElementById("exerciseTbody");
-    tableBody.innerHTML = "";
+    await loadCurrentExercise(localStorage.getItem("user"), currentDevice, false);
 
-    currentExerciseDetailedList.forEach((el, newIndex) => {
-        let row = createExerciseRow(el, newIndex);
-        tableBody.appendChild(row);
-    })
-
-    console.log("Element erfolgreich gelöscht: ", currentExercise);
-    console.log("Element erfolgreich gelöscht: ", currentExerciseDetailedList);
     updateExerciseSummary();
 }
 
@@ -1548,6 +1540,8 @@ async function addToExercise(element) {
     currentExercise.push(element.id);
     let detailedInfo = await getElementDetails(element.id);
     currentExerciseDetailedList.push(detailedInfo);
+
+    await loadCurrentExercise(localStorage.getItem("user"), currentDevice, false);
 
     updateExerciseSummary();
 }
