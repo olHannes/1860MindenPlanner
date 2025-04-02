@@ -1471,6 +1471,8 @@ button {
     gap: 20px;
     position: absolute;
     top: 10%;
+    width: 93dvw;
+    max-width: 650px;
     left: 50%;
     transform: translateX(-50%);
 }
