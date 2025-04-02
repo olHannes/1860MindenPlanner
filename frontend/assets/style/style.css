@@ -1533,10 +1533,15 @@ button {
     display: block;
     margin-top: 5px;
 }
+.exercise-table img {
+    max-width: 100px;
+    display: block;
+    margin-top: 5px;
+}
 
 
 .exercise-table {
-    width: 100%;
+    width: 90%;
     border-collapse: collapse;
     margin-top: 15px;
     position: relative;
