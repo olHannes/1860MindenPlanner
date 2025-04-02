@@ -1541,12 +1541,6 @@ button {
     padding: 8px;
     text-align: center;
 }
-.truncateTxt {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 200px;
-    word-wrap: break-word;
-}
 
 .exercise-table th {
     background-color: #f4f4f4;

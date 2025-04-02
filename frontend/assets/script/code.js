@@ -1472,7 +1472,6 @@ function createExerciseRow(elementDetails, index) {
     numCell.innerText = index + 1;
     
     let nameCell = document.createElement("td");
-    nameCell.classList.add("truncateTxt");
     nameCell.innerText = elementDetails.bezeichnung || "Unbekannter Titel";
 
     let imgCell = document.createElement("td");
