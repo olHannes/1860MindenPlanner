@@ -305,7 +305,7 @@
         "name": "",
         "elementegruppe": "4",
         "wertigkeit": "0.1",
-        "dismount": false,
+        "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Highbar/A/HI_A_14.png"
     },
     {
@@ -314,7 +314,7 @@
         "name": "",
         "elementegruppe": "4",
         "wertigkeit": "0.1",
-        "dismount": false,
+        "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Highbar/A/HI_A_15.png"
     },
     {
@@ -323,7 +323,7 @@
         "name": "",
         "elementegruppe": "4",
         "wertigkeit": "0.1",
-        "dismount": false,
+        "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Highbar/A/HI_A_16.png"
     }
 
@@ -534,7 +534,7 @@
         "name": "",
         "elementegruppe": "4",
         "wertigkeit": "0.2", 
-        "dismount": false,
+        "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_23.png" 
     },
     {
@@ -543,7 +543,7 @@
         "name": "",
         "elementegruppe": "4",
         "wertigkeit": "0.2", 
-        "dismount": false,
+        "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_24.png" 
     },
     {
@@ -552,7 +552,7 @@
         "name": "",
         "elementegruppe": "4",
         "wertigkeit": "0.2", 
-        "dismount": false,
+        "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_25.png" 
     },
     {
@@ -561,7 +561,7 @@
         "name": "",
         "elementegruppe": "4",
         "wertigkeit": "0.2", 
-        "dismount": false,
+        "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_26.png" 
     },
     {
@@ -570,7 +570,7 @@
         "name": "",
         "elementegruppe": "4",
         "wertigkeit": "0.2", 
-        "dismount": false,
+        "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_27.png" 
     }
 ]
