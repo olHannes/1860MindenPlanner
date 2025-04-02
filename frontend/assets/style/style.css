@@ -1528,20 +1528,26 @@ button {
 }
 
 
-
-
+.exercise-table img {
+    max-width: 100px;
+    display: block;
+    margin-top: 5px;
+}
 
 
 .exercise-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 15px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.exercise-table th, .exercise-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
+.exercise-table th {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: left;
 }
 
 .exercise-table th {
@@ -1564,7 +1570,7 @@ button {
 }
 
 .exercise-table tr {
-    cursor: grab;
+    border-bottom: 1px solid black;
 }
 
 .exercise-table tr:active {
@@ -1690,20 +1696,4 @@ button {
 }
 
 
-.exercise-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 5px;
-}
 
-.exercise-table th, .exercise-table td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: left;
-}
-
-.exercise-table img {
-    max-width: 100px;
-    display: block;
-    margin-top: 5px;
-}
