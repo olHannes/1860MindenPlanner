@@ -311,6 +311,11 @@ def changeData():
     if not user:
         return jsonify({"message": "Benutzer nicht gefunden!"}), 404
 
+    existingUser = users_collection.find_one({"firstName": new_first_name})
+
+    if existingUser:
+        return jsonify({"message": "Benutzername bereits vergeben!"}), 404
+
     users_collection.update_one(
         {"firstName": username},
         {"$set": {"firstName": new_first_name, "lastName": new_last_name}}

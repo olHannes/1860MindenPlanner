@@ -1,4 +1,5 @@
 window.onload = function () {
+    localStorage.removeItem("user");
     checkUserStatus();
 };
 
@@ -286,6 +287,8 @@ async function setProfileName() {
         hideLoader();
     } catch (error) {
         hideLoader();
+        localStorage.removeItem("user");
+        checkLoginStatus();
         console.error("Error:", error);
     }
 }
@@ -447,7 +450,7 @@ async function saveName() {
         });
 
         if (!response.ok) {
-            throw new Error(`Fehler beim Logout: ${response.status} ${response.statusText}`);
+            throw new Error(`Fehler beim Data-change: ${response.status} ${response.statusText}`);
         }
 
         localStorage.removeItem("user");
@@ -767,7 +770,7 @@ async function loadAdminUsers() {
         users.forEach(user => {
             let userSection = document.createElement('div');
             userSection.className = "report-section";
-            userSection.onclick = () => changeUserAdminPwd(user.firstName); // Klick ruft die Funktion auf
+            userSection.onclick = () => changeUserAdminPwd(user.firstName);
 
             let infoDiv = document.createElement('div');
             infoDiv.className = "report-info";
