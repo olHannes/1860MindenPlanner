@@ -138,6 +138,25 @@ async function register() {
         return;
     }
 
+    if (firstName.trim() === "" || lastName.trim() === "" || newPassword.trim() === "" || confirmPassword.trim() === "") {
+        document.getElementById("errorMsgRegister").textContent = "Alle Felder müssen ausgefüllt sein!";
+        return;
+    }
+    
+    const namePattern = /^[A-Za-zÄÖÜäöüß ]+$/;
+    if (!namePattern.test(firstName)) {
+        document.getElementById("errorMsgRegister").textContent = "Der Vorname darf nur Buchstaben enthalten!";
+        return;
+    }
+    
+    if (!namePattern.test(lastName)) {
+        document.getElementById("errorMsgRegister").textContent = "Der Nachname darf nur Buchstaben enthalten!";
+        return;
+    }
+    
+
+
+
     try {
         showLoader();
         const response = await fetch("https://one860mindenplanner.onrender.com/account/register", {
@@ -746,7 +765,6 @@ async function deleteReport(reportTitle) {
 //----------------------------------------------------------------------------------------------------------------- User Handling <Admin>
 
 function goToAdminUserContainer(){
-    document.getElementById('reportContainer').innerHTML=" ";
     loadAdminUsers();
 }
 
@@ -891,6 +909,7 @@ async function showAllUser() {
 
     showLoader();
     const data = await getAllUser();
+    data.sort((a, b) => a.lastName.localeCompare(b.lastName));
     data.forEach(user => {
         if (user.firstName === "admin") return; 
         const memberDiv = document.createElement('div');
