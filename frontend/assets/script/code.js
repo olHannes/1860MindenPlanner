@@ -1067,7 +1067,7 @@ async function showMemberData(username) {
             exerciseDiv.appendChild(table);
 
             // ✅ Validierung
-            let { warnings, errors, totalDifficulty, totalElements, groupList, isComplete } = validRoutine(elements, device);
+            let { warnings, errors, totalDifficulty, totalElements, groupList, isComplete, baseDifficulty, groupBonus, dismountBonus } = validRoutine(elements, device);
 
             difficultySpan.innerText = totalDifficulty.toFixed(2);
 
@@ -1108,50 +1108,75 @@ function validRoutine(elements, device) {
         "RI": new Set(["1", "2", "3", "4"]), 
         "VA": new Set([]), 
         "PA": new Set(["1", "2", "3", "4"]), 
-        "HI": new Set(["1", "2", "3", "4"]) 
+        "HI": new Set(["1", "2", "3", "4"])
     };
 
-    let totalDifficulty = 0;
+    let totalDifficulty = 10;
     let elementGroups = new Map();
     let hasDismount = false;
     let seenElements = new Map();
     let warnings = [];
     let errors = [];
-
     let isDismountAtEnd = false;
+    
+    let difficulties = [];
+    let dismountValue = 0;
 
     for (let i = 0; i < elements.length; i++) {
         let element = elements[i];
+        let wertigkeit = parseFloat(element.wertigkeit) || 0;
 
-        totalDifficulty += parseFloat(element.wertigkeit) || 0;
+        if (element.dismount) {
+            hasDismount = true;
+            dismountValue = wertigkeit;
+            if (i === elements.length - 1) {
+                isDismountAtEnd = true;
+                dismountValue = wertigkeit;
+            }
+        } else {
+            difficulties.push(wertigkeit);
+        }
 
         if (element.elementegruppe) {
             elementGroups.set(element.elementegruppe, (elementGroups.get(element.elementegruppe) || 0) + 1);
         }
 
-        if (element.dismount) {
-            hasDismount = true;
-            if (i === elements.length - 1) {
-                isDismountAtEnd = true;
-            }
-        }
         if (element.bezeichnung) {
             seenElements.set(element.bezeichnung, (seenElements.get(element.bezeichnung) || 0) + 1);
         }
     }
 
+    difficulties.sort((a, b) => b - a);
+    let topSix = difficulties.slice(0, 6);
+
+    let baseDifficulty = topSix.reduce((sum, val) => sum + val, 0) * 2;
+    baseDifficulty += dismountValue * 2;
+    console.log("base Difficulty: ", baseDifficulty);
+
     let requiredGroupSet = requiredGroups[device] || new Set();
     let missingGroups = [...requiredGroupSet].filter(group => !elementGroups.has(group));
+
+    let groupBonus = 0;
+    for (let group of elementGroups.keys()) {
+        if (group && parseFloat(group) > 0.05) {
+            groupBonus += 0.5;
+        }
+    }
+    console.log("group Bonus: ", groupBonus);
+
+    let dismountBonus = (dismountValue >= 0.1) ? (dismountValue === 0.1 ? 0.3 : 0.5) : 0;
+    console.log("dismount Bonus: ", dismountBonus);
+
+    totalDifficulty += baseDifficulty + groupBonus + dismountBonus;
+    console.log("total Difficulty: ", totalDifficulty);
 
     let totalElements = elements.length;
     let groupList = [...elementGroups.keys()].sort().join(", ");
     let isComplete = 
-    device === "VA" 
-        ? totalElements === 1 
-        : missingGroups.length === 0 && hasDismount && totalElements >= 7 && isDismountAtEnd;
+        device === "VA" 
+            ? totalElements === 1 
+            : missingGroups.length === 0 && hasDismount && totalElements >= 7 && isDismountAtEnd;
 
-
-    // WARNUNGEN:
     if (totalElements > 7) {
         warnings.push("⚠️ Übung enthält mehr als 7 Elemente");
     }
@@ -1167,12 +1192,10 @@ function validRoutine(elements, device) {
         warnings.push(`⚠️ Doppelte Elemente: ${duplicateElements.join(", ")}`);
     }
 
-    // Fehlererkennung
     if (device === "VA" && totalElements > 1) {
         errors.push("❌ Eine Sprung-Übung besteht nur aus einem Element.");
     }
     if (totalElements < 7 && device != "VA") {
-        console.log(totalElements," ", device)
         errors.push(`❌ Zu wenig Elemente: ${totalElements}`);
     }
     if (missingGroups.length > 0) {
@@ -1184,8 +1207,10 @@ function validRoutine(elements, device) {
     if (hasDismount && !isDismountAtEnd) {
         errors.push("❌ Der Abgang muss am Ende der Übung sein.");
     }
-    return { warnings, errors, totalDifficulty, totalElements, groupList, isComplete };
+
+    return { warnings, errors, totalDifficulty, totalElements, groupList, isComplete, baseDifficulty, groupBonus, dismountBonus };
 }
+
 
 
 //----------------------------------------------------------------------------------------------------------------- Handle Devices (open/close)
@@ -1609,15 +1634,24 @@ async function moveElementDown(index) {
 
 async function updateExerciseSummary() {
     let device = currentDevice;
-    let { warnings, errors, totalDifficulty, totalElements, groupList, isComplete } = validRoutine(currentExerciseDetailedList, device);
-
+    let { warnings, errors, totalDifficulty, totalElements, groupList, isComplete, baseDifficulty, groupBonus, dismountBonus } = validRoutine(currentExerciseDetailedList, device);
+    
     let summaryContainer = document.getElementById("exercise-summary-container");
     if (!summaryContainer) return;
 
     summaryContainer.innerHTML = `
         ${warnings.length > 0 ? `<p style="color: orange;"><strong>⚠️ Warnungen:</strong> ${warnings.join(" | ")}</p>` : ""}
         <p><strong>Anzahl der Elemente:</strong> ${totalElements}</p>
-        <p><strong>Gesamte Schwierigkeit:</strong> ${totalDifficulty.toFixed(2)}</p>
+        <p style="cursor: pointer; color: #8d8d8d;" id="total-difficulty"><strong>Gesamte Schwierigkeit:</strong> 
+            <span>
+                ${totalDifficulty.toFixed(2)}
+            </span>
+            <div id="difficulty-details" style="display:none; padding-left: 20px; padding-bottom: 8px; font-size: 12px; color: #555;">
+                Base Schwierigkeit: ${baseDifficulty}<br>
+                Gruppen Bonus: ${groupBonus}<br>
+                Abgang Bonus: ${dismountBonus}<br>
+            </div>
+        </p>
         <p><strong>vorhandene Elementgruppen:</strong> ${groupList || "Keine"}</p>
         <p><strong>Übung vollständig:</strong> 
             <span style="color: ${isComplete ? "green" : "red"}; font-weight: bold;">
@@ -1626,7 +1660,15 @@ async function updateExerciseSummary() {
         </p>
         ${errors.length > 0 ? `<p style="color:red;"><strong>Fehler:</strong> ${errors.join(" | ")}</p>` : ""}
     `;
+
+    // Hinzufügen des Klick-Events
+    document.getElementById("total-difficulty").addEventListener("click", function() {
+        let details = document.getElementById("difficulty-details");
+        // Toggle die Anzeige des Details
+        details.style.display = details.style.display === "none" ? "block" : "none";
+    });
 }
+
 
 
 //----------------------------------------------------------------------------------------------------------------- show Element selection
