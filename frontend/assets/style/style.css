@@ -55,6 +55,39 @@ body {
     bottom: 10%;
   }
 
+
+
+#startupInformation {
+    position: fixed;
+    top: 13dvh;
+    width: 74dvw;
+    max-width: 400px;
+    height: 26dvh;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffcc00;
+    padding: 15px;
+    border: 1px solid #916e05;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 1300;
+}
+#closeInfoBox {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #484231;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+}
+#closeInfoBox:hover {
+    background-color: #b38900;
+}
+
+
 #AdminPage {
     position: absolute;
     display: none;

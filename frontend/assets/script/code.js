@@ -3,6 +3,15 @@ window.onload = function () {
     checkUserStatus();
 };
 
+//----------------------------------------------------------------------------------------------------------------- hide info
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("closeInfoBox").addEventListener("click", function() {
+        document.getElementById("startupInformation").style.display = "none";
+    });
+});
+
+
+
 //----------------------------------------------------------------------------------------------------------------- heartbeat - hold server alive
 function sendHeartbeat() {
     fetch('https://one860mindenplanner.onrender.com/account/heartbeat', {
