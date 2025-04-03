@@ -255,14 +255,19 @@
                             <button onclick="filterByDifficulty(0.4, this);">D</button>
                             <button onclick="filterByDifficulty(0.5, this);">E</button>
                         </div>
-                
+
                         <h3>Filter nach Gruppe</h3>
                         <div id="filterGroup" class="filter-group">
+                            <button onclick="filterByGroup(null, this);" class="active-filter">Alle</button>
                             <button onclick="filterByGroup(1, this);">1</button>
                             <button onclick="filterByGroup(2, this);">2</button>
                             <button onclick="filterByGroup(3, this);">3</button>
                             <button onclick="filterByGroup(4, this);">4</button>
                         </div>
+
+                        <h3>Suche nach Stichwort</h3>
+                        <input type="text" id="searchInput" placeholder="Suche nach Name..." oninput="filterByText()">
+
                     </div>
                 </div>        
                 <button id="editFilter" onclick="openFilter();">Filter</button>

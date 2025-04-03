@@ -1635,16 +1635,14 @@ function selectElement() {
 
 let activeFilter_difficulty = null;
 let activeFilter_group = null;
+let activeFilter_text = null;
 
-function getFilteredElementList(difficulty, group) {
-    let pDifficulty = (difficulty !== null) ? difficulty : activeFilter_difficulty;
-    let pGroup = (group !== null) ? group : activeFilter_group;
+function getFilteredElementList() {
+    let difficulty = activeFilter_difficulty;
+    let group = activeFilter_group;
+    let searchText = activeFilter_text;
 
-    if (pDifficulty !== activeFilter_difficulty || pGroup !== activeFilter_group) {
-        activeFilter_difficulty = pDifficulty;
-        activeFilter_group = pGroup;
-    }
-    getElements(pDifficulty, pGroup);
+    getElements(difficulty, group, searchText);
 }
 
 function openFilter() {
@@ -1669,31 +1667,27 @@ function closeFilter() {
 }
 
 function filterByDifficulty(difficulty, pressedBtn) {
-    const filterDifficulty = document.getElementById('filterDifficulty');
-    const buttons = filterDifficulty.querySelectorAll('button');
-
-    buttons.forEach((button, index) => {
-        button.style.backgroundColor="#444";
-    });
-    pressedBtn.style.backgroundColor="#777777";
-    getFilteredElementList(difficulty, activeFilter_group);
+    document.querySelectorAll("#filterDifficulty button").forEach(button => button.style.backgroundColor = "#444");
+    pressedBtn.style.backgroundColor = "#777777";
+    activeFilter_difficulty = difficulty;
+    getFilteredElementList();
 }
 
 function filterByGroup(group, pressedBtn) {
-    const filterGroup = document.getElementById('filterGroup');
-    const buttons = filterGroup.querySelectorAll('button');
-
-    buttons.forEach((button, index) => {
-        button.style.backgroundColor="#444";
-    });
-    pressedBtn.style.backgroundColor="#777777";
-    getFilteredElementList(activeFilter_difficulty, group);
+    document.querySelectorAll("#filterGroup button").forEach(button => button.style.backgroundColor = "#444");
+    pressedBtn.style.backgroundColor = "#777777";
+    activeFilter_group = group;
+    getFilteredElementList();
+}
+function filterByText() {
+    activeFilter_text = document.getElementById("searchInput").value.trim();
+    getFilteredElementList();
 }
 
 
 //----------------------------------------------------------------------------------------------------------------- get filtered Elements
 
-async function getElements(difficulty, group) {
+async function getElements(difficulty, group, searchText) {
     const leftBlock = document.getElementById('leftColumn');
     const rightBlock = document.getElementById('rightColumn');
     leftBlock.innerHTML = "";
@@ -1705,7 +1699,7 @@ async function getElements(difficulty, group) {
     showLoader();
     try {
         const url = new URL('https://one860mindenplanner.onrender.com/elements/getGroupElements');
-        const params = { Device: device, Difficulty: difficulty , Group: group};
+        const params = { Device: device, Difficulty: difficulty , Group: group, Text: searchText};
         Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
         const response = await fetch(url);

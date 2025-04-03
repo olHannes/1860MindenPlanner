@@ -389,8 +389,9 @@ def get_group_elements():
     device = request.args.get('Device')
     difficulty = request.args.get('Difficulty')
     group = request.args.get('Group')
+    search_text = request.args.get('SearchText', '').strip().lower()
 
-    print("Get All Elements: ", device, ", ", group, ", ", difficulty)
+    print("Get All Elements: ", device, ", ", group, ", ", difficulty, ", ", search_text)
     
     if not device:
         return jsonify({"error": "Gerät ist erforderlich."}), 400
@@ -406,6 +407,14 @@ def get_group_elements():
 
     if group not in [None, '', 'null']:
         elements = [el for el in elements if str(el.get('elementegruppe')) == str(group)]
+
+    if search_text:
+        elements = [
+            el for el in elements 
+            if search_text in el.get('bezeichnung', '').lower() 
+            or search_text in el.get('name', '').lower()
+        ]
+
 
     return jsonify(elements), 200
 
