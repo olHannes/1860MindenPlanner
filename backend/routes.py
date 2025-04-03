@@ -389,7 +389,10 @@ def get_group_elements():
     device = request.args.get('Device')
     difficulty = request.args.get('Difficulty')
     group = request.args.get('Group')
-    search_text = request.args.get('SearchText', '').strip().lower()
+    search_text = request.args.get('Text', '').strip().lower()
+    if search_text in ['undefined', 'null']:
+        search_text = ''
+
 
     print("Get All Elements: ", device, ", ", group, ", ", difficulty, ", ", search_text)
     
