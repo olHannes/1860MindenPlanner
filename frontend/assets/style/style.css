@@ -62,7 +62,6 @@ body {
     top: 13dvh;
     width: 74dvw;
     max-width: 400px;
-    height: 35dvh;
     left: 50%;
     transform: translateX(-50%);
     background-color: #ffcc00;
