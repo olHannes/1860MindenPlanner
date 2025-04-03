@@ -10,6 +10,14 @@ body {
     overflow: hidden;
 }
 
+.impressum {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: darkgray;
+}
+
 #loadingContainer{
     display: none;
     position: absolute;
@@ -216,6 +224,7 @@ body {
     text-align: center;
     position: absolute;
     left: 50%;
+    width: 100%;
     top: 0;
     transform: translateX(-50%);
     z-index: 10;
