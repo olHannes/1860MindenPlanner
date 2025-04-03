@@ -927,6 +927,10 @@ async function showAllUser() {
             <span class="name-en">${user.lastName}</span>
         `;
 
+        if(user.firstName == localStorage.getItem("user")){
+            memberDiv.style.backgroundColor="#8c8c8c73";
+        }
+
         memberList.appendChild(memberDiv);
     });
     hideLoader();
