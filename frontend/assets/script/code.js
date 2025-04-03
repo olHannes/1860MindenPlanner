@@ -1413,6 +1413,7 @@ function closeDevice() {
 //----------------------------------------------------------------------------------------------------------------- Load safed Exercise
 
 async function loadCurrentExercise(username, device, remote) {
+    console.log("load Exercise");
     if (!username || !device) {
         console.log("Invalid Arguments for loading current Exercise", username, ", ", device);
         return;
@@ -1421,7 +1422,6 @@ async function loadCurrentExercise(username, device, remote) {
     if(remote){
         await requestUserExercise(username, device);
     }
-    console.log("Die Aktuelle Übung ist wie folgt:", currentExercise);
 
     if (!currentExercise || !Array.isArray(currentExercise)) {
         console.warn("Keine gültige Übung gefunden.");
@@ -1643,9 +1643,8 @@ function getFilteredElementList(difficulty, group) {
     if (pDifficulty !== activeFilter_difficulty || pGroup !== activeFilter_group) {
         activeFilter_difficulty = pDifficulty;
         activeFilter_group = pGroup;
-
-        getElements(pDifficulty, pGroup);
     }
+    getElements(pDifficulty, pGroup);
 }
 
 function openFilter() {
@@ -1671,7 +1670,7 @@ function closeFilter() {
 
 function filterByDifficulty(difficulty, pressedBtn) {
     const filterDifficulty = document.getElementById('filterDifficulty');
-    const buttons = filterGroup.querySelectorAll('button');
+    const buttons = filterDifficulty.querySelectorAll('button');
 
     buttons.forEach((button, index) => {
         button.style.backgroundColor="#444";

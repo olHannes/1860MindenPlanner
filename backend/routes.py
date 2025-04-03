@@ -401,10 +401,10 @@ def get_group_elements():
     
     elements = list(collection.find({}, {'_id': False}))
 
-    if difficulty and difficulty != 'null':
+    if difficulty not in [None, '', 'null']:
         elements = [el for el in elements if str(el.get('wertigkeit')) == str(difficulty)]
 
-    if group and group != 'null':
+    if group not in [None, '', 'null']:
         elements = [el for el in elements if str(el.get('elementegruppe')) == str(group)]
 
     return jsonify(elements), 200
