@@ -641,7 +641,6 @@ async function submitReport() {
 
 
 function goToAdminReportContainer(){
-    document.getElementById('reportContainer').innerHTML=" ";
     loadAdminReports();
 }
 
@@ -658,7 +657,6 @@ async function loadAdminReports() {
         const reports = await response.json();
         if (!Array.isArray(reports) || reports.length === 0) {
             console.warn("Keine Reports gefunden.");
-            document.getElementById('reportContainer').innerHTML=" ";
             hideLoader();
             return;
         }
@@ -1151,7 +1149,6 @@ function validRoutine(elements, device) {
 
     let baseDifficulty = topSix.reduce((sum, val) => sum + val, 0) * 2;
     baseDifficulty += dismountValue * 2;
-    console.log("base Difficulty: ", baseDifficulty);
 
     let requiredGroupSet = requiredGroups[device] || new Set();
     let missingGroups = [...requiredGroupSet].filter(group => !elementGroups.has(group));
@@ -1162,13 +1159,10 @@ function validRoutine(elements, device) {
             groupBonus += 0.5;
         }
     }
-    console.log("group Bonus: ", groupBonus);
 
     let dismountBonus = (dismountValue >= 0.1) ? (dismountValue === 0.1 ? 0.3 : 0.5) : 0;
-    console.log("dismount Bonus: ", dismountBonus);
 
     totalDifficulty += baseDifficulty + groupBonus + dismountBonus;
-    console.log("total Difficulty: ", totalDifficulty);
 
     let totalElements = elements.length;
     let groupList = [...elementGroups.keys()].sort().join(", ");
