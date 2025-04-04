@@ -659,6 +659,7 @@ async function submitReport() {
 //----------------------------------------------------------------------------------------------------------------- Report Handling <Admin>
 
 function goToAdminReportContainer(){
+    emptyAdminContainer();
     loadAdminReports();
 }
 
@@ -673,12 +674,6 @@ async function loadAdminReports() {
         }
 
         const reports = await response.json();
-        if (!Array.isArray(reports) || reports.length === 0) {
-            console.warn("Keine Reports gefunden.");
-            hideLoader();
-            return;
-        }
-
         let adminPage = document.getElementById('AdminPage');
         let existingContainer = document.getElementById('reportContainer');
 
@@ -690,40 +685,49 @@ async function loadAdminReports() {
         container.id = "reportContainer";
         container.className = "admin-report-container";
 
-        reports.forEach(report => {
-            let reportSection = document.createElement('div');
-            reportSection.className = "report-section";
+        if (!Array.isArray(reports) || reports.length === 0) {
+            console.warn("Keine Reports gefunden.");
 
-            let infoDiv = document.createElement('div');
-            infoDiv.className = "report-info";
-            infoDiv.innerHTML = `
-                <span class="report-timestamp">${new Date(report.timestamp).toLocaleString()}</span>
-                <span class="report-user">${report.username || "Unbekannt"}</span>
-            `;
+            let emptyMessage = document.createElement('p');
+            emptyMessage.innerText = "Keine Reports vorhanden.";
 
-            let deleteButton = document.createElement('button');
-            deleteButton.className = "delete-button";
-            deleteButton.innerHTML = "🗑️";
-            deleteButton.onclick = () => deleteReport(report.reportTitle);
+            container.appendChild(emptyMessage);
+        } else {
+            reports.forEach(report => {
+                let reportSection = document.createElement('div');
+                reportSection.className = "report-section";
 
-            infoDiv.appendChild(deleteButton);
-            let table = document.createElement('table');
-            table.className = "report-table";
+                let infoDiv = document.createElement('div');
+                infoDiv.className = "report-info";
+                infoDiv.innerHTML = `
+                    <span class="report-timestamp">${new Date(report.timestamp).toLocaleString()}</span>
+                    <span class="report-user">${report.username || "Unbekannt"}</span>
+                `;
 
-            table.innerHTML = `
-                <tr>
-                    <th>Titel</th>
-                    <td>${report.reportTitle || "Kein Titel"}</td>
-                </tr>
-                <tr>
-                    <th>Text</th>
-                    <td>${report.report || "Kein Text"}</td>
-                </tr>
-            `;
-            reportSection.appendChild(infoDiv);
-            reportSection.appendChild(table);
-            container.appendChild(reportSection);
-        });
+                let deleteButton = document.createElement('button');
+                deleteButton.className = "delete-button";
+                deleteButton.innerHTML = "🗑️";
+                deleteButton.onclick = () => deleteReport(report.reportTitle);
+
+                infoDiv.appendChild(deleteButton);
+                let table = document.createElement('table');
+                table.className = "report-table";
+
+                table.innerHTML = `
+                    <tr>
+                        <th>Titel</th>
+                        <td>${report.reportTitle || "Kein Titel"}</td>
+                    </tr>
+                    <tr>
+                        <th>Text</th>
+                        <td>${report.report || "Kein Text"}</td>
+                    </tr>
+                `;
+                reportSection.appendChild(infoDiv);
+                reportSection.appendChild(table);
+                container.appendChild(reportSection);
+            });
+        }
 
         let logoutButton = document.getElementById('AdminLogout');
         adminPage.insertBefore(container, logoutButton);
@@ -733,6 +737,7 @@ async function loadAdminReports() {
     }
     hideLoader();
 }
+
 
 async function deleteReport(reportTitle) {
     showLoader();
@@ -764,6 +769,7 @@ async function deleteReport(reportTitle) {
 //----------------------------------------------------------------------------------------------------------------- User Handling <Admin>
 
 function goToAdminUserContainer(){
+    emptyAdminContainer();
     loadAdminUsers();
 }
 
@@ -882,6 +888,7 @@ function closePwdChange() {
 //----------------------------------------------------------------------------------------------------------------- Competition Handling <Admin>
 
 function goToAdminCompetitionContainer(){
+    emptyAdminContainer();
     loadCompetitions();
 }
 
@@ -896,12 +903,6 @@ async function loadCompetitions() {
         }
 
         const competitions = await response.json();
-        if (!Array.isArray(competitions) || competitions.length === 0) {
-            console.warn("Keine Wettkämpfe gefunden.");
-            hideLoader();
-            return;
-        }
-
         let adminPage = document.getElementById('AdminPage');
         let existingContainer = document.getElementById('competitionContainer');
 
@@ -913,62 +914,78 @@ async function loadCompetitions() {
         container.id = "competitionContainer";
         container.className = "admin-competition-container";
 
-        competitions.forEach(competition => {
-            let compSection = document.createElement('div');
-            compSection.className = "competition-section";
+        if (!Array.isArray(competitions) || competitions.length === 0) {
+            console.warn("Keine Wettkämpfe gefunden.");
 
-            let headerDiv = document.createElement('div');
-            headerDiv.className = "competition-header";
-            headerDiv.innerHTML = `
-                <h3>${competition.name}</h3>
-                <span>${new Date(competition.date).toLocaleDateString()}</span> 
-                <span>${competition.location}</span>
-            `;
+            let emptyMessage = document.createElement('p');
+            emptyMessage.innerText = "Keine Wettkämpfe vorhanden.";
 
-            let deleteCompButton = document.createElement('button');
-            deleteCompButton.className = "delete-button";
-            deleteCompButton.innerHTML = "❌ Wettkampf löschen";
-            deleteCompButton.onclick = () => deleteCompetition(competition.id);
+            let createButton = document.createElement('button');
+            createButton.innerText = "➕ Create Competition";
+            createButton.id ="createCompBtn";
+            createButton.onclick = () => createCompetition();
 
-            headerDiv.appendChild(deleteCompButton);
-            compSection.appendChild(headerDiv);
+            container.appendChild(emptyMessage);
+            container.appendChild(createButton);
+        } else {
+            competitions.forEach(competition => {
+                let compSection = document.createElement('div');
+                compSection.className = "competition-section";
 
-            if (competition.participants && competition.participants.length > 0) {
-                let participantTable = document.createElement('table');
-                participantTable.className = "competition-table";
-
-                participantTable.innerHTML = `
-                    <tr>
-                        <th>Name</th>
-                        <th>Geräte & Punkte</th>
-                        <th>Aktion</th>
-                    </tr>
+                let headerDiv = document.createElement('div');
+                headerDiv.className = "competition-header";
+                headerDiv.innerHTML = `
+                    <h3>${competition.name}</h3>
+                    <span>${new Date(competition.date).toLocaleDateString()}</span> 
+                    <span>${competition.location}</span>
                 `;
 
-                competition.participants.forEach(participant => {
-                    let row = document.createElement('tr');
-                    
-                    let devices = participant.devices.map(device => 
-                        `${device.name}: ${device.points} Pkt`
-                    ).join("<br>");
+                let deleteCompButton = document.createElement('button');
+                deleteCompButton.className = "delete-button";
+                deleteCompButton.innerHTML = "❌ Wettkampf löschen";
+                deleteCompButton.onclick = () => deleteCompetition(competition.id);
 
-                    row.innerHTML = `
-                        <td>${participant.name}</td>
-                        <td>${devices || "Keine Punkte erfasst"}</td>
-                        <td>
-                            <button class="delete-button" onclick="deleteParticipant('${competition.id}', '${participant.id}')">❌</button>
-                        </td>
+                headerDiv.appendChild(deleteCompButton);
+                compSection.appendChild(headerDiv);
+
+                if (competition.participants && competition.participants.length > 0) {
+                    let participantTable = document.createElement('table');
+                    participantTable.className = "competition-table";
+
+                    participantTable.innerHTML = `
+                        <tr>
+                            <th>Name</th>
+                            <th>Geräte & Punkte</th>
+                            <th>Aktion</th>
+                        </tr>
                     `;
 
-                    participantTable.appendChild(row);
-                });
+                    competition.participants.forEach(participant => {
+                        let row = document.createElement('tr');
 
-                compSection.appendChild(participantTable);
-            } else {
-                compSection.innerHTML += `<p>Keine Teilnehmer vorhanden.</p>`;
-            }
-            container.appendChild(compSection);
-        });
+                        let devices = participant.devices.map(device =>
+                            `${device.name}: ${device.points} Pkt`
+                        ).join("<br>");
+
+                        row.innerHTML = `
+                            <td>${participant.name}</td>
+                            <td>${devices || "Keine Punkte erfasst"}</td>
+                            <td>
+                                <button class="delete-button" onclick="deleteParticipant('${competition.id}', '${participant.id}')">❌</button>
+                            </td>
+                        `;
+
+                        participantTable.appendChild(row);
+                    });
+
+                    compSection.appendChild(participantTable);
+                } else {
+                    compSection.innerHTML += `<p>Keine Teilnehmer vorhanden.</p>`;
+                }
+
+                container.appendChild(compSection);
+            });
+        }
 
         let logoutButton = document.getElementById('AdminLogout');
         adminPage.insertBefore(container, logoutButton);
@@ -978,6 +995,7 @@ async function loadCompetitions() {
     }
     hideLoader();
 }
+
 
 async function deleteCompetition(competitionId) {
     if (!confirm("Wettkampf wirklich löschen?")) return;
@@ -1012,6 +1030,23 @@ async function deleteParticipant(competitionId, participantId) {
     }
 }
 
+async function createCompetition() {
+    
+}
+
+
+
+function emptyAdminContainer(){
+    if(document.getElementById('reportContainer')!=null){
+        document.getElementById('reportContainer').remove();
+    }
+    if(document.getElementById('userContainer')!=null){
+        document.getElementById('userContainer').remove();
+    }
+    if(document.getElementById('competitionContainer')!=null){
+        document.getElementById('competitionContainer').remove();
+    }
+}
 
 
 
