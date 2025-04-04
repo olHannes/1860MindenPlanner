@@ -591,7 +591,6 @@ async function changeUserColor(color) {
         console.error("Fehler beim Ändern der Farbe:", error);
     }
     hideLoader();
-    hideColorContainer();
 }
 
 
