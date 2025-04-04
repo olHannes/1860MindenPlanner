@@ -5,6 +5,7 @@ import os
 from pymongo import MongoClient
 from datetime import datetime, timezone, timedelta
 import time
+import notification
 
 load_dotenv()
 
@@ -213,6 +214,7 @@ def createReport():
     timestamp = datetime.now(timezone.utc)
 
     print(f"Create Report: {username}_{reportTitle}")
+    notification.send_mail(reportTitle, report, username, timestamp)
     issues_collection.insert_one({
         'reportTitle': reportTitle,
         'report': report,
