@@ -656,8 +656,8 @@ async function submitReport() {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------- Report Handling <Admin>
 
+//----------------------------------------------------------------------------------------------------------------- Report Handling <Admin>
 
 function goToAdminReportContainer(){
     loadAdminReports();
@@ -877,6 +877,142 @@ function openPwdChange() {
 function closePwdChange() {
     document.getElementById("adminPwdChangeWrapper").classList.remove("show");
 }
+
+
+
+//----------------------------------------------------------------------------------------------------------------- Competition Handling <Admin>
+
+function goToAdminCompetitionContainer(){
+    loadCompetitions();
+}
+
+async function loadCompetitions() {
+    document.getElementById('AdminPage').style.display = "block";
+    showLoader();
+
+    try {
+        const response = await fetch('https://one860mindenplanner.onrender.com/competition/getAll');
+        if (!response.ok) {
+            throw new Error('Fehler beim Abrufen der Wettkämpfe');
+        }
+
+        const competitions = await response.json();
+        if (!Array.isArray(competitions) || competitions.length === 0) {
+            console.warn("Keine Wettkämpfe gefunden.");
+            hideLoader();
+            return;
+        }
+
+        let adminPage = document.getElementById('AdminPage');
+        let existingContainer = document.getElementById('competitionContainer');
+
+        if (existingContainer) {
+            existingContainer.remove();
+        }
+
+        let container = document.createElement('div');
+        container.id = "competitionContainer";
+        container.className = "admin-competition-container";
+
+        competitions.forEach(competition => {
+            let compSection = document.createElement('div');
+            compSection.className = "competition-section";
+
+            let headerDiv = document.createElement('div');
+            headerDiv.className = "competition-header";
+            headerDiv.innerHTML = `
+                <h3>${competition.name}</h3>
+                <span>${new Date(competition.date).toLocaleDateString()}</span> 
+                <span>${competition.location}</span>
+            `;
+
+            let deleteCompButton = document.createElement('button');
+            deleteCompButton.className = "delete-button";
+            deleteCompButton.innerHTML = "❌ Wettkampf löschen";
+            deleteCompButton.onclick = () => deleteCompetition(competition.id);
+
+            headerDiv.appendChild(deleteCompButton);
+            compSection.appendChild(headerDiv);
+
+            if (competition.participants && competition.participants.length > 0) {
+                let participantTable = document.createElement('table');
+                participantTable.className = "competition-table";
+
+                participantTable.innerHTML = `
+                    <tr>
+                        <th>Name</th>
+                        <th>Geräte & Punkte</th>
+                        <th>Aktion</th>
+                    </tr>
+                `;
+
+                competition.participants.forEach(participant => {
+                    let row = document.createElement('tr');
+                    
+                    let devices = participant.devices.map(device => 
+                        `${device.name}: ${device.points} Pkt`
+                    ).join("<br>");
+
+                    row.innerHTML = `
+                        <td>${participant.name}</td>
+                        <td>${devices || "Keine Punkte erfasst"}</td>
+                        <td>
+                            <button class="delete-button" onclick="deleteParticipant('${competition.id}', '${participant.id}')">❌</button>
+                        </td>
+                    `;
+
+                    participantTable.appendChild(row);
+                });
+
+                compSection.appendChild(participantTable);
+            } else {
+                compSection.innerHTML += `<p>Keine Teilnehmer vorhanden.</p>`;
+            }
+            container.appendChild(compSection);
+        });
+
+        let logoutButton = document.getElementById('AdminLogout');
+        adminPage.insertBefore(container, logoutButton);
+
+    } catch (error) {
+        console.error("Fehler beim Laden der Wettkämpfe:", error);
+    }
+    hideLoader();
+}
+
+async function deleteCompetition(competitionId) {
+    if (!confirm("Wettkampf wirklich löschen?")) return;
+    try {
+        const response = await fetch(`https://one860mindenplanner.onrender.com/competition/delete/${competitionId}`, {
+            method: 'DELETE'
+        });
+        if (!response.ok) {
+            throw new Error("Löschen fehlgeschlagen.");
+        }
+        alert("Wettkampf erfolgreich gelöscht.");
+        loadCompetitions();
+    } catch (error) {
+        console.error("Fehler beim Löschen des Wettkampfs:", error);
+    }
+}
+
+async function deleteParticipant(competitionId, participantId) {
+    if (!confirm("Teilnehmer wirklich aus dem Wettkampf entfernen?")) return;
+
+    try {
+        const response = await fetch(`https://one860mindenplanner.onrender.com/competition/${competitionId}/removeParticipant/${participantId}`, {
+            method: 'DELETE'
+        });
+        if (!response.ok) {
+            throw new Error("Löschen fehlgeschlagen.");
+        }
+        alert("Teilnehmer erfolgreich entfernt.");
+        loadCompetitions();
+    } catch (error) {
+        console.error("Fehler beim Entfernen des Teilnehmers:", error);
+    }
+}
+
 
 
 
