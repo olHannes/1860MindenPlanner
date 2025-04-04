@@ -42,6 +42,17 @@
         </div>
         
         <h2>Welcome Admin</h2>
+        <div id="compCreationPanel">
+            <h2 style="color: white;">Wettkampf Erstellung</h2>
+            <input type="text" id="compName" placeholder="Wettkampfname">
+            <input type="date" id="compDate">
+            <input type="text" id="compLocation" placeholder="Ort">
+            
+            <div>
+                <button onclick="createCompetition();" style="background-color: green;">Erstellen</button>
+                <button onclick="closeCompCreation();" style="background-color: red;">Abbrechen</button>
+            </div>
+        </div>
         <div id="adminAnzeige">
 
         </div>

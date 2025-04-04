@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //----------------------------------------------------------------------------------------------------------------- heartbeat - hold server alive
 function sendHeartbeat() {
-    fetch('https://one860mindenplanner.onrender.com/account/heartbeat', {
+    fetch('http://127.0.0.1:10000/account/heartbeat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: localStorage.getItem("user") })
@@ -159,7 +159,7 @@ async function register() {
 
     try {
         showLoader();
-        const response = await fetch("https://one860mindenplanner.onrender.com/account/register", {
+        const response = await fetch("http://127.0.0.1:10000/account/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ firstName, lastName, password: newPassword })
@@ -193,7 +193,7 @@ async function login() {
 
     showLoader();
     try {
-        const response = await fetch("https://one860mindenplanner.onrender.com/account/login", {
+        const response = await fetch("http://127.0.0.1:10000/account/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password })
@@ -232,7 +232,7 @@ async function checkUserStatus() {
 
     showLoader();
     try {
-        const response = await fetch(`https://one860mindenplanner.onrender.com/account/checkUserStatus?name=${username}`, {
+        const response = await fetch(`http://127.0.0.1:10000/account/checkUserStatus?name=${username}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         });
@@ -288,7 +288,7 @@ async function setProfileName() {
     const name = localStorage.getItem("user");
     showLoader();
     try {
-        const response = await fetch(`https://one860mindenplanner.onrender.com/account/getUserInfo?name=${name}`, {
+        const response = await fetch(`http://127.0.0.1:10000/account/getUserInfo?name=${name}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         });
@@ -335,7 +335,7 @@ async function logout() {
 
     showLoader();
     try {
-        const response = await fetch("https://one860mindenplanner.onrender.com/account/logout", {
+        const response = await fetch("http://127.0.0.1:10000/account/logout", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name: username })
@@ -368,7 +368,7 @@ window.onbeforeunload = async function () {
 
     showLoader();
     try {
-        const response = await fetch("https://one860mindenplanner.onrender.com/account/logout", {
+        const response = await fetch("http://127.0.0.1:10000/account/logout", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name: username })
@@ -406,7 +406,7 @@ async function deleteAccount() {
     const name = localStorage.getItem("user");
     showLoader();
     try {
-        const response = await fetch("https://one860mindenplanner.onrender.com/account/delete", {
+        const response = await fetch("http://127.0.0.1:10000/account/delete", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({name})
@@ -471,7 +471,7 @@ async function saveName() {
         return;
     }
     try {
-        const response = await fetch("https://one860mindenplanner.onrender.com/account/changeData", {
+        const response = await fetch("http://127.0.0.1:10000/account/changeData", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username: username, new_first_name: vorname, new_last_name: nachname })
@@ -507,7 +507,7 @@ async function updatePassword(username, newPassword) {
         return;
     }
     try {
-        const response = await fetch('https://one860mindenplanner.onrender.com/account/updatePassword', {
+        const response = await fetch('http://127.0.0.1:10000/account/updatePassword', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -563,7 +563,7 @@ async function changeUserColor(color) {
         return;
     }
     try {
-        const response = await fetch("https://one860mindenplanner.onrender.com/account/user/colorChange", {
+        const response = await fetch("http://127.0.0.1:10000/account/user/colorChange", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -632,7 +632,7 @@ async function submitReport() {
     };
     showLoader();
     try {
-        const response = await fetch('https://one860mindenplanner.onrender.com/report/issue', {
+        const response = await fetch('http://127.0.0.1:10000/report/issue', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -668,7 +668,7 @@ async function loadAdminReports() {
     showLoader();
 
     try {
-        const response = await fetch('https://one860mindenplanner.onrender.com/report/all');
+        const response = await fetch('http://127.0.0.1:10000/report/all');
         if (!response.ok) {
             throw new Error('Fehler beim Abrufen der Reports');
         }
@@ -742,7 +742,7 @@ async function loadAdminReports() {
 async function deleteReport(reportTitle) {
     showLoader();
     try {
-        const response = await fetch('https://one860mindenplanner.onrender.com/report/delete', {
+        const response = await fetch('http://127.0.0.1:10000/report/delete', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -850,7 +850,7 @@ async function deleteAdminUser(username) {
     const name = username;
     showLoader();
     try {
-        const response = await fetch("https://one860mindenplanner.onrender.com/account/delete", {
+        const response = await fetch("http://127.0.0.1:10000/account/delete", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({name})
@@ -897,97 +897,112 @@ async function loadCompetitions() {
     showLoader();
 
     try {
-        const response = await fetch('https://one860mindenplanner.onrender.com/competition/getAll');
-        if (!response.ok) {
-            throw new Error('Fehler beim Abrufen der Wettkämpfe');
-        }
+        const response = await fetch('http://127.0.0.1:10000/competition/getAll');
+        if (!response.ok) throw new Error('Fehler beim Abrufen der Wettkämpfe');
 
         const competitions = await response.json();
-        let adminPage = document.getElementById('AdminPage');
-        let existingContainer = document.getElementById('competitionContainer');
+        const adminPage = document.getElementById('AdminPage');
 
-        if (existingContainer) {
-            existingContainer.remove();
-        }
+        const existingContainer = document.getElementById('competitionContainer');
+        if (existingContainer) existingContainer.remove();
 
-        let container = document.createElement('div');
+        const container = document.createElement('div');
         container.id = "competitionContainer";
         container.className = "admin-competition-container";
+
+        const createButton = document.createElement('button');
+        createButton.innerText = "➕ Create Competition";
+        createButton.id = "createCompBtn";
+        createButton.addEventListener("click", openCompetitionWindow);
+        container.appendChild(createButton);
 
         if (!Array.isArray(competitions) || competitions.length === 0) {
             console.warn("Keine Wettkämpfe gefunden.");
 
-            let emptyMessage = document.createElement('p');
+            const emptyMessage = document.createElement('p');
             emptyMessage.innerText = "Keine Wettkämpfe vorhanden.";
 
-            let createButton = document.createElement('button');
-            createButton.innerText = "➕ Create Competition";
-            createButton.id ="createCompBtn";
-            createButton.onclick = () => createCompetition();
-
             container.appendChild(emptyMessage);
-            container.appendChild(createButton);
         } else {
             competitions.forEach(competition => {
-                let compSection = document.createElement('div');
+                const compSection = document.createElement('div');
                 compSection.className = "competition-section";
 
-                let headerDiv = document.createElement('div');
+                const headerDiv = document.createElement('div');
                 headerDiv.className = "competition-header";
-                headerDiv.innerHTML = `
-                    <h3>${competition.name}</h3>
-                    <span>${new Date(competition.date).toLocaleDateString()}</span> 
-                    <span>${competition.location}</span>
-                `;
 
-                let deleteCompButton = document.createElement('button');
+                const title = document.createElement('h3');
+                title.innerText = competition.name;
+
+                const date = document.createElement('span');
+                date.innerText = new Date(competition.date).toLocaleDateString();
+
+                const location = document.createElement('span');
+                location.innerText = competition.location;
+
+                const deleteCompButton = document.createElement('button');
                 deleteCompButton.className = "delete-button";
                 deleteCompButton.innerHTML = "❌ Wettkampf löschen";
-                deleteCompButton.onclick = () => deleteCompetition(competition.id);
+                deleteCompButton.addEventListener("click", () => {
+                    deleteCompetition(competition._id);
+                });
 
+                headerDiv.appendChild(title);
+                headerDiv.appendChild(date);
+                headerDiv.appendChild(location);
                 headerDiv.appendChild(deleteCompButton);
                 compSection.appendChild(headerDiv);
 
                 if (competition.participants && competition.participants.length > 0) {
-                    let participantTable = document.createElement('table');
+                    const participantTable = document.createElement('table');
                     participantTable.className = "competition-table";
 
-                    participantTable.innerHTML = `
-                        <tr>
-                            <th>Name</th>
-                            <th>Geräte & Punkte</th>
-                            <th>Aktion</th>
-                        </tr>
+                    const headerRow = document.createElement('tr');
+                    headerRow.innerHTML = `
+                        <th>Name</th>
+                        <th>Geräte & Punkte</th>
+                        <th>Aktion</th>
                     `;
+                    participantTable.appendChild(headerRow);
 
                     competition.participants.forEach(participant => {
-                        let row = document.createElement('tr');
+                        const row = document.createElement('tr');
 
-                        let devices = participant.devices.map(device =>
+                        const nameCell = document.createElement('td');
+                        nameCell.innerText = participant.name;
+
+                        const devicesCell = document.createElement('td');
+                        const devices = participant.devices.map(device =>
                             `${device.name}: ${device.points} Pkt`
-                        ).join("<br>");
+                        ).join("\n") || "Keine Punkte erfasst";
+                        devicesCell.innerHTML = devices.replace(/\n/g, "<br>");
 
-                        row.innerHTML = `
-                            <td>${participant.name}</td>
-                            <td>${devices || "Keine Punkte erfasst"}</td>
-                            <td>
-                                <button class="delete-button" onclick="deleteParticipant('${competition.id}', '${participant.id}')">❌</button>
-                            </td>
-                        `;
+                        const actionCell = document.createElement('td');
+                        const deleteBtn = document.createElement('button');
+                        deleteBtn.className = "delete-button";
+                        deleteBtn.innerHTML = "❌";
+                        deleteBtn.addEventListener("click", () => {
+                            deleteParticipant(competition.id, participant.id);
+                        });
+                        actionCell.appendChild(deleteBtn);
+
+                        row.appendChild(nameCell);
+                        row.appendChild(devicesCell);
+                        row.appendChild(actionCell);
 
                         participantTable.appendChild(row);
                     });
 
                     compSection.appendChild(participantTable);
                 } else {
-                    compSection.innerHTML += `<p>Keine Teilnehmer vorhanden.</p>`;
+                    const noPartMsg = document.createElement('p');
+                    noPartMsg.innerText = "Keine Teilnehmer vorhanden.";
+                    compSection.appendChild(noPartMsg);
                 }
-
                 container.appendChild(compSection);
             });
         }
-
-        let logoutButton = document.getElementById('AdminLogout');
+        const logoutButton = document.getElementById('AdminLogout');
         adminPage.insertBefore(container, logoutButton);
 
     } catch (error) {
@@ -997,10 +1012,12 @@ async function loadCompetitions() {
 }
 
 
+
 async function deleteCompetition(competitionId) {
+    console.log("fjdsflfaö");
     if (!confirm("Wettkampf wirklich löschen?")) return;
     try {
-        const response = await fetch(`https://one860mindenplanner.onrender.com/competition/delete/${competitionId}`, {
+        const response = await fetch(`http://127.0.0.1:10000/competition/delete/${competitionId}`, {
             method: 'DELETE'
         });
         if (!response.ok) {
@@ -1017,7 +1034,7 @@ async function deleteParticipant(competitionId, participantId) {
     if (!confirm("Teilnehmer wirklich aus dem Wettkampf entfernen?")) return;
 
     try {
-        const response = await fetch(`https://one860mindenplanner.onrender.com/competition/${competitionId}/removeParticipant/${participantId}`, {
+        const response = await fetch(`http://127.0.0.1:10000/competition/${competitionId}/removeParticipant/${participantId}`, {
             method: 'DELETE'
         });
         if (!response.ok) {
@@ -1030,9 +1047,62 @@ async function deleteParticipant(competitionId, participantId) {
     }
 }
 
-async function createCompetition() {
-    
+
+function openCompetitionWindow(){
+    document.getElementById('compName').value = "";
+    document.getElementById('compDate').value = null;
+    document.getElementById('compLocation').value = "";
+    document.getElementById('compCreationPanel').style.display="block";
 }
+function closeCompCreation() {
+    document.getElementById('compCreationPanel').style.display="none";
+    document.getElementById('compName').value = "";
+    document.getElementById('compDate').value = null;
+    document.getElementById('compLocation').value = "";
+}
+
+async function createCompetition() {
+    let name = document.getElementById('compName').value;
+    let date = document.getElementById('compDate').value;
+    let location = document.getElementById('compLocation').value;
+
+    if (!name || !date || !location) {
+        alert("Bitte alle Felder ausfüllen: Name, Datum, Ort.");
+        return;
+    }
+
+    const payload = {
+        name: name,
+        date: date,
+        location: location
+    };
+
+    try {
+        const response = await fetch('http://127.0.0.1:10000/competition/create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert(result.message || "Wettkampf erfolgreich erstellt!");
+            if (typeof loadCompetitions === 'function') {
+                closeCompCreation();
+                loadCompetitions();
+            }
+        } else {
+            alert("Fehler: " + (result.message || "Wettkampf konnte nicht erstellt werden."));
+        }
+    } catch (error) {
+        console.error("Fehler beim Erstellen des Wettkampfs:", error);
+        alert("Ein Fehler ist aufgetreten. Bitte versuche es erneut.");
+    }
+}
+
 
 
 
@@ -1055,7 +1125,7 @@ function emptyAdminContainer(){
 async function getAllUser() {
     showLoader();
     try {
-        const response = await fetch(`https://one860mindenplanner.onrender.com/users/getUsers`, {
+        const response = await fetch(`http://127.0.0.1:10000/users/getUsers`, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         });
@@ -1132,7 +1202,7 @@ async function requestUserExercise(username, device) {
     showLoader();
     try {
         if (!username || !device) throw new Error("Exercise request failed: Invalid params");
-        const response = await fetch(`https://one860mindenplanner.onrender.com/exercise/get?device=${device}&vorname=${username}`);
+        const response = await fetch(`http://127.0.0.1:10000/exercise/get?device=${device}&vorname=${username}`);
         
         if (response.ok) {
             const exerciseData = await response.json();
@@ -1983,7 +2053,7 @@ async function getElements(difficulty, group, searchText) {
     let device = currentDevice;
     showLoader();
     try {
-        const url = new URL('https://one860mindenplanner.onrender.com/elements/getGroupElements');
+        const url = new URL('http://127.0.0.1:10000/elements/getGroupElements');
         const params = { Device: device, Difficulty: difficulty , Group: group, Text: searchText};
         Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -2056,7 +2126,7 @@ async function getElementDetails(elementId) {
     showLoader();
     try {
         const deviceCode = elementId.substring(0, 2);
-        const response = await fetch(`https://one860mindenplanner.onrender.com/exercise/get_element?id=${elementId}&currentDevice=${deviceCode}`);
+        const response = await fetch(`http://127.0.0.1:10000/exercise/get_element?id=${elementId}&currentDevice=${deviceCode}`);
         const elementDetails = await response.json();
         hideLoader();
         if (response.ok && elementDetails) {
@@ -2094,7 +2164,7 @@ async function safeUpdateExercise(elementList) {
     };
     showLoader();
     try {
-        const response = await fetch("https://one860mindenplanner.onrender.com/exercise/update", {
+        const response = await fetch("http://127.0.0.1:10000/exercise/update", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

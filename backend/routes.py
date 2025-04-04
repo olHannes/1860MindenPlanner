@@ -5,6 +5,7 @@ import os
 from pymongo import MongoClient
 from datetime import datetime, timezone, timedelta
 import time
+from bson import ObjectId
 import notification
 
 load_dotenv()
@@ -511,7 +512,9 @@ def get_element():
 
 @main_bp.route('/competition/getAll', methods=['GET'])
 def get_all_competitions():
-    competitions = list(competition_collection.find({}, {"_id": 0}))
+    competitions = list(competition_collection.find())
+    for comp in competitions:
+        comp['_id'] = str(comp['_id'])
     return jsonify(competitions), 200
 
 @main_bp.route('/competition/create', methods=['POST'])
@@ -535,12 +538,16 @@ def create_competition():
 
 @main_bp.route('/competition/delete/<competition_id>', methods=['DELETE'])
 def delete_competition(competition_id):
+    try:
+        competition_id = ObjectId(competition_id)
+    except Exception as e:
+        return jsonify({"message": "Ungültige Wettkampfid"}), 400
     result = competition_collection.delete_one({"_id": competition_id})
     
     if result.deleted_count == 0:
         return jsonify({"message": "Wettkampf nicht gefunden"}), 404
-
     return jsonify({"message": "Wettkampf erfolgreich gelöscht"}), 200
+
 
 @main_bp.route('/competition/<competition_id>/addParticipant', methods=['POST'])
 def add_participant(competition_id):
