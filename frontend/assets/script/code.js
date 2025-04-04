@@ -1121,7 +1121,10 @@ async function showMemberData(username) {
 //----------------------------------------------------------------------------------------------------------------- validate Routine
 
 function validRoutine(elements, device) {
-    console.log("check if the Routine is valid: ", device, "; ", elements);
+    if(device == "VA"){
+        return validRoutineVA(elements, device);
+    }
+    console.log("valid Routine '", elements, "' for ", device);
 
     const requiredGroups = {
         "FL": new Set(["1", "2", "3"]), 
@@ -1209,10 +1212,8 @@ function validRoutine(elements, device) {
         warnings.push(`⚠️ Doppelte Elemente: ${duplicateElements.join(", ")}`);
     }
 
-    if (device === "VA" && totalElements > 1) {
-        errors.push("❌ Eine Sprung-Übung besteht nur aus einem Element.");
-    }
-    if (totalElements < 7 && device != "VA") {
+
+    if (totalElements < 7) {
         errors.push(`❌ Zu wenig Elemente: ${totalElements}`);
     }
     if (missingGroups.length > 0) {
@@ -1227,6 +1228,46 @@ function validRoutine(elements, device) {
 
     return { warnings, errors, totalDifficulty, totalElements, groupList, isComplete, baseDifficulty, groupBonus, dismountBonus };
 }
+
+function validRoutineVA(elements, device) {
+    console.log("Validiere Sprung-Routine:", elements);
+
+    let warnings = [];
+    let errors = [];
+    let highestDifficulty = 0;
+    let groupList = "";
+    
+    if (elements.length !== 1) {
+        errors.push("❌ Eine Sprung-Übung darf nur ein Element enthalten.");
+    }
+
+    elements.forEach(el => {
+        let wertigkeit = parseFloat(el.wertigkeit) || 0;
+        if (wertigkeit > highestDifficulty) {
+            highestDifficulty = wertigkeit;
+        }
+    });
+
+    let elementGroup = elements[0]?.elementegruppe || null;
+    if (elementGroup) {
+        groupList = elementGroup.toString();
+    }
+
+    let totalDifficulty = 10 + highestDifficulty;
+
+    return {
+        warnings,
+        errors,
+        totalDifficulty,
+        totalElements: elements.length,
+        groupList,
+        isComplete: errors.length === 0,
+        baseDifficulty: highestDifficulty,
+        groupBonus: 0,
+        dismountBonus: 0
+    };
+}
+
 
 
 
