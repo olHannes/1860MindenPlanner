@@ -904,8 +904,10 @@ async function getAllUser() {
 }
 
 async function showAllUser() {
+    document.getElementById('dashboard').style.display="none";
     const memberList = document.getElementById('memberList');
     memberList.innerHTML = '';
+    memberList.style.display="block";
 
     showLoader();
     const data = await getAllUser();
@@ -936,7 +938,11 @@ async function showAllUser() {
     hideLoader();
 }
 
-
+async function showDashboard() {
+    document.getElementById('memberList').style.display="none";
+    document.getElementById('dashboard').style.display="block";
+    
+}
 
 //-----------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------- Ab hier: Routine handling

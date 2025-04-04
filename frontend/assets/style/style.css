@@ -986,11 +986,28 @@ button {
 
 
                                 /** Member List **/
+
+
+#memberSwitchPage {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    top: 10dvh;
+}
+#memberSwitchPage button{
+    color: white;
+    background-color: rgb(14, 149, 129);
+    border-radius: 7px;
+    width: 30%;
+}
+
+
 #memberList {
     width: 100dvw;
-    height: 78dvh;
+    height: 72dvh;
     position: absolute;
-    top: 10dvh;
+    top: 17dvh;
     overflow: auto;
     background-color: #f5f5f5;
 }
@@ -1022,7 +1039,26 @@ button {
 
 
 
+                    /*Dahboard*/
+#dashboard {
+    width: 100dvw;
+    height: 72dvh;
+    position: absolute;
+    top: 17dvh;
+    overflow: auto;
+    background-color: #f5f5f5;
+}
 
+#dashboardInfo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75%;
+}
+#dashboardInfo p {
+    margin-top: 12dvh;
+    text-align: center;
+}
 
 
 

@@ -360,6 +360,10 @@
 
     <div id="panel2" class="panel">
         <h2>Mitglieder</h2>
+        <div id="memberSwitchPage">
+            <button onclick="showAllUser();">Übungen</button>
+            <button onclick="showDashboard();">Dashboard</button>
+        </div>
         <div id="memberExerciseList">
             <button onclick="hideMemberExerciseList();" id="hideMemberExercise">
                 <img src="frontend/assets/images/system/back.png" alt="Go Back Btn" class="goBack-Btn">
@@ -373,6 +377,12 @@
                 <img src="frontend/assets/images/system/profile_icon.png" alt="profile icon">
                 <span class="name-de">Max</span>
                 <span class="name-en">Mustermann</span>
+            </div>
+        </div>
+        <div id="dashboard">
+            <div id="dashboardInfo">
+                <h2>Wettkämpfe</h2>
+                <p>Auf dieser Seite soll ein Dash-/Leaderboard angezeigt werden, auf dem Wettkämpfe und Bewertungen eingetragen werden könne.</p>
             </div>
         </div>
     </div>
