@@ -18,6 +18,28 @@ body {
     color: darkgray;
 }
 
+#news {
+    display: none;
+    position: absolute;
+    background-color: white;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1300;
+    border-radius: 13px;
+    width: 90%;
+    height: 80dvh;
+    padding: 8px;
+}
+#news h3 {
+    text-align: center;
+}
+.openNews {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 #loadingContainer{
     display: none;
     position: absolute;

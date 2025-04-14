@@ -386,7 +386,6 @@ def change_user_color():
 @main_bp.route('/users/getUsers', methods=['GET'])
 def get_users():
     users = list(users_collection.find({}, {"_id": 0, "firstName": 1, "lastName": 1, "online": 1, "color_code": 1}))
-    print("Try to get All Users: ", users)
     return jsonify(users), 200
 
 

@@ -26,6 +26,16 @@
         <p>Fehler / Verbesserungsvorschläge können außerdem in den Einstellungen gemeldet werden.</p>
         <button id="closeInfoBox">OK</button>
     </div>
+
+    <div id="news">
+        <h3>Neuigkeiten</h3>
+        <p>Die neusten Features seit dem letzten Update:</p>
+        <ul>
+            <li><strong>Autosafe:</strong> Die Übung wird nach 2 Minuten Inaktivität automatisch gespeichert.</li>
+            <li><strong>News:</strong> Diese Liste enthält die neusten Features</li>
+        </ul>
+        <button class="safeBtn" id="closeNews">Schließen</button>
+    </div>
     
     <!--Admin Page for Report View-->
     <div id="AdminPage">
@@ -98,6 +108,7 @@
     <button onclick="toggleRegistration()" id="registerBtn">Registrieren</button> 
     <p id="errorMsg"></p>
     <a href="frontend/impressum/impressum.html" class="impressum">Impressum</a>
+    <button class="openNews" style="width: 40%; background-color: green;" onclick="openNews();">Updates & News</button>
 </div>
 
 <div id="registration_mask" style="display: none;">

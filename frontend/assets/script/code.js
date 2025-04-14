@@ -8,9 +8,15 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("closeInfoBox").addEventListener("click", function() {
         document.getElementById("startupInformation").style.display = "none";
     });
+
+    document.getElementById("closeNews").addEventListener("click", function() {
+        document.getElementById("news").style.display = "none";
+    });
 });
 
-
+function openNews() {
+    document.getElementById("news").style.display = "block";
+}
 
 //----------------------------------------------------------------------------------------------------------------- heartbeat - hold server alive
 function sendHeartbeat() {
@@ -1772,7 +1778,13 @@ function createRoutine() {
     document.getElementById('exerciseCreationPanel').style.display = 'block';
     document.getElementById("selected-exercises-list").innerHTML = "";
     loadCurrentExercise(localStorage.getItem("user"), currentDevice, true);
+    console.log("start autosafe");
+    autoRoutineSafe = setTimeout(() => {
+        safeExercise();
+    }, 0.5*60*1000);
 }
+
+let autoRoutineSafe = null;
 
 function closeDevice() {
     if(pageDepth == 2){
@@ -1789,6 +1801,7 @@ function closeDevice() {
         safeExercise();
     }
     else if(pageDepth == 0){
+        clearTimeout(autoRoutineSafe);
         document.getElementById('EquipmentExercise').style.display="none";
     } else {
         togglePanel(1);
@@ -2194,6 +2207,7 @@ async function getElementDetails(elementId) {
 
 //----------------------------------------------------------------------------------------------------------------- safe Routine
 function safeExercise(){
+    console.log("Safe Exercise");
     safeUpdateExercise(currentExercise);
 }
 
