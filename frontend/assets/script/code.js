@@ -1,5 +1,6 @@
 window.onload = function () {
     localStorage.removeItem("user");
+    localStorage.removeItem("userId");
     checkUserStatus();
 };
 
@@ -17,20 +18,6 @@ document.addEventListener("DOMContentLoaded", function() {
 function openNews() {
     document.getElementById("news").style.display = "block";
 }
-
-//----------------------------------------------------------------------------------------------------------------- heartbeat - hold server alive
-function sendHeartbeat() {
-    fetch('https://one860mindenplanner.onrender.com/account/heartbeat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: localStorage.getItem("user"), userId: localStorage.getItem("userId") })
-    })
-    .then(response => response.json())
-    .then(data => console.log("Heartbeat gesendet:", data))
-    .catch(error => console.error("Fehler beim Senden des Heartbeats:", error));
-}
-setInterval(sendHeartbeat, 30000);
-
 
 
 //----------------------------------------------------------------------------------------------------------------- handle loader
@@ -165,7 +152,7 @@ async function register() {
     
     try {
         showLoader();
-        const response = await fetch("https://one860mindenplanner.onrender.com/account/register", {
+        const response = await fetch("http://127.0.0.1:10000/account/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ firstName, lastName, password: newPassword })
@@ -199,7 +186,7 @@ async function login() {
 
     showLoader();
     try {
-        const response = await fetch("https://one860mindenplanner.onrender.com/account/login", {
+        const response = await fetch("http://127.0.0.1:10000/account/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password })
@@ -211,6 +198,8 @@ async function login() {
         if(response.ok && username == "admin"){
             localStorage.setItem("user", username);
             loadAdminReports();
+            localStorage.setItem("user", username);
+            localStorage.setItem("userId", data.userId);
             return;
         }
 
@@ -240,7 +229,7 @@ async function checkUserStatus() {
 
     showLoader();
     try {
-        const response = await fetch(`https://one860mindenplanner.onrender.com/account/checkUserStatus?name=${username}&userId=${userId}`, {
+        const response = await fetch(`http://127.0.0.1:10000/account/checkUserStatus?name=${username}&userId=${userId}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         });
@@ -305,7 +294,7 @@ async function setProfileName() {
     }
 
     try {
-        const response = await fetch(`https://one860mindenplanner.onrender.com/account/getUserInfo?userId=${userId}`, {
+        const response = await fetch(`http://127.0.0.1:10000/account/getUserInfo?userId=${userId}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         });
@@ -346,14 +335,14 @@ async function setProfileName() {
 async function logout() {
     const username = localStorage.getItem("user");
     const userId = localStorage.getItem("userId");
+    console.log(username, " ", userId);
     if (!username || !userId) {
         document.getElementById("errorMsg").textContent = "Kein Benutzer eingeloggt!";
-        return;
     }
 
     showLoader();
     try {
-        const response = await fetch("https://one860mindenplanner.onrender.com/account/logout", {
+        const response = await fetch("http://127.0.0.1:10000/account/logout", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name: username, userId })
@@ -361,8 +350,8 @@ async function logout() {
 
         const data = await response.json();
         hideLoader();
-
-        if (response.ok && data.message === "Erfolgreich ausgeloggt!") {
+        console.log(data.message);
+        if (response.ok && (data.message === "Erfolgreich ausgeloggt!" || data.message === "Kein Benutzername oder Benutzer-ID angegeben!")) {
             localStorage.removeItem("user");
             localStorage.removeItem("userId");
             document.getElementById('AdminPage').style.display="none";
@@ -377,6 +366,7 @@ async function logout() {
         console.error("Error:", error);
         document.getElementById("errorMsg").textContent = "Fehler beim Logout!";
     }
+    checkLoginStatus();
 }
 
 // Auto Logout
@@ -388,7 +378,7 @@ window.onbeforeunload = async function () {
 
     showLoader();
     try {
-        const response = await fetch("https://one860mindenplanner.onrender.com/account/logout", {
+        const response = await fetch("http://127.0.0.1:10000/account/logout", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name: username, userId })
@@ -433,7 +423,7 @@ async function deleteAccount() {
     }
     showLoader();
     try {
-        const response = await fetch("https://one860mindenplanner.onrender.com/account/delete", {
+        const response = await fetch("http://127.0.0.1:10000/account/delete", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({name, userId})
@@ -511,7 +501,7 @@ async function saveName() {
     }
 
     try {
-        const response = await fetch("https://one860mindenplanner.onrender.com/account/changeData", {
+        const response = await fetch("http://127.0.0.1:10000/account/changeData", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -555,7 +545,7 @@ async function updatePassword(username, newPassword) {
         return;
     }
     try {
-        const response = await fetch('https://one860mindenplanner.onrender.com/account/updatePassword', {
+        const response = await fetch('http://127.0.0.1:10000/account/updatePassword', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -614,7 +604,7 @@ async function changeUserColor(color) {
     }
 
     try {
-        const response = await fetch("https://one860mindenplanner.onrender.com/account/user/colorChange", {
+        const response = await fetch("http://127.0.0.1:10000/account/user/colorChange", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -688,7 +678,7 @@ async function submitReport() {
     };
     showLoader();
     try {
-        const response = await fetch('https://one860mindenplanner.onrender.com/report/issue', {
+        const response = await fetch('http://127.0.0.1:10000/report/issue', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -724,7 +714,7 @@ async function loadAdminReports() {
     showLoader();
 
     try {
-        const response = await fetch('https://one860mindenplanner.onrender.com/report/all');
+        const response = await fetch('http://127.0.0.1:10000/report/all');
         if (!response.ok) {
             throw new Error('Fehler beim Abrufen der Reports');
         }
@@ -798,7 +788,7 @@ async function loadAdminReports() {
 async function deleteReport(reportTitle) {
     showLoader();
     try {
-        const response = await fetch('https://one860mindenplanner.onrender.com/report/delete', {
+        const response = await fetch('http://127.0.0.1:10000/report/delete', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -906,7 +896,7 @@ async function deleteAdminUser(username) {
     const name = username;
     showLoader();
     try {
-        const response = await fetch("https://one860mindenplanner.onrender.com/account/delete", {
+        const response = await fetch("http://127.0.0.1:10000/account/delete", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({name})
@@ -953,7 +943,7 @@ async function loadCompetitions() {
     showLoader();
 
     try {
-        const response = await fetch('https://one860mindenplanner.onrender.com/competition/getAll');
+        const response = await fetch('http://127.0.0.1:10000/competition/getAll');
         if (!response.ok) throw new Error('Fehler beim Abrufen der Wettkämpfe');
 
         const competitions = await response.json();
@@ -1072,7 +1062,7 @@ async function loadCompetitions() {
 async function deleteCompetition(competitionId) {
     if (!confirm("Wettkampf wirklich löschen?")) return;
     try {
-        const response = await fetch(`https://one860mindenplanner.onrender.com/competition/delete/${competitionId}`, {
+        const response = await fetch(`http://127.0.0.1:10000/competition/delete/${competitionId}`, {
             method: 'DELETE'
         });
         if (!response.ok) {
@@ -1089,7 +1079,7 @@ async function deleteParticipant(competitionId, participantId) {
     if (!confirm("Teilnehmer wirklich aus dem Wettkampf entfernen?")) return;
 
     try {
-        const response = await fetch(`https://one860mindenplanner.onrender.com/competition/${competitionId}/removeParticipant/${participantId}`, {
+        const response = await fetch(`http://127.0.0.1:10000/competition/${competitionId}/removeParticipant/${participantId}`, {
             method: 'DELETE'
         });
         if (!response.ok) {
@@ -1133,7 +1123,7 @@ async function createCompetition() {
     };
 
     try {
-        const response = await fetch('https://one860mindenplanner.onrender.com/competition/create', {
+        const response = await fetch('http://127.0.0.1:10000/competition/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -1180,7 +1170,7 @@ function emptyAdminContainer(){
 async function getAllUser() {
     showLoader();
     try {
-        const response = await fetch(`https://one860mindenplanner.onrender.com/users/getUsers`, {
+        const response = await fetch(`http://127.0.0.1:10000/users/getUsers`, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         });
@@ -1257,7 +1247,7 @@ async function requestUserExercise(username, device) {
     showLoader();
     try {
         if (!username || !device) throw new Error("Exercise request failed: Invalid params");
-        const response = await fetch(`https://one860mindenplanner.onrender.com/exercise/get?device=${device}&vorname=${username}`);
+        const response = await fetch(`http://127.0.0.1:10000/exercise/get?device=${device}&vorname=${username}`);
         
         if (response.ok) {
             const exerciseData = await response.json();
@@ -2115,7 +2105,7 @@ async function getElements(difficulty, group, searchText) {
     let device = currentDevice;
     showLoader();
     try {
-        const url = new URL('https://one860mindenplanner.onrender.com/elements/getGroupElements');
+        const url = new URL('http://127.0.0.1:10000/elements/getGroupElements');
         const params = { Device: device, Difficulty: difficulty , Group: group, Text: searchText};
         Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
@@ -2188,7 +2178,7 @@ async function getElementDetails(elementId) {
     showLoader();
     try {
         const deviceCode = elementId.substring(0, 2);
-        const response = await fetch(`https://one860mindenplanner.onrender.com/exercise/get_element?id=${elementId}&currentDevice=${deviceCode}`);
+        const response = await fetch(`http://127.0.0.1:10000/exercise/get_element?id=${elementId}&currentDevice=${deviceCode}`);
         const elementDetails = await response.json();
         hideLoader();
         if (response.ok && elementDetails) {
@@ -2227,7 +2217,7 @@ async function safeUpdateExercise(elementList) {
     };
     showLoader();
     try {
-        const response = await fetch("https://one860mindenplanner.onrender.com/exercise/update", {
+        const response = await fetch("http://127.0.0.1:10000/exercise/update", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

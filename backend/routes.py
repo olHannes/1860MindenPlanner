@@ -17,7 +17,6 @@ client = MongoClient(mongo_uri)
 
 db_user = client['Users']
 users_collection = db_user['users']
-sessions_collection = db_user['active_sessions']
 issues_collection = db_user['issues']
 
 
@@ -35,48 +34,6 @@ db_competition = client['Competition']
 competition_collection = db_competition['Competition']
 
 
-################################################################################################### Auto Logout via Hearbeat
-@main_bp.route('/account/heartbeat', methods=['POST'])
-def heartbeat():
-    data = request.get_json()
-    username = data.get("username")
-    user_id = data.get("userId")
-
-    if username and user_id:
-        sessions_collection.update_one(
-            {"username": username, "userId": user_id},
-            {"$set": {"last_active": datetime.now(timezone.utc)}}
-        )
-        return jsonify({"message": "Heartbeat received"}), 200
-    else:
-        return jsonify({"error": "Kein Benutzername angegeben!"}), 400
-
-def cleanup_sessions():
-    timeout = timedelta(minutes=2)
-    now = datetime.now(timezone.utc)
-
-    inactive_sessions = sessions_collection.find({
-        "last_active": {"$lt": now - timeout}
-    })
-
-    expired_users = []
-    for session in inactive_sessions:
-        username = session.get("username")
-        user_id = session.get("userId")
-        expired_users.append((username, user_id))
-
-        print(f"Session abgelaufen: {username} (ID: {user_id})")
-
-        users_collection.update_one(
-            {"_id": user_id},
-            {"$set": {"online": 0}}
-        )
-        sessions_collection.delete_one({"username": username, "userId": user_id})
-
-    print(f"Bereinigung abgeschlossen: {len(expired_users)} Nutzer ausgeloggt.")
-
-
-
 
 ################################################################################################### Login
 
@@ -86,31 +43,16 @@ def login():
     username = data.get('username')
     password = data.get('password')
 
-    cleanup_sessions()
-
     user = users_collection.find_one({"firstName": username})
     print("Try Login for: ", username, " | DB-Query: ", user, " | status: ", user.get('online'))
     
     if user:
         user_id = str(user["_id"])
-        if user.get('online') == 1:
-            return jsonify({"message": "Benutzer bereits eingeloggt!"}), 403
 
         if check_password_hash(user['password'], password):
-            #Update session-collection
-            sessions_collection.update_one(
-            {"username": username, "userId": user_id},
-            {"$set": {
-                "ip": request.remote_addr,
-                "last_active": datetime.now(timezone.utc)
-            }},
-            upsert=True
-            )
-
-            #Update Online Status
             users_collection.update_one(
                 {"_id": user["_id"]},
-                {"$set": {"online": 1}}
+                {"$inc": {"online": 1}}
             )
             session['user'] = username
             return jsonify({"message": "Login erfolgreich!", "userId": user_id}), 200
@@ -130,14 +72,16 @@ def check_user_status():
     if not username or not user_id:
         return jsonify({"message": "Kein Benutzername oder Benutzer-ID angegeben!"}), 400
 
-    session = sessions_collection.find_one({"username": username, "userId": user_id})
-    
-    if session:
+    user = users_collection.find_one({"_id": ObjectId(user_id), "username": username})
+
+    if user and user.get("online", 0) > 0:
         return jsonify({"message": "Benutzer online!"}), 200
     else:
-        users_collection.update_one({"_id": ObjectId(user_id)}, {"$set": {"online": 0}})
+        users_collection.update_one(
+            {"_id": ObjectId(user_id)},
+            {"$inc": {"online": -1}}
+        )
         return jsonify({"message": "Benutzer offline, Status zurückgesetzt!"}), 200
-
 
 
 ################################################################################################### Logout
@@ -153,8 +97,7 @@ def logout():
 
     print("Try Logout for:", username, "| ID:", user_id)
 
-    sessions_collection.delete_one({"username": username, "userId": user_id})
-    users_collection.update_one({"_id": ObjectId(user_id)}, {"$set": {"online": 0}})
+    users_collection.update_one({"_id": ObjectId(user_id)}, {"$inc": {"online": -1}})
     session.pop('user', None)
 
     return jsonify({"message": "Erfolgreich ausgeloggt!"}), 200
@@ -281,7 +224,6 @@ def delete_account():
         return jsonify({"message": "Benutzer nicht gefunden oder ID stimmt nicht!"}), 404
 
     users_collection.delete_one({"_id": ObjectId(user_id)})
-    sessions_collection.delete_one({"username": username, "userId": user_id})
 
     session.pop('user', None)
     return jsonify({"message": "Account erfolgreich gelöscht!"}), 200
@@ -340,11 +282,6 @@ def changeData():
     users_collection.update_one(
         {"_id": ObjectId(user_id)},
         {"$set": {"firstName": new_first_name, "lastName": new_last_name}}
-    )
-
-    sessions_collection.update_one(
-        {"userId": user_id},
-        {"$set": {"username": new_first_name}}
     )
 
     return jsonify({

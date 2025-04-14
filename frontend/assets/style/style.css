@@ -29,9 +29,13 @@ body {
     width: 90%;
     height: 80dvh;
     padding: 8px;
+    overflow-y: auto;
 }
 #news h3 {
     text-align: center;
+}
+#news li {
+    margin-top: 5px;
 }
 .openNews {
     position: absolute;
