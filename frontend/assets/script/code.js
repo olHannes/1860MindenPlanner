@@ -17,7 +17,7 @@ function sendHeartbeat() {
     fetch('https://one860mindenplanner.onrender.com/account/heartbeat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: localStorage.getItem("user") })
+        body: JSON.stringify({ username: localStorage.getItem("user"), userId: localStorage.getItem("userId") })
     })
     .then(response => response.json())
     .then(data => console.log("Heartbeat gesendet:", data))
@@ -128,10 +128,13 @@ function cancelRegistration() {
 
 // register new User
 async function register() {
-    const firstName = document.getElementById("firstName").value;
-    const lastName = document.getElementById("lastName").value;
+    firstName = document.getElementById("firstName").value;
+    lastName = document.getElementById("lastName").value;
     const newPassword = document.getElementById("newPassword").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
+
+    firstName = normalizeName(firstName);
+    lastName = normalizeName(lastName);
 
     if (newPassword !== confirmPassword) {
         document.getElementById("errorMsgRegister").textContent = "Passwörter stimmen nicht überein!";
@@ -154,9 +157,6 @@ async function register() {
         return;
     }
     
-
-
-
     try {
         showLoader();
         const response = await fetch("https://one860mindenplanner.onrender.com/account/register", {
@@ -210,6 +210,7 @@ async function login() {
 
         if (response.ok && data.message === "Login erfolgreich!") {
             localStorage.setItem("user", username);
+            localStorage.setItem("userId", data.userId);
             setProfileName();
             checkLoginStatus();
         } else if (response.status === 403) {
@@ -227,12 +228,13 @@ async function login() {
 // Update User Status
 async function checkUserStatus() {
     const username = localStorage.getItem("user");
+    const userId = localStorage.getItem("userId");
 
-    if (!username) return;
+    if (!username || !userId) return;
 
     showLoader();
     try {
-        const response = await fetch(`https://one860mindenplanner.onrender.com/account/checkUserStatus?name=${username}`, {
+        const response = await fetch(`https://one860mindenplanner.onrender.com/account/checkUserStatus?name=${username}&userId=${userId}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         });
@@ -246,6 +248,7 @@ async function checkUserStatus() {
 
         if (data.message === "Benutzer offline, Status zurückgesetzt!") {
             localStorage.removeItem("user");
+            localStorage.removeItem("userId");
         }
 
     } catch (error) {
@@ -270,7 +273,8 @@ function clearLoginInput(){
 // toggle panel view after login
 function checkLoginStatus() {
     const user = localStorage.getItem("user");
-    if (user) {
+    const userId = localStorage.getItem("userId");
+    if (user && userId) {
         document.getElementById("login_mask").style.display = "none";
         document.getElementById("headline").style.display = "none";
         document.getElementById("content").style.display = "block";
@@ -285,10 +289,17 @@ function checkLoginStatus() {
 
 // initialize profile config
 async function setProfileName() {
-    const name = localStorage.getItem("user");
+    const userId = localStorage.getItem("userId");
     showLoader();
+    if(!userId){
+        console.error("Keine userId gefunden.");
+        hideLoader();
+        checkLoginStatus();
+        return;
+    }
+
     try {
-        const response = await fetch(`https://one860mindenplanner.onrender.com/account/getUserInfo?name=${name}`, {
+        const response = await fetch(`https://one860mindenplanner.onrender.com/account/getUserInfo?userId=${userId}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         });
@@ -315,7 +326,7 @@ async function setProfileName() {
         hideLoader();
     } catch (error) {
         hideLoader();
-        localStorage.removeItem("user");
+        localStorage.removeItem("userId");
         checkLoginStatus();
         console.error("Error:", error);
     }
@@ -328,7 +339,8 @@ async function setProfileName() {
 // User Logout
 async function logout() {
     const username = localStorage.getItem("user");
-    if (!username) {
+    const userId = localStorage.getItem("userId");
+    if (!username || !userId) {
         document.getElementById("errorMsg").textContent = "Kein Benutzer eingeloggt!";
         return;
     }
@@ -338,7 +350,7 @@ async function logout() {
         const response = await fetch("https://one860mindenplanner.onrender.com/account/logout", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name: username })
+            body: JSON.stringify({ name: username, userId })
         });
 
         const data = await response.json();
@@ -346,6 +358,7 @@ async function logout() {
 
         if (response.ok && data.message === "Erfolgreich ausgeloggt!") {
             localStorage.removeItem("user");
+            localStorage.removeItem("userId");
             document.getElementById('AdminPage').style.display="none";
             checkLoginStatus();
         } else {
@@ -363,21 +376,23 @@ async function logout() {
 // Auto Logout
 window.onbeforeunload = async function () {
     const username = localStorage.getItem("user");
+    const userId = localStorage.getItem("userId");
 
-    if (!username) return;
+    if (!username || !userId) return;
 
     showLoader();
     try {
         const response = await fetch("https://one860mindenplanner.onrender.com/account/logout", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name: username })
+            body: JSON.stringify({ name: username, userId })
         });
 
         if (!response.ok) {
             throw new Error(`Fehler beim Logout: ${response.status} ${response.statusText}`);
         }
         localStorage.removeItem("user");
+        localStorage.removeItem("userId");
         hideLoader();
     } catch (error) {
         hideLoader();
@@ -404,12 +419,18 @@ function cancelDeleteAcc(){
 // Delete Account
 async function deleteAccount() {
     const name = localStorage.getItem("user");
+    const userId = localStorage.getItem("userId");
+
+    if (!name || !userId) {
+        document.getElementById("errorMsg").textContent = "Benutzer nicht gefunden!";
+        return;
+    }
     showLoader();
     try {
         const response = await fetch("https://one860mindenplanner.onrender.com/account/delete", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({name})
+            body: JSON.stringify({name, userId})
         });
 
         if (!response.ok) {
@@ -419,6 +440,7 @@ async function deleteAccount() {
         const result = await response.json();
         hideLoader();
         localStorage.removeItem("user");
+        localStorage.removeItem("userId");
         checkLoginStatus();
 
         alert("Dein Account wurde erfolgreich gelöscht!");
@@ -452,11 +474,22 @@ function editName() {
     document.getElementById('cancleBtn1').style.display = 'inline-block';
 }
 
+function normalizeName(name) {
+    return name
+        .trim()              
+        .replace(/\s+/g, ' ')
+        .replace(/\b\w/g, c => c.toUpperCase());
+}
+
+
 // safe Name-Edit
 async function saveName() {
-    const vorname = document.getElementById('editVorname').value || document.getElementById('editVorname').placeholder;
-    const nachname = document.getElementById('editNachname').value || document.getElementById('editNachname').placeholder;
-    const username = localStorage.getItem("user");
+    vorname = document.getElementById('editVorname').value || document.getElementById('editVorname').placeholder;
+    nachname = document.getElementById('editNachname').value || document.getElementById('editNachname').placeholder;
+    const userId = localStorage.getItem("userId");
+
+    vorname = normalizeName(vorname);
+    nachname = normalizeName(nachname);
 
     document.getElementById('Vorname').textContent = vorname;
     document.getElementById('Nachname').textContent = nachname;
@@ -466,29 +499,36 @@ async function saveName() {
     document.getElementById('safeBtn2').style.display = 'none';
     showLoader();
 
-    if (!username) {
-        console.error("Kein Benutzername im LocalStorage gefunden.");
+    if (!userId) {
+        console.error("Keine Benutzer-ID im LocalStorage gefunden.");
         return;
     }
+
     try {
         const response = await fetch("https://one860mindenplanner.onrender.com/account/changeData", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username: username, new_first_name: vorname, new_last_name: nachname })
+            body: JSON.stringify({
+                userId,
+                new_first_name: vorname,
+                new_last_name: nachname
+            })
         });
 
         if (!response.ok) {
             throw new Error(`Fehler beim Data-change: ${response.status} ${response.statusText}`);
         }
 
-        localStorage.removeItem("user");
-        localStorage.setItem("user", vorname);
+        const data = await response.json();
+        localStorage.setItem("user", vorname);  // Username updaten
         hideLoader();
+
     } catch (error) {
         hideLoader();
-        console.error("Error beim Verlassen der Seite:", error);
+        console.error("Fehler beim Speichern der Benutzerdaten:", error);
     }
 }
+
 
 
 // password edit
@@ -501,7 +541,9 @@ function editPassword(){
 
 // safe password-Edit
 async function updatePassword(username, newPassword) {
-    if (!username || !newPassword) {
+    const userId = localStorage.getItem("userId");
+
+    if (!username || !newPassword || !userId) {
         document.getElementById('passwordEdit').style.display = "none";
         document.getElementById('nameView').style.display = "block";
         return;
@@ -514,6 +556,7 @@ async function updatePassword(username, newPassword) {
             },
             body: JSON.stringify({
                 firstName: username,
+                userId: userId,
                 newPassword: newPassword
             })
         });
@@ -555,13 +598,15 @@ function hideOptionsContainer(){
 
 // update User-Color
 async function changeUserColor(color) {
-    
     showLoader();
-    let username = localStorage.getItem("user");
-    if (!username || !color) {
-        console.error("Fehlende Parameter: Benutzername oder Farbe");
+
+    const userId = localStorage.getItem("userId");
+    if (!userId || !color) {
+        console.error("Fehlende Parameter: Benutzer-ID oder Farbe");
+        hideLoader();
         return;
     }
+
     try {
         const response = await fetch("https://one860mindenplanner.onrender.com/account/user/colorChange", {
             method: "POST",
@@ -569,16 +614,19 @@ async function changeUserColor(color) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                firstName: username,
+                userId: userId,
                 colorCode: color
             })
         });
         const result = await response.json();
+
         if (!response.ok) {
             throw new Error(result.message || `Fehler: ${response.status}`);
         }
+
         const profileImg = document.getElementById('profilePicture');
         const profileImg_2 = document.getElementById('profilePictureOptions');
+
         if (profileImg && profileImg_2 && color !== "#000000") {
             profileImg.style.filter = `drop-shadow(0px 0px 5px ${color})`;
             profileImg_2.style.filter = `drop-shadow(0px 0px 5px ${color})`;
@@ -586,12 +634,14 @@ async function changeUserColor(color) {
             profileImg.style.filter = "";
             profileImg_2.style.filter = "";
         }
-        
+
     } catch (error) {
         console.error("Fehler beim Ändern der Farbe:", error);
     }
+
     hideLoader();
 }
+
 
 
 
@@ -1014,7 +1064,6 @@ async function loadCompetitions() {
 
 
 async function deleteCompetition(competitionId) {
-    console.log("fjdsflfaö");
     if (!confirm("Wettkampf wirklich löschen?")) return;
     try {
         const response = await fetch(`https://one860mindenplanner.onrender.com/competition/delete/${competitionId}`, {

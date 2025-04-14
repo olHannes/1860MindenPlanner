@@ -40,11 +40,11 @@ competition_collection = db_competition['Competition']
 def heartbeat():
     data = request.get_json()
     username = data.get("username")
-    print("Heartbeat: ", username)
+    user_id = data.get("userId")
 
-    if username:
+    if username and user_id:
         sessions_collection.update_one(
-            {"username": username},
+            {"username": username, "userId": user_id},
             {"$set": {"last_active": datetime.now(timezone.utc)}}
         )
         return jsonify({"message": "Heartbeat received"}), 200
@@ -61,16 +61,17 @@ def cleanup_sessions():
 
     expired_users = []
     for session in inactive_sessions:
-        username = session["username"]
-        expired_users.append(username)
+        username = session.get("username")
+        user_id = session.get("userId")
+        expired_users.append((username, user_id))
 
-        print(f"Session expired: {username}")
+        print(f"Session abgelaufen: {username} (ID: {user_id})")
 
         users_collection.update_one(
-            {"firstName": username},
+            {"_id": user_id},
             {"$set": {"online": 0}}
         )
-        sessions_collection.delete_one({"username": username})
+        sessions_collection.delete_one({"username": username, "userId": user_id})
 
     print(f"Bereinigung abgeschlossen: {len(expired_users)} Nutzer ausgeloggt.")
 
@@ -91,13 +92,14 @@ def login():
     print("Try Login for: ", username, " | DB-Query: ", user, " | status: ", user.get('online'))
     
     if user:
+        user_id = str(user["_id"])
         if user.get('online') == 1:
             return jsonify({"message": "Benutzer bereits eingeloggt!"}), 403
 
         if check_password_hash(user['password'], password):
             #Update session-collection
             sessions_collection.update_one(
-            {"username": username},
+            {"username": username, "userId": user_id},
             {"$set": {
                 "ip": request.remote_addr,
                 "last_active": datetime.now(timezone.utc)
@@ -107,11 +109,11 @@ def login():
 
             #Update Online Status
             users_collection.update_one(
-                {"firstName": username},
+                {"_id": user["_id"]},
                 {"$set": {"online": 1}}
             )
             session['user'] = username
-            return jsonify({"message": "Login erfolgreich!"}), 200
+            return jsonify({"message": "Login erfolgreich!", "userId": user_id}), 200
         else:
             return jsonify({"message": "Ungültiges Passwort!"}), 401
     else:
@@ -123,16 +125,17 @@ def login():
 @main_bp.route('/account/checkUserStatus', methods=['GET'])
 def check_user_status():
     username = request.args.get('name')
+    user_id = request.args.get('userId')
 
-    if not username:
-        return jsonify({"message": "Kein Benutzername angegeben!"}), 400
+    if not username or not user_id:
+        return jsonify({"message": "Kein Benutzername oder Benutzer-ID angegeben!"}), 400
 
-    session = sessions_collection.find_one({"username": username})
+    session = sessions_collection.find_one({"username": username, "userId": user_id})
     
     if session:
         return jsonify({"message": "Benutzer online!"}), 200
     else:
-        users_collection.update_one({"firstName": username}, {"$set": {"online": 0}})
+        users_collection.update_one({"_id": ObjectId(user_id)}, {"$set": {"online": 0}})
         return jsonify({"message": "Benutzer offline, Status zurückgesetzt!"}), 200
 
 
@@ -143,14 +146,15 @@ def check_user_status():
 def logout():
     data = request.get_json()
     username = data.get('name')
+    user_id = data.get('userId')
 
-    if not username:
-        return jsonify({"message": "Kein Benutzername angegeben!"}), 400
+    if not username or not user_id:
+        return jsonify({"message": "Kein Benutzername oder Benutzer-ID angegeben!"}), 400
 
-    print("Try Logout for:", username)
+    print("Try Logout for:", username, "| ID:", user_id)
 
-    sessions_collection.delete_one({"username": username})
-    users_collection.update_one({"firstName": username}, {"$set": {"online": 0}})
+    sessions_collection.delete_one({"username": username, "userId": user_id})
+    users_collection.update_one({"_id": ObjectId(user_id)}, {"$set": {"online": 0}})
     session.pop('user', None)
 
     return jsonify({"message": "Erfolgreich ausgeloggt!"}), 200
@@ -181,19 +185,26 @@ def register():
 @main_bp.route('/account/updatePassword', methods=['POST'])
 def update_password():
     data = request.get_json()
-    first_name = data.get('firstName')
+    user_id = data.get('userId')
     new_password = data.get('newPassword')
 
-    if not first_name or not new_password:
-        return jsonify({"message": "Vorname und neues Passwort sind erforderlich!"}), 400
+    if not user_id or not new_password:
+        return jsonify({"message": "Benutzer-ID und neues Passwort sind erforderlich!"}), 400
 
-    user = users_collection.find_one({"firstName": first_name})
+    try:
+        user = users_collection.find_one({"_id": ObjectId(user_id)})
+    except:
+        return jsonify({"message": "Ungültige Benutzer-ID!"}), 400
+
     if not user:
         return jsonify({"message": "Benutzer nicht gefunden!"}), 404
-    
+
     hashed_password = generate_password_hash(new_password)
-    users_collection.update_one({"firstName": first_name}, {"$set": {"password": hashed_password}})
-    
+    users_collection.update_one(
+        {"_id": ObjectId(user_id)},
+        {"$set": {"password": hashed_password}}
+    )
+
     return jsonify({"message": "Passwort erfolgreich aktualisiert!"}), 200
 
 
@@ -256,21 +267,23 @@ def deleteReport():
 
 @main_bp.route('/account/delete', methods=['POST'])
 def delete_account():
-    global active_sessions
     data = request.get_json()
     username = data.get('name')
+    user_id = data.get('userId')
 
-    print("Try to delete: ", username)
+    if not username or not user_id:
+        return jsonify({"message": "Benutzername oder Benutzer-ID fehlt!"}), 400
 
-    user = users_collection.find_one({"firstName": username})
+    print("Try to delete:", username, "| ID:", user_id)
 
+    user = users_collection.find_one({"_id": ObjectId(user_id), "firstName": username})
     if not user:
-        return jsonify({"message": "Benutzername nicht gefunden!"}), 404
+        return jsonify({"message": "Benutzer nicht gefunden oder ID stimmt nicht!"}), 404
 
+    users_collection.delete_one({"_id": ObjectId(user_id)})
+    sessions_collection.delete_one({"username": username, "userId": user_id})
 
-    users_collection.delete_one({"firstName": username})
     session.pop('user', None)
-
     return jsonify({"message": "Account erfolgreich gelöscht!"}), 200
 
 
@@ -278,14 +291,14 @@ def delete_account():
 
 @main_bp.route('/account/getUserInfo', methods=['GET'])
 def get_user_info():
-    username = request.args.get('name')
+    user_id = request.args.get('userId')
 
-    print("Try to get User-Info: ", username)
+    print("Try to get User-Info by userId:", user_id)
 
-    if not username or not sessions_collection.find_one({"username": username}):
-        return jsonify({"message": "Benutzer nicht eingeloggt!"}), 401
+    if not user_id or not ObjectId.is_valid(user_id):
+        return jsonify({"message": "Ungültige oder fehlende Benutzer-ID!"}), 400
 
-    user = users_collection.find_one({"firstName": username})
+    user = users_collection.find_one({"_id": ObjectId(user_id)})
 
     if not user:
         return jsonify({"message": "Benutzer nicht gefunden!"}), 404
@@ -293,8 +306,9 @@ def get_user_info():
     return jsonify({
         "first_name": user['firstName'],
         "last_name": user['lastName'],
-        "color_code": user.get('color_code', '#000000') 
+        "color_code": user.get('color_code', '#000000')
     }), 200
+
 
 
 ################################################################################################### Setter -> User Information
@@ -302,32 +316,34 @@ def get_user_info():
 @main_bp.route('/account/changeData', methods=['POST'])
 def changeData():
     data = request.get_json()
-    username = data.get('username')
+    user_id = data.get('userId')
     new_first_name = data.get('new_first_name')
     new_last_name = data.get('new_last_name')
 
-    print("Try to change User-Data from user:", username, "to:", new_first_name, new_last_name)
+    print("Try to change User-Data with ID:", user_id, "to:", new_first_name, new_last_name)
 
-    if not username or not new_first_name or not new_last_name:
+    if not user_id or not new_first_name or not new_last_name:
         return jsonify({"message": "Fehlende Daten!"}), 400
 
-    user = users_collection.find_one({"firstName": username})
-
+    user = users_collection.find_one({"_id": ObjectId(user_id)})
     if not user:
         return jsonify({"message": "Benutzer nicht gefunden!"}), 404
 
-    existingUser = users_collection.find_one({"firstName": new_first_name})
+    existing_user = users_collection.find_one({
+        "firstName": new_first_name,
+        "_id": {"$ne": ObjectId(user_id)}
+    })
 
-    if existingUser:
-        return jsonify({"message": "Benutzername bereits vergeben!"}), 404
+    if existing_user:
+        return jsonify({"message": "Benutzername bereits vergeben!"}), 409
 
     users_collection.update_one(
-        {"firstName": username},
+        {"_id": ObjectId(user_id)},
         {"$set": {"firstName": new_first_name, "lastName": new_last_name}}
     )
 
     sessions_collection.update_one(
-        {"username": username},
+        {"userId": user_id},
         {"$set": {"username": new_first_name}}
     )
 
@@ -343,18 +359,25 @@ def changeData():
 @main_bp.route('/account/user/colorChange', methods=['POST'])
 def change_user_color():
     data = request.get_json()
-    first_name = data.get('firstName')
+    user_id = data.get('userId')
     new_color = data.get('colorCode')
-    
+
     if not isinstance(new_color, str) or not new_color.startswith('#') or len(new_color) != 7:
         return jsonify({"message": "Ungültiges Farbformat! Verwende das Format '#xxxxxx'."}), 400
-    
-    user = users_collection.find_one({"firstName": first_name})
+
+    if not user_id:
+        return jsonify({"message": "Benutzer-ID fehlt!"}), 400
+
+    try:
+        user = users_collection.find_one({"_id": ObjectId(user_id)})
+    except:
+        return jsonify({"message": "Ungültige Benutzer-ID!"}), 400
+
     if not user:
         return jsonify({"message": "Benutzer nicht gefunden!"}), 404
-    
-    users_collection.update_one({"firstName": first_name}, {"$set": {"color_code": new_color}})
-    
+
+    users_collection.update_one({"_id": ObjectId(user_id)}, {"$set": {"color_code": new_color}})
+
     return jsonify({"message": "Farbcode erfolgreich aktualisiert!"}), 200
 
 
