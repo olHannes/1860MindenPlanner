@@ -1,6 +1,9 @@
 window.onload = function () {
     localStorage.removeItem("user");
     localStorage.removeItem("userId");
+    if(localStorage.getItem("startUpInfo") != null) {
+        document.getElementById("startupInformation").style.display="none";
+    }
     checkUserStatus();
 };
 
@@ -8,6 +11,7 @@ window.onload = function () {
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("closeInfoBox").addEventListener("click", function() {
         document.getElementById("startupInformation").style.display = "none";
+        localStorage.setItem("startUpInfo", true);
     });
 
     document.getElementById("closeNews").addEventListener("click", function() {
