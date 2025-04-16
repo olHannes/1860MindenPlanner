@@ -1,14 +1,9 @@
 from flask import Flask
 from flask_cors import CORS
-from dotenv import load_dotenv
-from datetime import timedelta
-import os
 import routine
 import report
 import account
 import competition
-from pymongo import MongoClient
-import threading
 from mongoConf import *
 
 load_dotenv()

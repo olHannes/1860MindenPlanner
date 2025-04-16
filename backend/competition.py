@@ -4,6 +4,7 @@ competition_bp = Blueprint('competition', __name__)
 
 
 
+################################################################################################### get Competitions
 @competition_bp.route('/competition/getAll', methods=['GET'])
 def get_all_competitions():
     competitions = list(competition_collection.find())
@@ -11,6 +12,8 @@ def get_all_competitions():
         comp['_id'] = str(comp['_id'])
     return jsonify(competitions), 200
 
+
+################################################################################################### Create Competition
 @competition_bp.route('/competition/create', methods=['POST'])
 def create_competition():
     data = request.get_json()
@@ -30,6 +33,8 @@ def create_competition():
     competition_collection.insert_one(competition)
     return jsonify({"message": "Wettkampf erfolgreich erstellt"}), 201
 
+
+################################################################################################### Delete Competition
 @competition_bp.route('/competition/delete/<competition_id>', methods=['DELETE'])
 def delete_competition(competition_id):
     try:
@@ -43,6 +48,7 @@ def delete_competition(competition_id):
     return jsonify({"message": "Wettkampf erfolgreich gelöscht"}), 200
 
 
+################################################################################################### Add Participant
 @competition_bp.route('/competition/<competition_id>/addParticipant', methods=['POST'])
 def add_participant(competition_id):
     data = request.get_json()
@@ -72,6 +78,7 @@ def add_participant(competition_id):
     return jsonify({"message": f"Teilnehmer {participant_id} erfolgreich hinzugefügt"}), 200
 
 
+################################################################################################### Remove Participant
 @competition_bp.route('/competition/<competition_id>/removeParticipant/<participant_id>', methods=['DELETE'])
 def remove_participant(competition_id, participant_id):
     try:
@@ -90,6 +97,7 @@ def remove_participant(competition_id, participant_id):
     return jsonify({"message": f"Teilnehmer {participant_id} erfolgreich entfernt"}), 200
 
 
+################################################################################################### Add Device
 @competition_bp.route('/competition/<competition_id>/addDevice/<participant_id>', methods=['POST'])
 def add_device_to_participant(competition_id, participant_id):
     data = request.get_json()
@@ -115,6 +123,7 @@ def add_device_to_participant(competition_id, participant_id):
     return jsonify({"message": f"Gerät {device_name} mit {points} Punkten hinzugefügt"}), 200
 
 
+################################################################################################### Update Device
 @competition_bp.route('/competition/<competition_id>/updateDevice/<participant_id>', methods=['PUT'])
 def update_device_points(competition_id, participant_id):
     data = request.get_json()

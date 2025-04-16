@@ -15,9 +15,9 @@ def get_device_collection(device):
     }
     return device_collections.get(device)
 
+
 #################################################################################################### Get Elements
 # Route: Get All Elements
-
 @routine_bp.route('/elements/getGroupElements', methods=['GET'])
 def get_group_elements():
     device = request.args.get('Device')
@@ -27,9 +27,6 @@ def get_group_elements():
     if search_text in ['undefined', 'null']:
         search_text = ''
 
-
-    print("Get All Elements: ", device, ", ", group, ", ", difficulty, ", ", search_text)
-    
     if not device:
         return jsonify({"error": "Gerät ist erforderlich."}), 400
     
@@ -52,26 +49,30 @@ def get_group_elements():
             or search_text in el.get('name', '').lower()
         ]
 
-
     return jsonify(elements), 200
 
 
 ################################################################################################### Update Exercise
 # Route: Update Database Exercise
-
 @routine_bp.route('/exercise/update', methods=["POST"])
 def update_exercise():
     data = request.json
     vorname = data.get("vorname")
+    user_id = data.get("userId")
     geraet = data.get("geraet")
     elemente = data.get("elemente")
 
-    if not vorname or geraet is None or elemente is None:
+    if not vorname or user_id is None or geraet is None or elemente is None:
         return jsonify({"error": "Ungültige Anfrage. Alle Felder (vorname, geraet, elemente) sind erforderlich."}), 400
     
-    query = {"vorname": vorname, "geraet": geraet}
-    
+    try:
+        user_object_id = ObjectId(user_id)
+    except Exception:
+        return jsonify({"error": "Ungültige userId"}), 400
+
+    query = {"_id": user_object_id, "geraet": geraet}
     update_data = {"$set": {"elemente": elemente}}
+
     result = exercises_collection.update_one(query, update_data, upsert=True)
 
     if result.matched_count > 0:
@@ -79,15 +80,13 @@ def update_exercise():
     else:
         return jsonify({"message": "Neue Übung angelegt"}), 201
 
+
 ################################################################################################### Get Exercise
 # Route: Get Exercise
-
 @routine_bp.route('/exercise/get', methods=["GET"])
 def get_exercise():
     device = request.args.get("device")
     vorname = request.args.get("vorname")
-
-    print("get Exercise: ", device, ", ", vorname)
 
     if not device or not vorname:
         return jsonify({"error": "Ungültige Anfrage. Beide Parameter (device und vorname) sind erforderlich."}), 400
@@ -102,15 +101,13 @@ def get_exercise():
     else:
         return jsonify({"error": "Keine Übung gefunden."}), 404
 
+
 ################################################################################################### Get detailed Element
 # Route: Get Element by ID
-
 @routine_bp.route('/exercise/get_element', methods=["GET"])
 def get_element():
     element_id = request.args.get("id")
     current_device = request.args.get("currentDevice")
-
-    print("get Element by ID: ", element_id, "; Dev: ", current_device)
 
     if not element_id or not current_device:
         return jsonify({"error": "Ungültige Anfrage. Beide Parameter (id und currentDevice) sind erforderlich."}), 400

@@ -1227,11 +1227,6 @@ async function showAllUser() {
 
 
 
-
-
-
-
-
 const style = document.createElement('style');
 style.innerHTML = `
 #dashboardTabs {
@@ -1606,7 +1601,6 @@ function validRoutine(elements, device) {
     if(device == "VA"){
         return validRoutineVA(elements, device);
     }
-    console.log("valid Routine '", elements, "' for ", device);
 
     const requiredGroups = {
         "FL": new Set(["1", "2", "3"]), 
@@ -2394,15 +2388,17 @@ function safeExercise(){
 
 async function safeUpdateExercise(elementList) {
     const username = localStorage.getItem("user");
+    const userId = localStorage.getItem("userId");
     const device = currentDevice;
 
-    if (!username || !device) {
-        console.error("Benutzername oder Gerät nicht gefunden.");
+    if (!username || !device || !userId) {
+        console.error("Benutzername /-ID oder Gerät nicht gefunden.");
         return;
     }
     const filteredElements = elementList.filter(element => element !== null && element !== undefined);
     const payload = {
         vorname: username,
+        userId: userId,
         geraet: device,
         elemente: filteredElements
     };
