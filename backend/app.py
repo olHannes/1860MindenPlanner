@@ -5,6 +5,7 @@ from datetime import timedelta
 import os
 import routine
 import account_routes
+import report
 from pymongo import MongoClient
 import threading
 from mongoConf import *
@@ -24,6 +25,7 @@ def home():
 
 app.register_blueprint(routine.routine_bp)
 app.register_blueprint(account_routes.account_bp)
+app.register_blueprint(report.report_bp)
 
 if __name__ == '__main__':
     port = int(os.getenv("PORT", 10000))
