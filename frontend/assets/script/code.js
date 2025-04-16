@@ -962,97 +962,92 @@ async function loadCompetitions() {
         container.className = "admin-competition-container";
 
         const createButton = document.createElement('button');
-        createButton.innerText = "➕ Create Competition";
+        createButton.innerText = "➕ Wettkampf erstellen";
         createButton.id = "createCompBtn";
         createButton.addEventListener("click", openCompetitionWindow);
         container.appendChild(createButton);
 
         if (!Array.isArray(competitions) || competitions.length === 0) {
-            console.warn("Keine Wettkämpfe gefunden.");
-
             const emptyMessage = document.createElement('p');
             emptyMessage.innerText = "Keine Wettkämpfe vorhanden.";
-
             container.appendChild(emptyMessage);
         } else {
             competitions.forEach(competition => {
-                const compSection = document.createElement('div');
-                compSection.className = "competition-section";
+                const compCard = document.createElement('div');
+                compCard.className = "competition-card";
 
-                const headerDiv = document.createElement('div');
-                headerDiv.className = "competition-header";
+                const header = document.createElement('div');
+                header.className = "competition-card-header";
 
-                const title = document.createElement('h3');
+                const title = document.createElement('h2');
                 title.innerText = competition.name;
 
-                const date = document.createElement('span');
-                date.innerText = new Date(competition.date).toLocaleDateString();
+                const date = document.createElement('p');
+                date.innerHTML = `<strong>Datum:</strong> ${new Date(competition.date).toLocaleDateString()}`;
 
-                const location = document.createElement('span');
-                location.innerText = competition.location;
+                const location = document.createElement('p');
+                location.innerHTML = `<strong>Ort:</strong> ${competition.location}`;
 
                 const deleteCompButton = document.createElement('button');
                 deleteCompButton.className = "delete-button";
-                deleteCompButton.innerHTML = "❌ Wettkampf löschen";
+                deleteCompButton.innerText = "❌ Wettkampf löschen";
                 deleteCompButton.addEventListener("click", () => {
                     deleteCompetition(competition._id);
                 });
 
-                headerDiv.appendChild(title);
-                headerDiv.appendChild(date);
-                headerDiv.appendChild(location);
-                headerDiv.appendChild(deleteCompButton);
-                compSection.appendChild(headerDiv);
+                header.appendChild(title);
+                header.appendChild(date);
+                header.appendChild(location);
+                header.appendChild(deleteCompButton);
+                compCard.appendChild(header);
+
+                const participantList = document.createElement('div');
+                participantList.className = "participant-list";
 
                 if (competition.participants && competition.participants.length > 0) {
-                    const participantTable = document.createElement('table');
-                    participantTable.className = "competition-table";
-
-                    const headerRow = document.createElement('tr');
-                    headerRow.innerHTML = `
-                        <th>Name</th>
-                        <th>Geräte & Punkte</th>
-                        <th>Aktion</th>
-                    `;
-                    participantTable.appendChild(headerRow);
-
                     competition.participants.forEach(participant => {
-                        const row = document.createElement('tr');
+                        const partCard = document.createElement('div');
+                        partCard.className = "participant-card";
 
-                        const nameCell = document.createElement('td');
-                        nameCell.innerText = participant.name;
+                        const name = document.createElement('p');
+                        name.innerHTML = `<strong>Name:</strong> ${participant.name}`;
 
-                        const devicesCell = document.createElement('td');
-                        const devices = participant.devices.map(device =>
-                            `${device.name}: ${device.points} Pkt`
-                        ).join("\n") || "Keine Punkte erfasst";
-                        devicesCell.innerHTML = devices.replace(/\n/g, "<br>");
+                        const deviceList = document.createElement('ul');
+                        if (participant.devices && participant.devices.length > 0) {
+                            participant.devices.forEach(device => {
+                                const deviceItem = document.createElement('li');
+                                deviceItem.innerText = `${device.name}: ${device.points} Pkt`;
+                                deviceList.appendChild(deviceItem);
+                            });
+                        } else {
+                            const noPoints = document.createElement('p');
+                            noPoints.innerText = "Keine Punkte erfasst";
+                            partCard.appendChild(noPoints);
+                        }
 
-                        const actionCell = document.createElement('td');
                         const deleteBtn = document.createElement('button');
                         deleteBtn.className = "delete-button";
-                        deleteBtn.innerHTML = "❌";
+                        deleteBtn.innerText = "❌ Teilnehmer löschen";
                         deleteBtn.addEventListener("click", () => {
                             deleteParticipant(competition.id, participant.id);
                         });
-                        actionCell.appendChild(deleteBtn);
 
-                        row.appendChild(nameCell);
-                        row.appendChild(devicesCell);
-                        row.appendChild(actionCell);
-
-                        participantTable.appendChild(row);
+                        partCard.appendChild(name);
+                        partCard.appendChild(deviceList);
+                        partCard.appendChild(deleteBtn);
+                        participantList.appendChild(partCard);
                     });
-
-                    compSection.appendChild(participantTable);
                 } else {
-                    const noPartMsg = document.createElement('p');
-                    noPartMsg.innerText = "Keine Teilnehmer vorhanden.";
-                    compSection.appendChild(noPartMsg);
+                    const noParticipants = document.createElement('p');
+                    noParticipants.innerText = "Keine Teilnehmer vorhanden.";
+                    participantList.appendChild(noParticipants);
                 }
-                container.appendChild(compSection);
+
+                compCard.appendChild(participantList);
+                container.appendChild(compCard);
             });
         }
+
         const logoutButton = document.getElementById('AdminLogout');
         adminPage.insertBefore(container, logoutButton);
 
@@ -1061,6 +1056,7 @@ async function loadCompetitions() {
     }
     hideLoader();
 }
+
 
 
 

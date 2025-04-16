@@ -44,7 +44,6 @@ def login():
     password = data.get('password')
 
     user = users_collection.find_one({"firstName": username})
-    print("Try Login for: ", username, " | DB-Query: ", user, " | status: ", user.get('online'))
     
     if user:
         user_id = str(user["_id"])
