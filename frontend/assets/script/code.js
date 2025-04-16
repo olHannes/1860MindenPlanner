@@ -1420,9 +1420,13 @@ async function showDashboard() {
 //-----------------------------------------------------------------------------------------------------------------
 
 //globale field for current status
+let currentExerciseFlag = null
 let currentExercise = [];
 let currentExerciseDetailedList = [];
 let currentDevice = null;
+
+let pageDepth = 0;
+let autoRoutineSafe = null;
 
 
 //----------------------------------------------------------------------------------------------------------------- request exercise of a user
@@ -1761,10 +1765,6 @@ function hideMemberExerciseList() {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------- Handle back-Btn
-
-let pageDepth = 0;
-
 
 //----------------------------------------------------------------------------------------------------------------- Open Device (info-setter)
 
@@ -1959,7 +1959,6 @@ function createRoutine() {
     }, 0.5*60*1000);
 }
 
-let autoRoutineSafe = null;
 
 function closeDevice() {
     if(pageDepth == 2){

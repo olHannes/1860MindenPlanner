@@ -17,7 +17,6 @@ def get_device_collection(device):
 
 
 #################################################################################################### Get Elements
-# Route: Get All Elements
 @routine_bp.route('/elements/getGroupElements', methods=['GET'])
 def get_group_elements():
     device = request.args.get('Device')
@@ -53,7 +52,6 @@ def get_group_elements():
 
 
 ################################################################################################### Update Exercise
-# Route: Update Database Exercise
 @routine_bp.route('/exercise/update', methods=["POST"])
 def update_exercise():
     data = request.json
@@ -82,7 +80,6 @@ def update_exercise():
 
 
 ################################################################################################### Get Exercise
-# Route: Get Exercise
 @routine_bp.route('/exercise/get', methods=["GET"])
 def get_exercise():
     device = request.args.get("device")
@@ -103,7 +100,6 @@ def get_exercise():
 
 
 ################################################################################################### Get detailed Element
-# Route: Get Element by ID
 @routine_bp.route('/exercise/get_element', methods=["GET"])
 def get_element():
     element_id = request.args.get("id")
@@ -122,4 +118,3 @@ def get_element():
         return jsonify(element), 200
     else:
         return jsonify({"error": "Kein Element gefunden mit der angegebenen id und dem aktuellen Gerät."}), 404
-    
