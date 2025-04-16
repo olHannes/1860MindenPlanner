@@ -1199,7 +1199,7 @@ async function showAllUser() {
     const data = await getAllUser();
     data.sort((a, b) => a.lastName.localeCompare(b.lastName));
     data.forEach(user => {
-        if (user.firstName === "admin") return; 
+        if (user.firstName === "admin" || user.firstName === "Admin") return; 
         const memberDiv = document.createElement('div');
         memberDiv.classList.add('member');
         memberDiv.onclick = () => showMemberData(user.firstName);
