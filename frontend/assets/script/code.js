@@ -187,8 +187,10 @@ async function register() {
 async function login() {
     let username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
-    username = normalizeName(username);
-
+    
+    if(username!= "admin"){
+        username = normalizeName(username);
+    }
     showLoader();
     try {
         const response = await fetch("https://one860mindenplanner.onrender.com/account/login", {
@@ -1224,11 +1226,180 @@ async function showAllUser() {
     hideLoader();
 }
 
-async function showDashboard() {
-    document.getElementById('memberList').style.display="none";
-    document.getElementById('dashboard').style.display="block";
-    
+
+
+
+
+
+
+
+
+const style = document.createElement('style');
+style.innerHTML = `
+#dashboardTabs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
 }
+
+.tab {
+  background-color: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.tab-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.device-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.leaderboard {
+  margin-top: 15px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+.leaderboard-item {
+  padding: 5px 0;
+}
+`;
+document.head.appendChild(style);
+
+async function showDashboard() {
+  document.getElementById('memberList').style.display = "none";
+  document.getElementById('dashboard').style.display = "block";
+  const dashboard = document.getElementById('dashboard');
+  dashboard.innerHTML = '<div id="dashboardTabs"></div>';
+  const container = document.getElementById("dashboardTabs");
+
+  try {
+    const response = await fetch("https://one860mindenplanner.onrender.com/competition/getAll");
+    if (!response.ok) throw new Error("Fehler beim Laden der Wettkämpfe");
+    const competitions = await response.json();
+    console.log(competitions);
+    const user = localStorage.getItem("user");
+    const userId = localStorage.getItem("userId");
+
+    competitions.forEach(competition => {
+      const tab = document.createElement("div");
+      tab.className = "tab";
+
+      const header = document.createElement("div");
+      header.className = "tab-header";
+      header.innerHTML = `
+        <h3>${competition.name} (${new Date(competition.date).toLocaleDateString()})</h3>
+        <p><strong>Ort:</strong> ${competition.location}</p>
+      `;
+      tab.appendChild(header);
+
+      const alreadyParticipant = competition.participants?.some(p => p.id === userId);
+
+      if (!alreadyParticipant) {
+        const joinBtn = document.createElement("button");
+        joinBtn.textContent = "✅ Teilnehmen";
+        joinBtn.onclick = async () => {
+          const res = await fetch(`https://one860mindenplanner.onrender.com/competition/${competition._id}/addParticipant`, {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: userId })
+          });
+          if (res.ok) showDashboard();
+        };
+        tab.appendChild(joinBtn);
+      } else {
+        const form = document.createElement("div");
+        form.className = "device-form";
+        form.innerHTML = `
+          <label>Gerät wählen:
+            <select id="deviceSelect-${competition._id}">
+              <option>Boden</option>
+              <option>Barren</option>
+              <option>Sprung</option>
+              <option>Reck</option>
+              <option>Ringe</option>
+              <option>Pauschenpferd</option>
+            </select>
+          </label>
+          <label>Punkte (max. 10):
+            <input type="number" id="pointsInput-${competition._id}" max="10" min="0" step="0.1">
+          </label>
+          <button id="addDeviceBtn-${competition._id}">📥 Hinzufügen</button>
+        `;
+        tab.appendChild(form);
+
+        form.querySelector(`#addDeviceBtn-${competition._id}`).onclick = async () => {
+          const device = form.querySelector(`#deviceSelect-${competition._id}`).value;
+          const points = parseFloat(form.querySelector(`#pointsInput-${competition._id}`).value);
+          if (!isNaN(points)) {
+            await fetch(`https://one860mindenplanner.onrender.com/competition/${competition._id}/addDevice/${userId}`, {
+              method: "POST",
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ deviceName: device, points })
+            });
+            showDashboard();
+          }
+        }
+      }
+
+      const leaderboard = document.createElement("div");
+      leaderboard.className = "leaderboard";
+      leaderboard.innerHTML = `<h4>🏆 Rangliste</h4>`;
+
+      if (competition.participants?.length > 0) {
+        const sorted = competition.participants.map(p => {
+          const total = p.devices.reduce((sum, d) => sum + d.points, 0);
+          return { ...p, total };
+        }).sort((a, b) => b.total - a.total);
+
+        sorted.forEach(p => {
+          const entry = document.createElement("div");
+          entry.className = "leaderboard-item";
+          entry.innerHTML = `
+            <strong>${p.name}</strong> – ${p.total} Punkte
+            <br><small>${p.devices.map(d => `${d.name}: ${d.points}`).join(', ')}</small>
+          `;
+          leaderboard.appendChild(entry);
+        });
+      } else {
+        leaderboard.innerHTML += `<p>Keine Teilnehmer.</p>`;
+      }
+
+      tab.appendChild(leaderboard);
+      container.appendChild(tab);
+    });
+  } catch (error) {
+    console.error("Fehler beim Laden des Dashboards:", error);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //-----------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------- Ab hier: Routine handling
