@@ -1331,15 +1331,15 @@ async function showDashboard() {
               <option>Pauschenpferd</option>
             </select>
           </label>
-          <label>Punkte (max. 10):
+          <label>Punkte (max. x):
             <input type="number" id="pointsInput-${competition._id}" max="10" min="0" step="0.1">
           </label>
-          <button id="addDeviceBtn-${competition._id}">📥 Hinzufügen</button>
+          <button id="addDeviceBtn-${competition._id}">Punkte hinzufügen</button>
         `;
         tab.appendChild(form);
 
         const leaveBtn = document.createElement("button");
-        leaveBtn.textContent = "🚪 Vom Wettkampf abmelden";
+        leaveBtn.textContent = "Vom Wettkampf abmelden";
         leaveBtn.style.backgroundColor = "#f44336";
         leaveBtn.style.color = "white";
         leaveBtn.style.width = "100%";
