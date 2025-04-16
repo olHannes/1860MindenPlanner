@@ -4,8 +4,9 @@ from dotenv import load_dotenv
 from datetime import timedelta
 import os
 import routine
-import account_routes
 import report
+import account
+import competition
 from pymongo import MongoClient
 import threading
 from mongoConf import *
@@ -24,7 +25,8 @@ def home():
     return "Server is running! Visit olhannes.github.io/1860MindenPlanner"
 
 app.register_blueprint(routine.routine_bp)
-app.register_blueprint(account_routes.account_bp)
+app.register_blueprint(competition.competition_bp)
+app.register_blueprint(account.account_bp)
 app.register_blueprint(report.report_bp)
 
 if __name__ == '__main__':
