@@ -17,7 +17,7 @@ def get_device_collection(device):
 
 
 #################################################################################################### Get Elements
-@routine_bp.route('/elements/getGroupElements', methods=['GET'])
+@routine_bp.route('/elements/get/filteredList', methods=['GET'])
 def get_group_elements():
     device = request.args.get('Device')
     difficulty = request.args.get('Difficulty')
@@ -91,7 +91,6 @@ def get_exercise():
     query = {"geraet": device, "vorname": vorname}
     exercise = exercises_collection.find_one(query)
 
-    print("Aktuelle Übung: ", exercise)
     if exercise:
         exercise.pop("_id", None)
         return jsonify(exercise), 200
@@ -112,9 +111,12 @@ def get_element():
     if collection is None:
         return jsonify({"error": f"Unbekanntes Gerät: {current_device}"}), 400
     
-    element = collection.find_one({"id": element_id}, {'_id': False})
+    element = collection.find_one({"id": element_id})
+    element['_id'] = str(element['_id'])
 
     if element:
         return jsonify(element), 200
     else:
         return jsonify({"error": "Kein Element gefunden mit der angegebenen id und dem aktuellen Gerät."}), 404
+
+
