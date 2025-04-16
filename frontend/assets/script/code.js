@@ -185,8 +185,9 @@ async function register() {
 
 // login User
 async function login() {
-    const username = document.getElementById("username").value;
+    let username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
+    username = normalizeName(username);
 
     showLoader();
     try {
