@@ -3,9 +3,11 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 from datetime import timedelta
 import os
-import routes
+import routine
+import account_routes
 from pymongo import MongoClient
 import threading
+from mongoConf import *
 
 load_dotenv()
 
@@ -16,20 +18,12 @@ app.config['SESSION_PERMANENT'] = True
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=15)
 CORS(app)
 
-
-mongo_uri = os.getenv("MONGO_URI")
-client = MongoClient(mongo_uri)
-
-db = client['Users']
-users_collection = db['users']
-
-
 @app.route("/")
 def home():
-    return "Server is running!"
+    return "Server is running! Visit olhannes.github.io/1860MindenPlanner"
 
-
-app.register_blueprint(routes.main_bp)
+app.register_blueprint(routine.routine_bp)
+app.register_blueprint(account_routes.account_bp)
 
 if __name__ == '__main__':
     port = int(os.getenv("PORT", 10000))

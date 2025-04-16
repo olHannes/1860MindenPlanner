@@ -1,0 +1,276 @@
+from mongoConf import *
+
+routine_bp = Blueprint('routine', __name__)
+
+
+# Hilfsfunktion zum Abrufen von Geräten
+def get_device_collection(device):
+    device_collections = {
+        "FL": db_floorElements,
+        "PO": db_pommelhorseElements,
+        "RI": db_ringsElements,
+        "VA": db_vaultElements,
+        "PA": db_parralelbarsElements,
+        "HI": db_highbarElements
+    }
+    return device_collections.get(device)
+
+#################################################################################################### Get Elements
+# Route: Get All Elements
+
+@routine_bp.route('/elements/getGroupElements', methods=['GET'])
+def get_group_elements():
+    device = request.args.get('Device')
+    difficulty = request.args.get('Difficulty')
+    group = request.args.get('Group')
+    search_text = request.args.get('Text', '').strip().lower()
+    if search_text in ['undefined', 'null']:
+        search_text = ''
+
+
+    print("Get All Elements: ", device, ", ", group, ", ", difficulty, ", ", search_text)
+    
+    if not device:
+        return jsonify({"error": "Gerät ist erforderlich."}), 400
+    
+    collection = get_device_collection(device)
+    if collection is None:
+        return jsonify({"error": f"Unbekanntes Gerät: {device}"}), 400
+    
+    elements = list(collection.find({}, {'_id': False}))
+
+    if difficulty not in [None, '', 'null']:
+        elements = [el for el in elements if str(el.get('wertigkeit')) == str(difficulty)]
+
+    if group not in [None, '', 'null']:
+        elements = [el for el in elements if str(el.get('elementegruppe')) == str(group)]
+
+    if search_text:
+        elements = [
+            el for el in elements 
+            if search_text in el.get('bezeichnung', '').lower() 
+            or search_text in el.get('name', '').lower()
+        ]
+
+
+    return jsonify(elements), 200
+
+
+################################################################################################### Update Exercise
+# Route: Update Database Exercise
+
+@routine_bp.route('/exercise/update', methods=["POST"])
+def update_exercise():
+    data = request.json
+    vorname = data.get("vorname")
+    geraet = data.get("geraet")
+    elemente = data.get("elemente")
+
+    if not vorname or geraet is None or elemente is None:
+        return jsonify({"error": "Ungültige Anfrage. Alle Felder (vorname, geraet, elemente) sind erforderlich."}), 400
+    
+    query = {"vorname": vorname, "geraet": geraet}
+    
+    update_data = {"$set": {"elemente": elemente}}
+    result = exercises_collection.update_one(query, update_data, upsert=True)
+
+    if result.matched_count > 0:
+        return jsonify({"message": "Übung erfolgreich aktualisiert"}), 200
+    else:
+        return jsonify({"message": "Neue Übung angelegt"}), 201
+
+################################################################################################### Get Exercise
+# Route: Get Exercise
+
+@routine_bp.route('/exercise/get', methods=["GET"])
+def get_exercise():
+    device = request.args.get("device")
+    vorname = request.args.get("vorname")
+
+    print("get Exercise: ", device, ", ", vorname)
+
+    if not device or not vorname:
+        return jsonify({"error": "Ungültige Anfrage. Beide Parameter (device und vorname) sind erforderlich."}), 400
+    
+    query = {"geraet": device, "vorname": vorname}
+    exercise = exercises_collection.find_one(query)
+
+    print("Aktuelle Übung: ", exercise)
+    if exercise:
+        exercise.pop("_id", None)
+        return jsonify(exercise), 200
+    else:
+        return jsonify({"error": "Keine Übung gefunden."}), 404
+
+################################################################################################### Get detailed Element
+# Route: Get Element by ID
+
+@routine_bp.route('/exercise/get_element', methods=["GET"])
+def get_element():
+    element_id = request.args.get("id")
+    current_device = request.args.get("currentDevice")
+
+    print("get Element by ID: ", element_id, "; Dev: ", current_device)
+
+    if not element_id or not current_device:
+        return jsonify({"error": "Ungültige Anfrage. Beide Parameter (id und currentDevice) sind erforderlich."}), 400
+    
+    collection = get_device_collection(current_device)
+    if collection is None:
+        return jsonify({"error": f"Unbekanntes Gerät: {current_device}"}), 400
+    
+    element = collection.find_one({"id": element_id}, {'_id': False})
+
+    if element:
+        return jsonify(element), 200
+    else:
+        return jsonify({"error": "Kein Element gefunden mit der angegebenen id und dem aktuellen Gerät."}), 404
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+@routine_bp.route('/competition/getAll', methods=['GET'])
+def get_all_competitions():
+    competitions = list(competition_collection.find())
+    for comp in competitions:
+        comp['_id'] = str(comp['_id'])
+    return jsonify(competitions), 200
+
+@routine_bp.route('/competition/create', methods=['POST'])
+def create_competition():
+    data = request.get_json()
+    name = data.get('name')
+    date = data.get('date')
+    location = data.get('location')
+
+    if not name or not date or not location:
+        return jsonify({"message": "Name, Datum und Ort sind erforderlich!"}), 400
+
+    competition = {
+        "name": name,
+        "date": date,
+        "location": location,
+        "participants": []
+    }
+    competition_collection.insert_one(competition)
+    return jsonify({"message": "Wettkampf erfolgreich erstellt"}), 201
+
+@routine_bp.route('/competition/delete/<competition_id>', methods=['DELETE'])
+def delete_competition(competition_id):
+    try:
+        competition_id = ObjectId(competition_id)
+    except Exception as e:
+        return jsonify({"message": "Ungültige Wettkampfid"}), 400
+    result = competition_collection.delete_one({"_id": competition_id})
+    
+    if result.deleted_count == 0:
+        return jsonify({"message": "Wettkampf nicht gefunden"}), 404
+    return jsonify({"message": "Wettkampf erfolgreich gelöscht"}), 200
+
+
+@routine_bp.route('/competition/<competition_id>/addParticipant', methods=['POST'])
+def add_participant(competition_id):
+    data = request.get_json()
+    participant_id = data.get('id')
+    participant_name = data.get('name')
+
+    if not participant_id:
+        return jsonify({"message": "Teilnehmer-ID fehlt!"}), 400
+
+    try:
+        comp_obj_id = ObjectId(competition_id)
+    except Exception:
+        return jsonify({"message": "Ungültige Wettkampfid!"}), 400
+
+    competition = competition_collection.find_one({"_id": comp_obj_id})
+    if not competition:
+        return jsonify({"message": "Wettkampf nicht gefunden!"}), 404
+
+    result = competition_collection.update_one(
+        {"_id": comp_obj_id},
+        {"$push": {"participants": {"id": participant_id, "name": participant_name, "devices": []}}}
+    )
+
+    if result.modified_count == 0:
+        return jsonify({"message": "Teilnehmer konnte nicht hinzugefügt werden!"}), 500
+
+    return jsonify({"message": f"Teilnehmer {participant_id} erfolgreich hinzugefügt"}), 200
+
+
+@routine_bp.route('/competition/<competition_id>/removeParticipant/<participant_id>', methods=['DELETE'])
+def remove_participant(competition_id, participant_id):
+    try:
+        comp_obj_id = ObjectId(competition_id)
+    except Exception:
+        return jsonify({"message": "Ungültige Wettkampfid!"}), 400
+
+    result = competition_collection.update_one(
+        {"_id": comp_obj_id},
+        {"$pull": {"participants": {"id": participant_id}}}
+    )
+
+    if result.modified_count == 0:
+        return jsonify({"message": "Wettkampf oder Teilnehmer nicht gefunden"}), 404
+
+    return jsonify({"message": f"Teilnehmer {participant_id} erfolgreich entfernt"}), 200
+
+
+@routine_bp.route('/competition/<competition_id>/addDevice/<participant_id>', methods=['POST'])
+def add_device_to_participant(competition_id, participant_id):
+    data = request.get_json()
+    device_name = data.get('deviceName')
+    points = data.get('points')
+
+    if not device_name or points is None:
+        return jsonify({"message": "Gerätename und Punktezahl erforderlich!"}), 400
+
+    try:
+        comp_obj_id = ObjectId(competition_id)
+    except Exception:
+        return jsonify({"message": "Ungültige Wettkampfid!"}), 400
+
+    result = competition_collection.update_one(
+        {"_id": comp_obj_id, "participants.id": participant_id},
+        {"$push": {"participants.$.devices": {"name": device_name, "points": points}}}
+    )
+
+    if result.modified_count == 0:
+        return jsonify({"message": "Wettkampf oder Teilnehmer nicht gefunden"}), 404
+
+    return jsonify({"message": f"Gerät {device_name} mit {points} Punkten hinzugefügt"}), 200
+
+
+@routine_bp.route('/competition/<competition_id>/updateDevice/<participant_id>', methods=['PUT'])
+def update_device_points(competition_id, participant_id):
+    data = request.get_json()
+    device_name = data.get('deviceName')
+    new_points = data.get('points')
+
+    if not device_name or new_points is None:
+        return jsonify({"message": "Gerätename und neue Punktezahl erforderlich!"}), 400
+
+    try:
+        comp_obj_id = ObjectId(competition_id)
+    except Exception:
+        return jsonify({"message": "Ungültige Wettkampfid!"}), 400
+
+    result = competition_collection.update_one(
+        {"_id": comp_obj_id, "participants.id": participant_id, "participants.devices.name": device_name},
+        {"$set": {"participants.$.devices.$[device].points": new_points}},
+        array_filters=[{"device.name": device_name}]
+    )
+
+    if result.modified_count == 0:
+        return jsonify({"message": "Wettkampf, Teilnehmer oder Gerät nicht gefunden"}), 404
+
+    return jsonify({"message": f"Punkte für {device_name} auf {new_points} aktualisiert"}), 200
