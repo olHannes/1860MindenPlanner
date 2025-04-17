@@ -1286,7 +1286,6 @@ async function showDashboard() {
     const response = await fetch(`${serverURL}/competition/getAll`);
     if (!response.ok) throw new Error("Fehler beim Laden der Wettkämpfe");
     const competitions = await response.json();
-    console.log(competitions);
     const user = localStorage.getItem("user");
     const userId = localStorage.getItem("userId");
 
@@ -1563,7 +1562,6 @@ async function showMemberData(username) {
             // ✅ Validierung
             let { warnings, errors, totalDifficulty, totalElements, groupList, isComplete, baseDifficulty, groupBonus, dismountBonus } = await validRoutine(elements, device);
 
-            console.log(warnings, " ", errors, " ", totalDifficulty, " ", totalElements, " ", groupList);
             difficultySpan.innerText = totalDifficulty.toFixed(2);
 
             // ⚠️ Fehler und Warnungen

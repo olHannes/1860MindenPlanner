@@ -170,7 +170,6 @@ def valid_routine():
                 difficulties.append(wertigkeit)
             
         gruppe = element.get("elementegruppe")
-        print("Gruppe: ", gruppe)
         if gruppe:
             element_groups[gruppe] = element_groups.get(gruppe, 0) + 1
             
