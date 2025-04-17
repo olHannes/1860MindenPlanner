@@ -1643,6 +1643,21 @@ button {
     background-color: #45a049;
 }
 
+#addCompleted {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: rgb(27, 61, 95);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+#addCompleted:hover {
+    background-color: rgb(38, 85, 133);
+}
+
 
 
 #closeElementSelection {

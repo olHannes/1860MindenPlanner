@@ -2232,7 +2232,7 @@ function openDetailedView(element) {
 
     addButton.replaceWith(addButton.cloneNode(true));
     document.getElementById('addToList').addEventListener("click", () => addToExercise(element));
-
+    document.getElementById('addCompleted').addEventListener("click", () => addToCompleted(element));
     container.style.display = "flex";
 }
 
@@ -2304,4 +2304,91 @@ async function safeUpdateExercise(elementList) {
         hideLoader();
         console.error("Fehler bei der Anfrage:", error);
     }
+}
+
+
+
+
+
+let currLearnedElements = [];
+
+
+function resetClickListeners(id) {
+    const oldButton = document.getElementById(id);
+    const newButton = oldButton.cloneNode(true);
+    oldButton.parentNode.replaceChild(newButton, oldButton);
+    return newButton;
+}
+
+async function addToCompleted(element) {
+    console.log("Markiere Element '", element.bezeichnung, "' als erlernt.");
+    const userId = localStorage.getItem("userId");
+
+    if (!userId) {
+        console.error("Kein Benutzer-ID im Local Storage gefunden.");
+        return;
+    }
+
+    try {
+        const response = await fetch(`${serverURL}/account/addLearnedElement`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                userId: userId,
+                elementCode: element.id,
+            }),
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+            console.log(data.message);
+        } else {
+            console.error("Fehler beim Hinzufügen des Elements:", data.message);
+        }
+    } catch (error) {
+        console.error("Fehler bei der Anfrage:", error);
+    }
+
+    const button = resetClickListeners('addCompleted');
+    button.style.backgroundColor = "rgb(125, 39, 39)";
+    button.innerText = "Element verlernt";
+    button.addEventListener("click", () => removeFromCompleted(element));
+}
+
+
+async function removeFromCompleted(element) {
+    console.log("Markiere Element '", element.bezeichnung, "' als verlernt.");
+    const userId = localStorage.getItem("userId");
+
+    if (!userId) {
+        console.error("Kein Benutzer-ID im Local Storage gefunden.");
+        return;
+    }
+    try {
+        const response = await fetch(`${serverURL}/account/removeLearnedElement`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                userId: userId,
+                elementCode: element.id,
+            }),
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+            console.log(data.message);
+        } else {
+            console.error("Fehler beim Hinzufügen des Elements:", data.message);
+        }
+    } catch (error) {
+        console.error("Fehler bei der Anfrage:", error);
+    }
+    const button = resetClickListeners('addCompleted');
+    button.style.backgroundColor = "rgb(27, 61, 95)";
+    button.innerText = "Element gelernt";
+    button.addEventListener("click", () => addToCompleted(element));
 }

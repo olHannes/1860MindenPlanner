@@ -238,3 +238,73 @@ def change_user_color():
 def get_users():
     users = list(users_collection.find({}, {"_id": 0, "firstName": 1, "lastName": 1, "online": 1, "color_code": 1}))
     return jsonify(users), 200
+
+
+################################################################################################### add learned Element
+
+@account_bp.route("/account/addLearnedElement", methods=["POST"])
+def add_learned_element():
+    data = request.get_json()
+    user_id = data.get("userId")
+    element_code = data.get("elementCode")
+
+    if not user_id or not element_code:
+        return jsonify({"message": "Benutzer-ID und Element sind erforderlich"}), 400
+    
+    try:
+        user = users_collection.find_one({"_id": ObjectId(user_id)})
+    except:
+        return jsonify({"message", "Invalid User-ID"}), 400
+    if not user: 
+        return jsonify({"message", "User not found"}), 404
+    
+    users_collection.update_one(
+        {"_id": ObjectId(user_id)},
+        {"$addToSet": {"learnedElements": element_code}}
+    )
+    return jsonify({"message": "Element successfully added"}), 200
+
+
+################################################################################################### remove learned Element
+
+@account_bp.route('/account/removeLearnedElement', methods=['POST'])
+def remove_learned_element():
+    data = request.get_json()
+    user_id = data.get('userId')
+    element_code = data.get('elementCode')
+
+    if not user_id or not element_code:
+        return jsonify({"message": "Benutzer-ID und Elementenkürzel sind erforderlich!"}), 400
+
+    try:
+        user = users_collection.find_one({"_id": ObjectId(user_id)})
+    except:
+        return jsonify({"message": "Ungültige Benutzer-ID!"}), 400
+
+    if not user:
+        return jsonify({"message": "Benutzer nicht gefunden!"}), 404
+
+    users_collection.update_one(
+        {"_id": ObjectId(user_id)},
+        {"$pull": {"learnedElements": element_code}}
+    )
+    return jsonify({"message": f"Element '{element_code}' erfolgreich entfernt!"}), 200
+
+
+################################################################################################### get learned Elements
+
+@account_bp.route('/account/getLearnedElements', methods=['GET'])
+def get_learned_elements():
+    user_id = request.args.get('userId')
+
+    if not user_id or not ObjectId.is_valid(user_id):
+        return jsonify({"message": "Ungültige oder fehlende Benutzer-ID!"}), 400
+
+    user = users_collection.find_one({"_id": ObjectId(user_id)}, {"learnedElements": 1})
+
+    if not user:
+        return jsonify({"message": "Benutzer nicht gefunden!"}), 404
+
+    return jsonify({
+        "learnedElements": user.get("learnedElements", [])
+    }), 200
