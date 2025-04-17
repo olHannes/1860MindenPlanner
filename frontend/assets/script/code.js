@@ -1,3 +1,4 @@
+
 window.onload = function () {
     localStorage.removeItem("user");
     localStorage.removeItem("userId");
@@ -6,6 +7,7 @@ window.onload = function () {
     }
     checkUserStatus();
 };
+
 
 //----------------------------------------------------------------------------------------------------------------- hide info
 document.addEventListener("DOMContentLoaded", function() {
@@ -1569,8 +1571,9 @@ async function showMemberData(username) {
             exerciseDiv.appendChild(table);
 
             // ✅ Validierung
-            let { warnings, errors, totalDifficulty, totalElements, groupList, isComplete, baseDifficulty, groupBonus, dismountBonus } = validRoutine(elements, device);
+            let { warnings, errors, totalDifficulty, totalElements, groupList, isComplete, baseDifficulty, groupBonus, dismountBonus } = await validRoutine(elements, device);
 
+            console.log(warnings, " ", errors, " ", totalDifficulty, " ", totalElements, " ", groupList);
             difficultySpan.innerText = totalDifficulty.toFixed(2);
 
             // ⚠️ Fehler und Warnungen
@@ -1601,154 +1604,47 @@ async function showMemberData(username) {
 
 //----------------------------------------------------------------------------------------------------------------- validate Routine
 
-function validRoutine(elements, device) {
-    if(device == "VA"){
-        return validRoutineVA(elements, device);
+async function validRoutine(elements, device) {
+    try {
+        const response = await fetch("https://one860mindenplanner.onrender.com/routine/get/validation", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                device: device,
+                elementList: elements
+            })
+        });
+
+        const {
+            warnings,
+            errors,
+            totalDifficulty,
+            totalElements,
+            groupList,
+            isComplete,
+            baseDifficulty,
+            groupBonus,
+            dismountBonus
+        } = await response.json();
+
+        return {
+            warnings,
+            errors,
+            totalDifficulty,
+            totalElements,
+            groupList,
+            isComplete,
+            baseDifficulty,
+            groupBonus,
+            dismountBonus
+        };
+    } catch (error) {
+        console.error("Fehler bei validRoutine:", error);
+        return null;
     }
-
-    const requiredGroups = {
-        "FL": new Set(["1", "2", "3"]), 
-        "PO": new Set(["1", "2", "3", "4"]), 
-        "RI": new Set(["1", "2", "3", "4"]), 
-        "VA": new Set([]), 
-        "PA": new Set(["1", "2", "3", "4"]), 
-        "HI": new Set(["1", "2", "3", "4"])
-    };
-
-    let totalDifficulty = 10;
-    let elementGroups = new Map();
-    let hasDismount = false;
-    let seenElements = new Map();
-    let warnings = [];
-    let errors = [];
-    let isDismountAtEnd = false;
-    
-    let difficulties = [];
-    let dismountValue = 0;
-
-    for (let i = 0; i < elements.length; i++) {
-        let element = elements[i];
-        let wertigkeit = parseFloat(element.wertigkeit) || 0;
-
-        if (element.dismount) {
-            hasDismount = true;
-            dismountValue = wertigkeit;
-            if (i === elements.length - 1) {
-                isDismountAtEnd = true;
-                dismountValue = wertigkeit;
-            }
-        } else {
-            difficulties.push(wertigkeit);
-        }
-
-        if (element.elementegruppe) {
-            elementGroups.set(element.elementegruppe, (elementGroups.get(element.elementegruppe) || 0) + 1);
-        }
-
-        if (element.bezeichnung) {
-            seenElements.set(element.bezeichnung, (seenElements.get(element.bezeichnung) || 0) + 1);
-        }
-    }
-
-    difficulties.sort((a, b) => b - a);
-    let topSix = difficulties.slice(0, 6);
-
-    let baseDifficulty = topSix.reduce((sum, val) => sum + val, 0) * 2;
-    baseDifficulty += dismountValue * 2;
-
-    let requiredGroupSet = requiredGroups[device] || new Set();
-    let missingGroups = [...requiredGroupSet].filter(group => !elementGroups.has(group));
-
-    let groupBonus = 0;
-    for (let group of elementGroups.keys()) {
-        if (group && parseFloat(group) > 0.05) {
-            groupBonus += 0.5;
-        }
-    }
-
-    let dismountBonus = (dismountValue >= 0.1) ? (dismountValue === 0.1 ? 0.3 : 0.5) : 0;
-
-    totalDifficulty += baseDifficulty + groupBonus + dismountBonus;
-
-    let totalElements = elements.length;
-    let groupList = [...elementGroups.keys()].sort().join(", ");
-    let isComplete = 
-        device === "VA" 
-            ? totalElements === 1 
-            : missingGroups.length === 0 && hasDismount && totalElements >= 7 && isDismountAtEnd;
-
-    if (totalElements > 7) {
-        warnings.push("⚠️ Übung enthält mehr als 7 Elemente");
-    }
-    for (let [group, count] of elementGroups.entries()) {
-        if (count > 3) {
-            warnings.push(`⚠️ Elementgruppe ${group} kommt sehr oft vor (${count}x).`);
-        }
-    }
-    let duplicateElements = [...seenElements.entries()]
-        .filter(([_, count]) => count > 1)
-        .map(([name, count]) => `${name} (${count}x)`);
-    if (duplicateElements.length > 0) {
-        warnings.push(`⚠️ Doppelte Elemente: ${duplicateElements.join(", ")}`);
-    }
-
-
-    if (totalElements < 7) {
-        errors.push(`❌ Zu wenig Elemente: ${totalElements}`);
-    }
-    if (missingGroups.length > 0) {
-        errors.push(`❌ Fehlende Gruppen: ${missingGroups.join(", ")}`);
-    }
-    if (!hasDismount) {
-        errors.push("❌ Kein Abgang vorhanden");
-    }
-    if (hasDismount && !isDismountAtEnd) {
-        errors.push("❌ Der Abgang muss am Ende der Übung sein.");
-    }
-
-    return { warnings, errors, totalDifficulty, totalElements, groupList, isComplete, baseDifficulty, groupBonus, dismountBonus };
 }
-
-function validRoutineVA(elements, device) {
-    console.log("Validiere Sprung-Routine:", elements);
-
-    let warnings = [];
-    let errors = [];
-    let highestDifficulty = 0;
-    let groupList = "";
-    
-    if (elements.length !== 1) {
-        errors.push("❌ Eine Sprung-Übung darf nur ein Element enthalten.");
-    }
-
-    elements.forEach(el => {
-        let wertigkeit = parseFloat(el.wertigkeit) || 0;
-        if (wertigkeit > highestDifficulty) {
-            highestDifficulty = wertigkeit;
-        }
-    });
-
-    let elementGroup = elements[0]?.elementegruppe || null;
-    if (elementGroup) {
-        groupList = elementGroup.toString();
-    }
-
-    let totalDifficulty = 10 + highestDifficulty;
-
-    return {
-        warnings,
-        errors,
-        totalDifficulty,
-        totalElements: elements.length,
-        groupList,
-        isComplete: errors.length === 0,
-        baseDifficulty: highestDifficulty,
-        groupBonus: 0,
-        dismountBonus: 0
-    };
-}
-
-
 
 
 //----------------------------------------------------------------------------------------------------------------- Handle Devices (open/close)
@@ -2174,7 +2070,7 @@ async function moveElementDown(index) {
 
 async function updateExerciseSummary() {
     let device = currentDevice;
-    let { warnings, errors, totalDifficulty, totalElements, groupList, isComplete, baseDifficulty, groupBonus, dismountBonus } = validRoutine(currentExerciseDetailedList, device);
+    let { warnings, errors, totalDifficulty, totalElements, groupList, isComplete, baseDifficulty, groupBonus, dismountBonus } = await validRoutine(currentExerciseDetailedList, device);
     
     let summaryContainer = document.getElementById("exercise-summary-container");
     if (!summaryContainer) return;
@@ -2201,10 +2097,8 @@ async function updateExerciseSummary() {
         ${errors.length > 0 ? `<p style="color:red;"><strong>Fehler:</strong> ${errors.join(" | ")}</p>` : ""}
     `;
 
-    // Hinzufügen des Klick-Events
     document.getElementById("total-difficulty").addEventListener("click", function() {
         let details = document.getElementById("difficulty-details");
-        // Toggle die Anzeige des Details
         details.style.display = details.style.display === "none" ? "block" : "none";
     });
 }
@@ -2289,7 +2183,7 @@ async function getElements(difficulty, group, searchText) {
     let device = currentDevice;
     showLoader();
     try {
-        const url = new URL('https://one860mindenplanner.onrender.com/elements/getGroupElements');
+        const url = new URL('https://one860mindenplanner.onrender.com/elements/get/filteredList');
         const params = { Device: device, Difficulty: difficulty , Group: group, Text: searchText};
         Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
