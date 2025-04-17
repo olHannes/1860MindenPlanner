@@ -102,7 +102,7 @@
         "id": "FL_NE_12",
         "bezeichnung": "Sprung- / Flugrolle",
         "name": "",
-        "elementegruppe": "1",
+        "elementegruppe": "2",
         "wertigkeit": "0.05",
         "dismount": false,
         "image_path": "frontend/assets/images/Exercises/Device/Floor/NE/FL_NE_12.png"
@@ -111,7 +111,7 @@
         "id": "FL_NE_13",
         "bezeichnung": "Rondat",
         "name": "",
-        "elementegruppe": "1",
+        "elementegruppe": "3",
         "wertigkeit": "0.05",
         "dismount": false,
         "image_path": "frontend/assets/images/Exercises/Device/Floor/NE/FL_NE_13.png"
