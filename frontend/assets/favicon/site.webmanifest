@@ -3,7 +3,7 @@
     "short_name": "RoutinePlanner",
     "icons": [
       {
-        "src": "/android-chrome-192x192.png",
+        "src": "/1860MindenPlanner/frontend/assets/favicon/android-chrome-192x192.png",
         "sizes": "192x192",
         "type": "image/png"
       },
