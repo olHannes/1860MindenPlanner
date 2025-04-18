@@ -160,7 +160,7 @@ async function register() {
     
     try {
         showLoader();
-        const response = await fetch(`${serverURL} + "/account/register`, {
+        const response = await fetch(`${serverURL}/account/register`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ firstName, lastName, password: newPassword })
@@ -193,6 +193,7 @@ async function login() {
     const password = document.getElementById("password").value;
     username = normalizeName(username);
 
+    console.log("login: ", username, " ");
     showLoader();
     try {
         const response = await fetch(`${serverURL}/account/login`, {
@@ -353,7 +354,6 @@ async function setProfileName() {
 async function logout() {
     const username = localStorage.getItem("user");
     const userId = localStorage.getItem("userId");
-    console.log(username, " ", userId);
     if (!username || !userId) {
         document.getElementById("errorMsg").textContent = "Kein Benutzer eingeloggt!";
     }
