@@ -1,6 +1,6 @@
 
 let serverURL = "https://one860mindenplanner.onrender.com";
-//serverURL = "http://127.0.0.1:10000";
+serverURL = "http://127.0.0.1:10000";
 
 window.onload = function () {
     try {
@@ -8,6 +8,7 @@ window.onload = function () {
     } catch (error) {}
     localStorage.removeItem("user");
     localStorage.removeItem("userId");
+    localStorage.removeItem("adminKey");
     if(localStorage.getItem("startUpInfo") != null) {
         document.getElementById("startupInformation").style.display="none";
     }
@@ -211,9 +212,9 @@ async function login() {
 
         if(response.ok && username == "Admin"){
             localStorage.setItem("user", username);
-            loadAdminReports();
-            localStorage.setItem("user", username);
             localStorage.setItem("userId", data.userId);
+            localStorage.setItem("adminKey", data.adminKey);
+            loadAdminReports();
             return;
         }
 
@@ -259,6 +260,7 @@ async function checkUserStatus() {
         if (data.message === "Benutzer offline, Status zurückgesetzt!") {
             localStorage.removeItem("user");
             localStorage.removeItem("userId");
+            localStorage.removeItem("adminKey");
         }
 
     } catch (error) {
@@ -345,6 +347,7 @@ async function setProfileName() {
     } catch (error) {
         hideLoader();
         localStorage.removeItem("userId");
+        localStorage.removeItem("adminKey");
         checkLoginStatus();
         console.error("Error:", error);
     }
@@ -375,6 +378,7 @@ async function logout() {
         if (response.ok && (data.message === "Erfolgreich ausgeloggt!" || data.message === "Kein Benutzername oder Benutzer-ID angegeben!")) {
             localStorage.removeItem("user");
             localStorage.removeItem("userId");
+            localStorage.removeItem("adminKey");
             document.getElementById('AdminPage').style.display="none";
             checkLoginStatus();
         } else {
@@ -410,6 +414,7 @@ window.onbeforeunload = async function () {
         }
         localStorage.removeItem("user");
         localStorage.removeItem("userId");
+        localStorage.removeItem("adminKey");
         hideLoader();
     } catch (error) {
         hideLoader();
@@ -458,6 +463,7 @@ async function deleteAccount() {
         hideLoader();
         localStorage.removeItem("user");
         localStorage.removeItem("userId");
+        localStorage.removeItem("adminKey");
         checkLoginStatus();
 
         alert("Dein Account wurde erfolgreich gelöscht!");
@@ -557,10 +563,10 @@ function editPassword(){
 }
 
 // safe password-Edit
-async function updatePassword(username, newPassword) {
+async function updatePassword(newPassword) {
     const userId = localStorage.getItem("userId");
 
-    if (!username || !newPassword || !userId) {
+    if (!newPassword || !userId) {
         document.getElementById('passwordEdit').style.display = "none";
         document.getElementById('nameView').style.display = "block";
         return;
@@ -572,7 +578,6 @@ async function updatePassword(username, newPassword) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                firstName: username,
                 userId: userId,
                 newPassword: newPassword
             })
@@ -594,6 +599,38 @@ function cancleEdits(){
     document.getElementById('passwordEdit').style.display="none";
 }
 
+
+
+async function updateAdminPassword(username, newPassword){
+    adminKey = localStorage.getItem("adminKey");
+    if (!username || !newPassword || !adminKey) {
+        document.getElementById('passwordEdit').style.display = "none";
+        document.getElementById('nameView').style.display = "block";
+        return;
+    }
+    try {
+        const response = await fetch(`${serverURL}/account/admin/updatePassword`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: username,
+                newPassword: newPassword,
+                adminKey: adminKey
+            })
+        });
+        const data = await response.json();
+        if (!response.ok) {
+            throw new Error(data.message || "Fehler beim Aktualisieren des Passworts");
+        }
+    } catch (error) {
+        console.error("Fehler beim Aktualisieren des Passworts:", error);
+        alert("Fehler: " + error.message);
+    }
+    document.getElementById('passwordEdit').style.display = "none";
+    document.getElementById('nameView').style.display = "block";   
+}
 
 
 // color-Editing Container handling

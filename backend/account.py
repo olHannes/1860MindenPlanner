@@ -1,14 +1,15 @@
 
 from mongoConf import *
+import random
 
 account_bp = Blueprint('account', __name__)
-
-
+randAdminKey = random.randint(100000, 999999)
 
 ################################################################################################### Login
 
 @account_bp.route('/account/login', methods=['POST'])
 def login():
+    global randAdminKey
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
@@ -24,7 +25,10 @@ def login():
                 {"$inc": {"online": 1}}
             )
             session['user'] = username
-            return jsonify({"message": "Login erfolgreich!", "userId": user_id}), 200
+            if username == "Admin":
+                return jsonify({"message": "Login erfolgreich!", "userId": user_id, "adminKey": randAdminKey}), 200
+            else:
+                return jsonify({"message": "Login erfolgreich!", "userId": user_id}), 200
         else:
             return jsonify({"message": "Ungültiges Passwort!"}), 401
     else:
@@ -116,7 +120,38 @@ def update_password():
         {"_id": ObjectId(user_id)},
         {"$set": {"password": hashed_password}}
     )
+    return jsonify({"message": "Passwort erfolgreich aktualisiert!"}), 200
 
+
+################################################################################################### update Password Admin
+
+@account_bp.route('/account/admin/updatePassword', methods=['POST'])
+def update_admin_password():
+    global randAdminKey
+    data = request.get_json()
+    username = data.get('username')
+    new_password = data.get('newPassword')
+    key = data.get('adminKey')
+
+    if not username or not new_password or not key:
+        return jsonify({"message": "Benutzer-ID und neues Passwort sind erforderlich!"}), 400
+
+    if int(key) != randAdminKey:
+        return jsonify({"message": "Ungültiger Admin Key"}), 400
+
+    try:
+        user = users_collection.find_one({"firstName": username})
+    except:
+        return jsonify({"message": "Ungültige Benutzer-ID!"}), 400
+
+    if not user:
+        return jsonify({"message": "Benutzer nicht gefunden!"}), 404
+
+    hashed_password = generate_password_hash(new_password)
+    users_collection.update_one(
+        {"firstName": username},
+        {"$set": {"password": hashed_password}}
+    )
     return jsonify({"message": "Passwort erfolgreich aktualisiert!"}), 200
 
 

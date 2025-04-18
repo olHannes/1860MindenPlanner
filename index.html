@@ -77,7 +77,7 @@
                 <h3>Passwort ändern</h3>
                 <p id="adminPwdChange_name">Nutzername</p>
                 <input type="text" id="adminPwdChange_pwd" placeholder="neues Passwort">
-                <button id="adminPwdChange_safe" onclick="updatePassword(document.getElementById('adminPwdChange_name').innerText, document.getElementById('adminPwdChange_pwd').value); closePwdChange();">Passwort Update</button>
+                <button id="adminPwdChange_safe" onclick="updateAdminPassword(document.getElementById('adminPwdChange_name').innerText, document.getElementById('adminPwdChange_pwd').value); closePwdChange();">Passwort Update</button>
             </div>
         </div>
         
@@ -239,7 +239,7 @@
 
                 <div id="passwordEdit" style="display: none;">
                     <input type="text" id="editPassword_1" placeholder="neues Passwort">
-                    <button class="safeBtn" id="safeBtn2" onclick="updatePassword(localStorage.getItem('user'), document.getElementById('editPassword_1').value);" style="display: none;">Speichern</button>
+                    <button class="safeBtn" id="safeBtn2" onclick="updatePassword(document.getElementById('editPassword_1').value);" style="display: none;">Speichern</button>
                     <button class="cancleBtn" id="cancleBtn2" onclick="cancleEdits();" style="display: none;">Abbrechen</button>
                 </div>
             </div>
