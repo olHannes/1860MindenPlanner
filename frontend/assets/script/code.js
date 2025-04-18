@@ -2417,7 +2417,7 @@ async function removeFromCompleted(element) {
             if (index > -1) {
                 currLearnedElements.splice(index, 1);
             }
-
+            
         } else {
             console.error("Fehler beim Hinzufügen des Elements:", data.message);
         }
