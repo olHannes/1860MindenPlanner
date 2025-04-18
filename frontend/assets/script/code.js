@@ -1,6 +1,6 @@
 
 let serverURL = "https://one860mindenplanner.onrender.com";
-serverURL = "http://127.0.0.1:10000";
+//serverURL = "http://127.0.0.1:10000";
 
 window.onload = function () {
     try {
@@ -15,6 +15,25 @@ window.onload = function () {
     checkUserStatus();
 };
 
+//----------------------------------------------------------------------------------------------------------------- show Notification
+function showMessage(title, content) {
+    const box = document.getElementById('MessageBox');
+    const titleEl = document.getElementById('messageBoxTitle');
+    const contentEl = document.getElementById('messageBoxContent');
+
+    titleEl.textContent = title;
+    contentEl.textContent = content;
+    box.classList.add('show');
+
+    const hideBox = () => {
+        box.classList.remove('show');
+        box.removeEventListener('click', hideBox);
+    };
+    box.addEventListener('click', hideBox);
+    setTimeout(() => {
+        hideBox();
+    }, 2000);
+}
 
 //----------------------------------------------------------------------------------------------------------------- hide info
 document.addEventListener("DOMContentLoaded", function() {
@@ -526,7 +545,6 @@ async function saveName() {
         console.error("Keine Benutzer-ID im LocalStorage gefunden.");
         return;
     }
-
     try {
         const response = await fetch(`${serverURL}/account/changeData`, {
             method: "POST",
@@ -544,6 +562,7 @@ async function saveName() {
 
         const data = await response.json();
         localStorage.setItem("user", vorname);
+        showMessage("Name erfolgreich geändert", "Der neue Name wurde erfolgreich in der Datenbank gespeichert.");
         hideLoader();
 
     } catch (error) {
@@ -586,6 +605,7 @@ async function updatePassword(newPassword) {
         if (!response.ok) {
             throw new Error(data.message || "Fehler beim Aktualisieren des Passworts");
         }
+        showMessage("Passwort erfolgreich geändert", "Die Passwortänderung wurde erfolgreich übernommen.");
     } catch (error) {
         console.error("Fehler beim Aktualisieren des Passworts:", error);
         alert("Fehler: " + error.message);
@@ -624,6 +644,7 @@ async function updateAdminPassword(username, newPassword){
         if (!response.ok) {
             throw new Error(data.message || "Fehler beim Aktualisieren des Passworts");
         }
+        showMessage("Passwort erfolgreich geändert", "Die Passwortänderung wurde erfolgreich durchgeführt.");
     } catch (error) {
         console.error("Fehler beim Aktualisieren des Passworts:", error);
         alert("Fehler: " + error.message);
@@ -677,7 +698,7 @@ async function changeUserColor(color) {
         if (!response.ok) {
             throw new Error(result.message || `Fehler: ${response.status}`);
         }
-
+        showMessage("Erfolgreiche Farbänderung", "Die Nutzer-Farbe wurde erfolgreich geändert.");
         const profileImg = document.getElementById('profilePicture');
         const profileImg_2 = document.getElementById('profilePictureOptions');
 
@@ -688,11 +709,9 @@ async function changeUserColor(color) {
             profileImg.style.filter = "";
             profileImg_2.style.filter = "";
         }
-
     } catch (error) {
         console.error("Fehler beim Ändern der Farbe:", error);
     }
-
     hideLoader();
 }
 
@@ -748,6 +767,7 @@ async function submitReport() {
         hideLoader();
         if (response.ok) {
             cancleReport();
+            showMessage("Report erstellt", "Es wurde ein neuer Report erfolgreich angelegt.");
         } else {
             alert(result.message || "Fehler beim Erstellen des Reports.");
         }
