@@ -226,6 +226,7 @@ async function login() {
         hideLoader();
         console.error("Error:", error);
         document.getElementById("errorMsg").textContent = "Ein unerwarteter Fehler ist aufgetreten!";
+        showNameError();
     }
 }
 
@@ -258,7 +259,15 @@ async function checkUserStatus() {
     } catch (error) {
         hideLoader();
         console.error("Error:", error);
+        showNameError();
     }
+}
+function showNameError(){
+    document.getElementById('loginError').style.display="block";
+    document.getElementById('loadingBackground').style.display="block";
+}
+function hideNameError(){
+    location.reload();
 }
 
 // clear Login / Registration Inputs
@@ -2417,7 +2426,7 @@ async function removeFromCompleted(element) {
             if (index > -1) {
                 currLearnedElements.splice(index, 1);
             }
-            
+
         } else {
             console.error("Fehler beim Hinzufügen des Elements:", data.message);
         }

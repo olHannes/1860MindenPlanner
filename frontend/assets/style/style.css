@@ -90,7 +90,32 @@ body {
     bottom: 10%;
   }
 
-
+#loginError {
+    display: none;
+    position: fixed;
+    padding: 5px;
+    padding-bottom: 10px;
+    top: 21dvh;
+    width: 90dvw;
+    max-width: 400px;
+    left: 50%;
+    transform: translate(-50%);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    z-index: 1300;
+}
+#loginError h3 {
+    text-align: center;
+}
+#loginError button {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    color: white;
+    background-color: #0056b3;
+}
 
 #startupInformation {
     position: fixed;
