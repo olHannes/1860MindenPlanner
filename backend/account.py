@@ -296,7 +296,9 @@ def remove_learned_element():
 @account_bp.route('/account/getLearnedElements', methods=['GET'])
 def get_learned_elements():
     user_id = request.args.get('userId')
+    device = request.args.get('device')
 
+    print(user_id, " ", device)
     if not user_id or not ObjectId.is_valid(user_id):
         return jsonify({"message": "Ungültige oder fehlende Benutzer-ID!"}), 400
 
@@ -305,6 +307,13 @@ def get_learned_elements():
     if not user:
         return jsonify({"message": "Benutzer nicht gefunden!"}), 404
 
+    learned_elements = user.get("learnedElements", [])
+    print(learned_elements)
+
+    if device:
+        prefix = f"{device}_"
+        learned_elements = [elem for elem in learned_elements if elem.startswith(prefix)]
+
     return jsonify({
-        "learnedElements": user.get("learnedElements", [])
+        "learnedElements": learned_elements
     }), 200

@@ -1643,7 +1643,7 @@ button {
     background-color: #45a049;
 }
 
-#addCompleted {
+#isLearned {
     margin-top: 20px;
     padding: 10px 20px;
     background-color: rgb(27, 61, 95);
@@ -1654,7 +1654,7 @@ button {
     font-size: 16px;
     transition: background-color 0.3s ease;
 }
-#addCompleted:hover {
+#isLearned:hover {
     background-color: rgb(38, 85, 133);
 }
 

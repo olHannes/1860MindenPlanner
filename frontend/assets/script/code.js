@@ -9,7 +9,7 @@ window.onload = function () {
 };
 
 let serverURL = "https://one860mindenplanner.onrender.com";
-//serverURL = "http://127.0.0.1:10000";
+serverURL = "http://127.0.0.1:10000";
 
 //----------------------------------------------------------------------------------------------------------------- hide info
 document.addEventListener("DOMContentLoaded", function() {
@@ -359,7 +359,6 @@ async function logout() {
 
         const data = await response.json();
         hideLoader();
-        console.log(data.message);
         if (response.ok && (data.message === "Erfolgreich ausgeloggt!" || data.message === "Kein Benutzername oder Benutzer-ID angegeben!")) {
             localStorage.removeItem("user");
             localStorage.removeItem("userId");
@@ -1837,7 +1836,6 @@ function createRoutine() {
     document.getElementById('exerciseCreationPanel').style.display = 'block';
     document.getElementById("selected-exercises-list").innerHTML = "";
     loadCurrentExercise(localStorage.getItem("user"), currentDevice, true);
-    console.log("start autosafe");
     autoRoutineSafe = setTimeout(() => {
         safeExercise();
     }, 0.5*60*1000);
@@ -1871,7 +1869,6 @@ function closeDevice() {
 //----------------------------------------------------------------------------------------------------------------- Load safed Exercise
 
 async function loadCurrentExercise(username, device, remote) {
-    console.log("load Exercise");
     if (!username || !device) {
         console.log("Invalid Arguments for loading current Exercise", username, ", ", device);
         return;
@@ -2170,6 +2167,7 @@ async function getElements(difficulty, group, searchText) {
 
     let device = currentDevice;
     showLoader();
+    await loadCompletedUserList(device);
     try {
         const url = new URL(`${serverURL}/elements/get/filteredList`);
         const params = { Device: device, Difficulty: difficulty , Group: group, Text: searchText};
@@ -2181,7 +2179,10 @@ async function getElements(difficulty, group, searchText) {
         const elements = await response.json();
         hideLoader();
         elements.forEach(element => {
-            const exerciseDiv = createElementDiv(element, togglePage);
+            const exerciseDiv = createElementDiv(element, togglePage, currLearnedElements.includes(element.id));
+            if(currLearnedElements.includes(element.id)){
+                exerciseDiv.style.backgroundColor="#219633";
+            }
             togglePage ? leftBlock.appendChild(exerciseDiv) : rightBlock.appendChild(exerciseDiv);
             togglePage = !togglePage;
         });
@@ -2194,10 +2195,10 @@ async function getElements(difficulty, group, searchText) {
 
 //----------------------------------------------------------------------------------------------------------------- Handle Detailed element view
 
-function createElementDiv(element, togglePage) {
+function createElementDiv(element, togglePage, learned) {
     const exerciseDiv = document.createElement("div");
     exerciseDiv.classList.add("exercise-item");
-    exerciseDiv.onclick = () => openDetailedView(element);
+    exerciseDiv.onclick = () => openDetailedView(element, currLearnedElements.includes(element.id));
 
     const img = document.createElement("img");
     img.src = element.image_path;
@@ -2213,7 +2214,7 @@ function createElementDiv(element, togglePage) {
     return exerciseDiv;
 }
 
-function openDetailedView(element) {
+function openDetailedView(element, learned) {
     const container = document.getElementById('detailedElementInfo');
     const title = document.getElementById('elementTitle');
     const description = document.getElementById('elementText');
@@ -2231,8 +2232,12 @@ function openDetailedView(element) {
     difficulty.innerText = "Schwierigkeit: " + element.wertigkeit;
 
     addButton.replaceWith(addButton.cloneNode(true));
+    if(!learned){
+        setLearnedButton(true, element.id);
+    }else {
+        setLearnedButton(false, element.id);
+    }
     document.getElementById('addToList').addEventListener("click", () => addToExercise(element));
-    document.getElementById('addCompleted').addEventListener("click", () => addToCompleted(element));
     container.style.display = "flex";
 }
 
@@ -2312,6 +2317,25 @@ async function safeUpdateExercise(elementList) {
 
 let currLearnedElements = [];
 
+async function loadCompletedUserList(device) {
+    currLearnedElements = [];
+    try {
+        const userId = localStorage.getItem("userId");
+        if (!userId) {
+            console.error("Benutzer-ID nicht gefunden.");
+            return;
+        }
+        const response = await fetch(`${serverURL}/account/getLearnedElements?userId=${userId}&device=${device}`);
+        if(response.ok) {
+            const data = await response.json();
+            currLearnedElements = data.learnedElements;
+        }
+    } catch (error) {
+        console.error("Error while fetching the learned Elements", error);
+        return;
+    }
+}
+
 
 function resetClickListeners(id) {
     const oldButton = document.getElementById(id);
@@ -2319,16 +2343,27 @@ function resetClickListeners(id) {
     oldButton.parentNode.replaceChild(newButton, oldButton);
     return newButton;
 }
+function setLearnedButton(learned, element){
+    if(learned){
+        const button = resetClickListeners('isLearned');
+        button.style.backgroundColor = "rgb(27, 61, 95)";
+        button.innerText = "Element gelernt";
+        button.addEventListener("click", () => addToCompleted(element));
+    }else {
+        const button = resetClickListeners('isLearned');
+        button.style.backgroundColor = "rgb(125, 39, 39)";
+        button.innerText = "Element verlernt";
+        button.addEventListener("click", () => removeFromCompleted(element));    
+    }
+}
 
 async function addToCompleted(element) {
-    console.log("Markiere Element '", element.bezeichnung, "' als erlernt.");
     const userId = localStorage.getItem("userId");
 
     if (!userId) {
         console.error("Kein Benutzer-ID im Local Storage gefunden.");
         return;
     }
-
     try {
         const response = await fetch(`${serverURL}/account/addLearnedElement`, {
             method: 'POST',
@@ -2337,29 +2372,26 @@ async function addToCompleted(element) {
             },
             body: JSON.stringify({
                 userId: userId,
-                elementCode: element.id,
+                elementCode: element,
             }),
         });
 
         const data = await response.json();
         if (response.ok) {
-            console.log(data.message);
+            setLearnedButton(false, element);
+            if(!currLearnedElements.includes(element)){
+                currLearnedElements.push(element);
+            }
         } else {
             console.error("Fehler beim Hinzufügen des Elements:", data.message);
         }
     } catch (error) {
         console.error("Fehler bei der Anfrage:", error);
     }
-
-    const button = resetClickListeners('addCompleted');
-    button.style.backgroundColor = "rgb(125, 39, 39)";
-    button.innerText = "Element verlernt";
-    button.addEventListener("click", () => removeFromCompleted(element));
 }
 
 
 async function removeFromCompleted(element) {
-    console.log("Markiere Element '", element.bezeichnung, "' als verlernt.");
     const userId = localStorage.getItem("userId");
 
     if (!userId) {
@@ -2374,21 +2406,22 @@ async function removeFromCompleted(element) {
             },
             body: JSON.stringify({
                 userId: userId,
-                elementCode: element.id,
+                elementCode: element,
             }),
         });
 
         const data = await response.json();
         if (response.ok) {
-            console.log(data.message);
+            setLearnedButton(true, element);
+            const index = currLearnedElements.indexOf(element);
+            if (index > -1) {
+                currLearnedElements.splice(index, 1);
+            }
+
         } else {
             console.error("Fehler beim Hinzufügen des Elements:", data.message);
         }
     } catch (error) {
         console.error("Fehler bei der Anfrage:", error);
     }
-    const button = resetClickListeners('addCompleted');
-    button.style.backgroundColor = "rgb(27, 61, 95)";
-    button.innerText = "Element gelernt";
-    button.addEventListener("click", () => addToCompleted(element));
 }
