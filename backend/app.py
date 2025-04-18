@@ -19,6 +19,11 @@ CORS(app)
 def home():
     return "Server is running! Visit olhannes.github.io/1860MindenPlanner"
 
+@app.route("/awake")
+def awake():
+    print("awake")
+    return "awake Server"
+
 app.register_blueprint(routine.routine_bp)
 app.register_blueprint(competition.competition_bp)
 app.register_blueprint(account.account_bp)

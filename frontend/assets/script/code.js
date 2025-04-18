@@ -1,5 +1,11 @@
 
+let serverURL = "https://one860mindenplanner.onrender.com";
+//serverURL = "http://127.0.0.1:10000";
+
 window.onload = function () {
+    try {
+        fetch(`${serverURL}/awake`)
+    } catch (error) {}
     localStorage.removeItem("user");
     localStorage.removeItem("userId");
     if(localStorage.getItem("startUpInfo") != null) {
@@ -8,8 +14,6 @@ window.onload = function () {
     checkUserStatus();
 };
 
-let serverURL = "https://one860mindenplanner.onrender.com";
-//serverURL = "http://127.0.0.1:10000";
 
 //----------------------------------------------------------------------------------------------------------------- hide info
 document.addEventListener("DOMContentLoaded", function() {
