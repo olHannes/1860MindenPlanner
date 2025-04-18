@@ -9,7 +9,7 @@ window.onload = function () {
 };
 
 let serverURL = "https://one860mindenplanner.onrender.com";
-serverURL = "http://127.0.0.1:10000";
+//serverURL = "http://127.0.0.1:10000";
 
 //----------------------------------------------------------------------------------------------------------------- hide info
 document.addEventListener("DOMContentLoaded", function() {
