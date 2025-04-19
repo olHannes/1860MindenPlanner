@@ -1398,7 +1398,7 @@ async function showDashboard() {
               <option>Pauschenpferd</option>
             </select>
           </label>
-          <label>Punkte (max. x):
+          <label>Punkte:
             <input type="number" id="pointsInput-${competition._id}" max="10" min="0" step="0.1">
           </label>
           <button id="addDeviceBtn-${competition._id}">Punkte hinzufügen</button>
@@ -1442,29 +1442,31 @@ async function showDashboard() {
 
       const leaderboard = document.createElement("div");
       leaderboard.className = "leaderboard";
-      leaderboard.innerHTML = `<h4>🏆 Rangliste</h4>`;
+      leaderboard.innerHTML = `
+        <h4>🏆 Rangliste</h4>
+        <label>Sortierung:
+            <select id="sortSelect-${competition._id}">
+            <option value="total">Gesamtpunkte</option>
+            <option value="average">Durchschnittspunkte</option>
+            <option value="devices">Anzahl Geräte</option>
+            </select>
+        </label>
+        <div id="leaderboardEntries-${competition._id}"></div>
+        `;
+        tab.appendChild(leaderboard);
+        container.appendChild(tab);
 
-      if (competition.participants?.length > 0) {
-        const sorted = competition.participants.map(p => {
-          const total = p.devices.reduce((sum, d) => sum + d.points, 0);
-          return { ...p, total };
-        }).sort((a, b) => b.total - a.total);
-
-        sorted.forEach(p => {
-          const entry = document.createElement("div");
-          entry.className = "leaderboard-item";
-          entry.innerHTML = `
-            <strong>${p.name}</strong> – ${p.total} Punkte
-            <br><small>${p.devices.map(d => `${d.name}: ${d.points}`).join(', ')}</small>
-          `;
-          leaderboard.appendChild(entry);
-        });
-      } else {
-        leaderboard.innerHTML += `<p>Keine Teilnehmer.</p>`;
-      }
-
-      tab.appendChild(leaderboard);
-      container.appendChild(tab);
+        if (competition.participants?.length > 0) {
+            renderLeaderboard(competition, `leaderboardEntries-${competition._id}`, "total");
+          
+            document.getElementById(`sortSelect-${competition._id}`).addEventListener("change", (e) => {
+              const sortType = e.target.value;
+              renderLeaderboard(competition, `leaderboardEntries-${competition._id}`, sortType);
+            });
+          } else {
+            const leaderboardContainer = document.getElementById(`leaderboardEntries-${competition._id}`);
+            leaderboardContainer.innerHTML = `<p>Keine Teilnehmer.</p>`;
+          }
     });
   } catch (error) {
     console.error("Fehler beim Laden des Dashboards:", error);
@@ -1472,7 +1474,32 @@ async function showDashboard() {
 }
 
 
-
+function renderLeaderboard(competition, containerId, sortType) {
+    const sorted = competition.participants.map(p => {
+      const total = p.devices.reduce((sum, d) => sum + d.points, 0);
+      const deviceCount = p.devices.length;
+      const average = deviceCount > 0 ? total / deviceCount : 0;
+      return { ...p, total, deviceCount, average };
+    }).sort((a, b) => {
+      if (sortType === "average") return b.average - a.average;
+      if (sortType === "devices") return b.deviceCount - a.deviceCount;
+      return b.total - a.total; // default: total
+    });
+  
+    const leaderboardContainer = document.getElementById(containerId);
+    leaderboardContainer.innerHTML = "";
+  
+    sorted.forEach(p => {
+      const entry = document.createElement("div");
+      entry.className = "leaderboard-item";
+      entry.innerHTML = `
+        <strong>${p.name}</strong> – ${p.total.toFixed(1)} Punkte
+        <br><small>${p.devices.map(d => `${d.name}: ${d.points}`).join(', ')}</small>
+      `;
+      leaderboardContainer.appendChild(entry);
+    });
+  }
+  
 
 
 
