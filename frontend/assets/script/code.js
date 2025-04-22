@@ -1426,17 +1426,27 @@ async function showDashboard() {
         tab.appendChild(leaveBtn);
 
         form.querySelector(`#addDeviceBtn-${competition._id}`).onclick = async () => {
-          const device = form.querySelector(`#deviceSelect-${competition._id}`).value;
-          const points = parseFloat(form.querySelector(`#pointsInput-${competition._id}`).value);
-          if (!isNaN(points) && points<15) {
-            await fetch(`${serverURL}/competition/${competition._id}/addDevice/${userId}`, {
-              method: "POST",
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ deviceName: device, points })
-            });
-            showDashboard();
-          }
-        }
+            const device = form.querySelector(`#deviceSelect-${competition._id}`).value;
+            const points = parseFloat(form.querySelector(`#pointsInput-${competition._id}`).value);
+            
+            if (!isNaN(points) && points < 15) {
+              const participant = competition.participants.find(p => p.id === userId);
+              const existingDevice = participant.devices.find(d => d.name === device);
+          
+              const endpoint = existingDevice
+                ? `${serverURL}/competition/${competition._id}/updateDevice/${userId}`
+                : `${serverURL}/competition/${competition._id}/addDevice/${userId}`;
+          
+              await fetch(endpoint, {
+                method: existingDevice ? "PUT" : "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ deviceName: device, points })
+              });
+          
+              showDashboard();
+            }
+          };
+          
       }
 
       const leaderboard = document.createElement("div");
