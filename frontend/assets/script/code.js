@@ -1425,11 +1425,10 @@ async function showDashboard() {
         };
         tab.appendChild(leaveBtn);
 
-
         form.querySelector(`#addDeviceBtn-${competition._id}`).onclick = async () => {
           const device = form.querySelector(`#deviceSelect-${competition._id}`).value;
           const points = parseFloat(form.querySelector(`#pointsInput-${competition._id}`).value);
-          if (!isNaN(points)) {
+          if (!isNaN(points) && points<15) {
             await fetch(`${serverURL}/competition/${competition._id}/addDevice/${userId}`, {
               method: "POST",
               headers: { 'Content-Type': 'application/json' },
@@ -1483,7 +1482,7 @@ function renderLeaderboard(competition, containerId, sortType) {
     }).sort((a, b) => {
       if (sortType === "average") return b.average - a.average;
       if (sortType === "devices") return b.deviceCount - a.deviceCount;
-      return b.total - a.total; // default: total
+      return b.total - a.total;
     });
   
     const leaderboardContainer = document.getElementById(containerId);
