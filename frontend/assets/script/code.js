@@ -1417,7 +1417,7 @@ async function showDashboard() {
             const device = form.querySelector(`#deviceSelect-${competition._id}`).value;
             const points = parseFloat(form.querySelector(`#pointsInput-${competition._id}`).value);
             
-            if (!isNaN(points) && points < 15) {
+            if (!isNaN(points) && points > 0 && points < maxPoints[keyAliases[device]]) {
               const participant = competition.participants.find(p => p.id === userId);
               const existingDevice = participant.devices.find(d => d.name === device);
           
@@ -1468,6 +1468,45 @@ async function showDashboard() {
   } catch (error) {
     console.error("Fehler beim Laden des Dashboards:", error);
   }
+}
+
+let maxPoints = {
+    "FL" : 0,
+    "PO" : 0, 
+    "RI" : 0,
+    "VA" : 0,
+    "PA" : 0,
+    "HI" : 0
+};
+let keyAliases = {
+    "Boden": "FL",
+    "Pauschenpferd": "PO",
+    "Ringe": "RI",
+    "Sprung": "VA",
+    "Barren": "PA",
+    "Reck": "HI"
+}
+
+async function loadMaxPoints() {
+    const user = localStorage.getItem("user");
+    if (!user) {
+        console.warn("⚠️ Kein Benutzer im Local Storage.");
+        return;
+    }
+    try {
+        const response = await fetch(`${serverURL}/routine/getMaxPoints?user=${encodeURIComponent(user)}`);
+        if (!response.ok) {
+            throw new Error(`Serverfehler: ${response.status}`);
+        }
+        const data = await response.json();
+
+        for (const key in maxPoints) {
+            maxPoints[key] = data[key] ?? 0;
+        }
+
+    } catch (error) {
+        console.error("❌ Fehler beim Laden der Punkte:", error);
+    }
 }
 
 

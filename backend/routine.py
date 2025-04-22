@@ -138,7 +138,7 @@ def get_element():
         return jsonify({"error": "Kein Element gefunden mit der angegebenen id und dem aktuellen Gerät."}), 404
 
 
-
+################################################################################################### Get the max-Points of a Routine
 @routine_bp.route('/routine/getMaxPoints', methods=["GET"])
 def get_routine_max_points():
     username = request.args.get("user")
@@ -164,7 +164,6 @@ def get_routine_max_points():
             if element:
                 routineDetailsList.append(element)
 
-        print(currentDevice, ": ", routineDetailsList)
         if currentDevice == "VA":
             validation_data = valid_routine_va(routineDetailsList)
         else:
@@ -196,7 +195,6 @@ def valid_routine():
     result = analyze_routine_elements(device, elementList)
     return jsonify(result), 200
 
-
 def valid_routine_va(elementList):
     warnings = []
     errors = []
@@ -227,7 +225,6 @@ def valid_routine_va(elementList):
         "groupBonus": 0,
         "dismountBonus": 0
     }
-
 
 def analyze_routine_elements(device, elementList):
     required_groups = {
