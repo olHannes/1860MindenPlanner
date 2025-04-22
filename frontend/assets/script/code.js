@@ -490,7 +490,7 @@ async function deleteAccount() {
         localStorage.removeItem("adminKey");
         checkLoginStatus();
 
-        alert("Dein Account wurde erfolgreich gelöscht!");
+        showMessage("Account gelöscht", "Der Account '" + name + "' wurde erfolgreich gelöscht!");
         document.getElementById('requestDelAcc').style.display="none";
 
     } catch (error) {
@@ -612,8 +612,7 @@ async function updatePassword(newPassword) {
         }
         showMessage("Passwort erfolgreich geändert", "Die Passwortänderung wurde erfolgreich übernommen.");
     } catch (error) {
-        console.error("Fehler beim Aktualisieren des Passworts:", error);
-        alert("Fehler: " + error.message);
+        showMessage("Fehlerhafte Passwortaktualisierung", "Das Passwort konnte nicht geändert werden!");
     }
     document.getElementById('passwordEdit').style.display = "none";
     document.getElementById('nameView').style.display = "block";   
@@ -651,7 +650,6 @@ async function updateAdminPassword(username, newPassword){
         }
         showMessage("Passwort erfolgreich geändert", "Die Passwortänderung wurde erfolgreich durchgeführt.");
     } catch (error) {
-        console.error("Fehler beim Aktualisieren des Passworts:", error);
         alert("Fehler: " + error.message);
     }
     document.getElementById('passwordEdit').style.display = "none";
@@ -749,7 +747,7 @@ async function submitReport() {
         return;
     }
     if (!reportTitle || !reportTxt) {
-        alert("Es muss sowohl ein Titel als auch eine Fehlerbeschreibung vergeben werden!");
+        showMessage("Fehlende Eingaben", "Ein Report muss mindestens einen Titel und eine Beschreibung haben!");
         cancleReport();
         return;
     }
@@ -774,12 +772,11 @@ async function submitReport() {
             cancleReport();
             showMessage("Report erstellt", "Es wurde ein neuer Report erfolgreich angelegt.");
         } else {
-            alert(result.message || "Fehler beim Erstellen des Reports.");
+            showMessage("Fehlerhafte Reporterstellung", "Der Report konnte nicht erfolgreich erstellt werden!");
         }
     } catch (error) {
         hideLoader();
-        console.error("Fehler beim Senden des Reports:", error);
-        alert("Es gab einen Fehler beim Senden des Reports.");
+        showMessage("Fehlerhafte Reporterstellung", "Der Report konnte nicht erfolgreich gesendet werden!");
     }
 }
 
@@ -1362,8 +1359,11 @@ async function showDashboard() {
     const competitions = await response.json();
     const user = localStorage.getItem("user");
     const userId = localStorage.getItem("userId");
+    const now = new Date();
 
     competitions.forEach(competition => {
+      const competitionDate = new Date(competition.date);
+      const isPast = competitionDate < now;
       const tab = document.createElement("div");
       tab.className = "tab";
 
@@ -1377,7 +1377,7 @@ async function showDashboard() {
 
       const alreadyParticipant = competition.participants?.some(p => p.id === userId);
 
-      if (!alreadyParticipant) {
+      if (!alreadyParticipant && !isPast) {
         const joinBtn = document.createElement("button");
         joinBtn.textContent = "✅ Teilnehmen";
         joinBtn.onclick = async () => {
@@ -1389,7 +1389,7 @@ async function showDashboard() {
           if (res.ok) showDashboard();
         };
         tab.appendChild(joinBtn);
-      } else {
+      } else if (alreadyParticipant && !isPast){
         const form = document.createElement("div");
         form.className = "device-form";
         form.innerHTML = `
@@ -1424,7 +1424,7 @@ async function showDashboard() {
             if (res.ok) {
             showDashboard();
             } else {
-            alert("Fehler beim Austritt aus dem Wettkampf.");
+            showMessage("Fehler beim Abmelden", "Es konnte nicht erfolgreich aus dem Wettkampf ausgetreten werden!");
             }
         }
         };
