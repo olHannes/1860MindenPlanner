@@ -1,6 +1,6 @@
 
 let serverURL = "https://one860mindenplanner.onrender.com";
-serverURL = "http://127.0.0.1:10000";
+//serverURL = "http://127.0.0.1:10000";
 
 window.onload = function () {
     try {
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("closeNews").addEventListener("click", function() {
         document.getElementById("news").style.display = "none";
     });
-    
+
     document.getElementById("filterLearnedElements").addEventListener("change", function () {
         activeFilter_learnedElem = this.checked;
         getFilteredElementList();
@@ -2208,6 +2208,11 @@ function selectElement() {
     document.getElementById('elementSelection').style.display = "block";
     document.getElementById('add-exercise-btn').style.display = "none";  
     document.getElementById('allElemBtn').style.border = "solid 2px black";
+    
+    activeFilter_difficulty = null;
+    activeFilter_group = null;
+    activeFilter_text = null;
+    activeFilter_learnedElem = null;
     getElements(null, null);
 }
 
