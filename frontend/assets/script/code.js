@@ -1,6 +1,6 @@
 
 let serverURL = "https://one860mindenplanner.onrender.com";
-//serverURL = "http://127.0.0.1:10000";
+serverURL = "http://127.0.0.1:10000";
 
 window.onload = function () {
     try {
@@ -45,6 +45,11 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("closeNews").addEventListener("click", function() {
         document.getElementById("news").style.display = "none";
     });
+    
+    document.getElementById("filterLearnedElements").addEventListener("change", function () {
+        activeFilter_learnedElem = this.checked;
+        getFilteredElementList();
+      });
 });
 
 function openNews() {
@@ -2212,13 +2217,15 @@ function selectElement() {
 let activeFilter_difficulty = null;
 let activeFilter_group = null;
 let activeFilter_text = null;
+let activeFilter_learnedElem = null;
 
 function getFilteredElementList() {
     let difficulty = activeFilter_difficulty;
     let group = activeFilter_group;
     let searchText = activeFilter_text;
+    let learnedElements = activeFilter_learnedElem;
 
-    getElements(difficulty, group, searchText);
+    getElements(difficulty, group, searchText, learnedElements);
 }
 
 function openFilter() {
@@ -2259,11 +2266,12 @@ function filterByText() {
     activeFilter_text = document.getElementById("searchInput").value.trim();
     getFilteredElementList();
 }
+  
 
 
 //----------------------------------------------------------------------------------------------------------------- get filtered Elements
 
-async function getElements(difficulty, group, searchText) {
+async function getElements(difficulty, group, searchText, learnedElements) {
     const leftBlock = document.getElementById('leftColumn');
     const rightBlock = document.getElementById('rightColumn');
     leftBlock.innerHTML = "";
@@ -2276,7 +2284,7 @@ async function getElements(difficulty, group, searchText) {
     await loadCompletedUserList(device);
     try {
         const url = new URL(`${serverURL}/elements/get/filteredList`);
-        const params = { Device: device, Difficulty: difficulty , Group: group, Text: searchText};
+        const params = { Device: device, Difficulty: difficulty , Group: group, learnedElements: learnedElements, userId: localStorage.getItem("userId"), Text: searchText };
         Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
         const response = await fetch(url);

@@ -333,7 +333,6 @@ def get_learned_elements():
     user_id = request.args.get('userId')
     device = request.args.get('device')
 
-    print(user_id, " ", device)
     if not user_id or not ObjectId.is_valid(user_id):
         return jsonify({"message": "Ungültige oder fehlende Benutzer-ID!"}), 400
 
@@ -343,7 +342,6 @@ def get_learned_elements():
         return jsonify({"message": "Benutzer nicht gefunden!"}), 404
 
     learned_elements = user.get("learnedElements", [])
-    print(learned_elements)
 
     if device:
         prefix = f"{device}_"

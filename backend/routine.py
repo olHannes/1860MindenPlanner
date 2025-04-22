@@ -22,17 +22,20 @@ def get_group_elements():
     device = request.args.get('Device')
     difficulty = request.args.get('Difficulty')
     group = request.args.get('Group')
+    flag_learned = request.args.get('learnedElements')
+    user_id = request.args.get('userId')
     search_text = request.args.get('Text', '').strip().lower()
+
     if search_text in ['undefined', 'null']:
         search_text = ''
 
     if not device:
         return jsonify({"error": "Gerät ist erforderlich."}), 400
-    
+
     collection = get_device_collection(device)
     if collection is None:
         return jsonify({"error": f"Unbekanntes Gerät: {device}"}), 400
-    
+
     elements = list(collection.find({}, {'_id': False}))
 
     if difficulty not in [None, '', 'null']:
@@ -40,6 +43,20 @@ def get_group_elements():
 
     if group not in [None, '', 'null']:
         elements = [el for el in elements if str(el.get('elementegruppe')) == str(group)]
+
+    if flag_learned == 'true':
+        if not user_id or not ObjectId.is_valid(user_id):
+            return jsonify({"error": "Gültige userId erforderlich für 'learnedElements=true'!"}), 400
+
+        user = users_collection.find_one({"_id": ObjectId(user_id)}, {"learnedElements": 1})
+        if not user:
+            return jsonify({"error": "Benutzer nicht gefunden!"}), 404
+
+        learned_elements = user.get("learnedElements", [])
+        prefix = f"{device}_"
+        learned_elements = [eid for eid in learned_elements if eid.startswith(prefix)]
+
+        elements = [el for el in elements if el.get("id") in learned_elements]
 
     if search_text:
         elements = [
@@ -49,6 +66,7 @@ def get_group_elements():
         ]
 
     return jsonify(elements), 200
+
 
 
 ################################################################################################### Update Exercise

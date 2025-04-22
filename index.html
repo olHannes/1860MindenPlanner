@@ -57,12 +57,9 @@
         <h3>Neuigkeiten</h3>
         <p>Die neusten Features seit den letzten Updates:</p>
         <ul>
-            <li><strong>Autosafe:</strong> Die Übung wird nach 2 Minuten Inaktivität automatisch gespeichert.</li>
-            <li><strong>News:</strong> Diese Liste enthält die neusten Features</li>
-            <li><strong>Login:</strong> Ein Nutzer kann parallel auf mehreren Geräten angemeldet sein.</li>
-            <li><strong>Wettkampf:</strong> Ein Nutzer kann sich in einem Wettkampf an-/abmelden und Geräte/Wertungen hinzufügen.</li>
             <li><strong>Erlernte Elemente:</strong> Jedes Element kann als "erlernt" markiert werden.</li>
             <li><strong>Wettkampf Sortierung:</strong> Die Rangliste eines Wettkampfes kann eingestellt werden; <br>(Punkte, Durchschnitt, Anzahl der Geräte)</li>
+            <li><strong>Bugfix:</strong> Fehlerberichtigung in der Wettkampf-Punkteverwaltung.</li>
 
         </ul>
         <button class="safeBtn" id="closeNews">Schließen</button>
@@ -335,6 +332,13 @@
                             <button onclick="filterByGroup(3, this);">3</button>
                             <button onclick="filterByGroup(4, this);">4</button>
                         </div>
+
+                        <label class="checkbox-toggle">
+                            <input type="checkbox" id="filterLearnedElements" />
+                            <span class="slider"></span>
+                            <span class="label-text">Nur gelernte Elemente</span>
+                          </label>
+                          
 
                         <h3>Suche nach Stichwort</h3>
                         <input type="text" id="searchInput" placeholder="Suche nach Name..." oninput="filterByText()">
