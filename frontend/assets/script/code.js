@@ -58,7 +58,6 @@ function openNews() {
 
 
 //----------------------------------------------------------------------------------------------------------------- handle loader
-
 let loaderTimeout=null;
 function showLoader(){
     clearTimeout(loaderTimeout);
@@ -77,9 +76,7 @@ function hideLoader(){
 }
 
 
-
 //----------------------------------------------------------------------------------------------------------------- Page Handling
-
 let activePanel = null;
 
 // Open / Close
@@ -293,10 +290,12 @@ async function checkUserStatus() {
         showNameError();
     }
 }
+
 function showNameError(){
     document.getElementById('loginError').style.display="block";
     document.getElementById('loadingBackground').style.display="block";
 }
+
 function hideNameError(){
     location.reload();
 }
@@ -378,7 +377,6 @@ async function setProfileName() {
 }
 
 
-
 //----------------------------------------------------------------------------------------------------------------- Logout Handling
 
 // User Logout
@@ -447,9 +445,7 @@ window.onbeforeunload = async function () {
 };
 
 
-
 //----------------------------------------------------------------------------------------------------------------- Delete-Account Handling
-
 // secure Window
 function requestDeleteAcc(){
     document.getElementById('requestDelAcc').style.display="block";
@@ -502,7 +498,6 @@ async function deleteAccount() {
 
 
 
-
 //----------------------------------------------------------------------------------------------------------------- Account Edit
 
 // name Edit
@@ -527,7 +522,6 @@ function normalizeName(name) {
         .replace(/\s+/g, ' ')
         .replace(/\b\w/g, c => c.toUpperCase());
 }
-
 
 // safe Name-Edit
 async function saveName() {
@@ -577,7 +571,6 @@ async function saveName() {
 }
 
 
-
 // password edit
 function editPassword(){
     document.getElementById('passwordEdit').style.display = 'block';
@@ -624,7 +617,6 @@ function cancleEdits(){
 }
 
 
-
 async function updateAdminPassword(username, newPassword){
     adminKey = localStorage.getItem("adminKey");
     if (!username || !newPassword || !adminKey) {
@@ -656,7 +648,6 @@ async function updateAdminPassword(username, newPassword){
     document.getElementById('nameView').style.display = "block";   
 }
 
-
 // color-Editing Container handling
 function toggleOptionsContainer(){
     if(document.getElementById('accountOptionsWrapper').style.display=="block"){
@@ -665,11 +656,13 @@ function toggleOptionsContainer(){
         displayOptionsContainer();
     }
 }
+
 function displayOptionsContainer(){
     document.getElementById('passwordEdit').style.display="none";
     document.getElementById('nameEdit').style.display="none";
     document.getElementById('accountOptionsWrapper').style.display="block";
 }
+
 function hideOptionsContainer(){
     document.getElementById('accountOptionsWrapper').style.display="none";
 }
@@ -717,7 +710,6 @@ async function changeUserColor(color) {
     }
     hideLoader();
 }
-
 
 
 
@@ -779,7 +771,6 @@ async function submitReport() {
         showMessage("Fehlerhafte Reporterstellung", "Der Report konnte nicht erfolgreich gesendet werden!");
     }
 }
-
 
 
 //----------------------------------------------------------------------------------------------------------------- Report Handling <Admin>
@@ -863,7 +854,6 @@ async function loadAdminReports() {
     }
     hideLoader();
 }
-
 
 async function deleteReport(reportTitle) {
     showLoader();
@@ -1010,7 +1000,6 @@ function closePwdChange() {
 }
 
 
-
 //----------------------------------------------------------------------------------------------------------------- Competition Handling <Admin>
 
 function goToAdminCompetitionContainer(){
@@ -1133,8 +1122,6 @@ async function loadCompetitions() {
 }
 
 
-
-
 async function deleteCompetition(competitionId) {
     if (!confirm("Wettkampf wirklich löschen?")) return;
     try {
@@ -1168,13 +1155,13 @@ async function deleteParticipant(competitionId, participantId) {
     }
 }
 
-
 function openCompetitionWindow(){
     document.getElementById('compName').value = "";
     document.getElementById('compDate').value = null;
     document.getElementById('compLocation').value = "";
     document.getElementById('compCreationPanel').style.display="block";
 }
+
 function closeCompCreation() {
     document.getElementById('compCreationPanel').style.display="none";
     document.getElementById('compName').value = "";
@@ -1225,8 +1212,6 @@ async function createCompetition() {
 }
 
 
-
-
 function emptyAdminContainer(){
     if(document.getElementById('reportContainer')!=null){
         document.getElementById('reportContainer').remove();
@@ -1238,7 +1223,6 @@ function emptyAdminContainer(){
         document.getElementById('competitionContainer').remove();
     }
 }
-
 
 
 //----------------------------------------------------------------------------------------------------------------- get User List
@@ -1298,7 +1282,6 @@ async function showAllUser() {
     });
     hideLoader();
 }
-
 
 
 
@@ -1512,10 +1495,8 @@ function renderLeaderboard(competition, containerId, sortType) {
       `;
       leaderboardContainer.appendChild(entry);
     });
-  }
+}
   
-
-
 
 
 //----------------------------------------------------------------------------------------------------------------- Ab hier: Routine handling
@@ -1571,7 +1552,6 @@ async function requestUserExercise(username, device) {
     }
 }
 
-
 //----------------------------------------------------------------------------------------------------------------- get all Routines of a user
 
 async function getAllUserExercise(username) {
@@ -1591,7 +1571,6 @@ async function getAllUserExercise(username) {
     hideLoader();
     return userExerciseList;
 }
-
 
 //----------------------------------------------------------------------------------------------------------------- load Routine of User and validate it
 
@@ -1699,7 +1678,6 @@ async function showMemberData(username) {
     }
 }
 
-
 //----------------------------------------------------------------------------------------------------------------- validate Routine
 
 async function validRoutine(elements, device) {
@@ -1757,7 +1735,6 @@ function hideMemberExerciseList() {
     memberExerciseList.style.display = "none";
     memberExerciseList.innerHTML = "";
 }
-
 
 
 //----------------------------------------------------------------------------------------------------------------- Open Device (info-setter)
@@ -1926,7 +1903,6 @@ function openDevicePanel(id) {
     createRoutineBtn.style.display = "block";
 }
 
-
 //----------------------------------------------------------------------------------------------------------------- toggle Visibility
 
 function toggleUIElementVisibility(elements, displayValue) {
@@ -1951,7 +1927,6 @@ function createRoutine() {
         safeExercise();
     }, 0.5*60*1000);
 }
-
 
 function closeDevice() {
     if(pageDepth == 2){
@@ -2085,7 +2060,6 @@ function createExerciseRow(elementDetails, index) {
 }
 
 
-
 //----------------------------------------------------------------------------------------------------------------- remove Element from routine
 
 async function removeElementFromExercise(index) {
@@ -2161,7 +2135,6 @@ async function moveElementDown(index) {
 }
 
 
-
 //----------------------------------------------------------------------------------------------------------------- Update Routine Summary
 
 async function updateExerciseSummary() {
@@ -2200,7 +2173,6 @@ async function updateExerciseSummary() {
 }
 
 
-
 //----------------------------------------------------------------------------------------------------------------- show Element selection
 
 function selectElement() {
@@ -2218,11 +2190,11 @@ function selectElement() {
 
 
 //----------------------------------------------------------------------------------------------------------------- Element-Filter Handling
-
 let activeFilter_difficulty = null;
 let activeFilter_group = null;
 let activeFilter_text = null;
 let activeFilter_learnedElem = null;
+
 
 function getFilteredElementList() {
     let difficulty = activeFilter_difficulty;
@@ -2267,6 +2239,7 @@ function filterByGroup(group, pressedBtn) {
     activeFilter_group = group;
     getFilteredElementList();
 }
+
 function filterByText() {
     activeFilter_text = document.getElementById("searchInput").value.trim();
     getFilteredElementList();
@@ -2455,13 +2428,13 @@ async function loadCompletedUserList(device) {
     }
 }
 
-
 function resetClickListeners(id) {
     const oldButton = document.getElementById(id);
     const newButton = oldButton.cloneNode(true);
     oldButton.parentNode.replaceChild(newButton, oldButton);
     return newButton;
 }
+
 function setLearnedButton(learned, element){
     if(learned){
         const button = resetClickListeners('isLearned');
@@ -2508,7 +2481,6 @@ async function addToCompleted(element) {
         console.error("Fehler bei der Anfrage:", error);
     }
 }
-
 
 async function removeFromCompleted(element) {
     const userId = localStorage.getItem("userId");

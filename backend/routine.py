@@ -138,6 +138,43 @@ def get_element():
         return jsonify({"error": "Kein Element gefunden mit der angegebenen id und dem aktuellen Gerät."}), 404
 
 
+
+@routine_bp.route('/routine/getMaxPoints', methods=["GET"])
+def get_routine_max_points():
+    username = request.args.get("user")
+
+    if not username:
+        return jsonify({"error": "Ungültige Anfrage. Parameter (username) ist erforderlich."}), 400
+
+    devices = ["FL", "PO", "RI", "VA", "PA", "HI"]
+    result = {}
+
+    for currentDevice in devices:
+        query = {"geraet": currentDevice, "vorname": username}
+        exercise = exercises_collection.find_one(query)
+
+        if not exercise or "elemente" not in exercise:
+            result[currentDevice] = None
+            continue
+
+        routineDetailsList = []
+        for element_id in exercise["elemente"]:
+            collection = get_device_collection(currentDevice)
+            element = collection.find_one({"id": element_id})
+            if element:
+                routineDetailsList.append(element)
+
+        print(currentDevice, ": ", routineDetailsList)
+        if currentDevice == "VA":
+            validation_data = valid_routine_va(routineDetailsList)
+        else:
+            validation_data = analyze_routine_elements(currentDevice, routineDetailsList)
+
+        result[currentDevice] = validation_data.get("totalDifficulty")
+
+    return jsonify(result), 200
+
+
 ################################################################################################### Validate Routine
 @routine_bp.route('/routine/get/validation', methods=["POST"])
 def valid_routine():
@@ -155,91 +192,10 @@ def valid_routine():
 
     if device == "VA":
         return valid_routine_va(elementList)
+    
+    result = analyze_routine_elements(device, elementList)
+    return jsonify(result), 200
 
-    required_groups = {
-        "FL": {"1", "2", "3"},
-        "PO": {"1", "2", "3", "4"},
-        "RI": {"1", "2", "3", "4"},
-        "VA": set(),
-        "PA": {"1", "2", "3", "4"},
-        "HI": {"1", "2", "3", "4"}
-    }
-
-    total_difficulty = 10
-    element_groups = {}
-    seen_elements = {}
-    difficulties = []
-    warnings = []
-    errors = []
-
-    has_dismount = False
-    is_dismount_at_end = False
-    dismount_value = 0
-
-    for i, element, in enumerate(elementList):
-        wertigkeit = float(element.get("wertigkeit", 0))
-
-        if element.get("dismount"):
-            has_dismount = True
-            dismount_value = wertigkeit
-            if i == len(elementList) -1:
-                is_dismount_at_end = True
-            else:
-                difficulties.append(wertigkeit)
-            
-        gruppe = element.get("elementegruppe")
-        if gruppe:
-            element_groups[gruppe] = element_groups.get(gruppe, 0) + 1
-            
-        bez = element.get("bezeichnung")
-        if bez:
-            seen_elements[bez] = seen_elements.get(bez, 0) +1
-
-    top_six = sorted(difficulties, reverse=True)[:6]
-    base_difficulty = (sum(top_six) + dismount_value) *2
-
-    required_set = required_groups.get(device, set())
-    missing_groups = [g for g in required_set if g not in element_groups]
-
-    group_bonus = sum(0.5 for g in element_groups if float(g) > 0.05)
-    dismount_bonus = 0.5 if dismount_value >= 0.2 else (0.3 if dismount_value >= 0.1 else 0)
-
-    total_difficulty += base_difficulty + group_bonus + dismount_bonus
-    total_elements = len(elementList)
-    group_list = ", ".join(sorted(element_groups))
-
-    is_complete = len(missing_groups) == 0 and has_dismount and total_elements >= 7 and is_dismount_at_end
-
-    if total_elements > 7:
-        warnings.append("⚠️ Übung enthält mehr als 7 Elemente")
-    for group, count in element_groups.items():
-        if count > 3:
-            warnings.append(f"⚠️ Elementgruppe {group} kommt sehr oft vor ({count}x).")
-
-    duplicates = [f"{name} ({count}x)" for name, count in seen_elements.items() if count > 1]
-    if duplicates:
-        warnings.append("⚠️ Doppelte Elemente: " + ", ".join(duplicates))
-
-    if total_elements < 7:
-        errors.append(f"❌ Zu wenig Elemente: {total_elements}")
-    if missing_groups:
-        errors.append("❌ Fehlende Gruppen: " + ", ".join(missing_groups))
-    if not has_dismount:
-        errors.append("❌ Kein Abgang vorhanden")
-    if has_dismount and not is_dismount_at_end:
-        errors.append("❌ Der Abgang muss am Ende der Übung sein.")
-
-    return jsonify({
-        "warnings": warnings,
-        "errors": errors,
-        "totalDifficulty": round(total_difficulty, 2),
-        "totalElements": total_elements,
-        "groupList": group_list,
-        "isComplete": is_complete,
-        "baseDifficulty": round(base_difficulty, 2),
-        "groupBonus": group_bonus,
-        "dismountBonus": dismount_bonus
-    }), 200
 
 def valid_routine_va(elementList):
     warnings = []
@@ -260,7 +216,7 @@ def valid_routine_va(elementList):
 
     total_difficulty = 10 + highest_difficulty
 
-    return jsonify({
+    return {
         "warnings": warnings,
         "errors": errors,
         "totalDifficulty": round(total_difficulty, 2),
@@ -270,5 +226,99 @@ def valid_routine_va(elementList):
         "baseDifficulty": highest_difficulty,
         "groupBonus": 0,
         "dismountBonus": 0
-    }), 200
+    }
 
+
+def analyze_routine_elements(device, elementList):
+    required_groups = {
+        "FL": {"1", "2", "3"},
+        "PO": {"1", "2", "3", "4"},
+        "RI": {"1", "2", "3", "4"},
+        "VA": set(),
+        "PA": {"1", "2", "3", "4"},
+        "HI": {"1", "2", "3", "4"}
+    }
+
+    total_difficulty = 10
+    element_groups = {}
+    seen_elements = {}
+    difficulties = []
+    warnings = []
+    errors = []
+
+    has_dismount = False
+    is_dismount_at_end = False
+    dismount_value = 0
+
+
+    for i, element in enumerate(elementList):
+        wertigkeit = float(element.get("wertigkeit", 0))
+
+        if element.get("dismount"):
+            has_dismount = True
+            dismount_value = wertigkeit
+            if i == len(elementList) - 1:
+                is_dismount_at_end = True
+            else:
+                difficulties.append(wertigkeit)
+        else:
+            difficulties.append(wertigkeit)
+
+        gruppe = element.get("elementegruppe")
+        if gruppe:
+            element_groups[gruppe] = element_groups.get(gruppe, 0) + 1
+
+        bez = element.get("bezeichnung")
+        if bez:
+            seen_elements[bez] = seen_elements.get(bez, 0) + 1
+
+    top_six = sorted(difficulties, reverse=True)[:6]
+    base_difficulty = (sum(top_six) + dismount_value) * 2
+
+    required_set = required_groups.get(device, set())
+    missing_groups = [g for g in required_set if g not in element_groups]
+
+    group_bonus = sum(0.5 for g in element_groups if float(g) > 0.05)
+    dismount_bonus = 0.5 if dismount_value >= 0.2 else (0.3 if dismount_value >= 0.1 else 0)
+
+    total_difficulty += base_difficulty + group_bonus + dismount_bonus
+    total_elements = len(elementList)
+    group_list = ", ".join(sorted(element_groups))
+
+    is_complete = (
+        len(missing_groups) == 0 and
+        has_dismount and
+        total_elements >= 7 and
+        is_dismount_at_end
+    )
+
+    if total_elements > 7:
+        warnings.append("⚠️ Übung enthält mehr als 7 Elemente")
+    for group, count in element_groups.items():
+        if count > 3:
+            warnings.append(f"⚠️ Elementgruppe {group} kommt sehr oft vor ({count}x).")
+
+    duplicates = [f"{name} ({count}x)" for name, count in seen_elements.items() if count > 1]
+    if duplicates:
+        warnings.append("⚠️ Doppelte Elemente: " + ", ".join(duplicates))
+
+    if total_elements < 7:
+        errors.append(f"❌ Zu wenig Elemente: {total_elements}")
+    if missing_groups:
+        errors.append("❌ Fehlende Gruppen: " + ", ".join(missing_groups))
+    if not has_dismount:
+        errors.append("❌ Kein Abgang vorhanden")
+    if has_dismount and not is_dismount_at_end:
+        errors.append("❌ Der Abgang muss am Ende der Übung sein.")
+
+    return {
+        "warnings": warnings,
+        "errors": errors,
+        "totalDifficulty": round(total_difficulty, 2),
+        "totalElements": total_elements,
+        "groupList": group_list,
+        "isComplete": is_complete,
+        "baseDifficulty": round(base_difficulty, 2),
+        "groupBonus": group_bonus,
+        "dismountBonus": dismount_bonus
+    }

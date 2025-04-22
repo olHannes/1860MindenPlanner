@@ -29,6 +29,7 @@ app.register_blueprint(competition.competition_bp)
 app.register_blueprint(account.account_bp)
 app.register_blueprint(report.report_bp)
 
+
 if __name__ == '__main__':
     port = int(os.getenv("PORT", 10000))
     app.run(host="0.0.0.0", port=port, debug=False)

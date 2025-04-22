@@ -5,6 +5,7 @@ import random
 account_bp = Blueprint('account', __name__)
 randAdminKey = random.randint(100000, 999999)
 
+
 ################################################################################################### Login
 
 @account_bp.route('/account/login', methods=['POST'])
@@ -74,7 +75,6 @@ def logout():
     session.pop('user', None)
 
     return jsonify({"message": "Erfolgreich ausgeloggt!"}), 200
-
 
 
 ################################################################################################### Registrierung
@@ -199,7 +199,6 @@ def get_user_info():
         "last_name": user['lastName'],
         "color_code": user.get('color_code', '#000000')
     }), 200
-
 
 
 ################################################################################################### Setter -> User Information
