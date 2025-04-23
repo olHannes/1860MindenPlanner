@@ -37,6 +37,7 @@ function showMessage(title, content) {
 
 //----------------------------------------------------------------------------------------------------------------- hide info
 document.addEventListener("DOMContentLoaded", function() {
+    loadMaxPoints();
     document.getElementById("closeInfoBox").addEventListener("click", function() {
         document.getElementById("startupInformation").style.display = "none";
         localStorage.setItem("startUpInfo", true);
@@ -244,6 +245,7 @@ async function login() {
             localStorage.setItem("userId", data.userId);
             setProfileName();
             checkLoginStatus();
+            loadMaxPoints();
         } else if (response.status === 403) {
             document.getElementById("errorMsg").textContent = "Benutzer bereits auf einem anderen Gerät eingeloggt!";
         } else {
@@ -1377,7 +1379,7 @@ async function showDashboard() {
         form.className = "device-form";
         form.innerHTML = `
           <label>Gerät wählen:
-            <select id="deviceSelect-${competition._id}">
+            <select id="deviceSelect-${competition._id}" onchange="changeDeviceInput(this.value);">
               <option>Boden</option>
               <option>Barren</option>
               <option>Sprung</option>
@@ -1386,7 +1388,7 @@ async function showDashboard() {
               <option>Pauschenpferd</option>
             </select>
           </label>
-          <label>Punkte:
+          <label>Punkte (max. <span id="maxPointsDisplay">--</span>):
             <input type="number" id="pointsInput-${competition._id}" max="10" min="0" step="0.1">
           </label>
           <button id="addDeviceBtn-${competition._id}">Punkte hinzufügen</button>
@@ -1432,6 +1434,9 @@ async function showDashboard() {
               });
           
               showDashboard();
+            } else {
+                showMessage("Falsche Eingaben", "Es können nur gültige Punkte hinzugefügt werden!");
+                form.querySelector(`#pointsInput-${competition._id}`).value= "";
             }
           };
           
@@ -1468,6 +1473,7 @@ async function showDashboard() {
   } catch (error) {
     console.error("Fehler beim Laden des Dashboards:", error);
   }
+  changeDeviceInput("Boden");
 }
 
 let maxPoints = {
@@ -1509,6 +1515,10 @@ async function loadMaxPoints() {
     }
 }
 
+function changeDeviceInput(device){
+    let maxPoint = maxPoints[keyAliases[device]];
+    document.getElementById('maxPointsDisplay').innerText=maxPoint.toFixed(1);
+}
 
 function renderLeaderboard(competition, containerId, sortType) {
     const sorted = competition.participants.map(p => {
@@ -2401,6 +2411,7 @@ async function getElementDetails(elementId) {
 function safeExercise(){
     console.log("Safe Exercise");
     safeUpdateExercise(currentExercise);
+    loadMaxPoints();
 }
 
 async function safeUpdateExercise(elementList) {
