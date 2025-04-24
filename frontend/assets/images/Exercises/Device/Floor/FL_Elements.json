@@ -531,4 +531,133 @@
         "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Floor/B/FL_B_22.png"
     }
+
+
+
+    ,{
+        "id": "FL_C_01",
+        "bezeichnung": "Spitzwinkelstütz Beine waagerecht (2s)",
+        "name": "Manna",
+        "elementegruppe": "1",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/C/FL_C_01.png"
+    }
+    ,{
+        "id": "FL_C_02",
+        "bezeichnung": "Spitzwinkelstütz (2s) u. heben i.d. Hdst.",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/C/FL_C_02.png"
+    }
+    ,{
+        "id": "FL_C_03",
+        "bezeichnung": "A. d. Spagat, Heben i. d. Kreuzhandstand (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/C/FL_C_03.png"
+    }
+    ,{
+        "id": "FL_C_04",
+        "bezeichnung": "Schwalbe (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/C/FL_C_04.png"
+    }
+    ,{
+        "id": "FL_C_05",
+        "bezeichnung": "From support lever 2s. press handstand (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/C/FL_C_05.png"
+    }
+    ,{
+        "id": "FL_C_06",
+        "bezeichnung": "Endorolle geb. i. d. Handstand (2s) Gegrätschte Beine in der Endphase möglich",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/C/FL_C_06.png"
+    }
+    ,{
+        "id": "FL_C_07",
+        "bezeichnung": "Schmetterling m. 2/1 Drehung",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/C/FL_C_07.png"
+    }
+    ,{
+        "id": "FL_C_08",
+        "bezeichnung": "Kreis. o. gespr. Kreis. i. d. Hdst. Senken i.d. Kreis. o. gespr. Kreis.",
+        "name": "Gogoladze",
+        "elementegruppe": "1",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/C/FL_C_08.png"
+    }
+    ,{
+        "id": "FL_C_09",
+        "bezeichnung": "Gespr. Kreisfl. m. >270° Spindel (in 2 Flanken) direkt i.d. Hdst.",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/C/FL_C_09.png"
+    }
+    ,{
+        "id": "FL_C_10",
+        "bezeichnung": "Russenwendeschwung mit 1080° o. mehr.",
+        "name": "Fedorchenko",
+        "elementegruppe": "1",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/C/FL_C_10.png"
+    }
+    ,{
+        "id": "FL_C_11",
+        "bezeichnung": "Salto vw. gestr. m. 1/1 Drehung, auch mit 3/2 Drehung",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.3",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/C/FL_C_11.png"
+    }
+    ,{
+        "id": "FL_C_12",
+        "bezeichnung": "Doppelsalto rw. geh.",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.3",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/C/FL_C_12.png"
+    }
+    ,{
+        "id": "FL_C_13",
+        "bezeichnung": "Doppelsalto rw. geb.",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.3",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/C/FL_C_13.png"
+    }
+    ,{
+        "id": "FL_C_14",
+        "bezeichnung": "Salto rw. gestr. m. 3/2 o. 2/1 Drehung",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.3",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/C/FL_C_14.png"
+    }
 ]
