@@ -496,4 +496,278 @@
         "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_26.png"
     }
+
+
+
+
+    ,{
+        "id": "RI_C_01",
+        "bezeichnung": "Doppelsalto rw. geh. i. d. Hang",
+        "name": "Guczoghy",
+        "elementegruppe": "1",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_01.png"
+    }
+    ,{
+        "id": "RI_C_02",
+        "bezeichnung": "Honma gestreckt",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_02.png"
+    }
+    ,{
+        "id": "RI_C_03",
+        "bezeichnung": "Doppelsalto vw. gehockt i.d. Hang",
+        "name": "Yamawaki",
+        "elementegruppe": "1",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_03.png"
+    }
+    ,{
+        "id": "RI_C_04",
+        "bezeichnung": "A. d. Rückschwung Salto vw. zum Stütz",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_04.png"
+    }
+    ,{
+        "id": "RI_C_05",
+        "bezeichnung": "Felge oder Riesen zum Hdst. (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_05.png"
+    }
+    ,{
+        "id": "RI_C_06",
+        "bezeichnung": "Stemme rückw. oder Riesen vw. zum Hdst. (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_06.png"
+    }
+    ,{
+        "id": "RI_C_07",
+        "bezeichnung": "Honma u. Rückschwung i. d. Handstand (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_07.png"
+    }
+    ,{
+        "id": "RI_C_08",
+        "bezeichnung": "Kopfkreuz (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_08.png"
+    }
+    ,{
+        "id": "RI_C_09",
+        "bezeichnung": "Stützwaage (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_09.png"
+    }
+    ,{
+        "id": "RI_C_10",
+        "bezeichnung": "Kreuzhang mit Halte im Spitzwinkel (2s) (V-Kreuzhang)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_10.png"
+    }
+    ,{
+        "id": "RI_C_11",
+        "bezeichnung": "Heben m. gestr. Hüften u. gestr. Armen o. a. d. Stützwaage i. d. Hdst. (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_11.png"
+    }
+    ,{
+        "id": "RI_C_12",
+        "bezeichnung": "Felge vw. gestreckt i. d. Hdst.(2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_12.png"
+    }
+    ,{
+        "id": "RI_C_13",
+        "bezeichnung": "Felge vorw. gestr. z. Kreuzhang o. Kreuzhang mit Vorhalte (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_13.png"
+    }
+    ,{
+        "id": "RI_C_14",
+        "bezeichnung": "Zugstemme m. gestr. Armen i. d. Hangwaage rl. (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_14.png"
+    }
+    ,{
+        "id": "RI_C_15",
+        "bezeichnung": "Zugstemme z. Winkelstütz (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_15.png"
+    }
+    ,{
+        "id": "RI_C_16",
+        "bezeichnung": "A.d.Stütz oder Kreuzh. Langsames Senken z.Hang und Zug-stemme z. Kreuzh (2s)",
+        "name": "Li Xiaoshuang",
+        "elementegruppe": "2",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_16.png"
+    }
+    ,{
+        "id": "RI_C_17",
+        "bezeichnung": "A. d. Kreuzhang o. Kreuzhang m. Vorhalte, Zugstemme i. d. Winkelstütz (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_17.png"
+    }
+    ,{
+        "id": "RI_C_18",
+        "bezeichnung": "Stemme vw. i. d. Spitzwinkelstütz (2s)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_18.png"
+    }
+    ,{
+        "id": "RI_C_19",
+        "bezeichnung": "Kippe i. d. Spitzwinkelstütz (2s)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_19.png"
+    }
+    ,{
+        "id": "RI_C_20",
+        "bezeichnung": "Stemme vw. i. d. Kreuzhang o. Kreuzhang m. Vorhalte (2s)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_20.png"
+    }
+    ,{
+        "id": "RI_C_21",
+        "bezeichnung": "Stemme rw. i. d. Kreuzhang o. Kreuzhang m. Vorhalte (2s)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_21.png"
+    }
+    ,{
+        "id": "RI_C_22",
+        "bezeichnung": "Felgaufschwung i. d. Kreuzhang o. Kreuzhang m. Vorhalte (2s)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_22.png"
+    }
+    ,{
+        "id": "RI_C_23",
+        "bezeichnung": "Kippe i. d. Kreuzhang o. Kreuzhang m. Vorhalte (2s)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_23.png"
+    }
+    ,{
+        "id": "RI_C_24",
+        "bezeichnung": "Kreuzkippe i. d. Kreuzhang o. Kreuzhang m. Vorhalte (2s)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.3",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_24.png"
+    }
+    ,{
+        "id": "RI_C_25",
+        "bezeichnung": "Salto vorw. geb.o. gestr. mit 3/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.3",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_25.png"
+    }
+    ,{
+        "id": "RI_C_26",
+        "bezeichnung": "Doppelsalto vw. geh. o. geh. m. 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.3",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_26.png"
+    }
+    ,{
+        "id": "RI_C_27",
+        "bezeichnung": " Salto rw. gestr. m. 3/2 o. 2/1 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.3",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_27.png"
+    }
+    ,{
+        "id": "RI_C_28",
+        "bezeichnung": "Doppelsalto rw. gestr.",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.3",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_28.png"
+    }
+    ,{
+        "id": "RI_C_29",
+        "bezeichnung": "Doppelsalto rw. geh. m. 1/1 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.3",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_29.png"
+    }
+    ,{
+        "id": "RI_C_30",
+        "bezeichnung": "Salto rw. gestr. m. 1/1 Drehung u. Salto rw. geh.",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.3",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_30.png"
+    }
 ]
