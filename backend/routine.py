@@ -65,6 +65,13 @@ def get_group_elements():
             or search_text in el.get('name', '').lower()
         ]
 
+    unique_elements = {}
+    for el in elements:
+        el_id = el.get('id')
+        if el_id and el_id not in unique_elements:
+            unique_elements[el_id] = el
+    elements = list(unique_elements.values())
+
     return jsonify(elements), 200
 
 
