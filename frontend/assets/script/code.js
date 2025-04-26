@@ -2364,6 +2364,7 @@ function openDetailedView(element, learned) {
     const group = document.getElementById('elementGroup');
     const difficulty = document.getElementById('elementDifficulty');
     const addButton = document.getElementById('addToList');
+    const endingCheck = document.getElementById('validEnding');
 
     title.innerText = element.bezeichnung;
     description.innerText = element.bezeichnung;
@@ -2371,6 +2372,7 @@ function openDetailedView(element, learned) {
     name.innerText = element.name || "Name: ";
     group.innerText = "Elementegruppe: " + element.elementegruppe;
     difficulty.innerText = "Schwierigkeit: " + element.wertigkeit;
+    endingCheck.innerText = "Übungsende: " + (element.dismount == true ? "✅" : "❌");
 
     addButton.replaceWith(addButton.cloneNode(true));
     if(!learned){
