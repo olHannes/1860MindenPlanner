@@ -319,6 +319,13 @@ def get_users():
     return jsonify(users), 200
 
 
+################################################################################################### Get visible Users
+
+@account_bp.route('/users/getVisibleUsers', methods=['GET'])
+def get_visible_users():
+    users = list(users_collection.find({"visibility": 1}, {"_id": 0, "firstName": 1, "lastName": 1, "online": 1, "color_code": 1}))
+    return jsonify(users), 200
+
 ################################################################################################### add learned Element
 
 @account_bp.route("/account/addLearnedElement", methods=["POST"])

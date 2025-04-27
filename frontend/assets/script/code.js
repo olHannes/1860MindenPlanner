@@ -895,7 +895,7 @@ async function loadAdminUsers() {
     showLoader();
 
     try {
-        const users = await getAllUser();
+        const users = await getAllUser(false);
         if (!Array.isArray(users) || users.length === 0) {
             console.warn("Keine Benutzer gefunden.");
             document.getElementById('userContainer').innerHTML = "Keine Benutzer vorhanden.";
@@ -1231,10 +1231,12 @@ function emptyAdminContainer(){
 
 //----------------------------------------------------------------------------------------------------------------- get User List
 
-async function getAllUser() {
+async function getAllUser(visibleFilter) {
     showLoader();
+    const url = !visibleFilter ? `${serverURL}/users/getUsers` : `${serverURL}/users/getVisibleUsers`;
+
     try {
-        const response = await fetch(`${serverURL}/users/getUsers`, {
+        const response = await fetch(url, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         });
@@ -1259,10 +1261,9 @@ async function showAllUser() {
     memberList.style.display="block";
 
     showLoader();
-    const data = await getAllUser();
+    const data = await getAllUser(true);
     data.sort((a, b) => a.lastName.localeCompare(b.lastName));
-    data.forEach(user => {
-        if (user.firstName === "admin" || user.firstName === "Admin") return; 
+    data.forEach(user => { 
         const memberDiv = document.createElement('div');
         memberDiv.classList.add('member');
         memberDiv.onclick = () => showMemberData(user.firstName);
