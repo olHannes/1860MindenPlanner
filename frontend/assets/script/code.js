@@ -967,17 +967,20 @@ async function deleteAdminUser(username) {
     const name = username;
     showLoader();
     try {
-        const response = await fetch(`${serverURL}/account/delete`, {
+        const response = await fetch(`${serverURL}/admin/deleteAcc`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({name})
+            body: JSON.stringify({
+                "name": name,
+                "adminKey": localStorage.getItem("adminKey"),
+            })
         });
         if (!response.ok) {
             throw new Error(`Account löschen fehlgeschlagen: ${response.status} ${response.statusText}`);
         }
         const result = await response.json();
         hideLoader();
-        alert("Der Account '"+ username+ "' wurde gelöscht!");
+        showMessage("Account gelöscht", "Der Account '"+ username + "' wurde erfolgreich gelöscht.");
         goToAdminUserContainer();
     } catch (error) {
         hideLoader();

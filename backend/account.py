@@ -89,9 +89,8 @@ def register():
     if users_collection.find_one({"firstName": first_name}):
         return jsonify({"message": "Benutzername bereits vergeben!"}), 400
 
-    print("Try to register: ", first_name, " ", last_name)
     hashed_password = generate_password_hash(password)
-    users_collection.insert_one({'firstName': first_name, 'lastName': last_name, 'password': hashed_password, 'online': 0, 'color_code': '#000000'})
+    users_collection.insert_one({'firstName': first_name, 'lastName': last_name, 'password': hashed_password, 'online': 0, 'color_code': '#000000', 'visibility': 1})
 
     return jsonify({"message": "Registrierung erfolgreich!"}), 200
 
@@ -178,6 +177,30 @@ def delete_account():
     return jsonify({"message": "Account erfolgreich gelöscht!"}), 200
 
 
+################################################################################################### Delete Account
+
+@account_bp.route('/admin/deleteAcc', methods=['POST'])
+def delete_admin_acc():
+    global randAdminKey
+    data = request.get_json()
+    username = data.get('name')
+    adminKey = data.get('adminKey')
+
+    if not username or not adminKey:
+        return jsonify({"message": "Invalid Params!"}), 400
+
+    if int(adminKey) != randAdminKey:
+        return jsonify({"message": "Ungültiger Admin Key"}), 400
+
+    user = users_collection.find_one({"firstName": username})
+    if not user:
+        return jsonify({"message": "Benutzer nicht gefunden!"}), 404
+    
+    users_collection.delete_one({"_id": user["_id"]})
+
+    return jsonify({"message": "Account erfolgreich gelöscht!"}), 200
+
+
 ################################################################################################### Getter -> User Information
 
 @account_bp.route('/account/getUserInfo', methods=['GET'])
@@ -197,7 +220,8 @@ def get_user_info():
     return jsonify({
         "first_name": user['firstName'],
         "last_name": user['lastName'],
-        "color_code": user.get('color_code', '#000000')
+        "color_code": user.get('color_code', '#000000'),
+        "visibility": user.get('visibility', 1)
     }), 200
 
 
@@ -264,6 +288,27 @@ def change_user_color():
     users_collection.update_one({"_id": ObjectId(user_id)}, {"$set": {"color_code": new_color}})
 
     return jsonify({"message": "Farbcode erfolgreich aktualisiert!"}), 200
+
+
+################################################################################################### set Visibility status
+
+@account_bp.route("/account/user/visibilityChange", methods=['POST'])
+def change_user_visibility():
+    data = request.get_json()
+    user_id = data.get('userId')
+    visibility_status = data.get('visibility')
+
+    if not user_id or not visibility_status:
+        return jsonify({"message", "Invalid Arguments"}), 400
+
+    try:
+        user = users_collection.find_one({"_id", ObjectId(user_id)})
+    except:
+        return jsonify({"message", "User not found"}), 404
+    
+    users_collection.update_one({"_id", ObjectId(user_id)}, {"$set": {"visibility": visibility_status}})
+
+    return jsonify({"message", "successfully updated visibility Status!"}), 200
 
 
 ################################################################################################### Get Users
