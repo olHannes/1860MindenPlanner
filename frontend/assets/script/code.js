@@ -1568,11 +1568,11 @@ function changeRoutineType() {
 
     if(routineType == "0"){
         routineType = "1";
-        changeBtn.innerHTML = `<i>Wettkampf</i> / <strong>Wunsch</strong>`;
+        changeBtn.innerHTML = `<i>Wettkampf</i><br><strong>Wunsch</strong>`;
         changeBtn.style.backgroundColor = "rgb(102, 128, 0)";
     }else {
         routineType = "0";
-        changeBtn.innerHTML = `<strong>Wettkampf</strong> / <i>Wunsch</i>`;
+        changeBtn.innerHTML = `<strong>Wettkampf</strong><br><i>Wunsch</i>`;
         changeBtn.style.backgroundColor = "rgb(128, 45, 0)";
     }
     loadCurrentExercise(localStorage.getItem("user"), currentDevice, true, routineType);
@@ -1989,7 +1989,7 @@ function createRoutine() {
     pageDepth = 1;
     const changeBtn = document.getElementById('changeRoutineType');
     routineType = "0";
-    changeBtn.innerHTML = `<strong>Wettkampf</strong> / <i>Wunsch</i>`;
+    changeBtn.innerHTML = `<strong>Wettkampf</strong><br><i>Wunsch</i>`;
     changeBtn.style.backgroundColor = "rgb(128, 45, 0)";
 
     toggleUIElementVisibility(
