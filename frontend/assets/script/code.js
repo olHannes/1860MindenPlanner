@@ -118,7 +118,7 @@ function resetPanel(panelId) {
             document.getElementById('memberExerciseList').innerHTML="";
             break;
         default:
-            console.log("Unbekanntes Panel");
+            console.error("Unbekanntes Panel");
             break;
     }
 }
@@ -220,7 +220,6 @@ async function login() {
     const password = document.getElementById("password").value;
     username = normalizeName(username);
 
-    console.log("login: ", username, " ");
     showLoader();
     try {
         const response = await fetch(`${serverURL}/account/login`, {
@@ -1346,6 +1345,8 @@ async function showDashboard() {
     const userId = localStorage.getItem("userId");
     const now = new Date();
 
+    competitions.sort((a, b) => new Date(a.date) - new Date(b.date));
+
     competitions.forEach(competition => {
       const competitionDate = new Date(competition.date);
       const isPast = competitionDate < now;
@@ -1604,11 +1605,10 @@ async function requestUserExercise(username, device, routineType) {
             );
 
             hideLoader();
-            console.log("loaded Exercise: ", currentExercise);
             return exerciseData;
         } 
         if (response.status === 404) {
-            console.log(`${device}-leer`);
+            console.error(`${device}-leer`);
             hideLoader();
             return null;
         }
@@ -2032,7 +2032,7 @@ function closeDevice() {
 
 async function loadCurrentExercise(username, device, remote, routineType) {
     if (!username || !device) {
-        console.log("Invalid Arguments for loading current Exercise", username, ", ", device);
+        console.error("Invalid Arguments for loading current Exercise", username, ", ", device);
         return;
     }
     showLoader();
@@ -2447,7 +2447,6 @@ async function getElementDetails(elementId) {
 
 //----------------------------------------------------------------------------------------------------------------- safe Routine
 function safeExercise(){
-    console.log("Safe Exercise");
     safeUpdateExercise(currentExercise, routineType);
     loadMaxPoints();
 }
@@ -2458,7 +2457,7 @@ async function safeUpdateExercise(elementList, pRoutineType) {
     const device = currentDevice;
 
     if (!username || !device || !userId || !pRoutineType) {
-        console.error("Benutzername /-ID, Gerät oder Routine-Type nicht gefunden.");
+        console.error("Missing Arguments in -> safeUpdate");
         return;
     }
     const filteredElements = elementList.filter(element => element !== null && element !== undefined);
@@ -2481,10 +2480,8 @@ async function safeUpdateExercise(elementList, pRoutineType) {
 
         const data = await response.json();
         hideLoader();
-        if (response.ok) {
-            console.log("Übung erfolgreich aktualisiert:", data.message);
-        } else {
-            console.error("Fehler beim Aktualisieren:", data.error);
+        if (!response.ok) {
+            console.error("Error while Routine Update:", data.error);
         }
     } catch (error) {
         hideLoader();
