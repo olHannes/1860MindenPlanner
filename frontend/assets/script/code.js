@@ -2392,8 +2392,14 @@ async function getElements(difficulty, group, searchText, learnedElements) {
 
         const elements = await response.json();
         hideLoader();
+
         elements.forEach(element => {
+            if(document.getElementById('element-${element.id}')) {
+                return;
+            }
             const exerciseDiv = createElementDiv(element, togglePage, currLearnedElements.includes(element.id));
+            exerciseDiv.id = `element-${element.id}`;
+            
             if(currLearnedElements.includes(element.id)){
                 exerciseDiv.style.backgroundColor="#219633";
             }
