@@ -110,7 +110,7 @@ function resetPanel(panelId) {
             document.getElementById('elementSelection').style.display="none";
             document.getElementById('exerciseCreationPanel').style.display="none";
             document.getElementById('EquipmentExercise').style.display="none";
-            document.getElementById('add-exercise-btn').style.display = "block";  
+            document.getElementById('exerciseCreationButtonPanel').style.display = "flex";  
 
             break;
         case 2:
@@ -1555,20 +1555,39 @@ let currentExerciseFlag = null
 let currentExercise = [];
 let currentExerciseDetailedList = [];
 let currentDevice = null;
+let routineType = "0";
 
 let pageDepth = 0;
 let autoRoutineSafe = null;
 
 
+//----------------------------------------------------------------------------------------------------------------- change Routine Type
+
+function changeRoutineType() {
+    const changeBtn = document.getElementById("changeRoutineType");
+
+    if(routineType == "0"){
+        routineType = "1";
+        changeBtn.innerHTML = `<i>Wettkampf</i> / <strong>Wunsch</strong>`;
+        changeBtn.style.backgroundColor = "rgb(102, 128, 0)";
+    }else {
+        routineType = "0";
+        changeBtn.innerHTML = `<strong>Wettkampf</strong> / <i>Wunsch</i>`;
+        changeBtn.style.backgroundColor = "rgb(128, 45, 0)";
+    }
+    loadCurrentExercise(localStorage.getItem("user"), currentDevice, true, routineType);
+}
+
+
 //----------------------------------------------------------------------------------------------------------------- request exercise of a user
 
-async function requestUserExercise(username, device) {
+async function requestUserExercise(username, device, routineType) {
     currentExercise = [];
     currentExerciseDetailedList = [];
     showLoader();
     try {
         if (!username || !device) throw new Error("Exercise request failed: Invalid params");
-        const response = await fetch(`${serverURL}/exercise/get?device=${device}&vorname=${username}`);
+        const response = await fetch(`${serverURL}/exercise/get?device=${device}&vorname=${username}&routineType=${routineType}`);
         
         if (response.ok) {
             const exerciseData = await response.json();
@@ -1596,7 +1615,7 @@ async function requestUserExercise(username, device) {
         throw new Error("Error while fetching the user-exercise.");
     } catch (error) {
         hideLoader();
-        console.error("/exercise/get error: ", error);
+        showMessage("Fehler beim Laden der Übung", error);
         return null;
     }
 }
@@ -1605,12 +1624,13 @@ async function requestUserExercise(username, device) {
 
 async function getAllUserExercise(username) {
     const devices = ["FL", "PO", "RI", "VA", "PA", "HI"];
+    const sRoutineType = "0";
     let userExerciseList = [];
 
     showLoader();
     for (const currDev of devices) {
         currentDevice = currDev;
-        var currentExerciseList = await requestUserExercise(username, currentDevice);
+        var currentExerciseList = await requestUserExercise(username, currentDevice, sRoutineType);
         if (currentExerciseList) {
             userExerciseList.push({ device: currDev, exercises: currentExerciseList });
         } else {
@@ -1800,6 +1820,8 @@ function openDevicePanel(id) {
     let deviceData = {};
     currentExercise = [];
     currentExerciseDetailedList = [];
+    routineType = "0";
+
 
     switch (id) {
         case 0:
@@ -1965,13 +1987,18 @@ function toggleUIElementVisibility(elements, displayValue) {
 
 function createRoutine() {
     pageDepth = 1;
+    const changeBtn = document.getElementById('changeRoutineType');
+    routineType = "0";
+    changeBtn.innerHTML = `<strong>Wettkampf</strong> / <i>Wunsch</i>`;
+    changeBtn.style.backgroundColor = "rgb(128, 45, 0)";
+
     toggleUIElementVisibility(
         ['infoBlock', 'createRoutineBtn', 'elementSelection', 'detailedElementInfo'],
         'none'
     );
     document.getElementById('exerciseCreationPanel').style.display = 'block';
     document.getElementById("selected-exercises-list").innerHTML = "";
-    loadCurrentExercise(localStorage.getItem("user"), currentDevice, true);
+    loadCurrentExercise(localStorage.getItem("user"), currentDevice, true, routineType);
     autoRoutineSafe = setTimeout(() => {
         safeExercise();
     }, 0.5*60*1000);
@@ -1981,7 +2008,7 @@ function closeDevice() {
     if(pageDepth == 2){
         document.getElementById('elementSelection').style.display="none";
         document.getElementById('detailedElementInfo').style.display="none";
-        document.getElementById('add-exercise-btn').style.display="block";
+        document.getElementById('exerciseCreationButtonPanel').style.display="flex";
         document.getElementById('selected-exercises-list').style.display="flex";
         loadCurrentExercise(localStorage.getItem("user"), currentDevice, false);
     }
@@ -2003,14 +2030,16 @@ function closeDevice() {
 
 //----------------------------------------------------------------------------------------------------------------- Load safed Exercise
 
-async function loadCurrentExercise(username, device, remote) {
+async function loadCurrentExercise(username, device, remote, routineType) {
     if (!username || !device) {
         console.log("Invalid Arguments for loading current Exercise", username, ", ", device);
         return;
     }
     showLoader();
     if(remote){
-        await requestUserExercise(username, device);
+        if(routineType){
+            await requestUserExercise(username, device, routineType);
+        }
     }
 
     if (!currentExercise || !Array.isArray(currentExercise)) {
@@ -2227,7 +2256,7 @@ async function updateExerciseSummary() {
 function selectElement() {
     pageDepth = 2;
     document.getElementById('elementSelection').style.display = "block";
-    document.getElementById('add-exercise-btn').style.display = "none";  
+    document.getElementById('exerciseCreationButtonPanel').style.display = "none";  
     document.getElementById('allElemBtn').style.border = "solid 2px black";
     
     activeFilter_difficulty = null;
@@ -2412,17 +2441,17 @@ async function getElementDetails(elementId) {
 //----------------------------------------------------------------------------------------------------------------- safe Routine
 function safeExercise(){
     console.log("Safe Exercise");
-    safeUpdateExercise(currentExercise);
+    safeUpdateExercise(currentExercise, routineType);
     loadMaxPoints();
 }
 
-async function safeUpdateExercise(elementList) {
+async function safeUpdateExercise(elementList, pRoutineType) {
     const username = localStorage.getItem("user");
     const userId = localStorage.getItem("userId");
     const device = currentDevice;
 
-    if (!username || !device || !userId) {
-        console.error("Benutzername /-ID oder Gerät nicht gefunden.");
+    if (!username || !device || !userId || !pRoutineType) {
+        console.error("Benutzername /-ID, Gerät oder Routine-Type nicht gefunden.");
         return;
     }
     const filteredElements = elementList.filter(element => element !== null && element !== undefined);
@@ -2430,7 +2459,8 @@ async function safeUpdateExercise(elementList) {
         vorname: username,
         userId: userId,
         geraet: device,
-        elemente: filteredElements
+        elemente: filteredElements,
+        routineType: pRoutineType
     };
     showLoader();
     try {

@@ -84,16 +84,17 @@ def update_exercise():
     user_id = data.get("userId")
     geraet = data.get("geraet")
     elemente = data.get("elemente")
+    routine_type = data.get("routineType")
 
-    if not vorname or user_id is None or geraet is None or elemente is None:
-        return jsonify({"error": "Ungültige Anfrage. Alle Felder (vorname, geraet, elemente) sind erforderlich."}), 400
+    if not vorname or user_id is None or geraet is None or elemente is None or routine_type is None:
+        return jsonify({"error": "Ungültige Anfrage. Alle Felder (vorname, geraet, elemente, type) sind erforderlich."}), 400
     
     try:
         user_object_id = ObjectId(user_id)
     except Exception:
         return jsonify({"error": "Ungültige userId"}), 400
 
-    query = {"vorname": vorname, "geraet": geraet}
+    query = {"vorname": vorname, "geraet": geraet, "routineType": routine_type}
     update_data = {"$set": {"elemente": elemente}}
 
     result = exercises_collection.update_one(query, update_data, upsert=True)
@@ -109,11 +110,12 @@ def update_exercise():
 def get_exercise():
     device = request.args.get("device")
     vorname = request.args.get("vorname")
+    routine_type = request.args.get("routineType")
 
     if not device or not vorname:
         return jsonify({"error": "Ungültige Anfrage. Beide Parameter (device und vorname) sind erforderlich."}), 400
     
-    query = {"geraet": device, "vorname": vorname}
+    query = {"geraet": device, "vorname": vorname, "routineType": routine_type}
     exercise = exercises_collection.find_one(query)
 
     if exercise:
@@ -157,7 +159,7 @@ def get_routine_max_points():
     result = {}
 
     for currentDevice in devices:
-        query = {"geraet": currentDevice, "vorname": username}
+        query = {"geraet": currentDevice, "vorname": username, "routineType": "0"}
         exercise = exercises_collection.find_one(query)
 
         if not exercise or "elemente" not in exercise:

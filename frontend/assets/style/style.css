@@ -1538,17 +1538,25 @@ button {
     overflow-y: auto;
 }
 
+#exerciseCreationButtonPanel {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
 
 #add-exercise-btn {
-    width: 80%;
-    max-width: 200px;
-    position: relative;
-    left: 50%;
-    top: 3%;
-    transform: translateX(-50%);
+    width: 25%;
+    max-width: 300px;
     color: white;
     background-color: green;
 }
+#changeRoutineType {
+    width: 25%;
+    max-width: 300px;
+    color: white;
+    background-color: rgb(128, 45, 0);
+}
+
 #closeElementSelection {
     width: 80%;
     position: relative;

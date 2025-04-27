@@ -62,7 +62,8 @@
             <li><strong>Filter:</strong> Bei der Elementenauswahl kann man nun nach "gelernten" Elementen filtern.</li>
             <li><strong>Elemente:</strong> [Boden, Pauschenpferd, Ringe, Reck, Barren] haben nun auch C Elemente.</li>
             <li><strong>Detailed View:</strong> Bei der detailierten Ansicht wird gezeigt, ob das Element als Abgang gewählt werden kann.</li>
-        
+            <li><strong>versch. Übungen:</strong> Ein Nutzer kann nun eine Wunsch-, und eine Wettkampfübung erstellen.</li>
+
         </ul>
         <button class="safeBtn" id="closeNews">Schließen</button>
     </div>
@@ -286,7 +287,10 @@
 
 
         <div id="exerciseCreationPanel">
-            <button id="add-exercise-btn" onclick="selectElement();">Element hinzufügen</button>
+            <div id="exerciseCreationButtonPanel">
+                <button id="add-exercise-btn" onclick="selectElement();">Element hinzufügen</button>
+                <button id="changeRoutineType" onclick="changeRoutineType();"><strong>Wettkampf</strong> / <i>Wunsch</i></button>
+            </div>
             
             <div id="detailedElementInfo">
                 <button id="closeDetailedViewBtn" onclick="closeDetailedView();">X</button>
