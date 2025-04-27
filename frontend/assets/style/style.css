@@ -997,7 +997,7 @@ button {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 30dvh;
+    bottom: 22dvh;
 }
 #welcomeUser {
     color: #2c3e50;
