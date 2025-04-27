@@ -366,6 +366,7 @@ async function setProfileName() {
             profileImg.style.filter = "";
             profileImg_2.style.filter = "";
         }
+        document.getElementById('visibleCheckbox').checked = userInfo.visibility;
 
         hideLoader();
     } catch (error) {
@@ -616,6 +617,38 @@ function cancleEdits(){
     document.getElementById('nameEdit').style.display="none";
     document.getElementById('passwordEdit').style.display="none";
 }
+
+
+
+async function handleVisibilityChange(isVisible) {
+    const username = localStorage.getItem("userId");
+    let visibleStatus = isVisible? 1 : 0;
+    showLoader();
+    try {
+        const response = await fetch(`${serverURL}/account/user/visibilityChange`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                userId: username,
+                visibility: visibleStatus
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`Server Error: ${response.status}`);
+        }
+
+        const result = await response.json();
+        if(result.ok){
+            showMessage("Sichtbarkeits-Status wurde geändert", "Änderung des Status war erfolgreich.");
+        }
+    } catch (error) {
+        console.error("Fehler beim Aktualisieren des Sichtbarkeitsstatus:", error);
+    }
+    hideLoader();
+}
+
+  
 
 
 async function updateAdminPassword(username, newPassword){

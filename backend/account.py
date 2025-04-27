@@ -298,17 +298,20 @@ def change_user_visibility():
     user_id = data.get('userId')
     visibility_status = data.get('visibility')
 
-    if not user_id or not visibility_status:
-        return jsonify({"message", "Invalid Arguments"}), 400
+    if not user_id or visibility_status is None:
+        return jsonify({"message": "Invalid Arguments"}), 400
 
     try:
-        user = users_collection.find_one({"_id", ObjectId(user_id)})
+        user = users_collection.find_one({"_id": ObjectId(user_id)})
     except:
-        return jsonify({"message", "User not found"}), 404
+        return jsonify({"message": "User not found"}), 404
     
-    users_collection.update_one({"_id", ObjectId(user_id)}, {"$set": {"visibility": visibility_status}})
+    users_collection.update_one(
+        {"_id": ObjectId(user_id)},
+        {"$set": {"visibility": visibility_status}}
+    )
 
-    return jsonify({"message", "successfully updated visibility Status!"}), 200
+    return jsonify({"message": "Successfully updated visibility status!"}), 200
 
 
 ################################################################################################### Get Users

@@ -591,7 +591,35 @@ input {
     border: 1px solid #ccc;
 }
 
-
+#checkboxContainer {
+    position: absolute;
+    white-space: nowrap;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 65dvh;
+    color: #2c6693;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  #checkboxLabel {
+    font-size: 18px;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  #visibleCheckbox {
+    width: 20px;
+    height: 20px;
+    accent-color: #4CAF50;
+    cursor: pointer;
+  }
+  
 
 
 

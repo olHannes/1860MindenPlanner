@@ -57,13 +57,13 @@
         <h3>Neuigkeiten</h3>
         <p>Die neusten Features seit den letzten Updates:</p>
         <ul>
-            <li><strong>Wettkampf Sortierung:</strong> Die Rangliste eines Wettkampfes kann eingestellt werden; <br>(Punkte, Durchschnitt, Anzahl der Geräte)</li>
             <li><strong>Bugfix:</strong> Fehlerberichtigung in der Wettkampf-Punkteverwaltung.</li>
             <li><strong>Filter:</strong> Bei der Elementenauswahl kann man nun nach "gelernten" Elementen filtern.</li>
             <li><strong>Elemente:</strong> [Boden, Pauschenpferd, Ringe, Reck, Barren] haben nun auch C Elemente.</li>
             <li><strong>Detailed View:</strong> Bei der detailierten Ansicht wird gezeigt, ob das Element als Abgang gewählt werden kann.</li>
             <li><strong>versch. Übungen:</strong> Ein Nutzer kann nun eine Wunsch-, und eine Wettkampfübung erstellen.</li>
             <li><strong>Wettkampf-Sortierung:</strong> Die Wettkämpfe werden nun nach dem Datum sortiert.</li>
+            <li><strong>Sichtbarkeit:</strong> Nutzer können die Sichtbarkeit einstellen (Die Nutzer werden nicht mit aufgelistet).</li>
 
         </ul>
         <button class="safeBtn" id="closeNews">Schließen</button>
@@ -235,6 +235,15 @@
                 <button id="editPasswordBtn" onclick="editPassword();">
                     ✎ Passwort bearbeiten ✎
                 </button>   
+
+                <div id="checkboxContainer">
+                    <label id="checkboxLabel">
+                      <input type="checkbox" id="visibleCheckbox" onchange="handleVisibilityChange(this.checked)">
+                      Sichtbar für andere?
+                    </label>
+                </div>
+                  
+                  
 
                     <!--Windows for Name edits-->
                 <div id="nameEdit" style="display: none;">
