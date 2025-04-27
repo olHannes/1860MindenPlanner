@@ -17,7 +17,7 @@ CORS(app)
 
 @app.route("/")
 def home():
-    return "Server is running! Visit olhannes.github.io/1860MindenPlanner"
+    return "Server is running! Visit https://routineplanner.de"
 
 @app.route("/awake")
 def awake():
