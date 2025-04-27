@@ -985,7 +985,6 @@ button {
     margin-top: 5px;
 }
 
-
 #mainPage {
     text-align: center;
     background: white;
@@ -998,6 +997,8 @@ button {
     left: 50%;
     transform: translateX(-50%);
     bottom: 22dvh;
+    height: 61dvh;
+    overflow-y: auto;
 }
 #welcomeUser {
     color: #2c3e50;
