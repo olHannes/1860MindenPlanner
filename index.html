@@ -191,9 +191,9 @@
 
     <!--Main Page with Welcome Text-->
     <div id="mainPage">
-        <h1 id="welcomeUser">Willkommen, Nutzer!</h1>
-        <p id="welcomeTxt">Auf dieser Seite kannst du eine Übung / Kür zusammenstellen. Unten im Menü kannst du zwischen der Übungsgestaltung, der Übersicht der anderen Nutzer und den Profileinstellungen wechseln. Der aktuelle Code-of-Points (COP: 2022-2024) kannst du über den Download Button herunterladen.</p>
-        <a class="download-btn" onclick="toggleDownloadPanel();">PDF Downloads</a>
+        <h1 id="welcomeUser">Willkommen, <i>User</i>!</h1>
+        <p id="welcomeTxt">Auf dieser Seite kannst du Übungen zusammenstellen und Wettkämpfe einsehen. Unten im Menü kannst du zwischen der Übungsgestaltung, der Nutzerübersicht und den Profileinstellungen wechseln. Der aktuelle <i>Code-of-Points (COP: 2022-2024)</i>, sowie die <i>NE-Bildtabellen</i> kannst du über den Download Button herunterladen. Bei der Nutzerübersicht kannst du dich zusätzlich eintragen und Punkte hinzufügen.</p>
+        <a class="download-btn" onclick="toggleDownloadPanel();">PDF Downloads ↧</a>
         <a class="download-btn" onclick="openNews();">News & Updates</a>
     </div>
 
@@ -435,7 +435,7 @@
         <h2>Mitglieder</h2>
         <div id="memberSwitchPage">
             <button onclick="showAllUser();">Übungen</button>
-            <button onclick="showDashboard();">Dashboard</button>
+            <button onclick="showDashboard();">Wettkämpfe</button>
         </div>
         <div id="memberExerciseList">
             <button onclick="hideMemberExerciseList();" id="hideMemberExercise">
