@@ -14,8 +14,9 @@
       }
     ],
     "start_url": "https://routineplanner.de/",
-    "theme_color": "#e8e8e8",
+    "theme_color": "#0056b3",
     "background_color": "#e8e8e8",
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "display": "standalone"
   }
   
