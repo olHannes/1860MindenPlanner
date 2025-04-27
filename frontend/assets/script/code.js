@@ -1,6 +1,6 @@
 
 let serverURL = "https://one860mindenplanner.onrender.com";
-//serverURL = "http://127.0.0.1:10000";
+serverURL = "http://127.0.0.1:10000";
 
 window.onload = function () {
     try {
@@ -2221,6 +2221,13 @@ async function updateExerciseSummary() {
     
     let summaryContainer = document.getElementById("exercise-summary-container");
     if (!summaryContainer) return;
+
+    if(!totalElements){
+        summaryContainer.innerHTML = `
+        <p><strong>Die Übung ist leer</strong></p>
+        `;
+        return;
+    }
 
     summaryContainer.innerHTML = `
         ${warnings.length > 0 ? `<p style="color: orange;"><strong>⚠️ Warnungen:</strong> ${warnings.join(" | ")}</p>` : ""}
