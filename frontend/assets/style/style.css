@@ -1002,6 +1002,7 @@ button {
 }
 #welcomeUser {
     color: #2c3e50;
+    margin-top: 1px;
 }
 #welcomeTxt {
     font-size: 16px;
@@ -1077,7 +1078,7 @@ button {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 10%;
+    height: 10dvh;
     background-color: #ffffff1a;
     border-top: 2px solid #2f2f2f;
     display: flex;
@@ -1531,10 +1532,10 @@ button {
 #exerciseCreationPanel {
     position: absolute;
     z-index: 16;
-    top: 16%;
+    top: 15dvh;
     left: 0;
     width: 100%;
-    height: 83%;
+    height: 74dvh;
     display: none;
     overflow-y: auto;
 }
