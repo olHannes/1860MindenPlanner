@@ -773,7 +773,7 @@ function updateReportTitle() {
 
 async function submitReport() {
     const selectedValue = document.getElementById('reportType').value;
-    const reportTitle = document.getElementById('reportTitle').value.trim();
+    let reportTitle = document.getElementById('reportTitle').value.trim();
     const reportTxt = document.getElementById('reportTxt').value.trim();
     const username = localStorage.getItem("user");
 
@@ -781,11 +781,15 @@ async function submitReport() {
         cancleReport();
         return;
     }
-    if (!reportTitle || !reportTxt || !selectedValue) {
-        showMessage("Fehlende Eingaben", "Ein Report muss mindestens einen Typen, Titel und eine Beschreibung haben!");
+    if (!reportTxt || !selectedValue) {
+        showMessage("Fehlende Eingaben", "Ein Report muss mindestens einen Typen und eine Beschreibung haben!");
         cancleReport();
         return;
     }
+    if(!reportTitle) {
+        reportTitle = selectedValue;
+    }
+
     const data = {
         username: username,
         reportType: selectedValue,
