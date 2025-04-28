@@ -10,10 +10,11 @@ report_bp = Blueprint('reports', __name__)
 def createReport():
     data = request.get_json()
     username = data.get('username')
+    reportType = data.get('reportType')
     reportTitle = data.get('reportTitle')
     report = data.get('report')
     
-    if not username or not reportTitle or not report:
+    if not username or not reportTitle or not report or not reportType:
         return jsonify({"message": "Fehlende Daten!"}), 400
 
     if issues_collection.find_one({"reportTitle": reportTitle}):
@@ -21,9 +22,9 @@ def createReport():
 
     timestamp = datetime.now(timezone.utc)
 
-    print(f"Create Report: {username}_{reportTitle}")
-    notification.send_mail(reportTitle, report, username, timestamp)
+    notification.send_mail(reportType, reportTitle, report, username, timestamp)
     issues_collection.insert_one({
+        'reportType': reportTitle,
         'reportTitle': reportTitle,
         'report': report,
         'username': username,

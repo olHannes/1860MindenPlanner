@@ -125,6 +125,15 @@
     <!--Window for Report creation-->
     <div id="createReport">
         <h2>Fehler melden</h2>
+
+        <label for="reportType">Art des Reports:</label>
+        <select id="reportType" onchange="updateReportTitle();">
+            <option value="Fehler">Fehler</option>
+            <option value="Verbesserung">Verbesserung</option>
+            <option value="Style">Style</option>
+            <option value="Hilfe">Hilfe</option>
+        </select>
+
         <input type="text" id="reportTitle" placeholder="Titel des Reports">
         <textarea id="reportTxt" placeholder="Fehlerbeschreibung"></textarea>
         <button id="submitReport" onclick="submitReport()">Report erstellen</button>

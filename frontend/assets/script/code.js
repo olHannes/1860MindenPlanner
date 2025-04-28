@@ -763,7 +763,16 @@ function cancleReport() {
     document.getElementById('createReport').style.display = "none";
 }
 
+function updateReportTitle() {
+    const select = document.getElementById('reportType');
+    const h2 = document.querySelector('#createReport h2');
+
+    const selectedValue = select.value;
+    h2.textContent = selectedValue + " melden";
+}
+
 async function submitReport() {
+    const selectedValue = document.getElementById('reportType').value;
     const reportTitle = document.getElementById('reportTitle').value.trim();
     const reportTxt = document.getElementById('reportTxt').value.trim();
     const username = localStorage.getItem("user");
@@ -772,13 +781,14 @@ async function submitReport() {
         cancleReport();
         return;
     }
-    if (!reportTitle || !reportTxt) {
-        showMessage("Fehlende Eingaben", "Ein Report muss mindestens einen Titel und eine Beschreibung haben!");
+    if (!reportTitle || !reportTxt || !selectedValue) {
+        showMessage("Fehlende Eingaben", "Ein Report muss mindestens einen Typen, Titel und eine Beschreibung haben!");
         cancleReport();
         return;
     }
     const data = {
         username: username,
+        reportType: selectedValue,
         reportTitle: reportTitle,
         report: reportTxt
     };

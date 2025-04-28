@@ -830,6 +830,34 @@ input {
     transform: translateY(-2px);
 }
 
+#createReport label {
+    color: #bdbdbd;
+}
+
+#createReport select#reportType {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    box-sizing: border-box;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5"><path fill="black" d="M0 0l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+}
+
+#createReport select#reportType:focus {
+    border-color: #ff5733;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 87, 51, 0.5);
+}
+
+
 
 
 
