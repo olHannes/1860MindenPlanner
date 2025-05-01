@@ -899,7 +899,8 @@ input {
     background-color: rgba(90, 7, 7, 0.993);
 }
 
-#requestDelAcc {
+#requestDelAcc,
+#secureRoutineCopy {
     display: none;
     position: fixed;
     z-index: 1000;
@@ -917,12 +918,14 @@ input {
     font-family: Arial, sans-serif;
 }
 
-#requestDelAcc h2 {
+#requestDelAcc h2,
+#secureRoutineCopy h2 {
     margin-bottom: 10px;
     font-size: 20px;
 }
 
-#requestDelAcc h3 {
+#requestDelAcc h3,
+#secureRoutineCopy h3 {
     font-size: 16px;
     font-weight: normal;
     opacity: 0.8;
@@ -961,7 +964,6 @@ button {
 .cancel-btn:hover {
     background: #5a6268;
 }
-
 
 
                         /*Profile Data*/

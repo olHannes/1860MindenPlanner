@@ -63,10 +63,12 @@
             <li><strong>Wettkampf-Sortierung:</strong> Die Wettkämpfe werden nun nach dem Datum sortiert.</li>
             <li><strong>Sichtbarkeit:</strong> Nutzer können die Sichtbarkeit einstellen (Die Nutzer werden nicht mit aufgelistet).</li>
             <li><strong>Reports:</strong> Bei der Reporterstellung kann nun zwischen versch. Arten ausgewählt werden (Fehler, Verbesserung, Style, Hilfe)</li>
-
+            <li><strong>Übung kopieren:</strong> Du kannst eine bestehende Wettkampf- oder Wunschübung in die jeweils andere Variante übernehmen.</li>
+        
         </ul>
         <button class="safeBtn" id="closeNews">Schließen</button>
     </div>
+
 
     <div id="MessageBox">
         <h3 id="messageBoxTitle">Message Title</h3>
@@ -113,11 +115,21 @@
     
     <!--Secure Window for Account deletion-->
     <div id="requestDelAcc">
-        <h2>Account löschen</h2>
+        <h2>Account löschen?</h2>
         <h3>Bist du sicher, dass du deinen Account löschen möchtest?</h3>
         <div class="button-group">
             <button class="delete-btn" onclick="deleteAccount();">Löschen</button>
             <button class="cancel-btn" onclick="cancelDeleteAcc();">Abbrechen</button>
+        </div>
+    </div>
+
+    <!--Secure Routine Copy-->
+    <div id="secureRoutineCopy">
+        <h2>Übung kopieren?</h2>
+        <h3></h3>
+        <div class="button-group">
+            <button class="delete-btn copyBtn" id="validCopyRoutine">Übung kopieren</button>
+            <button class="cancel-btn" onclick="cancleRoutineCopy()">Abbrechen</button>
         </div>
     </div>
 

@@ -2,7 +2,6 @@ from mongoConf import *
 
 routine_bp = Blueprint('routine', __name__)
 
-
 # Hilfsfunktion zum Abrufen von Geräten
 def get_device_collection(device):
     device_collections = {
@@ -75,7 +74,6 @@ def get_group_elements():
     return jsonify(elements), 200
 
 
-
 ################################################################################################### Update Exercise
 @routine_bp.route('/exercise/update', methods=["POST"])
 def update_exercise():
@@ -103,6 +101,57 @@ def update_exercise():
         return jsonify({"message": "Übung erfolgreich aktualisiert"}), 200
     else:
         return jsonify({"message": "Neue Übung angelegt"}), 201
+
+
+################################################################################################### Copy Routine
+
+@routine_bp.route('/exercise/copyTo', methods=["POST"])
+def copy_routine_to():
+    data = request.json
+    vorname = data.get("vorname")
+    geraet = data.get("geraet")
+    routine_type = data.get("routineType")
+
+    if not vorname or geraet is None or routine_type is None:
+        return jsonify({"error": "Ungültige Anfrage. Felder 'vorname', 'geraet' und 'routineType' sind erforderlich."}), 400
+
+    try:
+        routine_type = int(routine_type)
+        if routine_type not in [0, 1]:
+            raise ValueError()
+        target_routine_type = 1 if routine_type == 0 else 0
+    except ValueError:
+        return jsonify({"error": "routineType muss 0 oder 1 sein."}), 400
+
+    source_query = {
+        "vorname": vorname,
+        "geraet": geraet,
+        "routineType": str(routine_type)
+    }
+    source_exercise = exercises_collection.find_one(source_query)
+
+    if not source_exercise:
+        return jsonify({"error": "Quellübung nicht gefunden."}), 404
+
+    elemente_to_copy = source_exercise.get("elemente", [])
+
+    target_query = {
+        "vorname": vorname,
+        "geraet": geraet,
+        "routineType": str(target_routine_type)
+    }
+    update_data = {
+        "$set": {
+            "elemente": elemente_to_copy
+        }
+    }
+
+    result = exercises_collection.update_one(target_query, update_data, upsert=True)
+
+    if result.matched_count > 0:
+        return jsonify({"message": f"Zielübung (Typ {target_routine_type}) erfolgreich aktualisiert."}), 200
+    else:
+        return jsonify({"message": f"Zielübung (Typ {target_routine_type}) neu angelegt."}), 201
 
 
 ################################################################################################### Get Exercise

@@ -2081,7 +2081,7 @@ function closeDevice() {
 
 //----------------------------------------------------------------------------------------------------------------- Load safed Exercise
 
-async function loadCurrentExercise(username, device, remote, routineType) {
+async function  loadCurrentExercise(username, device, remote, routineType) {
     if (!username || !device) {
         console.error("Invalid Arguments for loading current Exercise", username, ", ", device);
         return;
@@ -2126,11 +2126,73 @@ async function loadCurrentExercise(username, device, remote, routineType) {
     safeButton.addEventListener("click", safeExercise);
     exerciseContainer.appendChild(safeButton);
 
+    let copyButton = document.createElement("button");
+    const headline = document.querySelector("#secureRoutineCopy h3");
+    const validCopyBtn = document.getElementById('validCopyRoutine');
+    copyButton.id = "copyToBtn";
+    copyButton.style.backgroundColor="#e4e5e4";
+    copyButton.innerText = routineType == 0? "Übung als Wunsch-Übung speichern" : "Übung als Wettkampf-Übung speichern";
+    headline.innerText = routineType == 0? "Aktuelle Übung als Wunsch-Übung speichern?": "Aktuelle Übung als Wettkampf-Übung speichern?";
+    
+    validCopyBtn.removeEventListener("click", handleValidCopyClick);
+    validCopyBtn.addEventListener("click", handleValidCopyClick);
+
+    copyButton.addEventListener("click", requestCopyto);
+    exerciseContainer.appendChild(copyButton);
+
     let summaryContainer = document.createElement("div");
     summaryContainer.id = "exercise-summary-container";
     exerciseContainer.appendChild(summaryContainer);
     updateExerciseSummary();
     hideLoader();
+}
+
+
+//----------------------------------------------------------------------------------------------------------------- valid "Copy Routine"
+
+function handleValidCopyClick() {
+    copyRoutineTo(routineType);
+}
+
+function requestCopyto(routineType){
+    document.getElementById('loadingBackground').style.display="block";
+    document.getElementById('secureRoutineCopy').style.display="block";
+}
+
+function cancleRoutineCopy(){
+    document.getElementById('loadingBackground').style.display="none";
+    document.getElementById('secureRoutineCopy').style.display="none";
+}
+
+async function copyRoutineTo(routineType) {
+    const name = localStorage.getItem("user");
+    const device = currentDevice;
+    const type = routineType;
+
+    try {
+        const response = await fetch(`${serverURL}/exercise/copyTo`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                vorname: name,
+                geraet: device,
+                routineType: type
+            })
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            showMessage("Übung erfolgreich kopiert", response.message);
+        } else {
+            showMessage("Fehler beim kopieren", result.error);
+        }
+    } catch (error) {
+        console.error("Fehler beim Kopieren der Übung:", error);
+    }
+    cancleRoutineCopy();
 }
 
 
