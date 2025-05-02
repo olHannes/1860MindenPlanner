@@ -1302,15 +1302,17 @@ async function getAllUser(visibleFilter) {
 }
 
 async function showAllUser() {
-    document.getElementById('dashboard').style.display="none";
+    document.getElementById('dashboard').style.display = "none";
     const memberList = document.getElementById('memberList');
     memberList.innerHTML = '';
-    memberList.style.display="block";
+    memberList.style.display = "block";
 
     showLoader();
+
     const data = await getAllUser(true);
     data.sort((a, b) => a.lastName.localeCompare(b.lastName));
-    data.forEach(user => { 
+
+    data.forEach(user => {
         const memberDiv = document.createElement('div');
         memberDiv.classList.add('member');
         memberDiv.onclick = () => showMemberData(user.firstName);
@@ -1320,20 +1322,38 @@ async function showAllUser() {
         profileImg.alt = "profile icon";
         profileImg.style.filter = `drop-shadow(0px 0px 5px ${user.color_code})`;
 
-        memberDiv.appendChild(profileImg);
-        memberDiv.innerHTML += `
-            <span class="name-de">${user.firstName}</span>
-            <span class="name-en">${user.lastName}</span>
-        `;
+        // Name anzeigen
+        const nameSpanDE = document.createElement('span');
+        nameSpanDE.className = 'name-de';
+        nameSpanDE.textContent = user.firstName;
 
-        if(user.firstName == localStorage.getItem("user")){
-            memberDiv.style.backgroundColor="#8c8c8c73";
+        const nameSpanEN = document.createElement('span');
+        nameSpanEN.className = 'name-en';
+        nameSpanEN.textContent = user.lastName;
+
+        // Online-Status hinzufügen
+        const statusIndicator = document.createElement('span');
+        statusIndicator.classList.add('status-indicator');
+        statusIndicator.title = user.online ? 'Online' : 'Offline';
+        statusIndicator.style.backgroundColor = user.online ? 'green' : 'gray';
+
+        // Elemente zusammensetzen
+        memberDiv.appendChild(profileImg);
+        memberDiv.appendChild(nameSpanDE);
+        memberDiv.appendChild(nameSpanEN);
+        memberDiv.appendChild(statusIndicator);
+
+        // Wenn aktueller Benutzer: hervorheben
+        if (user.firstName === localStorage.getItem("user")) {
+            memberDiv.style.backgroundColor = "#8c8c8c73";
         }
 
         memberList.appendChild(memberDiv);
     });
+
     hideLoader();
 }
+
 
 
 

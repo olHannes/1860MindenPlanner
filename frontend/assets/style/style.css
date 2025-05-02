@@ -1504,6 +1504,17 @@ button {
     color: #777;
 }
 
+.status-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+
+
 #EquipmentExercise {
     display: none;
     width: 100dvw;
