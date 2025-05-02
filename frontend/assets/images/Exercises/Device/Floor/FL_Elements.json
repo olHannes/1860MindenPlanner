@@ -660,4 +660,136 @@
         "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Floor/C/FL_C_14.png"
     }
+
+
+
+
+
+
+    ,{
+        "id": "FL_D_01",
+        "bezeichnung": "Spitzwinkelstütz, Beine waagrecht (2s) u. heben i.d. Hdst. m. geschlossenen Beinen (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/D/FL_D_01.png"
+    }
+    ,{
+        "id": "FL_D_02",
+        "bezeichnung": "Manna (2s) und Ausschultern i. d. Hdst. (2s)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/D/FL_D_02.png"
+    }
+    ,{
+        "id": "FL_D_03",
+        "bezeichnung": "Aus d. Schwalbe (2 s.), Heben i. d. Kreuzhandstand (2s)",
+        "name": "Alvariño",
+        "elementegruppe": "1",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/D/FL_D_03.png"
+    }
+    ,{
+        "id": "FL_D_04",
+        "bezeichnung": "Gespr. Kreisfl. m. gesprungener 360° Dr. rw. d. d. Handstand, Senken z. gespr. Kreisfl. (2 Sprünge)",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/D/FL_D_04.png"
+    }
+    ,{
+        "id": "FL_D_05",
+        "bezeichnung": "Gespr. Kreisfl. m. > 270° Spindel (in 2 Flanken) direkt i. d. Handstand, Senken z. (gespr.) Kreisfl.",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/D/FL_D_05.png"
+    }
+    ,{
+        "id": "FL_D_06",
+        "bezeichnung": "Überschlag Salto vw. geh.",
+        "name": "Morandi",
+        "elementegruppe": "2",
+        "wertigkeit": "0.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/D/FL_D_06.png"
+    }
+    ,{
+        "id": "FL_D_07",
+        "bezeichnung": "Doppelsalto vw. geh., auch mit 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/D/FL_D_07.png"
+    }
+    ,{
+        "id": "FL_D_08",
+        "bezeichnung": "Salto vw. gestr. m. 2/1 Drehung",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/D/FL_D_08.png"
+    }
+    ,{
+        "id": "FL_D_09",
+        "bezeichnung": "Sprung vw. 1/2 Drehung u. Doppelsalto rw. geh",
+        "name": "Deferr",
+        "elementegruppe": "2",
+        "wertigkeit": "0.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/D/FL_D_09.png"
+    }
+    ,{
+        "id": "FL_D_10",
+        "bezeichnung": " Doppelsalto rw. geh. o. geb. m. 1/1 Drehung auch Doppeltwist geh. o. geb. m. 1/2 Drehung",
+        "name": "Tsukahara",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/D/FL_D_10.png"
+    }
+    ,{
+        "id": "FL_D_11",
+        "bezeichnung": "Doppeltwist geh. o. geb. o. Doppelsalto rw. geh. o. geb. m. 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/D/FL_D_11.png"
+    }
+    ,{
+        "id": "FL_D_12",
+        "bezeichnung": "Salto rw. gestr. m. 5/2 Drehung",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/D/FL_D_12.png"
+    }
+    ,{
+        "id": "FL_D_13",
+        "bezeichnung": "Salto rw. gestr. m. 3/1 Drehung",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/D/FL_D_13.png"
+    }
+    ,{
+        "id": "FL_D_14",
+        "bezeichnung": "Doppelsalto rw. gestr.",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/D/FL_D_14.png"
+    }
 ]
