@@ -1048,11 +1048,11 @@
     }
     ,{
         "id": "RI_D_31",
-        "bezeichnung": "",
+        "bezeichnung": "Doppelsalto rw. gestr. m. 1/2 o. 1/1 Drehung",
         "name": "",
         "elementegruppe": "2",
         "wertigkeit": "0.4",
-        "dismount": false,
+        "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_31.png"
     }
 ]
