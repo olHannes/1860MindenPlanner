@@ -866,4 +866,234 @@
         "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_32.png" 
     }
+
+
+
+
+
+    ,{
+        "id": "HI_D_01", 
+        "bezeichnung": "Riesenumschwung rw. gespr. m. 3/2 Drehung i. d. Ellgr.", 
+        "name": "Rybalko",
+        "elementegruppe": "1",
+        "wertigkeit": "0.4", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_01.png" 
+    }
+    ,{
+        "id": "HI_D_02", 
+        "bezeichnung": "Riesenumschwung rl. rw. (Tschechenriesen)", 
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.4", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_02.png" 
+    }
+    ,{
+        "id": "HI_D_03", 
+        "bezeichnung": "Tschechenriesen m. 1/2 Drehung zum Riesenumschwung vw.", 
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.4", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_03.png" 
+    }
+    ,{
+        "id": "HI_D_04", 
+        "bezeichnung": "Tkatchev gestr. m. 1/2 Drehung i. d. Zwiegriff zur Schwungstemme rw. i. d. Handstand", 
+        "name": "Moznik",
+        "elementegruppe": "2",
+        "wertigkeit": "0.4", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_04.png" 
+    }
+    ,{
+        "id": "HI_D_05", 
+        "bezeichnung": "Stalder, Bückumschwung rw. o. freie Felge m. Tkatchev gegr.auch m. 1/2 Drehung", 
+        "name": "Piatti",
+        "elementegruppe": "2",
+        "wertigkeit": "0.4", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_05.png" 
+    }
+    ,{
+        "id": "HI_D_06", 
+        "bezeichnung": "Piatti geb. auch m. 1/2 Drehung", 
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.4", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_06.png" 
+    }
+    ,{
+        "id": "HI_D_07", 
+        "bezeichnung": "Salto vw. gestr., auch aus dem Ellgriff.", 
+        "name": "Balabanov",
+        "elementegruppe": "2",
+        "wertigkeit": "0.4", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_07.png" 
+    }
+    ,{
+        "id": "HI_D_08", 
+        "bezeichnung": "Vorschwung u. Kontersalto vw. gegr. i. d. Hang", 
+        "name": "Xiao Ruizhi",
+        "elementegruppe": "2",
+        "wertigkeit": "0.4", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_08.png" 
+    }
+    ,{
+        "id": "HI_D_09", 
+        "bezeichnung": "Salto vw. über d. Stange geh. o. gegr. (auch a. d. Ellgriff)", 
+        "name": "Gaylord",
+        "elementegruppe": "2",
+        "wertigkeit": "0.4", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_09.png" 
+    }
+    ,{
+        "id": "HI_D_10", 
+        "bezeichnung": "Salto rw. m. 1/2 Drehung geh. über d. Stange.", 
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.4", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_10.png" 
+    }
+    ,{
+        "id": "HI_D_11", 
+        "bezeichnung": "Doppelsalto rw. geh. über d. Stange", 
+        "name": "Kovacs",
+        "elementegruppe": "2",
+        "wertigkeit": "0.4", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_11.png" 
+    }
+    ,{
+        "id": "HI_D_12", 
+        "bezeichnung": "Stalder m. 3/2 Drehung gesprungen d. d. Handstand i. d. Mix. Ellgriff", 
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_12.png" 
+    }
+    ,{
+        "id": "HI_D_13", 
+        "bezeichnung": "Adlerschwung m. 1/2 Drehung d. d. Handstand m. Rgr.", 
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_13.png" 
+    }
+    ,{
+        "id": "HI_D_14", 
+        "bezeichnung": "Adlerschwung m. Umspringen d. d. Handstand i. Kgr. o. Rgr., o. Zwiegriff", 
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_14.png" 
+    }
+    ,{
+        "id": "HI_D_15", 
+        "bezeichnung": "Adlerschwung m. 1/1 Dr. d. d. Handstand i. d. Zwiegriff auch gesprungen", 
+        "name": "Baldauf",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_15.png" 
+    }
+    ,{
+        "id": "HI_D_16", 
+        "bezeichnung": "Endo legs together in el-grip thr. hdst.", 
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_16.png" 
+    }
+    ,{
+        "id": "HI_D_17", 
+        "bezeichnung": "Carballo m. 1/2 Drehung i. d. Mix-Ellgriff", 
+        "name": "Quintero",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_17.png" 
+    }
+    ,{
+        "id": "HI_D_18", 
+        "bezeichnung": "Doppelsalto vw. geh. o. geb. m. 1/1 o. 3/2 Drehung", 
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.4", 
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_18.png" 
+    }
+    ,{
+        "id": "HI_D_19", 
+        "bezeichnung": "Doppelsalto vw. gestr. o. m. 1/2 Drehung", 
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.4", 
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_19.png" 
+    }
+    ,{
+        "id": "HI_D_20", 
+        "bezeichnung": "Doppelsalto vw. geh. o. geb. m. 1/1 o. 3/2 Drehung über d. Stange", 
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.4", 
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_20.png" 
+    }
+    ,{
+        "id": "HI_D_21", 
+        "bezeichnung": "Doppelsalto rw. geh. m. 2/1 Drehung", 
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.4", 
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_21.png" 
+    }
+    ,{
+        "id": "HI_D_22", 
+        "bezeichnung": "Doppelsalto rw. gestr. m. 1/1 Drehung", 
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.4", 
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_22.png" 
+    }
+    ,{
+        "id": "HI_D_23", 
+        "bezeichnung": "Doppelsalto rw. geh m. 2/1 Drehung über die Stange", 
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.4", 
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_23.png" 
+    }
+    ,{
+        "id": "HI_D_24", 
+        "bezeichnung": "Doppelsalto rw. gestr. m. 1/1 Drehung über die Stange", 
+        "name": "Hayden",
+        "elementegruppe": "4",
+        "wertigkeit": "0.4", 
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_24.png" 
+    }
+    ,{
+        "id": "HI_D_25", 
+        "bezeichnung": "Hecht m. 2/1 Drehung", 
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.4", 
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_25.png" 
+    }
 ]
