@@ -212,7 +212,7 @@
     },
     {
         "id": "PO_A_10",
-        "bezeichnung": "Wendeschwung vw. m. 1/2 Dr. z. Wechselstütz a. d. Pferdende, a. d. Seitstütz m. d. Nutzung 1 o. 2 Pauschen",
+        "bezeichnung": "Wendeschwung vw. m. 1/2 Drehung z. Wechselstütz a. d. Pferdende, a. d. Seitstütz m. d. Nutzung 1 o. 2 Pauschen",
         "name": "",
         "elementegruppe": "2",
         "wertigkeit": "0.1",
@@ -777,13 +777,244 @@
         "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/C/PO_C_25.png"
     }
     ,{
-    "id": "PO_C_26",
-    "bezeichnung": " Kreisfl. o. gegr. Kreisfl. m. gesprungenem Wandern d. d. Handstand.",
-    "name": "",
-    "elementegruppe": "4",
-    "wertigkeit": "0.3",
-    "dismount": true,
-    "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/C/PO_C_26.png"
-}
-    ]
+        "id": "PO_C_26",
+        "bezeichnung": "Kreisfl. o. gegr. Kreisfl. m. gesprungenem Wandern d. d. Handstand.",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.3",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/C/PO_C_26.png"
+    }
+
+
+
+
+
+
+    ,{
+        "id": "PO_D_01",
+        "bezeichnung": "Schere vw. m. 1/4 Drehung d. d. Hdst. a. 1 Pausche, Abschwingen i. d. Stütz m. gegr. Beinen",
+        "name": "Li Ning / Byan",
+        "elementegruppe": "1",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_01.png"
+    }
+    ,{
+        "id": "PO_D_02",
+        "bezeichnung": "Doppelschere vw. von einem Pferdende zum anderen (3/3)",
+        "name": "Mikulak",
+        "elementegruppe": "1",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_02.png"
+    }
+    ,{
+        "id": "PO_D_03",
+        "bezeichnung": "Any side support 1/1 spindle w. legs strad inside max. 2 circles",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_03.png"
+    }
+    ,{
+        "id": "PO_D_04",
+        "bezeichnung": "Im Querstütz alle 1/1 Spindeln innerhalb max. 2 Kreisflanken.",
+        "name": "Magyar",
+        "elementegruppe": "2",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_04.png"
+    }
+    ,{
+        "id": "PO_D_05",
+        "bezeichnung": "Gespr. Kreisfl. m. gesprungenem Wandern rw. d. d. Hdst. u. Abschwingen i. d. Kreisfl. o. gespr. Kreisfl.",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_05.png"
+    }
+    ,{
+        "id": "PO_D_06",
+        "bezeichnung": "Direct Stöckli A (DSA) outside pommels",
+        "name": "Keikha 3 / Keikha 6",
+        "elementegruppe": "2",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_06.png"
+    }
+    ,{
+        "id": "PO_D_07",
+        "bezeichnung": "Tschechenkehre außerhalb der Pauschen",
+        "name": "Pinheiro",
+        "elementegruppe": "2",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_07.png"
+    }
+    ,{
+        "id": "PO_D_08",
+        "bezeichnung": "A. d. Pauschen, Russenwendeschwung mit 1080° o. mehr",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_08.png"
+    }
+    ,{
+        "id": "PO_D_09",
+        "bezeichnung": "A. d. Pferd, Russenwendeschwung mit 1080° o. mehr",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_09.png"
+    }
+    ,{
+        "id": "PO_D_10",
+        "bezeichnung": "Russenwendeschwung mit 720° o. 900° a. einer Pausche o. zw. d. Pauschen",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_10.png"
+    }
+    ,{
+        "id": "PO_D_11",
+        "bezeichnung": "A. d. Seitstütz vl. a. einem Pferdende, W. vw. über d. Pauschen a. d. andere Pferdende innerhalb 1 Kreisflanke.",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_11.png"
+    }
+    ,{
+        "id": "PO_D_12",
+        "bezeichnung": "A. d. St. vl. a. einem Pferdende, gespr. Wandern ü. d. Pauschen i. d. St. vl. a. d. andere Pferdende",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_12.png"
+    }
+    ,{
+        "id": "PO_D_13",
+        "bezeichnung": "Querwandern vorwärts mit ½ Spindel auf die erste Pausche über die zweite Pausche",
+        "name": "Nin Reyes",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_13.png"
+    }
+    ,{
+        "id": "PO_D_14",
+        "bezeichnung": "Alle anderen Wanderfl. vw. i. Qst. von einem Pferdene auf das andere Pferdende (3/3)",
+        "name": "Magyar",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_14.png"
+    }
+    ,{
+        "id": "PO_D_15",
+        "bezeichnung": "Alle anderen Wanderfl. rw. i. Qst. a. d. andere  (3/3)",
+        "name": "Sivado",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_15.png"
+    }
+    ,{
+        "id": "PO_D_16",
+        "bezeichnung": "Seitstütz a. d. Pferdende, Kehre, Stöckli rw., Kehre a. d. andere Ende",
+        "name": "Moguilny",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_16.png"
+    }
+    ,{
+        "id": "PO_D_17",
+        "bezeichnung": "Seitst. a. d. Pferdende, Stöckli rw., Kehre, Stöckli rw. a. d. andere Pferdende",
+        "name": "Belenki",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_17.png"
+    }
+    ,{
+        "id": "PO_D_18",
+        "bezeichnung": "Stütz a. d. Pferdende, Russenwendeschw. vw. a. d. andere Pferdende ohne Stütz a. d. o. zw. d. Pausche (Sst.-Sst., Sst.-Qst., Qst.-Sst., Qst.-Qst.)",
+        "name": "Tong Fei",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_18.png"
+    }
+    ,{
+        "id": "PO_D_19",
+        "bezeichnung": "From sup. 1-2., 3/3 travel in Russian type wendeswing with 630° or more turning.",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_19.png"
+    }
+    ,{
+        "id": "PO_D_20",
+        "bezeichnung": "Jeder Russenwendeschwung m. 360° Drehung u. 3/3 Wandern",
+        "name": "Roth",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_20.png"
+    }
+    ,{
+        "id": "PO_D_21",
+        "bezeichnung": "A. d. Qst. a. einem Pferdende, Stöckli umgekehrt (rw.) a. d. andere Pferdende",
+        "name": "Abu Alsoud",
+        "elementegruppe": "3",
+        "wertigkeit": "0.4",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_21.png"
+    }
+    ,{
+        "id": "PO_D_22",
+        "bezeichnung": "A. d. Pferdende, Kreisfl. o. Kreisfl. gegr. i. d. Hdst. u. 3/3 Wandern m. 450° Drehung o. mehr",
+        "name": "Kolyvanov",
+        "elementegruppe": "4",
+        "wertigkeit": "0.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_22.png"
+    }
+    ,{
+        "id": "PO_D_23",
+        "bezeichnung": "A. d. Pferdende, Russenwendeschwung mit 1080° Drehung o. mehr zur Wende",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_23.png"
+    }
+    ,{
+        "id": "PO_D_24",
+        "bezeichnung": "DSA m. Springen rw. d. d. Hdst. a. d. andere Pferdende",
+        "name": "Jessen",
+        "elementegruppe": "4",
+        "wertigkeit": "0.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_24.png"
+    }
+    ,{
+        "id": "PO_D_25",
+        "bezeichnung": "180° Russian from one end of the horse to the other end through Handstand to dismount",
+        "name": "Pellerin",
+        "elementegruppe": "4",
+        "wertigkeit": "0.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_25.png"
+    }
+]
     
