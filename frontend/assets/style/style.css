@@ -1510,7 +1510,8 @@ button {
     height: 10px;
     border-radius: 50%;
     margin-left: 10px;
-    vertical-align: middle;
+    position: absolute;
+    right: 5%;
 }
 
 
