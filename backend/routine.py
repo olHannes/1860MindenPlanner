@@ -81,10 +81,10 @@ def update_exercise():
     vorname = data.get("vorname")
     user_id = data.get("userId")
     geraet = data.get("geraet")
-    elemente = data.get("elemente")
+    elements = data.get("elemente")
     routine_type = data.get("routineType")
 
-    if not vorname or user_id is None or geraet is None or elemente is None or routine_type is None:
+    if not vorname or user_id is None or geraet is None or elements is None or routine_type is None:
         return jsonify({"error": "Ungültige Anfrage. Alle Felder (vorname, geraet, elemente, type) sind erforderlich."}), 400
     
     try:
@@ -93,18 +93,28 @@ def update_exercise():
         return jsonify({"error": "Ungültige userId"}), 400
 
     query = {"vorname": vorname, "geraet": geraet, "routineType": routine_type}
-    update_data = {"$set": {"elemente": elemente}}
+    existing_routine = exercises_collection.find_one(query)
+
+    update_data = {"$set": {"elemente": elements}}
+
+    if existing_routine is None:
+        update_data["$setOnInsert"] = {"bewertungen": []}
+    else:
+        existing_elements = existing_routine.get("elemente", [])
+        if existing_elements != elements:
+            update_data["$set"]["bewertungen"] = []
 
     result = exercises_collection.update_one(query, update_data, upsert=True)
 
-    if result.matched_count > 0:
+    if result.matched_count > 0 and "bewertungen" not in update_data["$set"]:
         return jsonify({"message": "Übung erfolgreich aktualisiert"}), 200
+    elif result.matched_count > 0:
+        return jsonify({"message": "Übung aktualisiert, Bewertungen zurückgesetzt"}), 200
     else:
         return jsonify({"message": "Neue Übung angelegt"}), 201
 
 
 ################################################################################################### Copy Routine
-
 @routine_bp.route('/exercise/copyTo', methods=["POST"])
 def copy_routine_to():
     data = request.json
