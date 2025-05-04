@@ -213,7 +213,6 @@ async function register() {
 
 
 //----------------------------------------------------------------------------------------------------------------- Login Handling
-
 // login User
 async function login() {
     let username = document.getElementById("username").value;
@@ -380,7 +379,6 @@ async function setProfileName() {
 
 
 //----------------------------------------------------------------------------------------------------------------- Logout Handling
-
 // User Logout
 async function logout() {
     const username = localStorage.getItem("user");
@@ -501,7 +499,6 @@ async function deleteAccount() {
 
 
 //----------------------------------------------------------------------------------------------------------------- Account Edit
-
 // name Edit
 function editName() {
     const vorname = document.getElementById('Vorname').textContent;
@@ -618,8 +615,6 @@ function cancleEdits(){
     document.getElementById('passwordEdit').style.display="none";
 }
 
-
-
 async function handleVisibilityChange(isVisible) {
     const username = localStorage.getItem("userId");
     let visibleStatus = isVisible? 1 : 0;
@@ -649,7 +644,6 @@ async function handleVisibilityChange(isVisible) {
 }
 
   
-
 
 async function updateAdminPassword(username, newPassword){
     adminKey = localStorage.getItem("adminKey");
@@ -748,7 +742,6 @@ async function changeUserColor(color) {
 
 
 //----------------------------------------------------------------------------------------------------------------- Report Handling <User>
-
 function createReport() {
     document.getElementById('reportTitle').value = "";
     document.getElementById('reportTxt').value = "";
@@ -822,7 +815,6 @@ async function submitReport() {
 
 
 //----------------------------------------------------------------------------------------------------------------- Report Handling <Admin>
-
 function goToAdminReportContainer(){
     emptyAdminContainer();
     loadAdminReports();
@@ -931,7 +923,6 @@ async function deleteReport(reportTitle) {
 
 
 //----------------------------------------------------------------------------------------------------------------- User Handling <Admin>
-
 function goToAdminUserContainer(){
     emptyAdminContainer();
     loadAdminUsers();
@@ -1052,7 +1043,6 @@ function closePwdChange() {
 
 
 //----------------------------------------------------------------------------------------------------------------- Competition Handling <Admin>
-
 function goToAdminCompetitionContainer(){
     emptyAdminContainer();
     loadCompetitions();
@@ -1262,7 +1252,6 @@ async function createCompetition() {
     }
 }
 
-
 function emptyAdminContainer(){
     if(document.getElementById('reportContainer')!=null){
         document.getElementById('reportContainer').remove();
@@ -1277,7 +1266,6 @@ function emptyAdminContainer(){
 
 
 //----------------------------------------------------------------------------------------------------------------- get User List
-
 async function getAllUser(visibleFilter) {
     showLoader();
     const url = !visibleFilter ? `${serverURL}/users/getUsers` : `${serverURL}/users/getVisibleUsers`;
@@ -1353,8 +1341,6 @@ async function showAllUser() {
 
     hideLoader();
 }
-
-
 
 
 const style = document.createElement('style');
@@ -1617,7 +1603,6 @@ function renderLeaderboard(competition, containerId, sortType) {
       leaderboardContainer.appendChild(entry);
     });
 }
-  
 
 
 //----------------------------------------------------------------------------------------------------------------- Ab hier: Routine handling
@@ -1634,7 +1619,6 @@ let autoRoutineSafe = null;
 
 
 //----------------------------------------------------------------------------------------------------------------- change Routine Type
-
 function changeRoutineType() {
     const changeBtn = document.getElementById("changeRoutineType");
 
@@ -1650,9 +1634,7 @@ function changeRoutineType() {
     loadCurrentExercise(localStorage.getItem("user"), currentDevice, true, routineType);
 }
 
-
 //----------------------------------------------------------------------------------------------------------------- request exercise of a user
-
 async function requestUserExercise(username, device, routineType) {
     currentExercise = [];
     currentExerciseDetailedList = [];
@@ -1692,7 +1674,6 @@ async function requestUserExercise(username, device, routineType) {
 }
 
 //----------------------------------------------------------------------------------------------------------------- get all Routines of a user
-
 async function getAllUserExercise(username) {
     const devices = ["FL", "PO", "RI", "VA", "PA", "HI"];
     const sRoutineType = "0";
@@ -1713,7 +1694,6 @@ async function getAllUserExercise(username) {
 }
 
 //----------------------------------------------------------------------------------------------------------------- load Routine of User and validate it
-
 async function showMemberData(username) {
     document.getElementById('memberExerciseList').style.display = "block";
     
@@ -1819,7 +1799,6 @@ async function showMemberData(username) {
 }
 
 //----------------------------------------------------------------------------------------------------------------- validate Routine
-
 async function validRoutine(elements, device) {
     try {
         const response = await fetch(`${serverURL}/routine/get/validation`, {
@@ -1864,7 +1843,6 @@ async function validRoutine(elements, device) {
 
 
 //----------------------------------------------------------------------------------------------------------------- Handle Devices (open/close)
-
 function toggleExercise(device) {
     let exerciseDiv = document.getElementById(`exercise-${device}`);
     exerciseDiv.style.display = exerciseDiv.style.display === "none" ? "block" : "none";
@@ -1876,9 +1854,7 @@ function hideMemberExerciseList() {
     memberExerciseList.innerHTML = "";
 }
 
-
 //----------------------------------------------------------------------------------------------------------------- Open Device (info-setter)
-
 function openDevicePanel(id) {
     pageDepth = 0;
     document.getElementById('EquipmentExercise').style.display = "block";
@@ -2046,16 +2022,13 @@ function openDevicePanel(id) {
 }
 
 //----------------------------------------------------------------------------------------------------------------- toggle Visibility
-
 function toggleUIElementVisibility(elements, displayValue) {
     elements.forEach(element => {
         document.getElementById(element).style.display = displayValue;
     });
 }
 
-
 //----------------------------------------------------------------------------------------------------------------- Handle Routine Panel
-
 function createRoutine() {
     pageDepth = 1;
     const changeBtn = document.getElementById('changeRoutineType');
@@ -2100,7 +2073,6 @@ function closeDevice() {
 
 
 //----------------------------------------------------------------------------------------------------------------- Load safed Exercise
-
 async function  loadCurrentExercise(username, device, remote, routineType) {
     if (!username || !device) {
         console.error("Invalid Arguments for loading current Exercise", username, ", ", device);
@@ -2169,7 +2141,6 @@ async function  loadCurrentExercise(username, device, remote, routineType) {
 
 
 //----------------------------------------------------------------------------------------------------------------- valid "Copy Routine"
-
 function handleValidCopyClick() {
     copyRoutineTo(routineType);
 }
@@ -2217,7 +2188,6 @@ async function copyRoutineTo(routineType) {
 
 
 //----------------------------------------------------------------------------------------------------------------- Create Table
-
 function createExerciseRow(elementDetails, index) {
     let row = document.createElement("tr");
     row.setAttribute("data-index", index);
@@ -2272,7 +2242,6 @@ function createExerciseRow(elementDetails, index) {
 
 
 //----------------------------------------------------------------------------------------------------------------- remove Element from routine
-
 async function removeElementFromExercise(index) {
     if (!currentExercise || !currentExerciseDetailedList) {
         console.error("Fehler: currentExercise ist nicht definiert oder enthält keine Elemente.");
@@ -2288,7 +2257,6 @@ async function removeElementFromExercise(index) {
 
 
 //----------------------------------------------------------------------------------------------------------------- add Element to Routine
-
 async function addToExercise(element) {
     document.getElementById('detailedElementInfo').style.display="none";
     currentExercise.push(element.id);
@@ -2302,7 +2270,6 @@ async function addToExercise(element) {
 
 
 //----------------------------------------------------------------------------------------------------------------- change Routine Order
-
 async function moveElementUp(index) {
     showLoader();
     
@@ -2347,7 +2314,6 @@ async function moveElementDown(index) {
 
 
 //----------------------------------------------------------------------------------------------------------------- Update Routine Summary
-
 async function updateExerciseSummary() {
     let device = currentDevice;
     let { warnings, errors, totalDifficulty, totalElements, groupList, isComplete, baseDifficulty, groupBonus, dismountBonus } = await validRoutine(currentExerciseDetailedList, device);
@@ -2392,7 +2358,6 @@ async function updateExerciseSummary() {
 
 
 //----------------------------------------------------------------------------------------------------------------- show Element selection
-
 function selectElement() {
     pageDepth = 2;
     document.getElementById('elementSelection').style.display = "block";
@@ -2405,7 +2370,6 @@ function selectElement() {
     activeFilter_learnedElem = null;
     getElements(null, null);
 }
-
 
 //----------------------------------------------------------------------------------------------------------------- Element-Filter Handling
 let activeFilter_difficulty = null;
@@ -2627,9 +2591,6 @@ async function safeUpdateExercise(elementList, pRoutineType) {
         console.error("Fehler bei der Anfrage:", error);
     }
 }
-
-
-
 
 
 let currLearnedElements = [];
