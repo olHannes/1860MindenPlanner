@@ -2,7 +2,6 @@ from mongoConf import *
 
 routine_bp = Blueprint('routine', __name__)
 
-# Hilfsfunktion zum Abrufen von Geräten
 def get_device_collection(device):
     device_collections = {
         "FL": db_floorElements,
@@ -114,6 +113,62 @@ def update_exercise():
         return jsonify({"message": "Neue Übung angelegt"}), 201
 
 
+################################################################################################### Rating Routine
+@routine_bp.route('/exercise/rating', methods=["POST"])
+def rating_routine():
+    data = request.json
+    username = data.get("username")
+    routine_id = data.get("routineId")
+    rating_stars = data.get("rating")
+
+    if not username or routine_id is None or rating_stars is None:
+        return jsonify({"message": "Invalid Request. Fields username, routineId and rating is necessary."}), 400
+
+    try:
+        routine_object_id = ObjectId(routine_id)
+    except Exception:
+        return jsonify({"error": "Ungültige userId or routineId"}), 400
+    
+    foundRoutine = exercises_collection.find_one({"_id": routine_object_id})
+    if not foundRoutine:
+        return jsonify({"error": "Routine not found"}), 404
+    
+    result = exercises_collection.update_one(
+        {"_id": routine_object_id},
+        {"$set": {f"bewertungen.{username}": rating_stars}}
+    )
+    return jsonify({"message": "Rating safed"}), 200
+
+
+################################################################################################### Get Routine Rating
+@routine_bp.route('/exercise/rating', methods=["GET"])
+def get_rating_by_name():
+    vorname = request.args.get("vorname")
+    geraet = request.args.get("geraet")
+    routine_type = request.args.get("routineType")
+
+    if not vorname or not geraet or not routine_type:
+        return jsonify({"error": "Fehlende Parameter (vorname, geraet, routineType)"}), 400
+
+    pipeline = [
+        {"$match": {"vorname": vorname, "geraet": geraet, "routineType": routine_type}},
+        {"$project": {
+            "_id": 0,
+            "bewertungen_array": {"$objectToArray": "$bewertungen"}
+        }},
+        {"$project": {
+            "durchschnitt": {"$avg": "$bewertungen_array.v"},
+            "anzahl": {"$size": "$bewertungen_array"}
+        }}  
+    ]
+    result = list(exercises_collection.aggregate(pipeline))
+
+    if result:
+        return jsonify(result[0]), 200
+    else:
+        return jsonify({"error": "Übung nicht gefunden"}), 404
+
+
 ################################################################################################### Copy Routine
 @routine_bp.route('/exercise/copyTo', methods=["POST"])
 def copy_routine_to():
@@ -123,7 +178,7 @@ def copy_routine_to():
     routine_type = data.get("routineType")
 
     if not vorname or geraet is None or routine_type is None:
-        return jsonify({"error": "Ungültige Anfrage. Felder 'vorname', 'geraet' und 'routineType' sind erforderlich."}), 400
+        return jsonify({"error": "Invalid Request. Fields 'firstName', 'device' and 'routineType' are necessary."}), 400
 
     try:
         routine_type = int(routine_type)
