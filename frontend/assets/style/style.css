@@ -900,7 +900,8 @@ input {
 }
 
 #requestDelAcc,
-#secureRoutineCopy {
+#secureRoutineCopy,
+#ratingRoutine {
     display: none;
     position: fixed;
     z-index: 1000;
@@ -2101,3 +2102,21 @@ button {
 
 
 
+
+.ratingBtn {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4c7636;
+    color: white;
+}
+
+#StarRating {
+    font-size: 30px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+#StarRating .star.filled {
+    color: gold;
+}

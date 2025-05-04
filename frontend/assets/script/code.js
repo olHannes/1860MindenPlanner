@@ -1789,6 +1789,14 @@ async function showMemberData(username) {
                 ${errors.length > 0 ? `<p style="color:red;"><strong>Fehler:</strong> ${errors.join(" | ")}</p>` : ""}
             `;
             exerciseDiv.appendChild(summary);
+
+            let ratingBtn = document.createElement("button");
+            ratingBtn.setAttribute("onclick", `showRatingPanel('${username}', '${device}');`);
+            ratingBtn.className="ratingBtn";
+            ratingBtn.innerText="Übung bewerten";
+            if(username != localStorage.getItem("user")){
+                exerciseDiv.appendChild(ratingBtn);
+            }
         } else {
             exerciseDiv.innerHTML = `<p>Keine Übungen gefunden</p>`;
         }
@@ -2135,7 +2143,13 @@ async function  loadCurrentExercise(username, device, remote, routineType) {
     let summaryContainer = document.createElement("div");
     summaryContainer.id = "exercise-summary-container";
     exerciseContainer.appendChild(summaryContainer);
+
+    let ratingContainer = document.createElement("div");
+    ratingContainer.id = "rating-InfoPanel";
+    exerciseContainer.appendChild(ratingContainer);
+
     updateExerciseSummary();
+    showRoutineRating(localStorage.getItem("user"), currentDevice, routineType);
     hideLoader();
 }
 
@@ -2700,5 +2714,121 @@ async function removeFromCompleted(element) {
         }
     } catch (error) {
         console.error("Fehler bei der Anfrage:", error);
+    }
+}
+
+
+//----------------------------------------------------------------------------------------------------------------- Handle Rating
+function showRatingPanel(user, device) {
+    document.getElementById('ratingRoutine').style.display = "block";
+    document.getElementById('loadingBackground').style.display = "block";
+
+    let stars = document.querySelectorAll('#StarRating .star');
+    stars.forEach(star => {
+        star.addEventListener('mouseover', function() {
+            let index = parseInt(star.getAttribute('data-index'));
+            for (let i = 0; i < stars.length; i++) {
+                stars[i].classList.toggle('filled', i < index);
+            }
+        });
+
+        star.addEventListener('mouseout', function() {
+            stars.forEach(star => star.classList.remove('filled'));
+        });
+
+        star.addEventListener('click', function() {
+            let rating = parseInt(star.getAttribute('data-index'));
+            for (let i = 0; i < stars.length; i++) {
+                stars[i].classList.toggle('filled', i < rating);
+            }
+
+            sendRoutineRating(localStorage.getItem("user"), user, rating, device);
+            hideRatingPanel();
+        });
+    });
+}
+
+function hideRatingPanel(){
+    document.getElementById('ratingRoutine').style.display="none";
+    document.getElementById('loadingBackground').style.display="none";
+}
+
+async function showRoutineRating(username, device, routineType) {
+    try {
+        const response = await getRoutineRating(username, device, routineType);
+
+        const average = response.durchschnitt?.toFixed(1) ?? "Keine Bewertung";
+        const num = response.anzahl ?? 0;
+
+        const container = document.getElementById('rating-InfoPanel');
+
+        container.innerHTML = `
+            <p><strong>Durchschnitt:</strong> ${average} ⭐</p>
+            <p><strong>Anzahl Bewertungen:</strong> ${num}</p>
+        `;
+    } catch (error) {
+        console.error("Fehler beim Laden der Bewertung:", error);
+        document.getElementById('rating-InfoPanel').innerHTML = "<p>Bewertung konnte nicht geladen werden.</p>";
+    }
+}
+
+
+async function getRoutineRating(username, device, routineType) {
+    if(routineType==1) return {
+        "durchschnitt": 0,
+        "anzahl": 0
+    };
+
+    try {
+        const params = new URLSearchParams({
+            vorname: username,
+            geraet: device,
+            routineType: routineType
+        });
+
+        const response = await fetch(`${serverURL}/exercise/rating?${params.toString()}`, {
+            method: 'GET'
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error("Fehler beim Laden der Bewertung:", errorData);
+            return {
+                "durchschnitt": 0,
+                "anzahl": 0
+            };
+        }
+        const result = await response.json();
+        return result;
+
+    } catch (error) {
+        console.error("Fehler bei getRoutineRating:", error);
+        return {
+            "durchschnitt": 0,
+            "anzahl": 0
+        };
+    }
+}
+
+
+async function sendRoutineRating(user, targetUser, stars, device) {
+    const response = await fetch(`${serverURL}/exercise/rating`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            "username": user,
+            "target_username": targetUser,
+            "rating": stars,
+            "device": device
+        })
+    });
+
+    const result = await response.json();
+    if (response.ok) {
+        showMessage("Bewertung gespeichert", "Die Bewertung wurde erfolgreich gespeichert.");
+    } else {
+        console.error("Fehler beim Speichern:", result.error);
     }
 }

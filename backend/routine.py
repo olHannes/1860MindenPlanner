@@ -118,26 +118,41 @@ def update_exercise():
 def rating_routine():
     data = request.json
     username = data.get("username")
-    routine_id = data.get("routineId")
+    target_username = data.get("target_username")
+    device = data.get("device")
     rating_stars = data.get("rating")
 
-    if not username or routine_id is None or rating_stars is None:
-        return jsonify({"message": "Invalid Request. Fields username, routineId and rating is necessary."}), 400
+    if not username or not target_username or not device or rating_stars is None:
+        return jsonify({"message": "Invalid Request. Fields username, target_username, device, and rating are required."}), 400
 
-    try:
-        routine_object_id = ObjectId(routine_id)
-    except Exception:
-        return jsonify({"error": "Ungültige userId or routineId"}), 400
-    
-    foundRoutine = exercises_collection.find_one({"_id": routine_object_id})
+    foundRoutine = exercises_collection.find_one({
+        "vorname": target_username,
+        "geraet": device,
+        "routineType": "0"
+    })
+
     if not foundRoutine:
         return jsonify({"error": "Routine not found"}), 404
-    
-    result = exercises_collection.update_one(
-        {"_id": routine_object_id},
-        {"$set": {f"bewertungen.{username}": rating_stars}}
+
+    existing_rating = next(
+        (entry for entry in foundRoutine.get("bewertungen", []) if entry.get("von") == username), None
     )
-    return jsonify({"message": "Rating safed"}), 200
+
+    if existing_rating:
+        result = exercises_collection.update_one(
+            {"_id": foundRoutine["_id"], "bewertungen.von": username},
+            {
+                "$set": {"bewertungen.$.sterne": rating_stars}
+            }
+        )
+    else:
+        result = exercises_collection.update_one(
+            {"_id": foundRoutine["_id"]},
+            {
+                "$push": {"bewertungen": {"von": username, "sterne": rating_stars}}
+            }
+        )
+    return jsonify({"message": "Rating gespeichert"}), 200
 
 
 ################################################################################################### Get Routine Rating
@@ -151,18 +166,46 @@ def get_rating_by_name():
         return jsonify({"error": "Fehlende Parameter (vorname, geraet, routineType)"}), 400
 
     pipeline = [
-        {"$match": {"vorname": vorname, "geraet": geraet, "routineType": routine_type}},
-        {"$project": {
-            "_id": 0,
-            "bewertungen_array": {"$objectToArray": "$bewertungen"}
-        }},
-        {"$project": {
-            "durchschnitt": {"$avg": "$bewertungen_array.v"},
-            "anzahl": {"$size": "$bewertungen_array"}
-        }}  
+        {
+            "$match": {
+                "vorname": vorname,
+                "geraet": geraet,
+                "routineType": routine_type
+            }
+        },
+        {
+            "$project": {
+                "bewertungen": {
+                    "$ifNull": ["$bewertungen", []]
+                }
+            }
+        },
+        {
+            "$unwind": {
+                "path": "$bewertungen",
+                "preserveNullAndEmptyArrays": True
+            }
+        },
+        {
+            "$group": {
+                "_id": None,
+                "durchschnitt": { "$avg": "$bewertungen.sterne" },
+                "anzahl": { "$sum": {
+                    "$cond": [{ "$ifNull": ["$bewertungen.sterne", False] }, 1, 0]
+                }}
+            }
+        },
+        {
+            "$project": {
+                "_id": 0,
+                "durchschnitt": { "$ifNull": ["$durchschnitt", 0] },
+                "anzahl": 1
+            }
+        }
     ]
-    result = list(exercises_collection.aggregate(pipeline))
 
+
+    result = list(exercises_collection.aggregate(pipeline))
     if result:
         return jsonify(result[0]), 200
     else:
