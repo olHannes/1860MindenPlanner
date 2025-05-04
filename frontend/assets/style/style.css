@@ -2115,8 +2115,19 @@ button {
     font-size: 30px;
     color: #ccc;
     cursor: pointer;
+    margin-bottom: 10%;
 }
 
 #StarRating .star.filled {
     color: gold;
+}
+
+#rating-InfoPanel {
+    border-radius: 15px;
+    background-color: #dfdfdf;
+    text-align: center;
+}
+#rating-InfoPanel h2{
+    position: relative;
+    margin-bottom: 1px;
 }

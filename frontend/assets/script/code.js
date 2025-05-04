@@ -2763,6 +2763,7 @@ async function showRoutineRating(username, device, routineType) {
         const container = document.getElementById('rating-InfoPanel');
 
         container.innerHTML = `
+            <h2>Bewertungen</h2>
             <p><strong>Durchschnitt:</strong> ${average} ⭐</p>
             <p><strong>Anzahl Bewertungen:</strong> ${num}</p>
         `;
