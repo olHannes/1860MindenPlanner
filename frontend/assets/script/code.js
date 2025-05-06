@@ -2743,7 +2743,7 @@ function showRatingPanel(user, device) {
             }
 
             sendRoutineRating(localStorage.getItem("user"), user, rating, device);
-            hideRatingPanel();
+            setTimeout(hideRatingPanel, 500);
         });
     });
 }
@@ -2828,7 +2828,7 @@ async function sendRoutineRating(user, targetUser, stars, device) {
 
     const result = await response.json();
     if (response.ok) {
-        showMessage("Bewertung gespeichert", "Die Bewertung wurde erfolgreich gespeichert.");
+        showMessage("Bewertung gespeichert", `Die Bewertung wurde erfolgreich gespeichert.\n[${targetUser}->${stars}]`);
     } else {
         console.error("Fehler beim Speichern:", result.error);
     }
