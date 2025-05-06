@@ -1096,4 +1096,116 @@
         "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_25.png" 
     }
+
+
+
+
+    ,{
+        "id": "HI_E_01", 
+        "bezeichnung": "Tkatchev gegr. m. 1/2 Drehung i. d. beidarmigen Ellgriff.", 
+        "name": "Kulesza",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_01.png" 
+    }
+    ,{
+        "id": "HI_E_02", 
+        "bezeichnung": "Piatti gestr. m. 1/2 Drehung i. d. Zwiegriff (Mix-Ellgriff) u. Rückschwung i.d. Hdst. auch m. 1/2 Drehung", 
+        "name": "Kierzkowski",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_02.png" 
+    }
+    ,{
+        "id": "HI_E_03", 
+        "bezeichnung": "Gaylord geb.", 
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_03.png" 
+    }
+    ,{
+        "id": "HI_E_04", 
+        "bezeichnung": "Salto rw. m. 1/2 Drehung geb. über d. Stange", 
+        "name": "Gaylord 2",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_04.png" 
+    }
+    ,{
+        "id": "HI_E_05", 
+        "bezeichnung": "Kovacs m. 1/1 Drehung", 
+        "name": "Kolman",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_05.png" 
+    }
+    ,{
+        "id": "HI_E_06", 
+        "bezeichnung": "Kovacs geb o. gestr.", 
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_06.png" 
+    }
+    ,{
+        "id": "HI_E_07", 
+        "bezeichnung": "Stalder with hop 3/2 turn through hdst. in el-grip", 
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_07.png" 
+    }
+    ,{
+        "id": "HI_E_08", 
+        "bezeichnung": "Adlerschwung m. 1/1 Drehung d. d. Handstand i. d. Kgr.", 
+        "name": "Fuentes",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_08.png" 
+    }
+    ,{
+        "id": "HI_E_09", 
+        "bezeichnung": "Quintero i. d. Ellgr.", 
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_09.png" 
+    }
+    ,{
+        "id": "HI_E_10", 
+        "bezeichnung": "Doppelsalto vw. geh. o. geb. m. 2/1 o. 5/2 Drehung", 
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.5", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_10.png" 
+    }
+    ,{
+        "id": "HI_E_11", 
+        "bezeichnung": "Doppelsalto vw. gestr. m. 1/1 o. 3/2 Drehung", 
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.5", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_11.png" 
+    }
+    ,{
+        "id": "HI_E_12", 
+        "bezeichnung": "Doppelsalto rw. gestr. m. 2/1 Dr", 
+        "name": "Watanabe",
+        "elementegruppe": "4",
+        "wertigkeit": "0.5", 
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_12.png" 
+    }
 ]
