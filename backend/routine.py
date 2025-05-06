@@ -198,12 +198,16 @@ def get_rating_by_name():
         {
             "$project": {
                 "_id": 0,
-                "durchschnitt": { "$ifNull": ["$durchschnitt", 0] },
+                "durchschnitt": {
+                    "$round": [
+                        { "$ifNull": ["$durchschnitt", 0] },
+                        1
+                    ]
+                },
                 "anzahl": 1
             }
         }
     ]
-
 
     result = list(exercises_collection.aggregate(pipeline))
     if result:
