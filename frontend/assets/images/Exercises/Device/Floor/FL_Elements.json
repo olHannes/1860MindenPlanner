@@ -792,4 +792,89 @@
         "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Floor/D/FL_D_14.png"
     }
+
+
+
+
+    ,{
+        "id": "FL_E_01",
+        "bezeichnung": "Doppelsalto vw. geb., auch mit 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/E/FL_E_01.png"
+    }
+    ,{
+        "id": "FL_E_02",
+        "bezeichnung": "Salto vw. gestr. m. 5/2 Drehung",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/E/FL_E_02.png"
+    }
+    ,{
+        "id": "FL_E_03",
+        "bezeichnung": "Doppelsalto vw. geh. m. 1/1 Drehung",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/E/FL_E_03.png"
+    }
+    ,{
+        "id": "FL_E_04",
+        "bezeichnung": "Doppelsalto rw. geh. m. 2/1",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/E/FL_E_04.png"
+    }
+    ,{
+        "id": "FL_E_05",
+        "bezeichnung": "Doppelsalto rw. geh. m. 3/2 Dr. o. Salto rw. gestr. m. 3/2 Drehung z. Salto vw. geh.",
+        "name": "Korosteljev",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/E/FL_E_05.png"
+    }
+    ,{
+        "id": "FL_E_06",
+        "bezeichnung": "Salto rw. gestr. m. 7/2 Drehung",
+        "name": "González",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/E/FL_E_06.png"
+    }
+    ,{
+        "id": "FL_E_07",
+        "bezeichnung": "Doppelsalto sw. m. 1/1 Dr. gegr.",
+        "name": "Lou Yun",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/E/FL_E_07.png"
+    }
+    ,{
+        "id": "FL_E_08",
+        "bezeichnung": "Doppeltwist gestr. o. Doppelsalto rw. gestr. m. 1/2 Drehung",
+        "name": "Tamayo",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/E/FL_E_08.png"
+    }
+    ,{
+        "id": "FL_E_09",
+        "bezeichnung": "Doppelsalto rw. gestr. m 1/1 Dr. o. Doppeltwist gestr. m. 1/2 Drehung",
+        "name": "Penev",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/E/FL_E_09.png"
+    }
 ]
