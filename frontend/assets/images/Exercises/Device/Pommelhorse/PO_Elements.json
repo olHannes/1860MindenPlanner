@@ -1016,5 +1016,136 @@
         "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/D/PO_D_25.png"
     }
+
+
+
+
+
+    ,{
+        "id": "PO_E_01",
+        "bezeichnung": "1/1 Spindel im Seitstütz m. Transport auf die andere Pferdseite u. zurück (max. 2 Kreisflanken)",
+        "name": "Eichorn",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/E/PO_E_01.png"
+    }
+    ,{
+        "id": "PO_E_02",
+        "bezeichnung": "1/1 Spindel i. Qst. m. beiden Händen zw. d. Pauschen innerhalb max. 2. Kreisflanken",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/E/PO_E_02.png"
+    }
+    ,{
+        "id": "PO_E_03",
+        "bezeichnung": "1/1 Spindel auf den Pauschen m. geschl. o. gespr. Beinen innerhalb max. 2 Kreisfl.",
+        "name": "Berki",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/E/PO_E_03.png"
+    }
+    ,{
+        "id": "PO_E_04",
+        "bezeichnung": "Kehre 1/1 Dr. a. einer Pausche",
+        "name": "Sohn",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/E/PO_E_04.png"
+    }
+    ,{
+        "id": "PO_E_05",
+        "bezeichnung": "Stöckli umgekehrt (rw.) m. 360° Dr. auf 1 Pausche",
+        "name": "Bezugo",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/E/PO_E_05.png"
+    }
+    ,{
+        "id": "PO_E_06",
+        "bezeichnung": "Russenwendeschwung mit 1080° o. mehr a. einer Pausche o. zw. d. Pauschen",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/E/PO_E_06.png"
+    }
+    ,{
+        "id": "PO_E_07",
+        "bezeichnung": "A. d. Seitst. a. einem Pferdende gespr. Wandern ü. d. Pauschen i. d. Stütz vl. a. d. andere Pferdende (1-1 bis 5-5)",
+        "name": "Yamawaki",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/E/PO_E_07.png"
+    }
+    ,{
+        "id": "PO_E_08",
+        "bezeichnung": "Von einem Pferdende, Seitwandern  m. 2 x 1/2 Spindel a. d. andere Pferdende.",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/E/PO_E_08.png"
+    }
+    ,{
+        "id": "PO_E_09",
+        "bezeichnung": "Wandern 3/3 über beide Pauschen mit einer 1/2 Spindel",
+        "name": "Nin Reyes 2",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/E/PO_E_09.png"
+    }
+    ,{
+        "id": "PO_E_10",
+        "bezeichnung": "Wandern rw. im Querstütz über beide Pauschen",
+        "name": "Kurbanov",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/E/PO_E_10.png"
+    }
+    ,{
+        "id": "PO_E_11",
+        "bezeichnung": "Travel forward in cross support over both pommels",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/E/PO_E_11.png"
+    }
+    ,{
+        "id": "PO_E_12",
+        "bezeichnung": "Any 3/3 travel in Russian type wendeswing with 720° or more turning",
+        "name": "Wu Guonian",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/E/PO_E_12.png"
+    }
+    ,{
+        "id": "PO_E_13",
+        "bezeichnung": "A. d. Pferdkörper, a. d. Qst., Russenwendeschw. m. 360° o. 540° über beide Pauschen",
+        "name": "Vammen",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/E/PO_E_13.png"
+    }
+    ,{
+        "id": "PO_E_14",
+        "bezeichnung": "DSA oder Stöckli umgekehrt (rw.) i. D. Hdst. u. 3/3 Wandern m. 450° Dr. o. mehr.",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.5",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/E/PO_E_14.png"
+    }
 ]
     
