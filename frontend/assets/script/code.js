@@ -116,6 +116,9 @@ function resetPanel(panelId) {
         case 2:
             document.getElementById('memberExerciseList').style.display="none";
             document.getElementById('memberExerciseList').innerHTML="";
+            if(document.getElementById('dashboard').style.display == "block"){
+                showDashboard();
+            }
             break;
         default:
             console.error("Unbekanntes Panel");
@@ -1388,6 +1391,7 @@ style.innerHTML = `
 document.head.appendChild(style);
 
 async function showDashboard() {
+  loadMaxPoints();
   document.getElementById('memberList').style.display = "none";
   document.getElementById('dashboard').style.display = "block";
   const dashboard = document.getElementById('dashboard');
