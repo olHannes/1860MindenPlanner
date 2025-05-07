@@ -1147,5 +1147,36 @@
         "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/E/PO_E_14.png"
     }
+
+
+
+
+    ,{
+        "id": "PO_FGH_01",
+        "bezeichnung": "Seitstütz, 1/1 Spindelm. beiden Pauschen zw. den Händen (Kreisfl. o. gespr. Kreisfl.)",
+        "name": "Keikha 1 / Keikha 5",
+        "elementegruppe": "2",
+        "wertigkeit": "0.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/FGH/PO_FGH_01.png"
+    }
+    ,{
+        "id": "PO_FGH_02",
+        "bezeichnung": "Stöckli rw. o. DSA gegr. d. d. Hdst. m. 3/3 Wandern (vw. – rw.) u. 360° Dr. u. Senken i. d. Kreisfl.",
+        "name": "Busnari",
+        "elementegruppe": "2",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/FGH/PO_FGH_02.png"
+    }
+    ,{
+        "id": "PO_FGH_03",
+        "bezeichnung": "T3/3 Wandern i. Querstütz vw. gesprungen",
+        "name": "Driggs",
+        "elementegruppe": "3",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Pommelhorse/FGH/PO_FGH_03.png"
+    }
 ]
     
