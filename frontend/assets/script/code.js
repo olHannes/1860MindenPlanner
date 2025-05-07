@@ -2723,39 +2723,82 @@ async function removeFromCompleted(element) {
 
 
 //----------------------------------------------------------------------------------------------------------------- Handle Rating
+let selectedRating = 0;
+let currentTargetUser = "";
+
 function showRatingPanel(user, device) {
     document.getElementById('ratingRoutine').style.display = "block";
     document.getElementById('loadingBackground').style.display = "block";
 
+    currentUser = localStorage.getItem("user");
+    currentTargetUser = user;
+    currentDevice = device;
+
+    selectedRating = 0;
+
     let stars = document.querySelectorAll('#StarRating .star');
     stars.forEach(star => {
-        star.addEventListener('mouseover', function() {
+        star.addEventListener('mouseover', function () {
             let index = parseInt(star.getAttribute('data-index'));
             for (let i = 0; i < stars.length; i++) {
                 stars[i].classList.toggle('filled', i < index);
             }
         });
 
-        star.addEventListener('mouseout', function() {
+        star.addEventListener('mouseout', function () {
             stars.forEach(star => star.classList.remove('filled'));
+            for (let i = 0; i < selectedRating; i++) {
+                stars[i].classList.add('filled');
+            }
         });
 
-        star.addEventListener('click', function() {
-            let rating = parseInt(star.getAttribute('data-index'));
+        star.addEventListener('click', function () {
+            selectedRating = parseInt(star.getAttribute('data-index'));
             for (let i = 0; i < stars.length; i++) {
-                stars[i].classList.toggle('filled', i < rating);
+                stars[i].classList.toggle('filled', i < selectedRating);
             }
-
-            sendRoutineRating(localStorage.getItem("user"), user, rating, device);
-            setTimeout(hideRatingPanel, 500);
         });
     });
 }
 
-function hideRatingPanel(){
-    document.getElementById('ratingRoutine').style.display="none";
-    document.getElementById('loadingBackground').style.display="none";
+function submitRating() {
+    if (selectedRating === 0) {
+        showMessage("Bitte Bewertung auswählen", "Du musst erst Sterne auswählen, bevor du senden kannst.");
+        return;
+    }
+
+    sendRoutineRating(currentUser, currentTargetUser, selectedRating, currentDevice);
+    setTimeout(hideRatingPanel, 500);
 }
+
+function hideRatingPanel() {
+    document.getElementById('ratingRoutine').style.display = "none";
+    document.getElementById('loadingBackground').style.display = "none";
+}
+
+async function sendRoutineRating(user, targetUser, stars, device) {
+    const response = await fetch(`${serverURL}/exercise/rating`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            "username": user,
+            "target_username": targetUser,
+            "rating": stars,
+            "device": device
+        })
+    });
+
+    const result = await response.json();
+    if (response.ok) {
+        showMessage("Bewertung gespeichert", `Die Bewertung wurde erfolgreich gespeichert.\n[${targetUser}->${stars}]`);
+    } else {
+        console.error("Fehler beim Speichern:", result.error);
+    }
+}
+
+
 
 async function showRoutineRating(username, device, routineType) {
     try {
@@ -2776,7 +2819,6 @@ async function showRoutineRating(username, device, routineType) {
         document.getElementById('rating-InfoPanel').innerHTML = "<p>Bewertung konnte nicht geladen werden.</p>";
     }
 }
-
 
 async function getRoutineRating(username, device, routineType) {
     if(routineType==1) return {
@@ -2815,25 +2857,3 @@ async function getRoutineRating(username, device, routineType) {
     }
 }
 
-
-async function sendRoutineRating(user, targetUser, stars, device) {
-    const response = await fetch(`${serverURL}/exercise/rating`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            "username": user,
-            "target_username": targetUser,
-            "rating": stars,
-            "device": device
-        })
-    });
-
-    const result = await response.json();
-    if (response.ok) {
-        showMessage("Bewertung gespeichert", `Die Bewertung wurde erfolgreich gespeichert.\n[${targetUser}->${stars}]`);
-    } else {
-        console.error("Fehler beim Speichern:", result.error);
-    }
-}
