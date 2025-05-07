@@ -877,4 +877,123 @@
         "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Floor/E/FL_E_09.png"
     }
+
+
+    ,{
+        "id": "FL_FGH_01",
+        "bezeichnung": "Salto vw. gestr. m. 3/1 Drehungen",
+        "name": "Shirai 2",
+        "elementegruppe": "2",
+        "wertigkeit": "0.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/FGH/FL_FGH_01.png"
+    }
+    ,{
+        "id": "FL_FGH_02",
+        "bezeichnung": "Salto vw. gestr. m. 7/2 Drehungen",
+        "name": "Goshima",
+        "elementegruppe": "2",
+        "wertigkeit": "0.7",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/FGH/FL_FGH_02.png"
+    }
+    ,{
+        "id": "FL_FGH_03",
+        "bezeichnung": "Doppelsalto vw. geh. m. 3/2. Drehungen",
+        "name": "Zapata",
+        "elementegruppe": "2",
+        "wertigkeit": "0.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/FGH/FL_FGH_03.png"
+    }
+    ,{
+        "id": "FL_FGH_04",
+        "bezeichnung": "Doppelsalto rw. geh. m. 3/1 Drehungen",
+        "name": "Ri Jong Song",
+        "elementegruppe": "3",
+        "wertigkeit": "0.7",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/FGH/FL_FGH_04.png"
+    }
+    ,{
+        "id": "FL_FGH_05",
+        "bezeichnung": "Doppelsalto rw. geh. m. 5/2 Drehungen",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/FGH/FL_FGH_05.png"
+    }
+    ,{
+        "id": "FL_FGH_06",
+        "bezeichnung": "Dreifachsallto rw. geh.",
+        "name": "Liukin",
+        "elementegruppe": "3",
+        "wertigkeit": "0.8",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/FGH/FL_FGH_06.png"
+    }
+    ,{
+        "id": "FL_FGH_07",
+        "bezeichnung": "Dreifachsallto rw. geb.",
+        "name": "Nagorni",
+        "elementegruppe": "3",
+        "wertigkeit": "0.9",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/FGH/FL_FGH_07.png"
+    }
+    ,{
+        "id": "FL_FGH_08",
+        "bezeichnung": "Salto rw. gestr. m. 4/1 Drehungen",
+        "name": "Shirai / Nguyen",
+        "elementegruppe": "3",
+        "wertigkeit": "0.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/FGH/FL_FGH_08.png"
+    }
+    ,{
+        "id": "FL_FGH_09",
+        "bezeichnung": "Salto rw. gestr. m. 2/1 Dr. und Salto rw. geb.",
+        "name": "Kolyvanov",
+        "elementegruppe": "3",
+        "wertigkeit": "0.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/FGH/FL_FGH_09.png"
+    }
+    ,{
+        "id": "FL_FGH_10",
+        "bezeichnung": "Doppelsalto rw. gestr. m. 3/2 Dr. o. Doppeltwist gestr. m. 1/1 Drehungen",
+        "name": "Hypolito",
+        "elementegruppe": "3",
+        "wertigkeit": "0.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/FGH/FL_FGH_10.png"
+    }
+    ,{
+        "id": "FL_FGH_11",
+        "bezeichnung": "Doppelsalto rw. gestr. m. 2/1 Drehungen",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/FGH/FL_FGH_11.png"
+    }
+    ,{
+        "id": "FL_FGH_12",
+        "bezeichnung": "Doppelsalto rw. gestr. m. 5/2 Drehungen",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.7",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/FGH/FL_FGH_12.png"
+    }
+    ,{
+        "id": "FL_FGH_13",
+        "bezeichnung": "Doppelsalto rw. gestr. m. 3/1 Drehungen",
+        "name": "Shirai 3",
+        "elementegruppe": "3",
+        "wertigkeit": "0.8",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Floor/FGH/FL_FGH_13.png"
+    }
 ]
