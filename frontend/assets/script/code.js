@@ -1405,12 +1405,16 @@ async function showDashboard() {
     const user = localStorage.getItem("user");
     const userId = localStorage.getItem("userId");
     const now = new Date();
+    now.setHours(0, 0, 0, 0);
 
     competitions.sort((a, b) => new Date(a.date) - new Date(b.date));
 
     competitions.forEach(competition => {
       const competitionDate = new Date(competition.date);
-      const isPast = competitionDate < now;
+      const dayAfterCompetition = new Date(competitionDate);
+      dayAfterCompetition.setDate(dayAfterCompetition.getDate() + 1);
+
+      const isPast = dayAfterCompetition <= now;
       const tab = document.createElement("div");
       tab.className = "tab";
 
