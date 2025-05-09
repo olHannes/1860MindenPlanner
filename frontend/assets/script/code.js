@@ -1798,6 +1798,43 @@ async function showMemberData(username) {
             `;
             exerciseDiv.appendChild(summary);
 
+            try {
+                const response = await fetch(`${serverURL}/exercise/rating?vorname=${encodeURIComponent(username)}&geraet=${encodeURIComponent(device)}&routineType=${encodeURIComponent(0)}`);
+                if (!response.ok) throw new Error("Fehler beim Laden der Bewertung");
+
+                const data = await response.json();
+                const rating = parseFloat(data.durchschnitt);
+
+                if (!isNaN(rating) && data.anzahl>0) {
+                    const starContainer = document.createElement("div");
+                    starContainer.className = "star-rating";
+
+                    let fullStars = Math.floor(rating);
+                    let halfStar = rating % 1 >= 0.25 && rating % 1 < 0.75;
+                    let emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+                    for (let i = 0; i < fullStars; i++) {
+                        starContainer.innerHTML += "★";
+                    }
+                    if (halfStar) {
+                        starContainer.innerHTML += "⯨";
+                    }
+                    for (let i = 0; i < emptyStars; i++) {
+                        starContainer.innerHTML += "☆";
+                    }
+
+                    starContainer.title = `Bewertung: ${rating.toFixed(1)} von 5`;
+                    starContainer.style.fontSize = "1.4em";
+                    starContainer.style.color = "#f7c400";
+                    starContainer.style.marginBottom = "8px";
+
+                    exerciseDiv.appendChild(starContainer);
+                }
+            } catch (error) {
+                console.warn("Konnte Bewertung nicht laden:", error);
+            }
+
+
             let ratingBtn = document.createElement("button");
             ratingBtn.setAttribute("onclick", `showRatingPanel('${username}', '${device}');`);
             ratingBtn.className="ratingBtn";
