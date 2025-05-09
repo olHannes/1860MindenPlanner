@@ -2410,17 +2410,28 @@ function openFilter() {
     const filterDiv2 = document.getElementById('filterGroup');
     const buttons1 = filterDiv1.querySelectorAll('button');
     const buttons2 = filterDiv2.querySelectorAll('button');
+    const learnedElementToggle = document.getElementById('filterLearnedElements');
+    const searchTxt = document.getElementById('searchInput');
 
-    buttons1.forEach((button, index) => {
-        button.style.backgroundColor="#444";
-    });
-    buttons2.forEach((button, index) => {
-        button.style.backgroundColor="#444";
-    });
-    document.getElementById("filterWrapper").classList.add("show");
+    buttons1.forEach(button => button.classList.remove('active-filter'));
+    document.getElementById('allElemBtn').classList.add('active-filter');
+
+    buttons2.forEach(button => button.classList.remove('active-filter'));
+    filterDiv2.querySelector('button').classList.add('active-filter');
+
+    learnedElementToggle.checked = false;
+
+    searchTxt.value = "";
+
     activeFilter_difficulty = null;
     activeFilter_group = null;
+    activeFilter_learnedElem = null;
+    activeFilter_text = null;
+
+    document.getElementById("filterWrapper").classList.add("show");
+    getFilteredElementList();
 }
+
 
 function closeFilter() {
     document.getElementById("filterWrapper").classList.remove("show");
