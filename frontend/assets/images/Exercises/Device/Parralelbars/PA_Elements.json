@@ -1327,4 +1327,271 @@
         "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/D/PA_D_34.png"
     }
+
+
+
+
+
+
+    ,{
+        "id": "PA_E_01",
+        "bezeichnung": "3/4 Diamidov und 3/4 Healy auf dem anderen Arm i. d. Stütz",
+        "name": "Makuts",
+        "elementegruppe": "1",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_01.png"
+    }
+    ,{
+        "id": "PA_E_02",
+        "bezeichnung": "Doppelsalto rw. geb. i. d. Oberarmhang",
+        "name": "Huang Liping",
+        "elementegruppe": "1",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_02.png"
+    }
+    ,{
+        "id": "PA_E_03",
+        "bezeichnung": "A. d. Hdst. a. 1 Holm (nach einem Schwungelement min. B), Healy (360° o. mehr) i. d. Stütz",
+        "name": "Bejenaru",
+        "elementegruppe": "1",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_03.png"
+    }
+    ,{
+        "id": "PA_E_04",
+        "bezeichnung": "Gatson 1 m. 1/4 Drehung z. Handstand a. 1 Holm u. 1/4 Drehung z. Handstand a. 2 Holmen",
+        "name": "Gatson 2",
+        "elementegruppe": "1",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_04.png"
+    }
+    ,{
+        "id": "PA_E_05",
+        "bezeichnung": "5/4 salto fwd. strad. through support to hang or directly to hang",
+        "name": "Lee Chul Hon / Sasaki",
+        "elementegruppe": "1",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_05.png"
+    }
+    ,{
+        "id": "PA_E_06",
+        "bezeichnung": "5/4 Salto vw. gegr. i. d. Beugestütz",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_06.png"
+    }
+    ,{
+        "id": "PA_E_07",
+        "bezeichnung": "Doppelsalto vw. geb. i. d. Oberarmhang",
+        "name": "",
+        "elementegruppe": "1",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_07.png"
+    }
+    ,{
+        "id": "PA_E_08",
+        "bezeichnung": "Salto vw. m. 1/1 Drehung i. d. Oberarmhang.",
+        "name": "Urzica",
+        "elementegruppe": "1",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_08.png"
+    }
+    ,{
+        "id": "PA_E_09",
+        "bezeichnung": "Stemme vw. m. 1/2 Drehung z. Hdst.",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_09.png"
+    }
+    ,{
+        "id": "PA_E_10",
+        "bezeichnung": "Stemme vw. u. Makuts i. d. Oberarmhang",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_10.png"
+    }
+    ,{
+        "id": "PA_E_11",
+        "bezeichnung": "Stemme vw. m. 1/1 Drehung z. Hdst",
+        "name": "Richards",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_11.png"
+    }
+    ,{
+        "id": "PA_E_12",
+        "bezeichnung": "Rolle rw. m. Salto rw. geh. i. d. Oberarmhang",
+        "name": "Dimitrenko",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_12.png"
+    }
+    ,{
+        "id": "PA_E_13",
+        "bezeichnung": "Rolle rw. m. 1/2 Drehung geh. i. d. Hang",
+        "name": "Dalton",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_13.png"
+    }
+    ,{
+        "id": "PA_E_14",
+        "bezeichnung": "Stemme rw. u. Doppelsalto vw. geh. i. d. Oberarmhang",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_14.png"
+    }
+    ,{
+        "id": "PA_E_15",
+        "bezeichnung": "Stemme rw. u 5/4 Salto vw. gegr. i. d. Oberarmhang",
+        "name": "Pakhniuk 1",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_15.png"
+    }
+    ,{
+        "id": "PA_E_16",
+        "bezeichnung": "Vorschwung i. Langhang m. Rückgrätschen u. Wiederfassen m. gestr. Körper i. d. Horizontale",
+        "name": "Bhavsar",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_16.png"
+    }
+    ,{
+        "id": "PA_E_17",
+        "bezeichnung": "Riesenumschwung rw. m. Diamidov i. d. Hdst., auch a. 1 Holm",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_17.png"
+    }
+    ,{
+        "id": "PA_E_18",
+        "bezeichnung": "Riesenfelge rw. und Salto mit 1/2 Drehung zum Rückgrätschen in den Oberarmhang",
+        "name": "Sosa",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_18.png"
+    }
+    ,{
+        "id": "PA_E_19",
+        "bezeichnung": "Belle geb.",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_19.png"
+    }
+    ,{
+        "id": "PA_E_20",
+        "bezeichnung": "Riesenumschwung rw. u. Salto geh. o. geb. m. 1/2 Drehung i. d. Hang",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_20.png"
+    }
+    ,{
+        "id": "PA_E_21",
+        "bezeichnung": "Riesenumschwung rw. u. Salto geh. o. geb. m. 1/2 Drehung i. d. Stütz",
+        "name": "Torres",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_21.png"
+    }
+    ,{
+        "id": "PA_E_22",
+        "bezeichnung": "Riesenumschwung rw. u. Salto gestr. m. 1/2 Drehung i. d. Oberarmhang",
+        "name": "Fokin",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_22.png"
+    }
+    ,{
+        "id": "PA_E_23",
+        "bezeichnung": "Felge mit 1/2 oder 3/4 Drehung in den Handstand",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_23.png"
+    }
+    ,{
+        "id": "PA_E_24",
+        "bezeichnung": "Felge i. d. Hdst. a. 1 Holm (verbunden mit einem Healy-Element)",
+        "name": "Chiarlo",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_24.png"
+    }
+    ,{
+        "id": "PA_E_25",
+        "bezeichnung": "Felge m. Salto rw. geh. i. d. Oberarmhang",
+        "name": "Tejada",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_25.png"
+    }
+    ,{
+        "id": "PA_E_26",
+        "bezeichnung": "An einem Holm, Felge m. 3/4 Drehung i. d. Handstand",
+        "name": "Nguyen",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_26.png"
+    }
+    ,{
+        "id": "PA_E_27",
+        "bezeichnung": "Doppelsalto vw. geh.",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.5",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_27.png"
+    }
+    ,{
+        "id": "PA_E_28",
+        "bezeichnung": "Doppelsalto vw. geh. m. 1/2 Drehung o. 1/2 Drehung u. Doppelsalto rw.",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.5",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_28.png"
+    }
+    ,{
+        "id": "PA_E_29",
+        "bezeichnung": "A. d. Hang a. Holmenende, Doppelsalto rw. geh. m. 1/1 Drehung o. 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.5",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_29.png"
+    }
 ]
