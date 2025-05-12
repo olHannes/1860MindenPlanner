@@ -1055,4 +1055,252 @@
         "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_31.png"
     }
+
+
+
+
+
+    ,{
+        "id": "RI_E_01",
+        "bezeichnung": "Doppelsalto rw. gestr. i. d. Hang",
+        "name": "O' Neill",
+        "elementegruppe": "1",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_01.png"
+    }
+    ,{
+        "id": "RI_E_02",
+        "bezeichnung": "Schwalbe umgekehrt (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_02.png"
+    }
+    ,{
+        "id": "RI_E_03",
+        "bezeichnung": "Aus dem Hang, Heben mit gestreckten Armen zum V-Kreuzhang (2s)",
+        "name": "Colak",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_03.png"
+    }
+    ,{
+        "id": "RI_E_04",
+        "bezeichnung": "Azarian zum V-Kreuzhang (2s)",
+        "name": "Tay",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_04.png"
+    }
+    ,{
+        "id": "RI_E_05",
+        "bezeichnung": "Nakayama zum V-Kreuzhang (2s)",
+        "name": "Ng Kiu Chung",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_05.png"
+    }
+    ,{
+        "id": "RI_E_06",
+        "bezeichnung": "A. d. Stützwaage, langsames Senken waagerecht z. Hangwaage rl. u. Heben i. d. Schwalbe (2s) o. gleiches a. d. Schwalbe i. d. Stützwaage o. a. d. Stützwaage i. d. Schwalbe",
+        "name": "Van Gelder",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_06.png"
+    }
+    ,{
+        "id": "RI_E_07",
+        "bezeichnung": "A. d. Schwalbe, langsames Senken i. d. Hangwaage rl. u. Heben i. d. Schwalbe (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_07.png"
+    }
+    ,{
+        "id": "RI_E_08",
+        "bezeichnung": "A. d. Kreuzhang o. Kreuzhang m. Vorhalte, Heben m. gestr. Körper i. d. Kopfkreuz (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_08.png"
+    }
+    ,{
+        "id": "RI_E_09",
+        "bezeichnung": "A. d. Schwalbe, Heben i. d. Kopfkreuz (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_09.png"
+    }
+    ,{
+        "id": "RI_E_10",
+        "bezeichnung": "A. d. Kreuzhang, Heben i. d. Schwalbe (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_10.png"
+    }
+    ,{
+        "id": "RI_E_11",
+        "bezeichnung": "A. d. Kopfkreuz, langsames Senken i. d. Sturzhang u. langsame Felge rw. i. d. Schwalbe (2s)",
+        "name": "Jotchev",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_11.png"
+    }
+    ,{
+        "id": "RI_E_12",
+        "bezeichnung": "Langsame Felge rw. m. gestr. Armen u. gestr. Körper i. d. freie Stützwaage (2s)",
+        "name": "Yan Mijayoung",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_12.png"
+    }
+    ,{
+        "id": "RI_E_13",
+        "bezeichnung": "Rolle rückw. mit gestr. Körper z.Schwalbe (2s)",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_13.png"
+    }
+    ,{
+        "id": "RI_E_14",
+        "bezeichnung": "Rolle vorw. mit gestr. Körper d.d. Kreuzh. z. Kopfkreuz (2s)",
+        "name": "Wynn",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_14.png"
+    }
+    ,{
+        "id": "RI_E_15",
+        "bezeichnung": "Langsame Rolle vw. m. gestr. Körper durch d. Kreuzhang zur Schwalbe (2s)",
+        "name": "Pham 2",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_15.png"
+    }
+    ,{
+        "id": "RI_E_16",
+        "bezeichnung": "A. d. Hang, Heben i. d. Schwalbe od. über die Schwalbe in die Stützwaage (2s)",
+        "name": "Balandin 1",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_16.png"
+    }
+    ,{
+        "id": "RI_E_17",
+        "bezeichnung": "A. d. Hang, Heben i. d. Schwalbe od. über die Schwalbe in die Stützwaage (2s)",
+        "name": "Balandin 3",
+        "elementegruppe": "2",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_17.png"
+    }
+    ,{
+        "id": "RI_E_18",
+        "bezeichnung": "Honma direkt zum V-Kreuzhang (2s)",
+        "name": "Tanaka",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_18.png"
+    }
+    ,{
+        "id": "RI_E_19",
+        "bezeichnung": "Felge z. Schwalbe (2s)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_19.png"
+    }
+    ,{
+        "id": "RI_E_20",
+        "bezeichnung": "Stemme rw. i. d. Schwalbe (2s)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_20.png"
+    }
+    ,{
+        "id": "RI_E_21",
+        "bezeichnung": "Kreuzkippe z. Schwalbe (2s)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_21.png"
+    }
+    ,{
+        "id": "RI_E_22",
+        "bezeichnung": "Felge m. gestr. Armen i. d. Kopfkreuz (2s)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_22.png"
+    }
+    ,{
+        "id": "RI_E_23",
+        "bezeichnung": "Stemme rw. i. d. Kopfkreuz (2s)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_23.png"
+    }
+    ,{
+        "id": "RI_E_24",
+        "bezeichnung": "Kreuzkippe i. d. Kopfkreuz (2s)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.5",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_24.png"
+    }
+    ,{
+        "id": "RI_E_25",
+        "bezeichnung": "Doppelsalto vw. geb. m. 3/2 Drehung (a. 1/1 Drehung)",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.5",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_25.png"
+    }
+    ,{
+        "id": "RI_E_26",
+        "bezeichnung": "Salto rw. gestr. m. 3/1 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.5",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_26.png"
+    }
+    ,{
+        "id": "RI_E_27",
+        "bezeichnung": "Doppelsalto rw. geh. m. 2/1 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.5",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_27.png"
+    }
 ]
