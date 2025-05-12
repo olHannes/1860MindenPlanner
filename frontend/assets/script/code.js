@@ -1602,13 +1602,20 @@ function renderLeaderboard(competition, containerId, sortType) {
     leaderboardContainer.innerHTML = "";
   
     sorted.forEach(p => {
-      const entry = document.createElement("div");
-      entry.className = "leaderboard-item";
-      entry.innerHTML = `
-        <strong>${p.name}</strong> – ${p.total.toFixed(1)} Punkte
-        <br><small>${p.devices.map(d => `${d.name}: ${d.points}`).join(', ')}</small>
-      `;
-      leaderboardContainer.appendChild(entry);
+        let extraInfo = "";
+        if (sortType === "average") {
+            extraInfo = ` | ⌀ ${p.average.toFixed(2)} Punkte`;
+        } else if (sortType === "devices") {
+            extraInfo = ` | ${p.deviceCount} Geräte`;
+        }
+
+        const entry = document.createElement("div");
+        entry.className = "leaderboard-item";
+        entry.innerHTML = `
+            <strong>${p.name}</strong> – ${p.total.toFixed(1)} Punkte${extraInfo}
+            <br><small>${p.devices.map(d => `${d.name}: ${d.points}`).join(', ')}</small>
+        `;
+        leaderboardContainer.appendChild(entry);
     });
 }
 
