@@ -2167,6 +2167,8 @@ async function  loadCurrentExercise(username, device, remote, routineType) {
     currentExerciseDetailedList.forEach((elementDetails, index) => {
         const row = createExerciseRow(elementDetails, index);
         tbody.appendChild(row);
+        console.log(elementDetails.id);
+        row.addEventListener("click", () => openDetailedView(elementDetails, null));
     });
 
     table.appendChild(tbody);
@@ -2590,13 +2592,16 @@ function openDetailedView(element, learned) {
     difficulty.innerText = "Schwierigkeit: " + element.wertigkeit;
     endingCheck.innerText = "Übungsende: " + (element.dismount == true ? "✅" : "❌");
 
-    addButton.replaceWith(addButton.cloneNode(true));
-    if(!learned){
-        setLearnedButton(true, element.id);
-    }else {
-        setLearnedButton(false, element.id);
+    if (learned === null) {
+        addButton.style.display = "none";
+        container.style.position="fixed";
+    } else {
+        container.style.position="absolute";
+        addButton.style.display = "inline-block";
+        addButton.replaceWith(addButton.cloneNode(true));
+        document.getElementById('addToList').addEventListener("click", () => addToExercise(element));
+        setLearnedButton(learned !== true, element.id);
     }
-    document.getElementById('addToList').addEventListener("click", () => addToExercise(element));
     container.style.display = "flex";
 }
 
