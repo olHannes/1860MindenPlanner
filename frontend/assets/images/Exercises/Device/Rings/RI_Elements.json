@@ -1303,4 +1303,115 @@
         "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_27.png"
     }
+
+
+
+    ,{
+        "id": "RI_FGH_01",
+        "bezeichnung": "Durch die Hangwaage rückl. (kein Halt erforderlich) hochdrücken mit gestr. Körper d.d. Kreuzh. zur Schwalbe umgekehrt (2s)",
+        "name": "Zahran",
+        "elementegruppe": "2",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_01.png"
+    }
+    ,{
+        "id": "RI_FGH_02",
+        "bezeichnung": "a.d. Hang Zugstemme z.Schwalbe umgekehrt",
+        "name": "Tulloch 2",
+        "elementegruppe": "2",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_02.png"
+    }
+    ,{
+        "id": "RI_FGH_03",
+        "bezeichnung": "A. d. Hangwaage rl., Heben i. d. Schwalbe (auch i. d. Stützwaage) (2s)",
+        "name": "Zanetti",
+        "elementegruppe": "2",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_03.png"
+    }
+    ,{
+        "id": "RI_FGH_04",
+        "bezeichnung": "Azarian zur Schwalbe umgekehrt (2s)",
+        "name": "Tulloch",
+        "elementegruppe": "2",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_04.png"
+    }
+    ,{
+        "id": "RI_FGH_05",
+        "bezeichnung": "Aus o. durch d. Hangwaage rl. Zugstemme m. gestr. Körper i. d. Kopfkreuz (2s)",
+        "name": "Carmona",
+        "elementegruppe": "2",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_05.png"
+    }
+    ,{
+        "id": "RI_FGH_06",
+        "bezeichnung": "A. d. Hang, Heben i. d. Kopfkreuz (2s)",
+        "name": "Balandin 2",
+        "elementegruppe": "2",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_06.png"
+    }
+    ,{
+        "id": "RI_FGH_07",
+        "bezeichnung": "Stemme vorw. z. Schwalbe umgekehrt (2s)",
+        "name": "Rodrigues",
+        "elementegruppe": "3",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_07.png"
+    }
+    ,{
+        "id": "RI_FGH_08",
+        "bezeichnung": "Kippe i. d. Schwalbe umgekehrt (2s)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_08.png"
+    }
+    ,{
+        "id": "RI_FGH_09",
+        "bezeichnung": "Dreifacher Salto rw. geh.",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.7",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_09.png"
+    }
+    ,{
+        "id": "RI_FGH_10",
+        "bezeichnung": "Dreifachsalto rückw. geb.",
+        "name": "Whittemburg",
+        "elementegruppe": "4",
+        "wertigkeit": "0.8",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_10.png"
+    }
+    ,{
+        "id": "RI_FGH_11",
+        "bezeichnung": "Doppelsalto rw. geh. m. 5/2 Drehung",
+        "name": "Tuuha",
+        "elementegruppe": "4",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_11.png"
+    }
+    ,{
+        "id": "RI_FGH_12",
+        "bezeichnung": "Doppelsalto rw. gestr. m. 3/2 o. 2/1 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_12.png"
+    }
 ]
