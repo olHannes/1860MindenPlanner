@@ -1594,4 +1594,198 @@
         "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/E/PA_E_29.png"
     }
+
+
+
+
+
+    ,{
+        "id": "PA_FGH_01",
+        "bezeichnung": "Schwung vw. m. 5/4 Drehung auf einem Arm d. d. Handstand und Healy i. d. Stütz",
+        "name": "Zonderland",
+        "elementegruppe": "1",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_01.png"
+    }
+    ,{
+        "id": "PA_FGH_02",
+        "bezeichnung": "Fwd. uprise with 3/4 t. to handstand",
+        "name": "",
+        "elementegruppe": "2",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_02.png"
+    }
+    ,{
+        "id": "PA_FGH_03",
+        "bezeichnung": "Stemme vw. u. Makuts i. d. Stütz.",
+        "name": "Tsolakidis 1",
+        "elementegruppe": "2",
+        "wertigkeit": "0.7",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_03.png"
+    }
+    ,{
+        "id": "PA_FGH_04",
+        "bezeichnung": "Stemme vw. m. 3/2 Drehung z. Hdst",
+        "name": "Tsolakidis 2",
+        "elementegruppe": "2",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_04.png"
+    }
+    ,{
+        "id": "PA_FGH_05",
+        "bezeichnung": "Rolle rw. m. Salto rw. geb. i. d. Oberarmhang",
+        "name": "Li Xiaopeng",
+        "elementegruppe": "2",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_05.png"
+    }
+    ,{
+        "id": "PA_FGH_06",
+        "bezeichnung": "Stemme rückwärts und 5/4 Salto vorwärts gegrätscht in den Oberarmhang",
+        "name": "Pakhniuk 2",
+        "elementegruppe": "2",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_06.png"
+    }
+    ,{
+        "id": "PA_FGH_07",
+        "bezeichnung": "Riesenumschwung rw. m. Diamidov m. 1/4 o. 1/2 Drehung i. d. Hdst",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_07.png"
+    }
+    ,{
+        "id": "PA_FGH_08",
+        "bezeichnung": "Riesenumschwung rw. m. Diamidov i. d. Hdst. a. 1 Holm (verbunden mit einem Healy-Element)",
+        "name": "",
+        "elementegruppe": "3",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_08.png"
+    }
+    ,{
+        "id": "PA_FGH_09",
+        "bezeichnung": "Riesenfelge rw. mit Makuts",
+        "name": "Baumann",
+        "elementegruppe": "3",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_09.png"
+    }
+    ,{
+        "id": "PA_FGH_10",
+        "bezeichnung": "Belle mit 1/1 Drehung",
+        "name": "Quintero",
+        "elementegruppe": "3",
+        "wertigkeit": "0.7",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_10.png"
+    }
+    ,{
+        "id": "PA_FGH_11",
+        "bezeichnung": "Riesenumschwung rw. m. 1/2 Drehung u. 3/2 Salto vw. i. d. Oberarmhang",
+        "name": "Tanaka",
+        "elementegruppe": "3",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_11.png"
+    }
+    ,{
+        "id": "PA_FGH_12",
+        "bezeichnung": "Riesenfelge rückwärts mit 1/2 Drehung und 3/2 Salto vorwärts gebückt zum Oberarmhang",
+        "name": "Esparaza",
+        "elementegruppe": "3",
+        "wertigkeit": "0.7",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_12.png"
+    }
+    ,{
+        "id": "PA_FGH_13",
+        "bezeichnung": "Felge m. 1/1 Drehung i. d. Handstand",
+        "name": "Teng Hai Bin",
+        "elementegruppe": "3",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_13.png"
+    }
+    ,{
+        "id": "PA_FGH_14",
+        "bezeichnung": "Felge m. 5/4 Drehung i. d. Handstand",
+        "name": "Zhou Shixiong",
+        "elementegruppe": "3",
+        "wertigkeit": "0.7",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_14.png"
+    }
+    ,{
+        "id": "PA_FGH_15",
+        "bezeichnung": "Felge durch d. Hdst. mit Makuts",
+        "name": "Yamamuro",
+        "elementegruppe": "3",
+        "wertigkeit": "0.7",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_15.png"
+    }
+    ,{
+        "id": "PA_FGH_16",
+        "bezeichnung": "Felge mit Salto gebückt in den Oberarmhang",
+        "name": "Juarez 1",
+        "elementegruppe": "3",
+        "wertigkeit": "0.6",
+        "dismount": false,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_16.png"
+    }
+    ,{
+        "id": "PA_FGH_17",
+        "bezeichnung": "Doppelsalto vw. geb.",
+        "name": "Belyavskiy",
+        "elementegruppe": "4",
+        "wertigkeit": "0.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_17.png"
+    }
+    ,{
+        "id": "PA_FGH_18",
+        "bezeichnung": "Doppelsalto vw. gebückt mit 1/2 Drehung",
+        "name": "Dalaloyan",
+        "elementegruppe": "4",
+        "wertigkeit": "0.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_18.png"
+    }
+    ,{
+        "id": "PA_FGH_19",
+        "bezeichnung": "Doppelsalto vw. geh. m. 1/1 Drehung",
+        "name": "Larduet",
+        "elementegruppe": "4",
+        "wertigkeit": "0.7",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_19.png"
+    }
+    ,{
+        "id": "PA_FGH_20",
+        "bezeichnung": "Doppelsalto rw. geh. m. 1/1 Drehung",
+        "name": "Hiroyuki Kato",
+        "elementegruppe": "4",
+        "wertigkeit": "0.7",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_20.png"
+    }
+    ,{
+        "id": "PA_FGH_21",
+        "bezeichnung": "A. d. Hang a. Holmenende, Doppelsalto rw. geh. m. 2/1 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "0.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Parralelbars/FGH/PA_FGH_21.png"
+    }
 ]
