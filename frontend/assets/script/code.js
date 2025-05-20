@@ -6,12 +6,14 @@ window.onload = function () {
     try {
         fetch(`${serverURL}/awake`)
     } catch (error) {}
-    localStorage.removeItem("user");
-    localStorage.removeItem("userId");
+    //localStorage.removeItem("user");
+    //localStorage.removeItem("userId");
     localStorage.removeItem("adminKey");
     if(localStorage.getItem("startUpInfo") != null) {
         document.getElementById("startupInformation").style.display="none";
     }
+    console.log(localStorage.getItem("user"));
+    console.log(localStorage.getItem("userId"));
     checkUserStatus();
 };
 
@@ -281,10 +283,14 @@ async function checkUserStatus() {
         const data = await response.json();
         hideLoader();
 
-        if (data.message === "Benutzer offline, Status zurückgesetzt!") {
+        if (data.message === "Benutzer offline!") {
             localStorage.removeItem("user");
             localStorage.removeItem("userId");
             localStorage.removeItem("adminKey");
+        } else {
+            setProfileName();
+            checkLoginStatus();
+            loadMaxPoints();
         }
 
     } catch (error) {
@@ -418,35 +424,6 @@ async function logout() {
     }
     checkLoginStatus();
 }
-
-// Auto Logout
-window.onbeforeunload = async function () {
-    const username = localStorage.getItem("user");
-    const userId = localStorage.getItem("userId");
-
-    if (!username || !userId) return;
-
-    showLoader();
-    try {
-        const response = await fetch(`${serverURL}/account/logout`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name: username, userId })
-        });
-
-        if (!response.ok) {
-            throw new Error(`Fehler beim Logout: ${response.status} ${response.statusText}`);
-        }
-        localStorage.removeItem("user");
-        localStorage.removeItem("userId");
-        localStorage.removeItem("adminKey");
-        hideLoader();
-    } catch (error) {
-        hideLoader();
-        console.error("Error beim Verlassen der Seite:", error);
-    }
-};
-
 
 //----------------------------------------------------------------------------------------------------------------- Delete-Account Handling
 // secure Window

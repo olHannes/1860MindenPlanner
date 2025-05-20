@@ -46,16 +46,14 @@ def check_user_status():
     if not username or not user_id:
         return jsonify({"message": "Kein Benutzername oder Benutzer-ID angegeben!"}), 400
 
-    user = users_collection.find_one({"_id": ObjectId(user_id), "username": username})
-
+    user = users_collection.find_one({"_id": ObjectId(user_id), "firstName": username})
+    
+    if user:
+        print(user.get("online", 0))
     if user and user.get("online", 0) > 0:
         return jsonify({"message": "Benutzer online!"}), 200
     else:
-        users_collection.update_one(
-            {"_id": ObjectId(user_id)},
-            {"$inc": {"online": -1}}
-        )
-        return jsonify({"message": "Benutzer offline, Status zurückgesetzt!"}), 200
+        return jsonify({"message": "Benutzer offline!"}), 200
 
 
 ################################################################################################### Logout
