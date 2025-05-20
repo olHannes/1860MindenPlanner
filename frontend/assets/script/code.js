@@ -2167,8 +2167,6 @@ async function  loadCurrentExercise(username, device, remote, routineType) {
     currentExerciseDetailedList.forEach((elementDetails, index) => {
         const row = createExerciseRow(elementDetails, index);
         tbody.appendChild(row);
-        console.log(elementDetails.id);
-        row.addEventListener("click", () => openDetailedView(elementDetails, null));
     });
 
     table.appendChild(tbody);
@@ -2272,6 +2270,8 @@ function createExerciseRow(elementDetails, index) {
     img.src = elementDetails.image_path || "default-image.png";
     img.style.maxWidth = "80px";
     imgCell.appendChild(img);
+    img.addEventListener("click", () => openDetailedView(elementDetails, null));
+
 
     let actionCell = document.createElement("td");
     actionCell.className = "action-cell";
