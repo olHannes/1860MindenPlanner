@@ -572,6 +572,275 @@
         "wertigkeit": "5.6",
         "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_16.png"
+    },
+    {
+        "id": "VA_4_17",
+        "bezeichnung": "Yurchenko u. Salto rw. geh.",
+        "name": "Melissandidis",
+        "elementegruppe": "4",
+        "wertigkeit": "5.2",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_17.png"
+    },
+    {
+        "id": "VA_4_18",
+        "bezeichnung": "Melissanidis geb.",
+        "name": "Yang Wei",
+        "elementegruppe": "4",
+        "wertigkeit": "5.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_18.png"
+    },
+    {
+        "id": "VA_4_19",
+        "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw.",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "1.8",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_19.png"
+    },
+    {
+        "id": "VA_4_20",
+        "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. m. 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "2.0",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_20.png"
+    },
+    {
+        "id": "VA_4_21",
+        "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. m. 1/1 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "2.2",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_21.png"
+    },
+    {
+        "id": "VA_4_22",
+        "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. u. salto vw. geh.",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "2.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_22.png"
+    },
+    {
+        "id": "VA_4_23",
+        "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. u. salto vw. geh. m. 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "3.0",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_23.png"
+    },
+    {
+        "id": "VA_4_24",
+        "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. u. salto vw. geb.",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "3.0",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_24.png"
+    },
+    {
+        "id": "VA_4_25",
+        "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. u. salto vw. geb. m. 1/2 Drehung",
+        "name": "Nemov",
+        "elementegruppe": "4",
+        "wertigkeit": "3.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_25.png"
+    },
+    {
+        "id": "VA_4_26",
+        "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. u. salto vw. gestr.",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "3.8",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_26.png"
+    },
+    {
+        "id": "VA_4_27",
+        "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. u. salto vw. gestr. m. 1/2 Drehung",
+        "name": "Hutcheon",
+        "elementegruppe": "4",
+        "wertigkeit": "4.2",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_27.png"
+    },
+    {
+        "id": "VA_4_28",
+        "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. u. salto vw. gestr. m. 1/1 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "4.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_28.png"
+    },
+    {
+        "id": "VA_4_29",
+        "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. u. salto vw. gestr. m. 3/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "5.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_29.png"
+    },
+    {
+        "id": "VA_4_30",
+        "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. u. salto vw. gestr. m. 2/1 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "5.8",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_30.png"
+    },
+    {
+        "id": "VA_4_31",
+        "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. u. salto vw. gestr. m. 5/2 Drehung",
+        "name": "Li Xiao Peng",
+        "elementegruppe": "4",
+        "wertigkeit": "5.8",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_31.png"
+    },
+    {
+        "id": "VA_4_32",
+        "bezeichnung": "Rondat 1/2 Drehung u. Überschlag u. Doppelsalto vw. geh.",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "5.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_32.png"
+    },
+    {
+        "id": "VA_4_33",
+        "bezeichnung": "Rondat, Sprung rw. m. 1/1 Drehung u. Überschlag rw.",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "2.2",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_33.png"
+    },
+    {
+        "id": "VA_4_34",
+        "bezeichnung": "Rondat, Sprung rw. m. 1/1 Drehung u. Überschlag rw. m. 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "2.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_34.png"
+    },
+    {
+        "id": "VA_4_35",
+        "bezeichnung": "Rondat, Sprung rw. m. 1/1 Drehung u. Überschlag rw. m. 1/1 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "2.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_35.png"
+    },
+    {
+        "id": "VA_4_36",
+        "bezeichnung": "Rondat, Sprung rw. m. 1/1 Drehung u. Überschlag rw. u. Salto rw. geh.",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "2.8",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_36.png"
+    },
+    {
+        "id": "VA_4_37",
+        "bezeichnung": "Rondat, Sprung rw. m. 1/1 Drehung u. Überschlag rw. u. Salto rw. geb.",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "3.0",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_37.png"
+    },
+    {
+        "id": "VA_4_38",
+        "bezeichnung": "Rondat, Sprung rw. m. 1/1 Drehung u. Überschlag rw. u. Salto rw. geh. m. 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "3.0",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_38.png"
+    },
+    {
+        "id": "VA_4_39",
+        "bezeichnung": "Rondat, Sprung rw. m. 1/1 Drehung u. Überschlag rw. u. Salto rw. geh. m. 1/1 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "3.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_39.png"
+    },
+    {
+        "id": "VA_4_40",
+        "bezeichnung": "Rondat, Sprung rw. m. 1/1 Drehung u. Überschlag rw. u. Salto rw. geh. m. 3/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "3.8",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_40.png"
+    },
+    {
+        "id": "VA_4_41",
+        "bezeichnung": "Rondat, Sprung rw. m. 1/1 Drehung u. Überschlag rw. u. Salto rw. gestr.",
+        "name": "Scherbo",
+        "elementegruppe": "4",
+        "wertigkeit": "3.8",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_41.png"
+    },
+    {
+        "id": "VA_4_42",
+        "bezeichnung": "Scherbo m. 1/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "4.2",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_42.png"
+    },
+    {
+        "id": "VA_4_43",
+        "bezeichnung": "Scherbo m. 1/1 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "3.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_43.png"
+    },
+    {
+        "id": "VA_4_44",
+        "bezeichnung": "Scherbo m. 3/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "5.0",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_44.png"
+    },
+    {
+        "id": "VA_4_45",
+        "bezeichnung": "Scherbo m. 2/1 Drehung",
+        "name": "Shirai 3",
+        "elementegruppe": "4",
+        "wertigkeit": "5.4",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_45.png"
+    },
+    {
+        "id": "VA_4_46",
+        "bezeichnung": "Scherbo m. 5/2 Drehung",
+        "name": "",
+        "elementegruppe": "4",
+        "wertigkeit": "5.8",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_46.png"
     }
-
 ]
