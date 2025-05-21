@@ -70,7 +70,7 @@
             <li><strong>Account Settings:</strong> Der Auto-Login kann [An / Aus] geschaltet werden.</li>
 
         </ul>
-        <button class="safeBtn" id="closeNews">Schließen</button>
+        <button class="safeBtn" id="closeNews" onclick="document.getElementById('showNewsBtn').style.display='block';">Schließen</button>
     </div>
 
 
@@ -183,7 +183,7 @@
     <button onclick="toggleRegistration()" id="registerBtn">Registrieren</button> 
     <p id="errorMsg"></p>
     <a href="frontend/impressum/impressum.html" class="impressum">Impressum</a>
-    <button class="openNews" style="width: 40%; background-color: green;" onclick="openNews();">Updates & News</button>
+    <button id="showNewsBtn" class="openNews" style="width: 40%; background-color: green;" onclick="openNews(); this.style.display='none';">Updates & News</button>
 </div>
 
 <div id="registration_mask" style="display: none;">
