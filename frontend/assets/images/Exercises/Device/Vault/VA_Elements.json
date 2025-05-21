@@ -98,6 +98,51 @@
         "dismount": true,
         "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_11.png"
     },
+    {
+        "id": "VA_2_12",
+        "bezeichnung": "Überschlag vw. u. Doppelsalto vw. geh.",
+        "name": "Roche",
+        "elementegruppe": "2",
+        "wertigkeit": "5.2",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_12.png"
+    },
+    {
+        "id": "VA_2_13",
+        "bezeichnung": "Roche m. 1/2 Drehung",
+        "name": "Dragulescu",
+        "elementegruppe": "2",
+        "wertigkeit": "5.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_13.png"
+    },
+    {
+        "id": "VA_2_14",
+        "bezeichnung": "Überschlag vw. u. Salto vw. geh. m. 1/2 Drehung u. Salto rw. geh.",
+        "name": "Zimmerman",
+        "elementegruppe": "2",
+        "wertigkeit": "5.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_14.png"
+    },
+    {
+        "id": "VA_2_15",
+        "bezeichnung": "Überschlag vw. u. Doppelsalto vw. geb.",
+        "name": "Blanik",
+        "elementegruppe": "2",
+        "wertigkeit": "5.6",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_15.png"
+    },
+    {
+        "id": "VA_2_16",
+        "bezeichnung": "Überschlag vw. u. Doppelsalto vw. geb. m. 1/2 Drehung",
+        "name": "Ri Se Gwang 2",
+        "elementegruppe": "2",
+        "wertigkeit": "6.0",
+        "dismount": true,
+        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_16.png"
+    },
 
 
 
