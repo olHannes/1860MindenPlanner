@@ -731,9 +731,6 @@ input {
 }
 
 
-
-
-
 #userOptions{
     position: absolute;
     left: 32%;
@@ -742,6 +739,10 @@ input {
     bottom: 90px;
     color: white;
     background-color: rgb(62 170 62);
+}
+
+#userOptions:hover {
+    background-color: rgb(33, 90, 33);
 }
 
 /*Report Objects*/
@@ -753,6 +754,10 @@ input {
     bottom: 90px;
     color: red;
     background-color: #cccccc;
+}
+
+#reportIssue:hover {
+    background-color: #695858;
 }
 
 /* Grundstil für das Formular */
