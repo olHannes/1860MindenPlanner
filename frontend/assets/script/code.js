@@ -6,14 +6,18 @@ window.onload = function () {
     try {
         fetch(`${serverURL}/awake`)
     } catch (error) {}
-    //localStorage.removeItem("user");
-    //localStorage.removeItem("userId");
-    localStorage.removeItem("adminKey");
+    if(localStorage.getItem("autoLogin") != 'true'){
+        localStorage.removeItem("user");
+        localStorage.removeItem("userId");
+    }
+    if(localStorage.getItem("user") == "admin") {
+        localStorage.removeItem("adminKey");
+        localStorage.removeItem("user");
+    }
+
     if(localStorage.getItem("startUpInfo") != null) {
         document.getElementById("startupInformation").style.display="none";
     }
-    console.log(localStorage.getItem("user"));
-    console.log(localStorage.getItem("userId"));
     checkUserStatus();
 };
 
@@ -376,6 +380,12 @@ async function setProfileName() {
         }
         document.getElementById('visibleCheckbox').checked = userInfo.visibility;
 
+        if(localStorage.getItem("autoLogin") == 'true'){
+            document.getElementById('autoLoginCheckbox').checked = true;
+        }else {
+            document.getElementById('autoLoginCheckbox').checked = false;
+        }
+
         hideLoader();
     } catch (error) {
         hideLoader();
@@ -623,6 +633,13 @@ async function handleVisibilityChange(isVisible) {
     hideLoader();
 }
 
+function handleAutoLogin(autoLogin){
+    if(autoLogin){
+        localStorage.setItem("autoLogin", 'true');
+    }else {
+        localStorage.setItem("autoLogin", 'false');
+    }
+}
   
 
 async function updateAdminPassword(username, newPassword){

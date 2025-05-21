@@ -67,6 +67,8 @@
             <li><strong>Bugfix:</strong> Detail Ansicht wird nur beim Klick auf das Bild geöffnet.</li>
             <li><strong>Auto-Login:</strong> Der Nutzer bleibt beim schließen den Browserfensters angemeldet -> bis ein manueller Logout erfolgt.</li>
             <li><strong>Elemente:</strong> Der gesamte Code Of Points, sowie die Bildtabellen wurden komplett in die Datenbank eingebunden.</li>
+            <li><strong>Account Settings:</strong> Der Auto-Login kann [An / Aus] geschaltet werden.</li>
+
         </ul>
         <button class="safeBtn" id="closeNews">Schließen</button>
     </div>
@@ -272,13 +274,19 @@
                     ✎ Passwort bearbeiten ✎
                 </button>   
 
-                <div id="checkboxContainer">
-                    <label id="checkboxLabel">
-                      <input type="checkbox" id="visibleCheckbox" onchange="handleVisibilityChange(this.checked)">
+                <div class="checkboxContainer">
+                    <label class="checkboxLabel">
+                      <input type="checkbox" id="visibleCheckbox" class="accOptCheck" onchange="handleVisibilityChange(this.checked)">
                       Sichtbar für andere?
                     </label>
                 </div>
-                  
+
+                <div class="checkboxContainer" style="margin-top: 40px;">
+                    <label class="checkboxLabel">
+                        <input type="checkbox" id="autoLoginCheckbox" class="accOptCheck" onchange="handleAutoLogin(this.checked)">
+                        Automatischer Login?
+                    </label>
+                </div>
                   
 
                     <!--Windows for Name edits-->
