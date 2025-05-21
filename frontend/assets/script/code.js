@@ -243,6 +243,7 @@ async function login() {
             localStorage.setItem("user", username);
             localStorage.setItem("userId", data.userId);
             localStorage.setItem("adminKey", data.adminKey);
+            localStorage.removeItem("autoLogin");
             loadAdminReports();
             return;
         }
