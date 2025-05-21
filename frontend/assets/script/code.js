@@ -1648,7 +1648,6 @@ function changeRoutineType() {
 async function requestUserExercise(username, device, routineType) {
     currentExercise = [];
     currentExerciseDetailedList = [];
-    showLoader();
     try {
         if (!username || !device) throw new Error("Exercise request failed: Invalid params");
         const response = await fetch(`${serverURL}/exercise/get?device=${device}&vorname=${username}&routineType=${routineType}`);
@@ -1664,20 +1663,17 @@ async function requestUserExercise(username, device, routineType) {
                 });
             }
             currentExerciseDetailedList = await Promise.all(
-                currentExercise.map(el => getElementDetails(el))
+                currentExercise.map(el => getElementDetails(el, false))
             );
 
-            hideLoader();
             return exerciseData;
         } 
         if (response.status === 404) {
             console.error(`${device}-leer`);
-            hideLoader();
             return null;
         }
         throw new Error("Error while fetching the user-exercise.");
     } catch (error) {
-        hideLoader();
         showMessage("Fehler beim Laden der Übung", error);
         return null;
     }
@@ -1689,7 +1685,6 @@ async function getAllUserExercise(username) {
     const sRoutineType = "0";
     let userExerciseList = [];
 
-    showLoader();
     for (const currDev of devices) {
         currentDevice = currDev;
         var currentExerciseList = await requestUserExercise(username, currentDevice, sRoutineType);
@@ -1699,14 +1694,13 @@ async function getAllUserExercise(username) {
             userExerciseList.push({ device: currDev, exercises: null });
         }
     }
-    hideLoader();
     return userExerciseList;
 }
 
 //----------------------------------------------------------------------------------------------------------------- load Routine of User and validate it
 async function showMemberData(username) {
+    showLoader();
     document.getElementById('memberExerciseList').style.display = "block";
-    
     let memberExerciseList = document.getElementById('memberExerciseList');
     memberExerciseList.innerHTML = `
         <button onclick="hideMemberExerciseList();" id="hideMemberExercise">
@@ -1762,7 +1756,7 @@ async function showMemberData(username) {
                 let element = exercises.elemente[i];
                 if (!element) continue;
                 
-                element = await getElementDetails(element);
+                element = await getElementDetails(element, false);
                 if (!element) continue;
                 
                 elements.push(element);
@@ -1836,7 +1830,6 @@ async function showMemberData(username) {
                 console.warn("Konnte Bewertung nicht laden:", error);
             }
 
-
             let ratingBtn = document.createElement("button");
             ratingBtn.setAttribute("onclick", `showRatingPanel('${username}', '${device}');`);
             ratingBtn.className="ratingBtn";
@@ -1847,10 +1840,10 @@ async function showMemberData(username) {
         } else {
             exerciseDiv.innerHTML = `<p>Keine Übungen gefunden</p>`;
         }
-
         exerciseContainer.appendChild(deviceButton);
         exerciseContainer.appendChild(exerciseDiv);
     }
+    hideLoader();
 }
 
 //----------------------------------------------------------------------------------------------------------------- validate Routine
@@ -2323,7 +2316,7 @@ async function removeElementFromExercise(index) {
 async function addToExercise(element) {
     document.getElementById('detailedElementInfo').style.display="none";
     currentExercise.push(element.id);
-    let detailedInfo = await getElementDetails(element.id);
+    let detailedInfo = await getElementDetails(element.id, false);
     currentExerciseDetailedList.push(detailedInfo);
 
     await loadCurrentExercise(localStorage.getItem("user"), currentDevice, false);
@@ -2604,22 +2597,31 @@ function closeDetailedView() {
     document.getElementById('detailedElementInfo').style.display = "none";
 }
 
-async function getElementDetails(elementId) {
-    showLoader();
+async function getElementDetails(elementId, loaderFlag) {
+    if(loaderFlag){
+        showLoader();
+    }  
     try {
         const deviceCode = elementId.substring(0, 2);
         const response = await fetch(`${serverURL}/exercise/get_element?id=${elementId}&currentDevice=${deviceCode}`);
         const elementDetails = await response.json();
-        hideLoader();
         if (response.ok && elementDetails) {
+            if(loaderFlag){
+                showLoader();
+            }
             return elementDetails;
         } else {
             console.error("Element konnte nicht abgerufen werden:", elementId);
+            if(loaderFlag){
+                showLoader();
+            }
             return null;
         }
     } catch (error) {
-        hideLoader();
         console.error("Fehler beim Abrufen des Elements:", error);
+        if(loaderFlag){
+            showLoader();
+        }
         return null;
     }
 }
