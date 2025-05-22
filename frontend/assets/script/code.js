@@ -1356,7 +1356,7 @@ style.innerHTML = `
   background-color: white;
   border-radius: 12px;
   padding: 15px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
 }
 
 .tab-header {

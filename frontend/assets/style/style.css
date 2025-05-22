@@ -981,6 +981,7 @@ button {
     object-fit: cover;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     margin: 60px auto;
+    margin-top: 85px;
 }
 
 #accountOptionsWrapper {
@@ -1061,8 +1062,8 @@ button {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 22dvh;
-    height: 61dvh;
+    top: 10dvh;
+    max-height: 50dvh;
     overflow-y: auto;
 }
 #welcomeUser {
@@ -1477,7 +1478,7 @@ button {
     text-align: center;
     background: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.45);
     padding: 20px;
     scroll-snap-align: center;
     transition: transform 0.2s;
