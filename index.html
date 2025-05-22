@@ -180,6 +180,12 @@
     <h2>Login</h2>
     <input type="text" id="username" placeholder="Benutzername"><br><br>
     <input type="password" id="password" placeholder="Passwort"><br><br>
+
+    <div class="stay-logged-in">
+        <input type="checkbox" id="stayLoggedIn" onchange="handleAutoLogin(this.checked)">
+        <label for="stayLoggedIn">Angemeldet bleiben</label>
+    </div>
+
     <button onclick="login()" id="loginBtn">Anmelden</button>
     <button onclick="toggleRegistration()" id="registerBtn">Registrieren</button> 
     <p id="errorMsg"></p>

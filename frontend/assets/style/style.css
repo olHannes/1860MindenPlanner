@@ -445,6 +445,24 @@ input {
     background-color: #1e4d73;
 }
 
+.stay-logged-in {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #333;
+    gap: 8px;
+    padding-left: 5%;
+}
+
+.stay-logged-in input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #2c6693;
+    cursor: pointer;
+}
+
 #errorMsg {
     color: red;
     font-size: 14px;
