@@ -2520,6 +2520,8 @@ async function getElements(difficulty, group, searchText, learnedElements) {
         const elements = await response.json();
         hideLoader();
 
+        elements.sort((a,b) => a.wertigkeit - b.wertigkeit);
+
         elements.forEach(element => {
             if(document.getElementById('element-${element.id}')) {
                 return;
