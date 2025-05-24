@@ -69,6 +69,7 @@
             <li><strong>Elemente:</strong> Der gesamte Code Of Points, sowie die Bildtabellen wurden komplett in die Datenbank eingebunden.</li>
             <li><strong>Account Settings:</strong> Der Auto-Login kann [An / Aus] geschaltet werden.</li>
             <li><strong>Style & Bugfix:</strong> Kleine Änderungen und Bugfixes.</li>
+            <li><strong>Listen-Sortierung:</strong> Die Elementeliste kann nun nach Wertigkeit und nach der Gruppe aufsteigend und absteigend sortiert werden.</li>
 
         </ul>
         <button class="safeBtn" id="closeNews" onclick="document.getElementById('showNewsBtn').style.display='block';">Schließen</button>
@@ -412,9 +413,19 @@
                         <input type="text" id="searchInput" placeholder="Suche nach Name..." onchange="filterByText()">
 
                     </div>
+                </div>
+                <div id="elementListEdits">
+                    <button id="editFilter" onclick="openFilter();">Filter</button>
+                    <select name="SortType" id="editSortType">
+                        <option value="" disabled selected hidden>Sortierung</option>
+                        <option value="wertigkeit-asc">Wertigkeit aufsteigend</option>
+                        <option value="wertigkeit-desc">Wertigkeit absteigend</option>
+                        <option value="gruppe-asc">Gruppe aufsteigend</option>
+                        <option value="gruppe-desc">Gruppe absteigend</option>
+                    </select>
                 </div>        
-                <button id="editFilter" onclick="openFilter();">Filter</button>
-                
+                <p id="sortType">Wertigkeit: Aufsteigend</p>
+
                 <div id="elementList">
                     <div id="leftColumn"></div>
                     <div id="rightColumn"></div>

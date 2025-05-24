@@ -2493,7 +2493,30 @@ function filterByText() {
     activeFilter_text = document.getElementById("searchInput").value.trim();
     getFilteredElementList();
 }
-  
+
+document.getElementById("editSortType").addEventListener("change", (event) => {
+    const value = event.target.value;
+    const label = document.getElementById("sortType");
+
+    switch (value) {
+        case "wertigkeit-asc":
+            label.textContent = "Wertigkeit: Aufsteigend";
+            break;
+        case "wertigkeit-desc":
+            label.textContent = "Wertigkeit: Absteigend";
+            break;
+        case "gruppe-asc":
+            label.textContent = "Gruppe: Aufsteigend";
+            break;
+        case "gruppe-desc":
+            label.textContent = "Gruppe: Absteigend";
+            break;
+        default:
+            label.textContent = "";
+    }
+    getFilteredElementList();
+});
+
 
 
 //----------------------------------------------------------------------------------------------------------------- get filtered Elements
@@ -2520,7 +2543,21 @@ async function getElements(difficulty, group, searchText, learnedElements) {
         const elements = await response.json();
         hideLoader();
 
-        elements.sort((a,b) => a.wertigkeit - b.wertigkeit);
+        const selectedSort = document.getElementById("editSortType").value;
+
+        elements.sort((a, b) => {
+            switch (selectedSort) {
+                case "wertigkeit-desc":
+                    return b.wertigkeit - a.wertigkeit;
+                case "gruppe-asc":
+                    return a.elementegruppe - b.elementegruppe;
+                case "gruppe-desc":
+                    return b.elementegruppe - a.elementegruppe;
+                case "wertigkeit-asc":
+                default:
+                    return a.wertigkeit - b.wertigkeit;
+            }
+        });
 
         elements.forEach(element => {
             if(document.getElementById('element-${element.id}')) {

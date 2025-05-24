@@ -1325,15 +1325,21 @@ button {
 }
 
 
+#elementListEdits {
+    display: flex;
+    justify-content: space-evenly;
+}
 
+#sortType {
+    text-align: right;
+    margin: 0;
+    margin-right: 5px;
+    margin-top: 30px;
+}
 
 #editFilter {
     color: white;
     background-color: rgb(90, 59, 0);
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 1dvh;
 }
 
 #filterWrapper {
@@ -1683,7 +1689,7 @@ button {
     flex-grow: 1;
     display: flex;
     position: relative;
-    top: 5dvh;
+    top: 1dvh;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
