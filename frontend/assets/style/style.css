@@ -751,13 +751,13 @@ input {
 
 #userOptions{
     position: relative;
-    width: 45dvw;
-    height: 45dvw;
+    width: 42dvw;
+    height: 42dvw;
     max-width: 200px;
     max-height: 200px;
     color: white;
     background-color: rgb(62 170 62);
-    font-size: x-large;
+    font-size: larger;
 }
 
 #userOptions:hover {
@@ -767,13 +767,13 @@ input {
 /*Report Objects*/
 #reportIssue {
     position: relative;
-    width: 45dvw;
-    height: 45dvw;
+    width: 42dvw;
+    height: 42dvw;
     max-width: 200px;
     max-height: 200px;
     color: red;
     background-color: #cccccc;
-    font-size: x-large;
+    font-size: larger;
 }
 
 #reportIssue:hover {
