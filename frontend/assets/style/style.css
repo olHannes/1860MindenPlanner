@@ -1210,7 +1210,7 @@ button {
     transition: transform 0.3s ease;
 }
 #profilesBtn img {
-    width: 50px;
+    width: 70px;
     height: auto;
 }
 #profilesBtn:hover {
