@@ -126,6 +126,8 @@ function resetPanel(panelId) {
                 showDashboard();
             }
             break;
+        case 3:
+            break;
         default:
             console.error("Unbekanntes Panel");
             break;

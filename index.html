@@ -70,6 +70,8 @@
             <li><strong>Account Settings:</strong> Der Auto-Login kann [An / Aus] geschaltet werden.</li>
             <li><strong>Style & Bugfix:</strong> Kleine Änderungen und Bugfixes.</li>
             <li><strong>Listen-Sortierung:</strong> Die Elementeliste kann nun nach Wertigkeit und nach der Gruppe aufsteigend und absteigend sortiert werden.</li>
+            <li><strong>Style Updates:</strong> Neue Icons und Button-Stylings.</li>
+            <li><strong>Neuer Abschnitt:</strong> Abschnitt für persönliche Listen (gelernte Elemente / als Ziel gesetze Elemente).</li>
 
         </ul>
         <button class="safeBtn" id="closeNews" onclick="document.getElementById('showNewsBtn').style.display='block';">Schließen</button>
@@ -250,7 +252,10 @@
             <img src="frontend/assets/images/equipment/Pommelhorse_icon.png" alt="Equipment image" onclick="togglePanel(1);">
         </button>
         <button id="profilesBtn">
-            <img src="frontend/assets/images/system/members.png" alt="Profile Icon" onclick="showAllUser(); togglePanel(2);">
+            <img src="frontend/assets/images/system/members.png" alt="Members Icon" onclick="showAllUser(); togglePanel(2);">
+        </button>
+        <button id="personalBtn">
+            <img src="frontend/assets/images/system/profile_panel.png" alt="Profile Icon" style="width: 50px; height: auto;" onclick="togglePanel(3);">
         </button>
         <button id="settingsBtn">
             <img src="frontend/assets/images/system/settings_img.png" alt="Button Image" onclick="togglePanel(0);">
@@ -325,8 +330,10 @@
 
         
         <!--Buttons for Report, Logout, Acc-Delete-->
-        <button id="userOptions" onclick="displayOptionsContainer();">Daten bearbeiten</button>
-        <button id="reportIssue" onclick="createReport();">Feedback & Fehler</button>
+        <div style="display: flex; margin-top: 50px; justify-content: space-evenly;">
+            <button id="userOptions" onclick="displayOptionsContainer();">Daten bearbeiten</button>
+            <button id="reportIssue" onclick="createReport();">Feedback & Fehler</button>
+        </div>
         <button id="logoutBtn" onclick="logout();">Logout</button>
         <button id="delBtn" onclick="requestDeleteAcc();">Account löschen</button>
     </div>
@@ -530,6 +537,13 @@
                 <p>Auf dieser Seite soll ein Dash-/Leaderboard angezeigt werden, auf dem Wettkämpfe und Bewertungen eingetragen werden könne.</p>
             </div>
         </div>
+    </div>
+
+
+    <div id="panel3" class="panel">
+        <h2>Persönlicher Bereich</h2>
+
+        <p>still in progress</p>
     </div>
 
     <a href="frontend/impressum/impressum.html" class="impressum" style="top: 5px; color: #fcfcfc; height: 2dvh;">Impressum</a>

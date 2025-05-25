@@ -750,13 +750,14 @@ input {
 
 
 #userOptions{
-    position: absolute;
-    left: 32%;
-    transform: translateX(-50%);
-    width: 34%;
-    bottom: 90px;
+    position: relative;
+    width: 45dvw;
+    height: 45dvw;
+    max-width: 200px;
+    max-height: 200px;
     color: white;
     background-color: rgb(62 170 62);
+    font-size: x-large;
 }
 
 #userOptions:hover {
@@ -765,13 +766,14 @@ input {
 
 /*Report Objects*/
 #reportIssue {
-    position: absolute;
-    width: 34%;
-    left: 68%;
-    transform: translateX(-50%);
-    bottom: 90px;
+    position: relative;
+    width: 45dvw;
+    height: 45dvw;
+    max-width: 200px;
+    max-height: 200px;
     color: red;
     background-color: #cccccc;
+    font-size: x-large;
 }
 
 #reportIssue:hover {
@@ -889,6 +891,7 @@ input {
     bottom: 50px;
     left: 50%;
     width: 70%;
+    max-width: 250px;
     padding: 7px;
     transform: translateX(-50%);
     background-color: rgb(255, 170, 0);
@@ -908,6 +911,7 @@ input {
     bottom: 10px;
     left: 50%;
     width: 70%;
+    max-width: 375px;
     padding: 7px;
     transform: translateX(-50%);
     background-color: rgba(181, 10, 10, 0.993);
@@ -1203,17 +1207,17 @@ button {
     transform: rotate(15deg);
 }
 
-#profilesBtn{
+#profilesBtn, #personalBtn{
     background: none;
     border: none;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
-#profilesBtn img {
+#profilesBtn img, #personalBtn img {
     width: 70px;
     height: auto;
 }
-#profilesBtn:hover {
+#profilesBtn:hover, #personalBtn:hover {
     transform: rotate(15deg);
 }
 
