@@ -21,6 +21,34 @@ window.onload = function () {
     checkUserStatus();
 };
 
+
+
+window.addEventListener("popstate", function (event) {
+    if (event.state && event.state.page === "download") {
+        toggleDownloadPanel(false);
+    } else {
+        document.getElementById('downloadPage').style.display = "none";
+        document.getElementById('mainPage').style.display = "block";
+    }
+
+    if (event.state && event.state.page === "news") {
+        openNews(false);
+    } else {
+        closeNews(false);
+    }
+
+    if (event.state && event.state.panel) {
+        togglePanel(event.state.panel, false);
+    } else {
+        if (activePanel) {
+            activePanel.classList.remove('visible');
+            activePanel = null;
+        }
+    }
+});
+
+
+
 //----------------------------------------------------------------------------------------------------------------- show Notification
 function showMessage(title, content) {
     const box = document.getElementById('MessageBox');
@@ -50,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     document.getElementById("closeNews").addEventListener("click", function() {
-        document.getElementById("news").style.display = "none";
+        closeNews();    
     });
 
     document.getElementById("filterLearnedElements").addEventListener("change", function () {
@@ -59,8 +87,18 @@ document.addEventListener("DOMContentLoaded", function() {
       });
 });
 
-function openNews() {
+function openNews(push = true) {
     document.getElementById("news").style.display = "block";
+    document.getElementById("mainPage").style.display = "none";
+
+    if (push) history.pushState({ page: "news" }, "", "#news");
+}
+
+function closeNews(push = true) {
+    document.getElementById("news").style.display = "none";
+    document.getElementById("mainPage").style.display = "block";
+
+    if (push) history.back();
 }
 
 
@@ -87,19 +125,26 @@ function hideLoader(){
 let activePanel = null;
 
 // Open / Close
-function togglePanel(panelId) {
+function togglePanel(panelId, push = true) {
     const panel = document.getElementById('panel' + panelId);
 
     if (activePanel && activePanel !== panel) {
         activePanel.classList.remove('visible');
     }
-    if (!panel.classList.contains('visible')){
+    const isVisible = panel.classList.contains('visible');
+    if (!isVisible) {
         resetPanel(panelId);
         panel.classList.add('visible');
         activePanel = panel;
+        if (push) {
+            history.pushState({ panel: panelId }, "", `#panel${panelId}`);
+        }
     } else {
         panel.classList.remove('visible');
         activePanel = null;
+        if (push) {
+            history.back();
+        }
     }
 }
 
@@ -135,15 +180,22 @@ function resetPanel(panelId) {
 }
 
 // Download Panel
-function toggleDownloadPanel(){
+function toggleDownloadPanel(push = true) {
     const dPanel = document.getElementById('downloadPage');
     const mPanel = document.getElementById('mainPage');
-    if(dPanel.style.display=="block"){
-        dPanel.style.display="none";
-        mPanel.style.display="block";
+
+    const isDownloadVisible = dPanel.style.display === "block";
+
+    if (isDownloadVisible) {
+        dPanel.style.display = "none";
+        mPanel.style.display = "block";
+
+        if (push) history.back();
     } else {
-        dPanel.style.display="block";
-        mPanel.style.display="none";
+        dPanel.style.display = "block";
+        mPanel.style.display = "none";
+
+        if (push) history.pushState({ page: "download" }, "", "#download");
     }
 }
 
