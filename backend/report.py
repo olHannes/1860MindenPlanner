@@ -24,7 +24,7 @@ def createReport():
 
     notification.send_mail(reportType, reportTitle, report, username, timestamp)
     issues_collection.insert_one({
-        'reportType': reportTitle,
+        'reportType': reportType,
         'reportTitle': reportTitle,
         'report': report,
         'username': username,

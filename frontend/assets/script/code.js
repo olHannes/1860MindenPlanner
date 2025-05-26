@@ -747,6 +747,7 @@ function createReport() {
     document.getElementById('reportTxt').value = "";
     document.getElementById('createReport').style.display = "block";
     document.getElementById('loadingBackground').style.display="block";
+    loadReportList();
 }
 
 function cancleReport() {
@@ -812,6 +813,45 @@ async function submitReport() {
         showMessage("Fehlerhafte Reporterstellung", "Der Report konnte nicht erfolgreich gesendet werden!");
     }
 }
+
+async function loadReportList() {
+    const container = document.getElementById('reportList');
+
+    try {
+        const response = await fetch(`${serverURL}/report/all`);
+        if (!response.ok) {
+            throw new Error('Fehler beim Abrufen der Reports');
+        }
+
+        const reports = await response.json();
+
+        if (!Array.isArray(reports) || reports.length === 0) {
+            console.warn("Keine Reports gefunden.");
+            container.innerHTML = "<p style='color: white;'>Keine Reports gefunden</p>";
+            return;
+        }
+
+        container.innerHTML = '';
+
+        reports.forEach(({ reportType, reportTitle, report, username, timestamp }) => {
+            const reportCard = document.createElement('div');
+            reportCard.className = 'report-card';
+            reportCard.innerHTML = `
+                <h3>${reportTitle}</h3>
+                <p><strong>Typ:</strong> ${reportType}</p>
+                <p><strong>Inhalt:</strong> ${report}</p>
+                <p><strong>Datum:</strong> ${new Date(timestamp).toLocaleString()}</p>
+            `;
+            container.appendChild(reportCard);
+        });
+
+    } catch (error) {
+        console.error("Fehler:", error);
+        container.innerHTML = "<p style='color: white;'>Fehler beim Laden der Reports</p>";
+    }
+}
+
+
 
 
 //----------------------------------------------------------------------------------------------------------------- Report Handling <Admin>
