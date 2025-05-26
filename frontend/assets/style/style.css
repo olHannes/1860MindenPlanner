@@ -2202,3 +2202,11 @@ button {
     position: relative;
     margin-bottom: 1px;
 }
+
+
+
+
+#listBox {
+    display: flex;
+    justify-content: space-evenly;
+}
