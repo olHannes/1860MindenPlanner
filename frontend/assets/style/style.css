@@ -754,7 +754,7 @@ input {
     width: 42dvw;
     height: 42dvw;
     max-width: 200px;
-    max-height: 200px;
+    max-height: 150px;
     color: white;
     background-color: rgb(62 170 62);
     font-size: larger;
@@ -770,7 +770,7 @@ input {
     width: 42dvw;
     height: 42dvw;
     max-width: 200px;
-    max-height: 200px;
+    max-height: 150px;
     color: red;
     background-color: #cccccc;
     font-size: larger;
