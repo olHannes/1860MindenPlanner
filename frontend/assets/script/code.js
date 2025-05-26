@@ -24,28 +24,30 @@ window.onload = function () {
 
 
 window.addEventListener("popstate", function (event) {
+    
+    // Download-Panel
     if (event.state && event.state.page === "download") {
         toggleDownloadPanel(false);
     } else {
         document.getElementById('downloadPage').style.display = "none";
         document.getElementById('mainPage').style.display = "block";
     }
-
+    
+    // News-Panel
     if (event.state && event.state.page === "news") {
         openNews(false);
     } else {
         closeNews(false);
     }
 
-    if (event.state && event.state.panel) {
-        togglePanel(event.state.panel, false);
+    // Report-Formular
+    if (event.state && event.state.page === "createReport") {
+        createReport(false);
     } else {
-        if (activePanel) {
-            activePanel.classList.remove('visible');
-            activePanel = null;
-        }
+        cancleReport(false);
     }
 });
+
 
 
 
@@ -125,7 +127,7 @@ function hideLoader(){
 let activePanel = null;
 
 // Open / Close
-function togglePanel(panelId, push = true) {
+function togglePanel(panelId) {
     const panel = document.getElementById('panel' + panelId);
 
     if (activePanel && activePanel !== panel) {
@@ -136,15 +138,9 @@ function togglePanel(panelId, push = true) {
         resetPanel(panelId);
         panel.classList.add('visible');
         activePanel = panel;
-        if (push) {
-            history.pushState({ panel: panelId }, "", `#panel${panelId}`);
-        }
     } else {
         panel.classList.remove('visible');
         activePanel = null;
-        if (push) {
-            history.back();
-        }
     }
 }
 
@@ -729,21 +725,24 @@ async function updateAdminPassword(username, newPassword){
 }
 
 // color-Editing Container handling
-function toggleOptionsContainer(){
-    if(document.getElementById('accountOptionsWrapper').style.display=="block"){
+function toggleOptionsContainer() {
+    const wrapper = document.getElementById('accountOptionsWrapper');
+
+    if (wrapper.style.display === "block") {
         hideOptionsContainer();
     } else {
         displayOptionsContainer();
     }
 }
 
-function displayOptionsContainer(){
+
+function displayOptionsContainer(push = true){
     document.getElementById('passwordEdit').style.display="none";
     document.getElementById('nameEdit').style.display="none";
     document.getElementById('accountOptionsWrapper').style.display="block";
 }
 
-function hideOptionsContainer(){
+function hideOptionsContainer(push = true){
     document.getElementById('accountOptionsWrapper').style.display="none";
 }
 
@@ -794,19 +793,27 @@ async function changeUserColor(color) {
 
 
 //----------------------------------------------------------------------------------------------------------------- Report Handling <User>
-function createReport() {
+function createReport(push = true) {
     document.getElementById('reportTitle').value = "";
     document.getElementById('reportTxt').value = "";
     document.getElementById('createReport').style.display = "block";
     document.getElementById('loadingBackground').style.display="block";
     loadReportList();
+
+    if(push){
+        history.pushState({ page: "createReport" }, "", "#createReport");
+    }
 }
 
-function cancleReport() {
+function cancleReport(push = true) {
     document.getElementById('reportTitle').value = "";
     document.getElementById('reportTxt').value = "";
     document.getElementById('loadingBackground').style.display="none";
     document.getElementById('createReport').style.display = "none";
+
+    if (push) {
+        history.back();
+    }
 }
 
 function updateReportTitle() {
