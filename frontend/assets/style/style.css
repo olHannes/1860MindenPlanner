@@ -913,7 +913,7 @@ input {
     bottom: 50px;
     left: 50%;
     width: 70%;
-    max-width: 250px;
+    max-width: 375px;
     padding: 7px;
     transform: translateX(-50%);
     background-color: rgb(255, 170, 0);
