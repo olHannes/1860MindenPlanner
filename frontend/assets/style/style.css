@@ -1212,7 +1212,7 @@ button {
     height: auto;
 }
 #settingsBtn:hover {
-    transform: rotate(15deg);
+    transform: scale(1.2);
 }
 
 #equipmentBtn{
@@ -1226,7 +1226,7 @@ button {
     height: auto;
 }
 #equipmentBtn:hover {
-    transform: rotate(15deg);
+    transform: scale(1.2);
 }
 
 #profilesBtn {
@@ -1240,7 +1240,7 @@ button {
     height: auto;
 }
 #profilesBtn:hover {
-    transform: rotate(15deg);
+    transform: scale(1.2);
 }
 #personalBtn{
     background: none;
