@@ -1,7 +1,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(200deg, #6bb9f0, #07294a);
+    background: var(--color-bg);
     height: 100dvh;
     display: flex;
     justify-content: center;
@@ -402,10 +402,11 @@ body {
 }
 #headline h1 {
     text-decoration: solid;
+    color: var(--color-font);
 }
 
 #login_mask {
-    background: white;    
+    background: var(--color-surface);    
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
@@ -464,7 +465,7 @@ input {
 }
 
 #errorMsg {
-    color: red;
+    color: var(--color-danger);
     font-size: 14px;
     margin-top: 10px;
 }
@@ -756,7 +757,7 @@ input {
     max-width: 200px;
     max-height: 150px;
     color: white;
-    background-color: rgb(62 170 62);
+    background: var(--color-primary);
     font-size: larger;
 }
 
@@ -771,8 +772,8 @@ input {
     height: 30dvw;
     max-width: 200px;
     max-height: 150px;
-    color: red;
-    background-color: #cccccc;
+    color: var(--color-font);
+    background: var(--btn-delete);
     font-size: larger;
 }
 
@@ -916,7 +917,7 @@ input {
     max-width: 375px;
     padding: 7px;
     transform: translateX(-50%);
-    background-color: rgb(255, 170, 0);
+    background: var(--color-bg);
     color: white;
     border: none;
     cursor: pointer;
@@ -936,7 +937,8 @@ input {
     max-width: 375px;
     padding: 7px;
     transform: translateX(-50%);
-    background-color: rgba(181, 10, 10, 0.993);
+    background: var(--btn-delete);
+
     color: white;
     border: none;
     cursor: pointer;
@@ -961,6 +963,7 @@ input {
     max-width: 400px;
     padding: 20px;
     background: #1e1e1e;
+    background: var(--color-bg-dark);
     color: white;
     text-align: center;
     border-radius: 12px;
@@ -998,7 +1001,7 @@ button {
 }
 
 .delete-btn {
-    background: #d9534f;
+    background: var(--btn-delete);
     color: white;
 }
 
@@ -1007,7 +1010,7 @@ button {
 }
 
 .cancel-btn {
-    background: #6c757d;
+    background: var(--btn-dismiss);
     color: white;
 }
 
@@ -1652,7 +1655,7 @@ button {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    background: #007bff;
+    background: var(--color-bg);
     color: white;
     border: none;
     padding: 15px 30px;
@@ -1691,13 +1694,14 @@ button {
     width: 25%;
     max-width: 300px;
     color: white;
-    background-color: green;
+    background-color: var(--btn-save);
 }
 #changeRoutineType {
     width: 25%;
     max-width: 300px;
     color: white;
     background-color: rgb(128, 45, 0);
+    background: var(--bt);
 }
 
 #closeElementSelection {

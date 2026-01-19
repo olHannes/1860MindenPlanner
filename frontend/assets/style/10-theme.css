@@ -1,0 +1,49 @@
+:root {
+  /* =========
+     BRAND / SYSTEM
+     ========= */
+  --color-primary: #6bb9f0;
+  --color-primary-dark: #07294a;
+  --color-primary-hover: #1f7fb6;
+  --color-primary-soft: #e6f3fb;
+
+
+  --color-bg: linear-gradient(200deg, var(--color-primary), var(--color-primary-dark));
+  --color-bg-dark: linear-gradient(200deg, var(--color-primary-dark), black);
+  --color-surface: #ffffff;
+  --color-border: #d8dee5;
+
+  --color-font: #ececec;
+
+  --color-text: #0b0f14;
+  --color-text-muted: #5f6b7a;
+
+  /* =========
+     STATUS / FEEDBACK
+     ========= */
+  --color-success: #168a52;
+  --color-warning: #9a5b00;
+  --color-danger: #b42318;
+
+  --color-success-bg: #d7f5e6;
+  --color-warning-bg: #ffefd6;
+  --color-danger-bg: #ffe2e0;
+
+  /* =========
+     BUTTONS
+     ========= */
+  --btn-primary: var(--color-primary);
+  --btn-save: var(--color-success);
+  --btn-dismiss: #6b7785;
+  --btn-delete: var(--color-danger);
+
+  /* =========
+     SHADOW / FLOATING
+     ========= */
+  --shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+
+  /* =========
+     RADIUS
+     ========= */
+  --radius: 12px;
+}
