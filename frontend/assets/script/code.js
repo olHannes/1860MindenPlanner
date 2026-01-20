@@ -1,6 +1,8 @@
 
 let serverURL = "https://one860mindenplanner.onrender.com";
-//serverURL = "http://127.0.0.1:10000";
+serverURL = "http://127.0.0.1:10000";
+
+import * as eventListener from "./eventlistener.js";
 
 window.onload = function () {
     try {
@@ -37,7 +39,7 @@ window.addEventListener("popstate", function (event) {
     if (event.state && event.state.page === "news") {
         openNews(false);
     } else {
-        closeNews(false);
+        eventListener.closeNews(this.document, false);
     }
 
     // Report-Formular
@@ -74,14 +76,8 @@ function showMessage(title, content) {
 //----------------------------------------------------------------------------------------------------------------- hide info
 document.addEventListener("DOMContentLoaded", function() {
     loadMaxPoints();
-    document.getElementById("closeInfoBox").addEventListener("click", function() {
-        document.getElementById("startupInformation").style.display = "none";
-        localStorage.setItem("startUpInfo", true);
-    });
 
-    document.getElementById("closeNews").addEventListener("click", function() {
-        closeNews();    
-    });
+    eventListener.addFunktionalEventListener(document);
 
     document.getElementById("filterLearnedElements").addEventListener("change", function () {
         activeFilter_learnedElem = this.checked;
@@ -94,13 +90,6 @@ function openNews(push = true) {
     document.getElementById("mainPage").style.display = "none";
 
     if (push) history.pushState({ page: "news" }, "", "#news");
-}
-
-function closeNews(push = true) {
-    document.getElementById("news").style.display = "none";
-    document.getElementById("mainPage").style.display = "block";
-
-    if (push) history.back();
 }
 
 
@@ -198,20 +187,6 @@ function toggleDownloadPanel(push = true) {
 
 
 //----------------------------------------------------------------------------------------------------------------- Registration Handling
-
-// registration window
-function toggleRegistration() {
-    document.getElementById("login_mask").style.display = "none";
-    document.getElementById("registration_mask").style.display = "block";
-    clearLoginInput();
-}
-
-// cancle registration
-function cancelRegistration() {
-    document.getElementById("login_mask").style.display = "block";
-    document.getElementById("registration_mask").style.display = "none";
-    clearLoginInput();
-}
 
 // register new User
 async function register() {
@@ -362,19 +337,6 @@ function showNameError(){
 
 function hideNameError(){
     location.reload();
-}
-
-// clear Login / Registration Inputs
-function clearLoginInput(){
-    document.getElementById("username").value = "";
-    document.getElementById("password").value = "";
-    document.getElementById("errorMsg").textContent = "";
-
-    document.getElementById("errorMsgRegister").textContent = "";
-    document.getElementById("firstName").value = "";
-    document.getElementById("lastName").value = "";
-    document.getElementById("newPassword").value = "";
-    document.getElementById("confirmPassword").value = "";
 }
 
 // toggle panel view after login

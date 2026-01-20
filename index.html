@@ -189,8 +189,8 @@
         <label for="stayLoggedIn">Angemeldet bleiben</label>
     </div>
 
-    <button onclick="login()" id="loginBtn">Anmelden</button>
-    <button onclick="toggleRegistration()" id="registerBtn">Registrieren</button> 
+    <button id="loginBtn">Anmelden</button>
+    <button id="registerBtn">Registrieren</button> 
     <p id="errorMsg"></p>
     <a href="frontend/impressum/impressum.html" class="impressum">Impressum</a>
     <button id="showNewsBtn" class="openNews" style="width: 40%; background-color: var(--btn-primary);" onclick="openNews(); this.style.display='none';">Updates & News</button>
@@ -201,8 +201,8 @@
     <input type="text" id="lastName" placeholder="Nachname"><br><br>
     <input type="password" id="newPassword" placeholder="Neues Passwort"><br><br>
     <input type="password" id="confirmPassword" placeholder="Passwort wiederholen"><br><br>
-    <button onclick="register()" id="registerSubmitBtn">Registrieren</button>
-    <button onclick="cancelRegistration()" id="cancelBtn" style="background-color: red;">Abbrechen</button>
+    <button id="registerSubmitBtn">Registrieren</button>
+    <button id="cancelBtn" style="background-color: red;">Abbrechen</button>
     <p id="errorMsgRegister"></p>
     <a href="frontend/impressum/impressum.html" class="impressum">Impressum</a>
 </div>
@@ -531,6 +531,6 @@
     </div>
 
     <a href="frontend/impressum/impressum.html" class="impressum" style="top: 5px; color: #fcfcfc; height: 2dvh;">Impressum</a>
-    <script src="frontend/assets/script/code.js"></script>
+    <script src="frontend/assets/script/code.js" type="module"></script>
 </body>
 </html>
