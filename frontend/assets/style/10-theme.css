@@ -37,13 +37,13 @@
   --btn-dismiss: #6b7785;
   --btn-delete: var(--color-danger);
 
+  --icon-background-color: rgba(255, 255, 255, 0.75);
+
   /* =========
      SHADOW / FLOATING
      ========= */
   --shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 
-  /* =========
-     RADIUS
-     ========= */
   --radius: 12px;
+  --gap: 15px
 }

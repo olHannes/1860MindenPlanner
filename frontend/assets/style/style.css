@@ -143,35 +143,6 @@ body {
     background-color: #0056b3;
 }
 
-#startupInformation {
-    position: fixed;
-    top: 13dvh;
-    width: 74dvw;
-    max-width: 400px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #ffcc00;
-    padding: 15px;
-    border: 1px solid #916e05;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    z-index: 1300;
-}
-#closeInfoBox {
-    margin-top: 10px;
-    padding: 5px 10px;
-    border: none;
-    background-color: #484231;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 4px;
-}
-#closeInfoBox:hover {
-    background-color: #b38900;
-}
-
 
 #AdminPage {
     position: absolute;
@@ -434,6 +405,7 @@ input {
     width: 100%;
     padding: 12px;
     background-color: #2c6693;
+    background: var(--color-primary-hover);
     color: white;
     border: none;
     border-radius: 8px;
@@ -1204,20 +1176,6 @@ button {
     justify-content: space-around;
 }
 
-#settingsBtn{
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-#settingsBtn img {
-    width: 45px;
-    height: auto;
-}
-#settingsBtn:hover {
-    transform: scale(1.2);
-}
-
 #equipmentBtn{
     background: none;
     border: none;
@@ -1232,19 +1190,6 @@ button {
     transform: scale(1.2);
 }
 
-#profilesBtn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-#profilesBtn img {
-    width: 70px;
-    height: auto;
-}
-#profilesBtn:hover {
-    transform: scale(1.2);
-}
 #personalBtn{
     background: none;
     border: none;

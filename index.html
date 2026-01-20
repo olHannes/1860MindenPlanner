@@ -25,6 +25,7 @@
 
 
     <link rel="stylesheet" href="frontend/assets/style/10-theme.css">
+    <link rel="stylesheet" href="frontend/assets/style/20-base.css">
     <link rel="stylesheet" href="frontend/assets/style/style.css">
 </head>
 <body>
@@ -38,12 +39,22 @@
         <p>Aufgrund der längeren Inaktivität kann es bis zu 50 Sekunden dauern, bis der Server wieder online ist.</p>
     </div>
 
-    <div id="startupInformation">
-        <p><strong>Hinweis:</strong> Diese Seite befindet sich noch im Aufbau. Es kann daher zu Fehlern oder zu unerwartetem Verhalten kommen.</p>
-        <p>Falls Probleme auftreten, hilft of ein Neuladen der Seite oder das Nutzen von anderen Browsern</p>
-        <p>Fehler / Verbesserungsvorschläge können außerdem in den Einstellungen gemeldet werden.</p>
-        <button id="closeInfoBox">OK</button>
+
+    <div class="on-top-panel start-information" id="startupInformation">
+        <header>
+            <div class="icon--wrapper">
+                <span class="icon icon--information"></span>
+            </div>
+            <div class="vertical-container">
+                <h3>Kurzinfo</h3>
+                <p>Diese App wird gerade weiterentwickelt.</p>
+            </div>
+        </header>
+        <p class="description">Es kann vereinzelt zu Fehlern oder unerwartetem Verhalten kommen. <br><span>Häufig hilft ein Neuladen der Seite oder das Löschen des Caches.</span></p>
+        <span class="advice">Feedback kann unter <p style="margin: 0; font-style: italic; display: inline;">'Profil -> Feedback'</p> erstellt werden.</span>
+        <button id="closeInfoBox" class="btn">Verstanden</button>
     </div>
+
 
     <div id="loginError">
         <h3>Fehler beim Login</h3>
@@ -56,22 +67,7 @@
         <h3>Neuigkeiten</h3>
         <p>Die neusten Features seit den letzten Updates:</p>
         <ul>
-            <li><strong>Filter:</strong> Bei der Elementenauswahl kann man nun nach "gelernten" Elementen filtern.</li>
-            <li><strong>versch. Übungen:</strong> Ein Nutzer kann nun eine Wunsch-, und eine Wettkampfübung erstellen.</li>
-            <li><strong>Sichtbarkeit:</strong> Nutzer können die Sichtbarkeit einstellen (Die Nutzer werden nicht mit aufgelistet).</li>
-            <li><strong>Reports:</strong> Bei der Reporterstellung kann nun zwischen versch. Arten ausgewählt werden (Fehler, Verbesserung, Style, Hilfe)</li>
-            <li><strong>Übung kopieren:</strong> Du kannst eine bestehende Wettkampf- oder Wunschübung in die jeweils andere Variante übernehmen.</li>
-            <li><strong>Online Status:</strong> In der Mitglieder Liste wird angezeigt, ob der Nutzer aktuell online ist.</li>
-            <li><strong>Bewertungen:</strong> Ein Nutzer kann nun die Übungen von anderen Bewerten [Sternesystem]. <br>Die Einsicht erfolgt bei der Übungserstellung.</li>
-            <li><strong>Uptime Ping:</strong> Der Server wird nun ständig angesprochen, um Ladezeiten, sowie das abschalten nach Inaktivität zu vermeiden.</li>
-            <li><strong>Detail-Ansicht:</strong> Die Detailansicht kann nun auch in der Übungserstellung geöffnet werden.</li>
-            <li><strong>Bugfix:</strong> Detail Ansicht wird nur beim Klick auf das Bild geöffnet.</li>
-            <li><strong>Auto-Login:</strong> Der Nutzer bleibt beim schließen den Browserfensters angemeldet -> bis ein manueller Logout erfolgt.</li>
-            <li><strong>Elemente:</strong> Der gesamte Code Of Points, sowie die Bildtabellen wurden komplett in die Datenbank eingebunden.</li>
-            <li><strong>Account Settings:</strong> Der Auto-Login kann [An / Aus] geschaltet werden.</li>
-            <li><strong>Style & Bugfix:</strong> Kleine Änderungen und Bugfixes.</li>
-            <li><strong>Listen-Sortierung:</strong> Die Elementeliste kann nun nach Wertigkeit und nach der Gruppe aufsteigend und absteigend sortiert werden.</li>
-            <li><strong>Style Updates:</strong> Neue Icons und Button-Stylings.</li>
+            <li><strong>Refactoring:</strong> Neue Styles, verbesserte Funktionalität und Bugfixes.</li>
 
         </ul>
         <button class="safeBtn" id="closeNews" onclick="document.getElementById('showNewsBtn').style.display='block';">Schließen</button>
@@ -252,15 +248,9 @@
 
     <!--Bottom Menue for navigation-->
     <div id="menue">
-        <button id="equipmentBtn">
-            <img src="frontend/assets/images/equipment/Pommelhorse_icon.png" alt="Equipment image" onclick="togglePanel(1);">
-        </button>
-        <button id="profilesBtn">
-            <img src="frontend/assets/images/system/members.png" alt="Members Icon" onclick="showAllUser(); togglePanel(2);">
-        </button>
-        <button id="settingsBtn">
-            <img src="frontend/assets/images/system/settings_img.png" alt="Button Image" onclick="togglePanel(0);">
-        </button>
+        <span class="icon icon--equipment" onclick="togglePanel(1);"></span>
+        <span class="icon icon--groups" onclick="showAllUser(); togglePanel(2);"></span>
+        <span class="icon icon--settings" onclick="togglePanel(0);"></span>
     </div>
     
 
