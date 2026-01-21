@@ -1,4 +1,5 @@
 import * as config from "./config.js";
+import * as panel from "./panel-handling.js";
 
 // startup check and auto login
 ///////////////////////////////////////////////////////////////////
@@ -15,33 +16,11 @@ export async function startup(root) {
         localStorage.removeItem("adminKey");
         localStorage.removeItem("user");
     }
-
-    showStartupInformation(root);
-}
-
-
-function showStartupInformation(root) {
-    const startupPanel = root.getElementById("startupInformation");
-    if(startupPanel) {
-        startupPanel.style.display = localStorage.getItem("startUpInfo") ? "none" : "flex";
-    }
+    panel.showStartupInformation(root);
 }
 
 //helper functions
 ///////////////////////////////////////////////////////////////////
-function clearForm(root, inputIds = [], errorId = null) {
-    if (!root) return;
-    inputIds.forEach(id => {
-        const el = root.getElementById(id);
-        if (el && "value" in el) {
-            el.value = "";
-        }
-    });
-    if (errorId) {
-        const errorEl = root.getElementById(errorId);
-        if (errorEl) errorEl.textContent = "";
-    }
-}
 export function setAutoLogin(autoLogin) {
     localStorage.setItem("autoLogin", autoLogin ? "true" : "false");
 }
@@ -52,27 +31,6 @@ function normalizeString(txt) {
         .replace(/\b\w/g, c => c.toUpperCase());
 }
 ///////////////////////////////////////////////////////////////////
-
-// User Registration
-///////////////////////////////////////////////////////////////////
-//handle registration windows
-export function showRegistration(root) {
-    const loginMask = root.getElementById("login_mask");
-    const registrationMask = root.getElementById("registration_mask");
-    if(!loginMask || !registrationMask) return;
-    clearForm(root, ["firstName", "lastName", "newPassword", "confirmPassword"], "errorMsgRegister");
-    loginMask.style.display = "none";
-    registrationMask.style.display = "block";
-}
-export function hideRegistration(root) {
-    const loginMask = root.getElementById("login_mask");
-    const registrationMask = root.getElementById("registration_mask");
-    if(!loginMask || !registrationMask) return;
-    clearForm(root, ["username", "password"], "errorMsg");
-    registrationMask.style.display = "none";
-    loginMask.style.display = "block";
-}
-
 
 function showInlineNotification(field, text, type) {
     if (!field || !text || !type) return;
@@ -120,11 +78,11 @@ export async function register(root) {
         });
         const data = await resp.json();
         if (resp.ok && data.message === "Registrierung erfolgreich!") {
-            hideRegistration(root);
+            panel.hideRegistration(root);
             if(!errMsgRegistration || ! errMsg) return;
             showInlineNotification(errMsg, "Nutzer erfolgreich registriert.", "info");
         } else {
-            clearForm(root, ["firstName", "lastName", "newPassword", "confirmPassword"], "errorMsgRegister");
+            panel.clearForm(root, ["firstName", "lastName", "newPassword", "confirmPassword"], "errorMsgRegister");
             showInlineNotification(errMsgRegistration, "Registrierung fehlgeschlagen - Benutzername bereits vergeben!", "error");
         }
     } catch (error) {

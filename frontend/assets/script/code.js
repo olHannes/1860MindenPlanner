@@ -23,9 +23,9 @@ window.addEventListener("popstate", function (event) {
     
     // News-Panel
     if (event.state.page === "news") {
-        eventListener.displayNews(this.document, false);
+        panel.displayNews(this.document, false);
     } else {
-        eventListener.hideNews(this.document, false);
+        panel.hideNews(this.document, false);
     }
 
     // Report-Formular

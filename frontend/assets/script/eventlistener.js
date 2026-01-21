@@ -1,52 +1,49 @@
 import * as userHandling from "./user-handling.js";
+import * as panel from "./panel-handling.js";
 
 export function addFunktionalEventListener(root) {
     //close Information Panel
     const closeInfoBtn = root.querySelector("#closeInfoBox");
-    const informationPanel = root.querySelector(".on-top-panel");
     closeInfoBtn?.addEventListener("click", () => {
-        if(informationPanel) {
-            informationPanel.style.display="none";
-            localStorage.setItem("startUpInfo", false);
-        }
+        panel.hideStartupInformation(root);
     });
 
     //News Panel
     const openNewsBtn = root.querySelector("#showNewsBtn");
     openNewsBtn?.addEventListener("click", () => {
-        displayNews(root, true);
+        panel.displayNews(root, true);
         openNewsBtn.style.display="none";
     });
     const closeNewsBtn = root.querySelector("#closeNews");
     closeNewsBtn?.addEventListener("click", () => {
-        hideNews(root, true);
+        panel.hideNews(root, true);
         openNewsBtn.style.display="block";
     });
 
     //open Registration Panel
     const registrationBtn = root.querySelector("#registerBtn");
     registrationBtn?.addEventListener("click", () => {
-        userHandling.showRegistration(root);
+        panel.showRegistration(root);
     });
     //close Registration Panel
     const closeRegistrationBtn = root.querySelector("#cancelBtn");
     closeRegistrationBtn?.addEventListener("click", () => {
-        userHandling.hideRegistration(root);
+        panel.hideRegistration(root);
     });
-    //User Registration
+
+    //User Registration Submit
     const registrationSubmit = root.querySelector("#registerSubmitBtn");
     registrationSubmit?.addEventListener("click", () => {
         userHandling.register(root);
     });
-
-    //User Login
+    //User Login Submit
     const loginSubmit = root.querySelector("#loginBtn");
     loginSubmit?.addEventListener("click", () => {
         userHandling.login(root);
     });
 
 
-
+    //Auto Login Change -> Login Page
     const autoLoginCheckbox = document.querySelector("#stayLoggedIn");
     autoLoginCheckbox?.addEventListener("change", (e) => {
         userHandling.setAutoLogin(e.target.checked);
@@ -55,25 +52,6 @@ export function addFunktionalEventListener(root) {
     settingAutoCheckbox?.addEventListener("change", (e) => {
         userHandling.setAutoLogin(e.target.checked);
     });
-}
-
-
-
-
-export function displayNews(root, push = true) {
-    const newsPage = root.getElementById("news");
-    const mainPage = root.getElementById("mainPage");
-    if(!newsPage || !mainPage) return;
-    newsPage.style.display = "block";
-    mainPage.style.display = "none";
-
-    if (push) history.pushState({ page: "news" }, "", "#news");
-}
-export function hideNews(root, push = true) {
-    const newsPage = root.getElementById("news");
-    const mainPage = root.getElementById("mainPage");
-    if(!newsPage || !mainPage) return;
-    newsPage.style.display = "none";
-    mainPage.style.display = "block";
-    if(push) history.back();
+    //Auto Login Change -> Settings Page
+    
 }
