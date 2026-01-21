@@ -26,6 +26,8 @@
 
     <link rel="stylesheet" href="frontend/assets/style/10-theme.css">
     <link rel="stylesheet" href="frontend/assets/style/20-base.css">
+    <link rel="stylesheet" href="frontend/assets/style/30-icons.css">
+    <link rel="stylesheet" href="frontend/assets/style/30-components.css">
     <link rel="stylesheet" href="frontend/assets/style/style.css">
 </head>
 <body>
@@ -179,7 +181,7 @@
 <div id="headline">
     <h1>Routine Planner</h1>
 </div>
-<div id="login_mask">
+<div id="login_mask" class="login--page">
     <h2>Login</h2>
     <input type="text" id="username" placeholder="Benutzername"><br><br>
     <input type="password" id="password" placeholder="Passwort"><br><br>
@@ -189,20 +191,20 @@
         <label for="stayLoggedIn">Angemeldet bleiben</label>
     </div>
 
-    <button id="loginBtn">Anmelden</button>
-    <button id="registerBtn">Registrieren</button> 
+    <button id="loginBtn">Anmelden <span class="icon icon--login"></span></button>
+    <button id="registerBtn">Registrieren <span class="icon icon--registration"></span></button> 
     <p id="errorMsg"></p>
     <a href="frontend/impressum/impressum.html" class="impressum">Impressum</a>
-    <button id="showNewsBtn" class="openNews" style="width: 40%; background-color: var(--btn-primary);" this.style.display='none';">Updates & News</button>
+    <button id="showNewsBtn" class="openNews news-btn" style="display: none;">Updates & News</button>
 </div>
 
-<div id="registration_mask" style="display: none;">
+<div id="registration_mask" style="display: none;" class="registration--page">
     <input type="text" id="firstName" placeholder="Vorname"><br><br>
     <input type="text" id="lastName" placeholder="Nachname"><br><br>
     <input type="password" id="newPassword" placeholder="Neues Passwort"><br><br>
     <input type="password" id="confirmPassword" placeholder="Passwort wiederholen"><br><br>
-    <button id="registerSubmitBtn">Registrieren</button>
-    <button id="cancelBtn" style="background-color: red;">Abbrechen</button>
+    <button id="registerSubmitBtn">Registrieren <span class="icon icon--registration"</span></button>
+    <button id="cancelBtn" class="cancel">Abbrechen <span class="icon icon--cancel"></span></button>
     <p id="errorMsgRegister"></p>
     <a href="frontend/impressum/impressum.html" class="impressum">Impressum</a>
 </div>

@@ -1,0 +1,43 @@
+
+.icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  background-color: var(--icon-background-color);
+}
+.icon--groups {
+  -webkit-mask-image: url("../images/icons/users-group-rounded-svgrepo-com.svg");
+  mask-image: url("../images/icons/users-group-rounded-svgrepo-com.svg");
+}
+.icon--settings {
+  -webkit-mask-image: url("../images/icons/settings-svgrepo-com.svg");
+  mask-image: url("../images/icons/settings-svgrepo-com.svg");
+}
+.icon--equipment {
+  -webkit-mask-image: url("../images/icons/Pommelhorse_icon.svg");
+  mask-image: url("../images/icons/Pommelhorse_icon.svg");
+}
+.icon--information {
+  -webkit-mask-image: url("../images/icons/information-svgrepo-com.svg");
+  mask-image: url("../images/icons/information-svgrepo-com.svg");
+}
+.icon--login {
+  -webkit-mask-image: url("../images/icons/login-3-svgrepo-com.svg");
+  mask-image: url("../images/icons/login-3-svgrepo-com.svg");
+}
+.icon--registration {
+  -webkit-mask-image: url("../images/icons/add-square-svgrepo-com.svg");
+  mask-image: url("../images/icons/add-square-svgrepo-com.svg");
+}
+.icon--cancel {
+  -webkit-mask-image: url("../images/icons/cancel-svgrepo-com.svg");
+  mask-image: url("../images/icons/cancel-svgrepo-com.svg");
+}
