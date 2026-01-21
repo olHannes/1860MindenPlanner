@@ -1,4 +1,4 @@
-import * as userHandling from "./userHandling.js";
+import * as userHandling from "./user-handling.js";
 
 export function addFunktionalEventListener(root) {
     //close Information Panel
@@ -7,14 +7,20 @@ export function addFunktionalEventListener(root) {
     closeInfoBtn?.addEventListener("click", () => {
         if(informationPanel) {
             informationPanel.style.display="none";
-            localStorage.setItem("startUpInfo", true);
+            localStorage.setItem("startUpInfo", false);
         }
     });
 
-    //close News Panel
+    //News Panel
+    const openNewsBtn = root.querySelector("#showNewsBtn");
+    openNewsBtn?.addEventListener("click", () => {
+        displayNews(root, true);
+        openNewsBtn.style.display="none";
+    });
     const closeNewsBtn = root.querySelector("#closeNews");
     closeNewsBtn?.addEventListener("click", () => {
-        closeNews();
+        hideNews(root, true);
+        openNewsBtn.style.display="block";
     });
 
     //open Registration Panel
@@ -29,26 +35,41 @@ export function addFunktionalEventListener(root) {
     });
     //User Registration
     const registrationSubmit = root.querySelector("#registerSubmitBtn");
-    const registrationMask = root.querySelector("#registration_mask");
     registrationSubmit?.addEventListener("click", () => {
-        if(!registrationMask) return;
-        userHandling.register(registrationMask);
+        userHandling.register(root);
     });
 
     //User Login
     const loginSubmit = root.querySelector("#loginBtn");
-    const loginMask = root.querySelector("#login_mask");
     loginSubmit?.addEventListener("click", () => {
-        if(!loginMask) return;
-        userHandling.login(loginMask);
+        userHandling.login(root);
+    });
+
+
+
+    const autoLoginCheckbox = document.querySelector("#stayLoggedIn");
+    autoLoginCheckbox?.addEventListener("change", (e) => {
+        userHandling.setAutoLogin(e.target.checked);
+    })
+    const settingAutoCheckbox = document.querySelector("#autoLoginCheckbox");
+    settingAutoCheckbox?.addEventListener("change", (e) => {
+        userHandling.setAutoLogin(e.target.checked);
     });
 }
 
 
 
 
+export function displayNews(root, push = true) {
+    const newsPage = root.getElementById("news");
+    const mainPage = root.getElementById("mainPage");
+    if(!newsPage || !mainPage) return;
+    newsPage.style.display = "block";
+    mainPage.style.display = "none";
 
-export function closeNews(root, push = true) {
+    if (push) history.pushState({ page: "news" }, "", "#news");
+}
+export function hideNews(root, push = true) {
     const newsPage = root.getElementById("news");
     const mainPage = root.getElementById("mainPage");
     if(!newsPage || !mainPage) return;

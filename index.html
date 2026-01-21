@@ -70,7 +70,7 @@
             <li><strong>Refactoring:</strong> Neue Styles, verbesserte Funktionalität und Bugfixes.</li>
 
         </ul>
-        <button class="safeBtn" id="closeNews" onclick="document.getElementById('showNewsBtn').style.display='block';">Schließen</button>
+        <button class="safeBtn" id="closeNews">Schließen</button>
     </div>
 
 
@@ -185,7 +185,7 @@
     <input type="password" id="password" placeholder="Passwort"><br><br>
 
     <div class="stay-logged-in">
-        <input type="checkbox" id="stayLoggedIn" onchange="handleAutoLogin(this.checked)">
+        <input type="checkbox" id="stayLoggedIn">
         <label for="stayLoggedIn">Angemeldet bleiben</label>
     </div>
 
@@ -193,7 +193,7 @@
     <button id="registerBtn">Registrieren</button> 
     <p id="errorMsg"></p>
     <a href="frontend/impressum/impressum.html" class="impressum">Impressum</a>
-    <button id="showNewsBtn" class="openNews" style="width: 40%; background-color: var(--btn-primary);" onclick="openNews(); this.style.display='none';">Updates & News</button>
+    <button id="showNewsBtn" class="openNews" style="width: 40%; background-color: var(--btn-primary);" this.style.display='none';">Updates & News</button>
 </div>
 
 <div id="registration_mask" style="display: none;">
@@ -287,7 +287,7 @@
 
                 <div class="checkboxContainer" style="margin-top: 40px;">
                     <label class="checkboxLabel">
-                        <input type="checkbox" id="autoLoginCheckbox" class="accOptCheck" onchange="handleAutoLogin(this.checked)">
+                        <input type="checkbox" id="autoLoginCheckbox" class="accOptCheck">
                         Automatischer Login?
                     </label>
                 </div>

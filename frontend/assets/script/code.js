@@ -1,34 +1,20 @@
 
-let serverURL = "https://one860mindenplanner.onrender.com";
-serverURL = "http://127.0.0.1:10000";
-
+import * as config from "./config.js";
 import * as eventListener from "./eventlistener.js";
+import * as userHandling from "./user-handling.js";
 
 window.onload = function () {
-    try {
-        fetch(`${serverURL}/awake`)
-    } catch (error) {}
-    if(localStorage.getItem("autoLogin") != 'true'){
-        localStorage.removeItem("user");
-        localStorage.removeItem("userId");
-    }
-    if(localStorage.getItem("user") == "admin") {
-        localStorage.removeItem("adminKey");
-        localStorage.removeItem("user");
-    }
-
-    if(localStorage.getItem("startUpInfo") != null) {
-        document.getElementById("startupInformation").style.display="none";
-    }
+    userHandling.startup(this.document);
     checkUserStatus();
 };
 
 
 
 window.addEventListener("popstate", function (event) {
-    
+    if(!event.state) return;
+
     // Download-Panel
-    if (event.state && event.state.page === "download") {
+    if (event.state.page === "download") {
         toggleDownloadPanel(false);
     } else {
         document.getElementById('downloadPage').style.display = "none";
@@ -36,14 +22,14 @@ window.addEventListener("popstate", function (event) {
     }
     
     // News-Panel
-    if (event.state && event.state.page === "news") {
-        openNews(false);
+    if (event.state.page === "news") {
+        eventListener.displayNews(this.document, false);
     } else {
-        eventListener.closeNews(this.document, false);
+        eventListener.hideNews(this.document, false);
     }
 
     // Report-Formular
-    if (event.state && event.state.page === "createReport") {
+    if (event.state.page === "createReport") {
         createReport(false);
     } else {
         cancleReport(false);
@@ -84,13 +70,6 @@ document.addEventListener("DOMContentLoaded", function() {
         getFilteredElementList();
       });
 });
-
-function openNews(push = true) {
-    document.getElementById("news").style.display = "block";
-    document.getElementById("mainPage").style.display = "none";
-
-    if (push) history.pushState({ page: "news" }, "", "#news");
-}
 
 
 //----------------------------------------------------------------------------------------------------------------- handle loader
@@ -186,111 +165,8 @@ function toggleDownloadPanel(push = true) {
 
 
 
-//----------------------------------------------------------------------------------------------------------------- Registration Handling
-
-// register new User
-async function register() {
-    firstName = document.getElementById("firstName").value;
-    lastName = document.getElementById("lastName").value;
-    const newPassword = document.getElementById("newPassword").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
-
-    firstName = normalizeName(firstName);
-    lastName = normalizeName(lastName);
-
-    if (newPassword !== confirmPassword) {
-        document.getElementById("errorMsgRegister").textContent = "Passwörter stimmen nicht überein!";
-        return;
-    }
-
-    if (firstName.trim() === "" || lastName.trim() === "" || newPassword.trim() === "" || confirmPassword.trim() === "") {
-        document.getElementById("errorMsgRegister").textContent = "Alle Felder müssen ausgefüllt sein!";
-        return;
-    }
-    
-    const namePattern = /^[A-Za-zÄÖÜäöüß ]+$/;
-    if (!namePattern.test(firstName)) {
-        document.getElementById("errorMsgRegister").textContent = "Der Vorname darf nur Buchstaben enthalten!";
-        return;
-    }
-    
-    if (!namePattern.test(lastName)) {
-        document.getElementById("errorMsgRegister").textContent = "Der Nachname darf nur Buchstaben enthalten!";
-        return;
-    }
-    
-    try {
-        showLoader();
-        const response = await fetch(`${serverURL}/account/register`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ firstName, lastName, password: newPassword })
-        });
-
-        const data = await response.json();
-        hideLoader();
-        if (response.ok && data.message === "Registrierung erfolgreich!") {
-            cancelRegistration();
-            document.getElementById("errorMsgRegister").textContent = "";
-            clearLoginInput();
-            document.getElementById("errorMsg").textContent = "Nutzer erfolgreich registriert!";
-        } else {
-            document.getElementById("errorMsgRegister").textContent = "Benutzername bereits vergeben!";
-        }
-    } catch (error) {
-        hideLoader();
-        console.error("Error:", error);
-        document.getElementById("errorMsgRegister").textContent = "Ein unerwarteter Fehler ist aufgetreten!";
-    }
-}
-
-
 
 //----------------------------------------------------------------------------------------------------------------- Login Handling
-// login User
-async function login() {
-    let username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-    username = normalizeName(username);
-
-    showLoader();
-    try {
-        const response = await fetch(`${serverURL}/account/login`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username, password })
-        });
-
-        const data = await response.json();
-        hideLoader();
-
-        if(response.ok && username == "Admin"){
-            localStorage.setItem("user", username);
-            localStorage.setItem("userId", data.userId);
-            localStorage.setItem("adminKey", data.adminKey);
-            localStorage.removeItem("autoLogin");
-            loadAdminReports();
-            return;
-        }
-
-        if (response.ok && data.message === "Login erfolgreich!") {
-            localStorage.setItem("user", username);
-            localStorage.setItem("userId", data.userId);
-            setProfileName();
-            checkLoginStatus();
-            loadMaxPoints();
-        } else if (response.status === 403) {
-            document.getElementById("errorMsg").textContent = "Benutzer bereits auf einem anderen Gerät eingeloggt!";
-        } else {
-            document.getElementById("errorMsg").textContent = "Ungültiger Benutzername oder Passwort!";
-        }
-    } catch (error) {
-        hideLoader();
-        console.error("Error:", error);
-        document.getElementById("errorMsg").textContent = "Ein unerwarteter Fehler ist aufgetreten!";
-        showNameError();
-    }
-}
 
 // Update User Status
 async function checkUserStatus() {
@@ -646,14 +522,6 @@ async function handleVisibilityChange(isVisible) {
     hideLoader();
 }
 
-function handleAutoLogin(autoLogin){
-    if(autoLogin){
-        localStorage.setItem("autoLogin", 'true');
-    }else {
-        localStorage.setItem("autoLogin", 'false');
-    }
-}
-  
 
 async function updateAdminPassword(username, newPassword){
     adminKey = localStorage.getItem("adminKey");
