@@ -2,6 +2,13 @@ import * as userHandling from "./user-handling.js";
 import * as panel from "./panel-handling.js";
 
 export function addFunktionalEventListener(root) {
+    userControlListener(root);
+    addFloatingPanelListener(root);
+    addMainPanelListener(root);
+}
+
+
+function addFloatingPanelListener(root) {
     //close Information Panel
     const closeInfoBtn = root.querySelector("#closeInfoBox");
     closeInfoBtn?.addEventListener("click", () => {
@@ -11,12 +18,12 @@ export function addFunktionalEventListener(root) {
     //News Panel
     const openNewsBtn_1 = root.querySelector("#showNewsBtn");
     openNewsBtn_1?.addEventListener("click", () => {
-        panel.displayNews(root, true);
+        panel.showNews(root, true);
         openNewsBtn_1.style.display="none";
     });
     const openNewsBtn_2 = root.querySelector(".openNewsBtn");
     openNewsBtn_2?.addEventListener("click", () => {
-        panel.displayNews(root, true);
+        panel.showNews(root, true);
     });
     const closeNewsBtn = root.querySelector("#closeNews");
     closeNewsBtn?.addEventListener("click", () => {
@@ -34,6 +41,35 @@ export function addFunktionalEventListener(root) {
         panel.hideDownloads(root, true);
     });
 
+    //request Account deletion
+    const deleteBtn = root.querySelector("#delBtn");
+    deleteBtn?.addEventListener("click", () => {
+        panel.showAccountDeletion(root, true);
+    });
+    //cancel Account deletion
+    const cancelDeletionBtn = root.querySelector("#cancelDeletion");
+    cancelDeletionBtn?.addEventListener("click", () => {
+        panel.hideAccountDeletion(root, true);
+    });
+}
+
+
+function addMainPanelListener(root) {
+    const toggleEquipmentBtn = root.querySelector("#toggleEquipment");
+    toggleEquipmentBtn?.addEventListener("click", () => {
+        panel.toggleMainPanel(root, 1);
+    });
+    const toggleGroupsBtn = root.querySelector("#toggleGroups");
+    toggleGroupsBtn?.addEventListener("click", () => {
+        panel.toggleMainPanel(root, 2);
+    });
+    const toggleSettingsBtn = root.querySelector("#toggleSettings");
+    toggleSettingsBtn?.addEventListener("click", () => {
+        panel.toggleMainPanel(root, 0);
+    });
+}
+
+function userControlListener(root) {
     //open Registration Panel
     const registrationBtn = root.querySelector("#registerBtn");
     registrationBtn?.addEventListener("click", () => {
@@ -44,7 +80,6 @@ export function addFunktionalEventListener(root) {
     closeRegistrationBtn?.addEventListener("click", () => {
         panel.hideRegistration(root);
     });
-
     //User Registration Submit
     const registrationSubmit = root.querySelector("#registerSubmitBtn");
     registrationSubmit?.addEventListener("click", () => {
@@ -55,15 +90,19 @@ export function addFunktionalEventListener(root) {
     loginSubmit?.addEventListener("click", () => {
         userHandling.login(root);
     });
-
-
     //Auto Login Change -> Login Page
-    const autoLoginCheckbox = document.querySelector("#stayLoggedIn");
+    const autoLoginCheckbox = root.querySelector("#stayLoggedIn");
     autoLoginCheckbox?.addEventListener("change", (e) => {
         userHandling.setAutoLogin(e.target.checked);
     })
-    const settingAutoCheckbox = document.querySelector("#autoLoginCheckbox");
+    //Auto Login Change -> Settings Page
+    const settingAutoCheckbox = root.querySelector("#autoLoginCheckbox");
     settingAutoCheckbox?.addEventListener("change", (e) => {
         userHandling.setAutoLogin(e.target.checked);
+    });
+    //User Deletion
+    const deleteAccount = root.querySelector("#deleteAccount");
+    deleteAccount?.addEventListener("click", () => {
+        userHandling.deleteUserAccount(root);
     });
 }
