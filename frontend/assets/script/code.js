@@ -194,7 +194,7 @@ async function checkUserStatus() {
             localStorage.removeItem("userId");
             localStorage.removeItem("adminKey");
         } else {
-            setProfileName();
+            setProfileName(); // setupProfile(this.document);
             checkLoginStatus();
             loadMaxPoints();
         }
@@ -229,59 +229,6 @@ function checkLoginStatus() {
         document.getElementById("login_mask").style.display = "block";
         document.getElementById("headline").style.display = "block";
         document.getElementById("content").style.display = "none";
-    }
-}
-
-// initialize profile config
-async function setProfileName() {
-    const userId = localStorage.getItem("userId");
-    showLoader();
-    if(!userId){
-        console.error("Keine userId gefunden.");
-        hideLoader();
-        checkLoginStatus();
-        return;
-    }
-
-    try {
-        const response = await fetch(`${serverURL}/account/getUserInfo?userId=${userId}`, {
-            method: "GET",
-            headers: { "Content-Type": "application/json" }
-        });
-
-        if (!response.ok) {
-            throw new Error(`Fehler: ${response.status} ${response.statusText}`);
-        }
-        const userInfo = await response.json();
-        
-        document.getElementById('Vorname').textContent = userInfo.first_name;
-        document.getElementById('Nachname').textContent = userInfo.last_name;
-        document.getElementById('welcomeUser').textContent = "Willkommen "+userInfo.first_name; 
-
-        const profileImg = document.getElementById('profilePicture');
-        const profileImg_2 = document.getElementById('profilePictureOptions');
-        if (profileImg && profileImg_2 && userInfo.color_code && userInfo.color_code !== "#000000") {
-            profileImg.style.filter = `drop-shadow(0px 0px 5px ${userInfo.color_code})`;
-            profileImg_2.style.filter = `drop-shadow(0px 0px 5px ${userInfo.color_code})`;
-        } else if (profileImg && profileImg_2) {
-            profileImg.style.filter = "";
-            profileImg_2.style.filter = "";
-        }
-        document.getElementById('visibleCheckbox').checked = userInfo.visibility;
-
-        if(localStorage.getItem("autoLogin") == 'true'){
-            document.getElementById('autoLoginCheckbox').checked = true;
-        }else {
-            document.getElementById('autoLoginCheckbox').checked = false;
-        }
-
-        hideLoader();
-    } catch (error) {
-        hideLoader();
-        localStorage.removeItem("userId");
-        localStorage.removeItem("adminKey");
-        checkLoginStatus();
-        console.error("Error:", error);
     }
 }
 

@@ -167,6 +167,29 @@
   background: var(--btn-delete);
 }
 
+.info,
+.error {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  font-size: 13.5px;
+  line-height: 1.4;
+  display: none;
+}
+.info {
+  display: block;
+  background: var(--color-primary-soft);
+  border: 1px solid rgba(40, 146, 207, 0.35);
+  color: var(--color-text);
+}
+.error {
+  display: block;
+  background: var(--color-danger-bg);
+  border: 1px solid rgba(180, 35, 24, 0.45);
+  color: var(--color-danger);
+}
+
+
 
 
 

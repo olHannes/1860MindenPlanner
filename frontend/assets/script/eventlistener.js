@@ -52,6 +52,4 @@ export function addFunktionalEventListener(root) {
     settingAutoCheckbox?.addEventListener("change", (e) => {
         userHandling.setAutoLogin(e.target.checked);
     });
-    //Auto Login Change -> Settings Page
-    
 }

@@ -102,6 +102,11 @@ export async function login(root) {
     let pwd = root.getElementById("password")?.value;
     username = normalizeString(username);
 
+    if(!username || !pwd) {
+        showInlineNotification(errMsg, "Zum Anmelden bitte Benutzername und Passwort eingeben.", "error");
+        return;
+    }
+
     //showLoader
     try {
         const resp = await fetch(`${config.serverURL}/account/login`, {
@@ -111,7 +116,6 @@ export async function login(root) {
         });
         const data = await resp.json();
         //hideLoader
-        console.log(data);
 
         if(resp.ok && username === "Admin") {
             localStorage.setItem("user", username);
@@ -125,7 +129,8 @@ export async function login(root) {
         if (resp.ok && data.message === "Login erfolgreich!") {
             localStorage.setItem("user", username);
             localStorage.setItem("userId", data.userId);
-            //setProfileName();
+            showInlineNotification(errMsg, "Anmeldung erfolgreich!", "info");
+            setupProfile(root);
             //checkLoginStatus();
             //loadMaxPoints();
         } else if (resp.status === 403) {
@@ -138,6 +143,54 @@ export async function login(root) {
         showInlineNotification(errMsg, "Ein Netzwerkfehler ist aufgetreten!", "error");
         //showNameError
     } finally {
+        //hideLoader
+    }
+}
+
+// Request and Render Profile Data (after Login)
+///////////////////////////////////////////////////////////////////
+export async function setupProfile(root) {
+    const localUserId = localStorage.getItem("userId");
+    let firstNameContainer = root.getElementById("Vorname");
+    let lastNameContainer = root.getElementById("Nachname");
+    let welcomeText = root.getElementById("welcomeUser");
+    let profileImg_1 = root.getElementById("profilePicture");
+    let profileImg_2 = root.getElementById("profilePictureOptions");
+    let visibleToggle = root.getElementById("visibleCheckbox");
+    let autoLoginToggle = root.getElementById("autoLoginCheckbox");
+
+    if(!localUserId) {
+        console.error("keine userId gefunden");
+        //checkLoginStatus();
+        return;
+    }
+    if(!firstNameContainer || !lastNameContainer || !welcomeText || !profileImg_1 || !profileImg_2 || !visibleToggle || !autoLoginToggle) {
+        console.error("Setup Profile failed");
+        return;
+    }
+
+    try {
+        //showLoader
+        const resp = await fetch(`${config.serverURL}/account/getUserInfo?userId=${localUserId}`, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" }
+        });
+        if(!resp.ok) throw new Error("Failed to load User:", resp);
+        
+        const userInfo = await resp.json();
+        firstNameContainer.textContent = userInfo.first_name ?? "<not found>";
+        lastNameContainer.textContent = userInfo.last_name ?? "<not found>";
+        welcomeText.textContent = "Wilkommen " + userInfo.first_name ?? "";
+        profileImg_1.style.filter = userInfo.color_code ? `drop-shadow(0px 0px 5px ${userInfo.color_code})` : "";
+        profileImg_2.style.filter = userInfo.color_code ? `drop-shadow(0px 0px 5px ${userInfo.color_code})` : "";
+        visibleToggle.checked = userInfo.visibility ?? false;
+        autoLoginToggle.checked = localStorage.getItem("autoLogin") ?? false;
+    } catch (error) {
+        console.error("failed to setup Profile:", error);
+    } finally {
+        localStorage.removeItem("userId");
+        localStorage.removeItem("adminKey");
+        //checkLoginStatus();
         //hideLoader
     }
 }
