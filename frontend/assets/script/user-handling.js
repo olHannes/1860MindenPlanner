@@ -131,7 +131,7 @@ export async function login(root) {
             localStorage.setItem("userId", data.userId);
             showInlineNotification(errMsg, "Anmeldung erfolgreich!", "info");
             setupProfile(root);
-            //checkLoginStatus();
+            panel.applyLoginStatus(root);
             //loadMaxPoints();
         } else if (resp.status === 403) {
             showInlineNotification(errMsg, "Benutzer bereits auf einem anderen Gerät eingeloggt.", "error");
@@ -161,7 +161,7 @@ export async function setupProfile(root) {
 
     if(!localUserId) {
         console.error("keine userId gefunden");
-        //checkLoginStatus();
+        panel.applyLoginStatus(root);
         return;
     }
     if(!firstNameContainer || !lastNameContainer || !welcomeText || !profileImg_1 || !profileImg_2 || !visibleToggle || !autoLoginToggle) {
@@ -187,10 +187,10 @@ export async function setupProfile(root) {
         autoLoginToggle.checked = localStorage.getItem("autoLogin") ?? false;
     } catch (error) {
         console.error("failed to setup Profile:", error);
-    } finally {
         localStorage.removeItem("userId");
         localStorage.removeItem("adminKey");
-        //checkLoginStatus();
+    } finally {
+        panel.applyLoginStatus(root);
         //hideLoader
     }
 }

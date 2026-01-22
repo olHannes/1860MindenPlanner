@@ -194,8 +194,8 @@ async function checkUserStatus() {
             localStorage.removeItem("userId");
             localStorage.removeItem("adminKey");
         } else {
-            setProfileName(); // setupProfile(this.document);
-            checkLoginStatus();
+            setProfileName(); // user-handling.setupProfile(root);
+            checkLoginStatus(); // panel.applyLoginStatus(root);
             loadMaxPoints();
         }
 
@@ -215,22 +215,6 @@ function hideNameError(){
     location.reload();
 }
 
-// toggle panel view after login
-function checkLoginStatus() {
-    const user = localStorage.getItem("user");
-    const userId = localStorage.getItem("userId");
-    if (user && userId) {
-        document.getElementById("login_mask").style.display = "none";
-        document.getElementById("headline").style.display = "none";
-        document.getElementById("content").style.display = "block";
-        clearLoginInput();
-    } else {
-        clearLoginInput();
-        document.getElementById("login_mask").style.display = "block";
-        document.getElementById("headline").style.display = "block";
-        document.getElementById("content").style.display = "none";
-    }
-}
 
 
 //----------------------------------------------------------------------------------------------------------------- Logout Handling
@@ -257,7 +241,7 @@ async function logout() {
             localStorage.removeItem("userId");
             localStorage.removeItem("adminKey");
             document.getElementById('AdminPage').style.display="none";
-            checkLoginStatus();
+            checkLoginStatus(); // panel.applyLoginStatus(root);
         } else {
             document.getElementById("errorMsg").textContent = data.message || "Unbekannter Fehler!";
             document.getElementById('AdminPage').style.display="none";
@@ -268,7 +252,7 @@ async function logout() {
         console.error("Error:", error);
         document.getElementById("errorMsg").textContent = "Fehler beim Logout!";
     }
-    checkLoginStatus();
+    checkLoginStatus(); // panel.applyLoginStatus(root);
 }
 
 //----------------------------------------------------------------------------------------------------------------- Delete-Account Handling
@@ -310,7 +294,7 @@ async function deleteAccount() {
         localStorage.removeItem("user");
         localStorage.removeItem("userId");
         localStorage.removeItem("adminKey");
-        checkLoginStatus();
+        checkLoginStatus(); // panel.applyLoginStatus(root);
 
         showMessage("Account gelöscht", "Der Account '" + name + "' wurde erfolgreich gelöscht!");
         document.getElementById('requestDelAcc').style.display="none";

@@ -68,3 +68,24 @@ export function hideRegistration(root) {
     registrationMask.style.display = "none";
     loginMask.style.display = "block";
 }
+
+
+export function applyLoginStatus(root) {
+    let loginMask       = root.getElementById("login_mask");
+    let headline        = root.getElementById("headline");
+    let contentPanel    = root.getElementById("content");
+    const localUser    = localStorage.getItem("user");
+    const localUserId  = localStorage.getItem("userId");
+
+    if(!loginMask || !headline || !contentPanel) return;
+
+    if(localUser && localUserId) {
+        loginMask.style.display = "none";
+        headline.style.display = "none";
+        contentPanel.style.display = "block";
+    } else {
+        loginMask.style.display = "block";
+        headline.style.display = "block";
+        contentPanel.style.display = "none";
+    }
+}
