@@ -2,6 +2,7 @@
 import * as config from "./config.js";
 import * as eventListener from "./eventlistener.js";
 import * as userHandling from "./user-handling.js";
+import * as panel from "./panel-handling.js";
 
 window.onload = function () {
     userHandling.startup(this.document);
@@ -12,20 +13,21 @@ window.onload = function () {
 
 window.addEventListener("popstate", function (event) {
     if(!event.state) return;
+    const root = this.document;
 
     // Download-Panel
+    console.log(event.state.page);
     if (event.state.page === "download") {
-        toggleDownloadPanel(false);
+        panel.hideDownloads(root, false);
     } else {
-        document.getElementById('downloadPage').style.display = "none";
-        document.getElementById('mainPage').style.display = "block";
+        panel.displayDownloads(root, false);
     }
     
     // News-Panel
     if (event.state.page === "news") {
-        panel.displayNews(this.document, false);
+        panel.displayNews(root, false);
     } else {
-        panel.hideNews(this.document, false);
+        panel.hideNews(root, false);
     }
 
     // Report-Formular
@@ -241,7 +243,7 @@ async function logout() {
             localStorage.removeItem("userId");
             localStorage.removeItem("adminKey");
             document.getElementById('AdminPage').style.display="none";
-            checkLoginStatus(); // panel.applyLoginStatus(root);
+            panel.applyLoginStatus(this.document);
         } else {
             document.getElementById("errorMsg").textContent = data.message || "Unbekannter Fehler!";
             document.getElementById('AdminPage').style.display="none";
@@ -252,7 +254,7 @@ async function logout() {
         console.error("Error:", error);
         document.getElementById("errorMsg").textContent = "Fehler beim Logout!";
     }
-    checkLoginStatus(); // panel.applyLoginStatus(root);
+    panel.applyLoginStatus(this.document);
 }
 
 //----------------------------------------------------------------------------------------------------------------- Delete-Account Handling
@@ -294,7 +296,7 @@ async function deleteAccount() {
         localStorage.removeItem("user");
         localStorage.removeItem("userId");
         localStorage.removeItem("adminKey");
-        checkLoginStatus(); // panel.applyLoginStatus(root);
+        panel.applyLoginStatus(this.document);
 
         showMessage("Account gelöscht", "Der Account '" + name + "' wurde erfolgreich gelöscht!");
         document.getElementById('requestDelAcc').style.display="none";

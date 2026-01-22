@@ -9,15 +9,29 @@ export function addFunktionalEventListener(root) {
     });
 
     //News Panel
-    const openNewsBtn = root.querySelector("#showNewsBtn");
-    openNewsBtn?.addEventListener("click", () => {
+    const openNewsBtn_1 = root.querySelector("#showNewsBtn");
+    openNewsBtn_1?.addEventListener("click", () => {
         panel.displayNews(root, true);
-        openNewsBtn.style.display="none";
+        openNewsBtn_1.style.display="none";
+    });
+    const openNewsBtn_2 = root.querySelector(".openNewsBtn");
+    openNewsBtn_2?.addEventListener("click", () => {
+        panel.displayNews(root, true);
     });
     const closeNewsBtn = root.querySelector("#closeNews");
     closeNewsBtn?.addEventListener("click", () => {
         panel.hideNews(root, true);
-        openNewsBtn.style.display="block";
+        openNewsBtn_1.style.display="block";
+    });
+
+    //download panel
+    const openDownloadsBtn = root.querySelector(".openDownloadsBtn");
+    openDownloadsBtn?.addEventListener("click", () => {
+        panel.displayDownloads(root, true);
+    });
+    const closeDownloadBtn = root.querySelector(".closeDownloadBtn");
+    closeDownloadBtn?.addEventListener("click", () => {
+        panel.hideDownloads(root, true);
     });
 
     //open Registration Panel

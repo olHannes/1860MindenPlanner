@@ -34,6 +34,27 @@ export function hideNews(root, push = true) {
     if(push) history.back();
 }
 
+// download panel
+export function displayDownloads(root, push = true) {
+    let downloadPanel = root.getElementById("downloadPage");
+    let mainPage = root.getElementById("mainPage");
+
+    if(!downloadPanel || !mainPage) return;
+    downloadPanel.style.display = "block";
+    mainPage.style.display = "none";
+    if (push) history.pushState({ page: "download" }, "", "#download");
+
+}
+export function hideDownloads(root, push = true) {
+    let downloadPanel = root.getElementById("downloadPage");
+    let mainPage = root.getElementById("mainPage");
+
+    if(!downloadPanel || !mainPage) return;
+    downloadPanel.style.display = "none";
+    mainPage.style.display = "block";
+    history.back();
+}
+
 
 // User Login and Registration
 //////////////////////////////////////////////////////////////
