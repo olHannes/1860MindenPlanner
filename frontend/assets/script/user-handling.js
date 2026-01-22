@@ -30,6 +30,11 @@ function normalizeString(txt) {
         .replace(/\s+/g, ' ')
         .replace(/\b\w/g, c => c.toUpperCase());
 }
+function resetUserStorage() {
+    localStorage.removeItem("user");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("adminKey");
+}
 ///////////////////////////////////////////////////////////////////
 
 function showInlineNotification(field, text, type) {
@@ -192,5 +197,32 @@ export async function setupProfile(root) {
     } finally {
         panel.applyLoginStatus(root);
         //hideLoader
+    }
+}
+
+//Delete User
+export async function deleteUserAccount(root) {
+    const informationField = root.getElementById("errorMsg");
+    const currentName = localStorage.getItem("user");
+    const currentId = localStorage.getItem("userId");
+
+    if (!currentName || !currentId) return;
+    //showLoader();
+    try {
+        const resp = await fetch(`${config.serverURL}/account/delete`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name: currentName, userId: currentId})
+        });
+        if(!resp.ok) throw new Error(`Account löschen fehlgeschlagen: ${resp}`);
+        resetUserStorage();
+        panel.applyLoginStatus(root);
+        //showMessage("Account gelöscht", "Der Account '" + currentName + "' wurde erfolgreich entfernt.");
+        panel.hideAccountDeletion(root, true);
+        if(informationField) showInlineNotification(informationField, "Der Account wurde erfolgreich gelöscht", "info");
+    } catch (error) {
+        console.error("Account deletion error:", error);
+    } finally {
+        //hideLoader();
     }
 }

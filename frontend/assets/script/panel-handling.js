@@ -1,4 +1,20 @@
+
 //exported functions handles visibility changes of floating panels and different views
+
+//basic Functions
+//////////////////////////////////////////////////////////////
+export function show(el, display = "block") {
+    if (el) el.style.display = display;
+}
+export function hide(el) {
+    if (el) el.style.display = "none";
+}
+export function clearHTML(el) {
+    if (el) el.innerHTML = "";
+}
+
+// different floating panels
+//////////////////////////////////////////////////////////////
 
 // start-up Information 
 export function showStartupInformation(root) {
@@ -10,18 +26,18 @@ export function showStartupInformation(root) {
 export function hideStartupInformation(root) {
     const startupPanel = root.querySelector(".on-top-panel");
     if(startupPanel) {
-        startupPanel.style.display = "none";
+        hide(startupPanel);
         localStorage.setItem("startUpInfo", false);
     }
 }
 
 // news panel
-export function displayNews(root, push = true) {
+export function showNews(root, push = true) {
     const newsPage = root.getElementById("news");
     const mainPage = root.getElementById("mainPage");
     if(!newsPage || !mainPage) return;
-    newsPage.style.display = "block";
-    mainPage.style.display = "none";
+    show(newsPage, "block");
+    hide(mainPage);
 
     if (push) history.pushState({ page: "news" }, "", "#news");
 }
@@ -29,8 +45,8 @@ export function hideNews(root, push = true) {
     const newsPage = root.getElementById("news");
     const mainPage = root.getElementById("mainPage");
     if(!newsPage || !mainPage) return;
-    newsPage.style.display = "none";
-    mainPage.style.display = "block";
+    hide(newsPage);
+    show(mainPage, "block");
     if(push) history.back();
 }
 
@@ -40,21 +56,87 @@ export function displayDownloads(root, push = true) {
     let mainPage = root.getElementById("mainPage");
 
     if(!downloadPanel || !mainPage) return;
-    downloadPanel.style.display = "block";
-    mainPage.style.display = "none";
+    hide(mainPage);
+    show(downloadPanel, "block");
     if (push) history.pushState({ page: "download" }, "", "#download");
-
 }
 export function hideDownloads(root, push = true) {
     let downloadPanel = root.getElementById("downloadPage");
     let mainPage = root.getElementById("mainPage");
 
     if(!downloadPanel || !mainPage) return;
-    downloadPanel.style.display = "none";
-    mainPage.style.display = "block";
-    history.back();
+    hide(downloadPanel);
+    show(mainPage, "block");
+    if (push) history.back();
 }
 
+//Account deletion Panel
+export function showAccountDeletion(root, push = true) {
+    const panel = root.getElementById("requestDelAcc");
+    const background = root.getElementById("loadingBackground");
+    if(!panel || !background) return;
+    show(panel, "block");
+    show(background, "block");
+    if(push) history.pushState({ page: "deleteAccount" }, "", "#deleteAccount");
+}
+export function hideAccountDeletion(root, push = true) {
+    const panel = root.getElementById("requestDelAcc");
+    const background = root.getElementById("loadingBackground");
+    if(!panel || !background) return;
+    hide(panel);
+    hide(background);
+    if(push) history.back();
+}
+
+
+// main Content pages
+//////////////////////////////////////////////////////////////
+const panelResetters = {
+    0: () => {
+        hide(document.getElementById("nameEdit"));
+        hide(document.getElementById("passwordEdit"));
+        hide(document.getElementById("requestDelAcc"));
+        show(document.getElementById("nameView"), "block");
+    },
+    1: () => {
+        hide(document.getElementById("elementSelection"));
+        hide(document.getElementById("exerciseCreationPanel"));
+        hide(document.getElementById("EquipmentExercise"));
+        show(document.getElementById("exerciseCreationButtonPanel"), "flex");
+    },
+    2: () => {
+        const list = document.getElementById("memberExerciseList");
+        hide(list);
+        clearHTML(list);
+        const dashboard = document.getElementById("dashboard");
+        if (dashboard && dashboard.style.display === "block") {
+            //showDashboard();
+        }
+    },
+};
+export function resetPanel(panelId) {
+    const id = Number(panelId);
+    const fn = panelResetters[id];
+    if(!fn) {
+        console.error("Unbekanntes Panel:", panelId);
+        return;
+    }
+    fn();
+}
+export function toggleMainPanel(root, panelId) {
+  const panels = [0,1,2].map(i => root.getElementById(`panel${i}`));
+  const target = root.getElementById(`panel${panelId}`);
+  if (!target) return;
+
+  const wasOpen = target.classList.contains("visible");
+
+  panels.forEach(p => p?.classList.remove("visible"));
+
+  if (!wasOpen) {
+    resetPanel(panelId);
+    target.classList.add("visible");
+  }
+}
 
 // User Login and Registration
 //////////////////////////////////////////////////////////////
@@ -89,7 +171,6 @@ export function hideRegistration(root) {
     registrationMask.style.display = "none";
     loginMask.style.display = "block";
 }
-
 
 export function applyLoginStatus(root) {
     let loginMask       = root.getElementById("login_mask");

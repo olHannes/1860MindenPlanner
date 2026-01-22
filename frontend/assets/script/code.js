@@ -16,7 +16,6 @@ window.addEventListener("popstate", function (event) {
     const root = this.document;
 
     // Download-Panel
-    console.log(event.state.page);
     if (event.state.page === "download") {
         panel.hideDownloads(root, false);
     } else {
@@ -91,80 +90,6 @@ function hideLoader(){
     clearTimeout(loaderTimeout);
     document.getElementById('loadingMsg').style.display = "none";
 }
-
-
-//----------------------------------------------------------------------------------------------------------------- Page Handling
-let activePanel = null;
-
-// Open / Close
-function togglePanel(panelId) {
-    const panel = document.getElementById('panel' + panelId);
-
-    if (activePanel && activePanel !== panel) {
-        activePanel.classList.remove('visible');
-    }
-    const isVisible = panel.classList.contains('visible');
-    if (!isVisible) {
-        resetPanel(panelId);
-        panel.classList.add('visible');
-        activePanel = panel;
-    } else {
-        panel.classList.remove('visible');
-        activePanel = null;
-    }
-}
-
-// Reset
-function resetPanel(panelId) {
-    switch (parseInt(panelId, 10)) {
-        case 0:
-            document.getElementById('nameEdit').style.display="none";
-            document.getElementById('passwordEdit').style.display="none";
-            document.getElementById('requestDelAcc').style.display="none";
-            document.getElementById('nameView').style.display = 'block';
-            break;
-        case 1:
-            document.getElementById('elementSelection').style.display="none";
-            document.getElementById('exerciseCreationPanel').style.display="none";
-            document.getElementById('EquipmentExercise').style.display="none";
-            document.getElementById('exerciseCreationButtonPanel').style.display = "flex";  
-
-            break;
-        case 2:
-            document.getElementById('memberExerciseList').style.display="none";
-            document.getElementById('memberExerciseList').innerHTML="";
-            if(document.getElementById('dashboard').style.display == "block"){
-                showDashboard();
-            }
-            break;
-        case 3:
-            break;
-        default:
-            console.error("Unbekanntes Panel");
-            break;
-    }
-}
-
-// Download Panel
-function toggleDownloadPanel(push = true) {
-    const dPanel = document.getElementById('downloadPage');
-    const mPanel = document.getElementById('mainPage');
-
-    const isDownloadVisible = dPanel.style.display === "block";
-
-    if (isDownloadVisible) {
-        dPanel.style.display = "none";
-        mPanel.style.display = "block";
-
-        if (push) history.back();
-    } else {
-        dPanel.style.display = "block";
-        mPanel.style.display = "none";
-
-        if (push) history.pushState({ page: "download" }, "", "#download");
-    }
-}
-
 
 
 
@@ -256,58 +181,6 @@ async function logout() {
     }
     panel.applyLoginStatus(this.document);
 }
-
-//----------------------------------------------------------------------------------------------------------------- Delete-Account Handling
-// secure Window
-function requestDeleteAcc(){
-    document.getElementById('requestDelAcc').style.display="block";
-    document.getElementById('loadingBackground').style.display="block";
-}
-
-// cancle
-function cancelDeleteAcc(){
-    document.getElementById('requestDelAcc').style.display="none";
-    document.getElementById('loadingBackground').style.display="none";
-}
-
-// Delete Account
-async function deleteAccount() {
-    const name = localStorage.getItem("user");
-    const userId = localStorage.getItem("userId");
-
-    if (!name || !userId) {
-        document.getElementById("errorMsg").textContent = "Benutzer nicht gefunden!";
-        return;
-    }
-    showLoader();
-    try {
-        const response = await fetch(`${serverURL}/account/delete`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({name, userId})
-        });
-
-        if (!response.ok) {
-            throw new Error(`Account löschen fehlgeschlagen: ${response.status} ${response.statusText}`);
-        }
-
-        const result = await response.json();
-        hideLoader();
-        localStorage.removeItem("user");
-        localStorage.removeItem("userId");
-        localStorage.removeItem("adminKey");
-        panel.applyLoginStatus(this.document);
-
-        showMessage("Account gelöscht", "Der Account '" + name + "' wurde erfolgreich gelöscht!");
-        document.getElementById('requestDelAcc').style.display="none";
-
-    } catch (error) {
-        hideLoader();
-        console.error("Error:", error);
-        document.getElementById("errorMsg").textContent = "Fehler beim Löschen des Accounts!";
-    }
-}
-
 
 
 //----------------------------------------------------------------------------------------------------------------- Account Edit

@@ -124,8 +124,8 @@
         <h2>Account löschen?</h2>
         <h3>Bist du sicher, dass du deinen Account löschen möchtest?</h3>
         <div class="button-group">
-            <button class="delete-btn" onclick="deleteAccount();">Löschen</button>
-            <button class="cancel-btn" onclick="cancelDeleteAcc();">Abbrechen</button>
+            <button class="delete-btn" id="deleteAccount">Löschen</button>
+            <button class="cancel-btn" id="cancelDeletion">Abbrechen</button>
         </div>
     </div>
 
@@ -254,9 +254,9 @@
 
     <!--Bottom Menue for navigation-->
     <div id="menue">
-        <span class="icon icon--equipment" onclick="togglePanel(1);"></span>
-        <span class="icon icon--groups" onclick="showAllUser(); togglePanel(2);"></span>
-        <span class="icon icon--settings" onclick="togglePanel(0);"></span>
+        <span class="icon icon--equipment" id="toggleEquipment" onclick="return; togglePanel(1);"></span>
+        <span class="icon icon--groups" id="toggleGroups" onclick="return; showAllUser(); togglePanel(2);"></span>
+        <span class="icon icon--settings" id="toggleSettings" onclick="return; togglePanel(0);"></span>
     </div>
     
 
@@ -332,7 +332,7 @@
             <button id="reportIssue" onclick="createReport();">Feedback & Fehler</button>
         </div>
         <button id="logoutBtn" onclick="logout();">Logout</button>
-        <button id="delBtn" onclick="requestDeleteAcc();">Account löschen</button>
+        <button id="delBtn">Account löschen</button>
     </div>
 
 
