@@ -261,9 +261,11 @@
 
     <!-- Bottom Main Menu Navigation -->
     <div id="menue">
-        <span class="icon icon--equipment" id="toggleEquipment" onclick="return; togglePanel(1);"></span>
-        <span class="icon icon--groups" id="toggleGroups" onclick="return; showAllUser(); togglePanel(2);"></span>
-        <span class="icon icon--settings" id="toggleSettings" onclick="return; togglePanel(0);"></span>
+        <div id="menueWrapper">
+            <span class="icon icon--equipment" id="toggleEquipment" onclick="return; togglePanel(1);"></span>
+            <span class="icon icon--groups" id="toggleGroups" onclick="return; showAllUser(); togglePanel(2);"></span>
+            <span class="icon icon--settings" id="toggleSettings" onclick="return; togglePanel(0);"></span>
+        </div>
     </div>
     
     <div id="panelRoot" class="panel visible">

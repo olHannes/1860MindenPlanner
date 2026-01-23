@@ -13,6 +13,27 @@ body {
   height: 100dvh;
 }
 
+.panel {
+  position: absolute;
+  top: -110%;
+  left: 0;
+  width: 100%;
+  height: 90dvh;
+  transition: top 0.5s ease-in-out;
+  z-index: 15;
+  background-color: #f4f4f4;
+}
+.panel.visible {
+  top: 0;
+}
+.panel h2 {
+  position: absolute;
+  left: 50%;
+  top: 1dvh;
+  font-style: oblique;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
 
 
 /*Base Structure - Start Screen*/
