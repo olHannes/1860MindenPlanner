@@ -24,11 +24,13 @@
     <meta name="theme-color" content="#ffffff">
 
 
+    <link rel="stylesheet" href="frontend/assets/style/style.css">
+    
     <link rel="stylesheet" href="frontend/assets/style/10-theme.css">
     <link rel="stylesheet" href="frontend/assets/style/20-base.css">
     <link rel="stylesheet" href="frontend/assets/style/30-icons.css">
     <link rel="stylesheet" href="frontend/assets/style/30-components.css">
-    <link rel="stylesheet" href="frontend/assets/style/style.css">
+
 </head>
 <body>
 
@@ -42,6 +44,8 @@
     </div>
 
 
+    <!----------------- Floating Panels ----------------->
+    <!-- Startup Information Panel -->
     <div class="on-top-panel start-information" id="startupInformation">
         <header>
             <div class="icon--wrapper">
@@ -57,7 +61,7 @@
         <button id="closeInfoBox" class="btn">Verstanden</button>
     </div>
 
-
+    <!-- Login Error Panel-->
     <div id="loginError">
         <h3>Fehler beim Login</h3>
         <p>Es scheint einen Fehler beim Login gegeben zu haben.</p>
@@ -65,22 +69,80 @@
         <button onclick="hideNameError();">Schließen und Neuladen</button>
     </div>
 
+    <!-- News Panel -->
     <div id="news">
         <h3>Neuigkeiten</h3>
         <p>Die neusten Features seit den letzten Updates:</p>
         <ul>
             <li><strong>Refactoring:</strong> Neue Styles, verbesserte Funktionalität und Bugfixes.</li>
-
         </ul>
         <button class="safeBtn" id="closeNews">Schließen</button>
     </div>
 
-
+    <!-- Global Notification Box -->
     <div id="MessageBox">
         <h3 id="messageBoxTitle">Message Title</h3>
         <p id="messageBoxContent">Info Text</p>
     </div>
+
+    <!-- Secure Window for Account Deletion -->
+    <div id="requestDelAcc">
+        <h2>Account löschen?</h2>
+        <h3>Bist du sicher, dass du deinen Account löschen möchtest?</h3>
+        <div class="button-group">
+            <button class="delete-btn" id="deleteAccount">Löschen</button>
+            <button class="cancel-btn" id="cancelDeletion">Abbrechen</button>
+        </div>
+    </div>
+
+    <!-- Report Creation -->
+    <div id="createReport">
+        <h2>Fehler melden</h2>
+
+        <label for="reportType">Art des Reports:</label>
+        <select id="reportType" onchange="updateReportTitle();">
+            <option value="Fehler">Fehler</option>
+            <option value="Verbesserung">Verbesserung</option>
+            <option value="Style">Style</option>
+            <option value="Hilfe">Hilfe</option>
+        </select>
+
+        <input type="text" id="reportTitle" placeholder="Titel des Reports">
+        <textarea id="reportTxt" placeholder="Fehlerbeschreibung"></textarea>
+        <button id="submitReport" onclick="submitReport()">Report erstellen</button>
+        <button id="cancleReport" onclick="cancleReport()">Abbrechen</button>
+
+        <div id="reportList">
+            <div class="loader" id="reportLoader"></div>
+        </div>
+    </div>
+
+    <!-- Secure Routine Copy -->
+    <div id="secureRoutineCopy">
+        <h2>Übung kopieren?</h2>
+        <h3></h3>
+        <div class="button-group">
+            <button class="delete-btn copyBtn" id="validCopyRoutine">Übung kopieren</button>
+            <button class="cancel-btn" onclick="cancleRoutineCopy()">Abbrechen</button>
+        </div>
+    </div>
     
+    <!-- Panel for Rating -->
+    <div id="ratingRoutine">
+        <h2>Übung bewerten</h2>
+        <div id="StarRating">
+            <span class="star" data-index="1">&#9734;</span>
+            <span class="star" data-index="2">&#9734;</span>
+            <span class="star" data-index="3">&#9734;</span>
+            <span class="star" data-index="4">&#9734;</span>
+            <span class="star" data-index="5">&#9734;</span>
+        </div>
+        <button class="" onclick="submitRating()">Senden</button>
+        <button class="cancel-btn" onclick="hideRatingPanel()">Abbrechen</button>
+    </div>
+
+
+
     <!--Admin Page for Report View-->
     <div id="AdminPage">
         <div id="adminPwdChangeWrapper">
@@ -119,99 +181,47 @@
         <button onclick="logout();" id="AdminLogout">Logout</button>
     </div>
     
-    <!--Secure Window for Account deletion-->
-    <div id="requestDelAcc">
-        <h2>Account löschen?</h2>
-        <h3>Bist du sicher, dass du deinen Account löschen möchtest?</h3>
-        <div class="button-group">
-            <button class="delete-btn" id="deleteAccount">Löschen</button>
-            <button class="cancel-btn" id="cancelDeletion">Abbrechen</button>
-        </div>
-    </div>
 
-    <!--Secure Routine Copy-->
-    <div id="secureRoutineCopy">
-        <h2>Übung kopieren?</h2>
-        <h3></h3>
-        <div class="button-group">
-            <button class="delete-btn copyBtn" id="validCopyRoutine">Übung kopieren</button>
-            <button class="cancel-btn" onclick="cancleRoutineCopy()">Abbrechen</button>
-        </div>
-    </div>
-
-    <!--Window for Report creation-->
-    <div id="createReport">
-        <h2>Fehler melden</h2>
-
-        <label for="reportType">Art des Reports:</label>
-        <select id="reportType" onchange="updateReportTitle();">
-            <option value="Fehler">Fehler</option>
-            <option value="Verbesserung">Verbesserung</option>
-            <option value="Style">Style</option>
-            <option value="Hilfe">Hilfe</option>
-        </select>
-
-        <input type="text" id="reportTitle" placeholder="Titel des Reports">
-        <textarea id="reportTxt" placeholder="Fehlerbeschreibung"></textarea>
-        <button id="submitReport" onclick="submitReport()">Report erstellen</button>
-        <button id="cancleReport" onclick="cancleReport()">Abbrechen</button>
-
-        <div id="reportList">
-            <div class="loader" id="reportLoader"></div>
-        </div>
-    </div>
-    
-    <!--Panel for Rating-->
-    <div id="ratingRoutine">
-        <h2>Übung bewerten</h2>
-        <div id="StarRating">
-            <span class="star" data-index="1">&#9734;</span>
-            <span class="star" data-index="2">&#9734;</span>
-            <span class="star" data-index="3">&#9734;</span>
-            <span class="star" data-index="4">&#9734;</span>
-            <span class="star" data-index="5">&#9734;</span>
-        </div>
-        <button class="" onclick="submitRating()">Senden</button>
-        <button class="cancel-btn" onclick="hideRatingPanel()">Abbrechen</button>
-    </div>
     
 
     
     <!--Login and Register Page-->
-<div id="headline">
-    <h1>Routine Planner</h1>
-</div>
-<div id="login_mask" class="login--page">
-    <h2>Login</h2>
-    <input type="text" id="username" placeholder="Benutzername"><br><br>
-    <input type="password" id="password" placeholder="Passwort"><br><br>
+    <section class="start-screen" id="start-screen">
+        <h1 class="headline">Routine Planner</h1>
 
-    <div class="stay-logged-in">
-    <label class="toggle">
-        <input type="checkbox" id="stayLoggedIn">
-        <span class="toggle__track"></span>
-        <span class="toggle__label">Angemeldet bleiben</span>
-    </label>
-    </div>
+        <div id="login_mask" class="login--page">
+            <h2>Login</h2>
+            <input type="text" id="username" placeholder="Benutzername">
+            <input type="text" id="password", placeholder="Passwort">
+            <div class="stay-logged-in">
+                <label class="toggle">
+                    <input type="checkbox" id="stayLoggedIn">
+                    <span class="toggle__track"></span>
+                    <span class="toggle__label">Angemeldet bleiben</span>
+                </label>
+            </div>
+            <button id="loginBtn">Anmelden <span class="icon icon--login"></span></button>
+            <button id="registerBtn">Registrieren <span class="icon icon--registration"></span></button>
+            <p id="errorMsg"></p>
+        </div>
+        
+        <div id="registration_mask" class="registration--page">
+            <h2>Registrieren</h2>
+            <input type="text" id="registration-firstName" placeholder="Vorname">
+            <input type="text" id="registration-lastName" placeholder="Nachname">
+            <input type="password" id="newPassword" placeholder="Passwort">
+            <input type="password" id="confirmPassword" placeholder="Passwort wiederholen">
+            
+            <button id="registerSubmitBtn">Registrieren <span class="icon icon--registration"></span></button>
+            <button id="cancelBtn" class="cancel">Abbrechen <span class="icon icon--cancel"></span></button>
+            
+            <p id="errorMsgRegister"></p>
+        </div>
+        
+        <button id="showNewsBtn" class="openNews news-btn">Updates & News <span class="icon icon--update"></span></button>
+        <p class="impressum"><a href="frontend/impressum/impressum.html">Impressum</a> &copy; 2026</p>
+    </section>
 
-
-    <button id="loginBtn">Anmelden <span class="icon icon--login"></span></button>
-    <button id="registerBtn">Registrieren <span class="icon icon--registration"></span></button> 
-    <p id="errorMsg"></p>
-    <a href="frontend/impressum/impressum.html" class="impressum">Impressum</a>
-    <button id="showNewsBtn" class="openNews news-btn" style="display: none;">Updates & News</button>
-</div>
-
-<div id="registration_mask" style="display: none;" class="registration--page">
-    <input type="text" id="firstName" placeholder="Vorname"><br><br>
-    <input type="text" id="lastName" placeholder="Nachname"><br><br>
-    <input type="password" id="newPassword" placeholder="Neues Passwort"><br><br>
-    <input type="password" id="confirmPassword" placeholder="Passwort wiederholen"><br><br>
-    <button id="registerSubmitBtn">Registrieren <span class="icon icon--registration"</span></button>
-    <button id="cancelBtn" class="cancel">Abbrechen <span class="icon icon--cancel"></span></button>
-    <p id="errorMsgRegister"></p>
-    <a href="frontend/impressum/impressum.html" class="impressum">Impressum</a>
-</div>
 
 
 <!--Content Page (only when logged in)-->
@@ -238,83 +248,35 @@
         <h3>Reck - Bildtabelle (NE)</h3>
         <a href="pdfFiles/LK_M_NE_Bildtabellen_Reck.pdf" class="download-btn" download>Download PDF</a>
         <div class="seperator" style="margin-bottom: 15px;"></div>
-        <h3>Code of Points</h3>
+        <h3>Code of Points 2022 - 2024</h3>
         <a href="pdfFiles/Code_of_Points__GT-Maenner_2022-2024.pdf" class="download-btn" download>Download PDF</a>
+        <div class="seperator"></div>
+        <h3>Code of Points 2025 - 2028</h3>
+        <a href="pdfFiles/en_1.1 - MAG Code of Points 2025-2028.pdf" class="download-btn" download>Download PDF</a>
         <div class="seperator"></div>
         <a class="hide-download-btn closeDownloadBtn">Downloads schließen</a>
     </div>
 
-    <!--Main Page with Welcome Text-->
-    <div id="mainPage">
-        <h1 id="welcomeUser">Willkommen, <i>User</i>!</h1>
-        <p id="welcomeTxt">Auf dieser Seite kannst du Übungen zusammenstellen und Wettkämpfe einsehen. Unten im Menü kannst du zwischen der Übungsgestaltung, der Nutzerübersicht und den Profileinstellungen wechseln. Der aktuelle <i>Code-of-Points (COP: 2022-2024)</i>, sowie die <i>NE-Bildtabellen</i> kannst du über den Download Button herunterladen. Bei der Nutzerübersicht kannst du dich zusätzlich eintragen und Punkte hinzufügen.</p>
-        <a class="download-btn openDownloadsBtn">PDF Downloads ↧</a>
-        <a class="download-btn openNewsBtn">News & Updates</a>
-    </div>
 
-    <!--Bottom Menue for navigation-->
+
+    <!-- Bottom Main Menu Navigation -->
     <div id="menue">
         <span class="icon icon--equipment" id="toggleEquipment" onclick="return; togglePanel(1);"></span>
         <span class="icon icon--groups" id="toggleGroups" onclick="return; showAllUser(); togglePanel(2);"></span>
         <span class="icon icon--settings" id="toggleSettings" onclick="return; togglePanel(0);"></span>
     </div>
     
+    <div id="panelRoot" class="panel visible">
+        <div id="mainPage">
+            <h1 id="welcomeUser">Wilkommen, <i>User</i>!</h1>
+            <p id="welcomeTxt">Auf dieser Seite kannst du Übungen zusammenstellen und Wettkämpfe einsehen. Unten im Menü kannst du zwischen der Übungsgestaltung, der Nutzerübersicht und den Profileinstellungen wechseln. Der aktuelle <i>Code-of-Points (COP: 2022-2024)</i>, sowie die <i>NE-Bildtabellen</i> kannst du über den Download Button herunterladen. Bei der Nutzerübersicht kannst du dich zusätzlich eintragen und Punkte hinzufügen.</p>
+            <button class="openDownloadsBtn">PDF Downloads <span class="icon icon--download"></span></button>
+            <button class="openNewsBtn">News & Updates <span class="icon icon--update"></span></button>
+        </div>
+    </div>
 
     <!--Account Settings Page-->
     <div id="panel0" class="panel">
-        <div id="accountOptionsWrapper">
-            <div id="accountOptions">
-                <h3 style="text-align: center;">Account Options</h3>
-                <button style="background: none;"><img src="frontend/assets/images/system/back.png" alt="goBack-Btn" class="goBack-Btn" onclick="hideOptionsContainer();"></button>
-                
-                <img src="frontend/assets/images/system/profile_icon.png" alt="profile picture" id="profilePictureOptions" class="profilePicture" onclick="toggleOptionsContainer();">
-                
-                <div id="colorContainer">
-                    <div id="color1" class="colorPick" style="background-color: #FF5733;" onclick="changeUserColor('#FF5733');"></div>
-                    <div id="color2" class="colorPick" style="background-color: #28A745;" onclick="changeUserColor('#28A745');"></div>
-                    <div id="color3" class="colorPick" style="background-color: #007BFF;" onclick="changeUserColor('#007BFF');"></div>
-                    <div id="color4" class="colorPick" style="background-color: #FFC107;" onclick="changeUserColor('#FFC107');"></div>
-                    <div id="color5" class="colorPick" style="background-color: #6F42C1;" onclick="changeUserColor('#6F42C1');"></div>            
-                </div>
-            
-                <button id="editNameBtn" onclick="editName();">
-                    ✎ Namen bearbeiten ✎
-                </button>
-                <button id="editPasswordBtn" onclick="editPassword();">
-                    ✎ Passwort bearbeiten ✎
-                </button>   
-
-                <div class="checkboxContainer">
-                    <label class="checkboxLabel">
-                      <input type="checkbox" id="visibleCheckbox" class="accOptCheck" onchange="handleVisibilityChange(this.checked)">
-                      Sichtbar für andere?
-                    </label>
-                </div>
-
-                <div class="checkboxContainer" style="margin-top: 40px;">
-                    <label class="checkboxLabel">
-                        <input type="checkbox" id="autoLoginCheckbox" class="accOptCheck">
-                        Automatischer Login?
-                    </label>
-                </div>
-                  
-
-                    <!--Windows for Name edits-->
-                <div id="nameEdit" style="display: none;">
-                    <input type="text" id="editVorname">
-                    <input type="text" id="editNachname">
-                    <button class="safeBtn" id="safeBtn1" onclick="saveName();" style="display: none;">Speichern</button>
-                    <button class="cancleBtn" id="cancleBtn1" onclick="cancleEdits();" style="display: none;">Abbrechen</button>
-                </div>
-
-                <div id="passwordEdit" style="display: none;">
-                    <input type="text" id="editPassword_1" placeholder="neues Passwort">
-                    <button class="safeBtn" id="safeBtn2" onclick="updatePassword(document.getElementById('editPassword_1').value);" style="display: none;">Speichern</button>
-                    <button class="cancleBtn" id="cancleBtn2" onclick="cancleEdits();" style="display: none;">Abbrechen</button>
-                </div>
-            </div>
-        </div>
-
         <h2>Account Settings</h2>
 
         <img src="frontend/assets/images/system/profile_icon.png" alt="profile picture" id="profilePicture" class="profilePicture">
@@ -325,14 +287,73 @@
             </div>
         </div>
 
-        
-        <!--Buttons for Report, Logout, Acc-Delete-->
         <div style="display: flex; margin-top: 50px; justify-content: space-evenly;">
-            <button id="userOptions" onclick="displayOptionsContainer();">Daten bearbeiten</button>
+            <button id="userOptions">Daten bearbeiten</button>
             <button id="reportIssue" onclick="createReport();">Feedback & Fehler</button>
         </div>
-        <button id="logoutBtn" onclick="logout();">Logout</button>
+        <button id="logoutBtn">Logout</button>
         <button id="delBtn">Account löschen</button>
+    </div>
+
+
+    <!-- Panel for Profile Settings -->
+    <div id="panel3" class="panel account-settings-wrapper">
+        <div class="account-settings">
+
+            <h3>Account Options</h3>
+            <span id="hideAdjustProfile" class="icon icon--return return-btn"></span>
+            
+            <img src="frontend/assets/images/system/profile_icon.png" alt="profile picture" id="profilePictureOptions" class="profilePicture" onclick="toggleOptionsContainer();">
+            
+            <div id="colorContainer">
+                <div id="color1" class="colorPick" style="background-color: #FF5733;" onclick="changeUserColor('#FF5733');"></div>
+                <div id="color2" class="colorPick" style="background-color: #28A745;" onclick="changeUserColor('#28A745');"></div>
+                <div id="color3" class="colorPick" style="background-color: #007BFF;" onclick="changeUserColor('#007BFF');"></div>
+                <div id="color4" class="colorPick" style="background-color: #FFC107;" onclick="changeUserColor('#FFC107');"></div>
+                <div id="color5" class="colorPick" style="background-color: #6F42C1;" onclick="changeUserColor('#6F42C1');"></div>            
+            </div>
+            
+            <div class="userName">
+                <span id="userVorname">Vorname</span>
+                <span id="userNachname">Nachname</span>
+            </div>
+            
+            <button id="editNameBtn" class="edit-names" style="margin-top: var(--gap);" onclick="editName();">
+                ✎ Namen bearbeiten ✎
+            </button>
+            <button id="editPasswordBtn" class="edit-names" onclick="editPassword();">
+                ✎ Passwort bearbeiten ✎
+            </button>   
+            
+            <div class="stay-logged-in" style="margin-top: var(--gap);">
+                <label class="toggle">
+                    <input type="checkbox" id="visibleCheckbox">
+                    <span class="toggle__track"></span>
+                    <span class="toggle__label">Sichtbarkeit für Andere</span>
+                </label>
+            </div>
+            
+            <div class="stay-logged-in">
+                <label class="toggle">
+                    <input type="checkbox" id="autoLoginCheckbox">
+                    <span class="toggle__track"></span>
+                    <span class="toggle__label">Automatischer Login</span>
+                </label>
+            </div>
+            
+            <div id="nameEdit" style="display: none;">
+                <input type="text" id="editVorname">
+                <input type="text" id="editNachname">
+                <button class="safeBtn" id="safeBtn1" onclick="saveName();" style="display: none;">Speichern</button>
+                <button class="cancleBtn" id="cancleBtn1" onclick="cancleEdits();" style="display: none;">Abbrechen</button>
+            </div>
+        
+            <div id="passwordEdit" style="display: none;">
+                <input type="text" id="editPassword_1" placeholder="neues Passwort">
+                <button class="safeBtn" id="safeBtn2" onclick="updatePassword(document.getElementById('editPassword_1').value);" style="display: none;">Speichern</button>
+                <button class="cancleBtn" id="cancleBtn2" onclick="cancleEdits();" style="display: none;">Abbrechen</button>
+            </div>
+        </div>
     </div>
 
 

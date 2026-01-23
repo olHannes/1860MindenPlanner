@@ -88,6 +88,24 @@ export function hideAccountDeletion(root, push = true) {
     if(push) history.back();
 }
 
+//Account Adjustments Panel
+export function showAdjustProfile(root, push = true) {
+    const optionsPanel  = root.getElementById("accountOptionsWrapper");
+    const pwdEdit       = root.getElementById("passwordEdit");
+    const nameEdit      = root.getElementById("nameEdit");
+    if (!optionsPanel || !pwdEdit || !nameEdit) return;
+    show(optionsPanel, "block");
+    if(push) history.pushState({ page: "profileAdjustment"}, "", "#profileAdjustment");
+}
+export function hideAdjustProfile(root, push = true) {
+    const optionsPanel  = root.getElementById("accountOptionsWrapper");
+    const pwdEdit       = root.getElementById("passwordEdit");
+    const nameEdit      = root.getElementById("nameEdit");
+    if (!optionsPanel || !pwdEdit || !nameEdit) return;
+    hide(optionsPanel);
+    if(push) history.back();
+}
+
 
 // main Content pages
 //////////////////////////////////////////////////////////////
@@ -118,13 +136,13 @@ export function resetPanel(panelId) {
     const id = Number(panelId);
     const fn = panelResetters[id];
     if(!fn) {
-        console.error("Unbekanntes Panel:", panelId);
+        console.error("Panel-Reset failed:", panelId);
         return;
     }
     fn();
 }
 export function toggleMainPanel(root, panelId) {
-  const panels = [0,1,2].map(i => root.getElementById(`panel${i}`));
+  const panels = [0,1,2,3].map(i => root.getElementById(`panel${i}`));
   const target = root.getElementById(`panel${panelId}`);
   if (!target) return;
 
@@ -151,6 +169,8 @@ export function clearForm(root, inputIds = [], errorId = null) {
     if (errorId) {
         const errorEl = root.getElementById(errorId);
         if (errorEl) errorEl.textContent = "";
+        if (errorEl) errorEl.classList.toggle("error", false);
+        if (errorEl) errorEl.classList.toggle("info", false);
     }
 }
 
@@ -173,21 +193,18 @@ export function hideRegistration(root) {
 }
 
 export function applyLoginStatus(root) {
-    let loginMask       = root.getElementById("login_mask");
-    let headline        = root.getElementById("headline");
+    let startMask       = root.getElementById("start-screen");
     let contentPanel    = root.getElementById("content");
     const localUser    = localStorage.getItem("user");
     const localUserId  = localStorage.getItem("userId");
 
-    if(!loginMask || !headline || !contentPanel) return;
+    if(!startMask || !contentPanel) return;
 
     if(localUser && localUserId) {
-        loginMask.style.display = "none";
-        headline.style.display = "none";
-        contentPanel.style.display = "block";
+        hide(startMask);
+        show(contentPanel, "block");
     } else {
-        loginMask.style.display = "block";
-        headline.style.display = "block";
-        contentPanel.style.display = "none";
+        hide(contentPanel);
+        show(startMask, "grid");
     }
 }

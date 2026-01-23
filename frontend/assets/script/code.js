@@ -144,45 +144,6 @@ function hideNameError(){
 
 
 
-//----------------------------------------------------------------------------------------------------------------- Logout Handling
-// User Logout
-async function logout() {
-    const username = localStorage.getItem("user");
-    const userId = localStorage.getItem("userId");
-    if (!username || !userId) {
-        document.getElementById("errorMsg").textContent = "Kein Benutzer eingeloggt!";
-    }
-
-    showLoader();
-    try {
-        const response = await fetch(`${serverURL}/account/logout`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name: username, userId })
-        });
-
-        const data = await response.json();
-        hideLoader();
-        if (response.ok && (data.message === "Erfolgreich ausgeloggt!" || data.message === "Kein Benutzername oder Benutzer-ID angegeben!")) {
-            localStorage.removeItem("user");
-            localStorage.removeItem("userId");
-            localStorage.removeItem("adminKey");
-            document.getElementById('AdminPage').style.display="none";
-            panel.applyLoginStatus(this.document);
-        } else {
-            document.getElementById("errorMsg").textContent = data.message || "Unbekannter Fehler!";
-            document.getElementById('AdminPage').style.display="none";
-        }
-
-    } catch (error) {
-        hideLoader();
-        console.error("Error:", error);
-        document.getElementById("errorMsg").textContent = "Fehler beim Logout!";
-    }
-    panel.applyLoginStatus(this.document);
-}
-
-
 //----------------------------------------------------------------------------------------------------------------- Account Edit
 // name Edit
 function editName() {

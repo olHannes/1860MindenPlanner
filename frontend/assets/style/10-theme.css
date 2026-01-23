@@ -10,6 +10,15 @@
 
   --color-bg: linear-gradient(200deg, var(--color-primary), var(--color-primary-dark));
   --color-bg-dark: linear-gradient(200deg, var(--color-primary-dark), black);
+  --color-bg-alt-1: linear-gradient(210deg,#6bb9f0 0%,#3f8fc4 45%,#0b2a4a 100%);
+
+  --color-bg-alt-2: linear-gradient(
+  180deg,
+  #1e293b 0%,
+  #0f172a 100%
+);
+
+
   --color-surface: #ffffff;
   --color-border: #d8dee5;
 

@@ -28,7 +28,7 @@ function addFloatingPanelListener(root) {
     const closeNewsBtn = root.querySelector("#closeNews");
     closeNewsBtn?.addEventListener("click", () => {
         panel.hideNews(root, true);
-        openNewsBtn_1.style.display="block";
+        openNewsBtn_1.style.display="flex";
     });
 
     //download panel
@@ -41,6 +41,7 @@ function addFloatingPanelListener(root) {
         panel.hideDownloads(root, true);
     });
 
+
     //request Account deletion
     const deleteBtn = root.querySelector("#delBtn");
     deleteBtn?.addEventListener("click", () => {
@@ -51,6 +52,11 @@ function addFloatingPanelListener(root) {
     cancelDeletionBtn?.addEventListener("click", () => {
         panel.hideAccountDeletion(root, true);
     });
+    const hideAdjustProfileBtn = root.querySelector("#hideAdjustProfile");
+    hideAdjustProfileBtn?.addEventListener("click", () => {
+        panel.hideAdjustProfile(root, true);
+    });
+
 }
 
 
@@ -66,6 +72,14 @@ function addMainPanelListener(root) {
     const toggleSettingsBtn = root.querySelector("#toggleSettings");
     toggleSettingsBtn?.addEventListener("click", () => {
         panel.toggleMainPanel(root, 0);
+    });
+    const adjustProfileBtn = root.querySelector("#userOptions");
+    adjustProfileBtn?.addEventListener("click", () => {
+        panel.toggleMainPanel(root, 3);
+    });
+    const hideAdjustProfileBtn = root.querySelector("#hideAdjustProfile");
+    hideAdjustProfileBtn?.addEventListener("click", () => {
+        panel.toggleMainPanel(root, 3);
     });
 }
 
@@ -104,5 +118,10 @@ function userControlListener(root) {
     const deleteAccount = root.querySelector("#deleteAccount");
     deleteAccount?.addEventListener("click", () => {
         userHandling.deleteUserAccount(root);
+    });
+    //User Logout
+    const logoutBtn = root.querySelector("#logoutBtn");
+    logoutBtn?.addEventListener("click", () => {
+        userHandling.logout(root);
     });
 }

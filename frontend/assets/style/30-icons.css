@@ -41,3 +41,15 @@
   -webkit-mask-image: url("../images/icons/cancel-svgrepo-com.svg");
   mask-image: url("../images/icons/cancel-svgrepo-com.svg");
 }
+.icon--return {
+  -webkit-mask-image: url("../images/icons/return-svgrepo-com.svg");
+  mask-image: url("../images/icons/return-svgrepo-com.svg");
+}
+.icon--update {
+  -webkit-mask-image: url("../images/icons/update-page-svgrepo-com.svg");
+  mask-image: url("../images/icons/update-page-svgrepo-com.svg");
+}
+.icon--download {
+  -webkit-mask-image: url("../images/icons/download-svgrepo-com.svg");
+  mask-image: url("../images/icons/download-svgrepo-com.svg");
+}

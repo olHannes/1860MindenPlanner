@@ -75,122 +75,24 @@
 
 
 
-
 /*News Button*/
 .news-btn {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  width: 70dvw;
-  max-width: 400px;
-  background-color: var(--btn-primary);
-}
-
-/*Login Panel*/
-.login--page {
-  background: var(--color-surface);    
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  width: 70dvw;
-  max-width: 400px;
-  text-align: center;
-  z-index: 10;
-}
-.login--page h2 {
-  margin-bottom: 20px;
-  color: var(--color-primary-dark);
-}
-.login--page button {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--gap);
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
+  justify-content: space-evenly;
   color: white;
-  background-color: #2c6693;
-  background: var(--color-primary-hover);
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-.login--page #registerBtn {
-  padding: 6px 12px;
-}
-.login--page button:hover {
-  background: #1e4d73;
-}
-.login--page button .icon {
-  height: 28px;
-  width: 28px;
+  background-color: var(--color-primary-hover);
+  max-width: 200px;
+  padding: 6px 18px;
 }
 
 
-/*Registration Panel*/
-.registration--page {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  width: 70dvw;
-  max-width: 400px;
-  text-align: center;
-  z-index: 10;
+.return-btn {
+  background: var(--color-primary-dark);
+  height: 55px;
+  width: 55px;
 }
-.registration--page h2 {
-  margin-bottom: 20px;
-  color: #2c6693;
-}
-.registration--page button {
-  width: 100%;
-  padding: 12px;
-  background: var(--btn-save);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s;
-  margin-top: 10px;
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-}
-.registration--page button:hover {
-    background-color: var(--btn-primary);
-}
-.registration--page .cancel {
-  background: var(--btn-delete);
-}
-
-.info,
-.error {
-  margin-top: 12px;
-  padding: 10px 12px;
-  border-radius: var(--radius);
-  font-size: 13.5px;
-  line-height: 1.4;
-  display: none;
-}
-.info {
-  display: block;
-  background: var(--color-primary-soft);
-  border: 1px solid rgba(40, 146, 207, 0.35);
-  color: var(--color-text);
-}
-.error {
-  display: block;
-  background: var(--color-danger-bg);
-  border: 1px solid rgba(180, 35, 24, 0.45);
-  color: var(--color-danger);
-}
-
-
-
 
 
 /*Main Menu*/
@@ -200,4 +102,163 @@
 }
 #menue .icon:hover {
     transform: scale(1.2);
+}
+
+
+/*Default Panel*/
+#panelRoot {
+    background: var(--color-bg-alt-1);
+}
+#mainPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 50%;
+  top: 10dvh;
+  transform: translateX(-50%);
+  overflow-y: auto;
+  width: 90dvw;
+  height: 50dvh;
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.488);
+  background: white;
+}
+#welcomeUser {
+    color: #2c3e50;
+    margin-top: 1px;
+}
+#welcomeTxt {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+#mainPage button {
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    padding: 10px 20px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: white;
+    background-color: #27ae60;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+#mainPage button:hover {
+    background-color: #219150;
+}
+
+
+
+
+
+.account-settings-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.account-settings{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--gap);
+  width: 100%;
+  height: 95%;
+  max-width: 800px;
+}
+
+.account-settings > h3{
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0;
+}
+
+.account-settings .return-btn{
+  position: relative;
+  bottom: 6%;
+  left: 40%;
+}
+
+.profilePicture{
+  width: 120px;
+  height: 120px;
+  border-radius: 999px;
+  object-fit: cover;
+  display: block;
+  margin: var(--gap);
+  cursor: pointer;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+}
+
+#colorContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  margin-bottom: var(--gap);
+  border-radius: 999px;
+  border: 1px solid rgba(216, 222, 229, 0.9);
+  background: rgba(255, 255, 255, 0.75);
+}
+.colorPick{
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  cursor: pointer;
+  border: 1px solid rgba(11, 15, 20, 0.18);
+}
+
+.userName{
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: baseline;
+  font-weight: 700;
+  color: var(--color-text);
+}
+.userName span{
+  font-size: 1.05rem;
+}
+.edit-names {
+  color: #1e4d73;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 15px 23px;
+  margin-top: var(--gap);
+}
+
+
+
+
+
+
+.account-settings input[type="text"]{
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(216, 222, 229, 0.95);
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--color-text);
+  outline: none;
+}
+
+
+.safeBtn{
+  background: rgba(22, 138, 82, 0.12);
+  border-color: rgba(22, 138, 82, 0.35);
+}
+.cancleBtn{
+  background: rgba(107, 119, 133, 0.12);
+  border-color: rgba(107, 119, 133, 0.35);
 }

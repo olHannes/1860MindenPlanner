@@ -25,6 +25,7 @@ export function setAutoLogin(autoLogin) {
     localStorage.setItem("autoLogin", autoLogin ? "true" : "false");
 }
 function normalizeString(txt) {
+    if(!txt || txt.length < 1) return;
     return txt
         .trim()              
         .replace(/\s+/g, ' ')
@@ -38,7 +39,7 @@ function resetUserStorage() {
 ///////////////////////////////////////////////////////////////////
 
 function showInlineNotification(field, text, type) {
-    if (!field || !text || !type) return;
+    if (!field || !type) return;
     field.textContent = text;
     field.classList.toggle("info", type==="info");
     field.classList.toggle("error", type==="error");
@@ -47,8 +48,8 @@ function showInlineNotification(field, text, type) {
 export async function register(root) {
     const namePattern = /^[A-Za-zÄÖÜäöüß ]+$/;
     const lineNotification  = root.getElementById("errorMsgRegister");
-    let firstNameValue      = root.getElementById("firstName")?.value;
-    let lastNameValue       = root.getElementById("lastName")?.value;
+    let firstNameValue      = root.getElementById("registration-firstName")?.value;
+    let lastNameValue       = root.getElementById("registration-lastName")?.value;
     const newPwd            = root.getElementById("newPassword")?.value;
     const confPwd           = root.getElementById("confirmPassword")?.value;
 
@@ -59,7 +60,7 @@ export async function register(root) {
         showInlineNotification(lineNotification, "Passwörter stimmen nicht überein!", "error");
         return;
     }
-    if (firstNameValue.trim().length < 1 || lastNameValue.trim().length < 1 || newPwd.trim().length < 1) {
+    if (!firstNameValue || firstNameValue.length < 1 || !lastNameValue || lastNameValue.length < 1 || !newPwd || newPwd.length < 1) {
         showInlineNotification(lineNotification, "Alle Felder müssen ausgefüllt sein!", "error");
         return;
     }
@@ -224,5 +225,39 @@ export async function deleteUserAccount(root) {
         console.error("Account deletion error:", error);
     } finally {
         //hideLoader();
+    }
+}
+
+// Logout User
+export async function logout(root) {
+    const inlineError = root.getElementById("errorMsg");
+    const localUsername = localStorage.getItem("user");
+    const localUserId = localStorage.getItem("userId");
+    if(!localUsername || !localUserId) return;
+
+    //showLoader()
+    try {
+        const resp = await fetch(`${config.serverURL}/account/logout`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name: localUsername, userId: localUserId })
+        });
+        const data = await resp.json();
+        if (!resp.ok) throw new Error("Fetch failed.");
+        if (data.message === "Erfolgreich ausgeloggt!" || data.message === "Kein Benutzername oder Benutzer-ID angegeben!") {
+            localStorage.removeItem("user");
+            localStorage.removeItem("userId");
+            localStorage.removeItem("adminKey");
+            showInlineNotification(inlineError, "Erfolgreich abgemeldet.", "info");
+        } else {
+            showInlineNotification(inlineError, data.message ?? "Unbekannter Fehler beim Ausloggen.", "error");
+        }
+
+    } catch (error) {
+        console.error("Logout failed:", error);
+        showInlineNotification(inlineError, "Failed logout.", "error");
+    } finally {
+        //hideLoader()
+        panel.applyLoginStatus(root);
     }
 }

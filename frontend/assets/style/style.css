@@ -10,14 +10,6 @@ body {
     overflow: hidden;
 }
 
-.impressum {
-    position: absolute;
-    bottom: 5px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: darkgray;
-}
-
 #news {
     display: none;
     position: absolute;
@@ -37,12 +29,6 @@ body {
 }
 #news li {
     margin-top: 5px;
-}
-.openNews {
-    position: absolute;
-    bottom: 5%;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 #MessageBox {
@@ -387,26 +373,6 @@ input {
 }
 
 
-.stay-logged-in {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    margin: 10px 0;
-    font-size: 14px;
-    color: #333;
-    gap: 8px;
-    padding-left: 5%;
-}
-
-.stay-logged-in input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    accent-color: #2c6693;
-    cursor: pointer;
-}
-
-
-
 #errorMsgRegister {
     color: red;
     font-size: 14px;
@@ -422,19 +388,6 @@ input {
     z-index: 10;
 }
 
-                        /*Account Editing*/
-#editNameBtn {
-    position: absolute;
-    white-space: nowrap;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 55dvh;
-    color: #2c6693;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-}
 
 #nameEdit{
     position: absolute;
@@ -484,18 +437,6 @@ input {
     background-color: #4a1c1c;
 }
 
-#editPasswordBtn {
-    position: absolute;
-    white-space: nowrap;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 60dvh;
-    color: #2c6693;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-}
 
 #passwordEdit {
     position: absolute;
@@ -923,70 +864,6 @@ button {
 }
 
 
-                        /*Profile Data*/
-.profilePicture {
-    display: block;
-    width: 120px;
-    height: 120px; 
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    margin: 60px auto;
-    margin-top: 85px;
-}
-
-#accountOptionsWrapper {
-    position: absolute;
-    display: none;
-    z-index: 1100;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100dvh;
-    background-color: rgba(0, 0, 0, 0.201);
-}
-
-#accountOptions {
-    position: absolute;
-    z-index: 1;
-    width: 85%;
-    height: 86dvh;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 3dvh;
-    background-color: rgb(237, 237, 237);
-    border-radius: 15px;
-}
-
-
-
-
-#colorContainer {
-    position: absolute;
-    display: flex;
-    left: 50%;
-    top: 40dvh;
-    transform: translateX(-50%);
-    z-index: 1;
-    width: 50dvw;
-    justify-content: space-between;
-    background: none;
-}
-
-.colorPick {
-    width: 7vw;
-    height: 7vw;
-    border-radius: 50%;
-    cursor: pointer;
-    margin: 5px;
-    border: 2px solid #000;
-    max-width: 35px;
-    max-height: 35px;
-}
-
-.colorPick:hover {
-    border: 2px solid #fff;
-}
 
 
 #nameView {
@@ -1002,45 +879,6 @@ button {
     margin-top: 5px;
 }
 
-#mainPage {
-    text-align: center;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.488);
-    width: 72dvw;
-    max-width: 500px;
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 10dvh;
-    max-height: 50dvh;
-    overflow-y: auto;
-}
-#welcomeUser {
-    color: #2c3e50;
-    margin-top: 1px;
-}
-#welcomeTxt {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 20px;
-}
-.download-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-bottom: 5px;
-    font-size: 16px;
-    color: white;
-    background-color: #27ae60;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background 0.3s;
-}
-.download-btn:hover {
-    background-color: #219150;
-}
 
 #downloadPage {
     display: none;
