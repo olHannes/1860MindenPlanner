@@ -41,6 +41,18 @@
   -webkit-mask-image: url("../images/icons/cancel-svgrepo-com.svg");
   mask-image: url("../images/icons/cancel-svgrepo-com.svg");
 }
+.icon--name {
+  -webkit-mask-image: url("../images/icons/user-id-svgrepo-com.svg");
+  mask-image: url("../images/icons/user-id-svgrepo-com.svg");
+}
+.icon--email {
+  -webkit-mask-image: url("../images/icons/email-8-svgrepo-com.svg");
+  mask-image: url("../images/icons/email-8-svgrepo-com.svg");
+}
+.icon--password {
+  -webkit-mask-image: url("../images/icons/password-minimalistic-input-svgrepo-com.svg");
+  mask-image: url("../images/icons/password-minimalistic-input-svgrepo-com.svg");
+}
 .icon--return {
   -webkit-mask-image: url("../images/icons/return-svgrepo-com.svg");
   mask-image: url("../images/icons/return-svgrepo-com.svg");
