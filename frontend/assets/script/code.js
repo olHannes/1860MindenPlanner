@@ -31,9 +31,9 @@ window.addEventListener("popstate", function (event) {
 
     // Report-Formular
     if (event.state.page === "createReport") {
-        createReport(false);
+        panel.showReportCreation(root, false);
     } else {
-        cancleReport(false);
+        panel.hideReportCreation(root, false);
     }
 });
 
@@ -386,128 +386,6 @@ async function changeUserColor(color) {
     }
     hideLoader();
 }
-
-
-
-//----------------------------------------------------------------------------------------------------------------- Report Handling <User>
-function createReport(push = true) {
-    document.getElementById('reportTitle').value = "";
-    document.getElementById('reportTxt').value = "";
-    document.getElementById('createReport').style.display = "block";
-    document.getElementById('loadingBackground').style.display="block";
-    loadReportList();
-
-    if(push){
-        history.pushState({ page: "createReport" }, "", "#createReport");
-    }
-}
-
-function cancleReport(push = true) {
-    document.getElementById('reportTitle').value = "";
-    document.getElementById('reportTxt').value = "";
-    document.getElementById('loadingBackground').style.display="none";
-    document.getElementById('createReport').style.display = "none";
-
-    if (push) {
-        history.back();
-    }
-}
-
-function updateReportTitle() {
-    const select = document.getElementById('reportType');
-    const h2 = document.querySelector('#createReport h2');
-
-    const selectedValue = select.value;
-    h2.textContent = selectedValue + " melden";
-}
-
-async function submitReport() {
-    const selectedValue = document.getElementById('reportType').value;
-    let reportTitle = document.getElementById('reportTitle').value.trim();
-    const reportTxt = document.getElementById('reportTxt').value.trim();
-    const username = localStorage.getItem("user");
-
-    if (!username) {
-        cancleReport();
-        return;
-    }
-    if (!reportTxt || !selectedValue) {
-        showMessage("Fehlende Eingaben", "Ein Report muss mindestens einen Typen und eine Beschreibung haben!");
-        cancleReport();
-        return;
-    }
-    if(!reportTitle) {
-        reportTitle = selectedValue;
-    }
-
-    const data = {
-        username: username,
-        reportType: selectedValue,
-        reportTitle: reportTitle,
-        report: reportTxt
-    };
-    showLoader();
-    try {
-        const response = await fetch(`${serverURL}/report/issue`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-        hideLoader();
-        if (response.ok) {
-            cancleReport();
-            showMessage("Report erstellt", "Es wurde ein neuer Report erfolgreich angelegt.");
-        } else {
-            showMessage("Fehlerhafte Reporterstellung", "Der Report konnte nicht erfolgreich erstellt werden!");
-        }
-    } catch (error) {
-        hideLoader();
-        showMessage("Fehlerhafte Reporterstellung", "Der Report konnte nicht erfolgreich gesendet werden!");
-    }
-}
-
-async function loadReportList() {
-    const container = document.getElementById('reportList');
-
-    try {
-        const response = await fetch(`${serverURL}/report/all`);
-        if (!response.ok) {
-            throw new Error('Fehler beim Abrufen der Reports');
-        }
-
-        const reports = await response.json();
-
-        if (!Array.isArray(reports) || reports.length === 0) {
-            console.warn("Keine Reports gefunden.");
-            container.innerHTML = "<p style='color: white;'>Keine Reports gefunden</p>";
-            return;
-        }
-
-        container.innerHTML = '';
-
-        reports.forEach(({ reportType, reportTitle, report, username, timestamp }) => {
-            const reportCard = document.createElement('div');
-            reportCard.className = 'report-card';
-            reportCard.innerHTML = `
-                <h3>${reportTitle}</h3>
-                <p><strong>Typ:</strong> ${reportType}</p>
-                <p><strong>Inhalt:</strong> ${report}</p>
-                <p><strong>Datum:</strong> ${new Date(timestamp).toLocaleString()}</p>
-            `;
-            container.appendChild(reportCard);
-        });
-
-    } catch (error) {
-        console.error("Fehler:", error);
-        container.innerHTML = "<p style='color: white;'>Fehler beim Laden der Reports</p>";
-    }
-}
-
-
 
 
 //----------------------------------------------------------------------------------------------------------------- Report Handling <Admin>

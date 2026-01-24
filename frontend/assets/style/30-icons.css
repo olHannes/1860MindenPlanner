@@ -33,6 +33,10 @@
   -webkit-mask-image: url("../images/icons/login-3-svgrepo-com.svg");
   mask-image: url("../images/icons/login-3-svgrepo-com.svg");
 }
+.icon--logout {
+  -webkit-mask-image: url("../images/icons/logout-3-svgrepo-com.svg");
+  mask-image: url("../images/icons/logout-3-svgrepo-com.svg");
+}
 .icon--registration {
   -webkit-mask-image: url("../images/icons/add-square-svgrepo-com.svg");
   mask-image: url("../images/icons/add-square-svgrepo-com.svg");

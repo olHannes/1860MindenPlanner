@@ -1,4 +1,5 @@
 import * as userHandling from "./user-handling.js";
+import * as settings from "./settings.js";
 import * as panel from "./panel-handling.js";
 
 export function addFunktionalEventListener(root) {
@@ -41,6 +42,25 @@ function addFloatingPanelListener(root) {
         panel.hideDownloads(root, true);
     });
 
+    const openReportBtn = root.querySelector("#reportIssue");
+    openReportBtn?.addEventListener("click", () => {
+        panel.showReportCreation(root, true);
+    });
+    const closeReportBtn = root.querySelector("#cancelReport");
+    closeReportBtn?.addEventListener("click", () => {
+        panel.hideReportCreation(root, true);
+    });
+    const submitReport = root.querySelector("#submitReport");
+    submitReport?.addEventListener("click", () => {
+        settings.submitReport(root);
+    });
+    const reportTypeSel = root.querySelector("#reportType");
+    reportTypeSel?.addEventListener("change", () => {
+        const headline = root.querySelector("#createReport h2");
+        const selectedVal = reportTypeSel.value;
+        if(!headline ||!selectedVal) return;
+        headline.textContent = selectedVal + " melden";
+    });
 
     //request Account deletion
     const deleteBtn = root.querySelector("#delBtn");

@@ -1,5 +1,6 @@
 
 //exported functions handles visibility changes of floating panels and different views
+import * as settings from "./settings.js";
 
 //basic Functions
 //////////////////////////////////////////////////////////////
@@ -11,6 +12,9 @@ export function hide(el) {
 }
 export function clearHTML(el) {
     if (el) el.innerHTML = "";
+}
+export function clearValue(el) {
+    if (el) el.value = "";
 }
 
 // different floating panels
@@ -105,6 +109,29 @@ export function hideAdjustProfile(root, push = true) {
     hide(optionsPanel);
     if(push) history.back();
 }
+
+//Report Panel
+export function showReportCreation(root, push = true) {
+    const panel = root.getElementById("createReport");
+    const list = root.getElementById("reportList");
+    if(!panel || !list) return;
+    clearValue(document.getElementById("reportTitle"));
+    clearValue(document.getElementById("reportTxt"));
+    
+    clearHTML(list);
+    list.innerHTML = `<div class="loader" id="reportLoader"></div>`;
+
+    settings.loadExistingReports(root);
+    show(panel, "block");
+    if(push) history.pushState({ page: "reportCreation"}, "", "#reportCreation");
+}
+export function hideReportCreation(root, push = true) {
+    const panel = root.getElementById("createReport");
+    if(!panel) return;
+    hide(panel);
+    if(push) history.back();
+}
+
 
 
 // main Content pages
