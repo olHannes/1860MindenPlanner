@@ -17,6 +17,30 @@ export function clearValue(el) {
     if (el) el.value = "";
 }
 
+
+//show global Message
+//////////////////////////////////////////////////////////////
+export function showMessage(root, title, content) {
+    let container = root.getElementById("MessageBox");
+    let titleEl   = root.getElementById("messageBoxTitle");
+    let contentEl = root.getElementById("messageBoxContent");
+    if(!container || !titleEl || !contentEl) return;
+
+    titleEl.textContent = title;
+    contentEl.textContent = content;
+    container.classList.add("show");
+
+    const hideMsg = () => {
+        container.classList.remove("show");
+        container.removeEventListener("click", hideMsg);
+    }
+    container.addEventListener("click", hideMsg)
+    setTimeout(() => {
+        hideMsg();
+    }, 2000);
+}
+
+
 // different floating panels
 //////////////////////////////////////////////////////////////
 
@@ -163,7 +187,7 @@ export function resetPanel(panelId) {
     const id = Number(panelId);
     const fn = panelResetters[id];
     if(!fn) {
-        console.error("Panel-Reset failed:", panelId);
+        console.warn("Panel-Reset failed:", panelId);
         return;
     }
     fn();

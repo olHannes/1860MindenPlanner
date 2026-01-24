@@ -307,7 +307,6 @@
         <button id="delBtn" class="exit-account-btn">Account löschen <span class="icon icon--cancel"></span></button>
     </div>
 
-
     <!-- Panel for Profile Settings -->
     <div id="panel3" class="panel account-settings-wrapper">
         <div class="account-settings">
@@ -318,11 +317,11 @@
             <img src="frontend/assets/images/system/profile_icon.png" alt="profile picture" id="profilePictureOptions" class="profilePicture" onclick="toggleOptionsContainer();">
             
             <div id="colorContainer">
-                <div id="color1" class="colorPick" style="background-color: #FF5733;" onclick="changeUserColor('#FF5733');"></div>
-                <div id="color2" class="colorPick" style="background-color: #28A745;" onclick="changeUserColor('#28A745');"></div>
-                <div id="color3" class="colorPick" style="background-color: #007BFF;" onclick="changeUserColor('#007BFF');"></div>
-                <div id="color4" class="colorPick" style="background-color: #FFC107;" onclick="changeUserColor('#FFC107');"></div>
-                <div id="color5" class="colorPick" style="background-color: #6F42C1;" onclick="changeUserColor('#6F42C1');"></div>            
+                <div data-color="#FF5733" class="colorPick" style="background-color: #FF5733;"></div>
+                <div data-color="#28A745" class="colorPick" style="background-color: #28A745;"></div>
+                <div data-color="#007BFF" class="colorPick" style="background-color: #007BFF;"></div>
+                <div data-color="#FFC107" class="colorPick" style="background-color: #FFC107;"></div>
+                <div data-color="#6F42C1" class="colorPick" style="background-color: #6F42C1;"></div>            
             </div>
             
             <div class="userName">
@@ -352,6 +351,10 @@
                     <span class="toggle__label">Automatischer Login</span>
                 </label>
             </div>
+
+            <section>
+                test
+            </section>
             
             <div id="nameEdit" style="display: none;">
                 <input type="text" id="editVorname">

@@ -50,6 +50,7 @@ export async function register(root) {
     const lineNotification  = root.getElementById("errorMsgRegister");
     let firstNameValue      = root.getElementById("registration-firstName")?.value;
     let lastNameValue       = root.getElementById("registration-lastName")?.value;
+    let email               = root.getElementById("registration-email")?.value;
     const newPwd            = root.getElementById("newPassword")?.value;
     const confPwd           = root.getElementById("confirmPassword")?.value;
 
@@ -60,7 +61,7 @@ export async function register(root) {
         showInlineNotification(lineNotification, "Passwörter stimmen nicht überein!", "error");
         return;
     }
-    if (!firstNameValue || firstNameValue.length < 1 || !lastNameValue || lastNameValue.length < 1 || !newPwd || newPwd.length < 1) {
+    if (!firstNameValue || firstNameValue.length < 1 || !lastNameValue || lastNameValue.length < 1 || !newPwd || newPwd.length < 1 || !email) {
         showInlineNotification(lineNotification, "Alle Felder müssen ausgefüllt sein!", "error");
         return;
     }
@@ -102,19 +103,18 @@ export async function register(root) {
 // User Login
 ///////////////////////////////////////////////////////////////////
 export async function login(root) {
-    const errMsg = root.getElementById("errorMsg");
+    const errMsg    = root.getElementById("errorMsg");
+    let username    = root.getElementById("username")?.value;
+    let email       = root.getElementById("login-email")?.value;
+    let pwd         = root.getElementById("password")?.value;
+    username        = normalizeString(username);
 
-    let username = root.getElementById("username")?.value;
-    let pwd = root.getElementById("password")?.value;
-    username = normalizeString(username);
-
-    if(!username || !pwd) {
-        showInlineNotification(errMsg, "Zum Anmelden bitte Benutzername und Passwort eingeben.", "error");
+    if(!username || !email || !pwd) {
+        showInlineNotification(errMsg, "Zum Anmelden bitte Benutzername, E-Mail und Passwort eingeben.", "error");
         return;
     }
-
-    //showLoader
     try {
+        //showLoader();
         const resp = await fetch(`${config.serverURL}/account/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -149,7 +149,7 @@ export async function login(root) {
         showInlineNotification(errMsg, "Ein Netzwerkfehler ist aufgetreten!", "error");
         //showNameError
     } finally {
-        //hideLoader
+        //hideLoader();
     }
 }
 
@@ -218,7 +218,7 @@ export async function deleteUserAccount(root) {
         if(!resp.ok) throw new Error(`Account löschen fehlgeschlagen: ${resp}`);
         resetUserStorage();
         panel.applyLoginStatus(root);
-        //showMessage("Account gelöscht", "Der Account '" + currentName + "' wurde erfolgreich entfernt.");
+        panel.showMessage(root, "Account gelöscht", `Der Account '${currentName}' wurde erfolgreich gelöscht.`);
         panel.hideAccountDeletion(root, true);
         if(informationField) showInlineNotification(informationField, "Der Account wurde erfolgreich gelöscht", "info");
     } catch (error) {

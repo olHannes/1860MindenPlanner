@@ -38,28 +38,6 @@ window.addEventListener("popstate", function (event) {
 });
 
 
-
-
-//----------------------------------------------------------------------------------------------------------------- show Notification
-function showMessage(title, content) {
-    const box = document.getElementById('MessageBox');
-    const titleEl = document.getElementById('messageBoxTitle');
-    const contentEl = document.getElementById('messageBoxContent');
-
-    titleEl.textContent = title;
-    contentEl.textContent = content;
-    box.classList.add('show');
-
-    const hideBox = () => {
-        box.classList.remove('show');
-        box.removeEventListener('click', hideBox);
-    };
-    box.addEventListener('click', hideBox);
-    setTimeout(() => {
-        hideBox();
-    }, 2000);
-}
-
 //----------------------------------------------------------------------------------------------------------------- hide info
 document.addEventListener("DOMContentLoaded", function() {
     loadMaxPoints();
@@ -261,34 +239,6 @@ function cancleEdits(){
     document.getElementById('passwordEdit').style.display="none";
 }
 
-async function handleVisibilityChange(isVisible) {
-    const username = localStorage.getItem("userId");
-    let visibleStatus = isVisible? 1 : 0;
-    showLoader();
-    try {
-        const response = await fetch(`${serverURL}/account/user/visibilityChange`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                userId: username,
-                visibility: visibleStatus
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error(`Server Error: ${response.status}`);
-        }
-
-        const result = await response.json();
-        if(result.ok){
-            showMessage("Sichtbarkeits-Status wurde geändert", "Änderung des Status war erfolgreich.");
-        }
-    } catch (error) {
-        console.error("Fehler beim Aktualisieren des Sichtbarkeitsstatus:", error);
-    }
-    hideLoader();
-}
-
 
 async function updateAdminPassword(username, newPassword){
     adminKey = localStorage.getItem("adminKey");
@@ -341,50 +291,6 @@ function displayOptionsContainer(push = true){
 
 function hideOptionsContainer(push = true){
     document.getElementById('accountOptionsWrapper').style.display="none";
-}
-
-// update User-Color
-async function changeUserColor(color) {
-    showLoader();
-
-    const userId = localStorage.getItem("userId");
-    if (!userId || !color) {
-        console.error("Fehlende Parameter: Benutzer-ID oder Farbe");
-        hideLoader();
-        return;
-    }
-
-    try {
-        const response = await fetch(`${serverURL}/account/user/colorChange`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                userId: userId,
-                colorCode: color
-            })
-        });
-        const result = await response.json();
-
-        if (!response.ok) {
-            throw new Error(result.message || `Fehler: ${response.status}`);
-        }
-        showMessage("Erfolgreiche Farbänderung", "Die Nutzer-Farbe wurde erfolgreich geändert.");
-        const profileImg = document.getElementById('profilePicture');
-        const profileImg_2 = document.getElementById('profilePictureOptions');
-
-        if (profileImg && profileImg_2 && color !== "#000000") {
-            profileImg.style.filter = `drop-shadow(0px 0px 5px ${color})`;
-            profileImg_2.style.filter = `drop-shadow(0px 0px 5px ${color})`;
-        } else if (profileImg && profileImg_2) {
-            profileImg.style.filter = "";
-            profileImg_2.style.filter = "";
-        }
-    } catch (error) {
-        console.error("Fehler beim Ändern der Farbe:", error);
-    }
-    hideLoader();
 }
 
 

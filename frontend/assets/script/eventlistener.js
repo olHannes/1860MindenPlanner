@@ -6,6 +6,7 @@ export function addFunktionalEventListener(root) {
     userControlListener(root);
     addFloatingPanelListener(root);
     addMainPanelListener(root);
+    setAccountSettingsListener(root);
 }
 
 
@@ -143,5 +144,24 @@ function userControlListener(root) {
     const logoutBtn = root.querySelector("#logoutBtn");
     logoutBtn?.addEventListener("click", () => {
         userHandling.logout(root);
+    });
+}
+
+//Account Settings
+function setAccountSettingsListener(root) {
+    //Profile Color
+    const colorChangeBtn = root.querySelector("#colorContainer");
+    colorChangeBtn?.addEventListener("click", (e) => {
+        const colorEl = e.target.closest(".colorPick");
+        if(!colorEl) return;
+        const color = colorEl.dataset.color;
+        if (!color) return;
+        settings.changeProfileColor(root, color);
+    });
+
+    //Profile visibility
+    const visibilityToggle = root.querySelector("#visibleCheckbox");
+    visibilityToggle?.addEventListener("change", (e) => {
+        settings.changeProfileVisibility(root, e.target.checked);
     });
 }
