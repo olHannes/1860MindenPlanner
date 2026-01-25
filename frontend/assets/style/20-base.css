@@ -194,6 +194,12 @@ body {
   justify-content: center;
 }
 
+.horizontal-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
 
 .on-top-panel {
   position: absolute;

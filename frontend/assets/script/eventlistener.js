@@ -164,4 +164,36 @@ function setAccountSettingsListener(root) {
     visibilityToggle?.addEventListener("change", (e) => {
         settings.changeProfileVisibility(root, e.target.checked);
     });
+
+    //Name Change
+    const nameChangeBtn = root.querySelector("#editNameBtn");
+    nameChangeBtn?.addEventListener("click", () => {
+        panel.showAdjustName(root, true);
+    });
+    const nameChangeCancelBtn = root.querySelector("#cancelNameBtn");
+    nameChangeCancelBtn?.addEventListener("click", () => {
+        panel.hideAdjustName(root, true);
+    });
+    const nameSubmitBtn = root.querySelector("#saveNameBtn");
+    nameSubmitBtn?.addEventListener("click", () => {
+        userHandling.submitNameChange(root);
+    });
+
+    //Password Change
+    const passwordChangeBtn = root.querySelector("#editPasswordBtn");
+    passwordChangeBtn?.addEventListener("click", () => {
+        panel.showAdjustPassword(root, true);
+    });
+    const passwordChangeCancelBtn = root.querySelector("#cancelPwResetBtn");
+    passwordChangeCancelBtn?.addEventListener("click", () => {
+        panel.hideAdjustPassword(root, true);
+    });
+    const sendCodeBtn = root.querySelector("#sendResetCodeBtn");
+    sendCodeBtn?.addEventListener("click", () => {
+        
+    });
+    const passwordSubmitBtn = root.querySelector("#confirmPwResetBtn");
+    passwordSubmitBtn?.addEventListener("click", () => {
+
+    });
 }

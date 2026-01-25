@@ -1,4 +1,5 @@
 import * as panel from "./panel-handling.js";
+import * as user from "./user-handling.js";
 import * as config from "./config.js";
 
 export async function submitReport(root) {

@@ -329,7 +329,7 @@
                 <span id="userNachname">Nachname</span>
             </div>
             
-            <button id="editNameBtn" class="edit-names" style="margin-top: var(--gap);" onclick="editName();">
+            <button id="editNameBtn" class="edit-names" style="margin-top: var(--gap);">
                 ✎ Namen bearbeiten ✎
             </button>
             <button id="editPasswordBtn" class="edit-names" onclick="editPassword();">
@@ -352,21 +352,69 @@
                 </label>
             </div>
 
-            <section>
-                test
-            </section>
-            
-            <div id="nameEdit" style="display: none;">
-                <input type="text" id="editVorname">
-                <input type="text" id="editNachname">
-                <button class="safeBtn" id="safeBtn1" onclick="saveName();" style="display: none;">Speichern</button>
-                <button class="cancleBtn" id="cancleBtn1" onclick="cancleEdits();" style="display: none;">Abbrechen</button>
-            </div>
-        
-            <div id="passwordEdit" style="display: none;">
-                <input type="text" id="editPassword_1" placeholder="neues Passwort">
-                <button class="safeBtn" id="safeBtn2" onclick="updatePassword(document.getElementById('editPassword_1').value);" style="display: none;">Speichern</button>
-                <button class="cancleBtn" id="cancleBtn2" onclick="cancleEdits();" style="display: none;">Abbrechen</button>
+            <div class="userSettingsWrapper">
+                <section id="nameSettings" class="settingsCard">
+                    <header class="settingsCard__header">
+                        <div class="horizontal-container">
+                            <h3 id="nameSettingsTitle" class="settingsCard__title">Name ändern</h3>
+                            <span class="icon icon--update"></span>
+                        </div>
+                        <p class="settingsCard__subtitle">Passe Vor- und Nachname an.</p>
+                    </header>
+                    <div class="settingsCard__body">
+                        <div class="formGrid">
+                            <label class="field">
+                                <span class="field_label">Vorname</span>
+                                <input id="firstNameEdit" class="input" autocomplete="given-name" type="text" placeholder="Vorname">
+                            </label>
+
+                            <label class="field">
+                                <span class="field_label">Nachname</span>
+                                <input id="lastNameEdit" class="input" autocomplete="given-name" type="text" placeholder="Nachname">                            
+                            </label>
+                        </div>
+                        <p id="nameMsg" class=""></p>
+                        <div class="actions">
+                            <button id="cancelNameBtn" class="btn btn--secondary" type="button">Abbrechen</button>
+                            <button id="saveNameBtn" class="btn btn--primary" type="button">Speichern</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="passwordReset" class="settingsCard">
+                    <header class="settingsCard__header">
+                        <div class="horizontal-container">
+                            <h3 id="pwResetTitle" class="settingsCard__title">Passwort zurücksetzen</h3>
+                            <span class="icon icon--update"></span>
+                        </div>
+                        <p class="settingsCard__subtitle">Sende dir einen Code per E-Mail und setze dein Passwort zurück.</p>
+                    </header>
+                    <div class="settingsCard__body">
+                        <div class="formStack">
+                        <div class="inlineRow">
+                            <button id="sendResetCodeBtn" class="btn btn--primary" type="button">
+                            Code per E-Mail senden
+                            </button>
+                            <button id="cancelPwResetBtn" class="btn btn--secondary" type="button">
+                            Abbrechen
+                            </button>
+                        </div>
+                        <div class="divider"></div>
+                        <label class="field">
+                            <span class="field__label">E-Mail-Code</span>
+                            <input id="pwCode" class="input" type="text" inputmode="numeric" placeholder="z.B. 123456">
+                        </label>
+                        <label class="field">
+                            <span class="field__label">Neues Passwort</span>
+                            <input id="pwNew" class="input" type="password" autocomplete="new-password" placeholder="Neues Passwort">
+                        </label>
+                        </div>
+                        <p id="pwMsg" class="" aria-live="polite"></p>
+                        <div class="actions">
+                        <button id="confirmPwResetBtn" class="btn btn--primary" type="button">Passwort ändern</button>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     </div>

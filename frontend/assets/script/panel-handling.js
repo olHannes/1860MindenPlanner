@@ -134,6 +134,48 @@ export function hideAdjustProfile(root, push = true) {
     if(push) history.back();
 }
 
+//Account Name Change Panel
+export function showAdjustName(root, push = true) {
+    const wrapperPanel = root.querySelector(".userSettingsWrapper");
+    const panel = root.getElementById("nameSettings");
+    const firstName = root.getElementById("firstNameEdit");
+    const lastName = root.getElementById("lastNameEdit");
+    if(!firstName || !lastName) return;
+    firstName.value = "";
+    lastName.value = "";
+    show(wrapperPanel, "flex");
+    show(panel, "block");
+    if(push) history.pushState({ page: "nameChange"}, "", "#nameChange");
+}
+export function hideAdjustName(root, push = true) {
+    const panel = root.getElementById("nameSettings");
+    const wrapperPanel = root.querySelector(".userSettingsWrapper");
+    hide(panel);
+    hide(wrapperPanel);
+    if(push) history.back();
+}
+
+//Account Passwort Reset Panel
+export function showAdjustPassword(root, push = true) {
+    const wrapperPanel = root.querySelector(".userSettingsWrapper");
+    const panel = root.getElementById("passwordReset");
+    const emailCode = root.getElementById("pwCode");
+    const codeNew = root.getElementById("pwNew");
+    if(!emailCode || !codeNew) return;
+    emailCode.value = "";
+    codeNew.value = "";
+    show(wrapperPanel, "flex");
+    show(panel, "block");
+    if(push) history.pushState({ page: "passwordChange"}, "", "#passwordChange");
+}
+export function hideAdjustPassword(root, push = true) {
+    const wrapperPanel = root.querySelector(".userSettingsWrapper");
+    const panel = root.getElementById("passwordReset");
+    hide(panel);
+    hide(wrapperPanel);
+    if(push) history.back();
+}
+
 //Report Panel
 export function showReportCreation(root, push = true) {
     const panel = root.getElementById("createReport");
