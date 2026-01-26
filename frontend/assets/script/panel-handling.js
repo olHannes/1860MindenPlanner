@@ -100,9 +100,10 @@ export function hideDownloads(root, push = true) {
 
 //Account deletion Panel
 export function showAccountDeletion(root, push = true) {
-    const panel = root.getElementById("requestDelAcc");
-    const background = root.getElementById("loadingBackground");
-    if(!panel || !background) return;
+    const panel         = root.getElementById("requestDelAcc");
+    const background    = root.getElementById("loadingBackground");
+    const pwdInput      = root.getElementById("deleteAccountPwd");
+    clearValue(pwdInput);
     show(panel, "block");
     show(background, "block");
     if(push) history.pushState({ page: "deleteAccount" }, "", "#deleteAccount");
@@ -110,7 +111,6 @@ export function showAccountDeletion(root, push = true) {
 export function hideAccountDeletion(root, push = true) {
     const panel = root.getElementById("requestDelAcc");
     const background = root.getElementById("loadingBackground");
-    if(!panel || !background) return;
     hide(panel);
     hide(background);
     if(push) history.back();
@@ -280,7 +280,7 @@ export function hideRegistration(root) {
     const loginMask = root.getElementById("login_mask");
     const registrationMask = root.getElementById("registration_mask");
     if(!loginMask || !registrationMask) return;
-    clearForm(root, ["username", "password"], null);
+    clearForm(root, ["email", "password"], null);
     registrationMask.style.display = "none";
     loginMask.style.display = "block";
 }
@@ -288,12 +288,10 @@ export function hideRegistration(root) {
 export function applyLoginStatus(root) {
     let startMask       = root.getElementById("start-screen");
     let contentPanel    = root.getElementById("content");
-    const localUser    = localStorage.getItem("user");
     const localUserId  = localStorage.getItem("userId");
-
     if(!startMask || !contentPanel) return;
 
-    if(localUser && localUserId) {
+    if(localUserId) {
         hide(startMask);
         show(contentPanel, "block");
     } else {

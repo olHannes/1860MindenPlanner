@@ -4,11 +4,12 @@ import * as config from "./config.js";
 
 export async function submitReport(root) {
     const selectedValue = root.getElementById("reportType")?.value;
-    const reportTitle = root.getElementById("reportTitle")?.value?.trim();
-    const reportTxt = root.getElementById("reportTxt")?.value?.trim();
-    const username = localStorage.getItem("user");
+    const reportTitle   = root.getElementById("reportTitle")?.value?.trim();
+    const reportTxt     = root.getElementById("reportTxt")?.value?.trim();
+    const userId        = localStorage.getItem("userId");
 
-    if(!username) {
+    if(!userId) {
+        console.warn("User-Id nicht gefunden");
         panel.hideReportCreation(root, true);
         return;
     }
@@ -17,16 +18,26 @@ export async function submitReport(root) {
         panel.hideReportCreation(root, true);
         return;
     }
-    //showLoader();
     try {
+        //showLoader();
         const resp = await fetch(`${config.serverURL}/report/issue`, {
             method: "POST",
             headers: { "Content-Type": "application/json"},
-            body: JSON.stringify({ username: username, reportType: selectedValue, reportTitle: reportTitle, report: reportTxt })
+            body: JSON.stringify({ 
+                userId: userId, 
+                reportType: selectedValue, 
+                reportTitle: reportTitle, 
+                report: reportTxt 
+            })
         });
         const data = await resp.json();
-        if(!resp.ok) throw new Error("Network error");
-        panel.showMessage(root, "Der Report wurde erfolgreich erstellt", `Es wurde ein neuer Report '${reportTitle}' angelegt`);
+        console.log(data);
+        if(!resp.ok) throw new Error(data.message ?? "Network error");
+        if(!data.ok) {
+            panel.showMessage(root, "Report-Erstellung ist fehlgeschlagen", data.message ?? "Der Report konnte nicht angelegt werden");
+            return;
+        } 
+        if(data.ok) panel.showMessage(root, "Der Report wurde erfolgreich erstellt", `Es wurde ein neuer Report '${reportTitle}' angelegt`);
     } catch (error) {
         console.error("Report-submit failed:", error);
     } finally {

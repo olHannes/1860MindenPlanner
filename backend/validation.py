@@ -40,3 +40,19 @@ def validate_registration(first_name, last_name, email, password):
         errors["password"] = "Passwort muss mindestens 4 Zeichen lang sein."
 
     return fn, ln, em, errors
+
+def validate_login(email, password):
+    errors = {}
+    em = normalize_email(email)
+
+    if not em:
+        errors["email"] = "Email fehlt."
+    elif not EMAIL_RE.match(em):
+        errors["email"] = "Email ist ungültig."
+    
+    if not password:
+        errors["password"] = "Passwort fehlt."
+    elif len(password) < 4:
+        errors["password"] = "Passwort muss mindestens 4 Zeichen lang sein."
+    
+    return em, errors

@@ -1,5 +1,6 @@
 
 from mongoConf import *
+from flask import session
 import random
 from datetime import datetime, timezone
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -32,7 +33,7 @@ def parse_expires_at(expires_at):
 
 @account_bp.route('/account/register', methods=['POST'])
 def register():
-    data = request.get_json()
+    data = request.get_json(silent=True) or {}
     first_name  = data.get('firstName')
     last_name   = data.get('lastName')
     email       = data.get('email')
@@ -77,49 +78,65 @@ def register():
 @account_bp.route('/account/login', methods=['POST'])
 def login():
     global randAdminKey
-    data        = request.get_json()
-    username    = data.get('username')
-    email       = data.get('email')
-    password    = data.get('password')
+    data    = request.get_json(silent=True) or {}
+    email   = data.get('email') or ""
+    password = data.get('password') or ""
 
-    if not username or not email or not password:
-        return jsonify({"message": "Login fehlerhaft. Es muss Nutzername, Email und Passwort gegeben sein."}), 400
+    em, errors = validate_login(email, password)
+    if errors:
+        return jsonify({
+            "ok": False,
+            "message": "Validierung fehlgeschlagen.",
+            "errors": errors
+        }), 400
     
-    #user = users_collection.find_one({ "firstName": username })
-    user = users_collection.find_one({ "email": email })
-    
+    user = users_collection.find_one({ "email": em})
     if not user:
-        return jsonify({"message": "Login fehlerhaft. Nutzer nicht gefunden"}), 404
+        return jsonify({
+            "ok": False,
+            "message": "Nutzer mit der E-Mail nicht gefunden.",
+        }), 404
+    
+    if not check_password_hash(user["password"], password):
+        return jsonify({
+            "ok": False,
+            "message": "Passwort inkorrekt! Login fehlerhaft."
+        }), 401
+    
+    session["user_id"] = str(user["_id"])
 
-    user_id = str(user["_id"])
+    roles       = user.get("roles", ["member"])
+    is_admin    = "admin" in roles
 
-    if check_password_hash(user['password'], password):
+    response = {
+        "ok": True,
+        "message": "Login erfolgreich!",
+        "userId": str(user["_id"]),
+        "roles": roles,
+        "isAdmin": is_admin
+    }
+
+    if is_admin:
+        response["adminKey"] = randAdminKey
+    else:
         users_collection.update_one(
             {"_id": user["_id"]},
             {"$inc": {"online": 1}}
-        )
-        session['user'] = email
-
-        if username == "Admin":
-            return jsonify({"message": "Login erfolgreich!", "userId": user_id, "adminKey": randAdminKey}), 200
-        else:
-            return jsonify({"message": "Login erfolgreich!", "userId": user_id}), 200
-    else:
-        return jsonify({"message": "Ungültiges Passwort!"}), 401
+            )
+    
+    return jsonify(response), 200
 
 
 ################################################################################################### Auto-Status
 
 @account_bp.route('/account/checkUserStatus', methods=['GET'])
 def check_user_status():
-    username    = request.args.get('name')
     email       = request.args.get('email')
     user_id     = request.args.get('userId')
 
-    if not username or not user_id or not ObjectId.is_valid(user_id) or not email:
+    if not user_id or not ObjectId.is_valid(user_id) or not email:
         return jsonify({"message": "Ungültige Parameter"}), 400
 
-    #user = users_collection.find_one({"_id": ObjectId(user_id), "firstName": username})
     user = users_collection.find_one({"_id": ObjectId(user_id), "email": email})
     if not user:
         return jsonify({"message": "Nutzer nicht gefunden."}), 404
@@ -273,21 +290,23 @@ def update_admin_password():
 @account_bp.route('/account/delete', methods=['DELETE'])
 def delete_account():
     data        = request.get_json()
-    username    = data.get('name')
-    email       = data.get('email')
     user_id     = data.get('userId')
+    pwd         = data.get('password')
 
-    if not username or not email or not user_id or not ObjectId.is_valid(user_id):
+    if not user_id or not ObjectId.is_valid(user_id) or not pwd:
         return jsonify({"message": "Ungültige Parameter"}), 400
 
-    user = users_collection.find_one({"_id": ObjectId(user_id), "email": email})
+    user = users_collection.find_one({"_id": ObjectId(user_id) })
     if not user:
-        return jsonify({"message": "Benutzer nicht gefunden oder ID stimmt nicht!"}), 404
+        return jsonify({"message": "Nutzer nicht gefunden"}), 404
 
+    if not check_password_hash(user['password'], pwd):
+        return jsonify({"message": "Ungültiges Passwort"}), 403
+    
     users_collection.delete_one({"_id": ObjectId(user_id)})
 
     session.pop('user', None)
-    return jsonify({"message": "Account erfolgreich gelöscht!"}), 200
+    return jsonify({"message": "Account erfolgreich gelöscht!", "username": user["firstName"]}), 200
 
 
 ################################################################################################### Delete Account
@@ -335,6 +354,7 @@ def get_user_info():
     return jsonify({
         "first_name": user['firstName'],
         "last_name": user['lastName'],
+        "email": user['email'],
         "color_code": user.get('color_code', '#000000'),
         "visibility": user.get('visibility', 1)
     }), 200

@@ -9,16 +9,22 @@ report_bp = Blueprint('reports', __name__)
 @report_bp.route('/report/issue', methods=['POST'])
 def createReport():
     data = request.get_json()
-    username = data.get('username')
+    userId = data.get('userId')
     reportType = data.get('reportType')
     reportTitle = data.get('reportTitle')
     report = data.get('report')
     
-    if not username or not reportTitle or not report or not reportType:
-        return jsonify({"message": "Fehlende Daten!"}), 400
+    if not userId or not ObjectId.is_valid(userId) or not reportTitle or not report or not reportType:
+        return jsonify({"ok": False, "message": "Ungültige Parameter!"}), 400
+
+    user = users_collection.find_one({"_id": ObjectId(userId)})
+    if not user:
+        return jsonify({"ok": False, "message": "Nutzer nicht gefunden"}), 404
+    
+    username = user["firstName"]
 
     if issues_collection.find_one({"reportTitle": reportTitle}):
-        return jsonify({"message": "Report existiert bereits"}), 400
+        return jsonify({"ok": False, "message": "Report existiert bereits"}), 400
 
     timestamp = datetime.now(timezone.utc)
 
@@ -32,7 +38,7 @@ def createReport():
         'timestamp': timestamp
     })
 
-    return jsonify({"message": "Report erfolgreich erstellt"}), 200
+    return jsonify({"ok": True, "message": "Report erfolgreich erstellt"}), 200
 
 
 ################################################################################################### Reports auslesen

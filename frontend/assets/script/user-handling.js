@@ -26,21 +26,13 @@ export function setAutoLogin(autoLogin) {
     localStorage.setItem("autoLogin", autoLogin ? "true" : "false");
 }
 
-export function normalizeString(txt) {
-    if(!txt || txt.length < 1) return;
-    return txt
-        .trim()              
-        .replace(/\s+/g, ' ')
-        .replace(/\b\w/g, c => c.toUpperCase());
-}
-
 function resetUserStorage() {
-    localStorage.removeItem("user");
+    localStorage.removeItem("userEmail");
     localStorage.removeItem("userId");
     localStorage.removeItem("adminKey");
 }
 
-function setUsernameElements(root, firstName, lastName) {
+function setUsernameElements(root, firstName, lastName, color, visible, autoLogin) {
     firstName = firstName ?? "<not found>";
     lastName = lastName ?? "<not found>";
     const firstNameContainer    = root.getElementById("Vorname");
@@ -50,15 +42,24 @@ function setUsernameElements(root, firstName, lastName) {
     const firstNameProfile      = root.getElementById("userVorname");
     const lastNameProfile       = root.getElementById("userNachname");
     const welcomeUser           = root.getElementById("welcomeUser");
-    if(!firstNameContainer || !lastNameContainer || !firstNameInput || !lastNameInput || !firstNameProfile || !lastNameProfile || !welcomeUser || !firstName || !lastName) return;
+
+    let profileImg_1 = root.getElementById("profilePicture");
+    let profileImg_2 = root.getElementById("profilePictureOptions");
+    let visibleToggle = root.getElementById("visibleCheckbox");
+    let autoLoginToggle = root.getElementById("autoLoginCheckbox");
     
-    firstNameContainer.innerText    = firstName;
-    lastNameContainer.innerText     = lastName;
-    firstNameInput.placeholder      = firstName;
-    lastNameInput.placeholder       = lastName;
-    firstNameProfile.innerText      = firstName;
-    lastNameProfile.innerText       = lastName;
-    welcomeUser.innerHTML           = `Willkommen <i>${firstName}</i>`;
+    if(firstNameContainer)  firstNameContainer.innerText = firstName;
+    if(lastNameContainer)   lastNameContainer.innerText = lastName;
+    if(firstNameInput)      firstNameInput.placeholder = firstName;
+    if(lastNameInput)       lastNameInput.placeholder = lastName;
+    if(firstNameProfile)    firstNameProfile.innerText = firstName;
+    if(lastNameProfile)     lastNameProfile.innerText = lastName;
+    if(welcomeUser)         welcomeUser.innerHTML = `Wilkommen <i>${firstName}</i>`;
+
+    if(profileImg_1)        profileImg_1.style.filter = `drop-shadow(0px 0px 5px ${color})`;
+    if(profileImg_2)        profileImg_2.style.filter = `drop-shadow(0px 0px 5px ${color})`;
+    if(visibleToggle)       visibleToggle.checked = visible;
+    if(autoLoginToggle)     autoLoginToggle.checked = autoLogin;
 }
 
 function showInlineNotification(field, text, type) {
@@ -83,9 +84,6 @@ export async function register(root) {
     const confPwd               = root.getElementById("confirmPassword")?.value;
     const errMsgRegistration    = root.getElementById("errorMsgRegister");
     const errMsg                = root.getElementById("errorMsg");
-
-    firstNameValue = normalizeString(firstNameValue);
-    lastNameValue = normalizeString(lastNameValue);
 
     if (!errMsgRegistration || !errMsg) return;
 
@@ -135,12 +133,16 @@ export async function register(root) {
 ///////////////////////////////////////////////////////////////////
 export async function login(root) {
     const errMsg    = root.getElementById("errorMsg");
-    let username    = root.getElementById("username")?.value;
     let email       = root.getElementById("login-email")?.value;
     let pwd         = root.getElementById("password")?.value;
-    username        = normalizeString(username);
-    if(!username || !email || !pwd) {
+    
+    if(!errMsg) return;
+    if(!email || !pwd) {
         showInlineNotification(errMsg, "Zum Anmelden bitte E-Mail und Passwort eingeben.", "error");
+        return;
+    }
+    if(!isValidEmail(email)) {
+        showInlineNotification(errMsg, "Zur Anmeldung bitte eine gültige E-Mail eingeben.", "error");
         return;
     }
     try {
@@ -148,30 +150,34 @@ export async function login(root) {
         const resp = await fetch(`${config.serverURL}/account/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username: username, email: email, password: pwd})
+            body: JSON.stringify({ 
+                email: email, 
+                password: pwd
+            })
         });
-        const data = await resp.json();
         //hideLoader
-        if(resp.ok && username === "Admin") {
-            localStorage.setItem("user", username);
+        const data = await resp.json();
+        if(resp.ok && data.ok) {
             localStorage.setItem("userId", data.userId);
-            localStorage.setItem("adminKey", data.adminKey);
-            localStorage.removeItem("autoLogin");
-            //loadAdminReports();
-            return;
-        }
-        if (resp.ok && data.message === "Login erfolgreich!") {
-            localStorage.setItem("user", username);
-            localStorage.setItem("userId", data.userId);
+            localStorage.setItem("userEmail", email);
+            localStorage.setItem("isAdmin", data.isAdmin);
+
             showInlineNotification(errMsg, "Anmeldung erfolgreich!", "info");
-            setupProfile(root);
-            panel.applyLoginStatus(root);
-            //loadMaxPoints();
-        } else if (resp.status === 403) {
-            showInlineNotification(errMsg, "Benutzer bereits auf einem anderen Gerät eingeloggt.", "error");
-        } else {
-            showInlineNotification(errMsg, "Ungültige Kombination aus Benutzername, E-Mail und Passwort!", "error");
+            if(data.isAdmin) {
+                localStorage.setItem("adminKey", data.adminKey);
+                localStorage.removeItem("autoLogin");
+                //handleAdminLogin();
+                return;
+            } else {
+                setupProfile(root);
+                panel.applyLoginStatus(root);
+                //loadMaxPoints();
+                return;
+            }
         }
+        showInlineNotification(errMsg, data.message || "Anmeldung fehlgeschlagen!", "error");
+        if(data.errors?.email) showInlineNotification(errMsg, data.errors.email, "error");
+        if(data.errors?.password) showInlineNotification(errMsg, data.errors.password, "error");
     } catch (error) {
         console.error("Login error:", error);
         showInlineNotification(errMsg, "Ein Netzwerkfehler ist aufgetreten!", "error");
@@ -186,39 +192,32 @@ export async function login(root) {
 ///////////////////////////////////////////////////////////////////
 export async function setupProfile(root) {
     const localUserId = localStorage.getItem("userId");
-    let profileImg_1 = root.getElementById("profilePicture");
-    let profileImg_2 = root.getElementById("profilePictureOptions");
-    let visibleToggle = root.getElementById("visibleCheckbox");
-    let autoLoginToggle = root.getElementById("autoLoginCheckbox");
-    if(!localUserId) {
-        console.error("keine userId gefunden");
+    const localUserEmail = localStorage.getItem("userEmail");
+
+    if(!localUserId || !localUserEmail) {
         panel.applyLoginStatus(root);
-        return;
-    }
-    if(!profileImg_1 || !profileImg_2 || !visibleToggle || !autoLoginToggle) {
-        console.error("Setup Profile failed");
         return;
     }
     try {
         //showLoader
-        const resp = await fetch(`${config.serverURL}/account/getUserInfo?userId=${localUserId}`, {
+        const resp = await fetch(`${config.serverURL}/account/getUserInfo?requestId=${localUserId}&userId=${localUserId}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         });
+        const data = await resp.json();
         if(!resp.ok) throw new Error("Failed to load User:", resp);
         
-        const userInfo = await resp.json();
-        let firstName = userInfo.first_name;
-        let lastName = userInfo.last_name;
-        setUsernameElements(root, firstName, lastName);
-        
-        profileImg_1.style.filter = userInfo.color_code ? `drop-shadow(0px 0px 5px ${userInfo.color_code})` : "";
-        profileImg_2.style.filter = userInfo.color_code ? `drop-shadow(0px 0px 5px ${userInfo.color_code})` : "";
-        visibleToggle.checked = userInfo.visibility ?? false;
-        autoLoginToggle.checked = localStorage.getItem("autoLogin") ?? false;
+        let firstName   = data.first_name;
+        let lastName    = data.last_name;
+        let color       = data.color_code ?? "";
+        let visible     = data.visibility ?? false;
+        let autoLogin   = localStorage.getItem("autoLogin") ?? false;
+        setUsernameElements(root, firstName, lastName, color, visible, autoLogin);
+
     } catch (error) {
-        console.error("failed to setup Profile:", error);
+        console.error("Profile-Setup failed:", error);
         localStorage.removeItem("userId");
+        localStorage.removeItem("userEmail");
         localStorage.removeItem("adminKey");
     } finally {
         panel.applyLoginStatus(root);
@@ -228,28 +227,36 @@ export async function setupProfile(root) {
 
 //Delete User
 export async function deleteUserAccount(root) {
-    const informationField = root.getElementById("errorMsg");
-    const currentName = localStorage.getItem("user");
-    const currentId = localStorage.getItem("userId");
+    const informationField  = root.getElementById("errorMsg");
+    const pwdInput          = root.getElementById("deleteAccountPwd");
+    const currentId         = localStorage.getItem("userId");
+    const pwd               = pwdInput?.value ?? "";
 
-    if (!currentName || !currentId) return;
-    //showLoader();
+    if(!informationField || !pwdInput || !currentId) {
+        panel.hideAccountDeletion(root, true);
+        return;
+    }
     try {
+        //showLoader();
         const resp = await fetch(`${config.serverURL}/account/delete`, {
-            method: "POST",
+            method: "DELETE",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name: currentName, userId: currentId})
+            body: JSON.stringify({ userId: currentId, password: pwd })
         });
-        if(!resp.ok) throw new Error(`Account löschen fehlgeschlagen: ${resp}`);
+        const data = await resp.json();
+        if(!resp.ok) {
+            panel.showMessage(root, "Löschen des Profils fehlgeschlagen", data.message ?? "Der Account konnte nicht gelöscht werden.");
+            throw new Error(data.message);
+        }
         resetUserStorage();
         panel.applyLoginStatus(root);
-        panel.showMessage(root, "Account gelöscht", `Der Account '${currentName}' wurde erfolgreich gelöscht.`);
-        panel.hideAccountDeletion(root, true);
+        panel.showMessage(root, "Account gelöscht", `Der Account '${data.username}' wurde erfolgreich gelöscht.`);
         if(informationField) showInlineNotification(informationField, "Der Account wurde erfolgreich gelöscht", "info");
     } catch (error) {
         console.error("Account deletion error:", error);
     } finally {
         //hideLoader();
+        panel.hideAccountDeletion(root, true);
     }
 }
 
