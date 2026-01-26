@@ -37,7 +37,6 @@ def build_report(reportType, reportTitle, report, username, timestamp, to_email=
     return em
 
 
-
 def build_reset(to_email: str, code: str, username: str = "", expires_minutes: int = 15) -> EmailMessage:
     """Baut eine Reset-Passwort Mail"""
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
@@ -59,6 +58,63 @@ def build_reset(to_email: str, code: str, username: str = "", expires_minutes: i
         <p><small>Zeitpunkt: {now}</small></p>
         <p>Wenn du das nicht warst, ignoriere diese Mail.</p>
     </body></html>
+    """
+    em = EmailMessage()
+    em["From"] = SENDER_EMAIL
+    em["To"] = to_email
+    em["Subject"] = subject
+    em.set_content(text)
+    em.add_alternative(html, subtype="html")
+    return em
+
+
+def build_verify(to_email: str, verify_link: str, username: str = "") -> EmailMessage:
+    """Baut eine Account-Verifizierungs-Mail"""
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    subject = "Account bestätigen"
+    text = (
+        f"Hallo {username or ''}\n\n"
+        f"bitte bestätige deine E-Mail-Adresse, um deinen Account zu aktivieren.\n\n"
+        f"Öffne dazu diesen Link:\n"
+        f"{verify_link}\n\n"
+        f"Zeitpunkt: {now}\n"
+        f"Wenn du dich nicht registriert hast, ignoriere diese E-Mail."
+    ).strip()
+    html = f"""
+    <html>
+      <body style="font-family: Arial, sans-serif;">
+        <h2>Account bestätigen</h2>
+
+        <p>Hallo {username or ''},</p>
+
+        <p>
+          bitte bestätige deine E-Mail-Adresse, um deinen Account zu aktivieren.
+        </p>
+
+        <p style="margin: 24px 0;">
+          <a href="{verify_link}"
+             style="
+               background-color: #2563eb;
+               color: white;
+               padding: 12px 18px;
+               text-decoration: none;
+               border-radius: 6px;
+               font-weight: bold;
+               display: inline-block;
+             ">
+            Account bestätigen
+          </a>
+        </p>
+
+        <p style="color: #555;">
+          <small>Zeitpunkt: {now}</small>
+        </p>
+
+        <p style="color: #555;">
+          Wenn du dich nicht registriert hast, ignoriere diese E-Mail.
+        </p>
+      </body>
+    </html>
     """
     em = EmailMessage()
     em["From"] = SENDER_EMAIL

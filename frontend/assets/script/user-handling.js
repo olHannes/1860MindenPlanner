@@ -342,36 +342,23 @@ export async function submitNameChange(root) {
 //Change User-Password
 ///////////////////////////////////////////////////////////////////
 export async function sendResetCode(root, attempt = 1) {
-    const userId        = localStorage.getItem("userId");
+    const userEmail     = localStorage.getItem("userEmail");
     const sendBtn       = root.getElementById("sendResetCodeBtn");
     const sendAgainBtn  = root.getElementById("sendEmailCodeAgain");
     try {
-        if(!userId || !sendBtn || !sendAgainBtn) return;
-        sendBtn.disabled = true;
-        sendAgainBtn.disabled = true;
-        sendBtn.style.opacity = "0.25";
-        sendAgainBtn.style.opacity = "0.25";
-
-        const resp = await fetch(`${config.serverURL}/account/requestCode`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ userId: userId })
-        });
-        const data = await resp.json();
-        if(!resp.ok) throw new Error("Network error");
-        
-        if(attempt === 1) {
-            setTimeout(() => {
-                sendAgainBtn.style.opacity = "1";
-                sendAgainBtn.disabled = true;
-            }, 30000);
-        } else {
-            setTimeout(() => {
-                sendAgainBtn.style.opacity = "1";
-                sendAgainBtn.disabled = true;
-            }, 30000);
+        if(!userEmail || !sendBtn || !sendAgainBtn) {
+            console.log("failed");
+            return;
         }
 
+        const resp = await fetch(`${config.serverURL}/account/passwordReset/request`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: userEmail })
+        });
+        const data = await resp.json();
+        console.log(data);
+        if(!resp.ok) throw new Error(data.message);
     } catch (error) {
         console.error("Failed to send Reset Code:", error);
     } finally {
@@ -383,20 +370,22 @@ export async function submitPasswordChange(root) {
     const emailConfirm  = root.getElementById("pwCode")?.value;
     const newPwd        = root.getElementById("pwNew")?.value;
     
+    if(!userId || !emailConfirm || !newPwd) {
+        panel.hideAdjustPassword(root, true);
+        return;
+    }
     try {
         //showLoader();
-        if(!userId || !emailConfirm || !newPwd) return;
-        const resp = await fetch(``, {
+        const resp = await fetch(`${config.serverURL}/account/updatePassword`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ userId: userId, confirm_code: emailConfirm, new_password: newPwd })
         });
         const data = await resp.json();
-        if(!resp.ok) throw new Error("Network error");
-
+        if(!resp.ok) throw new Error(data.message);
 
     } catch (error) {
-        console.error("Failed to change Password", error);
+        console.error("Failed to change Password:", error);
     } finally {
         //hideLoader();
         panel.hideAdjustPassword(root, true);

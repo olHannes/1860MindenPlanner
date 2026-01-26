@@ -4,6 +4,7 @@ from flask import session
 import random
 from datetime import datetime, timezone
 from werkzeug.security import check_password_hash, generate_password_hash
+import secrets
 
 from validation import *
 
@@ -30,6 +31,34 @@ def parse_expires_at(expires_at):
 
 
 ################################################################################################### Registrierung
+@account_bp.route('/account/verify', methods=['POST'])
+def verify_account():
+    data    = request.get_json(silent=True) or {}
+    token   = data.get('token')
+    uid     = data.get('uid')
+
+    if not token or not uid or not ObjectId.is_valid(uid):
+        return jsonify({"ok": False, "message": "uid und token sind notwendig."}), 400
+
+    user = users_collection.find_one({"_id": ObjectId(uid)})
+    if not user:
+        return jsonify({"ok": False, "message": "Nutzer nicht gefunden."}), 404
+    
+    ev = (user.get("emailVerify") or {})
+    if ev.get("email_verified") is True:
+        return jsonify({"ok": True, "message": "E-Mail ist bereits verifiziert."}), 200
+    
+    stored_hash = ev.get("token_hash")
+    if not stored_hash or not check_password_hash(stored_hash, token):
+        return jsonify({"ok": False, "message": "Token ist ungültig."}), 401
+
+    users_collection.update_one(
+        {"_id": user["_id"]},
+        {"$set": {"emailVerify.email_verified": True},
+         "$unset": {"emailVerify.token_hash": ""}}
+    )
+    return jsonify({"ok": True, "message": "Nutzervalidierung war erfolgreich"}), 200
+
 
 @account_bp.route('/account/register', methods=['POST'])
 def register():
@@ -56,7 +85,10 @@ def register():
 
     hashed_password = generate_password_hash(password)
 
-    users_collection.insert_one({
+    verifyCode = secrets.token_urlsafe(32)
+    verifyHash = generate_password_hash(verifyCode)
+
+    result = users_collection.insert_one({
         'firstName': fn, 
         'lastName': ln, 
         'email': em,
@@ -68,8 +100,18 @@ def register():
             'code_hash': None,
             'expires_at': None,
             'attempts': 0 
+        },
+        'emailVerify': {
+            'token_hash': verifyHash,
+            'email_verified': False
         }
     })
+
+    full_name = fn + " " + ln
+    verify_link = f"http://127.0.0.1:5500/verifyAccount.html#uid={str(result.inserted_id)}&token={verifyCode}"
+    verifyEmail = notification.build_verify(em, verify_link, full_name)
+    notification.send_mail(verifyEmail)
+
     return jsonify({"ok": True, "message": "Registrierung erfolgreich!"}), 200
 
 
@@ -90,7 +132,7 @@ def login():
             "errors": errors
         }), 400
     
-    user = users_collection.find_one({ "email": em})
+    user = users_collection.find_one({ "email": em, "emailVerify.email_verified": True})
     if not user:
         return jsonify({
             "ok": False,
@@ -177,7 +219,7 @@ def update_password():
     data            = request.get_json()
     user_id         = data.get('userId')
     confirm_code    = data.get('confirm_code')
-    new_password    = data.get('newPassword')
+    new_password    = data.get('new_password')
 
     if not user_id or not ObjectId.is_valid(user_id) or not confirm_code or not new_password:
         return jsonify({"message": "Ungültige Parameter"}), 400
@@ -226,7 +268,7 @@ def update_password():
 
 @account_bp.route('/account/passwordReset/request', methods=['POST'])
 def request_password_reset():
-    data    = request.get_json()
+    data    = request.get_json(silent=True) or {}
     email   = data.get("email")
     if not email:
         return jsonify({"message": "Ungültige Parameter"}), 400

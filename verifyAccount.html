@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Account verifizieren</title>
+  <meta name="robots" content="noindex,nofollow" />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#111a2e;
+      --text:#e8eefc;
+      --muted:#a7b3d1;
+      --border:rgba(255,255,255,.12);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:14px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+      background: radial-gradient(1000px 500px at 20% 10%, rgba(37,99,235,.25), transparent 60%),
+                  radial-gradient(900px 450px at 80% 90%, rgba(34,197,94,.18), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      padding:24px;
+    }
+    .card{
+      width:min(560px, 100%);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    header{
+      padding:22px 22px 10px;
+      border-bottom:1px solid var(--border);
+    }
+    h1{
+      margin:0;
+      font-size:20px;
+      letter-spacing:.2px;
+    }
+    p{
+      margin:10px 0 0;
+      color:var(--muted);
+      line-height:1.45;
+      font-size:14px;
+    }
+    main{ padding:18px 22px 22px; }
+    .status{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:14px;
+      border:1px solid var(--border);
+      border-radius:12px;
+      background:rgba(0,0,0,.14);
+    }
+    .icon{
+      width:34px;
+      height:34px;
+      border-radius:10px;
+      display:grid;
+      place-items:center;
+      flex:0 0 auto;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      font-weight:700;
+    }
+    .title{
+      margin:0;
+      font-size:15px;
+      font-weight:700;
+    }
+    .desc{
+      margin:4px 0 0;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .actions{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    button, a.btn{
+      appearance:none;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:10px;
+      font-weight:600;
+      cursor:pointer;
+      text-decoration:none;
+      font-size:14px;
+    }
+    button:hover, a.btn:hover{ background:rgba(255,255,255,.09); }
+    button.primary, a.btn.primary{
+      background:rgba(37,99,235,.35);
+      border-color:rgba(37,99,235,.55);
+    }
+    button.primary:hover, a.btn.primary:hover{ background:rgba(37,99,235,.45); }
+    .small{
+      margin-top:12px;
+      font-size:12px;
+      color:rgba(167,179,209,.9);
+    }
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:12px;
+      color:#d7e2ff;
+    }
+
+    .ok .icon{ background:rgba(34,197,94,.18); border-color:rgba(34,197,94,.35); }
+    .err .icon{ background:rgba(239,68,68,.18); border-color:rgba(239,68,68,.35); }
+    .load .icon{ background:rgba(59,130,246,.18); border-color:rgba(59,130,246,.35); }
+
+    .spinner{
+      width:14px;height:14px;border-radius:999px;
+      border:2px solid rgba(255,255,255,.25);
+      border-top-color: rgba(255,255,255,.9);
+      animation:spin .9s linear infinite;
+    }
+    @keyframes spin{ to{ transform:rotate(360deg); } }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <header>
+      <h1>Account verifizieren</h1>
+      <p>Wir prüfen deinen Verifizierungslink. Du kannst dieses Fenster danach schließen.</p>
+    </header>
+
+    <main>
+      <div id="statusBox" class="status load">
+        <div class="icon" id="statusIcon"><div class="spinner" aria-hidden="true"></div></div>
+        <div>
+          <p class="title" id="statusTitle">Bitte warten …</p>
+          <p class="desc" id="statusDesc">Die Verifizierung läuft.</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="primary" id="retryBtn" type="button" hidden>Erneut versuchen</button>
+        <a class="btn" id="loginBtn" href="/" hidden>Zum Login</a>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const LOGIN_URL = "https://routineplanner.de/";
+
+    const statusBox = document.getElementById("statusBox");
+    const statusIcon = document.getElementById("statusIcon");
+    const statusTitle = document.getElementById("statusTitle");
+    const statusDesc = document.getElementById("statusDesc");
+    const retryBtn = document.getElementById("retryBtn");
+    const loginBtn = document.getElementById("loginBtn");
+    const debugLine = document.getElementById("debugLine");
+    const debugText = document.getElementById("debugText");
+
+    loginBtn.href = LOGIN_URL;
+
+    /*Set Status Box Style and Icon*/
+    function setState(typ, title, desc) {
+        statusBox.classList.remove("load","ok","err");
+        statusBox.classList.add(typ);
+        if (typ === "load") {
+            statusIcon.innerHTML = '<div class="spinner" aria-hidden="true"></div>';
+        } else if (typ === "ok") {
+            statusIcon.textContent = "✓";
+        } else {
+            statusIcon.textContent = "!";
+        }
+        statusTitle.textContent = title;
+        statusDesc.textContent = desc;
+    }
+
+    /*Read Token from URL*/
+    function getToken() {
+        const params = new URLSearchParams(location.hash.slice(1));
+        const uid = params.get("uid");
+        const token = params.get("token");
+        return {uid, token}
+    }
+
+    /*Send Verify Request to Server*/
+    async function verify() {
+        retryBtn.hidden = true;
+        loginBtn.hidden = true;
+        setState("load", "Bitte warten …", "Die Verifizierung läuft.");
+
+        const {uid, token} = getToken();
+        if (!uid || !token) {
+            setState("err", "Link unvollständig", "Es fehlt eine Uid oder ein Token. Bitte öffne den Link aus der E-Mail erneut.");
+            retryBtn.hidden = true;
+            return;
+        }
+
+        try {
+            const res = await fetch('http://127.0.0.1:10000/account/verify', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ uid, token })
+            });
+
+            const data = await res.json();
+
+            if (res.ok && data && data.ok !== false) {
+                setState("ok", "Erfolgreich verifiziert", "Dein Account ist jetzt aktiv. Du kannst dich einloggen.");
+                loginBtn.hidden = false;
+                history.replaceState({}, document.title, location.pathname);
+                return;
+            }
+            const msg = (data && data.message) ? data.message : "Verifizierung fehlgeschlagen.";
+            setState("err", "Nicht verifiziert", msg);
+            retryBtn.hidden = false;
+
+        } catch (e) {
+            setState("err", "Netzwerkfehler", "API nicht erreichbar. Prüfe deine Verbindung und versuche es erneut.");
+            retryBtn.hidden = false;
+        }
+    }
+
+    retryBtn.addEventListener("click", verify);
+    verify();
+  </script>
+</body>
+</html>
