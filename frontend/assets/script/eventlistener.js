@@ -190,10 +190,18 @@ function setAccountSettingsListener(root) {
     });
     const sendCodeBtn = root.querySelector("#sendResetCodeBtn");
     sendCodeBtn?.addEventListener("click", () => {
-        
+        console.log("1");
+        if(!sendCodeBtn.disabled) return; 
+        console.log("2");
+        userHandling.sendResetCode(root, 1);
+    });
+    const resendCodeBtn = root.querySelector("#sendEmailCodeAgain");
+    resendCodeBtn?.addEventListener("click", () => {
+        if(!resendCodeBtn.disabled) return;
+        userHandling.sendResetCode(root, 2);
     });
     const passwordSubmitBtn = root.querySelector("#confirmPwResetBtn");
     passwordSubmitBtn?.addEventListener("click", () => {
-
+        userHandling.submitPasswordChange(root);
     });
 }

@@ -332,7 +332,7 @@
             <button id="editNameBtn" class="edit-names" style="margin-top: var(--gap);">
                 ✎ Namen bearbeiten ✎
             </button>
-            <button id="editPasswordBtn" class="edit-names" onclick="editPassword();">
+            <button id="editPasswordBtn" class="edit-names">
                 ✎ Passwort bearbeiten ✎
             </button>   
             
@@ -392,12 +392,8 @@
                     <div class="settingsCard__body">
                         <div class="formStack">
                         <div class="inlineRow">
-                            <button id="sendResetCodeBtn" class="btn btn--primary" type="button">
-                            Code per E-Mail senden
-                            </button>
-                            <button id="cancelPwResetBtn" class="btn btn--secondary" type="button">
-                            Abbrechen
-                            </button>
+                            <button id="sendResetCodeBtn" class="btn btn--primary" type="button" disabled=false>Code per E-Mail senden</button>
+                            <button id="sendEmailCodeAgain" class="btn btn--secondary" type="button" disabled=true>Code erneut senden</button>
                         </div>
                         <div class="divider"></div>
                         <label class="field">
@@ -411,7 +407,8 @@
                         </div>
                         <p id="pwMsg" class="" aria-live="polite"></p>
                         <div class="actions">
-                        <button id="confirmPwResetBtn" class="btn btn--primary" type="button">Passwort ändern</button>
+                            <button id="cancelPwResetBtn" class="btn btn--secondary" type="button">Abbrechen</button>
+                            <button id="confirmPwResetBtn" class="btn btn--primary" type="button">Passwort ändern</button>
                         </div>
                     </div>
                 </section>

@@ -68,55 +68,60 @@ function showInlineNotification(field, text, type) {
     field.classList.toggle("error", type==="error");
 }
 
+function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
 
 //User Registration
 ///////////////////////////////////////////////////////////////////
 export async function register(root) {
-    const namePattern = /^[A-Za-zÄÖÜäöüß ]+$/;
-    const lineNotification  = root.getElementById("errorMsgRegister");
-    let firstNameValue      = root.getElementById("registration-firstName")?.value;
-    let lastNameValue       = root.getElementById("registration-lastName")?.value;
-    let email               = root.getElementById("registration-email")?.value;
-    const newPwd            = root.getElementById("newPassword")?.value;
-    const confPwd           = root.getElementById("confirmPassword")?.value;
+    const lineNotification      = root.getElementById("errorMsgRegister");
+    let firstNameValue          = root.getElementById("registration-firstName")?.value;
+    let lastNameValue           = root.getElementById("registration-lastName")?.value;
+    let email                   = root.getElementById("registration-email")?.value;
+    const newPwd                = root.getElementById("newPassword")?.value;
+    const confPwd               = root.getElementById("confirmPassword")?.value;
+    const errMsgRegistration    = root.getElementById("errorMsgRegister");
+    const errMsg                = root.getElementById("errorMsg");
 
     firstNameValue = normalizeString(firstNameValue);
     lastNameValue = normalizeString(lastNameValue);
 
+    if (!errMsgRegistration || !errMsg) return;
+
+    if (!firstNameValue || firstNameValue.length < 1 || !lastNameValue || lastNameValue.length < 1 || !newPwd || newPwd.length < 1 || !email || email.length < 1) {
+        showInlineNotification(lineNotification, "Alle Felder müssen ausgefüllt sein!", "error");
+        return;
+    }
     if (newPwd !== confPwd) {
         showInlineNotification(lineNotification, "Passwörter stimmen nicht überein!", "error");
         return;
     }
-    if (!firstNameValue || firstNameValue.length < 1 || !lastNameValue || lastNameValue.length < 1 || !newPwd || newPwd.length < 1 || !email) {
-        showInlineNotification(lineNotification, "Alle Felder müssen ausgefüllt sein!", "error");
+    if (!isValidEmail(email)) {
+        showInlineNotification(lineNotification, "Bitte eine gültige E-Mail eingeben!", "error");
         return;
     }
-    if (!namePattern.test(firstNameValue)) {
-        showInlineNotification(lineNotification, "Der Vorname darf nur Buchstaben enthalten!", "error");
-        return;
-    }
-    if (!namePattern.test(lastNameValue)) {
-        showInlineNotification(lineNotification, "Der Nachname darf nur Buchstaben enthalten!", "error");
-        return;
-    }
-    const errMsgRegistration = root.getElementById("errorMsgRegister");
-    const errMsg = root.getElementById("errorMsg");
+
     try {
         //show Loader
         const resp = await fetch(`${config.serverURL}/account/register`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ firstName: firstNameValue, lastName: lastNameValue, password: newPwd })
+            body: JSON.stringify({ firstName: firstNameValue, lastName: lastNameValue, email: email, password: newPwd })
         });
-        const data = await resp.json();
-        if (resp.ok && data.message === "Registrierung erfolgreich!") {
-            panel.hideRegistration(root);
-            if(!errMsgRegistration || ! errMsg) return;
+        
+        if(resp.ok) {
             showInlineNotification(errMsg, "Nutzer erfolgreich registriert.", "info");
-        } else {
-            panel.clearForm(root, ["firstName", "lastName", "newPassword", "confirmPassword"], "errorMsgRegister");
-            showInlineNotification(errMsgRegistration, "Registrierung fehlgeschlagen - Benutzername bereits vergeben!", "error");
+            panel.hideRegistration(root);
+            return;
         }
+        const data = await resp.json();
+        showInlineNotification(errMsgRegistration, data.message || "Registrierung fehlgeschlagen!", "error");
+        if(data.errors?.firstName) showInlineNotification(errMsgRegistration, data.errors.firstName, "error");
+        if(data.errors?.lastName) showInlineNotification(errMsgRegistration, data.errors.lastName, "error");
+        if(data.errors?.password) showInlineNotification(errMsgRegistration, data.errors.password, "error");
+        if(data.errors?.email) showInlineNotification(errMsgRegistration, data.errors.email, "error");
+
     } catch (error) {
         console.error("Registration error:", error);
         showInlineNotification(errMsgRegistration, "Ein Netzwerkfehler ist augetreten!", "error");
@@ -135,7 +140,7 @@ export async function login(root) {
     let pwd         = root.getElementById("password")?.value;
     username        = normalizeString(username);
     if(!username || !email || !pwd) {
-        showInlineNotification(errMsg, "Zum Anmelden bitte Benutzername, E-Mail und Passwort eingeben.", "error");
+        showInlineNotification(errMsg, "Zum Anmelden bitte E-Mail und Passwort eingeben.", "error");
         return;
     }
     try {
@@ -143,7 +148,7 @@ export async function login(root) {
         const resp = await fetch(`${config.serverURL}/account/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username: username, password: pwd})
+            body: JSON.stringify({ username: username, email: email, password: pwd})
         });
         const data = await resp.json();
         //hideLoader
@@ -165,7 +170,7 @@ export async function login(root) {
         } else if (resp.status === 403) {
             showInlineNotification(errMsg, "Benutzer bereits auf einem anderen Gerät eingeloggt.", "error");
         } else {
-            showInlineNotification(errMsg, "Ungültige Kombination aus Benutzername und Passwort!", "error");
+            showInlineNotification(errMsg, "Ungültige Kombination aus Benutzername, E-Mail und Passwort!", "error");
         }
     } catch (error) {
         console.error("Login error:", error);
@@ -318,21 +323,75 @@ export async function submitNameChange(root) {
         localStorage.setItem("user", firstNameInput);
         panel.showMessage(root, "Name erfolgreich geändert", `Der neue Nutzername '${firstNameInput} ${lastNameInput}' wurde übernommen.`);
         setUsernameElements(root, firstNameInput, lastNameInput);
-        panel.hideAdjustName(root, true);
     } catch (error) {
         console.error("Failed to save new Username:", error);
     } finally {
         //hideLoader();
+        panel.hideAdjustName(root, true);
     }
-
 }
 
 
 //Change User-Password
 ///////////////////////////////////////////////////////////////////
-export async function sendResetCode() {
-    console.warn("not implemented yet");
+export async function sendResetCode(root, attempt = 1) {
+    const userId        = localStorage.getItem("userId");
+    const sendBtn       = root.getElementById("sendResetCodeBtn");
+    const sendAgainBtn  = root.getElementById("sendEmailCodeAgain");
+    try {
+        if(!userId || !sendBtn || !sendAgainBtn) return;
+        sendBtn.disabled = true;
+        sendAgainBtn.disabled = true;
+        sendBtn.style.opacity = "0.25";
+        sendAgainBtn.style.opacity = "0.25";
+
+        const resp = await fetch(`${config.serverURL}/account/requestCode`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userId: userId })
+        });
+        const data = await resp.json();
+        if(!resp.ok) throw new Error("Network error");
+        
+        if(attempt === 1) {
+            setTimeout(() => {
+                sendAgainBtn.style.opacity = "1";
+                sendAgainBtn.disabled = true;
+            }, 30000);
+        } else {
+            setTimeout(() => {
+                sendAgainBtn.style.opacity = "1";
+                sendAgainBtn.disabled = true;
+            }, 30000);
+        }
+
+    } catch (error) {
+        console.error("Failed to send Reset Code:", error);
+    } finally {
+        //hideLoader();
+    }
 }
 export async function submitPasswordChange(root) {
-    console.warn("not implemented yet");
+    const userId        = localStorage.getItem("userId");
+    const emailConfirm  = root.getElementById("pwCode")?.value;
+    const newPwd        = root.getElementById("pwNew")?.value;
+    
+    try {
+        //showLoader();
+        if(!userId || !emailConfirm || !newPwd) return;
+        const resp = await fetch(``, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userId: userId, confirm_code: emailConfirm, new_password: newPwd })
+        });
+        const data = await resp.json();
+        if(!resp.ok) throw new Error("Network error");
+
+
+    } catch (error) {
+        console.error("Failed to change Password", error);
+    } finally {
+        //hideLoader();
+        panel.hideAdjustPassword(root, true);
+    }
 }

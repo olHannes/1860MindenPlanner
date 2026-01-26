@@ -509,3 +509,7 @@
 .btn--secondary:hover{
   background: rgba(0,0,0,.03);
 }
+
+#sendEmailCodeAgain {
+  opacity: 0.5;
+}

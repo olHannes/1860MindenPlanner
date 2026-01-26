@@ -1,78 +1,31 @@
 
 from mongoConf import *
 import random
+from datetime import datetime, timezone
+from werkzeug.security import check_password_hash, generate_password_hash
+
+from validation import *
 
 account_bp = Blueprint('account', __name__)
 randAdminKey = random.randint(100000, 999999)
 
 
-################################################################################################### Login
-
-@account_bp.route('/account/login', methods=['POST'])
-def login():
+def validateAdminKey(key):
     global randAdminKey
-    data = request.get_json()
-    username = data.get('username')
-    password = data.get('password')
+    try:
+        return int(key) == randAdminKey
+    except:
+        return False
 
-    user = users_collection.find_one({"firstName": username})
-    
-    if user:
-        user_id = str(user["_id"])
-
-        if check_password_hash(user['password'], password):
-            users_collection.update_one(
-                {"_id": user["_id"]},
-                {"$inc": {"online": 1}}
-            )
-            session['user'] = username
-            if username == "Admin":
-                return jsonify({"message": "Login erfolgreich!", "userId": user_id, "adminKey": randAdminKey}), 200
-            else:
-                return jsonify({"message": "Login erfolgreich!", "userId": user_id}), 200
-        else:
-            return jsonify({"message": "Ungültiges Passwort!"}), 401
-    else:
-        return jsonify({"message": "Benutzername nicht gefunden!"}), 404
-
-
-################################################################################################### Auto-Status
-
-@account_bp.route('/account/checkUserStatus', methods=['GET'])
-def check_user_status():
-    username = request.args.get('name')
-    user_id = request.args.get('userId')
-
-    if not username or not user_id:
-        return jsonify({"message": "Kein Benutzername oder Benutzer-ID angegeben!"}), 400
-
-    user = users_collection.find_one({"_id": ObjectId(user_id), "firstName": username})
-    
-    if user:
-        print(user.get("online", 0))
-    if user and user.get("online", 0) > 0:
-        return jsonify({"message": "Benutzer online!"}), 200
-    else:
-        return jsonify({"message": "Benutzer offline!"}), 200
-
-
-################################################################################################### Logout
-
-@account_bp.route('/account/logout', methods=['POST'])
-def logout():
-    data = request.get_json()
-    username = data.get('name')
-    user_id = data.get('userId')
-
-    if not username or not user_id:
-        return jsonify({"message": "Kein Benutzername oder Benutzer-ID angegeben!"}), 400
-
-    print("Try Logout for:", username, "| ID:", user_id)
-
-    users_collection.update_one({"_id": ObjectId(user_id)}, {"$inc": {"online": -1}})
-    session.pop('user', None)
-
-    return jsonify({"message": "Erfolgreich ausgeloggt!"}), 200
+def parse_expires_at(expires_at):
+    if expires_at is None:
+        return None
+    if isinstance(expires_at, datetime):
+        return expires_at if expires_at.tzinfo else expires_at.replace(tzinfo=timezone.utc)
+    if isinstance(expires_at, str):
+        s = expires_at.strip().replace("Z", "+00:00")
+        return datetime.fromisoformat(s)
+    return None
 
 
 ################################################################################################### Registrierung
@@ -80,60 +33,223 @@ def logout():
 @account_bp.route('/account/register', methods=['POST'])
 def register():
     data = request.get_json()
-    first_name = data.get('firstName')
-    last_name = data.get('lastName')
-    password = data.get('password')
+    first_name  = data.get('firstName')
+    last_name   = data.get('lastName')
+    email       = data.get('email')
+    password    = data.get('password')
 
-    if users_collection.find_one({"firstName": first_name}):
-        return jsonify({"message": "Benutzername bereits vergeben!"}), 400
+    fn, ln, em, errors = validate_registration(first_name, last_name, email, password)
+    if errors:
+        return jsonify({
+            "ok": False,
+            "message": "Validierung fehlgeschlagen",
+            "errors": errors
+        }), 400
+
+    if users_collection.find_one({"email": em}):
+        return jsonify({
+            "ok": False,
+            "message": "Validierung fehlgeschlagen",
+            "errors": {"email": "Email bereits vergeben!"}
+        }), 409
 
     hashed_password = generate_password_hash(password)
-    users_collection.insert_one({'firstName': first_name, 'lastName': last_name, 'password': hashed_password, 'online': 0, 'color_code': '#000000', 'visibility': 1})
 
-    return jsonify({"message": "Registrierung erfolgreich!"}), 200
+    users_collection.insert_one({
+        'firstName': fn, 
+        'lastName': ln, 
+        'email': em,
+        'password': hashed_password, 
+        'online': 0, 
+        'color_code': '#000000', 
+        'visibility': 1,
+        'passwordReset': {
+            'code_hash': None,
+            'expires_at': None,
+            'attempts': 0 
+        }
+    })
+    return jsonify({"ok": True, "message": "Registrierung erfolgreich!"}), 200
+
+
+################################################################################################### Login
+
+@account_bp.route('/account/login', methods=['POST'])
+def login():
+    global randAdminKey
+    data        = request.get_json()
+    username    = data.get('username')
+    email       = data.get('email')
+    password    = data.get('password')
+
+    if not username or not email or not password:
+        return jsonify({"message": "Login fehlerhaft. Es muss Nutzername, Email und Passwort gegeben sein."}), 400
+    
+    #user = users_collection.find_one({ "firstName": username })
+    user = users_collection.find_one({ "email": email })
+    
+    if not user:
+        return jsonify({"message": "Login fehlerhaft. Nutzer nicht gefunden"}), 404
+
+    user_id = str(user["_id"])
+
+    if check_password_hash(user['password'], password):
+        users_collection.update_one(
+            {"_id": user["_id"]},
+            {"$inc": {"online": 1}}
+        )
+        session['user'] = email
+
+        if username == "Admin":
+            return jsonify({"message": "Login erfolgreich!", "userId": user_id, "adminKey": randAdminKey}), 200
+        else:
+            return jsonify({"message": "Login erfolgreich!", "userId": user_id}), 200
+    else:
+        return jsonify({"message": "Ungültiges Passwort!"}), 401
+
+
+################################################################################################### Auto-Status
+
+@account_bp.route('/account/checkUserStatus', methods=['GET'])
+def check_user_status():
+    username    = request.args.get('name')
+    email       = request.args.get('email')
+    user_id     = request.args.get('userId')
+
+    if not username or not user_id or not ObjectId.is_valid(user_id) or not email:
+        return jsonify({"message": "Ungültige Parameter"}), 400
+
+    #user = users_collection.find_one({"_id": ObjectId(user_id), "firstName": username})
+    user = users_collection.find_one({"_id": ObjectId(user_id), "email": email})
+    if not user:
+        return jsonify({"message": "Nutzer nicht gefunden."}), 404
+    online_count = user.get("online", 0)
+
+    if online_count > 0:
+        return jsonify({"message": "Nutzer online", "count": online_count}), 200
+    else:
+        return jsonify({"message": "Nutzer offline"}), 200
+
+
+################################################################################################### Logout
+
+@account_bp.route('/account/logout', methods=['POST'])
+def logout():
+    data        = request.get_json()
+    username    = data.get('name')
+    email       = data.get('email')
+    user_id     = data.get('userId')
+
+    if not username or not user_id or not ObjectId.is_valid(user_id) or not email:
+        return jsonify({"message": "Ungültige Parameter"}), 400
+
+    user = users_collection.find_one({"_id": ObjectId(user_id), "email": email})
+    if not user:
+        return jsonify({"message": "Nutzer nicht gefunden"}), 404
+    
+    users_collection.update_one({"_id": ObjectId(user_id)}, {"$inc": {"online": -1}})
+    session.pop('user', None)
+
+    return jsonify({"message": "Erfolgreich ausgeloggt!"}), 200
 
 
 ################################################################################################### update Password
 
 @account_bp.route('/account/updatePassword', methods=['POST'])
 def update_password():
-    data = request.get_json()
-    user_id = data.get('userId')
-    new_password = data.get('newPassword')
+    data            = request.get_json()
+    user_id         = data.get('userId')
+    confirm_code    = data.get('confirm_code')
+    new_password    = data.get('newPassword')
 
-    if not user_id or not new_password:
-        return jsonify({"message": "Benutzer-ID und neues Passwort sind erforderlich!"}), 400
+    if not user_id or not ObjectId.is_valid(user_id) or not confirm_code or not new_password:
+        return jsonify({"message": "Ungültige Parameter"}), 400
 
-    try:
-        user = users_collection.find_one({"_id": ObjectId(user_id)})
-    except:
-        return jsonify({"message": "Ungültige Benutzer-ID!"}), 400
-
+    user = users_collection.find_one({"_id": ObjectId(user_id)})
     if not user:
-        return jsonify({"message": "Benutzer nicht gefunden!"}), 404
+        return jsonify({"message": "Nutzer nicht gefunden!"}), 404
 
-    hashed_password = generate_password_hash(new_password)
+    pr = user.get("passwordReset") or {}
+    code_hash = pr.get("code_hash")
+    expires_at_raw = pr.get("expires_at")
+    attempts = pr.get("attempts", 0)
+
+    expires_at = parse_expires_at(expires_at_raw)
+    now = datetime.now(timezone.utc)
+
+    if not code_hash or not expires_at or expires_at <= now:
+        users_collection.update_one(
+            {"_id": user["_id"]},
+            {"$unset": {"passwordReset": ""}}
+        )
+        return jsonify({"message": "Confirm-Code war nicht gültig"}), 403
+    
+    if attempts >=5:
+        return({"message": "Zu viele Versuche"}), 403
+
+    if not check_password_hash(code_hash, confirm_code):
+        users_collection.update_one(
+            {"_id": user["_id"]},
+            {"$inc": {"passwordReset.attempts": 1}}
+        )
+        return jsonify({"message": "Confirm-Code war nicht gültig"}), 403
+    
+    new_hashed_password = generate_password_hash(new_password)
     users_collection.update_one(
-        {"_id": ObjectId(user_id)},
-        {"$set": {"password": hashed_password}}
+        {"_id": user["_id"]},
+        {
+            "$set": { "password": new_hashed_password},
+            "$unset": {"passwordReset": ""}
+        }
     )
     return jsonify({"message": "Passwort erfolgreich aktualisiert!"}), 200
+
+
+################################################################################################### send Request Code (mail)
+
+@account_bp.route('/account/passwordReset/request', methods=['POST'])
+def request_password_reset():
+    data    = request.get_json()
+    email   = data.get("email")
+    if not email:
+        return jsonify({"message": "Ungültige Parameter"}), 400
+    
+    user = users_collection.find_one({"email": email})
+    if not user:
+        return jsonify({"message": "Nutzer nicht gefunden"}), 404
+    
+    code = f"{random.randint(0, 999999):06d}"
+    code_hash = generate_password_hash(code)
+    expires_at = datetime.now(timezone.utc) + timedelta(minutes=15)
+
+    users_collection.update_one(
+        {"_id": user["_id"]},
+        {"$set": {
+            "passwordReset.code_hash": code_hash,
+            "passwordReset.expires_at": expires_at,
+            "passwordReset.attempts": 0
+        }}
+    )
+
+    em = notification.build_reset(email, code, user["firstName"], 15)
+    notification.send_mail(em)
+
+    return jsonify({"message": "Reset erfolgreich versendet"}), 200
 
 
 ################################################################################################### update Password Admin
 
 @account_bp.route('/account/admin/updatePassword', methods=['POST'])
 def update_admin_password():
-    global randAdminKey
-    data = request.get_json()
-    username = data.get('username')
-    new_password = data.get('newPassword')
-    key = data.get('adminKey')
+    data            = request.get_json()
+    username        = data.get('username')
+    new_password    = data.get('newPassword')
+    key             = data.get('adminKey')
 
     if not username or not new_password or not key:
         return jsonify({"message": "Benutzer-ID und neues Passwort sind erforderlich!"}), 400
 
-    if int(key) != randAdminKey:
+    if not validateAdminKey(key):
         return jsonify({"message": "Ungültiger Admin Key"}), 400
 
     try:
@@ -154,18 +270,17 @@ def update_admin_password():
 
 ################################################################################################### Delete Account
 
-@account_bp.route('/account/delete', methods=['POST'])
+@account_bp.route('/account/delete', methods=['DELETE'])
 def delete_account():
-    data = request.get_json()
-    username = data.get('name')
-    user_id = data.get('userId')
+    data        = request.get_json()
+    username    = data.get('name')
+    email       = data.get('email')
+    user_id     = data.get('userId')
 
-    if not username or not user_id:
-        return jsonify({"message": "Benutzername oder Benutzer-ID fehlt!"}), 400
+    if not username or not email or not user_id or not ObjectId.is_valid(user_id):
+        return jsonify({"message": "Ungültige Parameter"}), 400
 
-    print("Try to delete:", username, "| ID:", user_id)
-
-    user = users_collection.find_one({"_id": ObjectId(user_id), "firstName": username})
+    user = users_collection.find_one({"_id": ObjectId(user_id), "email": email})
     if not user:
         return jsonify({"message": "Benutzer nicht gefunden oder ID stimmt nicht!"}), 404
 
@@ -179,18 +294,18 @@ def delete_account():
 
 @account_bp.route('/admin/deleteAcc', methods=['POST'])
 def delete_admin_acc():
-    global randAdminKey
-    data = request.get_json()
-    username = data.get('name')
-    adminKey = data.get('adminKey')
+    data        = request.get_json()
+    username    = data.get('name')
+    user_id     = data.get('user_id')
+    adminKey    = data.get('adminKey')
 
-    if not username or not adminKey:
-        return jsonify({"message": "Invalid Params!"}), 400
+    if not username or not user_id or not ObjectId.is_valid(user_id) or not adminKey:
+        return jsonify({"message": "Ungültige Parameter!"}), 400
 
-    if int(adminKey) != randAdminKey:
-        return jsonify({"message": "Ungültiger Admin Key"}), 400
+    if not validateAdminKey(adminKey):
+        return jsonify({"message": "Ungültiger Admin Key"}), 403
 
-    user = users_collection.find_one({"firstName": username})
+    user = users_collection.find_one({"_id": ObjectId(user_id)})
     if not user:
         return jsonify({"message": "Benutzer nicht gefunden!"}), 404
     
@@ -203,15 +318,17 @@ def delete_admin_acc():
 
 @account_bp.route('/account/getUserInfo', methods=['GET'])
 def get_user_info():
-    user_id = request.args.get('userId')
+    request_id  = request.args.get('requestId')
+    user_id     = request.args.get('userId')
 
-    print("Try to get User-Info by userId:", user_id)
+    if not user_id or not ObjectId.is_valid(user_id) or not request_id or not ObjectId.is_valid(request_id):
+        return jsonify({"message": "Ungültige Parameter"}), 400
 
-    if not user_id or not ObjectId.is_valid(user_id):
-        return jsonify({"message": "Ungültige oder fehlende Benutzer-ID!"}), 400
+    requestUser = users_collection.find_one( { "_id": ObjectId(request_id) })
+    if not requestUser:
+        return jsonify({"message": "Ungültige request_id"}), 403
 
-    user = users_collection.find_one({"_id": ObjectId(user_id)})
-
+    user = users_collection.find_one({ "_id": ObjectId(user_id) })
     if not user:
         return jsonify({"message": "Benutzer nicht gefunden!"}), 404
 
@@ -232,22 +349,12 @@ def changeData():
     new_first_name = data.get('new_first_name')
     new_last_name = data.get('new_last_name')
 
-    print("Try to change User-Data with ID:", user_id, "to:", new_first_name, new_last_name)
-
-    if not user_id or not new_first_name or not new_last_name:
-        return jsonify({"message": "Fehlende Daten!"}), 400
+    if not user_id or not ObjectId.is_valid(user_id) or not new_first_name or not new_last_name:
+        return jsonify({"message": "Ungültige Parameter"}), 400
 
     user = users_collection.find_one({"_id": ObjectId(user_id)})
     if not user:
-        return jsonify({"message": "Benutzer nicht gefunden!"}), 404
-
-    existing_user = users_collection.find_one({
-        "firstName": new_first_name,
-        "_id": {"$ne": ObjectId(user_id)}
-    })
-
-    if existing_user:
-        return jsonify({"message": "Benutzername bereits vergeben!"}), 409
+        return jsonify({"message": "Nutzer nicht gefunden"}), 404
 
     users_collection.update_one(
         {"_id": ObjectId(user_id)},
@@ -272,16 +379,12 @@ def change_user_color():
     if not isinstance(new_color, str) or not new_color.startswith('#') or len(new_color) != 7:
         return jsonify({"message": "Ungültiges Farbformat! Verwende das Format '#xxxxxx'."}), 400
 
-    if not user_id:
-        return jsonify({"message": "Benutzer-ID fehlt!"}), 400
+    if not user_id or not ObjectId.is_valid(user_id):
+        return jsonify({"message": "Benutzer-ID fehlt oder ist ungültig!"}), 400
 
-    try:
-        user = users_collection.find_one({"_id": ObjectId(user_id)})
-    except:
-        return jsonify({"message": "Ungültige Benutzer-ID!"}), 400
-
+    user = users_collection.find_one({"_id": ObjectId(user_id)})
     if not user:
-        return jsonify({"message": "Benutzer nicht gefunden!"}), 404
+        return jsonify({"message": "Nutzer nicht gefunden."}), 404
 
     users_collection.update_one({"_id": ObjectId(user_id)}, {"$set": {"color_code": new_color}})
 
@@ -296,13 +399,12 @@ def change_user_visibility():
     user_id = data.get('userId')
     visibility_status = data.get('visibility')
 
-    if not user_id or visibility_status is None:
+    if not user_id or not ObjectId.is_valid(user_id) or visibility_status is None:
         return jsonify({"message": "Invalid Arguments"}), 400
 
-    try:
-        user = users_collection.find_one({"_id": ObjectId(user_id)})
-    except:
-        return jsonify({"message": "User not found"}), 404
+    user = users_collection.find_one({"_id": ObjectId(user_id)})
+    if not user:
+        return jsonify({"message": "Nutzer nicht gefunden"}), 404
     
     users_collection.update_one(
         {"_id": ObjectId(user_id)},
@@ -316,6 +418,13 @@ def change_user_visibility():
 
 @account_bp.route('/users/getUsers', methods=['GET'])
 def get_users():
+    admin_key = request.args.get('adminKey')
+    if not admin_key:
+        return jsonify({"message": "Ungültige Parameter"}), 400
+    
+    if not validateAdminKey(admin_key):
+        return jsonify({"message": "Methode nicht erlaubt"}), 403
+     
     users = list(users_collection.find({}, {"_id": 0, "firstName": 1, "lastName": 1, "online": 1, "color_code": 1}))
     return jsonify(users), 200
 
@@ -331,45 +440,38 @@ def get_visible_users():
 
 @account_bp.route("/account/addLearnedElement", methods=["POST"])
 def add_learned_element():
-    data = request.get_json()
-    user_id = data.get("userId")
-    element_code = data.get("elementCode")
+    data            = request.get_json()
+    user_id         = data.get("userId")
+    element_code    = data.get("elementCode")
 
-    if not user_id or not element_code:
-        return jsonify({"message": "Benutzer-ID und Element sind erforderlich"}), 400
+    if not user_id or not ObjectId.is_valid(user_id) or not element_code:
+        return jsonify({"message": "Ungültige Parameter"}), 400
     
-    try:
-        user = users_collection.find_one({"_id": ObjectId(user_id)})
-    except:
-        return jsonify({"message", "Invalid User-ID"}), 400
-    if not user: 
-        return jsonify({"message", "User not found"}), 404
-    
+    user = users_collection.find_one({"_id": ObjectId(user_id)})
+    if not user:
+        return jsonify({"message": "Nutzer nicht gefunden"}), 404
+
     users_collection.update_one(
         {"_id": ObjectId(user_id)},
         {"$addToSet": {"learnedElements": element_code}}
     )
-    return jsonify({"message": "Element successfully added"}), 200
+    return jsonify({"message": "Element erfolgreich hinzugefügt."}), 200
 
 
 ################################################################################################### remove learned Element
 
 @account_bp.route('/account/removeLearnedElement', methods=['POST'])
 def remove_learned_element():
-    data = request.get_json()
-    user_id = data.get('userId')
-    element_code = data.get('elementCode')
+    data            = request.get_json()
+    user_id         = data.get('userId')
+    element_code    = data.get('elementCode')
 
-    if not user_id or not element_code:
-        return jsonify({"message": "Benutzer-ID und Elementenkürzel sind erforderlich!"}), 400
+    if not user_id or not ObjectId.is_valid(user_id) or not element_code:
+        return jsonify({"message": "Ungültige Parameter"}), 400
 
-    try:
-        user = users_collection.find_one({"_id": ObjectId(user_id)})
-    except:
-        return jsonify({"message": "Ungültige Benutzer-ID!"}), 400
-
+    user = users_collection.find_one({"_id": ObjectId(user_id)})
     if not user:
-        return jsonify({"message": "Benutzer nicht gefunden!"}), 404
+        return jsonify({"message": "Nutzer nicht gefunden"}), 404
 
     users_collection.update_one(
         {"_id": ObjectId(user_id)},
@@ -383,15 +485,14 @@ def remove_learned_element():
 @account_bp.route('/account/getLearnedElements', methods=['GET'])
 def get_learned_elements():
     user_id = request.args.get('userId')
-    device = request.args.get('device')
+    device  = request.args.get('device')
 
     if not user_id or not ObjectId.is_valid(user_id):
-        return jsonify({"message": "Ungültige oder fehlende Benutzer-ID!"}), 400
+        return jsonify({"message": "Ungültige Parameter"}), 400
 
     user = users_collection.find_one({"_id": ObjectId(user_id)}, {"learnedElements": 1})
-
     if not user:
-        return jsonify({"message": "Benutzer nicht gefunden!"}), 404
+        return jsonify({"message": "Nutzer nicht gefunden"}), 404
 
     learned_elements = user.get("learnedElements", [])
 

@@ -22,7 +22,8 @@ def createReport():
 
     timestamp = datetime.now(timezone.utc)
 
-    notification.send_mail(reportType, reportTitle, report, username, timestamp)
+    notification.send_mail(notification.build_report(reportType, reportTitle, report, username, timestamp, None))
+
     issues_collection.insert_one({
         'reportType': reportType,
         'reportTitle': reportTitle,

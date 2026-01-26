@@ -280,7 +280,7 @@ export function hideRegistration(root) {
     const loginMask = root.getElementById("login_mask");
     const registrationMask = root.getElementById("registration_mask");
     if(!loginMask || !registrationMask) return;
-    clearForm(root, ["username", "password"], "errorMsg");
+    clearForm(root, ["username", "password"], null);
     registrationMask.style.display = "none";
     loginMask.style.display = "block";
 }
