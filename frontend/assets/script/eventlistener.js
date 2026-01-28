@@ -52,8 +52,13 @@ function addFloatingPanelListener(root) {
         panel.hideReportCreation(root, true);
     });
     const submitReport = root.querySelector("#submitReport");
-    submitReport?.addEventListener("click", () => {
-        settings.submitReport(root);
+    submitReport?.addEventListener("click", async () => {
+        if(submitReport.disabled == true) return;
+        submitReport.disabled = true;
+        submitReport.style.opacity = "0.5";
+        await settings.submitReport(root);
+        submitReport.disabled = false;
+        submitReport.style.opacity = "1";
     });
     const reportTypeSel = root.querySelector("#reportType");
     reportTypeSel?.addEventListener("change", () => {
@@ -117,13 +122,23 @@ function userControlListener(root) {
     });
     //User Registration Submit
     const registrationSubmit = root.querySelector("#registerSubmitBtn");
-    registrationSubmit?.addEventListener("click", () => {
-        userHandling.register(root);
+    registrationSubmit?.addEventListener("click", async () => {
+        if(registrationSubmit.disabled == true) return;
+        registrationSubmit.disabled = true;
+        registrationSubmit.style.opacity = "0.5";
+        await userHandling.register(root);
+        registrationSubmit.disabled = false;
+        registrationSubmit.style.opacity = "1";
     });
     //User Login Submit
     const loginSubmit = root.querySelector("#loginBtn");
-    loginSubmit?.addEventListener("click", () => {
-        userHandling.login(root);
+    loginSubmit?.addEventListener("click", async () => {
+        if(loginSubmit.disabled == true) return;
+        loginSubmit.disabled = true;
+        loginSubmit.style.opacity = "0.5";
+        await userHandling.login(root);
+        loginSubmit.disabled = false;
+        loginSubmit.style.opacity = "1";
     });
     //Auto Login Change -> Login Page
     const autoLoginCheckbox = root.querySelector("#stayLoggedIn");
@@ -137,13 +152,23 @@ function userControlListener(root) {
     });
     //User Deletion
     const deleteAccount = root.querySelector("#deleteAccount");
-    deleteAccount?.addEventListener("click", () => {
+    deleteAccount?.addEventListener("click", async () => {
+        if(deleteAccount.disabled == true) return;
+        deleteAccount.disabled = true;
+        deleteAccount.style.opacity = "0.5";
         userHandling.deleteUserAccount(root);
+        deleteAccount.disabled = false;
+        deleteAccount.style.opacity = "1";
     });
     //User Logout
     const logoutBtn = root.querySelector("#logoutBtn");
-    logoutBtn?.addEventListener("click", () => {
-        userHandling.logout(root);
+    logoutBtn?.addEventListener("click", async () => {
+        if(logoutBtn.disabled == true) return;
+        logoutBtn.disabled = true;
+        logoutBtn.style.opacity = "0.5";
+        await userHandling.logout(root);
+        logoutBtn.disabled = false;
+        logoutBtn.style.opacity = "1";
     });
 }
 
@@ -179,7 +204,7 @@ function setAccountSettingsListener(root) {
         userHandling.submitNameChange(root);
     });
 
-    //Password Change
+    //Show Panel to change Password
     const passwordChangeBtn = root.querySelector("#editPasswordBtn");
     passwordChangeBtn?.addEventListener("click", () => {
         panel.showAdjustPassword(root, true);
@@ -190,6 +215,8 @@ function setAccountSettingsListener(root) {
         panel.clearHTML(root.querySelector("#pwdForgotErr"));
         panel.showPasswordForgot(root, true);
     });
+
+    //Hide Panel to change Password
     const passwordChangeCancelBtn = root.querySelector("#cancelPwResetBtn");
     passwordChangeCancelBtn?.addEventListener("click", () => {
         panel.hideAdjustPassword(root, true);
@@ -204,16 +231,35 @@ function setAccountSettingsListener(root) {
         panel.show(root.querySelector("#pwdForgot-page-1", "block"));
         panel.hidePasswordForgot(root);
     });
+
+    //Send Reset Email
     const sendCodeBtn = root.querySelector("#sendResetCodeBtn");
-    sendCodeBtn?.addEventListener("click", () => {
+    sendCodeBtn?.addEventListener("click", async () => {
+        if(sendCodeBtn.disabled == true) return;
+        sendCodeBtn.disabled = true;
+        sendCodeBtn.style.opacity = "0.5";
         em = localStorage.getItem("userEmail");
-        rc = userHandling.sendResetCode(em);
+        rc = await userHandling.sendResetCode(em);
+        setTimeout(() => {
+            sendCodeBtn.disabled = false;
+            sendCodeBtn.style.opacity = "1";
+        }, 5000);
         //set return message
     });
     const sendResetCode = root.querySelector("#sendEmailForgot");
     sendResetCode?.addEventListener("click", async () => {
+        if(sendResetCode.disabled == true) return;
+        sendResetCode.disabled = true;
+        sendResetCode.style.opacity = "0.5";
+        const loader = root.querySelector("#pwdForgot_mask .spinner");
         let em = root.querySelector("#pwdForgot_email")?.value;
+        panel.showLoader(loader);
         let rc = await userHandling.sendResetCode(em);
+        panel.hideLoader(loader);
+        setTimeout(() => {
+            sendResetCode.disabled = false;
+            sendResetCode.style.opacity = "1";
+        }, 5000);
         const errMsg = root.querySelector("#pwdForgotErr");
         const panel1 = root.querySelector("#pwdForgot-page-1");
         const panel2 = root.querySelector("#pwdForgot-page-2");
@@ -230,21 +276,35 @@ function setAccountSettingsListener(root) {
             panel.show(panel, "block");
         }
     });
-    const resendCodeBtn = root.querySelector("#sendEmailCodeAgain");
-    resendCodeBtn?.addEventListener("click", () => {
-        console.warn("not implemented yet");
-    });
+
+    //Send Verified Code and submit new Passwort
     const passwordSubmitBtn = root.querySelector("#confirmPwResetBtn");
-    passwordSubmitBtn?.addEventListener("click", () => {
-        userHandling.submitPasswordChange(root);
+    passwordSubmitBtn?.addEventListener("click", async () => {
+        if(passwordSubmitBtn.disabled == true) return;
+        passwordSubmitBtn.disabled = true;
+        passwordSubmitBtn.style.opacity = "0.5";
+        rc = await userHandling.submitPasswordChange(root);
+        setTimeout(() => {
+            passwordSubmitBtn.disabled = false;
+            passwordSubmitBtn.style.opacity = "1";
+        }, 5000);
     });
     const submitPwdRequest = root.querySelector("#requestNewPwd");
     submitPwdRequest?.addEventListener("click", async () => {
+        if(submitPwdRequest.disabled == true) return;
+        submitPwdRequest.disabled = true;
+        submitPwdRequest.style.opacity = "0.5";
+        const loader = root.querySelector("#pwdForgot_mask .spinner");
         const errMsg = root.querySelector("#pwdForgotErr");
         const panel1 = root.querySelector("#pwdForgot-page-1");
         const panel2 = root.querySelector("#pwdForgot-page-2");
-        
+        panel.showLoader(loader);
         let rc = await userHandling.requestPasswordChange(root);
+        panel.hideLoader(loader);
+        setTimeout(() => {
+            submitPwdRequest.disabled = false;
+            submitPwdRequest.style.opacity = "1";
+        }, 5000);
         if(!errMsg || !panel1 || !panel2) return;
         errMsg.innerText = rc.message ?? "Passwort konnte nicht geändert werden";
         errMsg.classList.toggle("info", rc.returnCode == 0);

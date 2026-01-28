@@ -45,6 +45,11 @@ body {
   padding: 16px;
   overflow: hidden;
 }
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .headline {
   grid-row: 1;
   margin: 0;
@@ -175,6 +180,19 @@ body {
 
 
 
+.spinner {
+  opacity: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid rgba(0, 0, 0, 0.25);
+  border-top-color: #ffffff;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 
 
 

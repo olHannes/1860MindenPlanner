@@ -76,6 +76,7 @@ function isValidEmail(email) {
 //User Registration
 ///////////////////////////////////////////////////////////////////
 export async function register(root) {
+    const loader                = root.querySelector("#registration_mask .spinner");
     const lineNotification      = root.getElementById("errorMsgRegister");
     let firstNameValue          = root.getElementById("registration-firstName")?.value;
     let lastNameValue           = root.getElementById("registration-lastName")?.value;
@@ -101,7 +102,7 @@ export async function register(root) {
     }
 
     try {
-        //show Loader
+        panel.showLoader(loader);
         const resp = await fetch(`${config.serverURL}/account/register`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -124,7 +125,7 @@ export async function register(root) {
         console.error("Registration error:", error);
         showInlineNotification(errMsgRegistration, "Ein Netzwerkfehler ist augetreten!", "error");
     } finally {
-        //hide loader
+        panel.hideLoader(loader);
     }
 }
 
@@ -132,6 +133,7 @@ export async function register(root) {
 // User Login
 ///////////////////////////////////////////////////////////////////
 export async function login(root) {
+    const loader    = root.querySelector("#login_mask .spinner");
     const errMsg    = root.getElementById("errorMsg");
     let email       = root.getElementById("login-email")?.value;
     let pwd         = root.getElementById("password")?.value;
@@ -146,7 +148,7 @@ export async function login(root) {
         return;
     }
     try {
-        //showLoader();
+        panel.showLoader(loader);
         const resp = await fetch(`${config.serverURL}/account/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -155,7 +157,6 @@ export async function login(root) {
                 password: pwd
             })
         });
-        //hideLoader
         const data = await resp.json();
         if(resp.ok && data.ok) {
             localStorage.setItem("userId", data.userId);
@@ -183,7 +184,7 @@ export async function login(root) {
         showInlineNotification(errMsg, "Ein Netzwerkfehler ist aufgetreten!", "error");
         //showNameError
     } finally {
-        //hideLoader();
+        panel.hideLoader(loader);
     }
 }
 

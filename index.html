@@ -192,7 +192,10 @@
         <h1 class="headline">Routine Planner</h1>
 
         <div id="pwdForgot_mask" class="pwdForgot--page">
-            <h2>Passwort vergessen?</h2>
+            <div class="loader-container">
+                <h2>Passwort vergessen?</h2>
+                <div class="spinner"></div>
+            </div>
             <div id="pwdForgot-page-1">
                 <p>Sende dir einen Code per E-Mail und setze dein Passwort zurück.</p>
                 <input type="email" id="pwdForgot_email" placeholder="example@email.com">
@@ -216,7 +219,10 @@
         </div>
 
         <div id="login_mask" class="login--page">
-            <h2>Login</h2>
+            <div class="loader-container">
+                <h2>Login</h2>
+                <div class="spinner"></div>
+            </div>
             <span class="icon icon--email"></span>
             <input type="email" id="login-email" placeholder="example@email.com">
             <span class="icon icon--password"></span>
@@ -232,10 +238,14 @@
             <button id="registerBtn">Registrieren <span class="icon icon--registration"></span></button>
             <p id="errorMsg"></p>
             <p id="forgotPwd"><i>Passwort vergessen?</i></p>
+
         </div>
         
         <div id="registration_mask" class="registration--page">
-            <h2>Registrieren</h2>
+            <div class="loader-container">
+                <h2>Registrieren</h2>
+                <div class="spinner"></div>
+            </div>
             <span class="icon icon--name"></span>
             <input type="text" id="registration-firstName" placeholder="Vorname">
             <span class="icon icon--name"></span>
@@ -418,7 +428,6 @@
                         <div class="formStack">
                         <div class="inlineRow">
                             <button id="sendResetCodeBtn" class="btn btn--primary" type="button">Code per E-Mail senden</button>
-                            <button id="sendEmailCodeAgain" class="btn btn--secondary" type="button">Code erneut senden</button>
                         </div>
                         <div class="divider"></div>
                         <label class="field">

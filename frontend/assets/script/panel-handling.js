@@ -18,6 +18,14 @@ export function clearValue(el) {
 }
 
 
+export function showLoader(el) {
+    if(el) el.style.opacity = "1";
+}
+export function hideLoader(el) {
+    if(el) el.style.opacity = "0";
+}
+
+
 //show global Message
 //////////////////////////////////////////////////////////////
 export function showMessage(root, title, content) {
