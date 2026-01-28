@@ -50,7 +50,8 @@ body {
   margin: 0;
 }
 .login--page,
-.registration--page {
+.registration--page,
+.pwdForgot--page {
   grid-row: 2;
   align-self: center;
   transform: translateY(-5%);
@@ -74,7 +75,9 @@ body {
 }
 
 /*Login Panel*/
-.login--page {
+.login--page,
+.pwdForgot--page,
+.registration--page {
   display: block;
   flex-direction: column;
   align-items: center;
@@ -85,11 +88,15 @@ body {
   text-align: center;
   padding: 30px;
 }
-.login--page h2 {
+.login--page h2,
+.registration--page h2
+.pwdForgot--page h2 {
   margin-bottom: 20px;
   color: var(--color-primary-dark);
 }
-.login--page button {
+.login--page button,
+.registration--page button,
+.pwdForgot--page button {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -106,59 +113,43 @@ body {
   cursor: pointer;
   transition: background 0.3s;
 }
+.login--page button:hover,
+.pwdForgot--page button:hover,
+.registration--page button:hover {
+  background: var(--btn-primary);
+}
+.login--page button .icon,
+.pwdForgot--page button .icon,
+.registration--page button .icon  {
+  height: 28px;
+  width: 28px;
+  background-color: white;
+}
+.registration--page,
+.pwdForgot--page {
+  display: none;
+}
+
+/*Login Panel*/
 .login--page #registerBtn {
   padding: 6px 12px;
 }
-.login--page button:hover {
-  background: #1e4d73;
-}
-.login--page button .icon {
-  height: 28px;
-  width: 28px;
-  background-color: white;
-}
-
 
 /*Registration Panel*/
-.registration--page {
-  display: none;
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  z-index: 10;
-}
-.registration--page h2 {
-  margin-bottom: 20px;
-  color: #2c6693;
-}
-.registration--page button {
-  width: 100%;
-  padding: 12px;
-  background: var(--btn-save);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s;
-  margin-top: 10px;
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-}
-.registration--page button:hover {
-    background-color: var(--btn-primary);
-}
-.registration--page .cancel {
+.registration--page .cancel,
+.pwdForgot--page .cancel {
   background: var(--btn-delete);
 }
-.registration--page button .icon {
-  height: 28px;
-  width: 28px;
-  background-color: white;
+
+/*Password Forgot Panel*/
+#pwdForgot-page-2 {
+  display: none;
 }
+.pwdForgot--page label {
+  font-weight: 500;
+  font-style: italic;
+}
+
 
 .info,
 .error {

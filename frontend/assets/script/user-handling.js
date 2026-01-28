@@ -341,26 +341,22 @@ export async function submitNameChange(root) {
 
 //Change User-Password
 ///////////////////////////////////////////////////////////////////
-export async function sendResetCode(root, attempt = 1) {
-    const userEmail     = localStorage.getItem("userEmail");
-    const sendBtn       = root.getElementById("sendResetCodeBtn");
-    const sendAgainBtn  = root.getElementById("sendEmailCodeAgain");
+export async function sendResetCode(email) {
+    if(!email) return {message: "E-Mail ist nicht vorhanden!", returnCode: 1};
+    if(!isValidEmail(email)) return {message: "Es muss eine gültige E-Mail eingetragen werden!", returnCode: 2};
     try {
-        if(!userEmail || !sendBtn || !sendAgainBtn) {
-            console.log("failed");
-            return;
-        }
-
+        //showLoader();
         const resp = await fetch(`${config.serverURL}/account/passwordReset/request`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email: userEmail })
+            body: JSON.stringify({ email: email })
         });
         const data = await resp.json();
-        console.log(data);
-        if(!resp.ok) throw new Error(data.message);
+        if(data.ok) return {message: "E-Mail wurde erfolgreich versendet.", returnCode: 0};
+        return {message: data.message ?? "Fehler beim Senden der E-Mail", returnCode: 3};
     } catch (error) {
         console.error("Failed to send Reset Code:", error);
+        return {message: "Netzwerkfehler.", returnCode: 4};
     } finally {
         //hideLoader();
     }
@@ -386,6 +382,38 @@ export async function submitPasswordChange(root) {
 
     } catch (error) {
         console.error("Failed to change Password:", error);
+    } finally {
+        //hideLoader();
+        panel.hideAdjustPassword(root, true);
+    }
+}
+
+export async function requestPasswordChange(root) {
+    const confirm = root.getElementById("pwdForgotInput-Verify")?.value;
+    const password = root.getElementById("pwdForgotInput-password")?.value;
+    const email = localStorage.getItem("userEmail");
+
+    if(!confirm || !password || !email) {
+        return {message: "Es muss mindestens das Passwort und die Bestätigung eingegeben werden!", returnCode: 1};
+    }
+    if(password.length < 4) {
+        return {message: "Das Passwort muss mindestens 4 Zeichen lang sein.", returnCode: 2};
+    }
+
+    try {
+        //showLoader();
+        const resp = await fetch(`${config.serverURL}/account/forgot/updatePassword`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: email, confirm_code: confirm, new_password: password })
+        });
+        const data = await resp.json();
+        if(data.ok) return {message: "Das Passwort wurde erfolgreich geändert", returnCode: 0};
+        return {message: data.message ?? "Das Passwort konnte nicht geändert werden", returnCode: 3};
+
+    } catch (error) {
+        console.error("Failed to change Password:", error);
+        return {message: "Netzwerkfehler", returnCode: 4};
     } finally {
         //hideLoader();
         panel.hideAdjustPassword(root, true);

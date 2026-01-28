@@ -191,6 +191,30 @@
     <section class="start-screen" id="start-screen">
         <h1 class="headline">Routine Planner</h1>
 
+        <div id="pwdForgot_mask" class="pwdForgot--page">
+            <h2>Passwort vergessen?</h2>
+            <div id="pwdForgot-page-1">
+                <p>Sende dir einen Code per E-Mail und setze dein Passwort zurück.</p>
+                <input type="email" id="pwdForgot_email" placeholder="example@email.com">
+                <button id="sendEmailForgot">Code per E-Mail senden</button>
+                <button id="cancelPwdForgot" class="cancel">Abbrechen</button>
+            </div>
+            <div id="pwdForgot-page-2">
+                <p>Ändere dein Passwort und verifiziere die Änderung mit dem Einmalcode.</p>
+                <label>
+                    <span>E-Mail Code</span>
+                    <input type="password" id="pwdForgotInput-Verify" placeholder="123456">
+                </label>
+                <label>
+                    <span>Dein neues Passwort</span>
+                    <input type="password" id="pwdForgotInput-password" placeholder="Dein Passwort">
+                </label>
+                <button id="cancelPwdForgot2" class="cancel">Abbrechen</button>
+                <button id="requestNewPwd">Passwort ändern</button>
+            </div>
+            <p id="pwdForgotErr"></p>
+        </div>
+
         <div id="login_mask" class="login--page">
             <h2>Login</h2>
             <span class="icon icon--email"></span>
@@ -207,6 +231,7 @@
             <button id="loginBtn">Anmelden <span class="icon icon--login"></span></button>
             <button id="registerBtn">Registrieren <span class="icon icon--registration"></span></button>
             <p id="errorMsg"></p>
+            <p id="forgotPwd"><i>Passwort vergessen?</i></p>
         </div>
         
         <div id="registration_mask" class="registration--page">

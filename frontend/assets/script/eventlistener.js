@@ -184,20 +184,77 @@ function setAccountSettingsListener(root) {
     passwordChangeBtn?.addEventListener("click", () => {
         panel.showAdjustPassword(root, true);
     });
+    const pwdChangeBtn_2 = root.querySelector("#forgotPwd");
+    pwdChangeBtn_2?.addEventListener("click", () => {
+        panel.clearValue(root.querySelector("#pwdForgot_email"));
+        panel.clearHTML(root.querySelector("#pwdForgotErr"));
+        panel.showPasswordForgot(root, true);
+    });
     const passwordChangeCancelBtn = root.querySelector("#cancelPwResetBtn");
     passwordChangeCancelBtn?.addEventListener("click", () => {
         panel.hideAdjustPassword(root, true);
     });
+    const cancelPwdForgot = root.querySelector("#cancelPwdForgot");
+    cancelPwdForgot?.addEventListener("click", () => {
+        panel.hidePasswordForgot(root);
+    });
+    const cancelPwdForgot2 = root.querySelector("#cancelPwdForgot2");
+    cancelPwdForgot2?.addEventListener("click", () => {
+        panel.hide(root.querySelector("#pwdForgot-page-2"));
+        panel.show(root.querySelector("#pwdForgot-page-1", "block"));
+        panel.hidePasswordForgot(root);
+    });
     const sendCodeBtn = root.querySelector("#sendResetCodeBtn");
     sendCodeBtn?.addEventListener("click", () => {
-        userHandling.sendResetCode(root, 1);
+        em = localStorage.getItem("userEmail");
+        rc = userHandling.sendResetCode(em);
+        //set return message
+    });
+    const sendResetCode = root.querySelector("#sendEmailForgot");
+    sendResetCode?.addEventListener("click", async () => {
+        let em = root.querySelector("#pwdForgot_email")?.value;
+        let rc = await userHandling.sendResetCode(em);
+        const errMsg = root.querySelector("#pwdForgotErr");
+        const panel1 = root.querySelector("#pwdForgot-page-1");
+        const panel2 = root.querySelector("#pwdForgot-page-2");
+        if(!errMsg || !panel1 || !panel2) return;
+        errMsg.innerText = rc.message ?? "E-Mail konnte nicht gesendet werden";
+        errMsg.classList.toggle("info", rc.returnCode == 0);
+        errMsg.classList.toggle("error", rc.returnCode != 0);
+        if(rc.returnCode == 0) {
+            panel.hide(panel1);
+            panel.show(panel2, "block");
+            localStorage.setItem("userEmail", em);
+        } else {
+            panel.hide(panel2);
+            panel.show(panel, "block");
+        }
     });
     const resendCodeBtn = root.querySelector("#sendEmailCodeAgain");
     resendCodeBtn?.addEventListener("click", () => {
-        userHandling.sendResetCode(root, 2);
+        console.warn("not implemented yet");
     });
     const passwordSubmitBtn = root.querySelector("#confirmPwResetBtn");
     passwordSubmitBtn?.addEventListener("click", () => {
         userHandling.submitPasswordChange(root);
+    });
+    const submitPwdRequest = root.querySelector("#requestNewPwd");
+    submitPwdRequest?.addEventListener("click", async () => {
+        const errMsg = root.querySelector("#pwdForgotErr");
+        const panel1 = root.querySelector("#pwdForgot-page-1");
+        const panel2 = root.querySelector("#pwdForgot-page-2");
+        
+        let rc = await userHandling.requestPasswordChange(root);
+        if(!errMsg || !panel1 || !panel2) return;
+        errMsg.innerText = rc.message ?? "Passwort konnte nicht geändert werden";
+        errMsg.classList.toggle("info", rc.returnCode == 0);
+        errMsg.classList.toggle("error", rc.returnCode != 0);
+        if(rc.returnCode == 0) {
+            panel.hide(panel1);
+            panel.show(panel2, "block");
+            panel.hidePasswordForgot(root);
+            panel.showMessage(root, "Passwort geändert", "Dein Passwort wurde erfolgreich geändert.");
+            panel.clearForm(root, ["login-email", "password"], "errorMsg");
+        }
     });
 }

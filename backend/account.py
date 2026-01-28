@@ -179,7 +179,9 @@ def check_user_status():
     if not user_id or not ObjectId.is_valid(user_id) or not email:
         return jsonify({"message": "Ungültige Parameter"}), 400
 
-    user = users_collection.find_one({"_id": ObjectId(user_id), "email": email})
+    em = normalize_email(email)
+
+    user = users_collection.find_one({"_id": ObjectId(user_id), "email": em})
     if not user:
         return jsonify({"message": "Nutzer nicht gefunden."}), 404
     online_count = user.get("online", 0)
@@ -202,7 +204,9 @@ def logout():
     if not username or not user_id or not ObjectId.is_valid(user_id) or not email:
         return jsonify({"message": "Ungültige Parameter"}), 400
 
-    user = users_collection.find_one({"_id": ObjectId(user_id), "email": email})
+    em = normalize_email(email)
+
+    user = users_collection.find_one({"_id": ObjectId(user_id), "email": em})
     if not user:
         return jsonify({"message": "Nutzer nicht gefunden"}), 404
     
@@ -210,6 +214,63 @@ def logout():
     session.pop('user', None)
 
     return jsonify({"message": "Erfolgreich ausgeloggt!"}), 200
+
+
+################################################################################################### update Password after Request
+
+@account_bp.route('/account/forgot/updatePassword', methods=['POST'])
+def request_new_password():
+    data            = request.get_json()
+    email           = data.get('email')
+    confirm_code    = data.get('confirm_code')
+    new_password    = data.get('new_password')
+
+    if not email or not confirm_code or not new_password:
+        return jsonify({"ok": False, "message": "Eingabewerte sind nicht gültig"}), 400
+    
+    if len(new_password) < 4:
+        return jsonify({"ok": False, "message": "Das neue Passwort muss mindestens 4 Zeichen lang sein"}), 403
+
+    em = normalize_email(email)
+
+    user = users_collection.find_one({"email": em})
+    if not user:
+        return jsonify({"ok": False, "message": "Nutzer mit dieser E-Mail nicht gefunden!"}), 404
+
+    pr = user.get("passwordReset") or {}
+    code_hash = pr.get("code_hash")
+    expires_at_raw = pr.get("expires_at")
+    attempts = pr.get("attempts", 0)
+
+    expires_at = parse_expires_at(expires_at_raw)
+    now = datetime.now(timezone.utc)
+
+    if not code_hash or not expires_at or expires_at <= now:
+        users_collection.update_one(
+            {"_id": user["_id"]},
+            {"$unset": {"passwordReset": ""}}
+        )
+        return jsonify({"ok": False, "message": "Der Verifizierungs Code ist nicht gültig"}), 403
+    
+    if attempts >=5:
+        return({"ok": False, "message": "Die Versuchsanzahl ist überschritten"}), 403
+
+    if not check_password_hash(code_hash, confirm_code):
+        users_collection.update_one(
+            {"_id": user["_id"]},
+            {"$inc": {"passwordReset.attempts": 1}}
+        )
+        return jsonify({"ok": False, "message": "Der Verifizierungs Code ist nicht gültig"}), 403
+    
+    new_hashed_password = generate_password_hash(new_password)
+    users_collection.update_one(
+        {"_id": user["_id"]},
+        {
+            "$set": { "password": new_hashed_password},
+            "$unset": {"passwordReset": ""}
+        }
+    )
+    return jsonify({"ok": True, "message": "Passwort erfolgreich aktualisiert!"}), 200
 
 
 ################################################################################################### update Password
@@ -271,11 +332,13 @@ def request_password_reset():
     data    = request.get_json(silent=True) or {}
     email   = data.get("email")
     if not email:
-        return jsonify({"message": "Ungültige Parameter"}), 400
+        return jsonify({"ok": False, "message": "Ungültige Parameter"}), 400
     
-    user = users_collection.find_one({"email": email})
+    em = normalize_email(email)
+
+    user = users_collection.find_one({"email": em})
     if not user:
-        return jsonify({"message": "Nutzer nicht gefunden"}), 404
+        return jsonify({"ok": False, "message": "Nutzer nicht gefunden"}), 404
     
     code = f"{random.randint(0, 999999):06d}"
     code_hash = generate_password_hash(code)
@@ -293,7 +356,7 @@ def request_password_reset():
     em = notification.build_reset(email, code, user["firstName"], 15)
     notification.send_mail(em)
 
-    return jsonify({"message": "Reset erfolgreich versendet"}), 200
+    return jsonify({"ok": True, "message": "Reset erfolgreich versendet"}), 200
 
 
 ################################################################################################### update Password Admin

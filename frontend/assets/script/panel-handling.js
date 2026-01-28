@@ -271,18 +271,29 @@ export function clearForm(root, inputIds = [], errorId = null) {
 export function showRegistration(root) {
     const loginMask = root.getElementById("login_mask");
     const registrationMask = root.getElementById("registration_mask");
-    if(!loginMask || !registrationMask) return;
     clearForm(root, ["firstName", "lastName", "newPassword", "confirmPassword"], "errorMsgRegister");
-    loginMask.style.display = "none";
-    registrationMask.style.display = "block";
+    hide(loginMask);
+    show(registrationMask, "block");
 }
 export function hideRegistration(root) {
     const loginMask = root.getElementById("login_mask");
     const registrationMask = root.getElementById("registration_mask");
-    if(!loginMask || !registrationMask) return;
     clearForm(root, ["email", "password"], null);
-    registrationMask.style.display = "none";
-    loginMask.style.display = "block";
+    hide(registrationMask);
+    show(loginMask, "block");
+}
+
+export function showPasswordForgot(root) {
+    const loginMask = root.getElementById("login_mask");
+    const pwdMask   = root.getElementById("pwdForgot_mask");
+    hide(loginMask);
+    show(pwdMask, "block");
+}
+export function hidePasswordForgot(root) {
+    const loginMask = root.getElementById("login_mask");
+    const pwdMask   = root.getElementById("pwdForgot_mask");
+    hide(pwdMask);
+    show(loginMask, "block");
 }
 
 export function applyLoginStatus(root) {
