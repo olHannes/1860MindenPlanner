@@ -399,19 +399,19 @@ def delete_account():
     pwd         = data.get('password')
 
     if not user_id or not ObjectId.is_valid(user_id) or not pwd:
-        return jsonify({"message": "Ungültige Parameter"}), 400
+        return jsonify({"ok": False, "message": "Ungültige Parameter"}), 400
 
     user = users_collection.find_one({"_id": ObjectId(user_id) })
     if not user:
-        return jsonify({"message": "Nutzer nicht gefunden"}), 404
+        return jsonify({"ok": False, "message": "Aktueller Nutzer nicht gefunden"}), 404
 
     if not check_password_hash(user['password'], pwd):
-        return jsonify({"message": "Ungültiges Passwort"}), 403
+        return jsonify({"ok": False, "message": "Ungültiges Passwort"}), 403
     
     users_collection.delete_one({"_id": ObjectId(user_id)})
 
     session.pop('user', None)
-    return jsonify({"message": "Account erfolgreich gelöscht!", "username": user["firstName"]}), 200
+    return jsonify({"ok": True, "message": "Account erfolgreich gelöscht!", "username": user["firstName"]}), 200
 
 
 ################################################################################################### Delete Account

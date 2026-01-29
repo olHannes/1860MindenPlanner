@@ -111,6 +111,12 @@ export function showAccountDeletion(root, push = true) {
     const panel         = root.getElementById("requestDelAcc");
     const background    = root.getElementById("loadingBackground");
     const pwdInput      = root.getElementById("deleteAccountPwd");
+    const errMsg        = root.getElementById("deleteErr");
+    if(errMsg) {
+        errMsg.classList.toggle("info", false);
+        errMsg.classList.toggle("error", false);
+    }
+    clearHTML(errMsg);
     clearValue(pwdInput);
     show(panel, "block");
     show(background, "block");

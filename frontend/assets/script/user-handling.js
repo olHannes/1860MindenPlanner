@@ -110,7 +110,7 @@ export async function register(root) {
         });
         
         if(resp.ok) {
-            showInlineNotification(errMsg, "Nutzer erfolgreich registriert.", "info");
+            showInlineNotification(errMsg, "Nutzer erfolgreich registriert. Bitte Account mit Bestätigungs-Mail freischalten", "info");
             panel.hideRegistration(root);
             return;
         }
@@ -230,34 +230,37 @@ export async function setupProfile(root) {
 export async function deleteUserAccount(root) {
     const informationField  = root.getElementById("errorMsg");
     const pwdInput          = root.getElementById("deleteAccountPwd");
+    const loader            = root.querySelector("#requestDelAcc .spinner");
     const currentId         = localStorage.getItem("userId");
     const pwd               = pwdInput?.value ?? "";
 
     if(!informationField || !pwdInput || !currentId) {
         panel.hideAccountDeletion(root, true);
-        return;
+        return {message: "Es ist ein Fehler aufgetreten", returnCode: 1};
     }
+    if(!pwd) return {message: "Es muss ein Passwort eingegeben werden", returnCode: 2};
+    if(pwd.length < 4) return {message: "Das Passwort muss mindestens 4 Zeichen lang sein", returnCode: 3};
     try {
-        //showLoader();
+        panel.showLoader(loader);
         const resp = await fetch(`${config.serverURL}/account/delete`, {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ userId: currentId, password: pwd })
         });
         const data = await resp.json();
-        if(!resp.ok) {
-            panel.showMessage(root, "Löschen des Profils fehlgeschlagen", data.message ?? "Der Account konnte nicht gelöscht werden.");
-            throw new Error(data.message);
+        if(data.ok) {
+            resetUserStorage();
+            panel.hideAccountDeletion(root, true);
+            panel.applyLoginStatus(root);
+            panel.showMessage(root, "Account gelöscht", `Der Account '${data.username}' wurde gelöscht`);
+            showInlineNotification(informationField, "Der Account wurde erfolgreich gelöscht", "info");
+            return;
         }
-        resetUserStorage();
-        panel.applyLoginStatus(root);
-        panel.showMessage(root, "Account gelöscht", `Der Account '${data.username}' wurde erfolgreich gelöscht.`);
-        if(informationField) showInlineNotification(informationField, "Der Account wurde erfolgreich gelöscht", "info");
+        return {message: data.message ?? "Der Account konnte nicht gelöscht werden", returnCode: 4};
     } catch (error) {
         console.error("Account deletion error:", error);
     } finally {
-        //hideLoader();
-        panel.hideAccountDeletion(root, true);
+        panel.hideLoader(loader);
     }
 }
 

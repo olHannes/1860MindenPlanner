@@ -156,9 +156,16 @@ function userControlListener(root) {
         if(deleteAccount.disabled == true) return;
         deleteAccount.disabled = true;
         deleteAccount.style.opacity = "0.5";
-        userHandling.deleteUserAccount(root);
+        const rc = await userHandling.deleteUserAccount(root);
         deleteAccount.disabled = false;
         deleteAccount.style.opacity = "1";
+        
+        const errMsg = root.querySelector("#deleteErr");
+        if(!errMsg) return;
+
+        errMsg.innerText = rc.message ?? "Account konnte nicht gelöscht werden";
+        errMsg.classList.toggle("info", rc.returnCode == 0);
+        errMsg.classList.toggle("error", rc.returnCode != 0);
     });
     //User Logout
     const logoutBtn = root.querySelector("#logoutBtn");
