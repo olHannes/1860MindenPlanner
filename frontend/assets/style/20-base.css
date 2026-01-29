@@ -13,6 +13,44 @@ body {
   height: 100dvh;
 }
 
+/*Button Styles*/
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+button {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+.delete-btn {
+  background: var(--btn-delete);
+  color: white;
+}
+.delete-btn:hover {
+  background: #c9302c;
+}
+.cancel-btn {
+  background: var(--btn-dismiss);
+  color: white;
+}
+.cancel-btn:hover {
+  background: #5a6268;
+}
+.save-btn {
+  background-color: var(--btn-save);
+  color: white;
+}
+.save-btn:hover {
+  background-color: #40be81;
+}
+
+
 .panel {
   position: absolute;
   top: -110%;
@@ -210,10 +248,13 @@ body {
   justify-content: space-around;
 }
 
-.on-top-panel {
-  position: absolute;
-  z-index: 999;
-  border-radius: var(--radius);
+.seperator {
+  width: 98%;
+  height: 1px;
+  background-color: black;
+  position: relative;
+  left: 1%;
+  margin-top: 5px;
 }
 
 
@@ -267,4 +308,52 @@ body {
 .toggle__label {
   font-size: 14px;
   color: var(--color-text);
+}
+
+
+/*Floating Panels*/
+.overlayRoot {
+  height: 100dvh;
+  width: 100%;
+  background-color: #1f293793;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.on-top-panel {
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .18);
+  max-width: 400px;
+}
+
+
+#messageBox {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 300px;
+  background-color: #1f2937;
+  color: #ffffff;
+  padding: 16px 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1001;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+
+#messageBox.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }

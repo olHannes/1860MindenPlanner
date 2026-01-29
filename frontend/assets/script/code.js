@@ -17,14 +17,14 @@ window.addEventListener("popstate", function (event) {
 
     // Download-Panel
     if (event.state.page === "download") {
-        panel.hideDownloads(root, false);
+        panel.showDownloads(root, false);
     } else {
-        panel.displayDownloads(root, false);
+        panel.hideDownloads(root, false);
     }
     
     // News-Panel
     if (event.state.page === "news") {
-        panel.displayNews(root, false);
+        panel.showNews(root, false);
     } else {
         panel.hideNews(root, false);
     }
@@ -2267,14 +2267,8 @@ function submitRating() {
         showMessage("Bitte Bewertung auswählen", "Du musst erst Sterne auswählen, bevor du senden kannst.");
         return;
     }
-
     sendRoutineRating(currentUser, currentTargetUser, selectedRating, currentDevice);
     setTimeout(hideRatingPanel, 500);
-}
-
-function hideRatingPanel() {
-    document.getElementById('ratingRoutine').style.display = "none";
-    document.getElementById('loadingBackground').style.display = "none";
 }
 
 async function sendRoutineRating(user, targetUser, stars, device) {

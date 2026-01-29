@@ -10,51 +10,6 @@ body {
     overflow: hidden;
 }
 
-#news {
-    display: none;
-    position: absolute;
-    background-color: white;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    border-radius: 13px;
-    width: 95%;
-    max-width: 650px;
-    height: 75dvh;
-    padding: 8px;
-    overflow-y: auto;
-}
-#news h3 {
-    text-align: center;
-}
-#news li {
-    margin-top: 5px;
-}
-
-#MessageBox {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 300px;
-    background-color: #1f2937;
-    color: #ffffff;
-    padding: 16px 20px;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    z-index: 1001;
-    cursor: pointer;
-    font-family: sans-serif;
-}
-
-#MessageBox.show {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-}
 
 
 #loadingContainer{
@@ -753,39 +708,6 @@ input {
 
 
 
-.button-group {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-button {
-    border: none;
-    padding: 10px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: all 0.2s ease-in-out;
-}
-
-.delete-btn {
-    background: var(--btn-delete);
-    color: white;
-}
-
-.delete-btn:hover {
-    background: #c9302c;
-}
-
-.cancel-btn {
-    background: var(--btn-dismiss);
-    color: white;
-}
-
-.cancel-btn:hover {
-    background: #5a6268;
-}
-
 
 
 
@@ -803,50 +725,6 @@ button {
 }
 
 
-#downloadPage {
-    display: none;
-    position: absolute;
-    height: 50%;
-    width: 77%;
-    max-width: 600px;
-    top: 15%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: left;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.488);
-    overflow-y: auto;
-}
-
-.seperator {
-    width: 98%;
-    height: 1px;
-    background-color: black;
-    position: relative;
-    left: 1%;
-    margin-top: 5px;
-}
-
-.hide-download-btn {
-    display: inline-block;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 20px;
-    font-size: 16px;
-    color: white;
-    background-color: #ae4427;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background 0.3s;
-    margin-top: 10px;
-}
-.hide-download-btn:hover {
-    background-color: #80311b;
-}
 
 
                                 /** Member List **/

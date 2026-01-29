@@ -48,12 +48,11 @@ export async function submitReport(root) {
 
 export async function loadExistingReports(root) {
     const container = root.getElementById("reportList");
-    const loader    = root.getElementById("reportLoader");
-    if(!container || !loader) return;
+    const loader    = root.querySelector("#createReport .spinner");
+    if(!container) return;
 
-    loader.style.display = "block";
     try {
-        await new Promise(r => setTimeout(r, 2000));
+        panel.showLoader(loader);
 
         const resp = await fetch(`${config.serverURL}/report/all`, {
             method: "GET",
@@ -81,7 +80,7 @@ export async function loadExistingReports(root) {
         console.error("Fehler:", error);
         container.innerHTML = "<p style='color: white;'>Fehler beim Laden der Reports</p>";
     } finally {
-        loader.style.display = "none";
+        panel.hideLoader(loader);
     }
 }
 

@@ -69,3 +69,7 @@
   -webkit-mask-image: url("../images/icons/download-svgrepo-com.svg");
   mask-image: url("../images/icons/download-svgrepo-com.svg");
 }
+.icon--pdf {
+  -webkit-mask-image: url("../images/icons/pdf-document-svgrepo-com.svg");
+  mask-image: url("../images/icons/pdf-document-svgrepo-com.svg");
+}

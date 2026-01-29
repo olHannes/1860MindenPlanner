@@ -25,13 +25,21 @@ export function hideLoader(el) {
     if(el) el.style.opacity = "0";
 }
 
+export function showFloatingBackground(root) {
+    const el = root.getElementById("overlayRoot");
+    show(el, "flex");
+}
+export function hideFloatingBackground(root) {
+    const el = root.getElementById("overlayRoot");
+    hide(el);
+}
 
 //show global Message
 //////////////////////////////////////////////////////////////
 export function showMessage(root, title, content) {
-    let container = root.getElementById("MessageBox");
-    let titleEl   = root.getElementById("messageBoxTitle");
-    let contentEl = root.getElementById("messageBoxContent");
+    const container = root.querySelector("#messageBox");
+    const titleEl   = root.querySelector("#messageBox h3");
+    const contentEl = root.querySelector("#messageBox i");
     if(!container || !titleEl || !contentEl) return;
 
     titleEl.textContent = title;
@@ -54,55 +62,54 @@ export function showMessage(root, title, content) {
 
 // start-up Information 
 export function showStartupInformation(root) {
-    const startupPanel = root.getElementById("startupInformation");
-    if(startupPanel) {
-        startupPanel.style.display = localStorage.getItem("startUpInfo") ? "none" : "flex";
+    const startupPanel  = root.getElementById("startupInformation");
+    const showFlag      = localStorage.getItem("startUpInfo");
+    if(showFlag) {
+        hideFloatingBackground(root);
+        hide(startupPanel);
+    } else {
+        showFloatingBackground(root);
+        show(startupPanel, "flex");
     }
 }
 export function hideStartupInformation(root) {
     const startupPanel = root.querySelector(".on-top-panel");
-    if(startupPanel) {
-        hide(startupPanel);
-        localStorage.setItem("startUpInfo", false);
-    }
+    hide(startupPanel);
+    hideFloatingBackground(root);
+    localStorage.setItem("startUpInfo", false);
+    
 }
 
 // news panel
 export function showNews(root, push = true) {
     const newsPage = root.getElementById("news");
     const mainPage = root.getElementById("mainPage");
-    if(!newsPage || !mainPage) return;
-    show(newsPage, "block");
+    showFloatingBackground(root);
+    show(newsPage, "flex");
     hide(mainPage);
-
     if (push) history.pushState({ page: "news" }, "", "#news");
 }
 export function hideNews(root, push = true) {
     const newsPage = root.getElementById("news");
     const mainPage = root.getElementById("mainPage");
-    if(!newsPage || !mainPage) return;
+    hideFloatingBackground(root);
     hide(newsPage);
-    show(mainPage, "block");
+    show(mainPage, "flex");
     if(push) history.back();
 }
 
 // download panel
-export function displayDownloads(root, push = true) {
+export function showDownloads(root, push = true) {
     let downloadPanel = root.getElementById("downloadPage");
-    let mainPage = root.getElementById("mainPage");
-
-    if(!downloadPanel || !mainPage) return;
-    hide(mainPage);
+    showFloatingBackground(root);
     show(downloadPanel, "block");
     if (push) history.pushState({ page: "download" }, "", "#download");
 }
 export function hideDownloads(root, push = true) {
     let downloadPanel = root.getElementById("downloadPage");
-    let mainPage = root.getElementById("mainPage");
 
-    if(!downloadPanel || !mainPage) return;
+    hideFloatingBackground(root);
     hide(downloadPanel);
-    show(mainPage, "block");
     if (push) history.back();
 }
 
@@ -118,6 +125,7 @@ export function showAccountDeletion(root, push = true) {
     }
     clearHTML(errMsg);
     clearValue(pwdInput);
+    showFloatingBackground(root);
     show(panel, "block");
     show(background, "block");
     if(push) history.pushState({ page: "deleteAccount" }, "", "#deleteAccount");
@@ -125,6 +133,7 @@ export function showAccountDeletion(root, push = true) {
 export function hideAccountDeletion(root, push = true) {
     const panel = root.getElementById("requestDelAcc");
     const background = root.getElementById("loadingBackground");
+    hideFloatingBackground(root);
     hide(panel);
     hide(background);
     if(push) history.back();
@@ -194,20 +203,18 @@ export function hideAdjustPassword(root, push = true) {
 export function showReportCreation(root, push = true) {
     const panel = root.getElementById("createReport");
     const list = root.getElementById("reportList");
-    if(!panel || !list) return;
     clearValue(document.getElementById("reportTitle"));
     clearValue(document.getElementById("reportTxt"));
-    
     clearHTML(list);
-    list.innerHTML = `<div class="loader" id="reportLoader"></div>`;
 
     settings.loadExistingReports(root);
+    showFloatingBackground(root);
     show(panel, "block");
     if(push) history.pushState({ page: "reportCreation"}, "", "#reportCreation");
 }
 export function hideReportCreation(root, push = true) {
     const panel = root.getElementById("createReport");
-    if(!panel) return;
+    hideFloatingBackground(root);
     hide(panel);
     if(push) history.back();
 }
@@ -323,4 +330,29 @@ export function applyLoginStatus(root) {
         hide(contentPanel);
         show(startMask, "grid");
     }
+}
+
+
+// Routine Rating
+export function showRating(root) {
+    const ratingPanel = root.getElementById("ratingRoutine");
+    showFloatingBackground(root);
+    show(ratingPanel, "block");
+}
+export function hideRating(root) {
+    const ratingPanel = root.getElementById("ratingRoutine");
+    hideFloatingBackground(root);
+    hide(ratingPanel);
+}
+
+// Routine Copy
+export function showRoutineCopy(root) {
+    const copyPanel = root.getElementById("secureRoutineCopy");
+    showFloatingBackground(root);
+    show(copyPanel);
+}
+export function hideRoutineCopy(root) {
+    const copyPanel = root.getElementById("secureRoutineCopy");
+    hideFloatingBackground(root);
+    hide(copyPanel);
 }

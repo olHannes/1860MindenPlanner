@@ -36,9 +36,9 @@ function addFloatingPanelListener(root) {
     //download panel
     const openDownloadsBtn = root.querySelector(".openDownloadsBtn");
     openDownloadsBtn?.addEventListener("click", () => {
-        panel.displayDownloads(root, true);
+        panel.showDownloads(root, true);
     });
-    const closeDownloadBtn = root.querySelector(".closeDownloadBtn");
+    const closeDownloadBtn = root.querySelector("#closeDownloadBtn");
     closeDownloadBtn?.addEventListener("click", () => {
         panel.hideDownloads(root, true);
     });

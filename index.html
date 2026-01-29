@@ -45,8 +45,9 @@
 
 
     <!----------------- Floating Panels ----------------->
-    <!-- Startup Information Panel -->
-    <div class="on-top-panel start-information" id="startupInformation">
+    <div id="overlayRoot" class="overlayRoot" hidden>
+        <!-- Startup Information Panel-->
+        <div id="startupInformation" class="on-top-panel start-information">
         <header>
             <div class="icon--wrapper">
                 <span class="icon icon--information"></span>
@@ -58,39 +59,26 @@
         </header>
         <p class="description">Es kann vereinzelt zu Fehlern oder unerwartetem Verhalten kommen. <br><span>Häufig hilft ein Neuladen der Seite oder das Löschen des Caches.</span></p>
         <span class="advice">Feedback kann unter <p style="margin: 0; font-style: italic; display: inline;">'Profil -> Feedback'</p> erstellt werden.</span>
-        <button id="closeInfoBox" class="btn">Verstanden</button>
-    </div>
+        <button id="closeInfoBox" class="btn">Verstanden</button>        
+        </div>
 
-    <!-- Login Error Panel-->
-    <div id="loginError">
-        <h3>Fehler beim Login</h3>
-        <p>Es scheint einen Fehler beim Login gegeben zu haben.</p>
-        <p>Versuchen Sie sich erneut anzumelden oder die Seite neu aufzurufen.</p>
-        <button onclick="hideNameError();">Schließen und Neuladen</button>
-    </div>
-
-    <!-- News Panel -->
-    <div id="news">
-        <h3>Neuigkeiten</h3>
-        <p>Die neusten Features seit den letzten Updates:</p>
+        <!-- News Panel -->
+        <div id="news" class="on-top-panel news">
+        <h3>Neuigkeiten & Updates</h3>
+        <p>Die neusten Features seit dem letzten Update:</p>
         <ul>
-            <li><strong>Refactoring:</strong> Neue Styles, verbesserte Funktionalität und Bugfixes.</li>
+            <li><strong>Refactoring:</strong> Neue Styles, verbesserte Funktionalität und Bugfixes</li>
+            <li><strong>Account Verifizierung:</strong> Account Erstellung ab jetzt mit E-Mail + Acountfreischaltung /-Passwortänderung nur noch mit E-Mail</li>
         </ul>
-        <button class="safeBtn" id="closeNews">Schließen</button>
-    </div>
+        <button id="closeNews" class="save-btn">Zurück</button>
+        </div>
 
-    <!-- Global Notification Box -->
-    <div id="MessageBox">
-        <h3 id="messageBoxTitle">Message Title</h3>
-        <p id="messageBoxContent">Info Text</p>
-    </div>
-
-    <!-- Secure Window for Account Deletion -->
-    <div id="requestDelAcc">
+        <!-- Secure Window for Account Deletion-->
+        <div id="requestDelAcc">
         <div class="loader-container">
-                <h2>Account löschen?</h2>
-                <div class="spinner"></div>
-            </div>
+            <h2>Account löschen?</h2>
+            <div class="spinner"></div>
+        </div>
         <h3>Bist du sicher, dass du deinen Account löschen möchtest?</h3>
         <label for=""></label>
         <input type="password" id="deleteAccountPwd" placeholder="Dein Passwort">
@@ -99,53 +87,119 @@
             <button class="cancel-btn" id="cancelDeletion">Abbrechen</button>
         </div>
         <p id="deleteErr"></p>
-    </div>
-
-    <!-- Report Creation -->
-    <div id="createReport">
-        <h2>Fehler melden</h2>
-
-        <label for="reportType">Art des Reports:</label>
-        <select id="reportType">
-            <option value="Fehler">Fehler</option>
-            <option value="Verbesserung">Verbesserung</option>
-            <option value="Style">Style</option>
-            <option value="Hilfe">Hilfe</option>
-        </select>
-
-        <input type="text" id="reportTitle" placeholder="Titel des Reports">
-        <textarea id="reportTxt" placeholder="Fehlerbeschreibung"></textarea>
-        <button id="submitReport">Report erstellen</button>
-        <button id="cancelReport">Abbrechen</button>
-
-        <div id="reportList">
-            <div class="loader" id="reportLoader"></div>
         </div>
-    </div>
 
-    <!-- Secure Routine Copy -->
-    <div id="secureRoutineCopy">
-        <h2>Übung kopieren?</h2>
-        <h3></h3>
-        <div class="button-group">
-            <button class="delete-btn copyBtn" id="validCopyRoutine">Übung kopieren</button>
-            <button class="cancel-btn" onclick="cancleRoutineCopy()">Abbrechen</button>
+         <!-- Report Creation -->
+        <div id="createReport">
+            <div class="loader-container">
+                <h2>Fehler melden</h2>
+                <div class="spinner"></div>
+            </div>
+
+            <label for="reportType">Art des Reports:</label>
+            <select id="reportType">
+                <option value="Fehler">Fehler</option>
+                <option value="Verbesserung">Verbesserung</option>
+                <option value="Style">Style</option>
+                <option value="Hilfe">Hilfe</option>
+            </select>
+
+            <input type="text" id="reportTitle" placeholder="Titel des Reports">
+            <textarea id="reportTxt" placeholder="Fehlerbeschreibung"></textarea>
+            <button id="submitReport">Report erstellen</button>
+            <button id="cancelReport">Abbrechen</button>
+
+            <div id="reportList">
+            </div>
         </div>
+
+        <!-- Panel for Rating -->
+        <div id="ratingRoutine" class="ratingRoutine">
+            <h2>Übung bewerten</h2>
+            <div id="StarRating">
+                <span class="star" data-index="1">&#9734;</span>
+                <span class="star" data-index="2">&#9734;</span>
+                <span class="star" data-index="3">&#9734;</span>
+                <span class="star" data-index="4">&#9734;</span>
+                <span class="star" data-index="5">&#9734;</span>
+            </div>
+            <button class="" onclick="submitRating()">Senden</button>
+            <button class="cancel-btn" onclick="hideRatingPanel()">Abbrechen</button>
+        </div>
+
+        <!-- Secure Routine Copy -->
+        <div id="secureRoutineCopy" class="secureRoutineCopy">
+            <h2>Übung kopieren?</h2>
+            <h3></h3>
+            <div class="button-group">
+                <button class="delete-btn copyBtn" id="validCopyRoutine">Übung kopieren</button>
+                <button class="cancel-btn" onclick="cancleRoutineCopy()">Abbrechen</button>
+            </div>
+        </div>
+
+        <!--Download container-->
+        <div id="downloadPage" class="on-top-panel downloadPage">
+            <h2>Hier findest du die Tabellen zum Download</h2>
+            <div class="horizontal-container">
+                <h3>Boden - Bildtabelle (NE)</h3>
+                <span class="icon icon--pdf"></span>
+            </div>
+            <a href="pdfFiles/LK_M_NE_Bildtabellen_Boden.pdf" class="download-btn" download>Download PDF</a>
+            <div class="seperator"></div>
+            <div class="horizontal-container">
+                <h3>Pauschenpferd - Bildtabelle (NE)</h3>
+                <span class="icon icon--pdf"></span>
+            </div>
+            <a href="pdfFiles/LK_M_NE_Bildtabellen_Seitpferd.pdf" class="download-btn" download>Download PDF</a>
+            <div class="seperator"></div>
+            <div class="horizontal-container">
+                <h3>Ringe - Bildtabelle (NE)</h3>
+                <span class="icon icon--pdf"></span>
+            </div>
+            <a href="pdfFiles/LK_M_NE_Bildtabellen_Ringe.pdf" class="download-btn" download>Download PDF</a>
+            <div class="seperator"></div>
+            <div class="horizontal-container">
+                <h3>Sprung - Bildtabelle (NE)</h3>
+                <span class="icon icon--pdf"></span>
+            </div>
+            <a href="pdfFiles/LK_M_NE_Bildtabellen_Sprung.pdf" class="download-btn" download>Download PDF</a>
+            <div class="seperator"></div>
+            <div class="horizontal-container">
+                <h3>Barren - Bildtabelle (NE)</h3>
+                <span class="icon icon--pdf"></span>
+            </div>
+            <a href="pdfFiles/LK_M_NE_Bildtabellen_Barren.pdf" class="download-btn" download>Download PDF</a>
+            <div class="seperator"></div>
+            <div class="horizontal-container">
+                <h3>Reck - Bildtabelle (NE)</h3>
+                <span class="icon icon--pdf"></span>
+            </div>
+            <a href="pdfFiles/LK_M_NE_Bildtabellen_Reck.pdf" class="download-btn" download>Download PDF</a>
+            <div class="seperator" style="margin-bottom: 15px;"></div>
+            <div class="horizontal-container">
+                <h3>Code of Points 2022 - 2024</h3>
+                <span class="icon icon--pdf"></span>
+            </div>
+            <a href="pdfFiles/Code_of_Points__GT-Maenner_2022-2024.pdf" class="download-btn" download>Download PDF</a>
+            <div class="seperator"></div>
+            <div class="horizontal-container">
+                <h3>Code of Points 2025 - 2028</h3>
+                <span class="icon icon--pdf"></span>
+            </div>
+            <a href="pdfFiles/en_1.1 - MAG Code of Points 2025-2028.pdf" class="download-btn" download>Download PDF</a>
+            <div class="seperator"></div>
+            <button id="closeDownloadBtn" class="hide-download-btn cancel-btn">Downloads schließen</button>
+        </div>
+
     </div>
+        
+        <!-- Global Notification Box-->
+         <div id="messageBox">
+          <h3 id="messageBoxTitle">Message Title</h3>
+          <i id="messageBoxContent">Info Text</i>
+         </div>
+
     
-    <!-- Panel for Rating -->
-    <div id="ratingRoutine">
-        <h2>Übung bewerten</h2>
-        <div id="StarRating">
-            <span class="star" data-index="1">&#9734;</span>
-            <span class="star" data-index="2">&#9734;</span>
-            <span class="star" data-index="3">&#9734;</span>
-            <span class="star" data-index="4">&#9734;</span>
-            <span class="star" data-index="5">&#9734;</span>
-        </div>
-        <button class="" onclick="submitRating()">Senden</button>
-        <button class="cancel-btn" onclick="hideRatingPanel()">Abbrechen</button>
-    </div>
 
 
 
@@ -275,38 +329,6 @@
 
 <!--Content Page (only when logged in)-->
 <div id="content">
-
-    <!--Download container-->
-    <div id="downloadPage">
-        <h2>Hier findest du die Tabellen zum Download</h2>
-        <h3>Boden - Bildtabelle (NE)</h3>
-        <a href="pdfFiles/LK_M_NE_Bildtabellen_Boden.pdf" class="download-btn" download>Download PDF</a>
-        <div class="seperator"></div>
-        <h3>Pauschenpferd - Bildtabelle (NE)</h3>
-        <a href="pdfFiles/LK_M_NE_Bildtabellen_Seitpferd.pdf" class="download-btn" download>Download PDF</a>
-        <div class="seperator"></div>
-        <h3>Ringe - Bildtabelle (NE)</h3>
-        <a href="pdfFiles/LK_M_NE_Bildtabellen_Ringe.pdf" class="download-btn" download>Download PDF</a>
-        <div class="seperator"></div>
-        <h3>Sprung - Bildtabelle (NE)</h3>
-        <a href="pdfFiles/LK_M_NE_Bildtabellen_Sprung.pdf" class="download-btn" download>Download PDF</a>
-        <div class="seperator"></div>
-        <h3>Barren - Bildtabelle (NE)</h3>
-        <a href="pdfFiles/LK_M_NE_Bildtabellen_Barren.pdf" class="download-btn" download>Download PDF</a>
-        <div class="seperator"></div>
-        <h3>Reck - Bildtabelle (NE)</h3>
-        <a href="pdfFiles/LK_M_NE_Bildtabellen_Reck.pdf" class="download-btn" download>Download PDF</a>
-        <div class="seperator" style="margin-bottom: 15px;"></div>
-        <h3>Code of Points 2022 - 2024</h3>
-        <a href="pdfFiles/Code_of_Points__GT-Maenner_2022-2024.pdf" class="download-btn" download>Download PDF</a>
-        <div class="seperator"></div>
-        <h3>Code of Points 2025 - 2028</h3>
-        <a href="pdfFiles/en_1.1 - MAG Code of Points 2025-2028.pdf" class="download-btn" download>Download PDF</a>
-        <div class="seperator"></div>
-        <a class="hide-download-btn closeDownloadBtn">Downloads schließen</a>
-    </div>
-
-
 
     <!-- Bottom Main Menu Navigation -->
     <div id="menue">
