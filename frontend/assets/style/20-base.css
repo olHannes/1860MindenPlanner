@@ -329,7 +329,7 @@ button {
   border-radius: var(--radius);
   border: 1px solid var(--color-border);
   box-shadow: 0 18px 50px rgba(0, 0, 0, .18);
-  max-width: 400px;
+  max-width: 550px;
 }
 
 

@@ -107,7 +107,6 @@ export function showDownloads(root, push = true) {
 }
 export function hideDownloads(root, push = true) {
     let downloadPanel = root.getElementById("downloadPage");
-
     hideFloatingBackground(root);
     hide(downloadPanel);
     if (push) history.back();

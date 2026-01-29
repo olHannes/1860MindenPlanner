@@ -12,6 +12,7 @@ window.onload = function () {
 
 
 window.addEventListener("popstate", function (event) {
+    return;
     if(!event.state) return;
     const root = this.document;
 
