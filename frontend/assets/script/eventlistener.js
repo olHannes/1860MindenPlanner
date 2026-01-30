@@ -99,16 +99,6 @@ function addMainPanelListener(root) {
     toggleSettingsBtn?.addEventListener("click", () => {
         panel.toggleMainPanel(root, 3);
     });
-    /*
-    const adjustProfileBtn = root.querySelector("#userOptions");
-    adjustProfileBtn?.addEventListener("click", () => {
-        panel.toggleMainPanel(root, 3);
-    });
-    const hideAdjustProfileBtn = root.querySelector("#hideAdjustProfile");
-    hideAdjustProfileBtn?.addEventListener("click", () => {
-        panel.toggleMainPanel(root, 3);
-    });
-    */
 }
 
 function userControlListener(root) {
@@ -185,12 +175,17 @@ function userControlListener(root) {
 function setAccountSettingsListener(root) {
     //Profile Color
     const colorChangeBtn = root.querySelector("#colorContainer");
-    colorChangeBtn?.addEventListener("click", (e) => {
+    colorChangeBtn?.addEventListener("click", async (e) => {
+        if(colorChangeBtn.disabled == true) return;
+        colorChangeBtn.disabled = true;
+        colorChangeBtn.style.opacity = "0.5";
         const colorEl = e.target.closest(".colorPick");
         if(!colorEl) return;
         const color = colorEl.dataset.color;
         if (!color) return;
-        settings.changeProfileColor(root, color);
+        await settings.changeProfileColor(root, color);
+        colorChangeBtn.disabled = false;
+        colorChangeBtn.style.opacity = "1";
     });
 
     //Profile visibility
@@ -247,8 +242,8 @@ function setAccountSettingsListener(root) {
         if(sendCodeBtn.disabled == true) return;
         sendCodeBtn.disabled = true;
         sendCodeBtn.style.opacity = "0.5";
-        em = localStorage.getItem("userEmail");
-        rc = await userHandling.sendResetCode(em);
+        let em = localStorage.getItem("userEmail");
+        let rc = await userHandling.sendResetCode(em);
         setTimeout(() => {
             sendCodeBtn.disabled = false;
             sendCodeBtn.style.opacity = "1";

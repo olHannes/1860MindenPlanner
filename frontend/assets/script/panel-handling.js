@@ -19,11 +19,21 @@ export function clearValue(el) {
 
 
 export function showLoader(el) {
-    if(el) el.style.opacity = "1";
+  if (!el) return;
+  el.style.visibility = "visible";
+  el.style.pointerEvents = "auto";
+  el.style.opacity = "1";
 }
+
 export function hideLoader(el) {
-    if(el) el.style.opacity = "0";
+  if (!el) return;
+  el.style.opacity = "0";
+  el.style.pointerEvents = "none";
+  setTimeout(() => {
+    el.style.visibility = "hidden";
+  }, 300);
 }
+
 
 export function showFloatingBackground(root) {
     const el = root.getElementById("overlayRoot");
@@ -186,10 +196,9 @@ export function showAdjustPassword(root, push = true) {
     if(push) history.pushState({ page: "passwordChange"}, "", "#passwordChange");
 }
 export function hideAdjustPassword(root, push = true) {
-    const wrapperPanel = root.querySelector(".userSettingsWrapper");
     const panel = root.getElementById("passwordReset");
     hide(panel);
-    hide(wrapperPanel);
+    hideFloatingBackground(root);
     if(push) history.back();
 }
 

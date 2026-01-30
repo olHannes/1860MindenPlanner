@@ -87,12 +87,12 @@ export async function loadExistingReports(root) {
 
 /* User Settings */
 export async function changeProfileColor(root, color) {
+    const loader = root.querySelector("#panel3 .spinner");
     const userId = localStorage.getItem("userId");
     const profileImg_1 = root.getElementById("profilePicture");
-    const profileImg_2 = root.getElementById("profilePictureOptions");
-    if(!userId || !color || !profileImg_1 || !profileImg_2) return;
+    if(!userId || !color || !profileImg_1) return;
     try {
-        //showLoader();
+        panel.showLoader(loader);
         const resp = await fetch(`${config.serverURL}/account/user/colorChange`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -107,12 +107,11 @@ export async function changeProfileColor(root, color) {
             profileImg_2.style.filter = "";
         } else {
             profileImg_1.style.filter = `drop-shadow(0px 0px 5px ${color})`;
-            profileImg_2.style.filter = `drop-shadow(0px 0px 5px ${color})`;
         }
     } catch (error) {
         console.error("Failed to change Account-color:", error);
     } finally {
-        //hideLoader();
+        panel.hideLoader(loader);
     }
 }
 

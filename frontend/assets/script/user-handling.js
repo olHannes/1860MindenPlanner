@@ -35,21 +35,16 @@ function resetUserStorage() {
 function setUsernameElements(root, firstName, lastName, color, visible, autoLogin) {
     firstName = firstName ?? "<not found>";
     lastName = lastName ?? "<not found>";
-    const firstNameContainer    = root.getElementById("Vorname");
-    const lastNameContainer     = root.getElementById("Nachname");
     const firstNameInput        = root.getElementById("firstNameEdit");
     const lastNameInput         = root.getElementById("lastNameEdit");
     const firstNameProfile      = root.getElementById("userVorname");
     const lastNameProfile       = root.getElementById("userNachname");
     const welcomeUser           = root.getElementById("welcomeUser");
 
-    let profileImg_1 = root.getElementById("profilePicture");
-    let profileImg_2 = root.getElementById("profilePictureOptions");
-    let visibleToggle = root.getElementById("visibleCheckbox");
-    let autoLoginToggle = root.getElementById("autoLoginCheckbox");
+    const profileImg_1 = root.getElementById("profilePicture");
+    const visibleToggle = root.getElementById("visibleCheckbox");
+    const autoLoginToggle = root.getElementById("autoLoginCheckbox");
     
-    if(firstNameContainer)  firstNameContainer.innerText = firstName;
-    if(lastNameContainer)   lastNameContainer.innerText = lastName;
     if(firstNameInput)      firstNameInput.placeholder = firstName;
     if(lastNameInput)       lastNameInput.placeholder = lastName;
     if(firstNameProfile)    firstNameProfile.innerText = firstName;
@@ -57,7 +52,6 @@ function setUsernameElements(root, firstName, lastName, color, visible, autoLogi
     if(welcomeUser)         welcomeUser.innerHTML = `Wilkommen <i>${firstName}</i>`;
 
     if(profileImg_1)        profileImg_1.style.filter = `drop-shadow(0px 0px 5px ${color})`;
-    if(profileImg_2)        profileImg_2.style.filter = `drop-shadow(0px 0px 5px ${color})`;
     if(visibleToggle)       visibleToggle.checked = visible;
     if(autoLoginToggle)     autoLoginToggle.checked = autoLogin;
 }

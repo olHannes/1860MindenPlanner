@@ -226,6 +226,9 @@ button {
   border: 3px solid rgba(0, 0, 0, 0.25);
   border-top-color: #ffffff;
   animation: spin 0.9s linear infinite;
+  transition: 
+    opacity 300ms ease,
+    visibility 0s linear 300ms;
 }
 
 @keyframes spin {
