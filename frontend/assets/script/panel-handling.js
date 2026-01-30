@@ -158,35 +158,30 @@ export function hideAdjustProfile(root, push = true) {
 
 //Account Name Change Panel
 export function showAdjustName(root, push = true) {
-    const wrapperPanel = root.querySelector(".userSettingsWrapper");
     const panel = root.getElementById("nameSettings");
-    const firstName = root.getElementById("firstNameEdit");
-    const lastName = root.getElementById("lastNameEdit");
-    if(!firstName || !lastName) return;
-    firstName.value = "";
-    lastName.value = "";
-    show(wrapperPanel, "flex");
+    const firstNameInput = root.getElementById("firstNameEdit");
+    const lastNameInput = root.getElementById("lastNameEdit");
+    clearValue(firstNameInput);
+    clearValue(lastNameInput);
+    showFloatingBackground(root);
     show(panel, "block");
     if(push) history.pushState({ page: "nameChange"}, "", "#nameChange");
 }
 export function hideAdjustName(root, push = true) {
     const panel = root.getElementById("nameSettings");
-    const wrapperPanel = root.querySelector(".userSettingsWrapper");
     hide(panel);
-    hide(wrapperPanel);
+    hideFloatingBackground(root);
     if(push) history.back();
 }
 
 //Account Passwort Reset Panel
 export function showAdjustPassword(root, push = true) {
-    const wrapperPanel = root.querySelector(".userSettingsWrapper");
-    const panel = root.getElementById("passwordReset");
+    const panel     = root.getElementById("passwordReset");
     const emailCode = root.getElementById("pwCode");
-    const codeNew = root.getElementById("pwNew");
-    if(!emailCode || !codeNew) return;
-    emailCode.value = "";
-    codeNew.value = "";
-    show(wrapperPanel, "flex");
+    const codeNew   = root.getElementById("pwNew");
+    clearValue(emailCode);
+    clearValue(codeNew);
+    showFloatingBackground(root);
     show(panel, "block");
     if(push) history.pushState({ page: "passwordChange"}, "", "#passwordChange");
 }
@@ -255,7 +250,7 @@ export function resetPanel(panelId) {
     fn();
 }
 export function toggleMainPanel(root, panelId) {
-  const panels = [0,1,2,3].map(i => root.getElementById(`panel${i}`));
+  const panels = [1,2,3].map(i => root.getElementById(`panel${i}`));
   const target = root.getElementById(`panel${panelId}`);
   if (!target) return;
 

@@ -97,8 +97,9 @@ function addMainPanelListener(root) {
     });
     const toggleSettingsBtn = root.querySelector("#toggleSettings");
     toggleSettingsBtn?.addEventListener("click", () => {
-        panel.toggleMainPanel(root, 0);
+        panel.toggleMainPanel(root, 3);
     });
+    /*
     const adjustProfileBtn = root.querySelector("#userOptions");
     adjustProfileBtn?.addEventListener("click", () => {
         panel.toggleMainPanel(root, 3);
@@ -107,6 +108,7 @@ function addMainPanelListener(root) {
     hideAdjustProfileBtn?.addEventListener("click", () => {
         panel.toggleMainPanel(root, 3);
     });
+    */
 }
 
 function userControlListener(root) {

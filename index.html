@@ -191,6 +191,65 @@
             <button id="closeDownloadBtn" class="hide-download-btn cancel-btn">Downloads schließen</button>
         </div>
 
+
+        <section id="nameSettings" class="settingsCard">
+            <header class="settingsCard__header">
+                <div class="horizontal-container">
+                    <h3 id="nameSettingsTitle" class="settingsCard__title">Name ändern</h3>
+                    <span class="icon icon--update"></span>
+                </div>
+                <p class="settingsCard__subtitle">Passe Vor- und Nachname an.</p>
+            </header>
+            <div class="settingsCard__body">
+                <div class="formGrid">
+                    <label class="field">
+                        <span class="field_label">Vorname</span>
+                        <input id="firstNameEdit" class="input" autocomplete="given-name" type="text" placeholder="Vorname">
+                    </label>
+
+                    <label class="field">
+                        <span class="field_label">Nachname</span>
+                        <input id="lastNameEdit" class="input" autocomplete="given-name" type="text" placeholder="Nachname">                            
+                    </label>
+                </div>
+                <p id="nameMsg" class=""></p>
+                <div class="actions">
+                    <button id="cancelNameBtn" class="btn btn--secondary" type="button">Abbrechen</button>
+                    <button id="saveNameBtn" class="btn btn--primary" type="button">Speichern</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="passwordReset" class="settingsCard">
+            <header class="settingsCard__header">
+                <div class="horizontal-container">
+                    <h3 id="pwResetTitle" class="settingsCard__title">Passwort zurücksetzen</h3>
+                    <span class="icon icon--update"></span>
+                </div>
+                <p class="settingsCard__subtitle">Sende dir einen Code per E-Mail und setze dein Passwort zurück.</p>
+            </header>
+            <div class="settingsCard__body">
+                <div class="formStack">
+                <div class="inlineRow">
+                    <button id="sendResetCodeBtn" class="btn btn--primary" type="button">Code per E-Mail senden</button>
+                </div>
+                <div class="divider"></div>
+                <label class="field">
+                    <span class="field__label">E-Mail-Code</span>
+                    <input id="pwCode" class="input" type="text" inputmode="numeric" placeholder="z.B. 123456">
+                </label>
+                <label class="field">
+                    <span class="field__label">Neues Passwort</span>
+                    <input id="pwNew" class="input" type="password" autocomplete="new-password" placeholder="Neues Passwort">
+                </label>
+                </div>
+                <p id="pwMsg" class="" aria-live="polite"></p>
+                <div class="actions">
+                    <button id="cancelPwResetBtn" class="btn btn--secondary" type="button">Abbrechen</button>
+                    <button id="confirmPwResetBtn" class="btn btn--primary" type="button">Passwort ändern</button>
+                </div>
+            </section>
+        </div>
     </div>
         
         <!-- Global Notification Box-->
@@ -348,137 +407,10 @@
         </div>
     </div>
 
-    <!--Account Settings Page-->
-    <div id="panel0" class="panel">
-        <h2>Account Settings</h2>
-
-        <img src="frontend/assets/images/system/profile_icon.png" alt="profile picture" id="profilePicture" class="profilePicture">
-        <div id="nameView">
-            <div>
-                <span id="Vorname">Vorname</span>
-                <span id="Nachname">Nachname</span>
-            </div>
-        </div>
-
-        <div style="display: flex; margin-top: 50px; justify-content: space-evenly;">
-            <button id="userOptions">Daten bearbeiten</button>
-            <button id="reportIssue">Feedback & Fehler</button>
-        </div>
-        <button id="logoutBtn" class="exit-account-btn">Logout <span class="icon icon--logout"></span></button>
-        <button id="delBtn" class="exit-account-btn">Account löschen <span class="icon icon--cancel"></span></button>
-    </div>
-
-    <!-- Panel for Profile Settings -->
-    <div id="panel3" class="panel account-settings-wrapper">
-        <div class="account-settings">
-
-            <h3>Account Options</h3>
-            <span id="hideAdjustProfile" class="icon icon--return return-btn"></span>
-            
-            <img src="frontend/assets/images/system/profile_icon.png" alt="profile picture" id="profilePictureOptions" class="profilePicture" onclick="toggleOptionsContainer();">
-            
-            <div id="colorContainer">
-                <div data-color="#FF5733" class="colorPick" style="background-color: #FF5733;"></div>
-                <div data-color="#28A745" class="colorPick" style="background-color: #28A745;"></div>
-                <div data-color="#007BFF" class="colorPick" style="background-color: #007BFF;"></div>
-                <div data-color="#FFC107" class="colorPick" style="background-color: #FFC107;"></div>
-                <div data-color="#6F42C1" class="colorPick" style="background-color: #6F42C1;"></div>            
-            </div>
-            
-            <div class="userName">
-                <span id="userVorname">Vorname</span>
-                <span id="userNachname">Nachname</span>
-            </div>
-            
-            <button id="editNameBtn" class="edit-names" style="margin-top: var(--gap);">
-                ✎ Namen bearbeiten ✎
-            </button>
-            <button id="editPasswordBtn" class="edit-names">
-                ✎ Passwort bearbeiten ✎
-            </button>   
-            
-            <div class="stay-logged-in" style="margin-top: var(--gap);">
-                <label class="toggle">
-                    <input type="checkbox" id="visibleCheckbox">
-                    <span class="toggle__track"></span>
-                    <span class="toggle__label">Sichtbarkeit für Andere</span>
-                </label>
-            </div>
-            
-            <div class="stay-logged-in">
-                <label class="toggle">
-                    <input type="checkbox" id="autoLoginCheckbox">
-                    <span class="toggle__track"></span>
-                    <span class="toggle__label">Automatischer Login</span>
-                </label>
-            </div>
-
-            <div class="userSettingsWrapper">
-                <section id="nameSettings" class="settingsCard">
-                    <header class="settingsCard__header">
-                        <div class="horizontal-container">
-                            <h3 id="nameSettingsTitle" class="settingsCard__title">Name ändern</h3>
-                            <span class="icon icon--update"></span>
-                        </div>
-                        <p class="settingsCard__subtitle">Passe Vor- und Nachname an.</p>
-                    </header>
-                    <div class="settingsCard__body">
-                        <div class="formGrid">
-                            <label class="field">
-                                <span class="field_label">Vorname</span>
-                                <input id="firstNameEdit" class="input" autocomplete="given-name" type="text" placeholder="Vorname">
-                            </label>
-
-                            <label class="field">
-                                <span class="field_label">Nachname</span>
-                                <input id="lastNameEdit" class="input" autocomplete="given-name" type="text" placeholder="Nachname">                            
-                            </label>
-                        </div>
-                        <p id="nameMsg" class=""></p>
-                        <div class="actions">
-                            <button id="cancelNameBtn" class="btn btn--secondary" type="button">Abbrechen</button>
-                            <button id="saveNameBtn" class="btn btn--primary" type="button">Speichern</button>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="passwordReset" class="settingsCard">
-                    <header class="settingsCard__header">
-                        <div class="horizontal-container">
-                            <h3 id="pwResetTitle" class="settingsCard__title">Passwort zurücksetzen</h3>
-                            <span class="icon icon--update"></span>
-                        </div>
-                        <p class="settingsCard__subtitle">Sende dir einen Code per E-Mail und setze dein Passwort zurück.</p>
-                    </header>
-                    <div class="settingsCard__body">
-                        <div class="formStack">
-                        <div class="inlineRow">
-                            <button id="sendResetCodeBtn" class="btn btn--primary" type="button">Code per E-Mail senden</button>
-                        </div>
-                        <div class="divider"></div>
-                        <label class="field">
-                            <span class="field__label">E-Mail-Code</span>
-                            <input id="pwCode" class="input" type="text" inputmode="numeric" placeholder="z.B. 123456">
-                        </label>
-                        <label class="field">
-                            <span class="field__label">Neues Passwort</span>
-                            <input id="pwNew" class="input" type="password" autocomplete="new-password" placeholder="Neues Passwort">
-                        </label>
-                        </div>
-                        <p id="pwMsg" class="" aria-live="polite"></p>
-                        <div class="actions">
-                            <button id="cancelPwResetBtn" class="btn btn--secondary" type="button">Abbrechen</button>
-                            <button id="confirmPwResetBtn" class="btn btn--primary" type="button">Passwort ändern</button>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </div>
 
 
     <!--Panel for Routine Creation-->
-    <div id="panel1" class="panel">
+    <section id="panel1" class="panel">
         <div id="EquipmentExercise">
             <img src="frontend/assets/images/system/back.png" alt="Go Back" onclick="closeDevice();" id="hideExercise" class="goBack-Btn">
             <div id="exerciseTitle">
@@ -644,11 +576,10 @@
                     <span class="name-en">High Bar</span>
                 </div>
             </div>
+        </div>
+    </section>
 
-    </div>
-    </div>
-
-    <div id="panel2" class="panel">
+    <section id="panel2" class="panel">
         <h2>Mitglieder</h2>
         <div id="memberSwitchPage">
             <button onclick="showAllUser();">Übungen</button>
@@ -675,7 +606,56 @@
                 <p>Auf dieser Seite soll ein Dash-/Leaderboard angezeigt werden, auf dem Wettkämpfe und Bewertungen eingetragen werden könne.</p>
             </div>
         </div>
-    </div>
+    </section>
+
+
+
+    <section id="panel3" class="panel grid-container">
+        <h2>Account Einstellungen</h2>
+            <header>
+                <img src="frontend/assets/images/system/profile_icon.png" alt="profile picture" id="profilePicture" class="profilePicture">
+                <div id="colorContainer">
+                    <div data-color="#FF5733" class="colorPick" style="background-color: #FF5733;"></div>
+                    <div data-color="#28A745" class="colorPick" style="background-color: #28A745;"></div>
+                <div data-color="#007BFF" class="colorPick" style="background-color: #007BFF;"></div>
+                <div data-color="#FFC107" class="colorPick" style="background-color: #FFC107;"></div>
+                <div data-color="#6F42C1" class="colorPick" style="background-color: #6F42C1;"></div>            
+            </div>
+            <div class="userName">
+                <span id="userVorname">Vorname</span>
+                <span id="userNachname">Nachname</span>
+            </div>
+        </header>
+        <main>
+            <button id="editNameBtn" class="edit-names">
+                ✎ Namen bearbeiten ✎
+            </button>
+            <button id="editPasswordBtn" class="edit-names">
+                ✎ Passwort bearbeiten ✎
+            </button>   
+            <div class="stay-logged-in" style="margin-top: var(--gap);">
+                <label class="toggle">
+                    <input type="checkbox" id="visibleCheckbox">
+                    <span class="toggle__track"></span>
+                    <span class="toggle__label">Sichtbarkeit für Andere</span>
+                </label>
+            </div>
+            <div class="stay-logged-in">
+                <label class="toggle">
+                    <input type="checkbox" id="autoLoginCheckbox">
+                    <span class="toggle__track"></span>
+                    <span class="toggle__label">Automatischer Login</span>
+                </label>
+            </div>
+            <button id="reportIssue">Feedback & Fehler <span class="icon icon--feedback"></span></button>
+        </main>
+        <footer>
+            <button id="logoutBtn" class="exit-account-btn">Logout <span class="icon icon--logout"></span></button>
+            <button id="delBtn" class="exit-account-btn">Account löschen <span class="icon icon--cancel"></span></button>
+        </footer>
+    </section>
+
+
 
     <a href="frontend/impressum/impressum.html" class="impressum" style="top: 5px; color: #fcfcfc; height: 2dvh;">Impressum</a>
     <script src="frontend/assets/script/code.js" type="module"></script>

@@ -565,22 +565,6 @@ input {
     background-color: rgb(33, 90, 33);
 }
 
-/*Report Objects*/
-#reportIssue {
-    position: relative;
-    width: 42dvw;
-    height: 30dvw;
-    max-width: 200px;
-    max-height: 150px;
-    color: var(--color-font);
-    background: var(--btn-delete);
-    font-size: larger;
-}
-
-#reportIssue:hover {
-    background-color: #695858;
-}
-
 /* Grundstil für das Formular */
 #createReport {
     display: none;

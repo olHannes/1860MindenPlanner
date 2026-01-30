@@ -73,3 +73,7 @@
   -webkit-mask-image: url("../images/icons/pdf-document-svgrepo-com.svg");
   mask-image: url("../images/icons/pdf-document-svgrepo-com.svg");
 }
+.icon--feedback {
+  -webkit-mask-image: url("../images/icons/feedback-svgrepo-com.svg");
+  mask-image: url("../images/icons/feedback-svgrepo-com.svg");
+}
