@@ -22,8 +22,9 @@ export async function startup(root) {
 
 //helper functions
 ///////////////////////////////////////////////////////////////////
-export function setAutoLogin(autoLogin) {
+export function setAutoLogin(root, autoLogin) {
     localStorage.setItem("autoLogin", autoLogin ? "true" : "false");
+    panel.showMessage(root, "Automatischer Login", `Der Automatische Login wurde '${autoLogin ? "An": "Aus"}' geschaltet`);
 }
 
 function resetUserStorage() {

@@ -348,28 +348,59 @@ button {
 
 #messageBox {
   position: fixed;
-  top: 20px;
+  top: 16px;
   left: 50%;
-  transform: translateX(-50%);
-  max-width: 300px;
-  background-color: #1f2937;
-  color: #ffffff;
-  padding: 16px 20px;
-  border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  transform: translateX(-50%) translateY(-8px);
+  width: min(92vw, 420px);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius, 12px);
+  background: rgba(15, 23, 42, 0.841);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 14px 35px rgba(0,0,0,0.35);
+  color: var(--color-font, #ececec);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity .2s ease, transform .2s ease;
   z-index: 1001;
   cursor: pointer;
-  font-family: sans-serif;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
-
 #messageBox.show {
   opacity: 1;
   pointer-events: auto;
-  transform: translateY(0);
+  transform: translateX(-50%) translateY(0);
 }
+#messageBox .msgBar {
+  width: 8px;
+  align-self: stretch;
+  border-radius: 999px;
+  background: var(--color-primary-dark);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.10) inset;
+}
+#messageBox .msgBody {
+  min-width: 0;
+}
+#messageBox h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 650;
+  line-height: 1.2;
+}
+#messageBox i {
+  display: block;
+  margin-top: 3px;
+  font-style: normal;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  color: rgba(236, 236, 236, 0.82);
+}
+
+
 
 
 

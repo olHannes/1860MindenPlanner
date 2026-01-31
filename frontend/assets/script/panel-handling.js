@@ -46,24 +46,32 @@ export function hideFloatingBackground(root) {
 
 //show global Message
 //////////////////////////////////////////////////////////////
-export function showMessage(root, title, content) {
-    const container = root.querySelector("#messageBox");
-    const titleEl   = root.querySelector("#messageBox h3");
-    const contentEl = root.querySelector("#messageBox i");
-    if(!container || !titleEl || !contentEl) return;
+export function showMessage(root, title, content, { duration = 2000 } = {}) {
+  const container = root.querySelector("#messageBox");
+  const titleEl   = container?.querySelector("h3");
+  const contentEl = container?.querySelector("i");
+  if (!container || !titleEl || !contentEl) return;
 
-    titleEl.textContent = title;
-    contentEl.textContent = content;
-    container.classList.add("show");
+  titleEl.textContent = title;
+  contentEl.textContent = content;
 
-    const hideMsg = () => {
-        container.classList.remove("show");
-        container.removeEventListener("click", hideMsg);
+  if (container._hideTimer) {
+    clearTimeout(container._hideTimer);
+    container._hideTimer = null;
+  }
+  if (!container._boundHideOnClick) {
+    container._boundHideOnClick = () => hide();
+    container.addEventListener("click", container._boundHideOnClick, { passive: true });
+  }
+  container.classList.add("show");
+  function hide() {
+    container.classList.remove("show");
+    if (container._hideTimer) {
+      clearTimeout(container._hideTimer);
+      container._hideTimer = null;
     }
-    container.addEventListener("click", hideMsg)
-    setTimeout(() => {
-        hideMsg();
-    }, 2000);
+  }
+  container._hideTimer = setTimeout(hide, duration);
 }
 
 

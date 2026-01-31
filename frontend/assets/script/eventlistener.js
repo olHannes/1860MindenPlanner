@@ -135,12 +135,12 @@ function userControlListener(root) {
     //Auto Login Change -> Login Page
     const autoLoginCheckbox = root.querySelector("#stayLoggedIn");
     autoLoginCheckbox?.addEventListener("change", (e) => {
-        userHandling.setAutoLogin(e.target.checked);
+        userHandling.setAutoLogin(root, e.target.checked);
     })
     //Auto Login Change -> Settings Page
     const settingAutoCheckbox = root.querySelector("#autoLoginCheckbox");
     settingAutoCheckbox?.addEventListener("change", (e) => {
-        userHandling.setAutoLogin(e.target.checked);
+        userHandling.setAutoLogin(root, e.target.checked);
     });
     //User Deletion
     const deleteAccount = root.querySelector("#deleteAccount");
