@@ -467,19 +467,32 @@ def get_user_info():
 
 ################################################################################################### Setter -> User Information
 
-@account_bp.route('/account/changeData', methods=['POST'])
+@account_bp.route('/account/change/name', methods=['POST'])
 def changeData():
     data = request.get_json()
     user_id = data.get('userId')
     new_first_name = data.get('new_first_name')
     new_last_name = data.get('new_last_name')
 
-    if not user_id or not ObjectId.is_valid(user_id) or not new_first_name or not new_last_name:
-        return jsonify({"message": "Ungültige Parameter"}), 400
+    if not user_id or not ObjectId.is_valid(user_id):
+        return jsonify({"ok": False, "message": "Interner Fehler - Id nicht gültig"}), 403
+    
+    new_first_name = normalize_name(new_first_name)
+    new_last_name = normalize_name(new_last_name)
+
+    if not new_first_name or len(new_first_name) < 4:
+        return jsonify({"ok": False, "message": "Vorname muss mindestens 4 Zeichen lang sein"}), 400
+    if not new_last_name or len(new_last_name) < 4:
+        return jsonify({"ok": False, "message": "Nachname muss mindestens 4 Zeichen lang sein"}), 400
+    
+    if not NAME_RE.match(new_first_name):
+        return jsonify({"ok": False, "message": "Vorname darf nur Buchstaben und Leerzeichen enthalten"}), 404
+    if not NAME_RE.match(new_last_name):
+        return jsonify({"ok": False, "message": "Nachname darf nur Buchstaben und Leerzeichen enthalten"}), 400
 
     user = users_collection.find_one({"_id": ObjectId(user_id)})
     if not user:
-        return jsonify({"message": "Nutzer nicht gefunden"}), 404
+        return jsonify({"ok": False, "message": "Nutzer nicht gefunden"}), 404
 
     users_collection.update_one(
         {"_id": ObjectId(user_id)},
@@ -487,6 +500,7 @@ def changeData():
     )
 
     return jsonify({
+        "ok": True,
         "message": "Benutzerdaten erfolgreich aktualisiert",
         "new_first_name": new_first_name,
         "new_last_name": new_last_name

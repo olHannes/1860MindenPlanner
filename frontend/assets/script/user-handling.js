@@ -191,7 +191,7 @@ export async function setupProfile(root) {
 
     if(!localUserId || !localUserEmail) {
         panel.applyLoginStatus(root);
-        return;
+        return false;
     }
     try {
         //showLoader
@@ -208,12 +208,13 @@ export async function setupProfile(root) {
         let visible     = data.visibility ?? false;
         let autoLogin   = localStorage.getItem("autoLogin") ?? false;
         setUsernameElements(root, firstName, lastName, color, visible, autoLogin);
-
+        return true;
     } catch (error) {
         console.error("Profile-Setup failed:", error);
         localStorage.removeItem("userId");
         localStorage.removeItem("userEmail");
         localStorage.removeItem("adminKey");
+        return false;
     } finally {
         panel.applyLoginStatus(root);
         //hideLoader
@@ -294,6 +295,7 @@ export async function logout(root) {
 
 //Change User-Name
 export async function submitNameChange(root) {
+    const loader        = root.querySelector("#nameSettings .spinner");
     const firstNameEl   = root.getElementById("firstNameEdit");
     const lastNameEl    = root.getElementById("lastNameEdit");
     const userId        = localStorage.getItem("userId");
@@ -307,32 +309,34 @@ export async function submitNameChange(root) {
         lastNameEl && lastNameEl.value.length > 0
             ? lastNameEl.value
             : lastNameEl?.placeholder;
-
-    if(!userId || !firstNameInput || firstNameInput.length < 1 || !lastNameInput || lastNameInput.length < 1) {
-        panel.hideAdjustName(root, true);
-        panel.showMessage(root, "Fehler beim Speichern", "Die Namensänderung konnte nicht übernommen werden.");
-        return;
+    if(!userId) {
+        return {message: "Interner Fehler - Nutzer nicht gefunden", returnCode: 1};
     }
-    firstNameInput  = normalizeString(firstNameInput);
-    lastNameInput   = normalizeString(lastNameInput);
+    if(!firstNameInput || !lastNameInput || firstNameInput.length < 4 || lastNameInput.length < 4) {
+        return {message: "Vor- und Nachname muss mindestens 4 Zeichen enthalten", returnCode: 2};
+    }
     try {
-        //showLoader();
-        const resp = await fetch(`${config.serverURL}/account/changeData`, {
+        panel.showLoader(loader);
+        const resp = await fetch(`${config.serverURL}/account/change/name`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ userId: userId, new_first_name: firstNameInput, new_last_name: lastNameInput })
         });
         const data = await resp.json();
-        console.log(data);
-        if(!resp.ok) throw new Error("Network error");
-        localStorage.setItem("user", firstNameInput);
-        panel.showMessage(root, "Name erfolgreich geändert", `Der neue Nutzername '${firstNameInput} ${lastNameInput}' wurde übernommen.`);
-        setUsernameElements(root, firstNameInput, lastNameInput);
+        if(!data.ok) return {message: data.message ?? "Die Namensänderung war fehlerhaft", returnCode: 3};
+        else {
+            localStorage.setItem("user", data.new_first_name);
+            if(setupProfile(root)) {
+                panel.showMessage(root, "Name erfolgreich geändert", `Der neue Nutzername '${firstNameInput} ${lastNameInput}' wurde übernommen.`);
+            }
+            return {message: data.message ?? "Die Namensänderung war erfolgreich", returnCode: 0};
+        }
     } catch (error) {
         console.error("Failed to save new Username:", error);
+        return {message: "Netzwerkfehler beim Ändern des Namens", returnCode: 4};
     } finally {
-        //hideLoader();
-        panel.hideAdjustName(root, true);
+        panel.hideLoader(loader);
+        //panel.hideAdjustName(root, true);
     }
 }
 

@@ -168,11 +168,15 @@ export function hideAdjustProfile(root, push = true) {
 
 //Account Name Change Panel
 export function showAdjustName(root, push = true) {
-    const panel = root.getElementById("nameSettings");
-    const firstNameInput = root.getElementById("firstNameEdit");
-    const lastNameInput = root.getElementById("lastNameEdit");
+    const panel             = root.getElementById("nameSettings");
+    const firstNameInput    = root.getElementById("firstNameEdit");
+    const lastNameInput     = root.getElementById("lastNameEdit");
+    const msg               = root.getElementById("nameMsg");
     clearValue(firstNameInput);
     clearValue(lastNameInput);
+    clearHTML(msg);
+    msg.classList.toggle("info", false);
+    msg.classList.toggle("error", false);
     showFloatingBackground(root);
     show(panel, "block");
     if(push) history.pushState({ page: "nameChange"}, "", "#nameChange");

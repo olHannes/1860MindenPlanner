@@ -204,8 +204,18 @@ function setAccountSettingsListener(root) {
         panel.hideAdjustName(root, true);
     });
     const nameSubmitBtn = root.querySelector("#saveNameBtn");
-    nameSubmitBtn?.addEventListener("click", () => {
-        userHandling.submitNameChange(root);
+    nameSubmitBtn?.addEventListener("click", async () => {
+        if(nameSubmitBtn.disabled == true) return;
+        nameSubmitBtn.disabled = true;
+        nameSubmitBtn.style.opacity = "0.5";
+        const errMsg = root.querySelector("#nameMsg");
+        const rc = await userHandling.submitNameChange(root);
+        nameSubmitBtn.disabled = false;
+        nameSubmitBtn.style.opacity = "1";
+        if(!errMsg || !rc) return;
+        errMsg.innerText = rc.message ?? "Name konnte nicht geändert werden";
+        errMsg.classList.toggle("info", rc.returnCode == 0);
+        errMsg.classList.toggle("error", rc.returnCode != 0);
     });
 
     //Show Panel to change Password
