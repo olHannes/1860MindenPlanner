@@ -190,8 +190,11 @@ function setAccountSettingsListener(root) {
 
     //Profile visibility
     const visibilityToggle = root.querySelector("#visibleCheckbox");
-    visibilityToggle?.addEventListener("change", (e) => {
-        settings.changeProfileVisibility(root, e.target.checked);
+    visibilityToggle?.addEventListener("change", async (e) => {
+        if(visibilityToggle.disabled == true) return;
+        visibilityToggle.disabled = true;
+        await settings.changeProfileVisibility(root, e.target.checked);
+        visibilityToggle.disabled = false;
     });
 
     //Name Change

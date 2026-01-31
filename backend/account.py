@@ -446,7 +446,7 @@ def delete_admin_acc():
 
 ################################################################################################### Getter -> User Information
 
-@account_bp.route('/account/getUserInfo', methods=['GET'])
+@account_bp.route('/account/info', methods=['GET'])
 def get_user_info():
     request_id  = request.args.get('requestId')
     user_id     = request.args.get('userId')
@@ -515,7 +515,7 @@ def changeData():
 
 ################################################################################################### set Color Code
 
-@account_bp.route('/account/user/colorChange', methods=['POST'])
+@account_bp.route('/account/change/color', methods=['POST'])
 def change_user_color():
     data = request.get_json()
     user_id = data.get('userId')
@@ -538,7 +538,7 @@ def change_user_color():
 
 ################################################################################################### set Visibility status
 
-@account_bp.route("/account/user/visibilityChange", methods=['POST'])
+@account_bp.route("/account/change/visibility", methods=['POST'])
 def change_user_visibility():
     data = request.get_json()
     user_id = data.get('userId')

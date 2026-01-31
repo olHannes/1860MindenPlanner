@@ -195,7 +195,7 @@ export async function setupProfile(root) {
     }
     try {
         //showLoader
-        const resp = await fetch(`${config.serverURL}/account/getUserInfo?requestId=${localUserId}&userId=${localUserId}`, {
+        const resp = await fetch(`${config.serverURL}/account/info?requestId=${localUserId}&userId=${localUserId}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         });

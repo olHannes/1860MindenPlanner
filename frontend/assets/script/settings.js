@@ -93,14 +93,12 @@ export async function changeProfileColor(root, color) {
     if(!userId || !color || !profileImg_1) return;
     try {
         panel.showLoader(loader);
-        const resp = await fetch(`${config.serverURL}/account/user/colorChange`, {
+        const resp = await fetch(`${config.serverURL}/account/change/color`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ userId: userId, colorCode: color })
         });
-        const data = await resp.json();
-        if(!resp.ok) throw new Error("Network error");
-        
+        if(!resp.ok) throw new Error("Interner Error");
         panel.showMessage(root, "Erfolgreiche Farbänderung", "Die Profil-Farbe wurde erfolgreich geändert.");
         if(color === "#000000") {
             profileImg_1.style.filter = "";
@@ -110,28 +108,30 @@ export async function changeProfileColor(root, color) {
         }
     } catch (error) {
         console.error("Failed to change Account-color:", error);
+        panel.showMessage(root, "Fehler bei der Farbänderung", "Die Profil-Farbe konnte nicht geändert werden.");
     } finally {
         panel.hideLoader(loader);
     }
 }
 
 export async function changeProfileVisibility(root, visible) {
-    const userId = localStorage.getItem("userId");
-    let visibleStatus = visible ? 1: 0;
+    const loader        = root.querySelector(".userName .spinner");
+    const userId        = localStorage.getItem("userId");
+    let visibleStatus   = visible ? 1: 0;
     
     try {
-        //showLoader();
-        const resp = await fetch(`${config.serverURL}/account/user/visibilityChange`, {
+        panel.showLoader(loader);
+        const resp = await fetch(`${config.serverURL}/account/change/visibility`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ userId: userId, visibility: visibleStatus })
         });
-        const data = await resp.json();
         if(!resp.ok) throw new Error("Network error");
         panel.showMessage(root, "Sichtbarkeit wurde geändert", "Änderung des Sichtbarkeits-Status war erfolgreich.");
     } catch (error) {
         console.error("Failed to toggle Visibility:", error);
+        panel.showMessage(root, "Sichtbarkeit konnte nicht geändert werden", "Es gab einen internen Fehler.");
     } finally {
-        //hideLoader();
+        panel.hideLoader(loader);
     }
 }
