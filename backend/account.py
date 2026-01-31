@@ -275,19 +275,25 @@ def request_new_password():
 
 ################################################################################################### update Password
 
-@account_bp.route('/account/updatePassword', methods=['POST'])
+@account_bp.route('/account/change/password', methods=['POST'])
 def update_password():
     data            = request.get_json()
     user_id         = data.get('userId')
     confirm_code    = data.get('confirm_code')
     new_password    = data.get('new_password')
 
-    if not user_id or not ObjectId.is_valid(user_id) or not confirm_code or not new_password:
-        return jsonify({"message": "Ungültige Parameter"}), 400
+    if not user_id or not ObjectId.is_valid(user_id):
+        return jsonify({"ok": False, "message": "Interner Fehler - ungültige User-ID"}), 400
+    
+    if not confirm_code or not new_password:
+        return jsonify({"ok": False, "message": "E-Mail Code und Passwort muss eingegeben werden"}), 400
+
+    if len(new_password) < 4:
+        return jsonify({"ok": False, "message": "Das Passwort muss mindestens 4 Zeichen lang sein"}), 400
 
     user = users_collection.find_one({"_id": ObjectId(user_id)})
     if not user:
-        return jsonify({"message": "Nutzer nicht gefunden!"}), 404
+        return jsonify({"ok": False, "message": "Nutzer nicht gefunden!"}), 404
 
     pr = user.get("passwordReset") or {}
     code_hash = pr.get("code_hash")
@@ -302,17 +308,17 @@ def update_password():
             {"_id": user["_id"]},
             {"$unset": {"passwordReset": ""}}
         )
-        return jsonify({"message": "Confirm-Code war nicht gültig"}), 403
+        return jsonify({"ok": False, "message": "Confirm-Code war nicht gültig"}), 403
     
     if attempts >=5:
-        return({"message": "Zu viele Versuche"}), 403
+        return({"ok": False, "message": "Zu viele Versuche"}), 403
 
     if not check_password_hash(code_hash, confirm_code):
         users_collection.update_one(
             {"_id": user["_id"]},
             {"$inc": {"passwordReset.attempts": 1}}
         )
-        return jsonify({"message": "Confirm-Code war nicht gültig"}), 403
+        return jsonify({"ok": False, "message": "Confirm-Code war nicht gültig"}), 403
     
     new_hashed_password = generate_password_hash(new_password)
     users_collection.update_one(
@@ -322,7 +328,7 @@ def update_password():
             "$unset": {"passwordReset": ""}
         }
     )
-    return jsonify({"message": "Passwort erfolgreich aktualisiert!"}), 200
+    return jsonify({"ok": True, "message": "Passwort erfolgreich aktualisiert!"}), 200
 
 
 ################################################################################################### send Request Code (mail)

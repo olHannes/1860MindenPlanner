@@ -252,13 +252,19 @@ function setAccountSettingsListener(root) {
         if(sendCodeBtn.disabled == true) return;
         sendCodeBtn.disabled = true;
         sendCodeBtn.style.opacity = "0.5";
+        const loader = root.querySelector("#passwordReset .spinner");
         let em = localStorage.getItem("userEmail");
-        let rc = await userHandling.sendResetCode(em);
+        let rc = await userHandling.sendResetCode(em, loader);
         setTimeout(() => {
             sendCodeBtn.disabled = false;
             sendCodeBtn.style.opacity = "1";
+            sendCodeBtn.innerText = "E-Mail erneut senden";
         }, 5000);
-        //set return message
+        const errMsg = root.querySelector("#pwMsg");
+        if(!errMsg || !rc) return;
+        errMsg.innerText = rc.message ?? "Die E-Mail konnte nicht gesendet werden";
+        errMsg.classList.toggle("info", rc.returnCode == 0);
+        errMsg.classList.toggle("error", rc.returnCode != 0);
     });
     const sendResetCode = root.querySelector("#sendEmailForgot");
     sendResetCode?.addEventListener("click", async () => {
@@ -267,9 +273,7 @@ function setAccountSettingsListener(root) {
         sendResetCode.style.opacity = "0.5";
         const loader = root.querySelector("#pwdForgot_mask .spinner");
         let em = root.querySelector("#pwdForgot_email")?.value;
-        panel.showLoader(loader);
-        let rc = await userHandling.sendResetCode(em);
-        panel.hideLoader(loader);
+        let rc = await userHandling.sendResetCode(em, loader);
         setTimeout(() => {
             sendResetCode.disabled = false;
             sendResetCode.style.opacity = "1";
@@ -297,11 +301,18 @@ function setAccountSettingsListener(root) {
         if(passwordSubmitBtn.disabled == true) return;
         passwordSubmitBtn.disabled = true;
         passwordSubmitBtn.style.opacity = "0.5";
-        rc = await userHandling.submitPasswordChange(root);
+        const errMsg    = root.querySelector("#pwMsg");
+        const returnBtn = root.querySelector("#cancelPwResetBtn");
+        const rc        = await userHandling.submitPasswordChange(root);
         setTimeout(() => {
             passwordSubmitBtn.disabled = false;
             passwordSubmitBtn.style.opacity = "1";
         }, 5000);
+        if(!errMsg ||!rc) return;
+        errMsg.innerText = rc.message ?? "Passwortänderung konnte nicht übernommen werden";
+        errMsg.classList.toggle("info", rc.returnCode == 0);
+        errMsg.classList.toggle("error", rc.returnCode != 0);
+        if(rc.returnCode == 0) returnBtn.innerText = "Fertig";
     });
     const submitPwdRequest = root.querySelector("#requestNewPwd");
     submitPwdRequest?.addEventListener("click", async () => {

@@ -191,10 +191,18 @@ export function hideAdjustName(root, push = true) {
 //Account Passwort Reset Panel
 export function showAdjustPassword(root, push = true) {
     const panel     = root.getElementById("passwordReset");
+    const btn       = root.getElementById("sendResetCodeBtn");
+    const returnBtn = root.getElementById("cancelPwResetBtn");
     const emailCode = root.getElementById("pwCode");
     const codeNew   = root.getElementById("pwNew");
+    const errMsg    = root.getElementById("pwMsg");
     clearValue(emailCode);
     clearValue(codeNew);
+    clearHTML(errMsg);
+    errMsg.classList.toggle("info", false);
+    errMsg.classList.toggle("error", false);
+    btn.innerText       = "Code per E-Mail senden";
+    returnBtn.innerText = "Abbrechen";
     showFloatingBackground(root);
     show(panel, "block");
     if(push) history.pushState({ page: "passwordChange"}, "", "#passwordChange");

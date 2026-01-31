@@ -223,9 +223,10 @@
 
         <section id="passwordReset" class="settingsCard">
             <header class="settingsCard__header">
-                <div class="horizontal-container">
-                    <h3 id="pwResetTitle" class="settingsCard__title">Passwort zurücksetzen</h3>
+                <div class="loader-container">
+                    <h2>Passwort zurücksetzen</h2>
                     <span class="icon icon--update"></span>
+                    <div class="spinner"></div>
                 </div>
                 <p class="settingsCard__subtitle">Sende dir einen Code per E-Mail und setze dein Passwort zurück.</p>
             </header>
@@ -246,8 +247,8 @@
                 </div>
                 <p id="pwMsg" class="" aria-live="polite"></p>
                 <div class="actions">
-                    <button id="cancelPwResetBtn" class="btn btn--secondary" type="button">Abbrechen</button>
                     <button id="confirmPwResetBtn" class="btn btn--primary" type="button">Passwort ändern</button>
+                    <button id="cancelPwResetBtn" class="btn btn--secondary" type="button">Abbrechen</button>
                 </div>
             </section>
         </div>
@@ -330,8 +331,8 @@
                     <span>Dein neues Passwort</span>
                     <input type="password" id="pwdForgotInput-password" placeholder="Dein Passwort">
                 </label>
-                <button id="cancelPwdForgot2" class="cancel">Abbrechen</button>
                 <button id="requestNewPwd">Passwort ändern</button>
+                <button id="cancelPwdForgot2" class="cancel">Abbrechen</button>
             </div>
             <p id="pwdForgotErr"></p>
         </div>
