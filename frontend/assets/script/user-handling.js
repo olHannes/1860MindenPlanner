@@ -262,33 +262,35 @@ export async function deleteUserAccount(root) {
 
 // Logout User
 export async function logout(root) {
-    const inlineError = root.getElementById("errorMsg");
-    const localUsername = localStorage.getItem("user");
-    const localUserId = localStorage.getItem("userId");
-    if(!localUsername || !localUserId) return;
-
+    const loader        = root.querySelector("#nameSettings .spinner");
+    const inlineError   = root.getElementById("errorMsg");
+    const localEmail    = localStorage.getItem("userEmail");
+    const localUserId   = localStorage.getItem("userId");
+    if(!localEmail || !localUserId) {
+        resetUserStorage();
+        panel.applyLoginStatus(root);
+        return;
+    }
     try {
-        //showLoader();
+        panel.showLoader(loader);
         const resp = await fetch(`${config.serverURL}/account/logout`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name: localUsername, userId: localUserId })
+            body: JSON.stringify({ email: localEmail, userId: localUserId })
         });
         const data = await resp.json();
         if (!resp.ok) throw new Error("Fetch failed.");
         if (data.message === "Erfolgreich ausgeloggt!" || data.message === "Kein Benutzername oder Benutzer-ID angegeben!") {
-            localStorage.removeItem("user");
-            localStorage.removeItem("userId");
-            localStorage.removeItem("adminKey");
+            resetUserStorage();
             showInlineNotification(inlineError, "Erfolgreich abgemeldet.", "info");
         } else {
             showInlineNotification(inlineError, data.message ?? "Unbekannter Fehler beim Ausloggen.", "error");
         }
     } catch (error) {
         console.error("Logout failed:", error);
-        showInlineNotification(inlineError, "Failed logout.", "error");
+        panel.showMessage(root, "Abmeldung fehlgeschlagen", "Account konnte nicht abgemeldet werden");
     } finally {
-        //hideLoader()
+        panel.hideLoader(loader);
         panel.applyLoginStatus(root);
     }
 }

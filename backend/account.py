@@ -197,11 +197,10 @@ def check_user_status():
 @account_bp.route('/account/logout', methods=['POST'])
 def logout():
     data        = request.get_json()
-    username    = data.get('name')
     email       = data.get('email')
     user_id     = data.get('userId')
 
-    if not username or not user_id or not ObjectId.is_valid(user_id) or not email:
+    if not user_id or not ObjectId.is_valid(user_id) or not email:
         return jsonify({"message": "Ungültige Parameter"}), 400
 
     em = normalize_email(email)
