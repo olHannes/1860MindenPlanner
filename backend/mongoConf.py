@@ -30,3 +30,5 @@ db_highbarElements = db_exercises['Highbar']
 
 db_competition = client['Competition']
 competition_collection = db_competition['Competition']
+
+competition_entries_collection = db_competition['Entries']
