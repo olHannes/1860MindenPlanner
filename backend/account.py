@@ -1,6 +1,7 @@
 
 from mongoConf import *
 from flask import session
+from bson import ObjectId
 import random
 from datetime import datetime, timezone
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -96,6 +97,7 @@ def register():
         'online': 0, 
         'color_code': '#000000', 
         'visibility': 1,
+        'roles': ['member'],
         'passwordReset': {
             'code_hash': None,
             'expires_at': None,
@@ -560,7 +562,7 @@ def change_user_visibility():
 
 ################################################################################################### Get Users
 
-@account_bp.route('/users/getUsers', methods=['GET'])
+@account_bp.route('/users/all', methods=['GET'])
 def get_users():
     admin_key = request.args.get('adminKey')
     if not admin_key:
@@ -575,10 +577,19 @@ def get_users():
 
 ################################################################################################### Get visible Users
 
-@account_bp.route('/users/getVisibleUsers', methods=['GET'])
+@account_bp.route('/users/visible/all', methods=['GET'])
 def get_visible_users():
-    users = list(users_collection.find({"visibility": 1}, {"_id": 0, "firstName": 1, "lastName": 1, "online": 1, "color_code": 1}))
-    return jsonify(users), 200
+    users = list(
+        users_collection.find(
+            {"visibility": 1, "roles": {"$ne": "admin"}},
+            {"_id": 1, "firstName": 1, "lastName": 1, "roles": 1, "online": 1, "color_code": 1}
+        )
+    )
+    for user in users:
+        user["_id"] = str(user["_id"])
+        user["roles"] = user.get("roles", ["member"]) 
+
+    return jsonify({"ok": True, "users": users}), 200
 
 ################################################################################################### add learned Element
 
