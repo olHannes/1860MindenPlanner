@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="frontend/assets/style/20-base.css">
     <link rel="stylesheet" href="frontend/assets/style/30-icons.css">
     <link rel="stylesheet" href="frontend/assets/style/30-components.css">
-
+    <link rel="stylesheet" href="frontend/assets/style/40-competition.css">
 </head>
 <body>
 
@@ -399,7 +399,7 @@
     <div id="menue">
         <div id="menueWrapper">
             <span class="icon icon--equipment" id="toggleEquipment" onclick="return; togglePanel(1);"></span>
-            <span class="icon icon--groups" id="toggleGroups" onclick="return; showAllUser(); togglePanel(2);"></span>
+            <span class="icon icon--groups" id="toggleGroups" onclick="return; togglePanel(2);"></span>
             <span class="icon icon--settings" id="toggleSettings" onclick="return; togglePanel(0);"></span>
         </div>
     </div>
@@ -586,10 +586,13 @@
     </section>
 
     <section id="panel2" class="panel">
-        <h2>Mitglieder</h2>
+        <div class="loader-container">
+            <h2>Mitglieder</h2>
+            <div class="spinner"></div>
+        </div>
         <div id="memberSwitchPage">
-            <button onclick="showAllUser();">Übungen</button>
-            <button onclick="showDashboard();">Wettkämpfe</button>
+            <button id="groupExercise">Übungen</button>
+            <button id="competition">Wettkämpfe</button>
         </div>
         <div id="memberExerciseList">
             <button onclick="hideMemberExerciseList();" id="hideMemberExercise">
@@ -606,12 +609,7 @@
                 <span class="name-en">Mustermann</span>
             </div>
         </div>
-        <div id="dashboard">
-            <div id="dashboardInfo">
-                <h2>Wettkämpfe</h2>
-                <p>Auf dieser Seite soll ein Dash-/Leaderboard angezeigt werden, auf dem Wettkämpfe und Bewertungen eingetragen werden könne.</p>
-            </div>
-        </div>
+        <div id="competitions"></div>
     </section>
 
 

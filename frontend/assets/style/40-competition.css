@@ -1,0 +1,140 @@
+#competitions {
+    position: absolute;
+    width: 100dvw;
+    max-width: 600px;
+    height: 69dvh;
+    transform: translateX(-50%);
+    left: 50%;
+    top: 19dvh;
+    overflow: auto;
+    background-color: #f5f5f5;
+}
+
+
+.comp-card {
+    width: 100%;
+    background: var(--color-surface);
+    border-radius: 5px;
+    color: var(--color-primary-dark);
+    margin: 26px 0px;
+}
+.is-past .comp-status {
+    color: lightcoral;
+}
+.is-joined .comp-status {
+}
+.comp-summary {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 8px;
+}
+.comp-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.comp-row--title {
+    justify-content: center;
+}
+.comp-row--meta {
+    gap: var(--gap);
+    font-size: 1.1rem;
+    font-weight: 500;
+    justify-content: space-around;
+}
+.comp-row--status {
+    justify-content: space-evenly;
+    height: 22px;
+    width: 90%;
+    background: lightgray;
+    border-radius: 25px;
+    padding: 15px 0px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.comp-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.comp-location {
+    font-size: 1.3rem;
+    font-weight: 200;
+}
+.comp-date {
+    font-style: italic;
+}
+.comp-status {
+    font-weight: 600;
+    color: #355c35;
+}
+
+
+.comp-body {
+    padding: 10px 15px;
+    padding-top: 0;
+}
+.comp-body--header {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-bottom: 1px solid var(--color-primary);
+    width: 100%;
+}
+
+.comp-leaderboard--title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.comp-leaderboard--sort {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+.comp-leaderboard--type {
+    font-size: 1.1rem;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+.comp-leaderboard--select {
+
+}
+.comp-leaderboard--option {
+
+}
+
+.comp-btn {
+    color: white;
+    border-radius: 15px;
+    padding: 5px 15px;
+    font-size: 0.8rem;
+}
+.comp-join {
+    background-color: var(--btn-save);
+}
+.comp-leave {
+    background-color: var(--btn-delete);
+}
+
+
+.comp-entry {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px dotted var(--color-primary-dark);
+    min-height: 60px;
+}
+.comp-entry--name {
+    font-weight: 300;
+    font-size: 1.2rem;
+}
+.comp-entry ul {
+    margin-top: 0;
+}
+.icon--rank {
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    right: 20px;
+}
+

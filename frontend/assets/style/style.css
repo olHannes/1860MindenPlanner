@@ -769,28 +769,6 @@ input {
 
 
 
-                    /*Dahboard*/
-#dashboard {
-    width: 100dvw;
-    height: 72dvh;
-    position: absolute;
-    top: 17dvh;
-    overflow: auto;
-    background-color: #f5f5f5;
-}
-
-#dashboardInfo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 75%;
-}
-#dashboardInfo p {
-    margin-top: 12dvh;
-    text-align: center;
-}
-
-
 #elementListEdits {
     display: flex;
     justify-content: space-evenly;

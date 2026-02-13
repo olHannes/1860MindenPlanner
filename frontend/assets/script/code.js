@@ -4,6 +4,7 @@ import * as eventListener from "./eventlistener.js";
 import * as userHandling from "./user-handling.js";
 import * as panel from "./panel-handling.js";
 
+
 window.onload = function () {
     userHandling.startup(this.document);
     checkUserStatus();
@@ -742,50 +743,6 @@ async function showAllUser() {
     hideLoader();
 }
 
-
-const style = document.createElement('style');
-style.innerHTML = `
-#dashboardTabs {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 20px;
-  max-width: 600px;
-  margin: auto;
-}
-
-.tab {
-  background-color: white;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.25);
-}
-
-.tab-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.device-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.leaderboard {
-  margin-top: 15px;
-  border-top: 1px solid #ccc;
-  padding-top: 10px;
-}
-.leaderboard-item {
-  padding: 5px 0;
-}
-`;
-document.head.appendChild(style);
 
 async function showDashboard() {
   loadMaxPoints();
