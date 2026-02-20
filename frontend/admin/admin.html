@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <!--Admin Page for Report View-->
+    <div id="AdminPage">
+        <div id="adminPwdChangeWrapper">
+            <div id="adminPwdChange">
+                <button onclick="closePwdChange();" id="exitAdminPwd">
+                    <img src="frontend/assets/images/system/back.png" alt="Go Back Btn">
+                </button>
+                <h3>Passwort ändern</h3>
+                <p id="adminPwdChange_name">Nutzername</p>
+                <input type="text" id="adminPwdChange_pwd" placeholder="neues Passwort">
+                <button id="adminPwdChange_safe" onclick="updateAdminPassword(document.getElementById('adminPwdChange_name').innerText, document.getElementById('adminPwdChange_pwd').value); closePwdChange();">Passwort Update</button>
+            </div>
+        </div>
+        
+        <h2>Welcome Admin</h2>
+        <div id="compCreationPanel">
+            <h2 style="color: white;">Wettkampf Erstellung</h2>
+            <input type="text" id="compName" placeholder="Wettkampfname">
+            <input type="date" id="compDate">
+            <input type="text" id="compLocation" placeholder="Ort">
+            
+            <div>
+                <button onclick="createCompetition();" style="background-color: green;">Erstellen</button>
+                <button onclick="closeCompCreation();" style="background-color: red;">Abbrechen</button>
+            </div>
+        </div>
+        <div id="adminAnzeige">
+
+        </div>
+
+        <div id="adminPageButtonContainer">
+            <button onclick="goToAdminUserContainer();">Users</button>
+            <button onclick="goToAdminReportContainer();">Reports</button>
+            <button onclick="goToAdminCompetitionContainer();">Competition</button>
+        </div>
+        <button onclick="logout();" id="AdminLogout">Logout</button>
+    </div>
+</body>
+</html>

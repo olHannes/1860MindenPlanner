@@ -26,397 +26,459 @@
 
     <link rel="stylesheet" href="frontend/assets/style/style.css">
     
-    <link rel="stylesheet" href="frontend/assets/style/10-theme.css">
+    <!--
     <link rel="stylesheet" href="frontend/assets/style/20-base.css">
     <link rel="stylesheet" href="frontend/assets/style/30-icons.css">
     <link rel="stylesheet" href="frontend/assets/style/30-components.css">
     <link rel="stylesheet" href="frontend/assets/style/40-competition.css">
+    -->
+    <link rel="stylesheet" href="frontend/assets/styles/10-theme.css">
+    <link rel="stylesheet" href="frontend/assets/styles/20-base.css">
+    <link rel="stylesheet" href="frontend/assets/styles/20-layout.css">
+    <link rel="stylesheet" href="frontend/assets/styles/30-icons.css">
+
+    <link rel="stylesheet" href="frontend/assets/styles/30-floating-panel.css">
+
+    <link rel="stylesheet" href="frontend/assets/styles/40-startup.css">
+    <link rel="stylesheet" href="frontend/assets/styles/40-exercise.css">
+    <link rel="stylesheet" href="frontend/assets/styles/40-member.css">
+    <link rel="stylesheet" href="frontend/assets/styles/40-competition.css">
+    <link rel="stylesheet" href="frontend/assets/styles/40-settings.css">
+
+
 </head>
 <body>
 
-    <!--Loading Animation + darker Background-->
-    <div id="loadingBackground"></div>
-    <div id="loadingContainer">
-        <div class="loader"></div>
-    </div>
-    <div id="loadingMsg">
-        <p>Aufgrund der längeren Inaktivität kann es bis zu 50 Sekunden dauern, bis der Server wieder online ist.</p>
-    </div>
-
-
-    <!----------------- Floating Panels ----------------->
-    <div id="overlayRoot" class="overlayRoot" hidden>
-        <!-- Startup Information Panel-->
-        <div id="startupInformation" class="on-top-panel start-information">
-        <header>
-            <div class="icon--wrapper">
-                <span class="icon icon--information"></span>
-            </div>
-            <div class="vertical-container">
-                <h3>Kurzinfo</h3>
-                <p>Diese App wird gerade weiterentwickelt.</p>
-            </div>
-        </header>
-        <p class="description">Es kann vereinzelt zu Fehlern oder unerwartetem Verhalten kommen. <br><span>Häufig hilft ein Neuladen der Seite oder das Löschen des Caches.</span></p>
-        <span class="advice">Feedback kann unter <p style="margin: 0; font-style: italic; display: inline;">'Profil -> Feedback'</p> erstellt werden.</span>
-        <button id="closeInfoBox" class="btn">Verstanden</button>        
-        </div>
-
-        <!-- News Panel -->
-        <div id="news" class="on-top-panel news">
-        <h3>Neuigkeiten & Updates</h3>
-        <p>Die neusten Features seit dem letzten Update:</p>
-        <ul>
-            <li><strong>Refactoring:</strong> Neue Styles, verbesserte Funktionalität und Bugfixes</li>
-            <li><strong>Account Verifizierung:</strong> Account Erstellung ab jetzt mit E-Mail + Acountfreischaltung /-Passwortänderung nur noch mit E-Mail</li>
-        </ul>
-        <button id="closeNews" class="save-btn">Zurück</button>
-        </div>
-
-        <!-- Secure Window for Account Deletion-->
-        <div id="requestDelAcc">
-        <div class="loader-container">
-            <h2>Account löschen?</h2>
-            <div class="spinner"></div>
-        </div>
-        <h3>Bist du sicher, dass du deinen Account löschen möchtest?</h3>
-        <label for=""></label>
-        <input type="password" id="deleteAccountPwd" placeholder="Dein Passwort">
-        <div class="button-group">
-            <button class="delete-btn" id="deleteAccount">Löschen</button>
-            <button class="cancel-btn" id="cancelDeletion">Abbrechen</button>
-        </div>
-        <p id="deleteErr"></p>
-        </div>
-
-         <!-- Report Creation -->
-        <div id="createReport">
-            <div class="loader-container">
-                <h2>Fehler melden</h2>
-                <div class="spinner"></div>
-            </div>
-
-            <label for="reportType">Art des Reports:</label>
-            <select id="reportType">
-                <option value="Fehler">Fehler</option>
-                <option value="Verbesserung">Verbesserung</option>
-                <option value="Style">Style</option>
-                <option value="Hilfe">Hilfe</option>
-            </select>
-
-            <input type="text" id="reportTitle" placeholder="Titel des Reports">
-            <textarea id="reportTxt" placeholder="Fehlerbeschreibung"></textarea>
-            <button id="submitReport">Report erstellen</button>
-            <button id="cancelReport">Abbrechen</button>
-
-            <div id="reportList">
-            </div>
-        </div>
-
-        <!-- Panel for Rating -->
-        <div id="ratingRoutine" class="ratingRoutine">
-            <h2>Übung bewerten</h2>
-            <div id="StarRating">
-                <span class="star" data-index="1">&#9734;</span>
-                <span class="star" data-index="2">&#9734;</span>
-                <span class="star" data-index="3">&#9734;</span>
-                <span class="star" data-index="4">&#9734;</span>
-                <span class="star" data-index="5">&#9734;</span>
-            </div>
-            <button class="" onclick="submitRating()">Senden</button>
-            <button class="cancel-btn" onclick="hideRatingPanel()">Abbrechen</button>
-        </div>
-
-        <!-- Secure Routine Copy -->
-        <div id="secureRoutineCopy" class="secureRoutineCopy">
-            <h2>Übung kopieren?</h2>
-            <h3></h3>
-            <div class="button-group">
-                <button class="delete-btn copyBtn" id="validCopyRoutine">Übung kopieren</button>
-                <button class="cancel-btn" onclick="cancleRoutineCopy()">Abbrechen</button>
-            </div>
-        </div>
-
-        <!--Download container-->
-        <div id="downloadPage" class="on-top-panel downloadPage">
-            <h2>Hier findest du die Tabellen zum Download</h2>
-            <div class="horizontal-container">
-                <h3>Boden - Bildtabelle (NE)</h3>
-                <span class="icon icon--pdf"></span>
-            </div>
-            <a href="pdfFiles/LK_M_NE_Bildtabellen_Boden.pdf" class="download-btn" download>Download PDF</a>
-            <div class="seperator"></div>
-            <div class="horizontal-container">
-                <h3>Pauschenpferd - Bildtabelle (NE)</h3>
-                <span class="icon icon--pdf"></span>
-            </div>
-            <a href="pdfFiles/LK_M_NE_Bildtabellen_Seitpferd.pdf" class="download-btn" download>Download PDF</a>
-            <div class="seperator"></div>
-            <div class="horizontal-container">
-                <h3>Ringe - Bildtabelle (NE)</h3>
-                <span class="icon icon--pdf"></span>
-            </div>
-            <a href="pdfFiles/LK_M_NE_Bildtabellen_Ringe.pdf" class="download-btn" download>Download PDF</a>
-            <div class="seperator"></div>
-            <div class="horizontal-container">
-                <h3>Sprung - Bildtabelle (NE)</h3>
-                <span class="icon icon--pdf"></span>
-            </div>
-            <a href="pdfFiles/LK_M_NE_Bildtabellen_Sprung.pdf" class="download-btn" download>Download PDF</a>
-            <div class="seperator"></div>
-            <div class="horizontal-container">
-                <h3>Barren - Bildtabelle (NE)</h3>
-                <span class="icon icon--pdf"></span>
-            </div>
-            <a href="pdfFiles/LK_M_NE_Bildtabellen_Barren.pdf" class="download-btn" download>Download PDF</a>
-            <div class="seperator"></div>
-            <div class="horizontal-container">
-                <h3>Reck - Bildtabelle (NE)</h3>
-                <span class="icon icon--pdf"></span>
-            </div>
-            <a href="pdfFiles/LK_M_NE_Bildtabellen_Reck.pdf" class="download-btn" download>Download PDF</a>
-            <div class="seperator" style="margin-bottom: 15px;"></div>
-            <div class="horizontal-container">
-                <h3>Code of Points 2022 - 2024</h3>
-                <span class="icon icon--pdf"></span>
-            </div>
-            <a href="pdfFiles/Code_of_Points__GT-Maenner_2022-2024.pdf" class="download-btn" download>Download PDF</a>
-            <div class="seperator"></div>
-            <div class="horizontal-container">
-                <h3>Code of Points 2025 - 2028</h3>
-                <span class="icon icon--pdf"></span>
-            </div>
-            <a href="pdfFiles/en_1.1 - MAG Code of Points 2025-2028.pdf" class="download-btn" download>Download PDF</a>
-            <div class="seperator"></div>
-            <button id="closeDownloadBtn" class="hide-download-btn cancel-btn">Downloads schließen</button>
-        </div>
-
-
-        <section id="nameSettings" class="settingsCard">
-            <header class="settingsCard__header">
-                <div class="loader-container">
-                    <h2>Name ändern</h2>
-                    <span class="icon icon--update"></span>
-                    <div class="spinner"></div>
-                </div>
-                <p class="settingsCard__subtitle">Passe Vor- und Nachname an.</p>
-            </header>
-            <div class="settingsCard__body">
-                <div class="formGrid">
-                    <label class="field">
-                        <span class="field_label">Vorname</span>
-                        <input id="firstNameEdit" class="input" autocomplete="given-name" type="text" placeholder="Vorname">
-                    </label>
-
-                    <label class="field">
-                        <span class="field_label">Nachname</span>
-                        <input id="lastNameEdit" class="input" autocomplete="given-name" type="text" placeholder="Nachname">                            
-                    </label>
-                </div>
-                <p id="nameMsg" class=""></p>
-                <div class="actions">
-                    <button id="cancelNameBtn" class="btn btn--secondary" type="button">Abbrechen</button>
-                    <button id="saveNameBtn" class="btn btn--primary" type="button">Speichern</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="passwordReset" class="settingsCard">
-            <header class="settingsCard__header">
-                <div class="loader-container">
-                    <h2>Passwort zurücksetzen</h2>
-                    <span class="icon icon--update"></span>
-                    <div class="spinner"></div>
-                </div>
-                <p class="settingsCard__subtitle">Sende dir einen Code per E-Mail und setze dein Passwort zurück.</p>
-            </header>
-            <div class="settingsCard__body">
-                <div class="formStack">
-                <div class="inlineRow">
-                    <button id="sendResetCodeBtn" class="btn btn--primary" type="button">Code per E-Mail senden</button>
-                </div>
-                <div class="divider"></div>
-                <label class="field">
-                    <span class="field__label">E-Mail-Code</span>
-                    <input id="pwCode" class="input" type="text" inputmode="numeric" placeholder="z.B. 123456">
-                </label>
-                <label class="field">
-                    <span class="field__label">Neues Passwort</span>
-                    <input id="pwNew" class="input" type="password" autocomplete="new-password" placeholder="Neues Passwort">
-                </label>
-                </div>
-                <p id="pwMsg" class="" aria-live="polite"></p>
-                <div class="actions">
-                    <button id="confirmPwResetBtn" class="btn btn--primary" type="button">Passwort ändern</button>
-                    <button id="cancelPwResetBtn" class="btn btn--secondary" type="button">Abbrechen</button>
-                </div>
-            </section>
+    <!-- Global Notification Box-->
+    <div id="messageBox">
+        <div class="msgBar" aria-hidden="true"></div>
+        <div class="msgBody">
+            <h3 id="messageBoxTitle">Message Title</h3>
+            <i id="messageBoxContent">Info Text</i>
         </div>
     </div>
         
-        <!-- Global Notification Box-->
-        <div id="messageBox">
-            <div class="msgBar" aria-hidden="true"></div>
-            <div class="msgBody">
-                <h3 id="messageBoxTitle">Message Title</h3>
-                <i id="messageBoxContent">Info Text</i>
-            </div>
+
+    <div class="appBg" id="appBg" hidden>
+        <div class="appShell" id="appShell"">
+            <main class="appMain" id="appMain" role="main">
+                <!----------------- Floating Panels ----------------->
+                <!--
+                <div id="overlayRoot" class="overlayRoot" hidden>
+                    <div id="startupInformation" class="on-top-panel start-information">
+                        <header>
+                            <div class="icon--wrapper">
+                                <span class="icon icon--information"></span>
+                            </div>
+                            <div class="vertical-container">
+                                <h3>Kurzinfo</h3>
+                                <p>Diese App wird gerade weiterentwickelt.</p>
+                            </div>
+                        </header>
+                        <p class="description">Es kann vereinzelt zu Fehlern oder unerwartetem Verhalten kommen. <br><span>Häufig hilft ein Neuladen der Seite oder das Löschen des Caches.</span></p>
+                        <span class="advice">Feedback kann unter <p style="margin: 0; font-style: italic; display: inline;">'Profil -> Feedback'</p> erstellt werden.</span>
+                        <button id="closeInfoBox" class="btn">Verstanden</button>        
+                    </div>
+
+                    <div id="news" class="on-top-panel news">
+                        <h3>Neuigkeiten & Updates</h3>
+                        <p>Die neusten Features seit dem letzten Update:</p>
+                        <ul>
+                            <li><strong>Refactoring:</strong> Neue Styles, verbesserte Funktionalität und Bugfixes</li>
+                            <li><strong>Account Verifizierung:</strong> Account Erstellung ab jetzt mit E-Mail + Acountfreischaltung /-Passwortänderung nur noch mit E-Mail</li>
+                        </ul>
+                        <button id="closeNews" class="save-btn">Zurück</button>
+                    </div>
+
+                    <div id="requestDelAcc">
+                        <div class="loader-container">
+                            <h2>Account löschen?</h2>
+                            <div class="spinner"></div>
+                        </div>
+                        <h3>Bist du sicher, dass du deinen Account löschen möchtest?</h3>
+                        <label for=""></label>
+                        <input type="password" id="deleteAccountPwd" placeholder="Dein Passwort">
+                        <div class="button-group">
+                            <button class="delete-btn" id="deleteAccount">Löschen</button>
+                            <button class="cancel-btn" id="cancelDeletion">Abbrechen</button>
+                        </div>
+                        <p id="deleteErr"></p>
+                    </div>
+
+                    <div id="createReport">
+                        <div class="loader-container">
+                            <h2>Fehler melden</h2>
+                            <div class="spinner"></div>
+                        </div>
+
+                        <label for="reportType">Art des Reports:</label>
+                        <select id="reportType">
+                            <option value="Fehler">Fehler</option>
+                            <option value="Verbesserung">Verbesserung</option>
+                            <option value="Style">Style</option>
+                            <option value="Hilfe">Hilfe</option>
+                        </select>
+
+                        <input type="text" id="reportTitle" placeholder="Titel des Reports">
+                        <textarea id="reportTxt" placeholder="Fehlerbeschreibung"></textarea>
+                        <button id="submitReport">Report erstellen</button>
+                        <button id="cancelReport">Abbrechen</button>
+
+                        <div id="reportList">
+                        </div>
+                    </div>
+
+                    <div id="ratingRoutine" class="ratingRoutine">
+                        <h2>Übung bewerten</h2>
+                        <div id="StarRating">
+                            <span class="star" data-index="1">&#9734;</span>
+                            <span class="star" data-index="2">&#9734;</span>
+                            <span class="star" data-index="3">&#9734;</span>
+                            <span class="star" data-index="4">&#9734;</span>
+                            <span class="star" data-index="5">&#9734;</span>
+                        </div>
+                        <button class="" onclick="submitRating()">Senden</button>
+                        <button class="cancel-btn" onclick="hideRatingPanel()">Abbrechen</button>
+                    </div>
+
+                    <div id="secureRoutineCopy" class="secureRoutineCopy">
+                        <h2>Übung kopieren?</h2>
+                        <h3></h3>
+                        <div class="button-group">
+                            <button class="delete-btn copyBtn" id="validCopyRoutine">Übung kopieren</button>
+                            <button class="cancel-btn" onclick="cancleRoutineCopy()">Abbrechen</button>
+                        </div>
+                    </div>
+
+                    <div id="downloadPage" class="on-top-panel downloadPage">
+                        <h2>Hier findest du die Tabellen zum Download</h2>
+                        <div class="horizontal-container">
+                            <h3>Boden - Bildtabelle (NE)</h3>
+                            <span class="icon icon--pdf"></span>
+                        </div>
+                        <a href="pdfFiles/LK_M_NE_Bildtabellen_Boden.pdf" class="download-btn" download>Download PDF</a>
+                        <div class="seperator"></div>
+                        <div class="horizontal-container">
+                            <h3>Pauschenpferd - Bildtabelle (NE)</h3>
+                            <span class="icon icon--pdf"></span>
+                        </div>
+                        <a href="pdfFiles/LK_M_NE_Bildtabellen_Seitpferd.pdf" class="download-btn" download>Download PDF</a>
+                        <div class="seperator"></div>
+                        <div class="horizontal-container">
+                            <h3>Ringe - Bildtabelle (NE)</h3>
+                            <span class="icon icon--pdf"></span>
+                        </div>
+                        <a href="pdfFiles/LK_M_NE_Bildtabellen_Ringe.pdf" class="download-btn" download>Download PDF</a>
+                        <div class="seperator"></div>
+                        <div class="horizontal-container">
+                            <h3>Sprung - Bildtabelle (NE)</h3>
+                            <span class="icon icon--pdf"></span>
+                        </div>
+                        <a href="pdfFiles/LK_M_NE_Bildtabellen_Sprung.pdf" class="download-btn" download>Download PDF</a>
+                        <div class="seperator"></div>
+                        <div class="horizontal-container">
+                            <h3>Barren - Bildtabelle (NE)</h3>
+                            <span class="icon icon--pdf"></span>
+                        </div>
+                        <a href="pdfFiles/LK_M_NE_Bildtabellen_Barren.pdf" class="download-btn" download>Download PDF</a>
+                        <div class="seperator"></div>
+                        <div class="horizontal-container">
+                            <h3>Reck - Bildtabelle (NE)</h3>
+                            <span class="icon icon--pdf"></span>
+                        </div>
+                        <a href="pdfFiles/LK_M_NE_Bildtabellen_Reck.pdf" class="download-btn" download>Download PDF</a>
+                        <div class="seperator" style="margin-bottom: 15px;"></div>
+                        <div class="horizontal-container">
+                            <h3>Code of Points 2022 - 2024</h3>
+                            <span class="icon icon--pdf"></span>
+                        </div>
+                        <a href="pdfFiles/Code_of_Points__GT-Maenner_2022-2024.pdf" class="download-btn" download>Download PDF</a>
+                        <div class="seperator"></div>
+                        <div class="horizontal-container">
+                            <h3>Code of Points 2025 - 2028</h3>
+                            <span class="icon icon--pdf"></span>
+                        </div>
+                        <a href="pdfFiles/en_1.1 - MAG Code of Points 2025-2028.pdf" class="download-btn" download>Download PDF</a>
+                        <div class="seperator"></div>
+                        <button id="closeDownloadBtn" class="hide-download-btn cancel-btn">Downloads schließen</button>
+                    </div>
+
+
+                    <section id="nameSettings" class="settingsCard">
+                        <header class="settingsCard__header">
+                            <div class="loader-container">
+                                <h2>Name ändern</h2>
+                                <span class="icon icon--update"></span>
+                                <div class="spinner"></div>
+                            </div>
+                            <p class="settingsCard__subtitle">Passe Vor- und Nachname an.</p>
+                        </header>
+                        <div class="settingsCard__body">
+                            <div class="formGrid">
+                                <label class="field">
+                                    <span class="field_label">Vorname</span>
+                                    <input id="firstNameEdit" class="input" autocomplete="given-name" type="text" placeholder="Vorname">
+                                </label>
+
+                                <label class="field">
+                                    <span class="field_label">Nachname</span>
+                                    <input id="lastNameEdit" class="input" autocomplete="given-name" type="text" placeholder="Nachname">                            
+                                </label>
+                            </div>
+                            <p id="nameMsg" class=""></p>
+                            <div class="actions">
+                                <button id="cancelNameBtn" class="btn btn--secondary" type="button">Abbrechen</button>
+                                <button id="saveNameBtn" class="btn btn--primary" type="button">Speichern</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="passwordReset" class="settingsCard">
+                        <header class="settingsCard__header">
+                            <div class="loader-container">
+                                <h2>Passwort zurücksetzen</h2>
+                                <span class="icon icon--update"></span>
+                                <div class="spinner"></div>
+                            </div>
+                            <p class="settingsCard__subtitle">Sende dir einen Code per E-Mail und setze dein Passwort zurück.</p>
+                        </header>
+                        <div class="settingsCard__body">
+                            <div class="formStack">
+                            <div class="inlineRow">
+                                <button id="sendResetCodeBtn" class="btn btn--primary" type="button">Code per E-Mail senden</button>
+                            </div>
+                            <div class="divider"></div>
+                            <label class="field">
+                                <span class="field__label">E-Mail-Code</span>
+                                <input id="pwCode" class="input" type="text" inputmode="numeric" placeholder="z.B. 123456">
+                            </label>
+                            <label class="field">
+                                <span class="field__label">Neues Passwort</span>
+                                <input id="pwNew" class="input" type="password" autocomplete="new-password" placeholder="Neues Passwort">
+                            </label>
+                            </div>
+                            <p id="pwMsg" class="" aria-live="polite"></p>
+                            <div class="actions">
+                                <button id="confirmPwResetBtn" class="btn btn--primary" type="button">Passwort ändern</button>
+                                <button id="cancelPwResetBtn" class="btn btn--secondary" type="button">Abbrechen</button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                -->
+                
+                <!--Login and Register Page-->
+                <section class="start-screen" id="start-screen">
+                    <h1 class="headline">Routine Planner</h1>
+
+                    <div id="pwdForgot_mask" class="pwdForgot--page">
+                        <div class="loader-container">
+                            <h2>Passwort vergessen?</h2>
+                            <div class="spinner"></div>
+                        </div>
+                        <div id="pwdForgot-page-1">
+                            <p>Sende dir einen Code per E-Mail und setze dein Passwort zurück.</p>
+                            <input type="email" id="pwdForgot_email" placeholder="example@email.com">
+                            <button id="sendEmailForgot">Code per E-Mail senden</button>
+                            <button id="cancelPwdForgot" class="cancel">Abbrechen</button>
+                        </div>
+                        <div id="pwdForgot-page-2">
+                            <p>Ändere dein Passwort und verifiziere die Änderung mit dem Einmalcode.</p>
+                            <label>
+                                <span>E-Mail Code</span>
+                                <input type="password" id="pwdForgotInput-Verify" placeholder="123456">
+                            </label>
+                            <label>
+                                <span>Dein neues Passwort</span>
+                                <input type="password" id="pwdForgotInput-password" placeholder="Dein Passwort">
+                            </label>
+                            <button id="requestNewPwd">Passwort ändern</button>
+                            <button id="cancelPwdForgot2" class="cancel">Abbrechen</button>
+                        </div>
+                        <p id="pwdForgotErr"></p>
+                    </div>
+
+                    <div id="login_mask" class="login--page">
+                        <div class="loader-container">
+                            <h2>Login</h2>
+                            <div class="spinner"></div>
+                        </div>
+                        <span class="icon icon--email"></span>
+                        <input type="email" id="login-email" placeholder="example@email.com">
+                        <span class="icon icon--password"></span>
+                        <input type="password" id="password", placeholder="Passwort">
+                        <div class="stay-logged-in">
+                            <label class="toggle">
+                                <input type="checkbox" id="stayLoggedIn">
+                                <span class="toggle__track"></span>
+                                <span class="toggle__label">Angemeldet bleiben</span>
+                            </label>
+                        </div>
+                        <button id="loginBtn">Anmelden <span class="icon icon--login"></span></button>
+                        <button id="registerBtn">Registrieren <span class="icon icon--registration"></span></button>
+                        <p id="errorMsg"></p>
+                        <p id="forgotPwd"><i>Passwort vergessen?</i></p>
+
+                    </div>
+                    
+                    <div id="registration_mask" class="registration--page">
+                        <div class="loader-container">
+                            <h2>Registrieren</h2>
+                            <div class="spinner"></div>
+                        </div>
+                        <span class="icon icon--name"></span>
+                        <input type="text" id="registration-firstName" placeholder="Vorname">
+                        <span class="icon icon--name"></span>
+                        <input type="text" id="registration-lastName" placeholder="Nachname">
+                        <span class="icon icon--email"></span>
+                        <input type="email" id="registration-email" placeholder="example@email.com">
+                        <span class="icon icon--password"></span>
+                        <input type="password" id="newPassword" placeholder="Passwort">
+                        <span class="icon icon--password"></span>
+                        <input type="password" id="confirmPassword" placeholder="Passwort wiederholen">
+                        
+                        <button id="registerSubmitBtn">Registrieren <span class="icon icon--registration"></span></button>
+                        <button id="cancelBtn" class="cancel">Abbrechen <span class="icon icon--cancel"></span></button>
+                        
+                        <p id="errorMsgRegister"></p>
+                    </div>
+                    
+                    <button id="showNewsBtn" class="openNews news-btn">Updates & News <span class="icon icon--update"></span></button>
+                    <p class="impressum"><a href="frontend/impressum/impressum.html">Impressum</a> &copy; 2026</p>
+                </section>
+
+
+
+                <!--Default Base Panel-->
+                <section id="panelRoot" class="panel root visible">
+                    <div id="welcomePanel" class="vertical-container">
+                        <h1 id="welcomeUser">Wilkommen, <i>User</i>!</h1>
+                        <p id="welcomeTxt">Auf dieser Seite kannst du Übungen zusammenstellen und Wettkämpfe einsehen. 
+                            Unten im Menü kannst du zwischen der Übungsgestaltung, der Nutzerübersicht und den Profileinstellungen wechseln. 
+                            Der aktuelle <i>Code-of-Points (COP: 2022-2024)</i>, sowie die <i>NE-Bildtabellen</i> kannst du über den Download Button herunterladen. 
+                            Bei der Nutzerübersicht kannst du dich zusätzlich eintragen und Punkte hinzufügen.
+                        </p>
+
+                        <button class="openDownloadsBtn">PDF Downloads <span class="icon icon--download"></span></button>
+                        <button class="openNewsBtn">News & Updates <span class="icon icon--update"></span></button>
+                    </div>
+                </section>
+
+                <!--Panel 1: Exercise creation-->
+                <section id="panel1" class="panel exercise">
+
+                </section>
+
+                <!--Panel 2: Member-->
+                <section id="panel2" class="panel member">
+                    <div class="panel-layout">
+                        <header class="panel-header">
+                            <h2 class="panel-headline">Mitglieder</h2>
+                            <div class="spinner"></div>
+                        </header>
+                        <div class="panel-body">
+                            <div id="member-list">
+                                <!--dynamically load members-->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!--Panel 3: Competition-->
+                <section id="panel3" class="panel competition">
+                    <div class="panel-layout">
+                        <header class="panel-header">
+                            <h2 class="panel-headline">Wettkämpfe</h2>
+                            <div class="spinner"></div>
+                        </header>
+                        <div class="panel-body">
+                            <div id="competitions">
+                                <!--dynamically load competition-->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!--Panel 4: Settings-->
+                <section id="panel4" class="panel settings">
+                    <header class="panel-header">
+                        <h2 class="panel-headline">Account Einstellungen</h2>
+                        <div class="spinner"></div>
+                    </header>
+                    <div class="panel-body">
+                        <header>
+                            <img src="frontend/assets/images/system/profile_icon.png" alt="profile picture" id="profilePicture" class="profilePicture">
+                            <div id="colorContainer">
+                                <div data-color="#FF5733" class="colorPick" style="background-color: #FF5733;"></div>
+                                <div data-color="#28A745" class="colorPick" style="background-color: #28A745;"></div>
+                                <div data-color="#007BFF" class="colorPick" style="background-color: #007BFF;"></div>
+                                <div data-color="#FFC107" class="colorPick" style="background-color: #FFC107;"></div>
+                                <div data-color="#6F42C1" class="colorPick" style="background-color: #6F42C1;"></div>            
+                            </div>
+                            <div class="userName">
+                                <span id="userVorname">Vorname</span>
+                                <span id="userNachname">Nachname</span>
+                                <div class="spinner"></div>
+                            </div>
+                        </header>
+                        <main>
+                            <button id="editNameBtn" class="edit-names">
+                                ✎ Namen bearbeiten ✎
+                            </button>
+                            <button id="editPasswordBtn" class="edit-names">
+                                ✎ Passwort bearbeiten ✎
+                            </button>   
+                            <div class="stay-logged-in" style="margin-top: var(--gap);">
+                                <label class="toggle">
+                                    <input type="checkbox" id="visibleCheckbox">
+                                    <span class="toggle__track"></span>
+                                    <span class="toggle__label">Sichtbarkeit für Andere</span>
+                                </label>
+                            </div>
+                            <div class="stay-logged-in">
+                                <label class="toggle">
+                                    <input type="checkbox" id="autoLoginCheckbox">
+                                    <span class="toggle__track"></span>
+                                    <span class="toggle__label">Automatischer Login</span>
+                                </label>
+                            </div>
+                            <button id="reportIssue">Feedback & Fehler <span class="icon icon--feedback"></span></button>
+                        </main>
+                        <footer>
+                            <button id="logoutBtn" class="exit-account-btn">Logout <span class="icon icon--logout"></span></button>
+                            <button id="delBtn" class="exit-account-btn">Account löschen <span class="icon icon--cancel"></span></button>
+                        </footer>
+                    </div>
+                </section>
+
+            </main>
+
+            <nav class="tabbar" id="menue" aria-label="Main navigation">
+                <div id="menuWrapper">
+                    <button class="tabBtn" id="toggleEquipment" data-panel="panel1" aria-controls="panel1">
+                        <span class="icon icon--equipment"></span>
+                    </button>
+                    <button class="tabBtn" id="toggleMember" data-panel="panel2" aria-controls="panel2">
+                        <span class="icon icon--groups"></span>
+                    </button>
+                    <button class="tabBtn" id="toggleCompetition" data-panel="panel3" aria-controls="panel3">
+                        <span class="icon icon--competition"></span>
+                    </button>
+                    <button class="tabBtn" id="toggleSettings" data-panel="panel4" aria-controls="panel4">
+                        <span class="icon icon--settings"></span>
+                    </button>
+                </div>
+            </nav>
         </div>
-
-
-    
-
-
-
-    <!--Admin Page for Report View-->
-    <div id="AdminPage">
-        <div id="adminPwdChangeWrapper">
-            <div id="adminPwdChange">
-                <button onclick="closePwdChange();" id="exitAdminPwd">
-                    <img src="frontend/assets/images/system/back.png" alt="Go Back Btn">
-                </button>
-                <h3>Passwort ändern</h3>
-                <p id="adminPwdChange_name">Nutzername</p>
-                <input type="text" id="adminPwdChange_pwd" placeholder="neues Passwort">
-                <button id="adminPwdChange_safe" onclick="updateAdminPassword(document.getElementById('adminPwdChange_name').innerText, document.getElementById('adminPwdChange_pwd').value); closePwdChange();">Passwort Update</button>
-            </div>
-        </div>
-        
-        <h2>Welcome Admin</h2>
-        <div id="compCreationPanel">
-            <h2 style="color: white;">Wettkampf Erstellung</h2>
-            <input type="text" id="compName" placeholder="Wettkampfname">
-            <input type="date" id="compDate">
-            <input type="text" id="compLocation" placeholder="Ort">
-            
-            <div>
-                <button onclick="createCompetition();" style="background-color: green;">Erstellen</button>
-                <button onclick="closeCompCreation();" style="background-color: red;">Abbrechen</button>
-            </div>
-        </div>
-        <div id="adminAnzeige">
-
-        </div>
-
-        <div id="adminPageButtonContainer">
-            <button onclick="goToAdminUserContainer();">Users</button>
-            <button onclick="goToAdminReportContainer();">Reports</button>
-            <button onclick="goToAdminCompetitionContainer();">Competition</button>
-        </div>
-        <button onclick="logout();" id="AdminLogout">Logout</button>
     </div>
-    
 
-    
 
     
-    <!--Login and Register Page-->
-    <section class="start-screen" id="start-screen">
-        <h1 class="headline">Routine Planner</h1>
-
-        <div id="pwdForgot_mask" class="pwdForgot--page">
-            <div class="loader-container">
-                <h2>Passwort vergessen?</h2>
-                <div class="spinner"></div>
-            </div>
-            <div id="pwdForgot-page-1">
-                <p>Sende dir einen Code per E-Mail und setze dein Passwort zurück.</p>
-                <input type="email" id="pwdForgot_email" placeholder="example@email.com">
-                <button id="sendEmailForgot">Code per E-Mail senden</button>
-                <button id="cancelPwdForgot" class="cancel">Abbrechen</button>
-            </div>
-            <div id="pwdForgot-page-2">
-                <p>Ändere dein Passwort und verifiziere die Änderung mit dem Einmalcode.</p>
-                <label>
-                    <span>E-Mail Code</span>
-                    <input type="password" id="pwdForgotInput-Verify" placeholder="123456">
-                </label>
-                <label>
-                    <span>Dein neues Passwort</span>
-                    <input type="password" id="pwdForgotInput-password" placeholder="Dein Passwort">
-                </label>
-                <button id="requestNewPwd">Passwort ändern</button>
-                <button id="cancelPwdForgot2" class="cancel">Abbrechen</button>
-            </div>
-            <p id="pwdForgotErr"></p>
-        </div>
-
-        <div id="login_mask" class="login--page">
-            <div class="loader-container">
-                <h2>Login</h2>
-                <div class="spinner"></div>
-            </div>
-            <span class="icon icon--email"></span>
-            <input type="email" id="login-email" placeholder="example@email.com">
-            <span class="icon icon--password"></span>
-            <input type="password" id="password", placeholder="Passwort">
-            <div class="stay-logged-in">
-                <label class="toggle">
-                    <input type="checkbox" id="stayLoggedIn">
-                    <span class="toggle__track"></span>
-                    <span class="toggle__label">Angemeldet bleiben</span>
-                </label>
-            </div>
-            <button id="loginBtn">Anmelden <span class="icon icon--login"></span></button>
-            <button id="registerBtn">Registrieren <span class="icon icon--registration"></span></button>
-            <p id="errorMsg"></p>
-            <p id="forgotPwd"><i>Passwort vergessen?</i></p>
-
-        </div>
-        
-        <div id="registration_mask" class="registration--page">
-            <div class="loader-container">
-                <h2>Registrieren</h2>
-                <div class="spinner"></div>
-            </div>
-            <span class="icon icon--name"></span>
-            <input type="text" id="registration-firstName" placeholder="Vorname">
-            <span class="icon icon--name"></span>
-            <input type="text" id="registration-lastName" placeholder="Nachname">
-            <span class="icon icon--email"></span>
-            <input type="email" id="registration-email" placeholder="example@email.com">
-            <span class="icon icon--password"></span>
-            <input type="password" id="newPassword" placeholder="Passwort">
-            <span class="icon icon--password"></span>
-            <input type="password" id="confirmPassword" placeholder="Passwort wiederholen">
-            
-            <button id="registerSubmitBtn">Registrieren <span class="icon icon--registration"></span></button>
-            <button id="cancelBtn" class="cancel">Abbrechen <span class="icon icon--cancel"></span></button>
-            
-            <p id="errorMsgRegister"></p>
-        </div>
-        
-        <button id="showNewsBtn" class="openNews news-btn">Updates & News <span class="icon icon--update"></span></button>
-        <p class="impressum"><a href="frontend/impressum/impressum.html">Impressum</a> &copy; 2026</p>
-    </section>
-
-
-
-<!--Content Page (only when logged in)-->
-<div id="content">
-
-    <!-- Bottom Main Menu Navigation -->
-    <div id="menue">
-        <div id="menueWrapper">
-            <span class="icon icon--equipment" id="toggleEquipment" onclick="return; togglePanel(1);"></span>
-            <span class="icon icon--groups" id="toggleGroups" onclick="return; togglePanel(2);"></span>
-            <span class="icon icon--settings" id="toggleSettings" onclick="return; togglePanel(0);"></span>
-        </div>
-    </div>
-    
-    <div id="panelRoot" class="panel visible">
-        <div id="mainPage">
-            <h1 id="welcomeUser">Wilkommen, <i>User</i>!</h1>
-            <p id="welcomeTxt">Auf dieser Seite kannst du Übungen zusammenstellen und Wettkämpfe einsehen. Unten im Menü kannst du zwischen der Übungsgestaltung, der Nutzerübersicht und den Profileinstellungen wechseln. Der aktuelle <i>Code-of-Points (COP: 2022-2024)</i>, sowie die <i>NE-Bildtabellen</i> kannst du über den Download Button herunterladen. Bei der Nutzerübersicht kannst du dich zusätzlich eintragen und Punkte hinzufügen.</p>
-            <button class="openDownloadsBtn">PDF Downloads <span class="icon icon--download"></span></button>
-            <button class="openNewsBtn">News & Updates <span class="icon icon--update"></span></button>
-        </div>
-    </div>
 
 
 
     <!--Panel for Routine Creation-->
-    <section id="panel1" class="panel">
+    <section id="panel1" class="panel" style="display: none;">
         <div id="EquipmentExercise">
             <img src="frontend/assets/images/system/back.png" alt="Go Back" onclick="closeDevice();" id="hideExercise" class="goBack-Btn">
             <div id="exerciseTitle">
@@ -458,6 +520,7 @@
             </div>
 
             <!--Panel View for adding an Element-->
+            <!--
             <div id="elementSelection">
                 <div id="filterWrapper">
                     <div id="filterPanel">
@@ -585,80 +648,7 @@
         </div>
     </section>
 
-    <section id="panel2" class="panel">
-        <div class="loader-container">
-            <h2>Mitglieder</h2>
-            <div class="spinner"></div>
-        </div>
-        <div id="memberSwitchPage">
-            <button id="groupExercise">Übungen</button>
-            <button id="competition">Wettkämpfe</button>
-        </div>
-        <div id="memberExerciseList">
-            <button onclick="hideMemberExerciseList();" id="hideMemberExercise">
-                <img src="frontend/assets/images/system/back.png" alt="Go Back Btn" class="goBack-Btn">
-            </button>
-            <h2 id="memberName">Name</h2>
-            <div id="exerciseContainer"></div>
-        </div>
-        
-        <div id="memberList">
-            <div class="member" onclick="showMemberData();">
-                <img src="frontend/assets/images/system/profile_icon.png" alt="profile icon">
-                <span class="name-de">Max</span>
-                <span class="name-en">Mustermann</span>
-            </div>
-        </div>
-        <div id="competitions"></div>
-    </section>
-
-
-
-    <section id="panel3" class="panel grid-container">
-        <h2>Account Einstellungen</h2>
-            <header>
-                <img src="frontend/assets/images/system/profile_icon.png" alt="profile picture" id="profilePicture" class="profilePicture">
-                <div id="colorContainer">
-                    <div data-color="#FF5733" class="colorPick" style="background-color: #FF5733;"></div>
-                    <div data-color="#28A745" class="colorPick" style="background-color: #28A745;"></div>
-                <div data-color="#007BFF" class="colorPick" style="background-color: #007BFF;"></div>
-                <div data-color="#FFC107" class="colorPick" style="background-color: #FFC107;"></div>
-                <div data-color="#6F42C1" class="colorPick" style="background-color: #6F42C1;"></div>            
-            </div>
-            <div class="userName">
-                <span id="userVorname">Vorname</span>
-                <span id="userNachname">Nachname</span>
-                <div class="spinner"></div>
-            </div>
-        </header>
-        <main>
-            <button id="editNameBtn" class="edit-names">
-                ✎ Namen bearbeiten ✎
-            </button>
-            <button id="editPasswordBtn" class="edit-names">
-                ✎ Passwort bearbeiten ✎
-            </button>   
-            <div class="stay-logged-in" style="margin-top: var(--gap);">
-                <label class="toggle">
-                    <input type="checkbox" id="visibleCheckbox">
-                    <span class="toggle__track"></span>
-                    <span class="toggle__label">Sichtbarkeit für Andere</span>
-                </label>
-            </div>
-            <div class="stay-logged-in">
-                <label class="toggle">
-                    <input type="checkbox" id="autoLoginCheckbox">
-                    <span class="toggle__track"></span>
-                    <span class="toggle__label">Automatischer Login</span>
-                </label>
-            </div>
-            <button id="reportIssue">Feedback & Fehler <span class="icon icon--feedback"></span></button>
-        </main>
-        <footer>
-            <button id="logoutBtn" class="exit-account-btn">Logout <span class="icon icon--logout"></span></button>
-            <button id="delBtn" class="exit-account-btn">Account löschen <span class="icon icon--cancel"></span></button>
-        </footer>
-    </section>
+-->
 
 
 
