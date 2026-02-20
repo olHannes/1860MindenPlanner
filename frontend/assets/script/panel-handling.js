@@ -1,6 +1,8 @@
 
 //exported functions handles visibility changes of floating panels and different views
 import * as settings from "./settings.js";
+import * as competition from "./competition.js";
+import * as member from "./member.js";
 
 //basic Functions
 //////////////////////////////////////////////////////////////
@@ -43,6 +45,7 @@ export function hideFloatingBackground(root) {
     const el = root.getElementById("overlayRoot");
     hide(el);
 }
+
 
 //show global Message
 //////////////////////////////////////////////////////////////
@@ -279,7 +282,7 @@ export function resetPanel(panelId) {
     fn();
 }
 export function toggleMainPanel(root, panelId) {
-  const panels = [1,2,3].map(i => root.getElementById(`panel${i}`));
+  const panels = [1,2,3,4].map(i => root.getElementById(`panel${i}`));
   const target = root.getElementById(`panel${panelId}`);
   if (!target) return;
 
@@ -341,16 +344,16 @@ export function hidePasswordForgot(root) {
 }
 
 export function applyLoginStatus(root) {
-    let startMask       = root.getElementById("start-screen");
-    let contentPanel    = root.getElementById("content");
+    let startMask      = root.getElementById("start-screen");
+    let menue          = root.getElementById("menue");
     const localUserId  = localStorage.getItem("userId");
-    if(!startMask || !contentPanel) return;
+    if(!startMask || !menue) return;
 
     if(localUserId) {
         hide(startMask);
-        show(contentPanel, "block");
+        show(menue, "flex");
     } else {
-        hide(contentPanel);
+        hide(menue);
         show(startMask, "grid");
     }
 }
@@ -378,4 +381,35 @@ export function hideRoutineCopy(root) {
     const copyPanel = root.getElementById("secureRoutineCopy");
     hideFloatingBackground(root);
     hide(copyPanel);
+}
+
+
+//Competition Panel
+export async function showCompetitionDashboard(root) {
+    hideMemberPanel(root);
+    const dashboard = root.getElementById("dashboard");
+    const loader = root.querySelector("#panel2 .spinner");
+    show(dashboard, "block");
+    const comps = await competition.loadcompetitions(loader, localStorage.getItem("userId")); 
+    competition.renderCompetitionList(root, comps);
+    //clearHTML(dashboard);
+    //dashboard.innerHTML = `<div id="dashboardTabs"></div>`;
+}
+export function hideCompetitionDashboard(root) {
+    const dashboard = root.getElementById("dashboard");
+    hide(dashboard);
+}
+
+//Group-Member Panel
+export async function showMemberPanel(root) {
+    hideCompetitionDashboard(root);
+    const container = root.getElementById("member");
+    const loader = root.querySelector("#panel2 .spinner");
+    show(container, "block");
+    const users = await member.loadAllUser(loader); 
+    member.renderUsers(root, users);
+}
+export function hideMemberPanel(root) {
+    const member = root.getElementById("member");
+    hide(member);
 }
