@@ -79,7 +79,79 @@ async function joinCompetition(compId) {
         return false;
     }
 }
+async function leaveCompetition(compId) {
+    const userId = localStorage.getItem("userId");
+    if(!compId || !userId) return;
+    try {
+        const res = await fetch(`${config.serverURL}/competition/${compId}/leave`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userId: userId })
+        });
+        const data = await res.json();
+        if(data.ok) return true;
+        return false;
+    } catch (error) {
+        console.error("Failed to leave competition", error);
+        return false;
+    }
+}
 
+async function submitResults(compId, userId, device, value) {
+    if(!compId || !userId || !device || !value) return;
+    if(!config.device.hasOwnProperty(device)) {
+        console.error("Invalid device:", device);
+        return false;
+    }
+    if(value <= 0) {
+        console.error("Invalid value");
+        return false;
+    }
+    try {
+        const res = await fetch(`${config.serverURL}/competition/${compId}/points`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userId: userId, device: device, points: value })
+        });
+        const data = await res.json();
+        if(data.ok) return true;
+        return false;
+    } catch (error) {
+        console.error("Failed to put competition points:", error);
+        return false;
+    }
+}
+
+function submitCompetitionPoints(root, compId) {
+    const userId = localStorage.getItem("userId");
+    if(!root || !compId || !userId) return;
+
+}
+
+
+export function initCompetitionActions(root, loader) {
+    const container = root.getElementById("competitions");
+    if(!container) return;
+    container.addEventListener("click", async (e) => {
+        const btn = e.target.closest(".comp-btn");
+        if(!btn) return;
+        const compId = btn.dataset._id;
+        const action = btn.dataset.action;
+
+        let success = false;
+        if(action === "join") {
+            success = await joinCompetition(compId);
+        } else if(action === "leave") {
+            success = await leaveCompetition(compId);
+        } else if(action === "submitPoints") {
+            success = submitCompetitionPoints(root, compId);
+        }
+
+        if(!success) return;
+        const comps = await loadcompetitions(null, localStorage.getItem("userId"));
+        renderCompetitionList(root, comps);
+    })
+}
 
 
 function createCompetitionEntry(root, e, rank = 0) {
@@ -144,6 +216,7 @@ function getActionButton(root, c) {
     const btn = root.createElement("button");
     btn.classList.add(c.joined ? "comp-leave" : "comp-join", "comp-btn");
     btn.dataset.action = c.joined ? "leave" : "join";
+    btn.dataset._id = c._id;
     btn.innerText = c.joined ? "Verlassen" : "Beitreten";
     return btn;
 }
@@ -253,9 +326,8 @@ function createCompetitionObject(root, c) {
     return details;
 }
 
-
 export function renderCompetitionList(root, competitionList) {
-    const container = root.getElementById("competitions"); //competition
+    const container = root.getElementById("competitions");
     if(!container) return;
     panel.clearHTML(container);
     if(!competitionList || !Array.isArray(competitionList) || competitionList.length == 0) {
