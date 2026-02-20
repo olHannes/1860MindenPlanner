@@ -1,5 +1,6 @@
 
 .member-unit {
+    border-bottom: 1px solid lightgray;
 }
 
 .member-unit summary {
@@ -17,4 +18,21 @@
     height: 50px;
     width: 50px;
     border-radius: 25%;
+}
+.member-unit .nameBig {
+    font-weight: bold;
+    display: block;
+    font-size: 1.3rem;
+}
+.member-unit .nameLight {
+    font-size: 1rem;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+}
+.member-status {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    right: 6%;
 }

@@ -404,10 +404,8 @@ export function hideCompetitionDashboard(root) {
 export async function showMemberPanel(root) {
     hideCompetitionDashboard(root);
     const container = root.getElementById("member");
-    const loader = root.querySelector("#panel2 .spinner");
     show(container, "block");
-    const users = await member.loadAllUser(loader); 
-    member.renderUsers(root, users);
+    member.reloadAllUser(root);
 }
 export function hideMemberPanel(root) {
     const member = root.getElementById("member");

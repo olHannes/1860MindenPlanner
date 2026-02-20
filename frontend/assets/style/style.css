@@ -821,30 +821,6 @@ input {
     color: #444;
 }
 
-
-.name-de {
-    font-weight: bold;
-    display: block;
-    font-size: 18px;
-}
-
-.name-en {
-    font-size: 14px;
-    color: #777;
-}
-
-.status-indicator {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin-left: 10px;
-    position: absolute;
-    right: 5%;
-}
-
-
-
 #EquipmentExercise {
     display: none;
     width: 100dvw;

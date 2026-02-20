@@ -1,9 +1,16 @@
 import * as panel from "./panel-handling.js";
 import * as config from "./config.js";
 
+export async function reloadAllUser(root) {
+    const loader = root.querySelector("#panel2 .spinner");
+    const users = await loadAllUser(loader); 
+    renderUsers(root, users);
+}
+
+
 //User Loading
 ///////////////////////////////////////////////////////////////////
-export async function loadAllUser(loader) {
+async function loadAllUser(loader) {
     try {
         panel.showLoader(loader);
         const res = await fetch(`${config.serverURL}/users/visible/all`, {
@@ -20,7 +27,7 @@ export async function loadAllUser(loader) {
         panel.hideLoader(loader);
     }
 }
-export function renderUsers(root, users) {
+function renderUsers(root, users) {
     const memberList = root.getElementById("member-list");
     panel.clearHTML(memberList);
     users.forEach(currentUser => {
@@ -44,17 +51,17 @@ export function renderUsers(root, users) {
         nameContainer.classList.add("name-container");
 
         const firstNameSpan = root.createElement("span");
-        firstNameSpan.className = "name-de";
+        firstNameSpan.className = "nameBig";
         firstNameSpan.textContent = currentUser.firstName;
 
         const lastNameSpan = root.createElement("span");
-        lastNameSpan.className = "name-en";
+        lastNameSpan.className = "nameLight";
         lastNameSpan.textContent = currentUser.lastName;
 
         const statusIndicator = root.createElement("span");
-        statusIndicator.classList.add("status-indicator");
+        statusIndicator.classList.add("member-status");
         statusIndicator.title = currentUser.online ? 'Online' : 'Offline';
-        statusIndicator.style.backgroundColor = currentUser.online ? 'green' : 'gray';
+        statusIndicator.style.background = currentUser.online ? 'linear-gradient(315deg, #08300c, #28bf40f5)' : 'gray';
 
         nameContainer.appendChild(firstNameSpan);
         nameContainer.appendChild(lastNameSpan);
