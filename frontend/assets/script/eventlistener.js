@@ -1,5 +1,6 @@
 import * as userHandling from "./user-handling.js";
 import * as settings from "./settings.js";
+import * as member from "./member.js";
 import * as competition from "./competition.js";
 import * as panel from "./panel-handling.js";
 
@@ -7,8 +8,8 @@ export function addFunktionalEventListener(root) {
     userControlListener(root);
     addFloatingPanelListener(root);
     addMainPanelListener(root);
-    groupAndCompetitionListener(root);
     setAccountSettingsListener(root);
+    competition.addCompetitionEventListener(root, null);
 }
 
 
@@ -96,11 +97,12 @@ function addMainPanelListener(root) {
     const toggleGroupsBtn = root.querySelector("#toggleMember");
     toggleGroupsBtn?.addEventListener("click", () => {
         panel.toggleMainPanel(root, 2);
-        panel.showMemberPanel(root);
+        member.reloadAllUser(root);
     });
     const toggleCompetitionBtn = root.querySelector("#toggleCompetition");
     toggleCompetitionBtn?.addEventListener("click", () => {
         panel.toggleMainPanel(root, 3);
+        competition.reloadCompetitions(root);
     });
     const toggleSettingsBtn = root.querySelector("#toggleSettings");
     toggleSettingsBtn?.addEventListener("click", () => {
@@ -108,18 +110,6 @@ function addMainPanelListener(root) {
     });
 }
 
-function groupAndCompetitionListener(root) {
-    const userBtn = root.querySelector("#groupExercise");
-    userBtn?.addEventListener("click", () => {
-        panel.showMemberPanel(root);
-    });
-    const compBtn = root.querySelector("#competition");
-    compBtn?.addEventListener("click", () => {
-        panel.showCompetitionDashboard(root);
-    });
-    
-    competition.initCompetitionActions(root);
-}
 
 function userControlListener(root) {
     //open Registration Panel

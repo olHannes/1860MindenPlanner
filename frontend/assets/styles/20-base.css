@@ -102,6 +102,11 @@ button {
 }
 
 
+.scroll-list {
+  overflow-y: auto;
+}
+
+
 /*Texts and Headline*/
 .panel-headline {
    text-align: center;

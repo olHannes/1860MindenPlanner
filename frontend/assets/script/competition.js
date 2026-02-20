@@ -1,9 +1,15 @@
 import * as panel from "./panel-handling.js";
-import * as user from "./user-handling.js";
 import * as config from "./config.js";
 
 
-export async function loadcompetitions(loader, userId) {
+export async function reloadCompetitions(root) {
+    const loader = root.querySelector("#panel3 .spinner");
+    const comps = await loadcompetitions(loader, localStorage.getItem("userId")); 
+    renderCompetitionList(root, comps);
+}
+
+
+async function loadcompetitions(loader, userId) {
     try {
         panel.showLoader(loader);
         let fetchUrl = `${config.serverURL}/competition/all`;
@@ -23,7 +29,7 @@ export async function loadcompetitions(loader, userId) {
     }
 }
 
-export async function loadCompetitionDetails(id, loader) {
+async function loadCompetitionDetails(id, loader) {
     if(!id) return {};
     try {
         panel.showLoader(loader);
@@ -42,7 +48,7 @@ export async function loadCompetitionDetails(id, loader) {
     }
 }
 
-export async function loadCompetitionResult(id, loader) {
+async function loadCompetitionResult(id, loader) {
     if(!id) return;
     try {
         panel.showLoader(loader);
@@ -129,8 +135,8 @@ function submitCompetitionPoints(root, compId) {
 }
 
 
-export function initCompetitionActions(root, loader) {
-    const container = root.getElementById("competitions");
+export function addCompetitionEventListener(root, loader) {
+    const container = root.getElementById("competition-list");
     if(!container) return;
     container.addEventListener("click", async (e) => {
         const btn = e.target.closest(".comp-btn");
@@ -326,8 +332,8 @@ function createCompetitionObject(root, c) {
     return details;
 }
 
-export function renderCompetitionList(root, competitionList) {
-    const container = root.getElementById("competitions");
+function renderCompetitionList(root, competitionList) {
+    const container = root.getElementById("competition-list");
     if(!container) return;
     panel.clearHTML(container);
     if(!competitionList || !Array.isArray(competitionList) || competitionList.length == 0) {

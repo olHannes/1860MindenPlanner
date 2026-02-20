@@ -382,32 +382,3 @@ export function hideRoutineCopy(root) {
     hideFloatingBackground(root);
     hide(copyPanel);
 }
-
-
-//Competition Panel
-export async function showCompetitionDashboard(root) {
-    hideMemberPanel(root);
-    const dashboard = root.getElementById("dashboard");
-    const loader = root.querySelector("#panel2 .spinner");
-    show(dashboard, "block");
-    const comps = await competition.loadcompetitions(loader, localStorage.getItem("userId")); 
-    competition.renderCompetitionList(root, comps);
-    //clearHTML(dashboard);
-    //dashboard.innerHTML = `<div id="dashboardTabs"></div>`;
-}
-export function hideCompetitionDashboard(root) {
-    const dashboard = root.getElementById("dashboard");
-    hide(dashboard);
-}
-
-//Group-Member Panel
-export async function showMemberPanel(root) {
-    hideCompetitionDashboard(root);
-    const container = root.getElementById("member");
-    show(container, "block");
-    member.reloadAllUser(root);
-}
-export function hideMemberPanel(root) {
-    const member = root.getElementById("member");
-    hide(member);
-}

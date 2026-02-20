@@ -1,13 +1,3 @@
-#member,
-#competitions {
-    width: 100%;
-    max-width: 600px;
-    height: 69dvh;
-    overflow-y: auto;
-    background-color: #f5f5f5;
-}
-
-
 
 .comp-card {
     width: 100%;
@@ -18,8 +8,6 @@
 }
 .is-past .comp-status {
     color: lightcoral;
-}
-.is-joined .comp-status {
 }
 .comp-summary {
     display: flex;
@@ -44,7 +32,8 @@
     justify-content: space-evenly;
     height: 22px;
     width: 90%;
-    background: lightgray;
+    background: transparent;
+    border: 1px solid var(--color-primary-dark);
     border-radius: 25px;
     padding: 15px 0px;
     position: relative;
@@ -95,13 +84,6 @@
     font-weight: 300;
     margin-bottom: 0;
 }
-.comp-leaderboard--select {
-
-}
-.comp-leaderboard--option {
-
-}
-
 .comp-btn {
     color: white;
     border-radius: 15px;
@@ -132,6 +114,5 @@
 .icon--rank {
     height: 60px;
     width: 60px;
-    position: absolute;
-    right: 20px;
+    margin-left: 7%;
 }
