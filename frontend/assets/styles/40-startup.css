@@ -1,0 +1,123 @@
+/*Base Structure - Start Screen*/
+.start-screen {
+  height: -webkit-fill-available;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: center;
+  padding: 16px;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.headline {
+  grid-row: 1;
+  margin: 0;
+}
+.login--page,
+.registration--page,
+.pwdForgot--page {
+  grid-row: 2;
+  align-self: center;
+  transform: translateY(-5%);
+  width: 85dvw;
+  max-width: 500px;
+}
+.start-screen .icon {
+  background-color: var(--color-primary-dark);
+}
+.impressum {
+  grid-row: 4;
+  margin: 5px;
+  text-align: center;
+  color: darkgray;
+}
+.impressum a {
+  color: darkgray;
+}
+.news-btn {
+  grid-row: 3;
+}
+
+/*Login Panel*/
+.login--page,
+.pwdForgot--page,
+.registration--page {
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  background: var(--color-surface);    
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  text-align: center;
+  padding: 30px;
+}
+.login--page h2,
+.registration--page h2
+.pwdForgot--page h2 {
+  margin-bottom: 20px;
+  color: var(--color-primary-dark);
+}
+.login--page button,
+.registration--page button,
+.pwdForgot--page button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap);
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  color: white;
+  background-color: #2c6693;
+  background: var(--color-primary-hover);
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.login--page button:hover,
+.pwdForgot--page button:hover,
+.registration--page button:hover {
+  background: var(--btn-primary);
+}
+.login--page button .icon,
+.pwdForgot--page button .icon,
+.registration--page button .icon  {
+  height: 28px;
+  width: 28px;
+  background-color: white;
+}
+.registration--page,
+.pwdForgot--page {
+  display: none;
+}
+
+/*Login Panel*/
+.login--page #registerBtn {
+  padding: 6px 12px;
+}
+#forgotPwd {
+  cursor: pointer;
+}
+
+/*Registration Panel*/
+.registration--page .cancel,
+.pwdForgot--page .cancel {
+  background: var(--btn-delete);
+}
+
+/*Password Forgot Panel*/
+#pwdForgot-page-2 {
+  display: none;
+}
+.pwdForgot--page label {
+  font-weight: 500;
+  font-style: italic;
+}

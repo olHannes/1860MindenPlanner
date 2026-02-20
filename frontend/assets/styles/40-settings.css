@@ -1,0 +1,29 @@
+.settings h2 {
+  text-align: center;
+  font-style: oblique;
+  white-space: normal;
+  position: unset;
+  transform: translateX(0);
+}
+.settings header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap);
+}
+.settings main {
+  max-height: 50dvh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap);
+}
+.settings footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-bottom: var(--gap);
+}

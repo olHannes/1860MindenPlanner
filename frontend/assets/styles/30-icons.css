@@ -77,6 +77,10 @@
   -webkit-mask-image: url("../images/icons/feedback-svgrepo-com.svg");
   mask-image: url("../images/icons/feedback-svgrepo-com.svg");
 }
+.icon--competition {
+  -webkit-mask-image: url("../images/icons/trophy-base-svgrepo-com.svg");
+  mask-image: url("../images/icons/trophy-base-svgrepo-com.svg");
+}
 .icon--rank {
   -webkit-mask-image: url("../images/icons/medal-ribbons-star-svgrepo-com.svg");
   mask-image: url("../images/icons/medal-ribbons-star-svgrepo-com.svg");

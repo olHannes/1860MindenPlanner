@@ -1,0 +1,208 @@
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  font-family: Arial, sans-serif; 
+  padding: 0;
+  margin: 0; 
+}
+
+
+/*Button*/
+button {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+  color: white;
+}
+.delete-btn {
+  background: var(--btn-delete);
+}
+.delete-btn:hover {
+  background: #c9302c;
+}
+.cancel-btn {
+  background: var(--btn-dismiss);
+}
+.cancel-btn:hover {
+  background: #5a6268;
+}
+.save-btn {
+  background-color: var(--btn-save);
+}
+.save-btn:hover {
+  background-color: #40be81;
+}
+
+/*Toggle Buttons*/
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(216, 222, 229, 0.9);
+  background: rgba(255, 255, 255, 0.75);
+}
+.toggle input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.toggle__track {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background: #cfd8e3;
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+.toggle__track::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,.25);
+  transition: transform 0.2s ease;
+}
+.toggle input:checked + .toggle__track {
+  background: var(--color-primary-dark);
+}
+.toggle input:checked + .toggle__track::after {
+  transform: translateX(20px);
+}
+.toggle input:focus-visible + .toggle__track {
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: 2px;
+}
+.toggle__label {
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+
+.seperator {
+  width: 98%;
+  height: 1px;
+  background-color: black;
+  position: relative;
+  left: 1%;
+  margin-top: 5px;
+}
+
+
+/*Texts and Headline*/
+.panel-headline {
+   text-align: center;
+   font-style: oblique;
+   white-space: nowrap;
+}
+.info,
+.error {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  font-size: 13.5px;
+  line-height: 1.4;
+  display: none;
+}
+.info {
+  display: block;
+  background: var(--color-primary-soft);
+  border: 1px solid rgba(40, 146, 207, 0.35);
+  color: var(--color-text);
+}
+.error {
+  display: block;
+  background: var(--color-danger-bg);
+  border: 1px solid rgba(180, 35, 24, 0.45);
+  color: var(--color-danger);
+}
+
+
+
+
+/*Base and System Elements*/
+.spinner {
+  opacity: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid rgba(0, 0, 0, 0.25);
+  border-top-color: #ffffff;
+  animation: spin 0.9s linear infinite;
+  transition: 
+    opacity 300ms ease,
+    visibility 0s linear 300ms;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+#messageBox {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  width: min(92vw, 420px);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius, 12px);
+  background: rgba(15, 23, 42, 0.841);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 14px 35px rgba(0,0,0,0.35);
+  color: var(--color-font, #ececec);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+  z-index: 1001;
+  cursor: pointer;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+#messageBox.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+#messageBox .msgBar {
+  width: 8px;
+  align-self: stretch;
+  border-radius: 999px;
+  background: var(--color-primary-dark);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.10) inset;
+}
+#messageBox .msgBody {
+  min-width: 0;
+}
+#messageBox h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 650;
+  line-height: 1.2;
+}
+#messageBox i {
+  display: block;
+  margin-top: 3px;
+  font-style: normal;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  color: rgba(236, 236, 236, 0.82);
+}
+

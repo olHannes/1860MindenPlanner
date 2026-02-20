@@ -16,7 +16,7 @@
   180deg,
   #1e293b 0%,
   #0f172a 100%
-);
+   );
 
 
   --color-surface: #ffffff;
@@ -49,10 +49,13 @@
   --icon-background-color: rgba(255, 255, 255, 0.75);
 
   /* =========
-     SHADOW / FLOATING
+     SHADOW, etc.
      ========= */
   --shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 
   --radius: 12px;
-  --gap: 15px
+  --gap: 15px;
+  --app-max: 700px;
+  --tabbar-h: 56px;
+  --pad: 16px;
 }
