@@ -186,25 +186,15 @@ function setAccountSettingsListener(root) {
     //Profile Color
     const colorChangeBtn = root.querySelector("#colorContainer");
     colorChangeBtn?.addEventListener("click", async (e) => {
-        if(colorChangeBtn.disabled == true) return;
-        colorChangeBtn.disabled = true;
-        colorChangeBtn.style.opacity = "0.5";
-        const colorEl = e.target.closest(".colorPick");
-        if(!colorEl) return;
-        const color = colorEl.dataset.color;
-        if (!color) return;
-        await settings.changeProfileColor(root, color);
-        colorChangeBtn.disabled = false;
-        colorChangeBtn.style.opacity = "1";
+        settings.changeProfileColor(root, colorChangeBtn, e);
+        return;
     });
 
     //Profile visibility
     const visibilityToggle = root.querySelector("#visibleCheckbox");
     visibilityToggle?.addEventListener("change", async (e) => {
-        if(visibilityToggle.disabled == true) return;
-        visibilityToggle.disabled = true;
-        await settings.changeProfileVisibility(root, e.target.checked);
-        visibilityToggle.disabled = false;
+        settings.changeProfileVisibility(root, visibilityToggle, e);
+        return;
     });
 
     //Name Change
@@ -218,17 +208,7 @@ function setAccountSettingsListener(root) {
     });
     const nameSubmitBtn = root.querySelector("#saveNameBtn");
     nameSubmitBtn?.addEventListener("click", async () => {
-        if(nameSubmitBtn.disabled == true) return;
-        nameSubmitBtn.disabled = true;
-        nameSubmitBtn.style.opacity = "0.5";
-        const errMsg = root.querySelector("#nameMsg");
-        const rc = await userHandling.submitNameChange(root);
-        nameSubmitBtn.disabled = false;
-        nameSubmitBtn.style.opacity = "1";
-        if(!errMsg || !rc) return;
-        errMsg.innerText = rc.message ?? "Name konnte nicht geändert werden";
-        errMsg.classList.toggle("info", rc.returnCode == 0);
-        errMsg.classList.toggle("error", rc.returnCode != 0);
+        settings.changeUserName(root, nameSubmitBtn);
     });
 
     //Show Panel to change Password

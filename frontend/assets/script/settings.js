@@ -85,8 +85,23 @@ export async function loadExistingReports(root) {
 }
 
 
-/* User Settings */
-export async function changeProfileColor(root, color) {
+// Profile Color
+export async function changeProfileColor(root, btn, e) {
+    if(!root || !btn || !e) return;
+    if(btn.disabled == true) return;
+    btn.disabled = true;
+    btn.style.opacity = "0.5";
+    const colorEl = e.target.closest(".colorPick");
+    if(colorEl) {
+        const color = colorEl.dataset.color;
+        if(color) {
+            await requestProfileColorChange(root, color);
+        }
+    }
+    btn.style.opacity = "1";
+    btn.disabled = false;
+}
+async function requestProfileColorChange(root, color) {
     const loader = root.querySelector("#panel3 .spinner");
     const userId = localStorage.getItem("userId");
     const profileImg_1 = root.getElementById("profilePicture");
@@ -114,7 +129,18 @@ export async function changeProfileColor(root, color) {
     }
 }
 
-export async function changeProfileVisibility(root, visible) {
+
+// Profile Visibility
+export async function changeProfileVisibility(root, toggle, e) {
+    if(!root || !toggle) return;
+    if(toggle.disabled == true) return;
+    toggle.disabled = true;
+    e.target.closest(".toggle").style.opacity = "0.5";
+    await requestVisibilityChange(root, toggle.checked);
+    toggle.disabled = false;
+    e.target.closest(".toggle").style.opacity = "1";    
+}
+async function requestVisibilityChange(root, visible) {
     const loader        = root.querySelector(".userName .spinner");
     const userId        = localStorage.getItem("userId");
     let visibleStatus   = visible ? 1: 0;
@@ -131,6 +157,69 @@ export async function changeProfileVisibility(root, visible) {
     } catch (error) {
         console.error("Failed to toggle Visibility:", error);
         panel.showMessage(root, "Sichtbarkeit konnte nicht geändert werden", "Es gab einen internen Fehler.");
+    } finally {
+        panel.hideLoader(loader);
+    }
+}
+
+
+// Profile Name
+export async function changeUserName(root, btn) {
+    if(!root || !btn) return;
+    if(btn.disabled == true) return;
+    btn.disabled = true;
+    btn.style.opacity = "0.5";
+    const errMsg = root.querySelector("#nameMsg");
+    const rc = await requestNameChange(root);
+    if(errMsg && rc) {
+        errMsg.innerText = rc.message ?? "Name konnte nicht geändert werden";
+        errMsg.classList.toggle("info", rc.returnCode == 0);
+        errMsg.classList.toggle("error", rc.returnCode != 0);
+    }
+    btn.disabled = false;
+    btn.style.opacity = "1";
+
+}
+async function requestNameChange(root) {
+    const loader        = root.querySelector("#nameSettings .spinner");
+    const firstNameEl   = root.getElementById("firstNameEdit");
+    const lastNameEl    = root.getElementById("lastNameEdit");
+    const userId        = localStorage.getItem("userId");
+
+    let firstNameInput =
+        firstNameEl && firstNameEl.value.length > 0
+            ? firstNameEl.value
+            : firstNameEl?.placeholder;
+
+    let lastNameInput =
+        lastNameEl && lastNameEl.value.length > 0
+            ? lastNameEl.value
+            : lastNameEl?.placeholder;
+    if(!userId) {
+        return {message: "Interner Fehler - Nutzer nicht gefunden", returnCode: 1};
+    }
+    if(!firstNameInput || !lastNameInput || firstNameInput.length < 4 || lastNameInput.length < 4) {
+        return {message: "Vor- und Nachname muss mindestens 4 Zeichen enthalten", returnCode: 2};
+    }
+    try {
+        panel.showLoader(loader);
+        const resp = await fetch(`${config.serverURL}/account/change/name`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userId: userId, new_first_name: firstNameInput, new_last_name: lastNameInput })
+        });
+        const data = await resp.json();
+        if(!data.ok) return {message: data.message ?? "Die Namensänderung war fehlerhaft", returnCode: 3};
+        else {
+            localStorage.setItem("user", data.new_first_name);
+            if(user.setupProfile(root)) {
+                panel.showMessage(root, "Name erfolgreich geändert", `Der neue Nutzername '${firstNameInput} ${lastNameInput}' wurde übernommen.`);
+            }
+            return {message: data.message ?? "Die Namensänderung war erfolgreich", returnCode: 0};
+        }
+    } catch (error) {
+        console.error("Failed to save new Username:", error);
+        return {message: "Netzwerkfehler beim Ändern des Namens", returnCode: 4};
     } finally {
         panel.hideLoader(loader);
     }

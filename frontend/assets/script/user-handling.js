@@ -296,52 +296,6 @@ export async function logout(root) {
     }
 }
 
-//Change User-Name
-export async function submitNameChange(root) {
-    const loader        = root.querySelector("#nameSettings .spinner");
-    const firstNameEl   = root.getElementById("firstNameEdit");
-    const lastNameEl    = root.getElementById("lastNameEdit");
-    const userId        = localStorage.getItem("userId");
-
-    let firstNameInput =
-        firstNameEl && firstNameEl.value.length > 0
-            ? firstNameEl.value
-            : firstNameEl?.placeholder;
-
-    let lastNameInput =
-        lastNameEl && lastNameEl.value.length > 0
-            ? lastNameEl.value
-            : lastNameEl?.placeholder;
-    if(!userId) {
-        return {message: "Interner Fehler - Nutzer nicht gefunden", returnCode: 1};
-    }
-    if(!firstNameInput || !lastNameInput || firstNameInput.length < 4 || lastNameInput.length < 4) {
-        return {message: "Vor- und Nachname muss mindestens 4 Zeichen enthalten", returnCode: 2};
-    }
-    try {
-        panel.showLoader(loader);
-        const resp = await fetch(`${config.serverURL}/account/change/name`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ userId: userId, new_first_name: firstNameInput, new_last_name: lastNameInput })
-        });
-        const data = await resp.json();
-        if(!data.ok) return {message: data.message ?? "Die Namensänderung war fehlerhaft", returnCode: 3};
-        else {
-            localStorage.setItem("user", data.new_first_name);
-            if(setupProfile(root)) {
-                panel.showMessage(root, "Name erfolgreich geändert", `Der neue Nutzername '${firstNameInput} ${lastNameInput}' wurde übernommen.`);
-            }
-            return {message: data.message ?? "Die Namensänderung war erfolgreich", returnCode: 0};
-        }
-    } catch (error) {
-        console.error("Failed to save new Username:", error);
-        return {message: "Netzwerkfehler beim Ändern des Namens", returnCode: 4};
-    } finally {
-        panel.hideLoader(loader);
-    }
-}
-
 
 //Change User-Password
 ///////////////////////////////////////////////////////////////////
