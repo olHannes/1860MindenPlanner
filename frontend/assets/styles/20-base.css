@@ -104,6 +104,7 @@ button {
 
 .scroll-list {
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 

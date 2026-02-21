@@ -58,4 +58,12 @@
   --app-max: 700px;
   --tabbar-h: 56px;
   --pad: 16px;
+
+
+
+  --surface-2: color-mix(in srgb, var(--color-surface) 92%, var(--color-primary-soft) 8%);
+  --border-strong: color-mix(in srgb, var(--color-border) 70%, var(--color-primary) 30%);
+  --shadow-soft: 0 10px 30px rgba(0,0,0,.10);
+  --shadow-hover: 0 14px 45px rgba(0,0,0,.14);
+  --focus: 0 0 0 4px color-mix(in srgb, var(--color-primary) 25%, transparent);
 }

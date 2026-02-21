@@ -160,25 +160,40 @@ export function addCompetitionEventListener(root, loader) {
 }
 
 
-function createCompetitionEntry(root, e, rank = 0) {
+function createCompetitionEntry(root, e, rank = 0, metrics = null, sortKey = "total") {
     if(!root || !e) return null;
-    const userName = e.userName;
-    const scores = e.scores;
-    
-    const entry = root.createElement("div");
-    entry.classList.add("comp-entry");
+
+    const container = root.createElement("div");
+    container.classList.add("comp-entry");
+
+    const icon = root.createElement("span");
+    icon.classList.add("icon", "icon--rank", `icon--rank-${rank}`);
+
+    const name = root.createElement("p");
+    name.classList.add("comp-entry--name");
+    name.innerText = e.userName ?? "unbekannt";
+
+    if(!metrics) metrics = calcEntryMetrics(e);
+
+    let valueText = "";
+    if(sortKey === "average") {
+        valueText = `Ø ${metrics.average.toFixed(1)}`;
+    } else if(sortKey === "devices") {
+        valueText = `${metrics.devices} Geräte`;
+    } else {
+        valueText = `${metrics.total} Punkte`;
+    }
+
+    const value = root.createElement("p");
+    value.classList.add("comp-entry--value");
+    value.innerText = valueText;
 
     const points = root.createElement("div");
     points.classList.add("comp-entry--points");
 
-    const name = root.createElement("span");
-    name.classList.add("comp-entry--name");
-    name.innerText = userName ?? "Unbekannt";
-
     const scoreList = root.createElement("ul");
-
-    if(scores && typeof scores === "object") {
-        Object.entries(scores).forEach(([device, value]) => {
+    if(e.scores && e.scores && typeof e.scores === "object") {
+        Object.entries(e.scores).forEach(([device, value]) => {
             if(value) {
                 const li = root.createElement("li");
                 li.innerText = `${device}: ${value}`;
@@ -187,31 +202,38 @@ function createCompetitionEntry(root, e, rank = 0) {
         })
     }
 
-    const icon = root.createElement("span");
-    icon.classList.add("icon", "icon--rank", `icon--rank-${rank}`);
-
     points.appendChild(name);
+    points.appendChild(value);
     points.appendChild(scoreList);
 
-    entry.appendChild(points);
-    entry.appendChild(icon);
-    return entry;
+    container.appendChild(points);
+    
+    container.appendChild(icon);
+    return container;
 }
 
-async function createCompetitionLeaderboard(root, body, c) {
-    if(!root ||!body || !c) return;
+async function createCompetitionLeaderboard(root, listEl, c, sortKey = "total") {
+    if(!root ||!listEl || !c) return;
+
+    panel.clearHTML(listEl);
 
     const entries = await loadCompetitionResult(c._id);
     if(!entries || !Array.isArray(entries) || entries.length == 0) {
         const msg = root.createElement("p");
         msg.innerText = "Keine Einträge gefunden";
         msg.classList.add("competitionMsg");
-        body.appendChild(msg);
+        listEl.appendChild(msg);
         return;
     }
-    entries.forEach(e => {
-        const entry = createCompetitionEntry(root, e);
-        if(entry) body.appendChild(entry);
+    const sorted = sortEntries(entries, sortKey);
+
+    sorted.forEach((e, idx) => {
+        const metrics = calcEntryMetrics(e);
+
+        const rank = (metrics.total > 0 && idx < 3) ? idx + 1 : 0;
+        
+        const entry = createCompetitionEntry(root, e, rank, metrics, sortKey);
+        if(entry) listEl.appendChild(entry);
     });
 }
 
@@ -228,7 +250,7 @@ function getActionButton(root, c) {
 }
 
 
-function createCompetitionDetails(root, body, c) {
+function createCompetitionDetails(root, body, c, onSortChange) {
     if(!root || !body || !c) return;
 
     const header = root.createElement("header");
@@ -252,13 +274,23 @@ function createCompetitionDetails(root, body, c) {
         <option value="average">Durchschnitt</option>
         <option value="devices">Geräte-Anzahl</option>
     `;
+    sortSelect.value = "total";
+    sortSelect.addEventListener("change", () => {
+        if(typeof onSortChange === "function") onSortChange(sortSelect.value);
+    });
+
     sortType.appendChild(sortTitle);
     sortType.appendChild(sortSelect);
 
     header.appendChild(title);
     header.appendChild(sortType);
+
+    const list = root.createElement("div");
+    list.classList.add("comp-leaderboard--list");
     
     body.appendChild(header);
+    body.appendChild(list);
+    return { sortSelect, list };
 }
 
 
@@ -280,7 +312,7 @@ function createCompetitionObject(root, c) {
 
     // line 1
     const titleRow = root.createElement("div");
-    titleRow.classList.add("comp-row", "comp-row--title");
+    titleRow.classList.add("comp-row--title");
 
     const title = root.createElement("div");
     title.classList.add("comp-name");
@@ -326,8 +358,10 @@ function createCompetitionObject(root, c) {
     details.appendChild(summary);
     details.appendChild(body);
 
-    createCompetitionDetails(root, body, c);
-    createCompetitionLeaderboard(root, body, c);
+    const ui = createCompetitionDetails(root, body, c, (newSort) => {
+        createCompetitionLeaderboard(root, ui.list, c, newSort);
+    });
+    createCompetitionLeaderboard(root, ui.list, c, ui?.sortSelect?.value ?? "total");
 
     return details;
 }
@@ -348,5 +382,58 @@ function renderCompetitionList(root, competitionList) {
         let obj = createCompetitionObject(root, c);
         container.appendChild(obj);
 
+    });
+}
+
+
+
+/////////////////////////////////////////////////////
+//  Helper Functions
+/////////////////////////////////////////////////////
+function calcEntryMetrics(e) {
+    const scores = (e && e.scores && typeof e.scores == "object") ? e.scores : {};
+    const values = Object.values(scores).filter(v => typeof v === "number" && v > 0);
+    
+    const total = values.reduce((a, b) => a + b, 0);
+    const devices = values.length;
+    const average = devices > 0 ? total / devices : 0;
+
+    return { total, devices, average };
+}
+
+function getMetricValue(metrics, sortKey) {
+    if (sortKey === "average") return metrics.average;
+    if (sortKey === "devices") return metrics.devices;
+    return metrics.total;
+}
+/*
+function calcEntryMetric(e, sortKey) {
+    const scores = (e && e.scores && typeof e.scores == "object") ? e.scores : {};
+    const values = Object.values(scores).filter(v => typeof v === "number" && v > 0);
+
+    const total = values.reduce((a, b) => a + b, 0);
+    const devices = values.length;
+    const average = devices > 0 ? total / devices : 0;
+
+    if(sortKey === "average") return average;
+    if(sortKey === "devices") return devices;
+    return total; //default
+}
+*/
+function sortEntries(entries, sortKey) {
+    const arr = Array.isArray(entries) ? [...entries] : [];
+
+    return arr.sort((a, b) => {
+        const ma = calcEntryMetrics(a);
+        const mb = calcEntryMetrics(b);
+
+        const va = getMetricValue(ma, sortKey);
+        const vb = getMetricValue(mb, sortKey);
+
+        if (vb !== va) return vb - va;
+
+        const ua = (a?.userName ?? "").toLowerCase();
+        const ub = (b?.userName ?? "").toLowerCase();
+        return ua.localeCompare(ub);
     });
 }
