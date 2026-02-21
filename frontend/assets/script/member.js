@@ -32,12 +32,16 @@ function renderUsers(root, users) {
     panel.clearHTML(memberList);
     users.forEach(currentUser => {
         const memberDetails = root.createElement("details");
-        memberDetails.classList.add("member-unit");
+        memberDetails.classList.add("member-entry");
         memberDetails.dataset.id = currentUser._id;
         //memberDiv.onclick = () => showMemberData(currentUser._id);
 
         const memberSummary = root.createElement("summary");
-        
+        memberSummary.classList.add("member-unit");
+
+        const memberInfos = root.createElement("div");
+        memberInfos.classList.add("member-info");
+
         const memberBody = root.createElement("div");
         memberBody.classList.add("details-body");
         memberBody.innerHTML = `<p>${currentUser.firstName + " " + currentUser.lastName}</p>`;
@@ -66,8 +70,10 @@ function renderUsers(root, users) {
         nameContainer.appendChild(firstNameSpan);
         nameContainer.appendChild(lastNameSpan);
 
-        memberSummary.appendChild(profileImg);
-        memberSummary.appendChild(nameContainer);
+        memberInfos.appendChild(profileImg);
+        memberInfos.appendChild(nameContainer);
+
+        memberSummary.appendChild(memberInfos);
         memberSummary.appendChild(statusIndicator);
 
         memberDetails.appendChild(memberSummary);

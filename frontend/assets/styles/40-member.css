@@ -1,30 +1,35 @@
 
-.member-unit {
+.member-entry {
     border-bottom: 1px solid lightgray;
 }
 
-.member-unit summary {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-}
-.member-unit summary,
+.member-unit,
 .details-body {
     padding: 10px 6%;
 }
 
-.member-unit summary img {
+.member-unit {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+}
+
+.member-info {
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+}
+.member-unit img {
     height: 50px;
     width: 50px;
     border-radius: 25%;
 }
-.member-unit .nameBig {
+.member-entry .nameBig {
     font-weight: bold;
     display: block;
     font-size: 1.3rem;
 }
-.member-unit .nameLight {
+.member-enrtry .nameLight {
     font-size: 1rem;
     font-weight: 100;
     letter-spacing: 0.5px;
