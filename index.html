@@ -364,7 +364,35 @@
 
                 <!--Panel 1: Exercise creation-->
                 <section id="panel1" class="panel exercise">
+                    <section id="view-apparatus-list" class="sub-panel" aria-label="Übungsübersicht">
+                        <header class="sub-panel--header">
+                            <h1>Geräte</h1>
+                            <div class="sub-panel--description">Zur Übungserstellung einfach das gewünschte Gerät auswählen.</div>
+                        </header>
+                        <div class="apparatus-container" id="apparatus-container"></div>
+                    </section>
 
+                    <section id="view-apparatus-detail" class="sub-panel" hidden aria-label="Gerätedetails">
+                        <header class="sub-panel--header">
+                            <button class="btn--secondary" type="button" data-action="back-to-list">←</button>
+                            <h2 id="detailNameDe"></h2>
+                            <div id="detailNameEn" class="muted"></div>
+                        </header>
+                        <article class="apparatus-overview">
+                            <header class="apparatus-hero">
+                                <img id="detailImg" alt="">
+                            </header>
+                            <div class="apparatus-details">
+                                <h3>Allgemeine Infos</h3>
+                                <div id="detailFacts" class="facts"></div>
+                                <h3>Elementegruppen</h3>
+                                <ul id="detailGroups"></ul>
+                            </div>
+                            <button class="btn--primary" type="button" data-action="to-exercise-editor">
+                                Übungserstellung
+                            </button>
+                        </article>
+                    </section>
                 </section>
 
                 <!--Panel 2: Member-->

@@ -3,10 +3,11 @@ import * as config from "./config.js";
 import * as eventListener from "./eventlistener.js";
 import * as userHandling from "./user-handling.js";
 import * as panel from "./panel-handling.js";
-
+import * as exercise from "./exercise.js";
 
 window.onload = function () {
     userHandling.startup(this.document);
+    exercise.renderApparatusCards(this.document);
     eventListener.addFunktionalEventListener(document);
 };
 

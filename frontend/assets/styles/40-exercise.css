@@ -1,0 +1,51 @@
+
+.sub-panel--header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.sub-panel--header h1 {
+    margin-bottom: 1px;
+}
+.sub-panel--description {
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: rgba(0, 0, 0, 0.42);
+}
+
+.apparatus-container {
+    display: flex;
+    width: 100%;
+    gap: 30px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 10px 0px 10px 0px;
+}
+.apparatus-card {
+    flex: 0 0 auto;
+    width: 86%;
+    aspect-ratio: 1 / 0.75;
+    text-align: center;
+    background: #ffffff;
+    color: rgb(20, 20, 20);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--color-primary-dark);
+    padding: 20px;
+    scroll-snap-align: center;
+    transition: transform 0.2s;
+}
+.name-de {
+    margin-bottom: 0;
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+.name-en {
+    margin-top: 5px;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+.apparatus-image {
+    width: 40%;
+}

@@ -2,6 +2,7 @@ import * as userHandling from "./user-handling.js";
 import * as settings from "./settings.js";
 import * as member from "./member.js";
 import * as competition from "./competition.js";
+import * as exercise from "./exercise.js";
 import * as panel from "./panel-handling.js";
 
 export function addFunktionalEventListener(root) {
@@ -10,6 +11,7 @@ export function addFunktionalEventListener(root) {
     addMainPanelListener(root);
     setAccountSettingsListener(root);
     competition.addCompetitionEventListener(root, null);
+    exercise.addExerciseEventListener(root);
 }
 
 
