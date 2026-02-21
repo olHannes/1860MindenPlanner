@@ -400,57 +400,105 @@
                 </section>
 
                 <!--Panel 4: Settings-->
-                <section id="panel4" class="panel settings">
+                <section id="panel4" class="panel settings scroll-list">
                     <header class="panel-header">
                         <h2 class="panel-headline">Account Einstellungen</h2>
                         <div class="spinner"></div>
                     </header>
                     <div class="panel-body">
-                        <header>
-                            <img src="frontend/assets/images/system/profile_icon.png" alt="profile picture" id="profilePicture" class="profilePicture">
-                            <div id="colorContainer">
-                                <div data-color="#FF5733" class="colorPick" style="background-color: #FF5733;"></div>
-                                <div data-color="#28A745" class="colorPick" style="background-color: #28A745;"></div>
-                                <div data-color="#007BFF" class="colorPick" style="background-color: #007BFF;"></div>
-                                <div data-color="#FFC107" class="colorPick" style="background-color: #FFC107;"></div>
-                                <div data-color="#6F42C1" class="colorPick" style="background-color: #6F42C1;"></div>            
-                            </div>
-                            <div class="userName">
-                                <span id="userVorname">Vorname</span>
-                                <span id="userNachname">Nachname</span>
-                                <div class="spinner"></div>
-                            </div>
+                        <header class="profile-header">
+                            <img src="./frontend/assets/images/system/profile_icon.png" alt="Profile" class="profile-avatar" id="profilePicture">
                         </header>
-                        <main>
-                            <button id="editNameBtn" class="edit-names">
-                                ✎ Namen bearbeiten ✎
+                        <!--Profil Einstellungen-->
+                        <details class="settings-section">
+                            <summary class="settings-summary">
+                                <div class="settings-summary--text">
+                                    <div class="settings-summary--title">Profil</div>
+                                    <div class="settings-summary--desc">Name und Sichtbarkeit verwalten.</div>
+                                </div>
+                                <span class="settings-summary--chevron" aria-hidden="true">▾</span>
+                            </summary>
+                            <div class="settings-content">
+                                <button id="editNameBtn" class="settings-action">✎ Namen bearbeiten</button>
+                                <div class="stay-logged-in">
+                                    <label class="toggle">
+                                        <input type="checkbox" id="visibleCheckbox">
+                                        <span class="toggle__track"></span>
+                                        <span class="toggle__label">Sichtbarkeit für Andere</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </details>
+
+                        <!--Sicherheit - Passwort und Auto-Login-->
+                        <details class="settings-section">
+                            <summary class="settings-summary">
+                                <div class="settings-summary--text">
+                                    <div class="settings-summary--title">Sicherheit</div>
+                                    <div class="settings-summary--desc">Passwort und Login-Optionen.</div>
+                                </div>
+                                <span class="settings-summary--chevron" aria-hidden="true">▾</span>
+                            </summary>
+                            <div class="settings-content">
+                                <button id="editPasswordBtn" class="settings-action">✎ Passwort bearbeiten</button>
+                                <div class="stay-logged-in">
+                                    <label class="toggle">
+                                        <input type="checkbox" id="autoLoginCheckbox">
+                                        <span class="toggle__track"></span>
+                                        <span class="toggle__label">Automatischer Login</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </details>
+
+                        <!--Design: Profilbild-->
+                        <details class="settings-section">
+                            <summary class="settings-summary">
+                                <div class="settings-summary--text">
+                                    <div class="settings-summary--title">Design</div>
+                                    <div class="settings-summary--desc">Profilfarbe auswählen.</div>
+                                </div>
+                                <span class="settings-summary--chevron" aria-hidden="true">▾</span>
+                            </summary>
+                            <div class="settings-content">
+                                <div id="colorContainer" class="color-grid">
+                                    <button type="button" data-color="#FF5733" class="colorPick" style="background:#FF5733" aria-label="Akzentfarbe #FF5733"></button>
+                                    <button type="button" data-color="#28A745" class="colorPick" style="background:#28A745" aria-label="Akzentfarbe #28A745"></button>
+                                    <button type="button" data-color="#007BFF" class="colorPick" style="background:#007BFF" aria-label="Akzentfarbe #007BFF"></button>
+                                    <button type="button" data-color="#FFC107" class="colorPick" style="background:#FFC107" aria-label="Akzentfarbe #FFC107"></button>
+                                    <button type="button" data-color="#6F42C1" class="colorPick" style="background:#6F42C1" aria-label="Akzentfarbe #6F42C1"></button>
+                                </div>
+                                <p class="settings-hint">Wähle eine Akzentfarbe für dein Profilbild.</p>
+                            </div>
+                        </details>
+
+                        <!--Support: Verbesserungen und Fehler-->
+                        <details class="settings-section">
+                            <summary class="settings-summary">
+                                <div class="settings-summary--text">
+                                    <div class="settings-summary--title">Support</div>
+                                    <div class="settings-summary--desc">Feedback senden oder Fehler melden.</div>
+                                </div>
+                                <span class="settings-summary--chevron" aria-hidden="true">▾</span>
+                            </summary>
+                            <div class="settings-content">
+                                <button id="reportIssue" class="settings-action">
+                                    Feedback & Fehler <span class="icon icon--feedback"></span>
+                                </button>
+                            </div>
+                        </details>
+
+                        <!--Logout und Account löschen-->
+                        <footer class="settings-danger">
+                            <button id="logoutBtn" class="exit-account-btn">
+                                Logout <span class="icon icon--logout"></span>
                             </button>
-                            <button id="editPasswordBtn" class="edit-names">
-                                ✎ Passwort bearbeiten ✎
-                            </button>   
-                            <div class="stay-logged-in" style="margin-top: var(--gap);">
-                                <label class="toggle">
-                                    <input type="checkbox" id="visibleCheckbox">
-                                    <span class="toggle__track"></span>
-                                    <span class="toggle__label">Sichtbarkeit für Andere</span>
-                                </label>
-                            </div>
-                            <div class="stay-logged-in">
-                                <label class="toggle">
-                                    <input type="checkbox" id="autoLoginCheckbox">
-                                    <span class="toggle__track"></span>
-                                    <span class="toggle__label">Automatischer Login</span>
-                                </label>
-                            </div>
-                            <button id="reportIssue">Feedback & Fehler <span class="icon icon--feedback"></span></button>
-                        </main>
-                        <footer>
-                            <button id="logoutBtn" class="exit-account-btn">Logout <span class="icon icon--logout"></span></button>
-                            <button id="delBtn" class="exit-account-btn">Account löschen <span class="icon icon--cancel"></span></button>
+                            <button id="delBtn" class="exit-account-btn danger">
+                                Account löschen <span class="icon icon--cancel"></span>
+                            </button>
                         </footer>
                     </div>
                 </section>
-
             </main>
 
             <nav class="tabbar" id="menue" aria-label="Main navigation">
