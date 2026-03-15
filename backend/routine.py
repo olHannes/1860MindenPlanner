@@ -1,4 +1,5 @@
 from mongoConf import *
+from validation import *
 
 routine_bp = Blueprint('routine', __name__)
 
@@ -13,16 +14,32 @@ def get_device_collection(device):
     }
     return device_collections.get(device)
 
+def device_from_element_id(eid: str) -> str | None:
+    if not isinstance(eid, str):
+        return None
+    eid = eid.strip()
+    if "_" not in eid:
+        return eid
+    return eid.split("_", 1)[0]
 
-#################################################################################################### Get Elements
-@routine_bp.route('/elements/get/filteredList', methods=['GET'])
+def serialize_mongo(doc):
+    if isinstance(doc, list):
+        return[serialize_mongo(item) for item in doc]
+    if isinstance(doc, dict):
+        return {k: serialize_mongo(v) for k, v in doc.items()}
+    if isinstance(doc, ObjectId):
+        return str(doc)
+    return doc
+
+#################################################################################################### List and filter Elements List
+@routine_bp.route('/exercise/elements', methods=['GET'])
 def get_group_elements():
-    device = request.args.get('Device')
-    difficulty = request.args.get('Difficulty')
-    group = request.args.get('Group')
-    flag_learned = request.args.get('learnedElements')
-    user_id = request.args.get('userId')
-    search_text = request.args.get('Text', '').strip().lower()
+    device          = request.args.get('device')
+    difficulty      = request.args.get('difficulty')
+    group           = request.args.get('group')
+    learned    = request.args.get('learned')
+    user_id         = request.args.get('userId')
+    search_text     = request.args.get('search', '').strip().lower()
 
     if search_text in ['undefined', 'null']:
         search_text = ''
@@ -30,23 +47,31 @@ def get_group_elements():
     if not device:
         return jsonify({"error": "Gerät ist erforderlich."}), 400
 
-    collection = get_device_collection(device)
-    if collection is None:
+    dev_collection = get_device_collection(device)
+    if dev_collection is None:
         return jsonify({"error": f"Unbekanntes Gerät: {device}"}), 400
 
-    elements = list(collection.find({}, {'_id': False}))
+    query = {}
 
-    if difficulty not in [None, '', 'null']:
-        elements = [el for el in elements if str(el.get('wertigkeit')) == str(difficulty)]
-
+    if difficulty not in [None, '' 'null']:
+        query['wertigkeit'] = str(difficulty)
+    
     if group not in [None, '', 'null']:
-        elements = [el for el in elements if str(el.get('elementegruppe')) == str(group)]
+        query['elementegruppe'] = str(group)
+    
+    if search_text:
+        query['$or'] = [
+            {'bezeichnung': {'$regex': search_text, '$options': 'i'}},
+            {'name': {'$regex': search_text, '$options': 'i'}}
+        ]
+    
+    elements = list(dev_collection.find(query, {'_id': False}))
 
-    if flag_learned == 'true':
+    if learned == 'true':
         if not user_id or not ObjectId.is_valid(user_id):
             return jsonify({"error": "Gültige userId erforderlich für 'learnedElements=true'!"}), 400
 
-        user = users_collection.find_one({"_id": ObjectId(user_id)}, {"learnedElements": 1})
+        user = users_collection.find_one({"_id": ObjectId(user_id)}, {"learned": 1})
         if not user:
             return jsonify({"error": "Benutzer nicht gefunden!"}), 404
 
@@ -56,13 +81,6 @@ def get_group_elements():
 
         elements = [el for el in elements if el.get("id") in learned_elements]
 
-    if search_text:
-        elements = [
-            el for el in elements 
-            if search_text in el.get('bezeichnung', '').lower() 
-            or search_text in el.get('name', '').lower()
-        ]
-
     unique_elements = {}
     for el in elements:
         el_id = el.get('id')
@@ -71,6 +89,32 @@ def get_group_elements():
     elements = list(unique_elements.values())
 
     return jsonify(elements), 200
+
+
+################################################################################################### load detailed Element
+@routine_bp.route('/exercise/element', methods=["GET"])
+def get_element():
+    element_id = request.args.get("id")
+    if not element_id:
+        return jsonify({"ok": False, "message": "Parameter 'id' ist erforderlich"}), 400
+    
+    parts = element_id.split("_")
+    if len(parts) < 3:
+        return jsonify({"ok": False, "message": "Ungültiges ID-Format"}), 400
+
+    dev = parts[0]
+
+    collection = get_device_collection(dev)
+    if collection is None:
+        return jsonify({"ok": False, "message": f"unbekanntes Gerät: '{dev}'"}), 400
+    
+    element = collection.find_one({"id": element_id}, {"_id": False})
+    if not element:
+        return jsonify({"ok": False, "message": "Kein Element mit der ID gefunden"}), 404
+
+    return jsonify({"ok": True, "element": element}), 200
+
+
 
 
 ################################################################################################### Update Exercise
@@ -111,6 +155,8 @@ def update_exercise():
         return jsonify({"message": "Übung aktualisiert, Bewertungen zurückgesetzt"}), 200
     else:
         return jsonify({"message": "Neue Übung angelegt"}), 201
+
+
 
 
 ################################################################################################### Rating Routine
@@ -216,6 +262,8 @@ def get_rating_by_name():
         return jsonify({"error": "Übung nicht gefunden"}), 404
 
 
+
+
 ################################################################################################### Copy Routine
 @routine_bp.route('/exercise/copyTo', methods=["POST"])
 def copy_routine_to():
@@ -266,226 +314,90 @@ def copy_routine_to():
         return jsonify({"message": f"Zielübung (Typ {target_routine_type}) neu angelegt."}), 201
 
 
-################################################################################################### Get Exercise
-@routine_bp.route('/exercise/get', methods=["GET"])
+################################################################################################### Load exercise (optional with expanded elements and routine rating)
+@routine_bp.route('/exercise', methods=["GET"])
 def get_exercise():
-    device = request.args.get("device")
-    vorname = request.args.get("vorname")
-    routine_type = request.args.get("routineType")
+    userId      = request.args.get("userId")
+    apparatus   = request.args.get("apparatus")
+    routineType = request.args.get("type")
+    expand      = request.args.get("expand") == "elements"
+    autoRating  = request.args.get("include") == "autoRating"
 
-    if not device or not vorname:
-        return jsonify({"error": "Ungültige Anfrage. Beide Parameter (device und vorname) sind erforderlich."}), 400
+    if not userId or not apparatus or not routineType:
+        return jsonify({ "ok": False, "message": "Ungültige Anfrage. Fehlende Parameter"}), 400
     
-    query = {"geraet": device, "vorname": vorname, "routineType": routine_type}
-    exercise = exercises_collection.find_one(query)
+    if not ObjectId.is_valid(userId):
+        return jsonify({ "ok": False, "message": "Ungültige Anfrage. Fehlerhafte Nutzer-Id"}), 400
 
-    if exercise:
-        exercise.pop("_id", None)
-        return jsonify(exercise), 200
-    else:
-        return jsonify({"error": "Keine Übung gefunden."}), 404
-
-
-################################################################################################### Get detailed Element
-@routine_bp.route('/exercise/get_element', methods=["GET"])
-def get_element():
-    element_id = request.args.get("id")
-    current_device = request.args.get("currentDevice")
-
-    if not element_id or not current_device:
-        return jsonify({"error": "Ungültige Anfrage. Beide Parameter (id und currentDevice) sind erforderlich."}), 400
+    query = { "apparatus": apparatus, 
+             "userId": ObjectId(userId), 
+             "routineType": routineType 
+    }
+    pipeline = [
+        {"$match": query},
+        {"$addFields" : {
+            "communityCount": { "$size": { "$ifNull": ["$community", []] } },
+            "communityAvg": { "$avg": { "$ifNull": ["$community.sterne", []] } }
+        }},
+        { "$addFields": {
+            "communityAvg": {
+                "$cond": [
+                    {"$gt": ["$communityCount", 0]},
+                    {"$round": ["$communityAvg", 1]},
+                    None
+                ]
+            }
+        }},
+        {"$project": { "community": 0 }}
+    ]
+    docs = list(exercises_collection.aggregate(pipeline, allowDiskUse=False))
+    if not docs:
+        return jsonify({"ok": False, "message": "Übung nicht gefunden"}), 404
     
-    collection = get_device_collection(current_device)
-    if collection is None:
-        return jsonify({"error": f"Unbekanntes Gerät: {current_device}"}), 400
-    
-    element = collection.find_one({"id": element_id})
-    element['_id'] = str(element['_id'])
+    exercise = serialize_mongo(docs[0])
+    auto_rating_result = None
 
-    if element:
-        return jsonify(element), 200
-    else:
-        return jsonify({"error": "Kein Element gefunden mit der angegebenen id und dem aktuellen Gerät."}), 404
+    if expand or autoRating:
+        element_ids = exercise.get("elements", [])
+        from collections import defaultdict
+        by_device = defaultdict(list)
+        for eid in element_ids:
+            dev = device_from_element_id(eid)
+            if dev:
+                by_device[dev].append(eid)
+        
+        element_map = {}
+        missing = []
+        for dev, ids in by_device.items():
+            coll = get_device_collection(dev)
+            if coll is None:
+                missing.extend(ids)
+                continue
+            for el in coll.find({"id": {"$in": ids}}):
+                el["_id"] = str(el["_id"])
+                element_map[el["id"]] = el
+            
+            for eid in ids:
+                if eid not in element_map:
+                    missing.append(eid)
 
+        resolved_elements = [element_map.get(eid) for eid in element_ids]
 
-################################################################################################### Get the max-Points of a Routine
-@routine_bp.route('/routine/getMaxPoints', methods=["GET"])
-def get_routine_max_points():
-    username = request.args.get("user")
-
-    if not username:
-        return jsonify({"error": "Ungültige Anfrage. Parameter (username) ist erforderlich."}), 400
-
-    devices = ["FL", "PO", "RI", "VA", "PA", "HI"]
-    result = {}
-
-    for currentDevice in devices:
-        query = {"geraet": currentDevice, "vorname": username, "routineType": "0"}
-        exercise = exercises_collection.find_one(query)
-
-        if not exercise or "elemente" not in exercise:
-            result[currentDevice] = None
-            continue
-
-        routineDetailsList = []
-        for element_id in exercise["elemente"]:
-            collection = get_device_collection(currentDevice)
-            element = collection.find_one({"id": element_id})
-            if element:
-                routineDetailsList.append(element)
-
-        if currentDevice == "VA":
-            validation_data = valid_routine_va(routineDetailsList)
+        if expand:
+            exercise["elements"] = resolved_elements
         else:
-            validation_data = analyze_routine_elements(currentDevice, routineDetailsList)
+            exercise["elements"] = element_ids
+        if missing:
+            exercise["elementsMissing"] = missing
+        if autoRating:
+            auto_rating_result = validate_routine(apparatus, resolved_elements)
+   
+    response = { "ok": True, "exercise": exercise}
 
-        result[currentDevice] = validation_data.get("totalDifficulty")
-
-    return jsonify(result), 200
-
-
-################################################################################################### Validate Routine
-@routine_bp.route('/routine/get/validation', methods=["POST"])
-def valid_routine():
-    data = request.get_json()
-    device = data.get("device")
-    elementList = data.get("elementList", [])
-
-    if not device or not elementList:
-        return jsonify({"error": "Device und elementList sind erforderlich"}), 400
-
-    collection = get_device_collection(device)
-    if collection is None:
-        return jsonify({"error": f"Unbekanntes Gerät: {device}"}), 400
-
-
-    if device == "VA":
-        return valid_routine_va(elementList)
+    if autoRating and auto_rating_result:
+        response["autoRating"] = auto_rating_result
     
-    result = analyze_routine_elements(device, elementList)
-    return jsonify(result), 200
-
-def valid_routine_va(elementList):
-    warnings = []
-    errors = []
-    highest_difficulty = 0
-    group_list = ""
-
-    if len(elementList) != 1:
-        errors.append("❌ Eine Sprung-Übung darf nur ein Element enthalten.")
-
-    for el in elementList:
-        wertigkeit = float(el.get("wertigkeit", 0))
-        highest_difficulty = max(highest_difficulty, wertigkeit)
-
-    element_group = elementList[0].get("elementegruppe") if elementList else None
-    if element_group:
-        group_list = str(element_group)
-
-    total_difficulty = 10 + highest_difficulty
-
-    return {
-        "warnings": warnings,
-        "errors": errors,
-        "totalDifficulty": round(total_difficulty, 2),
-        "totalElements": len(elementList),
-        "groupList": group_list,
-        "isComplete": len(errors) == 0,
-        "baseDifficulty": highest_difficulty,
-        "groupBonus": 0,
-        "dismountBonus": 0
-    }
-
-def analyze_routine_elements(device, elementList):
-    required_groups = {
-        "FL": {"1", "2", "3"},
-        "PO": {"1", "2", "3", "4"},
-        "RI": {"1", "2", "3", "4"},
-        "VA": set(),
-        "PA": {"1", "2", "3", "4"},
-        "HI": {"1", "2", "3", "4"}
-    }
-
-    total_difficulty = 10
-    element_groups = {}
-    seen_elements = {}
-    difficulties = []
-    warnings = []
-    errors = []
-
-    has_dismount = False
-    is_dismount_at_end = False
-    dismount_value = 0
+    return jsonify(response), 200
 
 
-    for i, element in enumerate(elementList):
-        wertigkeit = float(element.get("wertigkeit", 0))
 
-        if element.get("dismount"):
-            has_dismount = True
-            dismount_value = wertigkeit
-            if i == len(elementList) - 1:
-                is_dismount_at_end = True
-            else:
-                difficulties.append(wertigkeit)
-        else:
-            difficulties.append(wertigkeit)
-
-        gruppe = element.get("elementegruppe")
-        if gruppe:
-            element_groups[gruppe] = element_groups.get(gruppe, 0) + 1
-
-        bez = element.get("bezeichnung")
-        if bez:
-            seen_elements[bez] = seen_elements.get(bez, 0) + 1
-
-    top_six = sorted(difficulties, reverse=True)[:6]
-    base_difficulty = (sum(top_six) + dismount_value) * 2
-
-    required_set = required_groups.get(device, set())
-    missing_groups = [g for g in required_set if g not in element_groups]
-
-    group_bonus = sum(0.5 for g in element_groups if float(g) > 0.05)
-    dismount_bonus = 0.5 if dismount_value >= 0.2 else (0.3 if dismount_value >= 0.1 else 0)
-
-    total_difficulty += base_difficulty + group_bonus + dismount_bonus
-    total_elements = len(elementList)
-    group_list = ", ".join(sorted(element_groups))
-
-    is_complete = (
-        len(missing_groups) == 0 and
-        has_dismount and
-        total_elements >= 7 and
-        is_dismount_at_end
-    )
-
-    if total_elements > 7:
-        warnings.append("⚠️ Übung enthält mehr als 7 Elemente")
-    for group, count in element_groups.items():
-        if count > 3:
-            warnings.append(f"⚠️ Elementgruppe {group} kommt sehr oft vor ({count}x).")
-
-    duplicates = [f"{name} ({count}x)" for name, count in seen_elements.items() if count > 1]
-    if duplicates:
-        warnings.append("⚠️ Doppelte Elemente: " + ", ".join(duplicates))
-
-    if total_elements < 7:
-        errors.append(f"❌ Zu wenig Elemente: {total_elements}")
-    if missing_groups:
-        errors.append("❌ Fehlende Gruppen: " + ", ".join(missing_groups))
-    if not has_dismount:
-        errors.append("❌ Kein Abgang vorhanden")
-    if has_dismount and not is_dismount_at_end:
-        errors.append("❌ Der Abgang muss am Ende der Übung sein.")
-
-    return {
-        "warnings": warnings,
-        "errors": errors,
-        "totalDifficulty": round(total_difficulty, 2),
-        "totalElements": total_elements,
-        "groupList": group_list,
-        "isComplete": is_complete,
-        "baseDifficulty": round(base_difficulty, 2),
-        "groupBonus": group_bonus,
-        "dismountBonus": dismount_bonus
-    }
