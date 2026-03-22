@@ -31,13 +31,16 @@ def serialize_mongo(doc):
         return str(doc)
     return doc
 
+
+
 #################################################################################################### List and filter Elements List
+
 @routine_bp.route('/exercise/elements', methods=['GET'])
 def get_group_elements():
     device          = request.args.get('device')
     difficulty      = request.args.get('difficulty')
     group           = request.args.get('group')
-    learned    = request.args.get('learned')
+    learned         = request.args.get('learned')
     user_id         = request.args.get('userId')
     search_text     = request.args.get('search', '').strip().lower()
 
@@ -45,11 +48,11 @@ def get_group_elements():
         search_text = ''
 
     if not device:
-        return jsonify({"error": "Gerät ist erforderlich."}), 400
+        return jsonify({"ok": False, "message": "Gerät ist erforderlich."}), 400
 
     dev_collection = get_device_collection(device)
     if dev_collection is None:
-        return jsonify({"error": f"Unbekanntes Gerät: {device}"}), 400
+        return jsonify({"ok": False, "message": f"Unbekanntes Gerät: {device}"}), 400
 
     query = {}
 
@@ -69,11 +72,11 @@ def get_group_elements():
 
     if learned == 'true':
         if not user_id or not ObjectId.is_valid(user_id):
-            return jsonify({"error": "Gültige userId erforderlich für 'learnedElements=true'!"}), 400
+            return jsonify({"ok": False, "message": "Gültige userId erforderlich für 'learnedElements=true'!"}), 400
 
         user = users_collection.find_one({"_id": ObjectId(user_id)}, {"learned": 1})
         if not user:
-            return jsonify({"error": "Benutzer nicht gefunden!"}), 404
+            return jsonify({"ok": False, "message": "Benutzer nicht gefunden!"}), 404
 
         learned_elements = user.get("learnedElements", [])
         prefix = f"{device}_"
@@ -88,10 +91,11 @@ def get_group_elements():
             unique_elements[el_id] = el
     elements = list(unique_elements.values())
 
-    return jsonify(elements), 200
+    return jsonify({"ok": True, "message": "Elemente erfolgreich gefiltert", "elements": elements}), 200
 
 
 ################################################################################################### load detailed Element
+
 @routine_bp.route('/exercise/element', methods=["GET"])
 def get_element():
     element_id = request.args.get("id")
@@ -100,7 +104,7 @@ def get_element():
     
     parts = element_id.split("_")
     if len(parts) < 3:
-        return jsonify({"ok": False, "message": "Ungültiges ID-Format"}), 400
+        return jsonify({"ok": False, "message": "Ungültiges ID-Format"}), 403
 
     dev = parts[0]
 
@@ -114,109 +118,73 @@ def get_element():
 
     return jsonify({"ok": True, "element": element}), 200
 
-
-
-
-################################################################################################### Update Exercise
-@routine_bp.route('/exercise/update', methods=["POST"])
-def update_exercise():
-    data = request.json
-    vorname = data.get("vorname")
-    user_id = data.get("userId")
-    geraet = data.get("geraet")
-    elements = data.get("elemente")
-    routine_type = data.get("routineType")
-
-    if not vorname or user_id is None or geraet is None or elements is None or routine_type is None:
-        return jsonify({"error": "Ungültige Anfrage. Alle Felder (vorname, geraet, elemente, type) sind erforderlich."}), 400
-    
-    try:
-        user_object_id = ObjectId(user_id)
-    except Exception:
-        return jsonify({"error": "Ungültige userId"}), 400
-
-    query = {"vorname": vorname, "geraet": geraet, "routineType": routine_type}
-    existing_routine = exercises_collection.find_one(query)
-
-    update_data = {"$set": {"elemente": elements}}
-
-    if existing_routine is None:
-        update_data["$setOnInsert"] = {"bewertungen": []}
-    else:
-        existing_elements = existing_routine.get("elemente", [])
-        if existing_elements != elements:
-            update_data["$set"]["bewertungen"] = []
-
-    result = exercises_collection.update_one(query, update_data, upsert=True)
-
-    if result.matched_count > 0 and "bewertungen" not in update_data["$set"]:
-        return jsonify({"message": "Übung erfolgreich aktualisiert"}), 200
-    elif result.matched_count > 0:
-        return jsonify({"message": "Übung aktualisiert, Bewertungen zurückgesetzt"}), 200
-    else:
-        return jsonify({"message": "Neue Übung angelegt"}), 201
-
-
-
-
 ################################################################################################### Rating Routine
-@routine_bp.route('/exercise/rating', methods=["POST"])
+
+@routine_bp.route('/routine/rating', methods=["POST"])
 def rating_routine():
-    data = request.json
-    username = data.get("username")
-    target_username = data.get("target_username")
-    device = data.get("device")
-    rating_stars = data.get("rating")
+    data            = request.json
+    userId          = data.get("userId")
+    target_userId   = data.get("target_userId")
+    device          = data.get("device")
+    rating_stars    = data.get("rating")
 
-    if not username or not target_username or not device or rating_stars is None:
-        return jsonify({"message": "Invalid Request. Fields username, target_username, device, and rating are required."}), 400
-
+    if not userId or not ObjectId.is_valid(userId):
+        return jsonify({"ok": False, "message": "Ungültiger Wert oder fehlende user-ID"}), 400
+    if not target_userId or not ObjectId.is_valid(target_userId):
+        return jsonify({"ok": False, "message": "Ungültiger Wert oder fehlende target-user-ID"}), 400
+    if not device:
+        return jsonify({"ok": False, "message": "Fehlendes Bewertungs-Gerät"}), 400
+    if not rating_stars or rating_stars < 0 or rating_stars > 5:
+        return jsonify({"ok": False, "message": "Bewertung fehlt oder ist in ungültigem Wertebereich: [0,5]"}), 400
+    
     foundRoutine = exercises_collection.find_one({
-        "vorname": target_username,
-        "geraet": device,
+        "userId": ObjectId(target_userId),
+        "apparatus": device,
         "routineType": "0"
     })
 
     if not foundRoutine:
-        return jsonify({"error": "Routine not found"}), 404
+        return jsonify({"ok": False, "message": "Routine not found"}), 404
 
     existing_rating = next(
-        (entry for entry in foundRoutine.get("bewertungen", []) if entry.get("von") == username), None
+        (entry for entry in foundRoutine.get("bewertungen", []) if entry.get("von") == userId), None
     )
 
     if existing_rating:
-        result = exercises_collection.update_one(
-            {"_id": foundRoutine["_id"], "bewertungen.von": username},
+        exercises_collection.update_one(
+            {"_id": foundRoutine["_id"], "bewertungen.von": userId},
             {
                 "$set": {"bewertungen.$.sterne": rating_stars}
             }
         )
     else:
-        result = exercises_collection.update_one(
+        exercises_collection.update_one(
             {"_id": foundRoutine["_id"]},
             {
-                "$push": {"bewertungen": {"von": username, "sterne": rating_stars}}
+                "$push": {"bewertungen": {"von": userId, "sterne": rating_stars}}
             }
         )
-    return jsonify({"message": "Rating gespeichert"}), 200
+    return jsonify({"ok": True, "message": "Rating gespeichert", "TargetUser": target_userId, "stars": rating_stars}), 200
 
 
 ################################################################################################### Get Routine Rating
-@routine_bp.route('/exercise/rating', methods=["GET"])
+
+@routine_bp.route('/routine/rating', methods=["GET"])
 def get_rating_by_name():
-    vorname = request.args.get("vorname")
-    geraet = request.args.get("geraet")
-    routine_type = request.args.get("routineType")
+    user_id = request.args.get("userId")
+    device = request.args.get("device")
 
-    if not vorname or not geraet or not routine_type:
-        return jsonify({"error": "Fehlende Parameter (vorname, geraet, routineType)"}), 400
-
+    if not user_id or not ObjectId.is_valid(user_id):
+        return jsonify({"ok": False, "message": "Ungültiger Wert oder fehlender user-ID"}), 400
+    if not device:
+        return jsonify({"ok": False, "message": "Fehlende Geräteinformation"}), 400
+    
     pipeline = [
         {
             "$match": {
-                "vorname": vorname,
-                "geraet": geraet,
-                "routineType": routine_type
+                "userId": ObjectId(user_id),
+                "apparatus": device,
+                "routineType": "0"
             }
         },
         {
@@ -254,50 +222,52 @@ def get_rating_by_name():
             }
         }
     ]
-
     result = list(exercises_collection.aggregate(pipeline))
-    if result:
-        return jsonify(result[0]), 200
-    else:
-        return jsonify({"error": "Übung nicht gefunden"}), 404
+    if not result:
+        return jsonify({"ok": False, "error": "Übung nicht gefunden"}), 404
 
-
+    return jsonify({"ok": True, "message": "Bewertung erfolgreich geladen", "result": result[0]}), 200
 
 
 ################################################################################################### Copy Routine
+
 @routine_bp.route('/exercise/copyTo', methods=["POST"])
 def copy_routine_to():
-    data = request.json
-    vorname = data.get("vorname")
-    geraet = data.get("geraet")
-    routine_type = data.get("routineType")
+    data            = request.json
+    user_id          = data.get("userId")
+    apparatus       = data.get("apparatus")
+    target_type    = data.get("target_type")
 
-    if not vorname or geraet is None or routine_type is None:
-        return jsonify({"error": "Invalid Request. Fields 'firstName', 'device' and 'routineType' are necessary."}), 400
-
+    if not user_id or not ObjectId.is_valid(user_id):
+        return jsonify({"ok": False, "message": "Ungültiger Wert oder fehlende user-ID"}), 400
+    if not apparatus:
+        return jsonify({"ok": False, "message": "Fehlender Apparatus"}), 400
+    if not target_type:
+        return jsonify({"ok": False, "message": "Fehlender Typ"}), 400
     try:
-        routine_type = int(routine_type)
-        if routine_type not in [0, 1]:
-            raise ValueError()
-        target_routine_type = 1 if routine_type == 0 else 0
-    except ValueError:
-        return jsonify({"error": "routineType muss 0 oder 1 sein."}), 400
+        target_type = int(target_type)
+    except (ValueError, TypeError):
+        return jsonify({"ok": False, "message": "Typ muss 'int' Wert sein"}), 400
+    if target_type not in [0, 1]:
+        return jsonify({"ok": False, "message": "Typ muss im Wertebereich [0, 1] sein"}), 400
+    
+    target_routine_type = 1 - target_type
 
     source_query = {
-        "vorname": vorname,
-        "geraet": geraet,
-        "routineType": str(routine_type)
+        "userId": ObjectId(user_id),
+        "apparatus": apparatus,
+        "routineType": str(target_type)
     }
     source_exercise = exercises_collection.find_one(source_query)
 
     if not source_exercise:
-        return jsonify({"error": "Quellübung nicht gefunden."}), 404
+        return jsonify({"ok": False, "error": "Quellübung nicht gefunden."}), 404
 
     elemente_to_copy = source_exercise.get("elemente", [])
 
     target_query = {
-        "vorname": vorname,
-        "geraet": geraet,
+        "userId": ObjectId(user_id),
+        "apparatus": apparatus,
         "routineType": str(target_routine_type)
     }
     update_data = {
@@ -309,13 +279,20 @@ def copy_routine_to():
     result = exercises_collection.update_one(target_query, update_data, upsert=True)
 
     if result.matched_count > 0:
-        return jsonify({"message": f"Zielübung (Typ {target_routine_type}) erfolgreich aktualisiert."}), 200
+        return jsonify({
+            "ok": True,
+            "message": f"Zielübung (Typ {target_routine_type}) erfolgreich aktualisiert."
+            }), 200
     else:
-        return jsonify({"message": f"Zielübung (Typ {target_routine_type}) neu angelegt."}), 201
+        return jsonify({
+            "ok": True,
+            "message": f"Zielübung (Typ {target_routine_type}) neu angelegt."
+            }), 201
 
 
 ################################################################################################### Load exercise (optional with expanded elements and routine rating)
-@routine_bp.route('/exercise', methods=["GET"])
+
+@routine_bp.route('/routine', methods=["GET"])
 def get_exercise():
     userId      = request.args.get("userId")
     apparatus   = request.args.get("apparatus")
@@ -382,7 +359,8 @@ def get_exercise():
                     missing.append(eid)
 
         resolved_elements = [element_map.get(eid) for eid in element_ids]
-
+        if not resolved_elements:
+            resolved_elements = []
         if expand:
             exercise["elements"] = resolved_elements
         else:
@@ -400,4 +378,48 @@ def get_exercise():
     return jsonify(response), 200
 
 
+################################################################################################### Save Routine
+
+@routine_bp.route('/routine', methods=["PUT"])
+def update_routine():
+    data         = request.json
+    user_id      = data.get("userId")
+    apparatus    = data.get("apparatus")
+    elements     = data.get("elements")
+    routine_type = data.get("routineType")
+
+    if not user_id or not ObjectId.is_valid(user_id):
+        return jsonify({"ok": False, "message": "Ungültiger Wert oder fehlende user-ID"}), 400
+    if not apparatus:
+        return jsonify({"ok": False, "message": "Apparatus fehlt"}), 400
+    if elements is None or not isinstance(elements, list):
+        return jsonify({"ok": False, "message": "Elements muss vorhanden und eine Liste sein"}), 400
+    if not all(isinstance(e, str) for e in elements):
+        return jsonify({"ok": False, "message": "Alle Elemente müssen Strings sein"}), 400
+    try:
+        routine_type = int(routine_type)
+    except (ValueError, TypeError):
+        return jsonify({"ok": False, "message": "RoutineType muss 'int' Wert sein"}), 400
+    if routine_type not in [0, 1]:
+        return jsonify({"ok": False, "message": "RoutineType muss im Wertebereich [0, 1] sein"}), 400
+
+    query = { "userId": ObjectId(user_id), "apparatus": apparatus, "routineType": routine_type }
+    existing_routine = exercises_collection.find_one(query)
+
+    update_data = {"$set": {"elemente": elements}}
+    if existing_routine is None:
+            update_data["$setOnInsert"] = {"bewertungen": []}
+    else:
+        existing_elements = existing_routine.get("elemente", [])
+        if existing_elements != elements:
+            update_data["$set"]["bewertungen"] = []
+
+    result = exercises_collection.update_one(query, update_data, upsert=True)
+
+    if result.matched_count > 0 and "bewertungen" not in update_data["$set"]:
+        return jsonify({"message": "Übung erfolgreich aktualisiert"}), 200
+    elif result.matched_count > 0:
+        return jsonify({"message": "Übung aktualisiert, Bewertungen zurückgesetzt"}), 200
+    else:
+        return jsonify({"message": "Neue Übung angelegt"}), 201
 
