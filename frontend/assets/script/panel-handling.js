@@ -382,3 +382,28 @@ export function hideRoutineCopy(root) {
     hideFloatingBackground(root);
     hide(copyPanel);
 }
+
+
+// Competition Panel switch
+export function showCompetitionList(root) {
+    const score_panel = root.getElementById("score-panel");
+    const competition_panel = root.getElementById("competition-panel");
+    hide(score_panel);
+    show(competition_panel, "block");
+    competition.reloadCompetitions(root);
+}
+export function showCompetitionScore(root, compId) {
+    const score_panel = root.getElementById("score-panel");
+    const competition_panel = root.getElementById("competition-panel");
+    const userId = localStorage.getItem("userId");
+
+    hide(competition_panel);
+    show(score_panel, "block");
+
+    const submitBtn = score_panel.querySelector('[data-action="submitScore"]');
+    if(submitBtn) {
+        submitBtn.dataset._id = compId;
+        submitBtn.dataset.userId = userId;
+    }
+    competition.loadCompetitionScoresIntoPlaceholders(root, compId, userId);
+}

@@ -255,24 +255,23 @@ def add_points(competition_id):
 
     data = request.get_json(silent=True) or {}
     userId = data.get("userId")
-    device = data.get("device")
-    points = data.get("points")
+    scores = data.get("scores")
 
     if not userId or not ObjectId.is_valid(userId):
         return jsonify({"ok": False, "message": "Ungültige User-Id"}), 400
     
-    if not device or device not in ALLOWED_DEVICES:
-        return jsonify({"ok": False, "message": "Ungültiges Gerät"}), 400
-    
-    if points is None or not isinstance(points, (int, float)) or points < 0:
-        return jsonify({"ok": False, "message": "Ungültige Punktzahl"}), 400
-    
+    if not isinstance(scores, dict) or not scores:
+        return jsonify({"ok": False, "message": "Ungültige scores-Struktur"}), 400
+
     comp_oid = ObjectId(competition_id)
     user_oid = ObjectId(userId)
 
     comp = competition_collection.find_one({"_id": comp_oid})
+    if not comp:
+        return jsonify({"ok": False, "message": "Wettkampf nicht gefunden"}), 404
+    
     if checkIfIsPast(comp.get("date")):
-        return jsonify({"ok": False, "message": "Der wettkapf ist bereits beendet - neue Punkte sind nicht mehr gültig"}), 403
+        return jsonify({"ok": False, "message": "Der Wettkampf ist bereits beendet - Neue Punkte sind nicht mehr möglich"}), 403
 
     entry = competition_entries_collection.find_one(
         {"competitionId": comp_oid, "userId": user_oid},
@@ -280,10 +279,56 @@ def add_points(competition_id):
     )
     if not entry:
         return jsonify({"ok": False, "message": "Nutzer ist nicht in diesem Wettkampf angemeldet"}), 403
+
+    set_fields   = {}
+    unset_fields = {}
+    processed   = {}
+
+    for device, points in scores.items():
+        if device not in ALLOWED_DEVICES:
+            return jsonify({"ok": False, "message": f"Ungültiges Gerät: '{device}'"}), 400
+        if points is None or not isinstance(points, (int, float)) or points < 0:
+            return jsonify({"ok": False, "message": f"Ungültige Punktzahl für Gerät '{device}'"}), 400
+        
+        if points == 0:
+            unset_fields[f"scores.{device}"] = ""
+            processed[device] = 0
+        else:
+            set_fields[f"scores.{device}"] = points
+            processed[device] = points
+        
+    update = {}
+    if set_fields:
+        update["$set"] = set_fields
+    if unset_fields:
+        update["$unset"] = unset_fields
     
-    if points == 0:
-        update = {"$unset": { f"scores.{device}": "" }}
-    else:
-        update = {"$set": { f"scores.{device}": points }}
-    competition_entries_collection.update_one({"competitionId": comp_oid, "userId": user_oid}, update)    
-    return jsonify({"ok": True, "device": device, "points": points}), 200
+    if not update:
+        return jsonify({"ok": False, "message": "Keine gültigen Änderungen vorhanden"}), 400
+    
+    competition_entries_collection.update_one({"competitionId": comp_oid, "userId": user_oid}, update)
+    return jsonify({"ok": True, "message": "Datensätze erfolgreich aktualisiert", "updatedScores": processed}), 200
+
+
+################################################################################################### Get User-Specific Competition Points
+@competition_bp.route('/competition/<competition_id>/points', methods=['GET'])
+def get_points(competition_id):
+    user_id = request.args.get("userId")
+
+    if not competition_id or not ObjectId.is_valid(competition_id):
+        return jsonify({"ok": False, "message": "Fehlende oder ungültige Wettkampf-ID", "scores": {}}), 400
+    if not user_id or not ObjectId.is_valid(user_id):
+        return jsonify({"ok": False, "message": "Fehlende oder ungültige Nutzer-ID", "scores": {}}), 400
+    
+    user_oid = ObjectId(user_id)
+    comp_oid = ObjectId(competition_id)
+
+    entry = competition_entries_collection.find_one(
+        {"competitionId": comp_oid, "userId": user_oid},
+        {"_id": 0}
+    )
+
+    if not entry:
+        return jsonify({"ok": False, "message": "Nutzer ist dem Wettkampf noch nicht beigetreten", "scores": {}}), 404
+
+    return jsonify({"ok": True, "scores": entry["scores"], "userId": user_id, "competition_id": competition_id}), 200

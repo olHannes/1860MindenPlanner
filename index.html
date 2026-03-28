@@ -388,10 +388,74 @@
                                 <h3>Elementegruppen</h3>
                                 <ul id="detailGroups"></ul>
                             </div>
-                            <button class="btn--primary" type="button" data-action="to-exercise-editor">
+                            <button id="startEditor" class="btn--primary" type="button" data-action="to-exercise-editor">
                                 Übungserstellung
+                                <span class="icon icon--editor"></span>
                             </button>
                         </article>
+                    </section>
+                    <section id="view-apparatus-editor" class="sub-panel" hidden aria-label="Übungserstellung">
+                        <header class="sub-panel--header">
+                            <button class="btn--secondary" type="button" data-action="back-to-details">←</button>
+                            <h2>Übungserstellung</h2>
+                            <div id="editorName" class="muted"></div>
+                        </header>
+                        <div class="apparatus-exercise">
+                            <section class="editor-topbar">
+                                <div class="segmented" role="tablist" aria-label="Übungsmodus">
+                                    <button type="button" class="segmented-btn is-active" data-action="set-mode" data-mode="wish" role="tab" aria-selected="true">
+                                        Wunschübung
+                                    </button>
+                                    <button type="button" class="segmented-btn" data-action="set-mode" data-mode="competition" role="tab" aria-selected="false">
+                                        Wettkampfübung
+                                    </button>
+                                </div>
+                                <button type="button" class="btn--primary" data-action="save-exercise">
+                                    Speichern
+                                </button>
+                            </section>
+                            <section class="exercise-list">
+                                <header>Ziehe zum Sortieren (oder nutze die Buttons).</header>
+
+                                <div class="table-wrap" role="region" aria-label="Elementliste">
+                                    <table class="exercise-table">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:3ch;">#</th>
+                                                <th>Element</th>
+                                                <th style="width: 84px;">Bild</th>
+                                                <th style="width: 1%;">Aktion</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="editorRows">
+                                            <!--generated-->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <button type="button" class="btn--secondary add-row-btn" data-action="open-element-picker">
+                                    + Neu hinzufügen
+                                </button>
+                            </section>
+                            <section>
+                                <h3>Automatische Bewertung</h3>
+                                <div id="autoEval" class="eval-grid">
+                                    <!--generated-->
+                                </div>
+                                <div class="eval-messages">
+                                    <ul id="evalErrors" class="msg-list msg-list--error"></ul>
+                                    <ul id="evalWarnings" class="msg-list msg-list--warn"></ul>
+                                </div>
+                            </section>
+                            <section id="communitysection" hidden>
+                                <h3>Sternebewertung</h3>
+                                <div class="rating-row">
+                                    <div class="rating-stars" aria-label="Durchschnittliche Bewertung" id="avgStars">★★★★★</div>
+                                    <div class="muted">
+                                        <span id="avgRatingText">-</span> · <span id="ratingCountText">0 Bewertungen</span>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
                     </section>
                 </section>
 
@@ -417,7 +481,48 @@
                             <h2 class="panel-headline">Wettkämpfe</h2>
                             <div class="spinner"></div>
                         </header>
-                        <div class="panel-body scroll-list">
+                        <div id="score-panel" class="panel-body scroll-list" style="display: none;">
+                            <div class="score-panel__loading" id="scorePanelLoading" aria-live="polite" aria-hidden="true">
+                                <div class="spinner"></div>
+                                <p>Wertungen werden geladen …</p>
+                            </div>
+                            <div class="score-row">
+                                <img src="./frontend/assets/images/equipment/Floor_icon.png" alt="Boden Icon">
+                                <h2>Boden</h2>
+                                <input type="number" id="FlScore" min="0" max="99.999">
+                            </div>
+                            <div class="score-row">
+                                <img src="./frontend/assets/images/equipment/Pommelhorse_icon.png" alt="Pauschenpferd Icon">
+                                <h2>Pauschenpferd</h2>
+                                <input type="number" id="PoScore" min="0" max="99.999">
+                            </div>
+                            <div class="score-row">
+                                <img src="./frontend/assets/images/equipment/Rings_icon.png" alt="Ringe Icon">
+                                <h2>Ringe</h2>
+                                <input type="number" id="RiScore" min="0" max="99.999">
+                            </div>
+                            <div class="score-row">
+                                <img src="./frontend/assets/images/equipment/Vault_icon.png" alt="Sprung Icon">
+                                <h2>Sprung</h2>
+                                <input type="number" id="VaScore" min="0" max="99.999">
+                            </div>
+                            <div class="score-row">
+                                <img src="./frontend/assets/images/equipment/Parralelbars_icon.png" alt="Barren Icon">
+                                <h2>Barren</h2>
+                                <input type="number" id="PaScore" min="0" max="99.999">
+                            </div>
+                            <div class="score-row">
+                                <img src="./frontend/assets/images/equipment/Highbar_icon.png" alt="Reck Icon">
+                                <h2>Reck</h2>
+                                <input type="number" id="HiScore" min="0" max="99.999">
+                            </div>
+
+                            <div class="score-row score-btn-container">
+                                <button class="comp-btn btn--primary" data-action="submitScore">Update</button>
+                                <button class="comp-btn cancel-btn" data-action="cancelScore">Beenden</button>
+                            </div>
+                        </div>
+                        <div id="competition-panel" class="panel-body scroll-list">
                             <div id="competition-list">
                                 <!--dynamically load competition-->
                             </div>

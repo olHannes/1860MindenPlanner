@@ -95,6 +95,7 @@ function addMainPanelListener(root) {
     const toggleEquipmentBtn = root.querySelector("#toggleEquipment");
     toggleEquipmentBtn?.addEventListener("click", () => {
         panel.toggleMainPanel(root, 1);
+        exercise.showView(root, "list");
     });
     const toggleGroupsBtn = root.querySelector("#toggleMember");
     toggleGroupsBtn?.addEventListener("click", () => {

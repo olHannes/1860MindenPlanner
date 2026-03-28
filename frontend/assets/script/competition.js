@@ -103,54 +103,170 @@ async function leaveCompetition(compId) {
     }
 }
 
-async function submitResults(compId, userId, device, value) {
-    if(!compId || !userId || !device || !value) return;
-    if(!config.device.hasOwnProperty(device)) {
-        console.error("Invalid device:", device);
-        return false;
-    }
-    if(value <= 0) {
-        console.error("Invalid value");
-        return false;
-    }
+async function fetchCompetitionScores(compId, userId) {
+    if(!compId || !userId) return {ok: false, message: "Fehlende IDs", scores: {}};
+
     try {
-        const res = await fetch(`${config.serverURL}/competition/${compId}/points`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ userId: userId, device: device, points: value })
+        const res = await fetch(`${config.serverURL}/competition/${compId}/points?userId=${encodeURIComponent(userId)}`, {
+            method: "GET",
+            header: { "Content-Type" : "application/json" }
         });
         const data = await res.json();
-        if(data.ok) return true;
-        return false;
+        return {ok: data.ok, message: data.message, scores: data.scores};
     } catch (error) {
-        console.error("Failed to put competition points:", error);
-        return false;
+        console.error("Failed to load competitionScore:", error);
+        return { ok: false, message: "Interner Fehler", scores: {}};
     }
 }
 
-function submitCompetitionPoints(root, compId) {
+
+
+function getScoreInputs(root) {
+    return {
+        Boden: root.querySelector("#FlScore"),
+        Pauschenpferd: root.querySelector("#PoScore"),
+        Ringe: root.querySelector("#RiScore"),
+        Sprung: root.querySelector("#VaScore"),
+        Barren: root.querySelector("#PaScore"),
+        Reck: root.querySelector("#HiScore")
+    };
+}
+
+function fillScorePlaceholders(root, scores = {}, emptyPlaceholder = "keine Punkte") {
+    const inputs = getScoreInputs(root);
+
+    Object.entries(inputs).forEach(([device, input]) => {
+        if (!input) return;
+
+        const value = scores[device];
+
+        input.value = "";
+
+        if (value === undefined || value === null) {
+            input.placeholder = emptyPlaceholder;
+        } else {
+            input.placeholder = String(value);
+        }
+    });
+}
+
+function getNumberValue(root, selector) {
+    const val = root.querySelector(selector)?.value || "";
+    return Number(val.replace(",", ".")) || 0;
+}
+
+async function submitCompetitionResults(root, compId, userId) {
+    if(!root || !compId || !userId) return;
+
+    const loader = root.querySelector("#scorePanelLoading .spinner");
+    const loaderBackground = root.querySelector("#scorePanelLoading");
+    const loaderText = loaderBackground.querySelector("p");
+    if(loaderText) loaderText.innerText = "Wertungen werden gespeichert";
+    panel.show(loaderBackground, "flex");
+    panel.showLoader(loader);
+
+    const FlPoints = getNumberValue(root, "#FlScore");
+    const PoPoints = getNumberValue(root, "#PoScore");
+    const RiPoints = getNumberValue(root, "#RiScore");
+    const VaPoints = getNumberValue(root, "#VaScore");
+    const PaPoints = getNumberValue(root, "#PaScore");
+    const HiPoints = getNumberValue(root, "#HiScore");
+    
+    const score = {
+        "userId": userId,
+        "scores": {
+            "Boden": FlPoints,
+            "Barren": PaPoints,
+            "Reck": HiPoints,
+            "Ringe": RiPoints,
+            "Pauschenpferd": PoPoints,
+            "Sprung": VaPoints
+        }
+    }
+    try {
+        const res = await fetch(`${config.serverURL}/competition/${compId}/points`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(score)
+        });
+        const data = await res.json();
+        return { ok : data.ok, message: data.message };
+    } catch (error) {
+        console.error("Failed to update competition-points", error);
+        return { ok: false, message: "Interner Fehler" };
+    } finally {
+        setTimeout(() => {
+            panel.hideLoader(loader);
+            panel.hide(loaderBackground);
+        }, 500);
+    }
+}
+
+export async function loadCompetitionScoresIntoPlaceholders(root, compId, userId) {
+    if (!root || !compId || !userId) return { ok: false, score: {} };
+
+    const loader = root.querySelector("#scorePanelLoading .spinner");
+    const loaderBackground = root.querySelector("#scorePanelLoading");
+    const loaderText = loaderBackground?.querySelector("p");
+
+    try {
+        if (loaderText) loaderText.innerText = "Gespeicherte Wertungen werden geladen";
+        if (loaderBackground) panel.show(loaderBackground, "flex");
+        if (loader) panel.showLoader(loader);
+
+        const result = await fetchCompetitionScores(compId, userId);
+
+        fillScorePlaceholders(root, result.scores, "keine Punkte");
+
+        return result;
+    } finally {
+        setTimeout(() => {
+            if (loader) panel.hideLoader(loader);
+            if (loaderBackground) panel.hide(loaderBackground);
+        }, 300);
+    }
+}
+
+
+async function submitCompetitionPoints(root, compId) {
     const userId = localStorage.getItem("userId");
     if(!root || !compId || !userId) return;
 
+    const res = await submitCompetitionResults(root, compId, userId);
+
+    const title = res.ok
+        ? "Punkte gespeichert"
+        : "Punkte nicht gespeichert";
+    const msg = res.message;
+
+    panel.showMessage(root, title, msg);
+    return res;
 }
 
 
 export function addCompetitionEventListener(root, loader) {
-    const container = root.getElementById("competition-list");
+    const container = root.querySelector(".competition");
     if(!container) return;
+
     container.addEventListener("click", async (e) => {
         const btn = e.target.closest(".comp-btn");
         if(!btn) return;
-        const compId = btn.dataset._id;
+
         const action = btn.dataset.action;
+        const compId = btn.dataset._id;
 
         let success = false;
+
         if(action === "join") {
             success = await joinCompetition(compId);
         } else if(action === "leave") {
             success = await leaveCompetition(compId);
-        } else if(action === "submitPoints") {
-            success = submitCompetitionPoints(root, compId);
+        } else if(action === "cancelScore") {
+            success = panel.showCompetitionList(root);
+        } else if(action === "startScore") {
+            success = await panel.showCompetitionScore(root, compId);
+        } else if(action === "submitScore") {
+            success = await submitCompetitionPoints(root, compId);
         }
 
         if(!success) return;
@@ -249,6 +365,16 @@ function getActionButton(root, c) {
     return btn;
 }
 
+function getScoreButton(root, c) {
+    if(c.isPast || !c.joined) return null;
+
+    const btn = root.createElement("button");
+    btn.classList.add("comp-join", "comp-btn");
+    btn.dataset.action = c.joined ? "startScore" : "join";
+    btn.dataset._id = c._id;
+    btn.innerText = c.joined ? "Punkte aktualisieren" : "Beitreten";
+    return btn;
+}
 
 function createCompetitionDetails(root, body, c, onSortChange) {
     if(!root || !body || !c) return;
@@ -348,6 +474,9 @@ function createCompetitionObject(root, c) {
     const btn = getActionButton(root, c);
     if(btn) statusRow.appendChild(btn);
 
+    const scoreBtn = getScoreButton(root, c);
+    if(scoreBtn) statusRow.appendChild(scoreBtn);
+
     summary.appendChild(titleRow);
     summary.appendChild(metaRow);
     summary.appendChild(statusRow);
@@ -406,20 +535,7 @@ function getMetricValue(metrics, sortKey) {
     if (sortKey === "devices") return metrics.devices;
     return metrics.total;
 }
-/*
-function calcEntryMetric(e, sortKey) {
-    const scores = (e && e.scores && typeof e.scores == "object") ? e.scores : {};
-    const values = Object.values(scores).filter(v => typeof v === "number" && v > 0);
 
-    const total = values.reduce((a, b) => a + b, 0);
-    const devices = values.length;
-    const average = devices > 0 ? total / devices : 0;
-
-    if(sortKey === "average") return average;
-    if(sortKey === "devices") return devices;
-    return total; //default
-}
-*/
 function sortEntries(entries, sortKey) {
     const arr = Array.isArray(entries) ? [...entries] : [];
 
