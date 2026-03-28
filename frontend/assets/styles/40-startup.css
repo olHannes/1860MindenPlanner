@@ -25,6 +25,7 @@
   align-self: center;
   transform: translateY(-5%);
   width: 85dvw;
+  width: 80%;
   max-width: 500px;
 }
 .start-screen .icon {

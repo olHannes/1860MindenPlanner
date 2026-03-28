@@ -155,7 +155,7 @@
   justify-content: center;
   width: 100%;
   border-top: 2px solid #2f2f2f;
-  background: darkslategray;
+  background: var(--color-primary-dark);
 }
 #menueWrapper {
   display: flex;

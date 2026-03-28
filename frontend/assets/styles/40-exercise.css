@@ -49,3 +49,12 @@
 .apparatus-image {
     width: 40%;
 }
+
+
+
+/*Detail View*/
+#startEditor {
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+}

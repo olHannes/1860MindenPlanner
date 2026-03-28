@@ -77,6 +77,10 @@
   -webkit-mask-image: url("../images/icons/feedback-svgrepo-com.svg");
   mask-image: url("../images/icons/feedback-svgrepo-com.svg");
 }
+.icon--editor {
+  -webkit-mask-image: url("../images/icons/create-svgrepo-com.svg");
+  mask-image: url("../images/icons/create-svgrepo-com.svg");
+}
 .icon--competition {
   -webkit-mask-image: url("../images/icons/trophy-base-svgrepo-com.svg");
   mask-image: url("../images/icons/trophy-base-svgrepo-com.svg");
