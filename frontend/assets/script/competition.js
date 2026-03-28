@@ -240,7 +240,9 @@ async function submitCompetitionPoints(root, compId) {
     const msg = res.message;
 
     panel.showMessage(root, title, msg);
-    return res;
+    if(res.ok) {
+        panel.showCompetitionList(root);
+    }
 }
 
 
