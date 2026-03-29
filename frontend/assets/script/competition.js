@@ -1,15 +1,65 @@
 import * as panel from "./panel-handling.js";
 import * as config from "./config.js";
 
-
+/////////////////////////////////////////////////////
+//  Public Functions
+/////////////////////////////////////////////////////
 export async function reloadCompetitions(root) {
     const loader = root.querySelector("#panel3 .spinner");
-    const comps = await loadcompetitions(loader, localStorage.getItem("userId")); 
+    const comps = await fetchCompetitionList(loader, localStorage.getItem("userId")); 
     renderCompetitionList(root, comps);
 }
 
+export async function loadCompetitionScoresIntoPlaceholders(root, compId, userId) {
+    if (!root || !compId || !userId) return;
+    showScoreLoader(root, "Gespeicherte Wertungen werden geladen");
 
-async function loadcompetitions(loader, userId) {
+    try {
+        const result = await fetchCompetitionScores(compId, userId);
+        fillScorePlaceholders(root, result.scores, "keine Punkte");
+    } finally {
+        setTimeout(() => {
+            hideScoreLoader(root);
+        }, 300);
+    }
+}
+
+export function addCompetitionEventListener(root) {
+    const container = root.querySelector(".competition");
+    if(!container) return;
+
+    container.addEventListener("click", async (e) => {
+        const btn = e.target.closest(".comp-btn");
+        if(!btn) return;
+
+        const action = btn.dataset.action;
+        const compId = btn.dataset._id;
+        const userId = localStorage.getItem("userId");
+
+        let success = false;
+
+        if(action === "join") {
+            success = await joinCompetition(compId, userId);
+        } else if(action === "leave") {
+            success = await leaveCompetition(compId, userId);
+        } else if(action === "cancelScore") {
+            success = panel.showCompetitionList(root);
+        } else if(action === "startScore") {
+            success = await panel.showCompetitionScore(root, compId);
+        } else if(action === "submitScore") {
+            success = await updateCompetitionScore(root, compId, userId);
+        }
+        if(!success) return;
+        const comps = await fetchCompetitionList(null, userId);
+        renderCompetitionList(root, comps);
+    })
+}
+
+
+/////////////////////////////////////////////////////
+//  Fetch Functions
+/////////////////////////////////////////////////////
+async function fetchCompetitionList(loader, userId) {
     try {
         panel.showLoader(loader);
         let fetchUrl = `${config.serverURL}/competition/all`;
@@ -29,7 +79,7 @@ async function loadcompetitions(loader, userId) {
     }
 }
 
-async function loadCompetitionDetails(id, loader) {
+async function fetchCompetitionDetails(id, loader) {
     if(!id) return {};
     try {
         panel.showLoader(loader);
@@ -48,7 +98,7 @@ async function loadCompetitionDetails(id, loader) {
     }
 }
 
-async function loadCompetitionResult(id, loader) {
+async function fetchCompetitionEntries(id, loader) {
     if(!id) return;
     try {
         panel.showLoader(loader);
@@ -67,9 +117,7 @@ async function loadCompetitionResult(id, loader) {
     }
 }
 
-
-async function joinCompetition(compId) {
-    const userId = localStorage.getItem("userId");
+async function joinCompetition(compId, userId) {
     if(!compId ||!userId) return;
     try {
         const res = await fetch(`${config.serverURL}/competition/${compId}/join`, {
@@ -85,8 +133,8 @@ async function joinCompetition(compId) {
         return false;
     }
 }
-async function leaveCompetition(compId) {
-    const userId = localStorage.getItem("userId");
+
+async function leaveCompetition(compId, userId) {
     if(!compId || !userId) return;
     try {
         const res = await fetch(`${config.serverURL}/competition/${compId}/leave`, {
@@ -120,7 +168,9 @@ async function fetchCompetitionScores(compId, userId) {
 }
 
 
-
+/////////////////////////////////////////////////////
+//  Score Handling
+/////////////////////////////////////////////////////
 function getScoreInputs(root) {
     return {
         Boden: root.querySelector("#FlScore"),
@@ -131,21 +181,18 @@ function getScoreInputs(root) {
         Reck: root.querySelector("#HiScore")
     };
 }
-
 function fillScorePlaceholders(root, scores = {}, emptyPlaceholder = "keine Punkte") {
     const inputs = getScoreInputs(root);
-
     Object.entries(inputs).forEach(([device, input]) => {
         if (!input) return;
 
         const value = scores[device];
-
         input.value = "";
 
         if (value === undefined || value === null) {
             input.placeholder = emptyPlaceholder;
         } else {
-            input.placeholder = String(value);
+            input.value = String(value);
         }
     });
 }
@@ -154,33 +201,20 @@ function getNumberValue(root, selector) {
     const val = root.querySelector(selector)?.value || "";
     return Number(val.replace(",", ".")) || 0;
 }
-
 async function submitCompetitionResults(root, compId, userId) {
     if(!root || !compId || !userId) return;
 
-    const loader = root.querySelector("#scorePanelLoading .spinner");
-    const loaderBackground = root.querySelector("#scorePanelLoading");
-    const loaderText = loaderBackground.querySelector("p");
-    if(loaderText) loaderText.innerText = "Wertungen werden gespeichert";
-    panel.show(loaderBackground, "flex");
-    panel.showLoader(loader);
+    showScoreLoader(root, "Wertungen werden gespeichert");
 
-    const FlPoints = getNumberValue(root, "#FlScore");
-    const PoPoints = getNumberValue(root, "#PoScore");
-    const RiPoints = getNumberValue(root, "#RiScore");
-    const VaPoints = getNumberValue(root, "#VaScore");
-    const PaPoints = getNumberValue(root, "#PaScore");
-    const HiPoints = getNumberValue(root, "#HiScore");
-    
     const score = {
         "userId": userId,
         "scores": {
-            "Boden": FlPoints,
-            "Barren": PaPoints,
-            "Reck": HiPoints,
-            "Ringe": RiPoints,
-            "Pauschenpferd": PoPoints,
-            "Sprung": VaPoints
+            "Boden": getNumberValue(root, "#FlScore"),
+            "Barren": getNumberValue(root, "#PaScore"),
+            "Reck": getNumberValue(root, "#HiScore"),
+            "Ringe": getNumberValue(root, "#RiScore"),
+            "Pauschenpferd": getNumberValue(root, "#PoScore"),
+            "Sprung": getNumberValue(root, "#VaScore")
         }
     }
     try {
@@ -196,44 +230,15 @@ async function submitCompetitionResults(root, compId, userId) {
         return { ok: false, message: "Interner Fehler" };
     } finally {
         setTimeout(() => {
-            panel.hideLoader(loader);
-            panel.hide(loaderBackground);
+            hideScoreLoader(root);
         }, 500);
     }
 }
 
-export async function loadCompetitionScoresIntoPlaceholders(root, compId, userId) {
-    if (!root || !compId || !userId) return { ok: false, score: {} };
-
-    const loader = root.querySelector("#scorePanelLoading .spinner");
-    const loaderBackground = root.querySelector("#scorePanelLoading");
-    const loaderText = loaderBackground?.querySelector("p");
-
-    try {
-        if (loaderText) loaderText.innerText = "Gespeicherte Wertungen werden geladen";
-        if (loaderBackground) panel.show(loaderBackground, "flex");
-        if (loader) panel.showLoader(loader);
-
-        const result = await fetchCompetitionScores(compId, userId);
-
-        fillScorePlaceholders(root, result.scores, "keine Punkte");
-
-        return result;
-    } finally {
-        setTimeout(() => {
-            if (loader) panel.hideLoader(loader);
-            if (loaderBackground) panel.hide(loaderBackground);
-        }, 300);
-    }
-}
-
-
-async function submitCompetitionPoints(root, compId) {
-    const userId = localStorage.getItem("userId");
+async function updateCompetitionScore(root, compId, userId) {
     if(!root || !compId || !userId) return;
 
     const res = await submitCompetitionResults(root, compId, userId);
-
     const title = res.ok
         ? "Punkte gespeichert"
         : "Punkte nicht gespeichert";
@@ -245,39 +250,9 @@ async function submitCompetitionPoints(root, compId) {
     }
 }
 
-
-export function addCompetitionEventListener(root, loader) {
-    const container = root.querySelector(".competition");
-    if(!container) return;
-
-    container.addEventListener("click", async (e) => {
-        const btn = e.target.closest(".comp-btn");
-        if(!btn) return;
-
-        const action = btn.dataset.action;
-        const compId = btn.dataset._id;
-
-        let success = false;
-
-        if(action === "join") {
-            success = await joinCompetition(compId);
-        } else if(action === "leave") {
-            success = await leaveCompetition(compId);
-        } else if(action === "cancelScore") {
-            success = panel.showCompetitionList(root);
-        } else if(action === "startScore") {
-            success = await panel.showCompetitionScore(root, compId);
-        } else if(action === "submitScore") {
-            success = await submitCompetitionPoints(root, compId);
-        }
-
-        if(!success) return;
-        const comps = await loadcompetitions(null, localStorage.getItem("userId"));
-        renderCompetitionList(root, comps);
-    })
-}
-
-
+/////////////////////////////////////////////////////
+//  Competition Rendering
+/////////////////////////////////////////////////////
 function createCompetitionEntry(root, e, rank = 0, metrics = null, sortKey = "total") {
     if(!root || !e) return null;
 
@@ -319,13 +294,11 @@ function createCompetitionEntry(root, e, rank = 0, metrics = null, sortKey = "to
             }
         })
     }
-
     points.appendChild(name);
     points.appendChild(value);
     points.appendChild(scoreList);
 
     container.appendChild(points);
-    
     container.appendChild(icon);
     return container;
 }
@@ -335,7 +308,7 @@ async function createCompetitionLeaderboard(root, listEl, c, sortKey = "total") 
 
     panel.clearHTML(listEl);
 
-    const entries = await loadCompetitionResult(c._id);
+    const entries = await fetchCompetitionEntries(c._id);
     if(!entries || !Array.isArray(entries) || entries.length == 0) {
         const msg = root.createElement("p");
         msg.innerText = "Keine Einträge gefunden";
@@ -347,18 +320,14 @@ async function createCompetitionLeaderboard(root, listEl, c, sortKey = "total") 
 
     sorted.forEach((e, idx) => {
         const metrics = calcEntryMetrics(e);
-
         const rank = (metrics.total > 0 && idx < 3) ? idx + 1 : 0;
-        
         const entry = createCompetitionEntry(root, e, rank, metrics, sortKey);
         if(entry) listEl.appendChild(entry);
     });
 }
 
-
 function getActionButton(root, c) {
     if (c.isPast) return null;
-
     const btn = root.createElement("button");
     btn.classList.add(c.joined ? "comp-leave" : "comp-join", "comp-btn");
     btn.dataset.action = c.joined ? "leave" : "join";
@@ -369,7 +338,6 @@ function getActionButton(root, c) {
 
 function getScoreButton(root, c) {
     if(c.isPast || !c.joined) return null;
-
     const btn = root.createElement("button");
     btn.classList.add("comp-join", "comp-btn");
     btn.dataset.action = c.joined ? "startScore" : "join";
@@ -421,11 +389,9 @@ function createCompetitionDetails(root, body, c, onSortChange) {
     return { sortSelect, list };
 }
 
-
 function createCompetitionObject(root, c) {
     if(!c) return;
     const { date, isPast, joined, location, name, _id } = c;
-
     // --- outer container ---
     const details = root.createElement("details");
     details.classList.add("comp-card");
@@ -517,7 +483,6 @@ function renderCompetitionList(root, competitionList) {
 }
 
 
-
 /////////////////////////////////////////////////////
 //  Helper Functions
 /////////////////////////////////////////////////////
@@ -554,4 +519,20 @@ function sortEntries(entries, sortKey) {
         const ub = (b?.userName ?? "").toLowerCase();
         return ua.localeCompare(ub);
     });
+}
+
+function showScoreLoader(root, loaderTextMsg = "Gespeicherte Wertungen werden geladen") {
+    const loader = root.querySelector("#scorePanelLoading .spinner");
+    const loaderBackground = root.querySelector("#scorePanelLoading");
+    const loaderText = loaderBackground?.querySelector("p");
+
+    if(loaderText) loaderText.innerText = loaderTextMsg;
+    panel.show(loaderBackground, "flex");
+    panel.showLoader(loader);
+}
+function hideScoreLoader(root) {
+    const loader = root.querySelector("#scorePanelLoading .spinner");
+    const loaderBackground = root.querySelector("#scorePanelLoading");
+    panel.hideLoader(loader);
+    panel.hide(loaderBackground);
 }

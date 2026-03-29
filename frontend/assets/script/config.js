@@ -3,19 +3,10 @@ serverURL = "http://127.0.0.1:10000";
 
 
 const devices = ["Boden", "Barren", "Sprung", "Reck", "Ringe", "Pauschenpferd"];
-const keyAliases = {
-    "Boden": "FL",
-    "Pauschenpferd": "PO",
-    "Ringe": "RI",
-    "Sprung": "VA",
-    "Barren": "PA",
-    "Reck": "HI"
-};
-
 
 export const APPARATUS = [
     {
-        id: "Floor",
+        id: "FL",
         nameDe: "Boden",
         nameEn: "Floor",
         icon: "./frontend/assets/images/equipment/Floor_icon.png",
@@ -31,7 +22,7 @@ export const APPARATUS = [
         ]
     },
     {
-        id: "Pommelhorse",
+        id: "PO",
         nameDe: "Pauschenpferd", 
         nameEn: "Pommel-Horse",
         icon: "./frontend/assets/images/equipment/Pommelhorse_icon.png",
@@ -47,7 +38,7 @@ export const APPARATUS = [
         ]
     },
     {
-        id: "Rings",
+        id: "RI",
         nameDe: "Rings", 
         nameEn: "Rings",
         icon: "./frontend/assets/images/equipment/Rings_icon.png",
@@ -63,7 +54,7 @@ export const APPARATUS = [
         ]
     },
     {
-        id: "Vault",
+        id: "VA",
         nameDe: "Sprung", 
         nameEn: "Vault",
         icon: "./frontend/assets/images/equipment/Vault_icon.png",
@@ -78,7 +69,7 @@ export const APPARATUS = [
         ]
     },
     {
-        id: "Parralelbars",
+        id: "PA",
         nameDe: "Barren", 
         nameEn: "Parralel-Bars",
         icon: "./frontend/assets/images/equipment/Parralelbars_icon.png",
@@ -94,7 +85,7 @@ export const APPARATUS = [
         ]
     },
     {
-        id: "Highbar",
+        id: "HI",
         nameDe: "Reck", 
         nameEn: "Highbar",
         icon: "./frontend/assets/images/equipment/Highbar_icon.png",

@@ -10,7 +10,7 @@ export function addFunktionalEventListener(root) {
     addFloatingPanelListener(root);
     addMainPanelListener(root);
     setAccountSettingsListener(root);
-    competition.addCompetitionEventListener(root, null);
+    competition.addCompetitionEventListener(root);
     exercise.addExerciseEventListener(root);
 }
 

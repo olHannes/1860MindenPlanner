@@ -13,7 +13,7 @@ export async function reloadAllUser(root) {
 async function loadAllUser(loader) {
     try {
         panel.showLoader(loader);
-        const res = await fetch(`${config.serverURL}/users/visible/all`, {
+        const res = await fetch(`${config.serverURL}/users/all`, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         });
