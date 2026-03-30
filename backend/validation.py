@@ -64,8 +64,6 @@ def validate_login(email, password):
 def validate_routine(device: str, element_list: List[Dict[str, Any]]) -> ValidationResult:
     if not device or not isinstance(device, str):
         raise ValueError("device darf nicht leer sein")
-    if not element_list or not isinstance(element_list, list):
-        raise ValueError("element_list darf keine leere Liste sein")
     
     device = device.strip().upper()
 
@@ -95,7 +93,9 @@ def _validate_routine_va(element_list: List[Dict[str, Any]]) -> ValidationResult
     highest_difficulty = 0.0
     group_list = ""
 
-    if len(element_list) != 1:
+    if len(element_list) == 0:
+        errors.append("❌ Eine Sprung-Übung muss nur ein Element enthalten.")
+    elif len(element_list) > 1:
         errors.append("❌ Eine Sprung-Übung darf nur ein Element enthalten.")
 
     for el in element_list:
@@ -129,6 +129,7 @@ def _analyze_routine_elements(device: str, element_list: List[Dict[str, Any]]) -
         "VA": set(),
     }
     total_difficulty = 10.0
+
     element_groups: Dict[str, int] = {}
     seen_elements: Dict[str, int] = {}
     difficulties: List[float] = []
@@ -142,50 +143,51 @@ def _analyze_routine_elements(device: str, element_list: List[Dict[str, Any]]) -
     for i, element in enumerate(element_list):
         wertigkeit = _to_float(element.get("wertigkeit", 0))
         gruppe = element.get("elementegruppe")
-        is_dismound = bool(element.get("dismount"))
+        is_dismount = bool(element.get("dismount"))
         name = element.get("bezeichnung")
 
         if gruppe is not None:
             g = str(gruppe)
             element_groups[g] = element_groups.get(g, 0) + 1
 
-        if is_dismound:
+        if name:
+            name = str(name).strip()
+            if name:
+                seen_elements[name] = seen_elements.get(name, 0) + 1
+
+        if is_dismount:
             has_dismount = True
             dismount_value = wertigkeit
             if i == len(element_list)-1:
                 is_dismount_at_end = True
             else:
                 difficulties.append(wertigkeit)
+        else:
+            difficulties.append(wertigkeit)
             
-            if name:
-                name = str(name).strip()
-                if name:
-                    seen_elements[name] = seen_elements.get(name, 0) + 1
-            
-        top_six = sorted(difficulties, reverse=True)[:6]
-        base_difficulty = (sum(top_six) + dismount_value) * 2
+    top_six = sorted(difficulties, reverse=True)[:6]
+    base_difficulty = (sum(top_six) + dismount_value) * 2
 
-        required_set = required_groups.get(device, set())
-        missing_groups = [g for g in required_set if g not in element_groups]
+    required_set = required_groups.get(device, set())
+    missing_groups = [g for g in required_set if g not in element_groups]
 
-        group_bonus = 0.5 * len(element_groups)
+    group_bonus = 0.5 * len(element_groups)
+    dismount_bonus = 0.5 if dismount_value >= 0.2 else (0.3 if dismount_value >= 0.1 else 0.0)
 
-        dismount_bonus = 0.5 if dismount_value >= 0.2 else (0.3 if dismount_value >= 0.1 else 0.0)
+    total_difficulty += base_difficulty + group_bonus + dismount_bonus
+    total_elements = len(element_list)
+    group_list = ", ".join(sorted(element_groups.keys(), key=_group_sort_key))
 
-        total_difficulty += base_difficulty + group_bonus + dismount_bonus
-        total_elements = len(element_list)
-
-        group_list = ", ".join(sorted(element_groups.keys(), key=_group_sort_key))
-
-        is_complete = (
-            len(missing_groups) == 0
-            and total_elements >= 7
-            and has_dismount
-            and is_dismount_at_end
-        )
+    is_complete = (
+        len(missing_groups) == 0
+        and total_elements >= 7
+        and has_dismount
+        and is_dismount_at_end
+    )
 
     if total_elements > 7:
         warnings.append("⚠️ Übung enthält mehr als 7 Elemente.")
+
     for group, count in element_groups.items():
         if count > 3:
             warnings.append(f"⚠️ Elementegruppe {group} kommt sehr oft vor ({count}x).")

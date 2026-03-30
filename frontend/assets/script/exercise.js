@@ -9,6 +9,7 @@ const state = {
     elements: [
         //{id, name, img}
     ],
+    autoRating: { },
     community: { avg: null, count: 0}, //only for competition
 };
 
@@ -34,11 +35,15 @@ export function showView(root, next) {
 
 
 async function fetchExercise(userId, dev, type, loader) {
-    if(!userId || !dev ||!type) return;
-    const fetchUrl = `${config.serverURL}/exercise`
+    if (!userId || !dev || (type != 0 && type != 1)) {
+        return { ok: false, message: "Fehlende Parameter", exercise: { elements: [] } };
+    }
+    const fetchUrl = `${config.serverURL}/routine`
         + `?userId=${userId}`
         + `&apparatus=${dev}`
-        + `&type=${type}`;
+        + `&type=${type}`
+        + `&expand=elements`
+        + `&include=autoRating`;
     try {
         showLoader(loader);
         const res = await fetch(fetchUrl, {
@@ -46,25 +51,35 @@ async function fetchExercise(userId, dev, type, loader) {
             headers: { "Content-Type": "application/json" }
         });
         const data = await res.json();
-        if(data.ok) return data.exercise;
-        return [];
+        return data;
     } catch (error) {
         console.error("Failed to fetch exercise:", error);
-        return []
+        return {ok: false, elements: []};
     } finally {
         hideLoader(loader);
     }
 }
 async function setupCurrentExercise(root) {
-    const exercise = await fetchExercise(localStorage.getItem("userId"), 
+    const response = await fetchExercise(localStorage.getItem("userId"), 
         state.selectedApparatusId, 
         getRoutineType(), 
         null);
-    state.elements = exercise.elements;
-    state.community.avg = exercise.communityAvg;
-    state.community.count = exercise.communityCount;
+        const exercise = response?.exercise ?? null;
+        state.elements = exercise?.elemente ?? [];
+        state.community.avg = exercise?.communityAvg ?? 0;
+        state.community.count = exercise?.communityCount ?? 0;
+
+        if(response?.autoRating){
+            state.autoRating = response?.autoRating;
+        }
 }
 
+async function changeRoutineType(root, type) {
+    if(!root || !["wish", "competition"].includes(type)) return;
+    state.mode = type;
+    await setupCurrentExercise(root);
+    renderApparatusEditor(root, state.selectedApparatusId);
+}
 
 
 export function renderApparatusCards(root) {
@@ -86,7 +101,6 @@ export function renderApparatusCards(root) {
             <img src="${a.icon}" alt="${a.nameEn}" class="apparatus-image">
         </button>
     `).join("");
-    
     container.innerHTML = html;
 }
 
@@ -137,32 +151,74 @@ function renderApparatusEditor(root, apparatusId) {
     renderAutoEval(root);
     renderCommunity(root);
 }
+
 function renderEditorRows(root) {
     const tbody = root.querySelector("#editorRows");
     if(!tbody) return;
-    console.log(state);
-    tbody.innerHTML = state.elements.map((el, i) => `
+    if(Array.isArray(state.elements) && state.elements.length > 0) {
+        tbody.innerHTML = state.elements.map((el, i) => `
         <tr class="row" draggable="true"
-            data-row-index="${i}"
+        data-row-index="${i}"
             data-element-id="${el.id}"
-        >
+            >
             <td>${i+1}</td>
             <td>
-                <div class="row-title">${el.name}</div>
+                <div class="row-title">${el.bezeichnung}</div>
             </td>
             <td>
-                <img class="row-img" src="${el.img}" alt="">
+            <img class="row-img" src="${el.image_path}" alt="">
             </td>
             <td class="row-actions">
-                <button type="button" class="icon-btn" data-action="move-up" data-index="${i}" aria-label="Nach oben">↑</button>
+            <button type="button" class="icon-btn" data-action="move-up" data-index="${i}" aria-label="Nach oben">↑</button>
                 <button type="button" class="icon-btn" data-action="move-down" data-index="${i}" aria-label="Nach unten">↓</button>
                 <button type="button" class="icon-btn danger" data-action="remove-element" data-index="${i}" aria-label="Löschen">🗑</button>
-            </td>
-        </tr>
-    `).join("");
+                </td>
+                </tr>
+                `).join("");
+                root.querySelector(".table-wrap .routine-empty-msg")?.remove();
+            } else {
+        tbody.innerHTML = "";
+        const twrapper = root.querySelector(".table-wrap");
+        twrapper?.querySelector(".routine-empty-msg")?.remove();
+        const p = document.createElement("p");
+        p.classList.add("routine-empty-msg");
+        p.innerText = "Bisher wurde keine Übung erstellt";
+        if(twrapper) twrapper.appendChild(p);
+    }
 }
 function renderAutoEval(root) {
+    const totDiffi = root.querySelector("#totalDifficulty");
+    const basDiffi = root.querySelector("#baseDifficulty");
+    const groBonus = root.querySelector("#groupBonus");
+    const disBonus = root.querySelector("#dismountBonus");
+    const warnCont = root.querySelector("#warning-container");
+    const errConta = root.querySelector("#error-container");
+    if(state.autoRating) {
+        if(totDiffi) totDiffi.innerText = state.autoRating.totalDifficulty ?? "-";
+        if(basDiffi) basDiffi.innerText = state.autoRating.baseDifficulty ?? "-";
+        if(groBonus) groBonus.innerText = state.autoRating.groupBonus ?? "-";
+        if(disBonus) disBonus.innerText = state.autoRating.dismountBonus ?? "-";
 
+        if(warnCont) {
+            warnCont.innerHTML = "";
+            state.autoRating?.warnings?.forEach(element => {
+                const p = root.createElement("p");
+                p.classList.add("warning");
+                p.innerText = element;
+                warnCont.appendChild(p);
+            });
+        }
+        
+        if(errConta) {
+            errConta.innerHTML = "";
+            state.autoRating?.errors?.forEach(element => {
+                const p = root.createElement("p");
+                p.classList.add("error");
+                p.innerText = element;
+                errConta.appendChild(p);
+            });
+        }
+    }
 }
 function renderCommunity(root) {
 
@@ -175,6 +231,7 @@ export function addExerciseEventListener(root) {
         if(!actionEl) return;
 
         const action = actionEl.dataset.action;
+
         if(action === "open-detail") {
             const id = actionEl.dataset.apparatusId;
             if(!id) return;
@@ -190,6 +247,11 @@ export function addExerciseEventListener(root) {
             if(!id) return;
             renderApparatusEditor(root, id);
             showView(root, "editor");
+        } else if (action === "save-exercise") {
+        } else if (action === "set-mode") {
+            const type = actionEl.dataset.mode;
+            if(!type) return;
+            changeRoutineType(root, type);
         }
     });
 }

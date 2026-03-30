@@ -301,10 +301,26 @@ def get_exercise():
     autoRating  = request.args.get("include") == "autoRating"
 
     if not userId or not apparatus or not routineType:
-        return jsonify({ "ok": False, "message": "Ungültige Anfrage. Fehlende Parameter"}), 400
+        return jsonify({
+            "ok": False,
+            "message": "Ungültige Anfrage. Fehlende Parameter",
+            "exercise": {
+                "elements": [],
+                "communityAvg": 0,
+                "communityCount": 0
+            }
+        }), 400
     
     if not ObjectId.is_valid(userId):
-        return jsonify({ "ok": False, "message": "Ungültige Anfrage. Fehlerhafte Nutzer-Id"}), 400
+        return jsonify({
+            "ok": False,
+            "message": "Ungültige Anfrage. Fehlerhafte userId",
+            "exercise": {
+                "elements": [],
+                "communityAvg": 0,
+                "communityCount": 0
+            }
+        }), 400
 
     query = { "apparatus": apparatus, 
              "userId": ObjectId(userId), 
@@ -329,13 +345,21 @@ def get_exercise():
     ]
     docs = list(exercises_collection.aggregate(pipeline, allowDiskUse=False))
     if not docs:
-        return jsonify({"ok": False, "message": "Übung nicht gefunden"}), 404
+        return jsonify({
+            "ok": False,
+            "message": "Übung nicht gefunden",
+            "exercise": {
+                "elements": [],
+                "communityAvg": 0,
+                "communityCount": 0
+            }
+        }), 404
     
     exercise = serialize_mongo(docs[0])
     auto_rating_result = None
 
     if expand or autoRating:
-        element_ids = exercise.get("elements", [])
+        element_ids = exercise.get("elemente", [])
         from collections import defaultdict
         by_device = defaultdict(list)
         for eid in element_ids:
@@ -362,17 +386,17 @@ def get_exercise():
         if not resolved_elements:
             resolved_elements = []
         if expand:
-            exercise["elements"] = resolved_elements
+            exercise["elemente"] = resolved_elements
         else:
-            exercise["elements"] = element_ids
+            exercise["elemente"] = element_ids
         if missing:
             exercise["elementsMissing"] = missing
         if autoRating:
             auto_rating_result = validate_routine(apparatus, resolved_elements)
    
-    response = { "ok": True, "exercise": exercise}
+    response = { "ok": True, "message": "Exercise erfolgreich geladen", "exercise": exercise}
 
-    if autoRating and auto_rating_result:
+    if autoRating:
         response["autoRating"] = auto_rating_result
     
     return jsonify(response), 200
