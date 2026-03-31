@@ -5,6 +5,8 @@ ValidationResult = Dict[str, Any]
 NAME_RE = re.compile(r"^[A-Za-zÄÖÜäöüß ^\-']+$")
 EMAIL_RE = re.compile(r"^[^\s@]+@[^\s@]+\.[^\s@]+$")
 
+ROUTINE_MIN_ELEMENTS = 7
+
 def normalize_name(txt: str) -> str:
     if not txt:
         return ""
@@ -185,8 +187,8 @@ def _analyze_routine_elements(device: str, element_list: List[Dict[str, Any]]) -
         and is_dismount_at_end
     )
 
-    if total_elements > 7:
-        warnings.append("⚠️ Übung enthält mehr als 7 Elemente.")
+    if total_elements > ROUTINE_MIN_ELEMENTS:
+        warnings.append(f"⚠️ Übung enthält mehr als {ROUTINE_MIN_ELEMENTS} Elemente.")
 
     for group, count in element_groups.items():
         if count > 3:
@@ -195,8 +197,8 @@ def _analyze_routine_elements(device: str, element_list: List[Dict[str, Any]]) -
     if duplicates:
         warnings.append("⚠️ Mehrface Elemente: " + ", ".join(duplicates))
     
-    if total_elements < 7:
-        errors.append(f"❌ Zu wenig Elemente: {total_elements}!")
+    if total_elements < ROUTINE_MIN_ELEMENTS:
+        errors.append(f"❌ Zu wenig Elemente: {total_elements}! Minimum: {ROUTINE_MIN_ELEMENTS}")
     if missing_groups:
         errors.append(f"❌ Fehlende Gruppen: " + ", ".join(sorted(missing_groups, key=_group_sort_key)))
     if not has_dismount:
