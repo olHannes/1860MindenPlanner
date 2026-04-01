@@ -68,11 +68,9 @@
 
 
 .eval-difficultis {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 5px;
-    align-items: center;
-    justify-content: center;
     padding: 0px 5px 0px 5px;
 }
 .difficulty-entry {
@@ -85,7 +83,6 @@
     padding: 8px 0px 4px 0px;
     border: 1px solid var(--color-primary-dark);
     border-radius: 15px;
-    max-width: 23%;
 }
 .difficulty-entry span {
     font-size: 1.3rem;
@@ -93,4 +90,18 @@
 }
 .difficulty-entry p {
     margin: 6px 0px 10px 0px;
+}
+
+.rating-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.rating-stars {
+    font-size: 3rem;
+}
+.rating-row .muted {
+    display: flex;
+    flex-direction: row;
+    letter-spacing: 0.2rem;
 }

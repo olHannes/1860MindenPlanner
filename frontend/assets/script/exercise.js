@@ -1,6 +1,6 @@
 
 import * as config from "./config.js";
-import { hideLoader, showLoader } from "./panel-handling.js";
+import * as panel from "./panel-handling.js";
 
 const state = {
     view: "list", //list | detail | editor
@@ -10,7 +10,7 @@ const state = {
         //{id, name, img}
     ],
     autoRating: { },
-    community: { avg: null, count: 0}, //only for competition
+    community: { avg: 0.0, count: 0}, //only for competition
 };
 
 function getApparatusById(id) {
@@ -45,7 +45,7 @@ async function fetchExercise(userId, dev, type, loader) {
         + `&expand=elements`
         + `&include=autoRating`;
     try {
-        showLoader(loader);
+        panel.showLoader(loader);
         const res = await fetch(fetchUrl, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
@@ -56,7 +56,7 @@ async function fetchExercise(userId, dev, type, loader) {
         console.error("Failed to fetch exercise:", error);
         return {ok: false, elements: []};
     } finally {
-        hideLoader(loader);
+        panel.hideLoader(loader);
     }
 }
 async function setupCurrentExercise(root) {
@@ -158,9 +158,9 @@ function renderEditorRows(root) {
     if(Array.isArray(state.elements) && state.elements.length > 0) {
         tbody.innerHTML = state.elements.map((el, i) => `
         <tr class="row" draggable="true"
-        data-row-index="${i}"
+            data-row-index="${i}"
             data-element-id="${el.id}"
-            >
+        >
             <td>${i+1}</td>
             <td>
                 <div class="row-title">${el.bezeichnung}</div>
@@ -169,21 +169,26 @@ function renderEditorRows(root) {
             <img class="row-img" src="${el.image_path}" alt="">
             </td>
             <td class="row-actions">
-            <button type="button" class="icon-btn" data-action="move-up" data-index="${i}" aria-label="Nach oben">↑</button>
+                <button type="button" class="icon-btn" data-action="move-up" data-index="${i}" aria-label="Nach oben">↑</button>
                 <button type="button" class="icon-btn" data-action="move-down" data-index="${i}" aria-label="Nach unten">↓</button>
                 <button type="button" class="icon-btn danger" data-action="remove-element" data-index="${i}" aria-label="Löschen">🗑</button>
-                </td>
-                </tr>
-                `).join("");
-                root.querySelector(".table-wrap .routine-empty-msg")?.remove();
-            } else {
+            </td>
+        </tr>
+        `).join("");
+        root.querySelector(".table-wrap .routine-empty-msg")?.remove();
+        
+    } else {
         tbody.innerHTML = "";
         const twrapper = root.querySelector(".table-wrap");
         twrapper?.querySelector(".routine-empty-msg")?.remove();
+
         const p = document.createElement("p");
         p.classList.add("routine-empty-msg");
         p.innerText = "Bisher wurde keine Übung erstellt";
         if(twrapper) twrapper.appendChild(p);
+
+        state.autoRating = {};
+        state.community = { avg: 0.0, count: 0};
     }
 }
 function renderAutoEval(root) {
@@ -208,7 +213,6 @@ function renderAutoEval(root) {
                 warnCont.appendChild(p);
             });
         }
-        
         if(errConta) {
             errConta.innerHTML = "";
             state.autoRating?.errors?.forEach(element => {
@@ -221,7 +225,45 @@ function renderAutoEval(root) {
     }
 }
 function renderCommunity(root) {
+    const container = root.querySelector("#communitySection");
+    const stars = container.querySelector("#avgStars");
+    const avg = container.querySelector("#avgRatingText");
+    const num = container.querySelector("#ratingCountText");
 
+    container?.querySelector(".routine-empty-msg")?.remove();
+
+    const avgNum = state.community.avg ?? 0.0;
+    const count = state.community.count;
+    const avgFull = Math.floor(avgNum);
+    const avgHalf = avgNum % 1 >= 0.5 ? 1 : 0;
+    const avgEmpty = 5 - avgFull - avgHalf;
+
+    const starFull = "★";
+    const starEmpty = "☆";
+
+    if(count) {
+        num.innerText = `${count} Bewertungen`;
+        avg.innerText = `${avgNum}`;
+        stars.innerText = 
+            starFull.repeat(avgFull) + 
+            (avgHalf ? starFull : "") + 
+            starEmpty.repeat(avgEmpty);
+        panel.show(num);
+        panel.show(avg);
+        panel.show(stars);
+    }else {
+        num.innerText = `0 Bewertungen`;
+        avg.innerText = ` - `;
+        stars.innerText = "☆☆☆☆☆";
+        panel.hide(num);
+        panel.hide(avg);
+        panel.hide(stars);
+
+        const p = document.createElement("p");
+        p.classList.add("routine-empty-msg");
+        p.innerText = "Bisher gibt es keine Bewertungen von anderen Nutzern";
+        if(container) container.appendChild(p);
+    }
 }
 
 export function addExerciseEventListener(root) {
