@@ -12,6 +12,7 @@ export function addFunktionalEventListener(root) {
     setAccountSettingsListener(root);
     competition.addCompetitionEventListener(root);
     exercise.addExerciseEventListener(root);
+    exercise.initElementFilters(root, null);
 }
 
 
@@ -95,7 +96,7 @@ function addMainPanelListener(root) {
     const toggleEquipmentBtn = root.querySelector("#toggleEquipment");
     toggleEquipmentBtn?.addEventListener("click", () => {
         panel.toggleMainPanel(root, 1);
-        exercise.showView(root, "list");
+        exercise.showView(root, "apparatus-list");
     });
     const toggleGroupsBtn = root.querySelector("#toggleMember");
     toggleGroupsBtn?.addEventListener("click", () => {

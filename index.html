@@ -24,8 +24,10 @@
     <meta name="theme-color" content="#ffffff">
 
 
+
     <link rel="stylesheet" href="frontend/assets/style/style.css">
-    
+
+
     <!--
     <link rel="stylesheet" href="frontend/assets/style/20-base.css">
     <link rel="stylesheet" href="frontend/assets/style/30-icons.css">
@@ -362,8 +364,12 @@
                     </div>
                 </section>
 
+
+
                 <!--Panel 1: Exercise creation-->
                 <section id="panel1" class="panel exercise">
+
+                    <!--Apparatus List-->
                     <section id="view-apparatus-list" class="sub-panel" aria-label="Übungsübersicht">
                         <header class="sub-panel--header">
                             <h1>Geräte</h1>
@@ -372,6 +378,7 @@
                         <div class="apparatus-container" id="apparatus-container"></div>
                     </section>
 
+                    <!--Apparatus description-->
                     <section id="view-apparatus-detail" class="sub-panel" hidden aria-label="Gerätedetails">
                         <header class="sub-panel--header">
                             <button class="btn--secondary" type="button" data-action="back-to-list">←</button>
@@ -394,6 +401,70 @@
                             </button>
                         </article>
                     </section>
+
+
+                    <!--Elementdetails-->
+                    <section id="view-element" class="sub-panel" hidden aria-label="Elementedetails">
+                        <button id="closeDetailedViewBtn" type="button" data-action="to-exercise-editor">←</button>
+                        <div style="margin-bottom: 12%;">
+                            <h2 id="elementTitle">Title</h2>
+                        </div>
+                        <div style="margin-bottom: 5%;">
+                            <img id="elementImage" src="frontend/assets/images/system/profile_icon.png" alt="Element Image">
+                        </div>
+                        <button id="addToList" type="button" data-action="add-to-exercise">Hinzufügen</button>
+                        <div id="moreInformation">
+                            <p id="elementName">Name</p>
+                            <span id="elementText">ganze Beschreibung</span>
+                            <span id="elementGroup">Group: 1</span>
+                            <span id="elementDifficulty">Difficulty: A</span>
+                            <span id="validEnding">Dispatch: ❌</span>
+                        </div>
+                        <button id="isLearned" type="button" data-action="changed-learned-element">Erledigt</button>
+                    </section>
+
+
+                    <!--Elementeliste-->
+                    <section id="view-element-list" class="sub-panel" hidden aria-label="Elementeliste">
+                        <button id="closeDetailedViewBtn" type="button" data-action="back-to-exercise-editor">←</button>
+                        <div class="filter-wrapper">
+                            <h3>Filter nach Schwierigkeit</h3>
+                            <div id="filterDifficulty" class="filter-group" data-filter-type="difficulty">
+                                <button type="button" data-value="" class="active-filter">Alle</button>
+                                <button type="button" data-value="0.05">NE</button>
+                                <button type="button" data-value="0.1">A</button>
+                                <button type="button" data-value="0.2">B</button>
+                                <button type="button" data-value="0.3">C</button>
+                                <button type="button" data-value="0.4">D</button>
+                                <button type="button" data-value="0.5">E</button>
+                            </div>
+
+                            <h3>Filter nach Gruppe</h3>
+                            <div id="filterGroup" class="filter-group" data-filter-type="group">
+                                <button type="button" data-value="" class="active-filter">Alle</button>
+                                <button type="button" data-value="1">1</button>
+                                <button type="button" data-value="2">2</button>
+                                <button type="button" data-value="3">3</button>
+                                <button type="button" data-value="4">4</button>
+                            </div>
+
+                            <label class="checkbox-toggle">
+                                <input type="checkbox" id="filterLearnedElements" />
+                                <span class="slider"></span>
+                                <span class="label-text">Nur gelernte Elemente</span>
+                            </label>
+                            
+
+                            <h3>Suche nach Stichwort</h3>
+                            <input type="text" id="searchInput" placeholder="Suche nach Name...">
+                        </div>
+                        <div class="element-list-container">
+                            <!--auto generated-->
+                        </div>
+                    </section>
+
+
+                    <!--Routine Editor-->
                     <section id="view-apparatus-editor" class="sub-panel" hidden aria-label="Übungserstellung">
                         <header class="sub-panel--header">
                             <button class="btn--secondary" type="button" data-action="back-to-details">←</button>
@@ -403,10 +474,10 @@
                         <div class="apparatus-exercise">
                             <section class="editor-topbar">
                                 <div class="segmented" role="tablist" aria-label="Übungsmodus">
-                                    <button type="button" class="segmented-btn is-active" data-action="set-mode" data-mode="wish" role="tab" aria-selected="true">
+                                    <button type="button" id="wish-routine-btn" class="segmented-btn is-active" data-action="set-mode" data-mode="wish" role="tab" aria-selected="true">
                                         Wunschübung
                                     </button>
-                                    <button type="button" class="segmented-btn" data-action="set-mode" data-mode="competition" role="tab" aria-selected="false">
+                                    <button type="button" id="comp-routine-btn" class="segmented-btn" data-action="set-mode" data-mode="competition" role="tab" aria-selected="false">
                                         Wettkampfübung
                                     </button>
                                 </div>
@@ -415,7 +486,7 @@
                                 </button>
                             </section>
                             <section class="exercise-list">
-                                <header>Ziehe zum Sortieren (oder nutze die Buttons).</header>
+                                <header>Drag & Drop zum Sortieren (oder nutze die Buttons).</header>
 
                                 <div class="table-wrap" role="region" aria-label="Elementliste">
                                     <table class="exercise-table">
@@ -477,6 +548,8 @@
                         </div>
                     </section>
                 </section>
+
+
 
                 <!--Panel 2: Member-->
                 <section id="panel2" class="panel member">
@@ -676,6 +749,7 @@
 
 
     <!--Panel for Routine Creation-->
+    <!--
     <section id="panel1" class="panel" style="display: none;">
         <div id="EquipmentExercise">
             <img src="frontend/assets/images/system/back.png" alt="Go Back" onclick="closeDevice();" id="hideExercise" class="goBack-Btn">
@@ -696,26 +770,7 @@
                 <button id="add-exercise-btn" onclick="selectElement();">Element hinzufügen</button>
                 <button id="changeRoutineType" onclick="changeRoutineType();"><strong>Wettkampf</strong><br><i>Wunsch</i></button>
             </div>
-            
-            <div id="detailedElementInfo">
-                <button id="closeDetailedViewBtn" onclick="closeDetailedView();">X</button>
-                <div style="margin-bottom: 12%;">
-                    <h2 id="elementTitle">Title</h2>
-                </div>
-                <div style="margin-bottom: 5%;">
-                    <img id="elementImage" src="frontend/assets/images/system/profile_icon.png" alt="Element Image">
-                </div>
-                <button id="addToList">Hinzufügen</button>
-                
-                <div id="moreInformation">
-                    <p id="elementName">Name</p>
-                    <span id="elementText">ganze Beschreibung</span>
-                    <span id="elementGroup">Group: 1</span>
-                    <span id="elementDifficulty">Difficulty: A</span>
-                    <span id="validEnding">Dispatch: ❌</span>
-                </div>
-                <button id="isLearned">Erledigt</button>
-            </div>
+        -->    
 
             <!--Panel View for adding an Element-->
             <!--

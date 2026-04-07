@@ -11,6 +11,13 @@ const state = {
     ],
     autoRating: { },
     community: { avg: 0.0, count: 0}, //only for competition
+
+    elementFilter: {
+        difficulty: null,
+        group: null,
+        learned: false,
+        search: ''
+    }
 };
 
 function getApparatusById(id) {
@@ -23,13 +30,93 @@ function getRoutineType() {
 export function showView(root, next) {
     state.view = next;
     
-    const viewList = root.querySelector("#view-apparatus-list");
-    const viewDetail = root.querySelector("#view-apparatus-detail");
-    const viewEditor = root.querySelector("#view-apparatus-editor");
+    const viewApparatusList = root.querySelector("#view-apparatus-list");
+    const viewApparatusDesc = root.querySelector("#view-apparatus-detail");
+    const viewEditor        = root.querySelector("#view-apparatus-editor");
+    const viewElementList   = root.querySelector("#view-element-list");
+    const viewElementDetail = root.querySelector("#view-element");
 
-    if(viewList) viewList.hidden = next !== "list";
-    if(viewDetail) viewDetail.hidden = next !== "detail";
-    if(viewEditor) viewEditor.hidden = next !== "editor";
+    if(viewApparatusList) viewApparatusList.hidden  = next !== "apparatus-list";
+    if(viewApparatusDesc) viewApparatusDesc.hidden  = next !== "apparatus-desc";
+    if(viewEditor) viewEditor.hidden                = next !== "routine-editor";
+    if(viewElementList) viewElementList.hidden      = next !== "element-list"
+    if(viewElementDetail) viewElementDetail.hidden  = next !== "element-details";
+}
+
+export function initElementFilters(root) {
+    const difficultyContainer   = root.querySelector('#filterDifficulty');
+    const groupContainer        = root.querySelector('#filterGroup');
+    const learnedCheckbox       = root.querySelector('#filterLearnedElements');
+    const searchInput           = root.querySelector('#searchInput');
+
+    difficultyContainer?.addEventListener('click', async (event) => {
+        const button = event.target.closest('button');
+        if(!button) return;
+        state.elementFilter.dataset = button.dataset.value
+            ? Number(button.dataset.value)
+            : null;
+        setActiveButton(difficultyContainer, button);
+        renderElementList(root);
+    });
+    groupContainer?.addEventListener('click', async (event) => {
+        const button = event.target.closest('button');
+        if(!button) return;
+        state.elementFilter.group = button.dataset.value
+            ? Number(button.dataset.value)
+            : null;
+        setActiveButton(groupContainer, button);
+        renderElementList(root); 
+    });
+    learnedCheckbox?.addEventListener('change', async (event) => {
+        state.elementFilter.learned = event.target.checked;
+        renderElementList(root);
+    });
+    searchInput?.addEventListener('input', debounce(async (event) => {
+        state.elementFilter.search = event.target.value;
+        renderElementList(root);
+    }, 300));
+}
+
+function setActiveButton(container, activeButton) {
+    container.querySelectorAll('button').forEach(btn => {
+        btn.classList.remove('active-filter');
+    });
+    activeButton.classList.add('active-filter');
+}
+function debounce(fn, delay = 300) {
+    let timeoutId;
+    return (...args) => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => fn(...args), delay);
+    };
+}
+
+
+
+async function fetchFilteredElementList(root) {
+    let apparatus = state.selectedApparatusId;
+    if(!root || !apparatus) return;
+
+    let url = `${config.serverURL}/exercise/elements?device=${apparatus}`;
+    let filter = state.elementFilter;
+    const userId = localStorage.getItem("userId");
+    if(filter.difficulty)       url+=`&difficulty=${filter.difficulty}`;
+    if(filter.group)            url+=`&group=${filter.group}`;
+    if(filter.learned != null)  url+=`&learned=${filter.learned}`;
+    if(userId)                  url+=`&userId=${userId}`;
+    if(filter.search)           url+=`&search=${filter.search}`;
+    
+    try {
+        const res = await fetch(url, {
+            method: "GET",
+            headers: { "Content-Type": "application/json"}
+        });
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.error("Failed to fetch filtered element-list");
+        return { message: "Fehler beim laden", ok: false};
+    }
 }
 
 
@@ -60,9 +147,12 @@ async function fetchExercise(userId, dev, type, loader) {
     }
 }
 async function setupCurrentExercise(root) {
-    const response = await fetchExercise(localStorage.getItem("userId"), 
+    const userId = localStorage.getItem("userId");
+    const routineType = getRoutineType();
+    const response = await fetchExercise(
+        userId, 
         state.selectedApparatusId, 
-        getRoutineType(), 
+        routineType, 
         null);
         const exercise = response?.exercise ?? null;
         state.elements = exercise?.elemente ?? [];
@@ -72,6 +162,8 @@ async function setupCurrentExercise(root) {
         if(response?.autoRating){
             state.autoRating = response?.autoRating;
         }
+        root.querySelector("#comp-routine-btn")?.classList.toggle("is-active", routineType == 0);
+        root.querySelector("#wish-routine-btn")?.classList.toggle("is-active", routineType == 1);
 }
 
 async function changeRoutineType(root, type) {
@@ -109,6 +201,8 @@ function renderApparatusDetail(root, apparatusId) {
 
     const a = getApparatusById(apparatusId);
     if(!a) return;
+
+    state.selectedApparatusId = a.id;
 
     const detailNameDe  = root.querySelector("#detailNameDe");
     const detailNameEn  = root.querySelector("#detailNameEn");
@@ -266,6 +360,32 @@ function renderCommunity(root) {
     }
 }
 
+async function renderElementList(root) {
+    const container = root.querySelector(".element-list-container");
+    if(!container) return;
+    container.innerHTML = "";
+
+    const data = await fetchFilteredElementList(root);
+    if(!data.elements || !Array.isArray(data.elements) || data.elements.length <= 0) {
+        let p = root.createElement("p");
+        p.classList.add("routine-empty-msg");
+        container.appendChild(p);
+        return;    
+    }
+    data.elements.forEach(element => {
+        const name          = element.bezeichnung;
+        const isDismount    = element.dismount;
+        const group         = element.elementegruppe;
+        const id            = element.id;
+        const img_path      = element.image_path;
+        container.innerHTML += " " + id;
+    });
+}
+
+
+
+
+
 export function addExerciseEventListener(root) {
     const container = root.querySelector("#panel1");
     container?.addEventListener("click", (e) => {
@@ -274,26 +394,53 @@ export function addExerciseEventListener(root) {
 
         const action = actionEl.dataset.action;
 
-        if(action === "open-detail") {
+        console.log("action: ", action);
+
+
+        //Navigate to next page
+        if (action === "open-detail") {
             const id = actionEl.dataset.apparatusId;
             if(!id) return;
-            state.selectedApparatusId = id;
             renderApparatusDetail(root, id);
-            showView(root, "detail");
-        } else if (action === "back-to-list") {
-            showView(root, "list");
-        } else if (action === "back-to-details") {
-            showView(root, "detail");
+            showView(root, "apparatus-desc");
+
         } else if (action === "to-exercise-editor") {
-            const id = state.selectedApparatusId;
+            const id = actionEl.dataset.apparatusId;
             if(!id) return;
             renderApparatusEditor(root, id);
-            showView(root, "editor");
-        } else if (action === "save-exercise") {
-        } else if (action === "set-mode") {
-            const type = actionEl.dataset.mode;
-            if(!type) return;
-            changeRoutineType(root, type);
+            showView(root, "routine-editor");
+        
+        } else if (action === "open-element-picker") {
+            showView(root, "element-list");
         }
+
+        //Navigate to previous page
+        else if (action === "back-to-list") {
+            showView(root, "apparatus-list");
+        
+        } else if (action === "back-to-details") {
+            showView(root, "apparatus-desc");
+
+        } else if (action === "back-to-exercise-editor") {
+            showView(root, "routine-editor");
+
+        }
+
+        //Editor functionality
+        else if (action === "add-to-exercise") {
+
+        }
+        else if (action === "changed-learned-element") {
+
+        }
+        else if (action === "save-exercise") {
+
+        }
+        else if (action === "set-mode") {
+            const mode = actionEl.dataset.mode;
+            if(!mode) return;
+            changeRoutineType(root, mode);
+        }
+
     });
 }
