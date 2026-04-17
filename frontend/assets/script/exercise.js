@@ -360,6 +360,55 @@ function renderCommunity(root) {
     }
 }
 
+function buildElementPickerElement(root, e) {
+    if(!root || !e) return;
+
+    let div = root.createElement("div");
+    div.classList.add("element");
+
+    let header = root.createElement("header");
+    header.classList.add("element-header");
+    
+    let img = root.createElement("img");
+    img.classList.add("element-preview");
+    img.alt = "Preview Image";
+    img.src = e.image_path;
+
+    let groupSpan = root.createElement("span");
+    groupSpan.classList.add("element-info-span");
+    groupSpan.innerText = (e.elementegruppe ?? "-") + " G.";
+
+    let valueSpan = root.createElement("span");
+    valueSpan.classList.add("element-info-span");
+    valueSpan.innerText = (e.wertigkeit ?? "-") + " P.";
+
+    let dismountSpan = root.createElement("span");
+    dismountSpan.classList.add("element-info-span");
+    dismountSpan.innerText = "Abg.";
+
+    let titleSpan = root.createElement("span");
+    titleSpan.classList.add("element-title");
+    titleSpan.innerText = e.bezeichnung ?? "<not found>";
+
+    let nameSpan = root.createElement("span");
+    nameSpan.classList.add("element-name");
+    nameSpan.innerText = e.name ?? "";
+
+    header.appendChild(groupSpan);
+    header.appendChild(valueSpan);
+    if(e.dismount) {
+        header.appendChild(dismountSpan);
+    }
+    div.appendChild(header);
+    div.appendChild(img);
+    div.appendChild(titleSpan);
+    if(e.name) {
+        div.appendChild(nameSpan);
+    }
+
+    return div;
+}
+
 async function renderElementList(root) {
     const container = root.querySelector(".element-list-container");
     if(!container) return;
@@ -373,12 +422,10 @@ async function renderElementList(root) {
         return;    
     }
     data.elements.forEach(element => {
-        const name          = element.bezeichnung;
-        const isDismount    = element.dismount;
-        const group         = element.elementegruppe;
-        const id            = element.id;
-        const img_path      = element.image_path;
-        container.innerHTML += " " + id;
+        //console.log(element);
+
+        let elem = buildElementPickerElement(root, element);
+        container.appendChild(elem);
     });
 }
 
@@ -408,6 +455,10 @@ export function addExerciseEventListener(root) {
             const id = actionEl.dataset.apparatusId;
             if(!id) return;
             renderApparatusEditor(root, id);
+
+            panel.clearHTML(root.querySelector(".element-list-container"));
+            renderElementList(root);
+
             showView(root, "routine-editor");
         
         } else if (action === "open-element-picker") {

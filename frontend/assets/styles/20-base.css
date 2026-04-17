@@ -91,6 +91,16 @@ button {
   color: var(--color-text);
 }
 
+input {
+  width: 90%;
+  padding: 10px;
+  margin: 8px 0;
+  margin-left: 5%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
 
 .seperator {
   width: 98%;
