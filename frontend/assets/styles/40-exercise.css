@@ -173,6 +173,27 @@
 
 
 /*Element Picker*/
+.filter-wrapper h3 {
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 1px;
+    padding-bottom: 0;
+}
+.filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+.filter-wrapper .checkbox-toggle {
+    border: 1px solid var(--color-primary-dark);
+    border-radius: 15px;
+    padding: 7px 10px 7px 10px;
+    justify-content: center;
+}
+
 .filter-group button.active-filter {
     background-color: var(--color-primary-hover);
     color: white;
@@ -193,38 +214,43 @@
 
 .element-list-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
     width: 95%;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    margin-left: 2.5%;
+    margin: 0 auto;
 }
-.element {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 25dvh;
-    width: 100%;
-    padding: 50px 0px 50px 0px;
-    margin-bottom: var(--gap);
-    border: 1px solid var(--color-primary-dark);
+
+.element { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    min-height: 25dvh; 
+    width: 100%; 
+    padding: 50px 0px 50px 0px; 
+    margin-bottom: var(--gap); 
+    border: 1px solid var(--color-primary-dark); 
     border-radius: 20px;
 }
+.element:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-primary-hover);
+}
+
+
 .element-header {
     width: 75%;
     display: flex;
     align-items: center;
     justify-content: right;
-    gap: var(--gap);
+    gap: 3px;
     margin-bottom: 4px;
 }
 .element-info-span {
     border: 1px solid rgb(85, 85, 85);
     background-color: rgba(85, 85, 85, 0.185);
     border-radius: 15px;
-    padding: 2px 10px;
+    padding: 2px 7px;
 }
 .element-title {
     font-weight: 200;

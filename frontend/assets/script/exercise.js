@@ -146,6 +146,36 @@ async function fetchExercise(userId, dev, type, loader) {
         panel.hideLoader(loader);
     }
 }
+
+async function saveExercise(root) {
+    const userId = localStorage.getItem("userId");
+    const apparatus = state.selectedApparatusId;
+    const elements = state.elements.map(el => el.id);
+    const routineType = state.mode == "wish" ? 1 : 0;
+
+    if(!userId || !apparatus) return;
+
+    try {
+        const res = await fetch(`${config.serverURL}/routine`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                "userId": userId, 
+                "apparatus": apparatus, 
+                "elements": elements, 
+                "routineType": routineType
+            })
+        });
+        const data = await res.json();
+        if(res.ok) panel.showMessage(root, "Übung gespeichert", "");
+    } catch (error) {
+        console.error("Failed to update Exercise:", error);
+        panel.showMessage(root, "Übung konnte nicht gespeichert werden", "");
+    }
+}
+
+
+
 async function setupCurrentExercise(root) {
     const userId = localStorage.getItem("userId");
     const routineType = getRoutineType();
@@ -485,7 +515,7 @@ export function addExerciseEventListener(root) {
 
         }
         else if (action === "save-exercise") {
-
+            saveExercise(root);
         }
         else if (action === "set-mode") {
             const mode = actionEl.dataset.mode;
