@@ -16,7 +16,8 @@ const state = {
         difficulty: null,
         group: null,
         learned: false,
-        search: ''
+        search: '',
+        order: "group_up"
     }
 };
 
@@ -47,6 +48,7 @@ export function initElementFilters(root) {
     const difficultyContainer   = root.querySelector('#filterDifficulty');
     const groupContainer        = root.querySelector('#filterGroup');
     const learnedCheckbox       = root.querySelector('#filterLearnedElements');
+    const orderSelect           = root.querySelector('#filter-order');
     const searchInput           = root.querySelector('#searchInput');
 
     difficultyContainer?.addEventListener('click', async (event) => {
@@ -71,6 +73,10 @@ export function initElementFilters(root) {
         state.elementFilter.learned = event.target.checked;
         renderElementList(root);
     });
+    orderSelect?.addEventListener('change', (event) => {
+        state.elementFilter.order = event.target.value;
+        renderElementList(root);
+    });
     searchInput?.addEventListener('input', debounce(async (event) => {
         state.elementFilter.search = event.target.value;
         renderElementList(root);
@@ -90,7 +96,32 @@ function debounce(fn, delay = 300) {
         timeoutId = setTimeout(() => fn(...args), delay);
     };
 }
+function sortElements(elements, order) {
+    const sorted = [...elements];
 
+    sorted.sort((a, b) => {
+        const groupA = Number(a.elementegruppe ?? 0);
+        const groupB = Number(b.elementegruppe ?? 0);
+        const valueA = Number(String(a.wertigkeit ?? 0).replace(",", "."));
+        const valueB = Number(String(b.wertigkeit ?? 0).replace(",", "."));
+        const nameA = (a.bezeichnung ?? "").toLowerCase();
+        const nameB = (b.bezeichnung ?? "").toLowerCase();
+
+        switch(order) {
+            case 'group_up':
+                return (groupA - groupB) || nameA.localeCompare(nameB, "de");
+            case 'group_down':
+                return (groupB - groupA) || nameA.localeCompare(nameB, "de");
+            case 'value_up':
+                return (valueA - valueB) || nameA.localeCompare(nameB, "de");
+            case 'value_down':
+                return (valueB - valueA) || nameA.localeCompare(nameB, "de");
+            default:
+                return nameA.localeCompare(nameB, "de");
+        }
+    });
+    return sorted;
+}
 
 
 async function fetchFilteredElementList(root) {
@@ -442,7 +473,7 @@ function buildElementPickerElement(root, e) {
 async function renderElementList(root) {
     const container = root.querySelector(".element-list-container");
     if(!container) return;
-    container.innerHTML = "";
+    panel.clearHTML(container);
 
     const data = await fetchFilteredElementList(root);
     if(!data.elements || !Array.isArray(data.elements) || data.elements.length <= 0) {
@@ -451,7 +482,10 @@ async function renderElementList(root) {
         container.appendChild(p);
         return;    
     }
-    data.elements.forEach(element => {
+
+    const sortedElements = sortElements(data.elements, state.elementFilter.order);
+
+    sortedElements.forEach(element => {
         //console.log(element);
 
         let elem = buildElementPickerElement(root, element);

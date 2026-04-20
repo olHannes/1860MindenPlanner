@@ -454,9 +454,21 @@
                                 <span class="label-text">Nur gelernte Elemente</span>
                             </label>
                             
-
-                            <h3>Suche nach Stichwort</h3>
-                            <input type="text" id="searchInput" placeholder="Suche nach Name...">
+                            <div class="horizontal-grid-container">
+                                <div>
+                                    <h3>Suche nach Stichwort</h3>
+                                    <input type="text" id="searchInput" placeholder="Suche nach Name...">
+                                </div>
+                                <div>
+                                    <h3>Sortierung</h3>
+                                    <select id="filter-order">
+                                        <option value="group_up">Gruppe aufsteigend</option>
+                                        <option value="group_down">Gruppe absteigend</option>
+                                        <option value="value_up">Wertigkeit aufsteigend</option>
+                                        <option value="value_down">Wertigkeit absteigend</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="element-list-container">
                             <!--auto generated-->
