@@ -1,5 +1,7 @@
 from mongoConf import *
 
+from security import csrf_protect
+
 report_bp = Blueprint('reports', __name__)
 
 def serialize_mongo(doc):
@@ -15,9 +17,10 @@ def serialize_mongo(doc):
 ################################################################################################### Report erstellen
 
 @report_bp.route('/report/issue', methods=['POST'])
+@csrf_protect
 def createReport():
+    user_id = session.get("user_id")
     data = request.get_json()
-    user_id = data.get('userId')
     reportType = data.get('type')
     reportTitle = data.get('title')
     report = data.get('body')

@@ -1,0 +1,53 @@
+services:
+
+  routineplanner-frontend:
+      image: nginx:alpine
+      container_name: routineplanner-frontend
+      restart: unless-stopped
+      ports:
+        - "5500:80"
+      volumes:
+        - ./frontend:/usr/share/nginx/html:ro
+        - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      depends_on:
+        - routineplanner-backend
+
+
+
+  routineplanner-backend:
+    container_name: routineplanner-backend
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    expose:
+      - "10000"
+    env_file:
+      - ./backend/.env
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:10000/awake').read()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+
+
+  redis:
+    image: redis:7-alpine
+    container_name: routineplanner-redis
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+volumes:
+  redis_data:

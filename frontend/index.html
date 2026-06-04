@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoutinePlanner</title>
+
+    <!-- Standard Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon//favicon-16x16.png">
+    <link rel="icon" href="assets/favicon//favicon.ico">
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon//apple-touch-icon.png">
+
+    <!-- Android Chrome Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon//android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon//android-chrome-512x512.png">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="assets/favicon//site.webmanifest">
+
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#ffffff">
+
+
+    <link rel="stylesheet" href="assets/styles/20-base.css">
+    <link rel="stylesheet" href="assets/styles/20-layout.css">
+    <link rel="stylesheet" href="assets/styles/30-icons.css">
+
+    <link rel="stylesheet" href="assets/styles/30-floating-panel.css">
+
+    <link rel="stylesheet" href="assets/styles/40-startup.css">
+    <link rel="stylesheet" href="assets/styles/40-competition.css">
+    <link rel="stylesheet" href="assets/styles/40-settings.css">
+
+    <link rel="stylesheet" href="assets/styles/base/root-layout.css">
+    <link rel="stylesheet" href="assets/styles/base/theme.css">
+    <link rel="stylesheet" href="assets/styles/base/buttons.css">
+
+    <link rel="stylesheet" href="assets/styles/exercise/apparatus-list.css">
+    <link rel="stylesheet" href="assets/styles/exercise/apparatus-details.css">
+    <link rel="stylesheet" href="assets/styles/exercise/routine-editor.css">
+    <link rel="stylesheet" href="assets/styles/exercise/element-list.css">
+    <link rel="stylesheet" href="assets/styles/exercise/element-details.css">
+
+    <link rel="stylesheet" href="assets/styles/member/member-list.css">
+    <link rel="stylesheet" href="assets/styles/member/member-routine.css">
+
+    <link rel="stylesheet" href="assets/styles/overlay/report-view.css">
+    <link rel="stylesheet" href="assets/styles/overlay/news-view.css">
+    <link rel="stylesheet" href="assets/styles/overlay/download-view.css">
+    <link rel="stylesheet" href="assets/styles/overlay/delete-account.css">
+</head>
+<body>
+
+    <!-- Global Notification Box-->
+    <div id="messageBox">
+        <div class="msgBar" aria-hidden="true"></div>
+        <div class="msgBody">
+            <h3 id="messageBoxTitle">Message Title</h3>
+            <i id="messageBoxContent">Info Text</i>
+        </div>
+    </div>
+        
+
+    <div class="appBg" id="appBg" hidden>
+        <div class="appShell" id="appShell"">
+            <main class="appMain" id="appMain" role="main">
+                <!----------------- Floating Panels ----------------->
+                <div id="overlayRoot" class="overlayRoot" hidden>
+                    <div id="startupInformation" class="on-top-panel start-information">
+                        <header>
+                            <div class="icon--wrapper">
+                                <span class="icon icon--information"></span>
+                            </div>
+                            <div class="vertical-container">
+                                <h3>Kurzinfo</h3>
+                                <p>Diese App wird gerade weiterentwickelt.</p>
+                            </div>
+                        </header>
+                        <p class="description">Es kann vereinzelt zu Fehlern oder unerwartetem Verhalten kommen. <br><span>Häufig hilft ein Neuladen der Seite oder das Löschen des Caches.</span></p>
+                        <span class="advice">Feedback kann unter <p style="margin: 0; font-style: italic; display: inline;">'Profil -> Feedback'</p> erstellt werden.</span>
+                        <button id="closeInfoBox" class="btn">Verstanden</button>        
+                    </div>
+
+                    <div id="news" class="on-top-panel news">
+                        <p>Die neusten Features seit dem letzten Update:</p>
+                        <button id="closeNews" class="save-btn">Zurück</button>
+                    </div>
+
+
+                    <form 
+                        id="requestDelAcc"
+                        class="account-delete-dialog"
+                        aria-labelledby="delete-account-title"
+                        aria-describedby="delete-account-description"
+                        novalidate
+                    >
+                        <div class="account-delete-dialog__header">
+                            <h2 id="delete-account-title" class="account-delete-dialog__title">Account löschen?</h2>
+                            <div class="account-delete-dialog__spinner spinner" aria-hidden="true"></div>
+                        </div>
+                        <p id="delete-account-description" class="account-delete-dialog__text">Bist du sicher, dass du deinen Account löschen möchtest?</p>
+                        <div class="account-delete-dialog__field">
+                            <label for="deleteAccountPwd" class="account-delete-dialog__label">Passwort bestätigen</label>
+                            <input 
+                                type="password"
+                                id="deleteAccountPwd"
+                                class="account-delete-dialog__input"
+                                name="password"
+                                placeholder="Dein Passwort"
+                                autocomplete="current-password"
+                                required
+                                >
+                        </div>
+                        <div class="account-delete-dialog__actions">
+                            <button
+                                type="submit"
+                                class="account-delete-dialog__button account-delete-dialog__button--danger"
+                                id="delete-account"
+                                data-action="delete-account"
+                                >Löschen</button>
+                            <button
+                                type="button"
+                                class="account-delete-dialog__button account-delete-dialog__button--secondary"
+                                id="cancelDeletion"
+                                data-action="cancel-account-deletion"
+                            >Abbrechen</button>
+                        </div>
+                        <p id="deleteErr" class="account-delete-dialog__message" aria-live="polite"></p>
+                    </form>
+
+                    <div id="createReport">
+                        <div class="loader-container">
+                            <h2>Fehler melden</h2>
+                            <div class="spinner"></div>
+                        </div>
+
+                        <label for="reportType">Art des Reports:</label>
+                        <select id="reportType">
+                            <option value="Fehler">Fehler</option>
+                            <option value="Verbesserung">Verbesserung</option>
+                            <option value="Style">Style</option>
+                            <option value="Hilfe">Hilfe</option>
+                        </select>
+
+                        <input type="text" id="reportTitle" placeholder="Titel des Reports">
+                        <textarea id="reportTxt" placeholder="Fehlerbeschreibung"></textarea>
+                        <button type="button" id="submitReport" data-action="submit-report">Report erstellen</button>
+                        <button type="button" id="cancelReport" data-action="cancel-report-creation">Abbrechen</button>
+
+                        <div id="reportList">
+                        </div>
+                    </div>
+                    
+                    <div id="ratingRoutine" class="ratingRoutine">
+                        <h2>Übung bewerten</h2>
+                        <div class="summary">
+                            <div class="vertical-container">
+                                <p>Nutzer</p>
+                                <span id="rating-user"></span>
+                            </div>
+                            <div class="vertical-container">
+                                <p>Apparatus</p>
+                                <span id="rating-apparatus"></span>
+                            </div>
+                        </div>
+                        <div id="StarRating">
+                            <span class="star" data-index="1">&#9734;</span>
+                            <span class="star" data-index="2">&#9734;</span>
+                            <span class="star" data-index="3">&#9734;</span>
+                            <span class="star" data-index="4">&#9734;</span>
+                            <span class="star" data-index="5">&#9734;</span>
+                        </div>
+                        <button id="submitRatingBtn" class="" data-action="submit-rating">Senden</button>
+                        <button class="cancel-btn" data-action="cancel-rating">Abbrechen</button>
+                    </div>
+
+                    <div id="downloadPage" class="on-top-panel downloadPage">
+                        <!-- generated -> Config.DownloadElements-->
+                    </div>
+
+                    
+                    <section id="nameSettings" class="settingsCard">
+                        <header class="settingsCard__header">
+                            <div class="loader-container">
+                                <h2>Name ändern</h2>
+                                <span class="icon icon--update"></span>
+                                <div class="spinner"></div>
+                            </div>
+                            <p class="settingsCard__subtitle">Passe Vor- und Nachname an.</p>
+                        </header>
+
+                        <div class="settingsCard__body">
+                            <form id="nameForm" class="settingsForm">
+                                <div class="formGrid">
+                                    <label class="field" for="firstNameEdit">
+                                        <span class="field_label">Vorname</span>
+                                        <input
+                                            id="firstNameEdit"
+                                            name="firstName"
+                                            class="input"
+                                            autocomplete="given-name"
+                                            type="text"
+                                            placeholder="Vorname">
+                                    </label>
+                                    <label class="field" for="lastNameEdit">
+                                        <span class="field_label">Nachname</span>
+                                        <input
+                                            id="lastNameEdit"
+                                            name="lastName"
+                                            class="input"
+                                            autocomplete="family-name"
+                                            type="text"
+                                            placeholder="Nachname">
+                                    </label>
+                                </div>
+                                <p id="nameMsg" class=""></p>
+                                <div class="actions">
+                                    <button
+                                        type="button"
+                                        id="cancelNameBtn"
+                                        class="btn btn--secondary"
+                                        data-action="cancel-name-view">
+                                        Abbrechen
+                                    </button>
+                                    <button
+                                        type="submit"
+                                        id="saveNameBtn"
+                                        class="btn save-btn">
+                                        Speichern
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+                    <section id="passwordReset" class="settingsCard">
+                        <header class="settingsCard__header">
+                            <div class="loader-container">
+                                <h2>Passwort zurücksetzen</h2>
+                                <span class="icon icon--update"></span>
+                                <div class="spinner"></div>
+                            </div>
+                            <p class="settingsCard__subtitle">Sende dir einen Code per E-Mail und setze dein Passwort zurück.</p>
+                        </header>
+                        <div class="settingsCard__body">
+                            <div class="formStack">
+                            <div class="inlineRow">
+                                <button type="button" id="sendResetCodeBtn" class="btn btn--primary" data-action="request-email-reset-code">Code per E-Mail senden</button>
+                            </div>
+                            <div class="divider"></div>
+                            <label class="field">
+                                <span class="field__label">E-Mail-Code</span>
+                                <input id="pwCode" class="input" type="text" inputmode="numeric" placeholder="z.B. 123456">
+                            </label>
+                            <label class="field">
+                                <span class="field__label">Neues Passwort</span>
+                                <input id="pwNew" class="input" type="password" autocomplete="new-password" placeholder="Neues Passwort">
+                            </label>
+                            </div>
+                            <p id="pwMsg" class="" aria-live="polite"></p>
+                            <div class="actions">
+                                <button type="button" id="cancelPwResetBtn" class="btn btn--secondary" data-action="cancel-pwd-reset">Abbrechen</button>
+                                <button type="button" id="confirmPwResetBtn" class="btn save-btn" data-action="update-account-pwd">Passwort ändern</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!--Elementdetails-->
+                    <section id="view-element" class="element-details" hidden aria-label="Elementdetails">
+                        <div class="element-details__dialog">
+                            <button class="element-details__close" type="button" aria-label="Schließen">←</button>
+                            <div class="element-details__viewport">
+                                <div class="element-details__track">
+                                    <article class="element-details-card">
+                                        <header class="element-details-card__header">
+                                            <p class="element-details-card__eyebrow">Elementdetails</p>
+                                            <h2 class="element-details-card__title">Title</h2>
+                                        </header>
+                                        <div class="element-details-card__image-wrapper">
+                                            <img class="element-details-card__image" src="assets/images/system/profile_icon.png" alt="Elementbild">
+                                        </div>
+                                        <div class="element-details-card__content">
+                                            <p class="element-details-card__name">Name</p>
+                                            <p class="element-details-card__description">Ganze Beschreibung</p>
+                                            <dl class="element-meta">
+                                                <div class="element-meta__item">
+                                                    <dt class="element-meta__label">Gruppe</dt>
+                                                    <dd class="element-meta__value">1</dd>
+                                                </div>
+                                                <div class="element-meta__item">
+                                                    <dt class="element-meta__label">Schwierigkeit</dt>
+                                                    <dd class="element-meta__value">A</dd>
+                                                </div>
+                                                <div class="element-meta__item">
+                                                    <dt class="element-meta__label">Abgang</dt>
+                                                    <dd class="element-meta__value">❌ ungültiger Abgang</dd>
+                                                </div>
+                                            </dl>
+                                        </div>
+                                        <footer class="element-details-card__actions">
+                                            <button class="btn btn--primary" type="button" data-action="add-to-exercise">
+                                                Hinzufügen
+                                            </button>
+                                            <button class="btn btn--secondary" type="button" data-action="change-learned-element">
+                                                Erledigt
+                                            </button>
+                                        </footer>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!--Default Base Panel-->
+                <section id="panelRoot" class="panel root visible">
+                    <div id="welcomePanel" class="vertical-container">
+                        <h1 id="welcomeUser">Wilkommen, <i>User</i>!</h1>
+                        <p id="welcomeTxt"><!--generated--></p>
+
+                        <button class="openDownloadsBtn button primary" data-action="open-downloads">PDF Downloads <span class="icon icon--download"></span></button>
+                        <button class="openNewsBtn button primary" data-action="open-news">News & Updates <span class="icon icon--update"></span></button>
+                    </div>
+                </section>
+
+
+
+                <!--Panel 1: Exercise creation-->
+                <section id="panel1" class="panel exercise">
+
+                    <!--Apparatus List-->
+                    <section id="view-apparatus-list" class="sub-panel" aria-label="Übungsübersicht">
+                        <header class="sub-panel--header">
+                            <h1 class="apparatus-list-headline">Geräteübersicht</h1>
+                            <div class="apparatus-list-description">Zur Übungserstellung einfach das gewünschte Gerät auswählen.</div>
+                        </header>
+                        <div class="apparatus-container" id="apparatus-container">
+                            <!--generated-->
+                        </div>
+                    </section>
+
+                    <!--Apparatus description-->
+                    <section id="view-apparatus-detail" class="sub-panel" hidden aria-label="Gerätedetails">
+                        <header class="sub-panel--header">
+                            <button class="btn--return" type="button" data-action="back-to-list">←</button>
+                            <h2 id="detailNameDe"></h2>
+                            <div id="detailNameEn" class="muted"></div>
+                        </header>
+                        <article class="apparatus-overview">
+                            <header class="apparatus-hero">
+                                <img id="detailImg" alt="">
+                            </header>
+                            <div class="apparatus-details">
+                                <h3>Allgemeine Infos</h3>
+                                <div id="detailFacts" class="facts"></div>
+                                <h3>Elementegruppen</h3>
+                                <ul id="detailGroups"></ul>
+                            </div>
+                            <div class="horizontal-container">
+                                <button class="btn--classic" type="button" data-action="prev-apparatus">← Vorheriges</button>
+                                <button id="startEditor" class="btn--primary" type="button" data-action="to-exercise-editor">
+                                    Übungserstellung
+                                    <span class="icon icon--editor"></span>
+                                </button>
+                                <button class="btn--classic" type="button" data-action="next-apparatus">Nächstes →</button>
+                            </div>
+                        </article>
+                    </section>
+
+
+                    <!--Elementeliste-->
+                    <section id="view-element-list" class="sub-panel" hidden aria-label="Elementeliste">
+
+                        <button class="btn--return" type="button" data-action="back-to-exercise-editor">←</button>
+                        <div class="filter-wrapper">
+                            <h3>Filter nach Schwierigkeit</h3>
+                            <div id="filterDifficulty" class="filter-group" data-filter-type="difficulty">
+                                <!--generated -> config.FilterElements.difficulty -->
+                            </div>
+
+                            <h3>Filter nach Gruppe</h3>
+                            <div id="filterGroup" class="filter-group" data-filter-type="group">
+                                <!--generated -> config.FilterElements.groups -->
+                            </div>
+
+                            <label class="toggle">
+                                <input type="checkbox" id="filterLearnedElements" data-action="toggle-learned-elements">
+                                <span class="toggle__track"></span>
+                                <span class="toggle__label" id="learned-element-filter">Nur <i>gelernte</i> Elemente</span>
+                            </label>
+                            
+                            <div class="horizontal-grid-container">
+                                <div>
+                                    <h3>Suche nach Stichwort</h3>
+                                    <input type="text" id="searchInput" placeholder="Suche nach Name...">
+                                </div>
+                                <div>
+                                    <h3>Sortierung</h3>
+                                    <select id="filter-order">
+                                        <option value="group_up">Gruppe aufsteigend</option>
+                                        <option value="group_down">Gruppe absteigend</option>
+                                        <option value="value_up">Wertigkeit aufsteigend</option>
+                                        <option value="value_down">Wertigkeit absteigend</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="element-list-container">
+                            <!--auto generated-->
+                        </div>
+                    </section>
+
+                    <!--Elemente Details View-->
+                    <section id="view-details-overlay" class="sub-panel" hidden aria-label="Elemente-Detailansicht">
+                        <div class="overlay-backdrop" data-action="close-element-details"></div>
+
+                        <section class="overlay-dialog">
+                            <button data-action="close-element-details" id="close-element-details">x</button>
+
+                            <div class="slider-viewport">
+                                <div class="slider-track" id="element-details-track">
+                                    <!--auto generated-->
+                                </div>
+                            </div>
+
+                            <div class="horizontal-grid-container">
+                                <button data-action="prev-element-detail">← voriges Element</button>
+                                <button data-action="next-element-detail">nächstes Element →</button>
+                            </div>
+                        </section>
+                    </section>
+
+
+                    <!--Routine Editor-->
+                    <section id="view-apparatus-editor" class="sub-panel" hidden aria-label="Übungserstellung">
+                        <header class="sub-panel--header">
+                            <button class="btn--return" type="button" data-action="back-to-details">←</button>
+                            <h2>Übungserstellung</h2>
+                            <span id="editorName" class="muted"></span>
+                        </header>
+                        <div class="apparatus-exercise">
+                            <section class="editor-topbar">
+                                <div class="segmented" role="tablist" aria-label="Übungsmodus">
+                                    <label class="toggle">
+                                        <input type="checkbox" id="routine-type-checkbox" data-action="toggle-routine-type" data-mode="competition" checked>
+                                        <span class="toggle__track"></span>
+                                        <span class="toggle__label" id="competition-type-label">Wettkampfübung</span>
+                                    </label>
+                                </div>
+                                <div class="segmented">
+                                    <button type="button" class="btn--primary" data-action="save-exercise">Speichern</button>
+                                    <button type="button" class="btn--primary" data-action="restore-exercise">Verwerfen</button>
+                                </div>
+                            </section>
+                            <section class="exercise-list">
+                                <header>Drag & Drop zum Sortieren (oder nutze die Buttons).</header>
+
+                                <div class="table-wrap" role="region" aria-label="Elementliste">
+                                    <table class="exercise-table">
+                                        <ol id="editorRows" class="routine-dnd-list">
+                                            <!--generated-->
+                                        </ol>
+                                    </table>
+                                </div>
+                                <button type="button" class="btn--secondary add-row-btn" data-action="open-element-picker">
+                                    + Neu hinzufügen
+                                </button>
+                            </section>
+                            <section>
+                                <h3 class="container-headline">Automatische Bewertung</h3>
+                                <p class="hint">Zum aktualisieren Übung speichern..</p>
+                                <div id="autoEval" class="eval-grid">
+                                    <div class="eval-difficultis">
+                                        <div class="difficulty-entry">
+                                            <span id="totalDifficulty">-</span>
+                                            <p>Gesamt-Schwierigkeit</p>
+                                        </div>
+                                        <div class="difficulty-entry">
+                                            <span id="baseDifficulty">-</span>
+                                            <p>Basis-Schwierigkeit</p>
+                                        </div>
+                                        <div class="difficulty-entry">
+                                            <span id="groupBonus">-</span>
+                                            <p>Gruppen-Bonus</p>
+                                        </div>
+                                        <div class="difficulty-entry">
+                                            <span id="dismountBonus">-</span>
+                                            <p>Abgang-Bonus</p>
+                                        </div>
+                                    </div>
+                                    <div id="warning-container" class="feedback-container">Kein Feedback verfügbar</div>
+                                    <div id="error-container"   class="feedback-container">Kein Feedback verfügbar</div>
+                                </div>
+                                <div class="eval-messages">
+                                    <ul id="evalErrors" class="msg-list msg-list--error"></ul>
+                                    <ul id="evalWarnings" class="msg-list msg-list--warn"></ul>
+                                </div>
+                            </section>
+                            <section id="communitySection">
+                                <h3>User Bewertung</h3>
+                                <div class="rating-row">
+                                    <div class="rating-stars" aria-label="Durchschnittliche Bewertung" id="avgStars">★★★★★</div>
+                                    <div class="muted">
+                                        <span id="avgRatingText">-</span> · <span id="ratingCountText">0 Bewertungen</span>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </section>
+                </section>
+
+
+
+                <!--Panel 2: Member-->
+                <section id="panel2" class="panel member">
+                    <div class="panel-layout">
+                        <header class="panel-header">
+                            <h2 class="panel-headline">Mitglieder</h2>
+                            <div class="spinner"></div>
+                        </header>
+                        <div class="panel-body scroll-list">
+                            <div id="member-list">
+                                <!--dynamically load members-->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!--Panel 3: Competition-->
+                <section id="panel3" class="panel competition">
+                    <div class="panel-layout">
+                        <header class="panel-header">
+                            <h2 class="panel-headline">Wettkämpfe</h2>
+                            <div class="spinner"></div>
+                        </header>
+                        <div id="score-panel" class="panel-body scroll-list" style="display: none;">
+                            <div class="score-panel__loading" id="scorePanelLoading" aria-live="polite" aria-hidden="true">
+                                <div class="spinner"></div>
+                                <p>Wertungen werden geladen …</p>
+                            </div>
+                            <div class="score-row">
+                                <img src="./assets/images/equipment/Floor_icon.png" alt="Boden Icon">
+                                <h2>Boden</h2>
+                                <input type="number" id="FlScore" min="0" max="99.999">
+                            </div>
+                            <div class="score-row">
+                                <img src="./assets/images/equipment/Pommelhorse_icon.png" alt="Pauschenpferd Icon">
+                                <h2>Pauschenpferd</h2>
+                                <input type="number" id="PoScore" min="0" max="99.999">
+                            </div>
+                            <div class="score-row">
+                                <img src="./assets/images/equipment/Rings_icon.png" alt="Ringe Icon">
+                                <h2>Ringe</h2>
+                                <input type="number" id="RiScore" min="0" max="99.999">
+                            </div>
+                            <div class="score-row">
+                                <img src="./assets/images/equipment/Vault_icon.png" alt="Sprung Icon">
+                                <h2>Sprung</h2>
+                                <input type="number" id="VaScore" min="0" max="99.999">
+                            </div>
+                            <div class="score-row">
+                                <img src="./assets/images/equipment/Parralelbars_icon.png" alt="Barren Icon">
+                                <h2>Barren</h2>
+                                <input type="number" id="PaScore" min="0" max="99.999">
+                            </div>
+                            <div class="score-row">
+                                <img src="./assets/images/equipment/Highbar_icon.png" alt="Reck Icon">
+                                <h2>Reck</h2>
+                                <input type="number" id="HiScore" min="0" max="99.999">
+                            </div>
+
+                            <div class="score-row score-btn-container">
+                                <button class="comp-btn btn--primary" data-action="submitScore">Update</button>
+                                <button class="comp-btn cancel-btn" data-action="cancelScore">Beenden</button>
+                            </div>
+                        </div>
+                        <div id="competition-panel" class="panel-body scroll-list">
+                            <div id="competition-list">
+                                <!--dynamically load competition-->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!--Panel 4: Settings-->
+                <section id="panel4" class="panel settings scroll-list">
+                    <header class="panel-header">
+                        <h2 class="panel-headline">Account Einstellungen</h2>
+                        <div class="spinner"></div>
+                    </header>
+                    <div class="panel-body">
+                        <header class="profile-header">
+                            <img src="./assets/images/system/profile_icon.png" alt="Profile" class="profile-avatar" id="profilePicture">
+                        </header>
+                        
+                        <div class="settings-grid">
+                            <!--Admin Funktionen-->
+                            <details class="settings-section" id="admin-settings" hidden>
+                                <summary class="settings-summary">
+                                    <div class="settings-summary--text">
+                                        <div class="settings-summary--title">Administrator</div>
+                                        <div class="settings-summary--desc">Administrator Funktionen.</div>
+                                    </div>
+                                    <span class="settings-summary--chevron" aria-hidden="true">▾</span>
+                                </summary>
+                                <div class="settings-content horizontal-grid-container">
+                                    <button id="gotoAdminPage" class="settings-action">
+                                        <a href="./admin.html">Administrator - Seite</a>
+                                    </button>
+                                </div>
+                            </details>
+
+                            <!--Profil Einstellungen-->
+                            <details class="settings-section">
+                                <summary class="settings-summary">
+                                    <div class="settings-summary--text">
+                                        <div class="settings-summary--title">Profil</div>
+                                        <div class="settings-summary--desc">Name und Sichtbarkeit verwalten.</div>
+                                    </div>
+                                    <span class="settings-summary--chevron" aria-hidden="true">▾</span>
+                                </summary>
+                                <div class="settings-content horizontal-grid-container">
+                                    <button id="editNameBtn" class="settings-action" data-action="change-name-view">✎ Namen bearbeiten</button>
+                                    <div class="stay-logged-in">
+                                        <label class="toggle">
+                                            <input type="checkbox" id="visibleCheckbox" data-action="toggle-visibility">
+                                            <span class="toggle__track"></span>
+                                            <span class="toggle__label">Sichtbarkeit</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </details>
+
+                            <!--Sicherheit - Passwort und Auto-Login-->
+                            <details class="settings-section">
+                                <summary class="settings-summary">
+                                    <div class="settings-summary--text">
+                                        <div class="settings-summary--title">Sicherheit</div>
+                                        <div class="settings-summary--desc">Passwort und Login-Optionen.</div>
+                                    </div>
+                                    <span class="settings-summary--chevron" aria-hidden="true">▾</span>
+                                </summary>
+                                <div class="settings-content horizontal-grid-container">
+                                    <button id="editPasswordBtn" class="settings-action" data-action="change-pwd-view">✎ Passwort bearbeiten</button>
+                                    <div class="stay-logged-in">
+                                        <label class="toggle">
+                                            <input type="checkbox" id="autoLoginCheckbox" data-action="toggle-auto-login">
+                                            <span class="toggle__track"></span>
+                                            <span class="toggle__label">Automatischer Login</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </details>
+
+                            <!--Design: Profilbild-->
+                            <details class="settings-section">
+                                <summary class="settings-summary">
+                                    <div class="settings-summary--text">
+                                        <div class="settings-summary--title">Design</div>
+                                        <div class="settings-summary--desc">Profilfarbe auswählen.</div>
+                                    </div>
+                                    <span class="settings-summary--chevron" aria-hidden="true">▾</span>
+                                </summary>
+                                <div class="settings-content">
+                                    <div id="colorContainer" class="color-grid">
+                                        <!--generated-->
+                                    </div>
+                                    <p class="settings-hint">Wähle eine Akzentfarbe für dein Profilbild.</p>
+                                </div>
+                            </details>
+
+                            <!--Support: Verbesserungen und Fehler-->
+                            <details class="settings-section">
+                                <summary class="settings-summary">
+                                    <div class="settings-summary--text">
+                                        <div class="settings-summary--title">Support</div>
+                                        <div class="settings-summary--desc">Feedback senden oder Fehler melden.</div>
+                                    </div>
+                                    <span class="settings-summary--chevron" aria-hidden="true">▾</span>
+                                </summary>
+                                <div class="settings-content">
+                                    <button id="reportIssue" class="settings-action" data-action="feedback-view">
+                                        Feedback & Fehler <span class="icon icon--feedback"></span>
+                                    </button>
+                                </div>
+                            </details>
+                        </div>
+
+                        <!--Logout und Account löschen-->
+                        <footer class="settings-danger">
+                            <button id="logoutBtn" class="exit-account-btn" data-action="account-logout">
+                                Logout <span class="icon icon--logout"></span>
+                            </button>
+                            <button id="delBtn" class="exit-account-btn danger" data-action="account-delete-view">
+                                Account löschen <span class="icon icon--cancel"></span>
+                            </button>
+                        </footer>
+                    </div>
+                </section>
+            </main>
+
+            <nav class="tabbar" id="menue" aria-label="Main navigation">
+                <div id="menuWrapper">
+                    <button class="tabBtn" id="toggleEquipment" data-panel="panel1" aria-controls="panel1">
+                        <span class="icon icon--equipment"></span>
+                    </button>
+                    <button class="tabBtn" id="toggleMember" data-panel="panel2" aria-controls="panel2">
+                        <span class="icon icon--groups"></span>
+                    </button>
+                    <button class="tabBtn" id="toggleCompetition" data-panel="panel3" aria-controls="panel3">
+                        <span class="icon icon--competition"></span>
+                    </button>
+                    <button class="tabBtn" id="toggleSettings" data-panel="panel4" aria-controls="panel4">
+                        <span class="icon icon--settings"></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <a href="impressum/impressum.html" class="impressum" style="top: 5px; color: #fcfcfc; height: 2dvh;">Impressum</a>
+    <script src="assets/script/code.js" type="module"></script>
+</body>
+</html>

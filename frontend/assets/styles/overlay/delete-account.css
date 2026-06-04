@@ -1,0 +1,130 @@
+.account-delete-dialog {
+  display: none;
+  width: min(80dvw, 400px);
+  padding: 20px;
+
+  background: var(--account-delete-bg, #1e1e1e);
+  color: var(--account-delete-color, #ffffff);
+
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: var(
+    --account-delete-shadow,
+    0 4px 10px rgba(0, 0, 0, 0.3)
+  );
+
+  font-family: Arial, sans-serif;
+}
+
+.account-delete-dialog,
+.account-delete-dialog * {
+  box-sizing: border-box;
+}
+
+.account-delete-dialog__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.account-delete-dialog__title {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.account-delete-dialog__text {
+  margin: 0 0 20px;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: normal;
+  opacity: 0.8;
+}
+
+.account-delete-dialog__field {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.account-delete-dialog__label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.account-delete-dialog__input {
+  padding: 10px 12px;
+
+  border: 1px solid var(--account-delete-input-border, #555);
+  border-radius: 8px;
+
+  background: var(--account-delete-input-bg, #2a2a2a);
+  color: inherit;
+
+  font: inherit;
+}
+
+.account-delete-dialog__input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.account-delete-dialog__input:focus {
+  outline: 2px solid var(--account-delete-focus, #7aa7ff);
+  outline-offset: 2px;
+}
+
+.account-delete-dialog__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.account-delete-dialog__button {
+  flex: 1;
+  padding: 10px 14px;
+
+  border: 0;
+  border-radius: 8px;
+
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.account-delete-dialog__button--danger {
+  background: var(--account-delete-danger-bg, #d93025);
+  color: var(--account-delete-danger-color, #ffffff);
+}
+
+.account-delete-dialog__button--danger:hover {
+  background: var(--account-delete-danger-bg-hover, #b3261e);
+}
+
+.account-delete-dialog__button--secondary {
+  background: var(--account-delete-secondary-bg, #3a3a3a);
+  color: var(--account-delete-secondary-color, #ffffff);
+}
+
+.account-delete-dialog__button--secondary:hover {
+  background: var(--account-delete-secondary-bg-hover, #4a4a4a);
+}
+
+.account-delete-dialog__message {
+  min-height: 1.2em;
+  margin: 14px 0 0;
+  font-size: 14px;
+}
+
+.account-delete-dialog__message.error {
+  color: var(--account-delete-error-color, #ff6b6b);
+}
+
+.account-delete-dialog__message.info {
+  color: var(--account-delete-info-color, #7ee787);
+}
+
+.account-delete-dialog__spinner {
+  display: none;
+}

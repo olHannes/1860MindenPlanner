@@ -2,6 +2,8 @@ from mongoConf import *
 from datetime import datetime, date, timedelta
 from bson import ObjectId
 
+from security import csrf_protect
+
 competition_bp = Blueprint('competition', __name__)
 
 ALLOWED_DEVICES = {
@@ -71,7 +73,7 @@ def delete_competition(competition_id):
 ################################################################################################### list Competitions
 @competition_bp.route('/competition/all', methods=['GET'])
 def get_all_competitions():
-    userId = request.args.get("userId")
+    userId = session.get("user_id")
 
     user_oid = None
     if userId:
@@ -187,12 +189,12 @@ def get_competition_entries(competition_id):
 
 ################################################################################################### join competition
 @competition_bp.route('/competition/<competition_id>/join', methods=["POST", "PUT"])
+@csrf_protect
 def join_competition(competition_id):
     if not competition_id or not ObjectId.is_valid(competition_id):
         return jsonify({"ok": False, "message": "Ungültige Wettkampf-Id"}), 400
     
-    data = request.get_json(silent=True) or {}
-    userId = data.get("userId")
+    userId = session.get("user_id")
     if not userId or not ObjectId.is_valid(userId):
         return jsonify({"ok": False, "message": "Fehlende oder Ungültige User-Id"}), 400
     
@@ -222,12 +224,12 @@ def join_competition(competition_id):
 
 ################################################################################################### leave Competition
 @competition_bp.route('/competition/<competition_id>/leave', methods=['POST', 'DELETE'])
+@csrf_protect
 def leave_competition(competition_id):
     if not competition_id or not ObjectId.is_valid(competition_id):
         return jsonify({"ok": False, "message": "Ungültige Wettkampf-Id"}), 400
 
-    data = request.get_json(silent=True) or {}
-    userId = data.get("userId")
+    userId = session.get("user_id")
     if not userId or not ObjectId.is_valid(userId):
         return jsonify({"ok": False, "message": "Fehlende oder Ungültige User-Id"}), 400
     
@@ -249,14 +251,16 @@ def leave_competition(competition_id):
 
 ################################################################################################### Add / Update Points
 @competition_bp.route('/competition/<competition_id>/points', methods=['PUT'])
+@csrf_protect
 def add_points(competition_id):
     if not competition_id or not ObjectId.is_valid(competition_id):
         return jsonify({"ok": False, "message": "Ungültige Wettkampf-Id"}), 400
 
+    userId = session.get("user_id")
     data = request.get_json(silent=True) or {}
-    userId = data.get("userId")
     scores = data.get("scores")
 
+    print(data)
     if not userId or not ObjectId.is_valid(userId):
         return jsonify({"ok": False, "message": "Ungültige User-Id"}), 400
     
@@ -313,7 +317,7 @@ def add_points(competition_id):
 ################################################################################################### Get User-Specific Competition Points
 @competition_bp.route('/competition/<competition_id>/points', methods=['GET'])
 def get_points(competition_id):
-    user_id = request.args.get("userId")
+    user_id = session.get("user_id")
 
     if not competition_id or not ObjectId.is_valid(competition_id):
         return jsonify({"ok": False, "message": "Fehlende oder ungültige Wettkampf-ID", "scores": {}}), 400

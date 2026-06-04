@@ -68,40 +68,6 @@
 }
 
 
-/*News Panel*/
-.news {
-  display: none;
-  background-color: white;
-  border-radius: 13px;
-  width: 95%;
-  height: 75dvh;
-  padding: 8px;
-  overflow-y: auto;
-  flex-direction: column;
-}
-.news h3 {
-  text-align: center;
-}
-.news li {
-  margin-top: 5px;
-}
-
-
-/*News Button*/
-.news-btn {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  color: white;
-  background-color: var(--color-primary-hover);
-  max-width: 200px;
-  padding: 6px 18px;
-  gap: var(--gap);
-}
-.news-btn .icon {
-  background-color: white;
-}
 
 
 .return-btn {
@@ -111,46 +77,11 @@
 }
 
 
-/*Download Panel*/
-.downloadPage {
-  display: none;
-  height: 75dvh;
-  width: 95%;
-  text-align: left;
-  background: white;
-  padding: 20px;
-  overflow-y: auto;
-}
-.downloadPage .icon {
-  background-color: var(--color-primary-dark);
-  width: 30px;
-  height: 30px;
-}
-.downloadPage a {
-  color: var(--color-primary);
-  font-size: large;
-}
-
-.hide-download-btn {
-  display: inline-block;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #ae4427;
-  margin-top: 10px;
-}
-.hide-download-btn:hover {
-  background-color: #80311b;
-}
-
 
 
 /*Main Menu*/
 #menue {
   display: flex;
-  display: none;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -201,23 +132,6 @@
   font-size: 16px;
   color: #555;
   margin-bottom: 20px;
-}
-#welcomePanel button {
-  display: flex;
-  align-items: center;
-  gap: var(--gap);
-  padding: 10px 20px;
-  margin-bottom: 5px;
-  font-size: 16px;
-  color: white;
-  background-color: #27ae60;
-  border: none;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background 0.3s;
-}
-#welcomePanel button:hover {
-  background-color: #219150;
 }
 
 
@@ -344,17 +258,8 @@
 #delBtn {
   background: var(--btn-delete);
 }
-#reportIssue {
-  color: white;
-  background-color: var(--btn-delete);
-  font-size: large;
-}
-#reportIssue:hover {
-    background-color: #695858;
-}
 
-#requestDelAcc,
-#secureRoutineCopy,
+
 #ratingRoutine {
   display: none;
   width: 80dvw;
@@ -367,18 +272,6 @@
   border-radius: 12px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   font-family: Arial, sans-serif;
-}
-#requestDelAcc h2,
-#secureRoutineCopy h2 {
-  margin-bottom: 10px;
-  font-size: 20px;
-}
-#requestDelAcc h3,
-#secureRoutineCopy h3 {
-  font-size: 16px;
-  font-weight: normal;
-  opacity: 0.8;
-  margin-bottom: 20px;
 }
 
 

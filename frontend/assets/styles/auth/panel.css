@@ -1,0 +1,151 @@
+html, body {
+  min-height: 100%;
+}
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+
+.auth--start-screen {
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  justify-items: center;
+  align-items: center;
+
+  padding: 16px;
+  position: relative;
+  z-index: 10;
+}
+
+.auth--start-screen > .headline {
+  grid-row: 1;
+}
+
+
+.auth--panel {
+    grid-row: 2;
+    align-self: center;
+    width: min(100%, 500px);
+    max-height: 100%;
+    padding: 30px;
+    background: var(--color-surface);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 10;
+    max-height: fit-content;
+    margin-bottom: var(--gap);
+}
+
+.auth--panel[hidden],
+#pwdForgot-page-1[hidden],
+#pwdForgot-page-2[hidden] {
+  display: none;
+}
+
+.auth--panel h2 {
+  margin-bottom: 15px;
+  margin-top: 0;
+  color: var(--color-primary-dark);
+}
+
+.auth--panel label {
+    font-weight: 500;
+    font-style: italic;
+}
+.horizontal-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+
+.auth--panel form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.auth--panel input {
+    width: 95%;
+    margin: 0;
+}
+
+.auth--panel button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap);
+
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+
+  color: white;
+  background: var(--color-primary-hover);
+  border: none;
+  border-radius: 8px;
+
+  font-size: 16px;
+  cursor: pointer;
+
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.auth--panel button:hover {
+  background: var(--btn-primary);
+}
+
+.auth--panel button:active {
+  transform: translateY(1px);
+}
+
+.login--page #registerBtn {
+  padding: 6px 12px;
+}
+
+.registration--page .cancel,
+.pwdForgot--page .cancel {
+  background: var(--btn-delete);
+}
+
+#forgotPwd {
+  cursor: pointer;
+}
+
+
+.start-screen .icon,
+.auth--start-screen .icon {
+  background-color: var(--color-primary-dark);
+}
+.auth--panel button .icon {
+    background-color: white;
+    height: 28px;
+    width: 28px;
+}
+
+/* =========================================================
+   Secondary Navigation
+   ========================================================= */
+
+.news-btn {
+  grid-row: 3;
+  align-self: end;
+}
+
+.auth--impressum,
+.impressum {
+  grid-row: 4;
+  margin: 5px;
+  text-align: center;
+  color: darkgray;
+}
+
+.auth--impressum a,
+.impressum a {
+  color: darkgray;
+}

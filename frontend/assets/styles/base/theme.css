@@ -1,0 +1,139 @@
+:root {
+  /* =========
+     BRAND / SYSTEM
+     ========= */
+  --color-primary: #6bb9f0;
+  --color-primary-dark: #07294a;
+  --color-primary-hover: #1f7fb6;
+  --color-primary-soft: #e6f3fb;
+
+
+  --color-bg: linear-gradient(200deg, var(--color-primary), var(--color-primary-dark));
+  --color-bg-dark: linear-gradient(200deg, var(--color-primary-dark), black);
+  --color-bg-alt-1: linear-gradient(210deg,#6bb9f0 0%,#3f8fc4 45%,#0b2a4a 100%);
+
+  --color-bg-alt-2: linear-gradient(
+  180deg,
+  #1e293b 0%,
+  #0f172a 100%
+   );
+
+
+  --color-surface: #ffffff;
+  --color-border: #d8dee5;
+
+  --color-font: #ececec;
+
+  --color-text: #0b0f14;
+  --color-text-muted: #5f6b7a;
+
+  /* =========
+     STATUS / FEEDBACK
+     ========= */
+  --color-success: #168a52;
+  --color-warning: #9a5b00;
+  --color-danger: #b42318;
+
+  --color-success-bg: #d7f5e6;
+  --color-warning-bg: #ffefd6;
+  --color-danger-bg: #ffe2e0;
+
+  /* =========
+     BUTTONS
+     ========= */
+  --btn-primary: var(--color-primary);
+  --btn-save: var(--color-success);
+  --btn-dismiss: #6b7785;
+  --btn-delete: var(--color-danger);
+
+  --icon-background-color: rgba(255, 255, 255, 0.75);
+
+  /* =========
+     SHADOW, etc.
+     ========= */
+  --shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+
+  --radius: 12px;
+  --gap: 15px;
+  --app-max: 700px;
+  --tabbar-h: 56px;
+  --pad: 16px;
+
+
+
+  --surface-2: color-mix(in srgb, var(--color-surface) 92%, var(--color-primary-soft) 8%);
+  --border-strong: color-mix(in srgb, var(--color-border) 70%, var(--color-primary) 30%);
+  --shadow-soft: 0 10px 30px rgba(0,0,0,.10);
+  --shadow-hover: 0 14px 45px rgba(0,0,0,.14);
+  --focus: 0 0 0 4px color-mix(in srgb, var(--color-primary) 25%, transparent);
+}
+
+:root {
+  /* =========
+     BRAND / SYSTEM
+     ========= */
+  --color-primary: #6bb9f0;
+  --color-primary-dark: #07294a;
+  --color-primary-hover: #1f7fb6;
+  --color-primary-soft: #e6f3fb;
+
+
+  --color-bg: linear-gradient(200deg, var(--color-primary), var(--color-primary-dark));
+  --color-bg-dark: linear-gradient(200deg, var(--color-primary-dark), black);
+  --color-bg-alt-1: linear-gradient(210deg,#6bb9f0 0%,#3f8fc4 45%,#0b2a4a 100%);
+
+  --color-bg-alt-2: linear-gradient(
+  180deg,
+  #1e293b 0%,
+  #0f172a 100%
+   );
+
+
+  --color-surface: #ffffff;
+  --color-border: #d8dee5;
+
+  --color-font: #ececec;
+
+  --color-text: #0b0f14;
+  --color-text-muted: #5f6b7a;
+
+  /* =========
+     STATUS / FEEDBACK
+     ========= */
+  --color-success: #168a52;
+  --color-warning: #9a5b00;
+  --color-danger: #b42318;
+
+  --color-success-bg: #d7f5e6;
+  --color-warning-bg: #ffefd6;
+  --color-danger-bg: #ffe2e0;
+
+  /* =========
+     BUTTONS
+     ========= */
+  --btn-primary: var(--color-primary);
+  --btn-save: var(--color-success);
+  --btn-dismiss: #6b7785;
+  --btn-delete: var(--color-danger);
+
+  --icon-background-color: rgba(255, 255, 255, 0.75);
+
+  /* =========
+     SHADOW, etc.
+     ========= */
+  --shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+
+  --radius: 12px;
+  --gap: 15px;
+  --app-max: 700px;
+  --tabbar-h: 56px;
+  --pad: 16px;
+
+
+
+  --surface-2: color-mix(in srgb, var(--color-surface) 92%, var(--color-primary-soft) 8%);
+  --border-strong: color-mix(in srgb, var(--color-border) 70%, var(--color-primary) 30%);
+  --shadow-soft: 0 10px 30px rgba(0,0,0,.10);
+  --shadow-hover: 0 14px 45px rgba(0,0,0,.14);
+  --focus: 0 0 0 4px color-mix(in srgb, var(--color-primary) 25%, transparent);
+}

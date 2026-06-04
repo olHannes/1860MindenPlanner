@@ -1,0 +1,293 @@
+#view-apparatus-editor {
+    padding: 1rem;
+    max-height: 96%;
+    overflow-y: auto;
+}
+
+#view-apparatus-editor .sub-panel--header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.25rem 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+#view-apparatus-editor .btn--return {
+    grid-row: span 2;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+#view-apparatus-editor .sub-panel--header h2 {
+    margin: var(--gap, 1rem) 0 0 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.05;
+}
+
+#view-apparatus-editor .sub-panel--header span {
+    font-size: 1rem;
+    letter-spacing: 0.15rem;
+}
+
+.apparatus-exercise {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.apparatus-exercise section {
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 10px 30px;
+}
+
+.editor-topbar {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.editor-topbar .segmented {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.editor-topbar button,
+.add-row-btn {
+    width: 100%;
+}
+
+.exercise-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.exercise-list > header {
+    font-size: 0.95rem;
+}
+
+.table-wrap {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.exercise-table {
+    display: block;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.routine-dnd-list {
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.routine-dnd-item {
+    display: grid;
+    grid-template-columns: 10px 12px auto auto 30px;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 12px;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.15) 6px 5px 2.6px;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    cursor: grab;
+}
+.routine-dnd-handle {
+    cursor: grab;
+    line-height: 1;
+}
+.routine-dnd-number {
+    min-width: 1.5rem;
+    text-align: center;
+}
+
+.row-img {
+    width: 3.5rem;
+    height: 3.5rem;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.routine-dnd-content {
+    min-width: 0;
+    display: grid;
+    gap: 0.15rem;
+}
+
+.row-title,
+.routine-dnd-content small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.row-title {
+    font-weight: 600;
+}
+.row-img {
+    height: 4rem;
+    width: auto;
+}
+
+.routine-dnd-item .icon-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    justify-self: end;
+}
+
+.routine-empty-msg {
+    margin: 0;
+    padding: 1rem;
+    text-align: center;
+}
+
+
+.container-headline {
+    margin-bottom: 1px;
+}
+.hint {
+    padding: 0;
+    margin-top: 0;
+    letter-spacing: 1px;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.eval-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.eval-difficultis {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.difficulty-entry {
+    display: grid;
+    gap: 0.25rem;
+    min-width: 0;
+}
+
+.difficulty-entry span {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.difficulty-entry p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.feedback-container {
+    min-width: 0;
+}
+
+.eval-messages {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.msg-list {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.rating-row {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.rating-stars {
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+
+@media (min-width: 1024px) {
+    #view-apparatus-editor {
+        padding: 2rem;
+    }
+
+    #view-apparatus-editor .sub-panel--header {
+        margin-bottom: 1.5rem;
+    }
+
+    #view-apparatus-editor .sub-panel--header h2 {
+        font-size: 2.5rem;
+    }
+
+    .apparatus-exercise {
+        grid-template-columns: minmax(0, 2fr) minmax(20rem, 1fr);
+        grid-template-areas:
+            "topbar topbar"
+            "list eval"
+            "list community";
+        align-items: start;
+        gap: 1.5rem;
+    }
+
+    .editor-topbar {
+        grid-area: topbar;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+    }
+
+    .editor-topbar .segmented:last-child {
+        justify-content: flex-end;
+    }
+
+    .editor-topbar button,
+    .add-row-btn {
+        width: auto;
+    }
+
+    .exercise-list {
+        grid-area: list;
+    }
+
+    .apparatus-exercise > section:nth-of-type(3) {
+        grid-area: eval;
+    }
+
+    #communitySection {
+        grid-area: community;
+    }
+
+    .routine-dnd-list {
+        gap: 0.6rem;
+    }
+
+    .routine-dnd-item {
+        gap: 0.85rem;
+        padding: 0.85rem 1rem;
+    }
+
+    .row-img {
+        height: 8rem;
+        width: auto;
+    }
+
+    .eval-difficultis {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .rating-row {
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 0.75rem;
+    }
+}

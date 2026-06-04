@@ -1,0 +1,40 @@
+
+@media (min-width: 768px) {
+  .auth--panel {
+    overflow-y: auto;
+    max-height: calc(100dvh - 140px);
+  }
+  .registration--page {
+    width: min(750px, 100%);
+  }
+  .registration--page form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+        "headline headline"
+        "firstName lastName"
+        "email email"
+        "password confirmPassword"
+        "submit cancel"
+        "error error";
+    gap: var(--gap);
+  }
+  .registration--page .loader-container { grid-area: headline;}
+  .registration--page label[for="registration-firstName"] { grid-area: firstName; }
+  .registration--page label[for="registration-lastName"] { grid-area: lastName; }
+  .registration--page label[for="registration-email"] { grid-area: email; }
+  .registration--page label[for="newPassword"] { grid-area: password; }
+  .registration--page label[for="confirmPassword"] { grid-area: confirmPassword; }
+  .registration--page #registerSubmitBtn { grid-area: submit; }
+  .registration--page #cancelBtn { grid-area: cancel; }
+  .registration--page #errorMsgRegister { grid-area: error; }
+   
+}
+
+
+.stay-logged-in label {
+    width: 94%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

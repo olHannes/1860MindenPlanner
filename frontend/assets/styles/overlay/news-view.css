@@ -1,0 +1,35 @@
+
+/*News Panel*/
+.news {
+  display: none;
+  background-color: white;
+  border-radius: 13px;
+  width: 95%;
+  height: 75dvh;
+  padding: 8px;
+  overflow-y: auto;
+  flex-direction: column;
+}
+.news h3 {
+  text-align: center;
+}
+.news li {
+  margin-top: 5px;
+}
+
+
+/*News Button*/
+.news-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  color: white;
+  background-color: var(--color-primary-hover);
+  max-width: 200px;
+  padding: 6px 18px;
+  gap: var(--gap);
+}
+.news-btn .icon {
+  background-color: white;
+}

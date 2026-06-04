@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoutinePlanner - Login</title>
+
+    <!-- Standard Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="icon" href="assets/favicon/favicon.ico">
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+
+    <!-- Android Chrome Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon/android-chrome-512x512.png">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="assets/styles/20-base.css">
+    <link rel="stylesheet" href="assets/styles/30-icons.css">
+    <link rel="stylesheet" href="assets/styles/40-startup.css">
+    <link rel="stylesheet" href="assets/styles/base/theme.css">
+    <link rel="stylesheet" href="assets/styles/base/buttons.css">
+    
+    <link rel="stylesheet" href="assets/styles/auth/panel.css">
+    <link rel="stylesheet" href="assets/styles/auth/elements.css">
+</head>
+
+<body data-page="auth">
+
+    <div id="messageBox">
+        <div class="msgBar" aria-hidden="true"></div>
+        <div class="msgBody">
+            <h3 id="messageBoxTitle">Message Title</h3>
+            <i id="messageBoxContent">Info Text</i>
+        </div>
+    </div>
+
+    <main class="auth--start-screen">
+        <h1 class="auth--headline">Routine Planner</h1>
+
+
+        <section id="pwdForgot_mask" class="pwdForgot--page auth--panel" hidden>
+            <form id="pwdForgotEmailForm" novalidate>
+                <div class="loader-container">
+                    <h2>Passwort vergessen?</h2>
+                    <div class="spinner"></div>
+                </div>
+
+                <div id="pwdForgot-page-1">
+                    <p>Sende dir einen Code per E-Mail und setze dein Passwort zurück.</p>
+
+                    <label for="pwdForgot_email">
+                        <span class="icon icon--email" aria-hidden="true"></span>
+                        <span>E-Mail</span>
+                        <input
+                            type="email"
+                            id="pwdForgot_email"
+                            name="email"
+                            autocomplete="email"
+                            placeholder="example@email.com"
+                            required
+                        >
+                    </label>
+
+                    <button type="submit" id="sendEmailForgot" data-action="send-code-via-mail">
+                        Code per E-Mail senden
+                    </button>
+
+                    <button type="button" id="cancelPwdForgot" class="cancel" data-action="cancel-pwd-forget">
+                        Abbrechen
+                    </button>
+                </div>
+            </form>
+
+            <form id="pwdForgotResetForm" novalidate>
+                <div id="pwdForgot-page-2" hidden>
+                    <p>Ändere dein Passwort und verifiziere die Änderung mit dem Einmalcode.</p>
+
+                    <label for="pwdForgotInput-Verify">
+                        <span>E-Mail Code</span>
+                        <input
+                            type="text"
+                            id="pwdForgotInput-Verify"
+                            name="verificationCode"
+                            inputmode="numeric"
+                            autocomplete="one-time-code"
+                            placeholder="123456"
+                            required
+                        >
+                    </label>
+
+                    <label for="pwdForgotInput-password">
+                        <span>Dein neues Passwort</span>
+                        <input
+                            type="password"
+                            id="pwdForgotInput-password"
+                            name="newPassword"
+                            autocomplete="new-password"
+                            placeholder="Dein Passwort"
+                            required
+                        >
+                    </label>
+
+                    <button type="submit" id="requestNewPwd" data-action="request-new-pwd">
+                        Passwort ändern
+                    </button>
+
+                    <button type="button" id="cancelPwdForgot2" class="cancel" data-action="cancel-pwd-reset">
+                        Abbrechen
+                    </button>
+                </div>
+            </form>
+
+            <p id="pwdForgotErr" aria-live="polite"></p>
+        </section>
+
+        <!-- Login -->
+        <section id="login_mask" class="login--page auth--panel">
+            <form id="loginForm" novalidate>
+                <div class="loader-container">
+                    <h2>Login</h2>
+                    <div class="spinner"></div>
+                </div>
+
+                <label for="login-email">
+                    <div class="horizontal-icon-container">
+                        <span class="icon icon--email" aria-hidden="true"></span>
+                        <span class="sr-only">E-Mail</span>
+                    </div>
+                    <input
+                        type="email"
+                        id="login-email"
+                        name="email"
+                        autocomplete="email"
+                        placeholder="example@email.com"
+                        required
+                    >
+                </label>
+
+                <label for="password">
+                    <div class="horizontal-icon-container">
+                        <span class="icon icon--password" aria-hidden="true"></span>
+                        <span class="sr-only">Passwort</span>
+                    </div>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        autocomplete="current-password"
+                        placeholder="Passwort"
+                        required
+                    >
+                </label>
+
+                <div class="stay-logged-in">
+                    <label class="toggle" for="stayLoggedIn">
+                        <input type="checkbox" id="stayLoggedIn" name="stayLoggedIn">
+                        <span class="toggle__track"></span>
+                        <span class="toggle__label">Angemeldet bleiben</span>
+                    </label>
+                </div>
+
+                <button type="submit" id="loginBtn" data-action="login">
+                    Anmelden <span class="icon icon--login"></span>
+                </button>
+
+                <button type="button" id="registerBtn" data-action="registration">
+                    Registrieren <span class="icon icon--registration"></span>
+                </button>
+
+                <p id="errorMsg" aria-live="polite"></p>
+
+                <button type="button" id="forgotPwd" class="link-button" data-action="pwd-forget">
+                    <i>Passwort vergessen?</i>
+                </button>
+            </form>
+        </section>
+
+        <!-- Registrierung -->
+        <section id="registration_mask" class="registration--page auth--panel" hidden>
+            <form id="registrationForm" novalidate>
+                <div class="loader-container">
+                    <h2>Registrieren</h2>
+                    <div class="spinner"></div>
+                </div>
+
+                <label for="registration-firstName">
+                    <div class="horizontal-icon-container">
+                        <span class="icon icon--name" aria-hidden="true"></span>
+                        <span class="sr-only">Vorname</span>
+                    </div>
+                    <input
+                        type="text"
+                        id="registration-firstName"
+                        name="firstName"
+                        autocomplete="given-name"
+                        placeholder="Vorname"
+                        required
+                    >
+                </label>
+
+                <label for="registration-lastName">
+                    <div class="horizontal-icon-container">
+                        <span class="icon icon--name" aria-hidden="true"></span>
+                        <span class="sr-only">Nachname</span>
+                    </div>
+                    <input
+                        type="text"
+                        id="registration-lastName"
+                        name="lastName"
+                        autocomplete="family-name"
+                        placeholder="Nachname"
+                        required
+                    >
+                </label>
+
+                <label for="registration-email">
+                    <div class="horizontal-icon-container">
+                        <span class="icon icon--email" aria-hidden="true"></span>
+                        <span class="sr-only">E-Mail</span>
+                    </div>
+                    <input
+                        type="email"
+                        id="registration-email"
+                        name="email"
+                        autocomplete="email"
+                        placeholder="example@email.com"
+                        required
+                    >
+                </label>
+
+                <label for="newPassword">
+                    <div class="horizontal-icon-container">
+                        <span class="icon icon--password" aria-hidden="true"></span>
+                        <span class="sr-only">Passwort</span>
+                    </div>
+                    <input
+                        type="password"
+                        id="newPassword"
+                        name="password"
+                        autocomplete="new-password"
+                        placeholder="Passwort"
+                        required
+                    >
+                </label>
+
+                <label for="confirmPassword">
+                    <div class="horizontal-icon-container">
+                        <span class="icon icon--password" aria-hidden="true"></span>
+                        <span class="sr-only">Passwort wiederholen</span>
+                    </div>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        autocomplete="new-password"
+                        placeholder="Passwort wiederholen"
+                        required
+                    >
+                </label>
+
+                <button type="submit" id="registerSubmitBtn" data-action="submit-registration">
+                    Registrieren <span class="icon icon--registration"></span>
+                </button>
+
+                <button type="button" id="cancelBtn" class="cancel" data-action="cancel-registration">
+                    Abbrechen <span class="icon icon--cancel"></span>
+                </button>
+
+                <p id="errorMsgRegister" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <button class="btn" type="button" data-action="show-news">
+            Updates & News <span class="icon icon--update"></span>
+        </button>
+
+        <p class="auth--impressum">
+            <a href="impressum/impressum.html">Impressum</a> &copy; 2026
+        </p>
+    </main>
+
+    <script src="assets/script/auth/code.js" type="module"></script>
+</body>
+</html>

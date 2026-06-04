@@ -1,9 +1,4 @@
 
-//exported functions handles visibility changes of floating panels and different views
-import * as settings from "./settings.js";
-import * as competition from "./competition.js";
-import * as member from "./member.js";
-
 //basic Functions
 //////////////////////////////////////////////////////////////
 export function show(el, display = "block") {
@@ -78,6 +73,14 @@ export function showMessage(root, title, content, { duration = 2000 } = {}) {
 }
 
 
+export function showInlineNotification(field, text, type) {
+    if (!field || !type) return;
+    field.textContent = text;
+    field.classList.toggle("info", type==="info");
+    field.classList.toggle("error", type==="error");
+}
+
+
 // different floating panels
 //////////////////////////////////////////////////////////////
 
@@ -101,150 +104,6 @@ export function hideStartupInformation(root) {
     
 }
 
-// news panel
-export function showNews(root, push = true) {
-    const newsPage = root.getElementById("news");
-    const mainPage = root.getElementById("mainPage");
-    showFloatingBackground(root);
-    show(newsPage, "flex");
-    hide(mainPage);
-    if (push) history.pushState({ page: "news" }, "", "#news");
-}
-export function hideNews(root, push = true) {
-    const newsPage = root.getElementById("news");
-    const mainPage = root.getElementById("mainPage");
-    hideFloatingBackground(root);
-    hide(newsPage);
-    show(mainPage, "flex");
-    if(push) history.back();
-}
-
-// download panel
-export function showDownloads(root, push = true) {
-    let downloadPanel = root.getElementById("downloadPage");
-    showFloatingBackground(root);
-    show(downloadPanel, "block");
-    if (push) history.pushState({ page: "download" }, "", "#download");
-}
-export function hideDownloads(root, push = true) {
-    let downloadPanel = root.getElementById("downloadPage");
-    hideFloatingBackground(root);
-    hide(downloadPanel);
-    if (push) history.back();
-}
-
-//Account deletion Panel
-export function showAccountDeletion(root, push = true) {
-    const panel         = root.getElementById("requestDelAcc");
-    const background    = root.getElementById("loadingBackground");
-    const pwdInput      = root.getElementById("deleteAccountPwd");
-    const errMsg        = root.getElementById("deleteErr");
-    if(errMsg) {
-        errMsg.classList.toggle("info", false);
-        errMsg.classList.toggle("error", false);
-    }
-    clearHTML(errMsg);
-    clearValue(pwdInput);
-    showFloatingBackground(root);
-    show(panel, "block");
-    show(background, "block");
-    if(push) history.pushState({ page: "deleteAccount" }, "", "#deleteAccount");
-}
-export function hideAccountDeletion(root, push = true) {
-    const panel = root.getElementById("requestDelAcc");
-    const background = root.getElementById("loadingBackground");
-    hideFloatingBackground(root);
-    hide(panel);
-    hide(background);
-    if(push) history.back();
-}
-
-//Account Adjustments Panel
-export function showAdjustProfile(root, push = true) {
-    const optionsPanel  = root.getElementById("accountOptionsWrapper");
-    const pwdEdit       = root.getElementById("passwordEdit");
-    const nameEdit      = root.getElementById("nameEdit");
-    if (!optionsPanel || !pwdEdit || !nameEdit) return;
-    show(optionsPanel, "block");
-    if(push) history.pushState({ page: "profileAdjustment"}, "", "#profileAdjustment");
-}
-export function hideAdjustProfile(root, push = true) {
-    const optionsPanel  = root.getElementById("accountOptionsWrapper");
-    const pwdEdit       = root.getElementById("passwordEdit");
-    const nameEdit      = root.getElementById("nameEdit");
-    if (!optionsPanel || !pwdEdit || !nameEdit) return;
-    hide(optionsPanel);
-    if(push) history.back();
-}
-
-//Account Name Change Panel
-export function showAdjustName(root, push = true) {
-    const panel             = root.getElementById("nameSettings");
-    const firstNameInput    = root.getElementById("firstNameEdit");
-    const lastNameInput     = root.getElementById("lastNameEdit");
-    const msg               = root.getElementById("nameMsg");
-    clearValue(firstNameInput);
-    clearValue(lastNameInput);
-    clearHTML(msg);
-    msg.classList.toggle("info", false);
-    msg.classList.toggle("error", false);
-    showFloatingBackground(root);
-    show(panel, "block");
-    if(push) history.pushState({ page: "nameChange"}, "", "#nameChange");
-}
-export function hideAdjustName(root, push = true) {
-    const panel = root.getElementById("nameSettings");
-    hide(panel);
-    hideFloatingBackground(root);
-    if(push) history.back();
-}
-
-//Account Passwort Reset Panel
-export function showAdjustPassword(root, push = true) {
-    const panel     = root.getElementById("passwordReset");
-    const btn       = root.getElementById("sendResetCodeBtn");
-    const returnBtn = root.getElementById("cancelPwResetBtn");
-    const emailCode = root.getElementById("pwCode");
-    const codeNew   = root.getElementById("pwNew");
-    const errMsg    = root.getElementById("pwMsg");
-    clearValue(emailCode);
-    clearValue(codeNew);
-    clearHTML(errMsg);
-    errMsg.classList.toggle("info", false);
-    errMsg.classList.toggle("error", false);
-    btn.innerText       = "Code per E-Mail senden";
-    returnBtn.innerText = "Abbrechen";
-    showFloatingBackground(root);
-    show(panel, "block");
-    if(push) history.pushState({ page: "passwordChange"}, "", "#passwordChange");
-}
-export function hideAdjustPassword(root, push = true) {
-    const panel = root.getElementById("passwordReset");
-    hide(panel);
-    hideFloatingBackground(root);
-    if(push) history.back();
-}
-
-//Report Panel
-export function showReportCreation(root, push = true) {
-    const panel = root.getElementById("createReport");
-    const list = root.getElementById("reportList");
-    clearValue(document.getElementById("reportTitle"));
-    clearValue(document.getElementById("reportTxt"));
-    clearHTML(list);
-
-    settings.loadExistingReports(root);
-    showFloatingBackground(root);
-    show(panel, "block");
-    if(push) history.pushState({ page: "reportCreation"}, "", "#reportCreation");
-}
-export function hideReportCreation(root, push = true) {
-    const panel = root.getElementById("createReport");
-    hideFloatingBackground(root);
-    hide(panel);
-    if(push) history.back();
-}
-
 
 
 // main Content pages
@@ -263,13 +122,7 @@ const panelResetters = {
         show(document.getElementById("exerciseCreationButtonPanel"), "flex");
     },
     2: () => {
-        const list = document.getElementById("memberExerciseList");
-        hide(list);
-        clearHTML(list);
-        const dashboard = document.getElementById("dashboard");
-        if (dashboard && dashboard.style.display === "block") {
-            //showDashboard();
-        }
+        
     },
 };
 export function resetPanel(panelId) {
@@ -343,20 +196,6 @@ export function hidePasswordForgot(root) {
     show(loginMask, "block");
 }
 
-export function applyLoginStatus(root) {
-    let startMask      = root.getElementById("start-screen");
-    let menue          = root.getElementById("menue");
-    const localUserId  = localStorage.getItem("userId");
-    if(!startMask || !menue) return;
-
-    if(localUserId) {
-        hide(startMask);
-        show(menue, "flex");
-    } else {
-        hide(menue);
-        show(startMask, "grid");
-    }
-}
 
 
 // Routine Rating
@@ -369,41 +208,4 @@ export function hideRating(root) {
     const ratingPanel = root.getElementById("ratingRoutine");
     hideFloatingBackground(root);
     hide(ratingPanel);
-}
-
-// Routine Copy
-export function showRoutineCopy(root) {
-    const copyPanel = root.getElementById("secureRoutineCopy");
-    showFloatingBackground(root);
-    show(copyPanel);
-}
-export function hideRoutineCopy(root) {
-    const copyPanel = root.getElementById("secureRoutineCopy");
-    hideFloatingBackground(root);
-    hide(copyPanel);
-}
-
-
-// Competition Panel switch
-export function showCompetitionList(root) {
-    const score_panel = root.getElementById("score-panel");
-    const competition_panel = root.getElementById("competition-panel");
-    hide(score_panel);
-    show(competition_panel, "block");
-    competition.reloadCompetitions(root);
-}
-export function showCompetitionScore(root, compId) {
-    const score_panel = root.getElementById("score-panel");
-    const competition_panel = root.getElementById("competition-panel");
-    const userId = localStorage.getItem("userId");
-
-    hide(competition_panel);
-    show(score_panel, "block");
-
-    const submitBtn = score_panel.querySelector('[data-action="submitScore"]');
-    if(submitBtn) {
-        submitBtn.dataset._id = compId;
-        submitBtn.dataset.userId = userId;
-    }
-    competition.loadCompetitionScoresIntoPlaceholders(root, compId, userId);
 }

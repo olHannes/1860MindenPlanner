@@ -1,5 +1,9 @@
 Flask
 flask-cors
+flask_session
+flask_limiter
 python-dotenv
 pymongo
 gunicorn
+redis
+python-dotenv

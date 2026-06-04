@@ -1,6 +1,8 @@
 from mongoConf import *
 from validation import *
 
+from security import csrf_protect
+
 routine_bp = Blueprint('routine', __name__)
 
 def get_device_collection(device):
@@ -56,7 +58,7 @@ def get_group_elements():
 
     query = {}
 
-    if difficulty not in [None, '' 'null']:
+    if difficulty not in [None, '', 'null']:
         query['wertigkeit'] = str(difficulty)
     
     if group not in [None, '', 'null']:
@@ -70,25 +72,35 @@ def get_group_elements():
     
     elements = list(dev_collection.find(query, {'_id': False}))
 
+    learned_set = set()
+
+    if user_id and ObjectId.is_valid(user_id):
+        user = users_collection.find_one(
+            {"_id": ObjectId(user_id)},
+            {"learnedElements": 1}
+        )
+
+        if user:
+            prefix = f"{device}_"
+            learned_set = {
+                eid for eid in user.get("learnedElements", [])
+                if eid.startswith(prefix)
+            }
+            for el in elements:
+                el["learned"] = el.get("id") in learned_set
+
     if learned == 'true':
         if not user_id or not ObjectId.is_valid(user_id):
-            return jsonify({"ok": False, "message": "Gültige userId erforderlich für 'learnedElements=true'!"}), 400
+            return jsonify({"ok": False, "message": "Gültige userId für 'learned=true' erforderlich"}), 400
+        elements = [ el for el in elements if el.get("learned") is True]
 
-        user = users_collection.find_one({"_id": ObjectId(user_id)}, {"learned": 1})
-        if not user:
-            return jsonify({"ok": False, "message": "Benutzer nicht gefunden!"}), 404
-
-        learned_elements = user.get("learnedElements", [])
-        prefix = f"{device}_"
-        learned_elements = [eid for eid in learned_elements if eid.startswith(prefix)]
-
-        elements = [el for el in elements if el.get("id") in learned_elements]
 
     unique_elements = {}
     for el in elements:
         el_id = el.get('id')
         if el_id and el_id not in unique_elements:
             unique_elements[el_id] = el
+
     elements = list(unique_elements.values())
 
     return jsonify({"ok": True, "message": "Elemente erfolgreich gefiltert", "elements": elements}), 200
@@ -121,9 +133,10 @@ def get_element():
 ################################################################################################### Rating Routine
 
 @routine_bp.route('/routine/rating', methods=["POST"])
+@csrf_protect
 def rating_routine():
+    userId         = session.get("user_id")
     data            = request.json
-    userId          = data.get("userId")
     target_userId   = data.get("target_userId")
     device          = data.get("device")
     rating_stars    = data.get("rating")
@@ -229,67 +242,6 @@ def get_rating_by_name():
     return jsonify({"ok": True, "message": "Bewertung erfolgreich geladen", "result": result[0]}), 200
 
 
-################################################################################################### Copy Routine
-
-@routine_bp.route('/exercise/copyTo', methods=["POST"])
-def copy_routine_to():
-    data            = request.json
-    user_id          = data.get("userId")
-    apparatus       = data.get("apparatus")
-    target_type    = data.get("target_type")
-
-    if not user_id or not ObjectId.is_valid(user_id):
-        return jsonify({"ok": False, "message": "Ungültiger Wert oder fehlende user-ID"}), 400
-    if not apparatus:
-        return jsonify({"ok": False, "message": "Fehlender Apparatus"}), 400
-    if not target_type:
-        return jsonify({"ok": False, "message": "Fehlender Typ"}), 400
-    try:
-        target_type = int(target_type)
-    except (ValueError, TypeError):
-        return jsonify({"ok": False, "message": "Typ muss 'int' Wert sein"}), 400
-    if target_type not in [0, 1]:
-        return jsonify({"ok": False, "message": "Typ muss im Wertebereich [0, 1] sein"}), 400
-    
-    target_routine_type = 1 - target_type
-
-    source_query = {
-        "userId": ObjectId(user_id),
-        "apparatus": apparatus,
-        "routineType": str(target_type)
-    }
-    source_exercise = exercises_collection.find_one(source_query)
-
-    if not source_exercise:
-        return jsonify({"ok": False, "error": "Quellübung nicht gefunden."}), 404
-
-    elemente_to_copy = source_exercise.get("elemente", [])
-
-    target_query = {
-        "userId": ObjectId(user_id),
-        "apparatus": apparatus,
-        "routineType": str(target_routine_type)
-    }
-    update_data = {
-        "$set": {
-            "elemente": elemente_to_copy
-        }
-    }
-
-    result = exercises_collection.update_one(target_query, update_data, upsert=True)
-
-    if result.matched_count > 0:
-        return jsonify({
-            "ok": True,
-            "message": f"Zielübung (Typ {target_routine_type}) erfolgreich aktualisiert."
-            }), 200
-    else:
-        return jsonify({
-            "ok": True,
-            "message": f"Zielübung (Typ {target_routine_type}) neu angelegt."
-            }), 201
-
-
 ################################################################################################### Load exercise (optional with expanded elements and routine rating)
 
 @routine_bp.route('/routine', methods=["GET"])
@@ -324,7 +276,7 @@ def get_exercise():
 
     query = { "apparatus": apparatus, 
              "userId": ObjectId(userId), 
-             "routineType": routineType 
+             "routineType": str(routineType) 
     }
     pipeline = [
         {"$match": query},
@@ -405,9 +357,10 @@ def get_exercise():
 ################################################################################################### Save Routine
 
 @routine_bp.route('/routine', methods=["PUT"])
+@csrf_protect
 def update_routine():
+    user_id      = session.get("user_id")
     data         = request.json
-    user_id      = data.get("userId")
     apparatus    = data.get("apparatus")
     elements     = data.get("elements")
     routine_type = data.get("routineType")
@@ -420,12 +373,17 @@ def update_routine():
         return jsonify({"ok": False, "message": "Elements muss vorhanden und eine Liste sein"}), 400
     if not all(isinstance(e, str) for e in elements):
         return jsonify({"ok": False, "message": "Alle Elemente müssen Strings sein"}), 400
-    try:
-        routine_type = int(routine_type)
-    except (ValueError, TypeError):
-        return jsonify({"ok": False, "message": "RoutineType muss 'int' Wert sein"}), 400
-    if routine_type not in [0, 1]:
+    if routine_type not in ["0", "1"]:
         return jsonify({"ok": False, "message": "RoutineType muss im Wertebereich [0, 1] sein"}), 400
+
+    invalid_ids = []
+    for e in elements:
+        dev = device_from_element_id(e)
+        if not dev == apparatus:
+            invalid_ids.append(e)
+    if invalid_ids:
+        return jsonify({"ok": False, "message": "Die Elementeliste beinhaltet ungültige IDs", "invalid_ids": invalid_ids}), 403
+
 
     query = { "userId": ObjectId(user_id), "apparatus": apparatus, "routineType": routine_type }
     existing_routine = exercises_collection.find_one(query)
@@ -441,9 +399,9 @@ def update_routine():
     result = exercises_collection.update_one(query, update_data, upsert=True)
 
     if result.matched_count > 0 and "bewertungen" not in update_data["$set"]:
-        return jsonify({"message": "Übung erfolgreich aktualisiert"}), 200
+        return jsonify({"ok": True, "message": "Übung erfolgreich aktualisiert"}), 200
     elif result.matched_count > 0:
-        return jsonify({"message": "Übung aktualisiert, Bewertungen zurückgesetzt"}), 200
+        return jsonify({"ok": True, "message": "Übung aktualisiert, Bewertungen zurückgesetzt"}), 200
     else:
-        return jsonify({"message": "Neue Übung angelegt"}), 201
+        return jsonify({"ok": True, "message": "Neue Übung angelegt"}), 201
 

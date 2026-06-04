@@ -1,24 +1,18 @@
 
 from mongoConf import *
 from flask import session
+from extension import limiter
 from bson import ObjectId
-import random
 from datetime import datetime, timezone
 from werkzeug.security import check_password_hash, generate_password_hash
 import secrets
 
+from security import csrf_protect, get_session_user, check_access
 from validation import *
 
 account_bp = Blueprint('account', __name__)
-randAdminKey = random.randint(100000, 999999)
 
-
-def validateAdminKey(key):
-    global randAdminKey
-    try:
-        return int(key) == randAdminKey
-    except:
-        return False
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://127.0.0.1:5500")
 
 def parse_expires_at(expires_at):
     if expires_at is None:
@@ -62,6 +56,7 @@ def verify_account():
 
 
 @account_bp.route('/account/register', methods=['POST'])
+@limiter.limit("2 per hour")
 def register():
     data = request.get_json(silent=True) or {}
     first_name  = data.get('firstName')
@@ -110,21 +105,66 @@ def register():
     })
 
     full_name = fn + " " + ln
-    verify_link = f"http://127.0.0.1:5500/verifyAccount.html#uid={str(result.inserted_id)}&token={verifyCode}"
+    verify_link = f"{FRONTEND_URL}/verifyAccount.html#uid={str(result.inserted_id)}&token={verifyCode}"
     verifyEmail = notification.build_verify(em, verify_link, full_name)
     notification.send_mail(verifyEmail)
 
     return jsonify({"ok": True, "message": "Registrierung erfolgreich!"}), 200
 
 
+@account_bp.route('/account/me', methods=["GET"])
+def get_current_user():
+    user_id = session.get("user_id")
+    if not user_id:
+        return jsonify({
+            "ok": False,
+            "message": "Nicht angemeldet"
+        }), 401
+    if not ObjectId.is_valid(user_id):
+        session.clear()
+        return jsonify({
+            "ok": False,
+            "message": "Ungültige Session"
+        }), 401
+    
+    user = users_collection.find_one({
+        "_id": ObjectId(user_id),
+        "emailVerify.email_verified": True
+    })
+    if not user:
+        session.clear()
+        return jsonify({
+            "ok": False,
+            "message": "Nutzer nicht gefunden"
+        }), 401
+    
+    roles = user.get("roles", ["member"])
+
+    return jsonify({
+        "ok": True,
+        "user": {
+            "id": str(user["_id"]),
+            "email": user.get("email"),
+            "firstName": user.get("firstName", ""),
+            "lastName": user.get("lastName", ""),
+            "roles": roles,
+            "isAdmin": "admin" in roles,
+            "color": user.get("color_code", "#000000"),
+            "visibility": user.get("visibility", 1),
+            "autoLogin": session.permanent
+        }
+    }), 200
+
+
 ################################################################################################### Login
 
 @account_bp.route('/account/login', methods=['POST'])
+@limiter.limit("5 per minute;20 per hour")
 def login():
-    global randAdminKey
     data    = request.get_json(silent=True) or {}
     email   = data.get('email') or ""
     password = data.get('password') or ""
+    remember = bool(data.get('remember'))
 
     em, errors = validate_login(email, password)
     if errors:
@@ -138,15 +178,17 @@ def login():
     if not user:
         return jsonify({
             "ok": False,
-            "message": "Nutzer mit der E-Mail nicht gefunden.",
+            "message": "E-Mail oder Passwort ist falsch.",
         }), 404
     
     if not check_password_hash(user["password"], password):
         return jsonify({
             "ok": False,
-            "message": "Passwort inkorrekt! Login fehlerhaft."
+            "message": "E-Mail oder Passwort ist falsch."
         }), 401
     
+    session.clear()
+    session.permanent = remember
     session["user_id"] = str(user["_id"])
 
     roles       = user.get("roles", ["member"])
@@ -160,9 +202,7 @@ def login():
         "isAdmin": is_admin
     }
 
-    if is_admin:
-        response["adminKey"] = randAdminKey
-    else:
+    if not is_admin:
         users_collection.update_one(
             {"_id": user["_id"]},
             {"$inc": {"online": 1}}
@@ -171,61 +211,32 @@ def login():
     return jsonify(response), 200
 
 
-################################################################################################### Auto-Status
-
-@account_bp.route('/account/checkUserStatus', methods=['GET'])
-def check_user_status():
-    email       = request.args.get('email')
-    user_id     = request.args.get('userId')
-
-    if not user_id or not ObjectId.is_valid(user_id):
-        return jsonify({"ok": False, "message": "Ungültiger Wert oder fehlende User-ID"}), 400
-    if not email:
-        return jsonify({"ok": False, "message": "Fehlender E-Mail Parameter"}), 400
-
-    em = normalize_email(email)
-
-    user = users_collection.find_one({"_id": ObjectId(user_id), "email": em})
-    if not user:
-        return jsonify({"ok": False, "message": "Nutzer nicht gefunden."}), 404
-    online_count = user.get("online", 0)
-
-    if online_count > 0:
-        return jsonify({"ok": True, "message": "Nutzer online", "count": online_count}), 200
-    else:
-        return jsonify({"ok": True, "message": "Nutzer offline"}), 200
-
-
 ################################################################################################### Logout
 
 @account_bp.route('/account/logout', methods=['POST'])
+@csrf_protect
 def logout():
-    data        = request.get_json()
-    user_id     = data.get('userId')
-    email       = data.get('email')
-
-    if not user_id or not ObjectId.is_valid(user_id):
-        return jsonify({"ok": False, "message": "Ungültiger Wert oder fehlende User-ID"}), 400
-    if not email:
-        return jsonify({"ok": False, "message": "Fehlender E-Mail Parameter"}), 400
+    session_user, error = get_session_user()
+    if error:
+        return error
     
-    em = normalize_email(email)
-
-    user = users_collection.find_one({"_id": ObjectId(user_id), "email": em})
-    if not user:
-        return jsonify({"ok": False, "message": "Nutzer nicht gefunden"}), 404
+    target_user_id = str(session_user["_id"])
     
-    users_collection.update_one({"_id": ObjectId(user_id)}, {"$inc": {"online": -1}})
-    session.pop('user', None)
-
+    if target_user_id and ObjectId.is_valid(target_user_id):
+        users_collection.update_one(
+            {"_id": ObjectId(target_user_id)},
+            {"$inc": {"online": -1}}
+        )
+    session.clear()
     return jsonify({"ok": True, "message": "Erfolgreich ausgeloggt!"}), 200
 
 
 ################################################################################################### update Password after Request
 
 @account_bp.route('/account/forgot/updatePassword', methods=['POST'])
+@limiter.limit("5 per hour")
 def request_new_password():
-    data            = request.get_json()
+    data            = request.get_json(silent=True) or {}
     email           = data.get('email')
     confirm_code    = data.get('confirm_code')
     new_password    = data.get('new_password')
@@ -284,14 +295,18 @@ def request_new_password():
 ################################################################################################### update Password
 
 @account_bp.route('/account/change/password', methods=['POST'])
+@csrf_protect
 def update_password():
-    data            = request.get_json()
-    user_id         = data.get('userId')
+    session_user, error = get_session_user()
+    if error:
+        return error
+    data            = request.get_json(silent=True) or {}
+    target_user_id  = data.get("userId") or str(session_user["_id"])
     confirm_code    = data.get('confirm_code')
     new_password    = data.get('new_password')
 
     
-    if not user_id or not ObjectId.is_valid(user_id):
+    if not target_user_id or not ObjectId.is_valid(target_user_id):
         return jsonify({"ok": False, "message": "Ungültiger Wert oder fehlende User-ID"}), 400
     if not confirm_code:
         return jsonify({"ok": False, "message": "Verifizierungscode muss vorhanden sein"}), 400
@@ -300,7 +315,7 @@ def update_password():
     if len(new_password) < 4:
         return jsonify({"ok": False, "message": "Das neue Passwort muss mindestens 4 Zeichen lang sein"}), 403
 
-    user = users_collection.find_one({"_id": ObjectId(user_id)})
+    user = users_collection.find_one({"_id": ObjectId(target_user_id)})
     if not user:
         return jsonify({"ok": False, "message": "Nutzer nicht gefunden!"}), 404
 
@@ -343,6 +358,8 @@ def update_password():
 ################################################################################################### send Request Code (mail)
 
 @account_bp.route('/account/passwordReset/request', methods=['POST'])
+#@csrf_protect
+@limiter.limit("3 per hour")
 def request_password_reset():
     data    = request.get_json(silent=True) or {}
     email   = data.get("email")
@@ -355,7 +372,7 @@ def request_password_reset():
     if not user:
         return jsonify({"ok": False, "message": "Nutzer nicht gefunden"}), 404
     
-    code = f"{random.randint(0, 999999):06d}"
+    code = f"{secrets.randbelow(1_000_000):06d}"
     code_hash = generate_password_hash(code)
     expires_at = datetime.now(timezone.utc) + timedelta(minutes=15)
 
@@ -376,26 +393,37 @@ def request_password_reset():
 ################################################################################################### Delete Account
 
 @account_bp.route('/account/delete', methods=['DELETE'])
+@csrf_protect
 def delete_account():
-    data        = request.get_json()
-    user_id     = data.get('userId')
+    session_user, error = get_session_user()
+    if error:
+        return error
+    data        = request.get_json(silent=True) or {}
+    target_user_id = data.get("userId") or str(session_user["_id"])
     pwd         = data.get('password')
 
-    if not user_id or not ObjectId.is_valid(user_id):
+    if not target_user_id or not ObjectId.is_valid(target_user_id):
         return jsonify({"ok": False, "message": "Ungültiger Wert oder fehlende User-ID"}), 400
+    if not check_access(session_user, target_user_id):
+        return jsonify({
+            "ok": False,
+            "message": "Nicht erlaubt"
+        }), 403
     if not pwd:
         return jsonify({"ok": False, "message": "Passwort muss angegeben werden."}), 400
 
-    user = users_collection.find_one({"_id": ObjectId(user_id) })
+    user = users_collection.find_one({"_id": ObjectId(target_user_id) })
     if not user:
         return jsonify({"ok": False, "message": "Nutzer nicht gefunden"}), 404
 
     if not check_password_hash(user['password'], pwd):
         return jsonify({"ok": False, "message": "Ungültiges Passwort"}), 403
     
-    users_collection.delete_one({"_id": ObjectId(user_id)})
-
-    session.pop('user', None)
+    users_collection.delete_one({"_id": ObjectId(target_user_id)})
+    competition_entries_collection.delete_many({"userId": ObjectId(target_user_id)})
+    exercises_collection.delete_many({"userId": ObjectId(target_user_id)})
+    
+    session.clear()
     return jsonify({"ok": True, "message": "Account erfolgreich gelöscht!", "username": user["firstName"]}), 200
 
 
@@ -403,19 +431,26 @@ def delete_account():
 
 @account_bp.route('/account/info', methods=['GET'])
 def get_user_info():
-    request_id  = request.args.get('requestId')
-    user_id     = request.args.get('userId')
+    target_user_id  = request.args.get('userId')
+    session_user, error    = get_session_user()
+    if error:
+        return error
+    request_user_id = str(session_user["_id"])
+    if not ObjectId.is_valid(request_user_id):
+        return jsonify({
+            "ok": False,
+            "message": "Ungültige Request-Session"
+        }), 400
+    if not check_access(session_user, target_user_id):
+        return jsonify({
+            "ok": False,
+            "message": "Nicht erlaubt"
+        }), 403
 
-    if not user_id or not ObjectId.is_valid(user_id):
+    if not target_user_id or not ObjectId.is_valid(target_user_id):
             return jsonify({"ok": False, "message": "Ungültiger Wert oder fehlende User-ID"}), 400
-    if not request_id or not ObjectId.is_valid(request_id):
-        return jsonify({"ok": False, "message": "Ungültiger Wert oder fehlende Request-ID"}), 400
-    
-    requestUser = users_collection.find_one( { "_id": ObjectId(request_id) })
-    if not requestUser:
-        return jsonify({"ok": False, "message": "Ungültige request_id - User not found"}), 403
 
-    user = users_collection.find_one({ "_id": ObjectId(user_id) })
+    user = users_collection.find_one({ "_id": ObjectId(target_user_id) })
     if not user:
         return jsonify({"ok": False, "message": "Benutzer nicht gefunden!"}), 404
 
@@ -432,34 +467,43 @@ def get_user_info():
 ################################################################################################### Setter -> User Information
 
 @account_bp.route('/account/change/name', methods=['POST'])
+@csrf_protect
 def changeData():
-    data = request.get_json()
-    user_id = data.get('userId')
+    session_user, error = get_session_user()
+    if error:
+        return error
+    data = request.get_json(silent=True) or {}
+    target_user_id = data.get("userId") or session_user["_id"]
     new_first_name = data.get('new_first_name')
     new_last_name = data.get('new_last_name')
 
-    if not user_id or not ObjectId.is_valid(user_id):
+    if not target_user_id or not ObjectId.is_valid(target_user_id):
         return jsonify({"ok": False, "message": "Interner Fehler - Id nicht gültig"}), 403
-    
+    if not check_access(session_user, target_user_id):
+        return jsonify({
+            "ok": False,
+            "message": "Nicht erlaubt"
+        }), 403
+
     new_first_name = normalize_name(new_first_name)
     new_last_name = normalize_name(new_last_name)
 
-    if not new_first_name or len(new_first_name) < 4:
-        return jsonify({"ok": False, "message": "Vorname muss mindestens 4 Zeichen lang sein"}), 400
-    if not new_last_name or len(new_last_name) < 4:
-        return jsonify({"ok": False, "message": "Nachname muss mindestens 4 Zeichen lang sein"}), 400
+    if not new_first_name or len(new_first_name) < 2:
+        return jsonify({"ok": False, "message": "Vorname muss mindestens 2 Zeichen lang sein"}), 400
+    if not new_last_name or len(new_last_name) < 2:
+        return jsonify({"ok": False, "message": "Nachname muss mindestens 2 Zeichen lang sein"}), 400
     
     if not NAME_RE.match(new_first_name):
         return jsonify({"ok": False, "message": "Vorname darf nur Buchstaben und Leerzeichen enthalten"}), 404
     if not NAME_RE.match(new_last_name):
         return jsonify({"ok": False, "message": "Nachname darf nur Buchstaben und Leerzeichen enthalten"}), 400
 
-    user = users_collection.find_one({"_id": ObjectId(user_id)})
+    user = users_collection.find_one({"_id": ObjectId(target_user_id)})
     if not user:
         return jsonify({"ok": False, "message": "Nutzer nicht gefunden"}), 404
 
     users_collection.update_one(
-        {"_id": ObjectId(user_id)},
+        {"_id": ObjectId(target_user_id)},
         {"$set": {"firstName": new_first_name, "lastName": new_last_name}}
     )
 
@@ -474,56 +518,92 @@ def changeData():
 ################################################################################################### set Color Code
 
 @account_bp.route('/account/change/color', methods=['POST'])
+@csrf_protect
 def change_user_color():
-    data = request.get_json()
-    user_id = data.get('userId')
+    session_user, error = get_session_user()
+    if error:
+        return error
+    data = request.get_json(silent=True) or {}
+    target_user_id = data.get("userId") or session_user["_id"]
     new_color = data.get('colorCode')
 
     if not isinstance(new_color, str) or not new_color.startswith('#') or len(new_color) != 7:
-        return jsonify({"message": "Ungültiges Farbformat! Verwende das Format '#xxxxxx'."}), 400
+        return jsonify({"ok": False, "message": "Ungültiges Farbformat! Verwende das Format '#xxxxxx'."}), 400
 
-    if not user_id or not ObjectId.is_valid(user_id):
-        return jsonify({"message": "Benutzer-ID fehlt oder ist ungültig!"}), 400
+    if not target_user_id or not ObjectId.is_valid(target_user_id):
+        return jsonify({"ok": False, "message": "Benutzer-ID fehlt oder ist ungültig!"}), 400
 
-    user = users_collection.find_one({"_id": ObjectId(user_id)})
+    if not check_access(session_user, target_user_id):
+        return jsonify({
+            "ok": False,
+            "message": "Nicht erlaubt"
+        }), 403
+
+    user = users_collection.find_one({"_id": ObjectId(target_user_id)})
     if not user:
-        return jsonify({"message": "Nutzer nicht gefunden."}), 404
+        return jsonify({"ok": False, "message": "Nutzer nicht gefunden."}), 404
 
-    users_collection.update_one({"_id": ObjectId(user_id)}, {"$set": {"color_code": new_color}})
+    users_collection.update_one({"_id": ObjectId(target_user_id)}, {"$set": {"color_code": new_color}})
 
-    return jsonify({"message": "Farbcode erfolgreich aktualisiert!"}), 200
+    return jsonify({"ok": True, "message": "Farbcode erfolgreich aktualisiert!"}), 200
 
 
 ################################################################################################### set Visibility status
 
 @account_bp.route("/account/change/visibility", methods=['POST'])
+@csrf_protect
 def change_user_visibility():
-    data = request.get_json()
-    user_id = data.get('userId')
+    session_user, error = get_session_user()
+    if error:
+        return error
+    data = request.get_json(silent=True) or {}
+    target_user_id = data.get("userId") or session_user["_id"]
     visibility_status = data.get('visibility')
 
-    if not user_id or not ObjectId.is_valid(user_id):
+    if not target_user_id or not ObjectId.is_valid(target_user_id):
         return jsonify({"ok": False, "message": "Ungültiger Wert oder fehlende User-ID"}), 400
     if visibility_status is None:
         return jsonify({"ok": False, "message": "Fehlender Parameter für den Sichtbarkeitsstatus"}), 400
+    
+    if not check_access(session_user, target_user_id):
+        return jsonify({
+            "ok": False,
+            "message": "Nicht erlaubt"
+        }), 403
 
-    user = users_collection.find_one({"_id": ObjectId(user_id)})
+    user = users_collection.find_one({"_id": ObjectId(target_user_id)})
     if not user:
         return jsonify({"ok": False, "message": "Nutzer nicht gefunden"}), 404
     
     users_collection.update_one(
-        {"_id": ObjectId(user_id)},
+        {"_id": ObjectId(target_user_id)},
         {"$set": {"visibility": visibility_status}}
     )
-    return jsonify({"ok": True, "message": "Successfully updated visibility status!", "userId": user_id, "visibility": visibility_status}), 200
+    return jsonify({"ok": True, "message": "Successfully updated visibility status!", "userId": str(target_user_id), "visibility": visibility_status}), 200
+
+
+################################################################################################### toggle auto Login
+
+@account_bp.route("/account/change/autoLogin", methods=['POST'])
+@csrf_protect
+def change_user_autoLogin():
+    session_user, error = get_session_user()
+    if error:
+        return error
+    
+    data        = request.get_json(silent=True) or {}
+    remember    = data.get("remember")
+    session.permanent = remember
+    return jsonify({"ok": True, "message": f"autoLogin wurde erfolgreich auf '{remember}' geändert"}), 200
 
 
 ################################################################################################### add learned Element
 
 @account_bp.route("/account/elements/learned/add", methods=["POST"])
+@csrf_protect
 def add_learned_element():
-    data            = request.get_json()
-    user_id         = data.get("userId")
+    user_id         = session.get("user_id")
+    data            = request.get_json(silent=True) or {}
     element_code    = data.get("elementCode")
 
     if not user_id or not ObjectId.is_valid(user_id):
@@ -545,9 +625,10 @@ def add_learned_element():
 ################################################################################################### remove learned Element
 
 @account_bp.route('/account/elements/learned/remove', methods=['POST'])
+@csrf_protect
 def remove_learned_element():
-    data            = request.get_json()
-    user_id         = data.get('userId')
+    user_id         = session.get("user_id")
+    data            = request.get_json(silent=True) or {}
     element_code    = data.get('elementCode')
 
     if not user_id or not ObjectId.is_valid(user_id):
@@ -564,33 +645,6 @@ def remove_learned_element():
         {"$pull": {"learnedElements": element_code}}
     )
     return jsonify({"ok": True, "message": f"Element '{element_code}' erfolgreich entfernt!", "userId": user_id, "elementId": element_code}), 200
-
-
-################################################################################################### get learned Elements
-
-@account_bp.route('/account/elements', methods=['GET'])
-def get_learned_elements():
-    user_id = request.args.get('userId')
-    device  = request.args.get('device')
-
-    if not user_id or not ObjectId.is_valid(user_id):
-        return jsonify({"ok": False, "message": "Ungültiger Wert oder fehlende User-ID"}), 400
-    if not device:
-        return jsonify({"ok": False, "message": "Fehlendes Device"}), 400
-
-    user = users_collection.find_one({"_id": ObjectId(user_id)}, {"learnedElements": 1})
-    if not user:
-        return jsonify({"message": "Nutzer nicht gefunden"}), 404
-
-    learned_elements = user.get("learnedElements", [])
-
-    if device:
-        prefix = f"{device}_"
-        learned_elements = [elem for elem in learned_elements if elem.startswith(prefix)]
-
-    return jsonify({
-        "learnedElements": learned_elements
-    }), 200
 
 
 ################################################################################################### Get visible Users
