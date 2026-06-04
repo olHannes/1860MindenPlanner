@@ -6,7 +6,7 @@
         "elementegruppe": "1",
         "wertigkeit": "3.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/1/VA_1_01.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_01.png"
     },
     {
         "id": "VA_1_02",
@@ -15,7 +15,7 @@
         "elementegruppe": "1",
         "wertigkeit": "3.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/1/VA_1_02.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_02.png"
     },
     {
         "id": "VA_1_03",
@@ -24,7 +24,7 @@
         "elementegruppe": "1",
         "wertigkeit": "4.0",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/1/VA_1_03.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_03.png"
     },
     {
         "id": "VA_1_04",
@@ -33,7 +33,7 @@
         "elementegruppe": "1",
         "wertigkeit": "3.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/1/VA_1_04.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_04.png"
     },
     {
         "id": "VA_1_05",
@@ -42,7 +42,7 @@
         "elementegruppe": "1",
         "wertigkeit": "4.0",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/1/VA_1_05.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_05.png"
     },
     {
         "id": "VA_1_06",
@@ -51,7 +51,7 @@
         "elementegruppe": "1",
         "wertigkeit": "4.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/1/VA_1_06.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_06.png"
     },
     {
         "id": "VA_1_07",
@@ -60,7 +60,7 @@
         "elementegruppe": "1",
         "wertigkeit": "4.8",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/1/VA_1_07.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_07.png"
     },
     {
         "id": "VA_1_08",
@@ -69,7 +69,7 @@
         "elementegruppe": "1",
         "wertigkeit": "5.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/1/VA_1_08.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_08.png"
     },
     {
         "id": "VA_1_09",
@@ -78,7 +78,7 @@
         "elementegruppe": "1",
         "wertigkeit": "5.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/1/VA_1_09.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_09.png"
     },
     {
         "id": "VA_1_10",
@@ -87,7 +87,7 @@
         "elementegruppe": "1",
         "wertigkeit": "6.0",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/1/VA_1_10.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_10.png"
     },
     {
         "id": "VA_1_11",
@@ -96,7 +96,7 @@
         "elementegruppe": "1",
         "wertigkeit": "3.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/1/VA_1_11.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_11.png"
     },
     {
         "id": "VA_1_12",
@@ -105,7 +105,7 @@
         "elementegruppe": "1",
         "wertigkeit": "3.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/1/VA_1_12.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_12.png"
     },
     {
         "id": "VA_1_13",
@@ -114,7 +114,7 @@
         "elementegruppe": "1",
         "wertigkeit": "4.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/1/VA_1_13.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_13.png"
     },
     {
         "id": "VA_1_14",
@@ -123,7 +123,7 @@
         "elementegruppe": "1",
         "wertigkeit": "4.8",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/1/VA_1_14.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_14.png"
     },
     {
         "id": "VA_1_15",
@@ -132,7 +132,7 @@
         "elementegruppe": "1",
         "wertigkeit": "5.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/1/VA_1_15.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_15.png"
     },
     {
         "id": "VA_1_16",
@@ -141,7 +141,7 @@
         "elementegruppe": "1",
         "wertigkeit": "5.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/1/VA_1_16.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_16.png"
     },
     {
         "id": "VA_1_17",
@@ -150,7 +150,7 @@
         "elementegruppe": "1",
         "wertigkeit": "6.0",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/1/VA_1_17.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_17.png"
     },
     
     
@@ -163,7 +163,7 @@
         "elementegruppe": "2",
         "wertigkeit": "1.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_01.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_01.png"
     },
     {
         "id": "VA_2_02",
@@ -172,7 +172,7 @@
         "elementegruppe": "2",
         "wertigkeit": "1.8",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_02.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_02.png"
     },
     {
         "id": "VA_2_03",
@@ -181,7 +181,7 @@
         "elementegruppe": "2",
         "wertigkeit": "2.0",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_03.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_03.png"
     },
     {
         "id": "VA_2_04",
@@ -190,7 +190,7 @@
         "elementegruppe": "2",
         "wertigkeit": "2.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_04.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_04.png"
     },
     {
         "id": "VA_2_05",
@@ -199,7 +199,7 @@
         "elementegruppe": "2",
         "wertigkeit": "2.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_05.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_05.png"
     },
     {
         "id": "VA_2_06",
@@ -208,7 +208,7 @@
         "elementegruppe": "2",
         "wertigkeit": "2.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_06.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_06.png"
     },
     {
         "id": "VA_2_07",
@@ -217,7 +217,7 @@
         "elementegruppe": "2",
         "wertigkeit": "2.8",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_07.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_07.png"
     },
     {
         "id": "VA_2_08",
@@ -226,7 +226,7 @@
         "elementegruppe": "2",
         "wertigkeit": "2.8",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_08.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_08.png"
     },
     {
         "id": "VA_2_09",
@@ -235,7 +235,7 @@
         "elementegruppe": "2",
         "wertigkeit": "2.8",
         "dismount": true,
-        "image_path": "frontend/assets/images/system/profile_icon.png"
+        "image_path": "./assets/images/system/profile_icon.png"
     },
     {
         "id": "VA_2_10",
@@ -244,7 +244,7 @@
         "elementegruppe": "2",
         "wertigkeit": "3.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_10.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_10.png"
     },
     {
         "id": "VA_2_11",
@@ -253,7 +253,7 @@
         "elementegruppe": "2",
         "wertigkeit": "4.0",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_11.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_11.png"
     },
     {
         "id": "VA_2_12",
@@ -262,7 +262,7 @@
         "elementegruppe": "2",
         "wertigkeit": "5.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_12.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_12.png"
     },
     {
         "id": "VA_2_13",
@@ -271,7 +271,7 @@
         "elementegruppe": "2",
         "wertigkeit": "5.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_13.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_13.png"
     },
     {
         "id": "VA_2_14",
@@ -280,7 +280,7 @@
         "elementegruppe": "2",
         "wertigkeit": "5.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_14.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_14.png"
     },
     {
         "id": "VA_2_15",
@@ -289,7 +289,7 @@
         "elementegruppe": "2",
         "wertigkeit": "5.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_15.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_15.png"
     },
     {
         "id": "VA_2_16",
@@ -298,7 +298,7 @@
         "elementegruppe": "2",
         "wertigkeit": "6.0",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/2/VA_2_16.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_16.png"
     },
 
 
@@ -313,7 +313,7 @@
         "elementegruppe": "3",
         "wertigkeit": "1.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_01.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_01.png"
     },
     {
         "id": "VA_3_02",
@@ -322,7 +322,7 @@
         "elementegruppe": "3",
         "wertigkeit": "1.8",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_02.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_02.png"
     },
     {
         "id": "VA_3_03",
@@ -331,7 +331,7 @@
         "elementegruppe": "3",
         "wertigkeit": "2.0",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_03.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_03.png"
     },
     {
         "id": "VA_3_04",
@@ -340,7 +340,7 @@
         "elementegruppe": "3",
         "wertigkeit": "2.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_04.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_04.png"
     },
     {
         "id": "VA_3_05",
@@ -349,7 +349,7 @@
         "elementegruppe": "3",
         "wertigkeit": "2.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_05.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_05.png"
     },
     {
         "id": "VA_3_06",
@@ -358,7 +358,7 @@
         "elementegruppe": "3",
         "wertigkeit": "2.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_06.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_06.png"
     },
     {
         "id": "VA_3_07",
@@ -367,7 +367,7 @@
         "elementegruppe": "3",
         "wertigkeit": "2.8",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_07.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_07.png"
     },
     {
         "id": "VA_3_08",
@@ -376,7 +376,7 @@
         "elementegruppe": "3",
         "wertigkeit": "3.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_08.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_08.png"
     },
     {
         "id": "VA_3_09",
@@ -385,7 +385,7 @@
         "elementegruppe": "3",
         "wertigkeit": "3.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_09.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_09.png"
     },
     {
         "id": "VA_3_10",
@@ -394,7 +394,7 @@
         "elementegruppe": "3",
         "wertigkeit": "4.0",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_10.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_10.png"
     },
     {
         "id": "VA_3_11",
@@ -403,7 +403,7 @@
         "elementegruppe": "3",
         "wertigkeit": "5.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_11.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_11.png"
     },
     {
         "id": "VA_3_12",
@@ -412,7 +412,7 @@
         "elementegruppe": "3",
         "wertigkeit": "5.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_12.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_12.png"
     },
     {
         "id": "VA_3_13",
@@ -421,7 +421,7 @@
         "elementegruppe": "3",
         "wertigkeit": "6.0",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/3/VA_3_13.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_13.png"
     },
     
 
@@ -436,7 +436,7 @@
         "elementegruppe": "4",
         "wertigkeit": "1.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_01.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_01.png"
     },
     {
         "id": "VA_4_02",
@@ -445,7 +445,7 @@
         "elementegruppe": "4",
         "wertigkeit": "1.8",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_02.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_02.png"
     },
     {
         "id": "VA_4_03",
@@ -454,7 +454,7 @@
         "elementegruppe": "4",
         "wertigkeit": "2.0",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_03.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_03.png"
     },
     {
         "id": "VA_4_04",
@@ -463,7 +463,7 @@
         "elementegruppe": "4",
         "wertigkeit": "2.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_04.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_04.png"
     },
     {
         "id": "VA_4_05",
@@ -472,7 +472,7 @@
         "elementegruppe": "4",
         "wertigkeit": "2.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_05.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_05.png"
     },
     {
         "id": "VA_4_06",
@@ -481,7 +481,7 @@
         "elementegruppe": "4",
         "wertigkeit": "2.8",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_06.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_06.png"
     },
     {
         "id": "VA_4_07",
@@ -490,7 +490,7 @@
         "elementegruppe": "4",
         "wertigkeit": "3.0",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_07.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_07.png"
     },
     {
         "id": "VA_4_08",
@@ -499,7 +499,7 @@
         "elementegruppe": "4",
         "wertigkeit": "3.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_08.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_08.png"
     },
     {
         "id": "VA_4_09",
@@ -508,7 +508,7 @@
         "elementegruppe": "4",
         "wertigkeit": "2.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_09.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_09.png"
     },
     {
         "id": "VA_4_10",
@@ -517,7 +517,7 @@
         "elementegruppe": "4",
         "wertigkeit": "3.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_10.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_10.png"
     },
     {
         "id": "VA_4_11",
@@ -526,7 +526,7 @@
         "elementegruppe": "4",
         "wertigkeit": "3.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_11.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_11.png"
     },
     {
         "id": "VA_4_12",
@@ -535,7 +535,7 @@
         "elementegruppe": "4",
         "wertigkeit": "4.0",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_12.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_12.png"
     },
     {
         "id": "VA_4_13",
@@ -544,7 +544,7 @@
         "elementegruppe": "4",
         "wertigkeit": "4.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_13.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_13.png"
     },
     {
         "id": "VA_4_14",
@@ -553,7 +553,7 @@
         "elementegruppe": "4",
         "wertigkeit": "4.8",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_14.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_14.png"
     },
     {
         "id": "VA_4_15",
@@ -562,7 +562,7 @@
         "elementegruppe": "4",
         "wertigkeit": "5.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_15.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_15.png"
     },
     {
         "id": "VA_4_16",
@@ -571,7 +571,7 @@
         "elementegruppe": "4",
         "wertigkeit": "5.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_16.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_16.png"
     },
     {
         "id": "VA_4_17",
@@ -580,7 +580,7 @@
         "elementegruppe": "4",
         "wertigkeit": "5.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_17.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_17.png"
     },
     {
         "id": "VA_4_18",
@@ -589,7 +589,7 @@
         "elementegruppe": "4",
         "wertigkeit": "5.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_18.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_18.png"
     },
     {
         "id": "VA_4_19",
@@ -598,7 +598,7 @@
         "elementegruppe": "4",
         "wertigkeit": "1.8",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_19.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_19.png"
     },
     {
         "id": "VA_4_20",
@@ -607,7 +607,7 @@
         "elementegruppe": "4",
         "wertigkeit": "2.0",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_20.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_20.png"
     },
     {
         "id": "VA_4_21",
@@ -616,7 +616,7 @@
         "elementegruppe": "4",
         "wertigkeit": "2.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_21.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_21.png"
     },
     {
         "id": "VA_4_22",
@@ -625,7 +625,7 @@
         "elementegruppe": "4",
         "wertigkeit": "2.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_22.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_22.png"
     },
     {
         "id": "VA_4_23",
@@ -634,7 +634,7 @@
         "elementegruppe": "4",
         "wertigkeit": "3.0",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_23.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_23.png"
     },
     {
         "id": "VA_4_24",
@@ -643,7 +643,7 @@
         "elementegruppe": "4",
         "wertigkeit": "3.0",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_24.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_24.png"
     },
     {
         "id": "VA_4_25",
@@ -652,7 +652,7 @@
         "elementegruppe": "4",
         "wertigkeit": "3.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_25.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_25.png"
     },
     {
         "id": "VA_4_26",
@@ -661,7 +661,7 @@
         "elementegruppe": "4",
         "wertigkeit": "3.8",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_26.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_26.png"
     },
     {
         "id": "VA_4_27",
@@ -670,7 +670,7 @@
         "elementegruppe": "4",
         "wertigkeit": "4.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_27.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_27.png"
     },
     {
         "id": "VA_4_28",
@@ -679,7 +679,7 @@
         "elementegruppe": "4",
         "wertigkeit": "4.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_28.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_28.png"
     },
     {
         "id": "VA_4_29",
@@ -688,7 +688,7 @@
         "elementegruppe": "4",
         "wertigkeit": "5.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_29.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_29.png"
     },
     {
         "id": "VA_4_30",
@@ -697,7 +697,7 @@
         "elementegruppe": "4",
         "wertigkeit": "5.8",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_30.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_30.png"
     },
     {
         "id": "VA_4_31",
@@ -706,7 +706,7 @@
         "elementegruppe": "4",
         "wertigkeit": "5.8",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_31.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_31.png"
     },
     {
         "id": "VA_4_32",
@@ -715,7 +715,7 @@
         "elementegruppe": "4",
         "wertigkeit": "5.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_32.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_32.png"
     },
     {
         "id": "VA_4_33",
@@ -724,7 +724,7 @@
         "elementegruppe": "4",
         "wertigkeit": "2.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_33.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_33.png"
     },
     {
         "id": "VA_4_34",
@@ -733,7 +733,7 @@
         "elementegruppe": "4",
         "wertigkeit": "2.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_34.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_34.png"
     },
     {
         "id": "VA_4_35",
@@ -742,7 +742,7 @@
         "elementegruppe": "4",
         "wertigkeit": "2.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_35.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_35.png"
     },
     {
         "id": "VA_4_36",
@@ -751,7 +751,7 @@
         "elementegruppe": "4",
         "wertigkeit": "2.8",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_36.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_36.png"
     },
     {
         "id": "VA_4_37",
@@ -760,7 +760,7 @@
         "elementegruppe": "4",
         "wertigkeit": "3.0",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_37.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_37.png"
     },
     {
         "id": "VA_4_38",
@@ -769,7 +769,7 @@
         "elementegruppe": "4",
         "wertigkeit": "3.0",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_38.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_38.png"
     },
     {
         "id": "VA_4_39",
@@ -778,7 +778,7 @@
         "elementegruppe": "4",
         "wertigkeit": "3.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_39.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_39.png"
     },
     {
         "id": "VA_4_40",
@@ -787,7 +787,7 @@
         "elementegruppe": "4",
         "wertigkeit": "3.8",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_40.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_40.png"
     },
     {
         "id": "VA_4_41",
@@ -796,7 +796,7 @@
         "elementegruppe": "4",
         "wertigkeit": "3.8",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_41.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_41.png"
     },
     {
         "id": "VA_4_42",
@@ -805,7 +805,7 @@
         "elementegruppe": "4",
         "wertigkeit": "4.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_42.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_42.png"
     },
     {
         "id": "VA_4_43",
@@ -814,7 +814,7 @@
         "elementegruppe": "4",
         "wertigkeit": "3.6",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_43.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_43.png"
     },
     {
         "id": "VA_4_44",
@@ -823,7 +823,7 @@
         "elementegruppe": "4",
         "wertigkeit": "5.0",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_44.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_44.png"
     },
     {
         "id": "VA_4_45",
@@ -832,7 +832,7 @@
         "elementegruppe": "4",
         "wertigkeit": "5.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_45.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_45.png"
     },
     {
         "id": "VA_4_46",
@@ -841,6 +841,6 @@
         "elementegruppe": "4",
         "wertigkeit": "5.8",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Vault/4/VA_4_46.png"
+        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_46.png"
     }
 ]

@@ -6,7 +6,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_01.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_01.png"
     },
     {
         "id": "HI_NE_02",
@@ -15,7 +15,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_02.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_02.png"
     },
     {
         "id": "HI_NE_03",
@@ -24,7 +24,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_03.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_03.png"
     },
     {
         "id": "HI_NE_04",
@@ -33,7 +33,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_04.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_04.png"
     },
     {
         "id": "HI_NE_05",
@@ -42,7 +42,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_05.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_05.png"
     },
     {
         "id": "HI_NE_06",
@@ -51,7 +51,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_06.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_06.png"
     },
     {
         "id": "HI_NE_07",
@@ -60,7 +60,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_07.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_07.png"
     },
     {
         "id": "HI_NE_08",
@@ -69,7 +69,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_08.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_08.png"
     },
     {
         "id": "HI_NE_9",
@@ -78,7 +78,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_09.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_09.png"
     },
     {
         "id": "HI_NE_10",
@@ -87,7 +87,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_10.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_10.png"
     },
     {
         "id": "HI_NE_11",
@@ -96,7 +96,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_11.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_11.png"
     },
     {
         "id": "HI_NE_12",
@@ -105,7 +105,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_12.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_12.png"
     },
     {
         "id": "HI_NE_13",
@@ -114,7 +114,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_03.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_03.png"
     },
     {
         "id": "HI_NE_14",
@@ -123,7 +123,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_14.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_14.png"
     },
     {
         "id": "HI_NE_15",
@@ -132,7 +132,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_15.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_15.png"
     },
     {
         "id": "HI_NE_16",
@@ -141,7 +141,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/system/profile_icon.png"
+        "image_path": "./assets/images/system/profile_icon.png"
     },
     {
         "id": "HI_NE_17",
@@ -150,7 +150,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.05",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_17.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_17.png"
     },
     {
         "id": "HI_NE_18",
@@ -159,7 +159,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.05",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_18.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_18.png"
     },
     {
         "id": "HI_NE_19",
@@ -168,7 +168,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.05",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_19.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_19.png"
     },
     {
         "id": "HI_NE_20",
@@ -177,7 +177,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.05",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/NE/HI_NE_20.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_20.png"
     },
 
 
@@ -189,7 +189,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/A/HI_A_01.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_01.png"
     },
     {
         "id": "HI_A_02",
@@ -198,7 +198,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/A/HI_A_02.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_02.png"
     },
     {
         "id": "HI_A_03",
@@ -207,7 +207,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/A/HI_A_03.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_03.png"
     },
     {
         "id": "HI_A_04",
@@ -216,7 +216,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/A/HI_A_04.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_04.png"
     },
     {
         "id": "HI_A_05",
@@ -225,7 +225,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/A/HI_A_05.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_05.png"
     },
     {
         "id": "HI_A_06",
@@ -234,7 +234,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/A/HI_A_06.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_06.png"
     },
     {
         "id": "HI_A_07",
@@ -243,7 +243,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/A/HI_A_07.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_07.png"
     },
     {
         "id": "HI_A_08",
@@ -252,7 +252,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/A/HI_A_08.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_08.png"
     },
     {
         "id": "HI_A_09",
@@ -261,7 +261,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/A/HI_A_09.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_09.png"
     },
     {
         "id": "HI_A_10",
@@ -270,7 +270,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/A/HI_A_10.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_10.png"
     },
     {
         "id": "HI_A_11",
@@ -279,7 +279,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/A/HI_A_11.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_11.png"
     },
     {
         "id": "HI_A_12",
@@ -288,7 +288,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/A/HI_A_12.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_12.png"
     },
     {
         "id": "HI_A_13",
@@ -297,7 +297,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/A/HI_A_13.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_13.png"
     },
     {
         "id": "HI_A_14",
@@ -306,7 +306,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/A/HI_A_14.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_14.png"
     },
     {
         "id": "HI_A_15",
@@ -315,7 +315,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/A/HI_A_15.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_15.png"
     },
     {
         "id": "HI_A_16",
@@ -324,7 +324,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/A/HI_A_16.png"
+        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_16.png"
     }
 
 
@@ -337,7 +337,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_01.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_01.png" 
     },
     {
         "id": "HI_B_02", 
@@ -346,7 +346,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_02.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_02.png" 
     },
     {
         "id": "HI_B_03", 
@@ -355,7 +355,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_03.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_03.png" 
     },
     {
         "id": "HI_B_04", 
@@ -364,7 +364,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_04.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_04.png" 
     },
     {
         "id": "HI_B_05", 
@@ -373,7 +373,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_05.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_05.png" 
     },
     {
         "id": "HI_B_06", 
@@ -382,7 +382,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_06.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_06.png" 
     },
     {
         "id": "HI_B_07", 
@@ -391,7 +391,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_07.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_07.png" 
     },
     {
         "id": "HI_B_08", 
@@ -400,7 +400,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_08.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_08.png" 
     },
     {
         "id": "HI_B_09", 
@@ -409,7 +409,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_09.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_09.png" 
     },
     {
         "id": "HI_B_10", 
@@ -418,7 +418,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_10.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_10.png" 
     },
     {
         "id": "HI_B_11", 
@@ -427,7 +427,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_11.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_11.png" 
     },
     {
         "id": "HI_B_12", 
@@ -436,7 +436,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_12.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_12.png" 
     },
     {
         "id": "HI_B_13", 
@@ -445,7 +445,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_13.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_13.png" 
     },
     {
         "id": "HI_B_14", 
@@ -454,7 +454,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_14.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_14.png" 
     },
     {
         "id": "HI_B_15", 
@@ -463,7 +463,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_15.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_15.png" 
     },
     {
         "id": "HI_B_16", 
@@ -472,7 +472,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_16.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_16.png" 
     },
     {
         "id": "HI_B_17", 
@@ -481,7 +481,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_17.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_17.png" 
     },
     {
         "id": "HI_B_18", 
@@ -490,7 +490,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_18.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_18.png" 
     },
     {
         "id": "HI_B_19", 
@@ -499,7 +499,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_19.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_19.png" 
     },
     {
         "id": "HI_B_20", 
@@ -508,7 +508,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_20.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_20.png" 
     },
     {
         "id": "HI_B_21", 
@@ -517,7 +517,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_21.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_21.png" 
     },
     {
         "id": "HI_B_22", 
@@ -526,7 +526,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_22.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_22.png" 
     },
     {
         "id": "HI_B_23", 
@@ -535,7 +535,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.2", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_23.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_23.png" 
     },
     {
         "id": "HI_B_24", 
@@ -544,7 +544,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.2", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_24.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_24.png" 
     },
     {
         "id": "HI_B_25", 
@@ -553,7 +553,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.2", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_25.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_25.png" 
     },
     {
         "id": "HI_B_26", 
@@ -562,7 +562,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.2", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_26.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_26.png" 
     },
     {
         "id": "HI_B_27", 
@@ -571,7 +571,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.2", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/B/HI_B_27.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_27.png" 
     }
 
 
@@ -585,7 +585,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_01.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_01.png" 
     }
     ,{
         "id": "HI_C_02", 
@@ -594,7 +594,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_02.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_02.png" 
     }
     ,{
         "id": "HI_C_03", 
@@ -603,7 +603,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_03.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_03.png" 
     }
     ,{
         "id": "HI_C_04", 
@@ -612,7 +612,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_04.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_04.png" 
     }
     ,{
         "id": "HI_C_05", 
@@ -621,7 +621,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_05.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_05.png" 
     }
     ,{
         "id": "HI_C_06", 
@@ -630,7 +630,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_06.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_06.png" 
     }
     ,{
         "id": "HI_C_07", 
@@ -639,7 +639,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_07.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_07.png" 
     }
     ,{
         "id": "HI_C_08", 
@@ -648,7 +648,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_08.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_08.png" 
     }
     ,{
         "id": "HI_C_09", 
@@ -657,7 +657,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_09.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_09.png" 
     }
     ,{
         "id": "HI_C_10", 
@@ -666,7 +666,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_10.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_10.png" 
     }
     ,{
         "id": "HI_C_11", 
@@ -675,7 +675,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_11.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_11.png" 
     }
     ,{
         "id": "HI_C_12", 
@@ -684,7 +684,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_12.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_12.png" 
     }
     ,{
         "id": "HI_C_13", 
@@ -693,7 +693,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_13.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_13.png" 
     }
     ,{
         "id": "HI_C_14", 
@@ -702,7 +702,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_14.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_14.png" 
     }
     ,{
         "id": "HI_C_15", 
@@ -711,7 +711,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_15.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_15.png" 
     }
     ,{
         "id": "HI_C_16", 
@@ -720,7 +720,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_16.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_16.png" 
     }
     ,{
         "id": "HI_C_17", 
@@ -729,7 +729,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_17.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_17.png" 
     }
     ,{
         "id": "HI_C_18", 
@@ -738,7 +738,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_18.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_18.png" 
     }
     ,{
         "id": "HI_C_19", 
@@ -747,7 +747,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_19.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_19.png" 
     }
     ,{
         "id": "HI_C_20", 
@@ -756,7 +756,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_20.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_20.png" 
     }
     ,{
         "id": "HI_C_21", 
@@ -765,7 +765,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_21.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_21.png" 
     }
     ,{
         "id": "HI_C_22", 
@@ -774,7 +774,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_22.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_22.png" 
     }
     ,{
         "id": "HI_C_23", 
@@ -783,7 +783,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_23.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_23.png" 
     }
     ,{
         "id": "HI_C_24", 
@@ -792,7 +792,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_24.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_24.png" 
     }
     ,{
         "id": "HI_C_25", 
@@ -801,7 +801,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.3", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_25.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_25.png" 
     }
     ,{
         "id": "HI_C_26", 
@@ -810,7 +810,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.3", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_26.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_26.png" 
     }
     ,{
         "id": "HI_C_27", 
@@ -819,7 +819,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.3", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_27.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_27.png" 
     }
     ,{
         "id": "HI_C_28", 
@@ -828,7 +828,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.3", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_28.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_28.png" 
     }
     ,{
         "id": "HI_C_29", 
@@ -837,7 +837,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.3", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_29.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_29.png" 
     }
     ,{
         "id": "HI_C_30", 
@@ -846,7 +846,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.3", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_30.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_30.png" 
     }
     ,{
         "id": "HI_C_31", 
@@ -855,7 +855,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.3", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_31.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_31.png" 
     }
     ,{
         "id": "HI_C_32", 
@@ -864,7 +864,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.3", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/C/HI_C_32.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_32.png" 
     }
 
 
@@ -878,7 +878,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_01.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_01.png" 
     }
     ,{
         "id": "HI_D_02", 
@@ -887,7 +887,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_02.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_02.png" 
     }
     ,{
         "id": "HI_D_03", 
@@ -896,7 +896,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_03.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_03.png" 
     }
     ,{
         "id": "HI_D_04", 
@@ -905,7 +905,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_04.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_04.png" 
     }
     ,{
         "id": "HI_D_05", 
@@ -914,7 +914,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_05.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_05.png" 
     }
     ,{
         "id": "HI_D_06", 
@@ -923,7 +923,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_06.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_06.png" 
     }
     ,{
         "id": "HI_D_07", 
@@ -932,7 +932,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_07.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_07.png" 
     }
     ,{
         "id": "HI_D_08", 
@@ -941,7 +941,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_08.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_08.png" 
     }
     ,{
         "id": "HI_D_09", 
@@ -950,7 +950,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_09.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_09.png" 
     }
     ,{
         "id": "HI_D_10", 
@@ -959,7 +959,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_10.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_10.png" 
     }
     ,{
         "id": "HI_D_11", 
@@ -968,7 +968,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_11.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_11.png" 
     }
     ,{
         "id": "HI_D_12", 
@@ -977,7 +977,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_12.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_12.png" 
     }
     ,{
         "id": "HI_D_13", 
@@ -986,7 +986,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_13.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_13.png" 
     }
     ,{
         "id": "HI_D_14", 
@@ -995,7 +995,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_14.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_14.png" 
     }
     ,{
         "id": "HI_D_15", 
@@ -1004,7 +1004,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_15.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_15.png" 
     }
     ,{
         "id": "HI_D_16", 
@@ -1013,7 +1013,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_16.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_16.png" 
     }
     ,{
         "id": "HI_D_17", 
@@ -1022,7 +1022,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_17.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_17.png" 
     }
     ,{
         "id": "HI_D_18", 
@@ -1031,7 +1031,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.4", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_18.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_18.png" 
     }
     ,{
         "id": "HI_D_19", 
@@ -1040,7 +1040,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.4", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_19.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_19.png" 
     }
     ,{
         "id": "HI_D_20", 
@@ -1049,7 +1049,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.4", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_20.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_20.png" 
     }
     ,{
         "id": "HI_D_21", 
@@ -1058,7 +1058,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.4", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_21.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_21.png" 
     }
     ,{
         "id": "HI_D_22", 
@@ -1067,7 +1067,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.4", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_22.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_22.png" 
     }
     ,{
         "id": "HI_D_23", 
@@ -1076,7 +1076,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.4", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_23.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_23.png" 
     }
     ,{
         "id": "HI_D_24", 
@@ -1085,7 +1085,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.4", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_24.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_24.png" 
     }
     ,{
         "id": "HI_D_25", 
@@ -1094,7 +1094,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.4", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/D/HI_D_25.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_25.png" 
     }
 
 
@@ -1107,7 +1107,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_01.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_01.png" 
     }
     ,{
         "id": "HI_E_02", 
@@ -1116,7 +1116,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_02.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_02.png" 
     }
     ,{
         "id": "HI_E_03", 
@@ -1125,7 +1125,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_03.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_03.png" 
     }
     ,{
         "id": "HI_E_04", 
@@ -1134,7 +1134,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_04.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_04.png" 
     }
     ,{
         "id": "HI_E_05", 
@@ -1143,7 +1143,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_05.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_05.png" 
     }
     ,{
         "id": "HI_E_06", 
@@ -1152,7 +1152,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_06.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_06.png" 
     }
     ,{
         "id": "HI_E_07", 
@@ -1161,7 +1161,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_07.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_07.png" 
     }
     ,{
         "id": "HI_E_08", 
@@ -1170,7 +1170,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_08.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_08.png" 
     }
     ,{
         "id": "HI_E_09", 
@@ -1179,7 +1179,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_09.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_09.png" 
     }
     ,{
         "id": "HI_E_10", 
@@ -1188,7 +1188,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_10.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_10.png" 
     }
     ,{
         "id": "HI_E_11", 
@@ -1197,7 +1197,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_11.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_11.png" 
     }
     ,{
         "id": "HI_E_12", 
@@ -1206,7 +1206,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/E/HI_E_12.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_12.png" 
     }
 
 
@@ -1218,7 +1218,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.6", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/FGH/HI_FGH_01.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_01.png" 
     }
     ,{
         "id": "HI_FGH_02", 
@@ -1227,7 +1227,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.6", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/FGH/HI_FGH_02.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_02.png" 
     }
     ,{
         "id": "HI_FGH_03", 
@@ -1236,7 +1236,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.7", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/FGH/HI_FGH_03.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_03.png" 
     }
     ,{
         "id": "HI_FGH_04", 
@@ -1245,7 +1245,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.6", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/FGH/HI_FGH_04.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_04.png" 
     }
     ,{
         "id": "HI_FGH_05", 
@@ -1254,7 +1254,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.7", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/FGH/HI_FGH_05.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_05.png" 
     }
     ,{
         "id": "HI_FGH_06", 
@@ -1263,7 +1263,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.6", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/FGH/HI_FGH_06.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_06.png" 
     }
     ,{
         "id": "HI_FGH_07", 
@@ -1272,7 +1272,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.6", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/FGH/HI_FGH_07.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_07.png" 
     }
     ,{
         "id": "HI_FGH_08", 
@@ -1281,7 +1281,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.7", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/FGH/HI_FGH_08.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_08.png" 
     }
     ,{
         "id": "HI_FGH_09", 
@@ -1290,7 +1290,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.7", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/FGH/HI_FGH_09.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_09.png" 
     }
     ,{
         "id": "HI_FGH_10", 
@@ -1299,7 +1299,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.8", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/FGH/HI_FGH_10.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_10.png" 
     }
     ,{
         "id": "HI_FGH_11", 
@@ -1308,7 +1308,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.7", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/FGH/HI_FGH_11.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_11.png" 
     }
     ,{
         "id": "HI_FGH_12", 
@@ -1317,7 +1317,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.9", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/FGH/HI_FGH_12.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_12.png" 
     }
     ,{
         "id": "HI_FGH_13", 
@@ -1326,7 +1326,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.7", 
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/FGH/HI_FGH_13.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_13.png" 
     }
     ,{
         "id": "HI_FGH_14", 
@@ -1335,7 +1335,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.8", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/FGH/HI_FGH_14.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_14.png" 
     }
     ,{
         "id": "HI_FGH_15", 
@@ -1344,7 +1344,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.7", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/FGH/HI_FGH_15.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_15.png" 
     }
     ,{
         "id": "HI_FGH_16", 
@@ -1353,7 +1353,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.7", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/FGH/HI_FGH_16.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_16.png" 
     }
     ,{
         "id": "HI_FGH_17", 
@@ -1362,7 +1362,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.7", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/FGH/HI_FGH_17.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_17.png" 
     }
     ,{
         "id": "HI_FGH_18", 
@@ -1371,6 +1371,6 @@
         "elementegruppe": "4",
         "wertigkeit": "0.8", 
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Highbar/FGH/HI_FGH_18.png" 
+        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_18.png" 
     }
 ]

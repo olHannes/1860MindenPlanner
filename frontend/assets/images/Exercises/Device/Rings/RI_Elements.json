@@ -6,7 +6,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/NE/RI_NE_01.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/NE/RI_NE_01.png"
     },
     {
         "id": "RI_NE_02",
@@ -15,7 +15,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/NE/RI_NE_02.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/NE/RI_NE_02.png"
     },
     {
         "id": "RI_NE_03",
@@ -24,7 +24,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/NE/RI_NE_03.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/NE/RI_NE_03.png"
     },
     {
         "id": "RI_NE_04",
@@ -33,7 +33,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/NE/RI_NE_04.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/NE/RI_NE_04.png"
     },
     {
         "id": "RI_NE_05",
@@ -42,7 +42,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/NE/RI_NE_05.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/NE/RI_NE_05.png"
     },
     {
         "id": "RI_NE_06",
@@ -51,7 +51,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.05",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/NE/RI_NE_06.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/NE/RI_NE_06.png"
     },
     {
         "id": "RI_NE_07",
@@ -60,7 +60,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.05",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/NE/RI_NE_07.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/NE/RI_NE_07.png"
     },
     {
         "id": "RI_NE_08",
@@ -69,7 +69,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.05",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/NE/RI_NE_08.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/NE/RI_NE_08.png"
     },
 
 
@@ -84,7 +84,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_01.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/A/RI_A_01.png"
     },
     {
         "id": "RI_A_02",
@@ -93,7 +93,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_02.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/A/RI_A_02.png"
     },
     {
         "id": "RI_A_03",
@@ -102,7 +102,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_03.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/A/RI_A_03.png"
     },
     {
         "id": "RI_A_04",
@@ -111,7 +111,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_04.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/A/RI_A_04.png"
     },
     {
         "id": "RI_A_05",
@@ -120,7 +120,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_05.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/A/RI_A_05.png"
     },
     {
         "id": "RI_A_06",
@@ -129,7 +129,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_06.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/A/RI_A_06.png"
     },
     {
         "id": "RI_A_07",
@@ -138,7 +138,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_07.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/A/RI_A_07.png"
     },
     {
         "id": "RI_A_08",
@@ -147,7 +147,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_08.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/A/RI_A_08.png"
     },
     {
         "id": "RI_A_09",
@@ -156,7 +156,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_09.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/A/RI_A_09.png"
     },
     {
         "id": "RI_A_10",
@@ -165,7 +165,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_10.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/A/RI_A_10.png"
     },
     {
         "id": "RI_A_11",
@@ -174,7 +174,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_11.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/A/RI_A_11.png"
     },
     {
         "id": "RI_A_12",
@@ -183,7 +183,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_12.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/A/RI_A_12.png"
     },
     {
         "id": "RI_A_13",
@@ -192,7 +192,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_13.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/A/RI_A_13.png"
     },
     {
         "id": "RI_A_14",
@@ -201,7 +201,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_14.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/A/RI_A_14.png"
     },
     {
         "id": "RI_A_15",
@@ -210,7 +210,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_15.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/A/RI_A_15.png"
     },
     {
         "id": "RI_A_16",
@@ -219,7 +219,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_16.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/A/RI_A_16.png"
     },
     {
         "id": "RI_A_17",
@@ -228,7 +228,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_17.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/A/RI_A_17.png"
     },
     {
         "id": "RI_A_18",
@@ -237,7 +237,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_18.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/A/RI_A_18.png"
     },
     {
         "id": "RI_A_19",
@@ -246,7 +246,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_19.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/A/RI_A_19.png"
     },
     {
         "id": "RI_A_20",
@@ -255,7 +255,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/A/RI_A_20.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/A/RI_A_20.png"
     }
 
 
@@ -269,7 +269,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_01.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_01.png"
     },
     {
         "id": "RI_B_02",
@@ -278,7 +278,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_02.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_02.png"
     },
     {
         "id": "RI_B_03",
@@ -287,7 +287,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_03.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_03.png"
     },
     {
         "id": "RI_B_04",
@@ -296,7 +296,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_04.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_04.png"
     },
     {
         "id": "RI_B_05",
@@ -305,7 +305,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_05.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_05.png"
     },
     {
         "id": "RI_B_06",
@@ -314,7 +314,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_06.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_06.png"
     },
     {
         "id": "RI_B_07",
@@ -323,7 +323,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_07.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_07.png"
     },
     {
         "id": "RI_B_08",
@@ -332,7 +332,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_08.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_08.png"
     },
     {
         "id": "RI_B_09",
@@ -341,7 +341,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_09.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_09.png"
     },
     {
         "id": "RI_B_10",
@@ -350,7 +350,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_10.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_10.png"
     },
     {
         "id": "RI_B_11",
@@ -359,7 +359,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_11.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_11.png"
     },
     {
         "id": "RI_B_12",
@@ -368,7 +368,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_12.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_12.png"
     },
     {
         "id": "RI_B_13",
@@ -377,7 +377,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_13.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_13.png"
     },
     {
         "id": "RI_B_14",
@@ -386,7 +386,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_14.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_14.png"
     },
     {
         "id": "RI_B_15",
@@ -395,7 +395,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_15.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_15.png"
     },
     {
         "id": "RI_B_16",
@@ -404,7 +404,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_16.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_16.png"
     },
     {
         "id": "RI_B_17",
@@ -413,7 +413,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_17.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_17.png"
     },
     {
         "id": "RI_B_18",
@@ -422,7 +422,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_18.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_18.png"
     },
     {
         "id": "RI_B_19",
@@ -431,7 +431,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_19.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_19.png"
     },
     {
         "id": "RI_B_20",
@@ -440,7 +440,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_20.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_20.png"
     },
     {
         "id": "RI_B_21",
@@ -449,7 +449,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_21.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_21.png"
     },
     {
         "id": "RI_B_22",
@@ -458,7 +458,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_22.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_22.png"
     },
     {
         "id": "RI_B_23",
@@ -467,7 +467,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_23.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_23.png"
     },
     {
         "id": "RI_B_24",
@@ -476,7 +476,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_24.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_24.png"
     },
     {
         "id": "RI_B_25",
@@ -485,7 +485,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_25.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_25.png"
     },
     {
         "id": "RI_B_26",
@@ -494,7 +494,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.2",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/B/RI_B_26.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/B/RI_B_26.png"
     }
 
 
@@ -507,7 +507,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_01.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_01.png"
     }
     ,{
         "id": "RI_C_02",
@@ -516,7 +516,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_02.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_02.png"
     }
     ,{
         "id": "RI_C_03",
@@ -525,7 +525,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_03.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_03.png"
     }
     ,{
         "id": "RI_C_04",
@@ -534,7 +534,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_04.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_04.png"
     }
     ,{
         "id": "RI_C_05",
@@ -543,7 +543,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_05.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_05.png"
     }
     ,{
         "id": "RI_C_06",
@@ -552,7 +552,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_06.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_06.png"
     }
     ,{
         "id": "RI_C_07",
@@ -561,7 +561,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_07.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_07.png"
     }
     ,{
         "id": "RI_C_08",
@@ -570,7 +570,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_08.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_08.png"
     }
     ,{
         "id": "RI_C_09",
@@ -579,7 +579,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_09.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_09.png"
     }
     ,{
         "id": "RI_C_10",
@@ -588,7 +588,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_10.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_10.png"
     }
     ,{
         "id": "RI_C_11",
@@ -597,7 +597,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_11.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_11.png"
     }
     ,{
         "id": "RI_C_12",
@@ -606,7 +606,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_12.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_12.png"
     }
     ,{
         "id": "RI_C_13",
@@ -615,7 +615,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_13.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_13.png"
     }
     ,{
         "id": "RI_C_14",
@@ -624,7 +624,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_14.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_14.png"
     }
     ,{
         "id": "RI_C_15",
@@ -633,7 +633,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_15.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_15.png"
     }
     ,{
         "id": "RI_C_16",
@@ -642,7 +642,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_16.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_16.png"
     }
     ,{
         "id": "RI_C_17",
@@ -651,7 +651,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_17.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_17.png"
     }
     ,{
         "id": "RI_C_18",
@@ -660,7 +660,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_18.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_18.png"
     }
     ,{
         "id": "RI_C_19",
@@ -669,7 +669,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_19.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_19.png"
     }
     ,{
         "id": "RI_C_20",
@@ -678,7 +678,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_20.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_20.png"
     }
     ,{
         "id": "RI_C_21",
@@ -687,7 +687,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_21.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_21.png"
     }
     ,{
         "id": "RI_C_22",
@@ -696,7 +696,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_22.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_22.png"
     }
     ,{
         "id": "RI_C_23",
@@ -705,7 +705,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_23.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_23.png"
     }
     ,{
         "id": "RI_C_24",
@@ -714,7 +714,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_24.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_24.png"
     }
     ,{
         "id": "RI_C_25",
@@ -723,7 +723,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.3",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_25.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_25.png"
     }
     ,{
         "id": "RI_C_26",
@@ -732,7 +732,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.3",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_26.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_26.png"
     }
     ,{
         "id": "RI_C_27",
@@ -741,7 +741,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.3",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_27.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_27.png"
     }
     ,{
         "id": "RI_C_28",
@@ -750,7 +750,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.3",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_28.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_28.png"
     }
     ,{
         "id": "RI_C_29",
@@ -759,7 +759,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.3",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_29.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_29.png"
     }
     ,{
         "id": "RI_C_30",
@@ -768,7 +768,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.3",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/C/RI_C_30.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/C/RI_C_30.png"
     }
 
 
@@ -783,7 +783,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_01.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_01.png"
     }
     ,{
         "id": "RI_D_02",
@@ -792,7 +792,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_02.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_02.png"
     }
     ,{
         "id": "RI_D_03",
@@ -801,7 +801,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_03.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_03.png"
     }
     ,{
         "id": "RI_D_04",
@@ -810,7 +810,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_04.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_04.png"
     }
     ,{
         "id": "RI_D_05",
@@ -819,7 +819,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_05.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_05.png"
     }
     ,{
         "id": "RI_D_06",
@@ -828,7 +828,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_06.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_06.png"
     }
     ,{
         "id": "RI_D_07",
@@ -837,7 +837,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_07.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_07.png"
     }
     ,{
         "id": "RI_D_08",
@@ -846,7 +846,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_08.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_08.png"
     }
     ,{
         "id": "RI_D_09",
@@ -855,7 +855,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_09.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_09.png"
     }
     ,{
         "id": "RI_D_10",
@@ -864,7 +864,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_10.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_10.png"
     }
     ,{
         "id": "RI_D_11",
@@ -873,7 +873,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_11.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_11.png"
     }
     ,{
         "id": "RI_D_12",
@@ -882,7 +882,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_12.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_12.png"
     }
     ,{
         "id": "RI_D_13",
@@ -891,7 +891,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_13.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_13.png"
     }
     ,{
         "id": "RI_D_14",
@@ -900,7 +900,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_14.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_14.png"
     }
     ,{
         "id": "RI_D_15",
@@ -909,7 +909,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_15.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_15.png"
     }
     ,{
         "id": "RI_D_16",
@@ -918,7 +918,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_16.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_16.png"
     }
     ,{
         "id": "RI_D_17",
@@ -927,7 +927,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_17.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_17.png"
     }
     ,{
         "id": "RI_D_18",
@@ -936,7 +936,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_18.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_18.png"
     }
     ,{
         "id": "RI_D_19",
@@ -945,7 +945,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_19.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_19.png"
     }
     ,{
         "id": "RI_D_20",
@@ -954,7 +954,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_20.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_20.png"
     }
     ,{
         "id": "RI_D_21",
@@ -963,7 +963,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_21.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_21.png"
     }
     ,{
         "id": "RI_D_22",
@@ -972,7 +972,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_22.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_22.png"
     }
     ,{
         "id": "RI_D_23",
@@ -981,7 +981,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_23.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_23.png"
     }
     ,{
         "id": "RI_D_24",
@@ -990,7 +990,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_24.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_24.png"
     }
     ,{
         "id": "RI_D_25",
@@ -999,7 +999,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_25.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_25.png"
     }
     ,{
         "id": "RI_D_26",
@@ -1008,7 +1008,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_26.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_26.png"
     }
     ,{
         "id": "RI_D_27",
@@ -1017,7 +1017,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_27.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_27.png"
     }
     ,{
         "id": "RI_D_28",
@@ -1026,7 +1026,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_28.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_28.png"
     }
     ,{
         "id": "RI_D_29",
@@ -1035,7 +1035,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_29.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_29.png"
     }
     ,{
         "id": "RI_D_30",
@@ -1044,7 +1044,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_30.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_30.png"
     }
     ,{
         "id": "RI_D_31",
@@ -1053,7 +1053,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.4",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/D/RI_D_31.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/D/RI_D_31.png"
     }
 
 
@@ -1067,7 +1067,7 @@
         "elementegruppe": "1",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_01.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_01.png"
     }
     ,{
         "id": "RI_E_02",
@@ -1076,7 +1076,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_02.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_02.png"
     }
     ,{
         "id": "RI_E_03",
@@ -1085,7 +1085,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_03.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_03.png"
     }
     ,{
         "id": "RI_E_04",
@@ -1094,7 +1094,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_04.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_04.png"
     }
     ,{
         "id": "RI_E_05",
@@ -1103,7 +1103,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_05.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_05.png"
     }
     ,{
         "id": "RI_E_06",
@@ -1112,7 +1112,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_06.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_06.png"
     }
     ,{
         "id": "RI_E_07",
@@ -1121,7 +1121,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_07.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_07.png"
     }
     ,{
         "id": "RI_E_08",
@@ -1130,7 +1130,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_08.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_08.png"
     }
     ,{
         "id": "RI_E_09",
@@ -1139,7 +1139,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_09.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_09.png"
     }
     ,{
         "id": "RI_E_10",
@@ -1148,7 +1148,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_10.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_10.png"
     }
     ,{
         "id": "RI_E_11",
@@ -1157,7 +1157,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_11.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_11.png"
     }
     ,{
         "id": "RI_E_12",
@@ -1166,7 +1166,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_12.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_12.png"
     }
     ,{
         "id": "RI_E_13",
@@ -1175,7 +1175,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_13.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_13.png"
     }
     ,{
         "id": "RI_E_14",
@@ -1184,7 +1184,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_14.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_14.png"
     }
     ,{
         "id": "RI_E_15",
@@ -1193,7 +1193,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_15.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_15.png"
     }
     ,{
         "id": "RI_E_16",
@@ -1202,7 +1202,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_16.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_16.png"
     }
     ,{
         "id": "RI_E_17",
@@ -1211,7 +1211,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_17.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_17.png"
     }
     ,{
         "id": "RI_E_18",
@@ -1220,7 +1220,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_18.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_18.png"
     }
     ,{
         "id": "RI_E_19",
@@ -1229,7 +1229,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_19.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_19.png"
     }
     ,{
         "id": "RI_E_20",
@@ -1238,7 +1238,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_20.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_20.png"
     }
     ,{
         "id": "RI_E_21",
@@ -1247,7 +1247,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_21.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_21.png"
     }
     ,{
         "id": "RI_E_22",
@@ -1256,7 +1256,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_22.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_22.png"
     }
     ,{
         "id": "RI_E_23",
@@ -1265,7 +1265,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_23.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_23.png"
     }
     ,{
         "id": "RI_E_24",
@@ -1274,7 +1274,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_24.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_24.png"
     }
     ,{
         "id": "RI_E_25",
@@ -1283,7 +1283,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.5",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_25.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_25.png"
     }
     ,{
         "id": "RI_E_26",
@@ -1292,7 +1292,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.5",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_26.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_26.png"
     }
     ,{
         "id": "RI_E_27",
@@ -1301,7 +1301,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.5",
         "dismount": true,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/E/RI_E_27.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/E/RI_E_27.png"
     }
 
 
@@ -1313,7 +1313,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.6",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_01.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/FGH/RI_FGH_01.png"
     }
     ,{
         "id": "RI_FGH_02",
@@ -1322,7 +1322,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.6",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_02.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/FGH/RI_FGH_02.png"
     }
     ,{
         "id": "RI_FGH_03",
@@ -1331,7 +1331,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.6",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_03.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/FGH/RI_FGH_03.png"
     }
     ,{
         "id": "RI_FGH_04",
@@ -1340,7 +1340,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.6",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_04.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/FGH/RI_FGH_04.png"
     }
     ,{
         "id": "RI_FGH_05",
@@ -1349,7 +1349,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.6",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_05.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/FGH/RI_FGH_05.png"
     }
     ,{
         "id": "RI_FGH_06",
@@ -1358,7 +1358,7 @@
         "elementegruppe": "2",
         "wertigkeit": "0.6",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_06.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/FGH/RI_FGH_06.png"
     }
     ,{
         "id": "RI_FGH_07",
@@ -1367,7 +1367,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.6",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_07.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/FGH/RI_FGH_07.png"
     }
     ,{
         "id": "RI_FGH_08",
@@ -1376,7 +1376,7 @@
         "elementegruppe": "3",
         "wertigkeit": "0.6",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_08.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/FGH/RI_FGH_08.png"
     }
     ,{
         "id": "RI_FGH_09",
@@ -1385,7 +1385,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.7",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_09.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/FGH/RI_FGH_09.png"
     }
     ,{
         "id": "RI_FGH_10",
@@ -1394,7 +1394,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.8",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_10.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/FGH/RI_FGH_10.png"
     }
     ,{
         "id": "RI_FGH_11",
@@ -1403,7 +1403,7 @@
         "elementegruppe": "4",
         "wertigkeit": "0.6",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_11.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/FGH/RI_FGH_11.png"
     }
     ,{
         "id": "RI_FGH_12",
@@ -1412,6 +1412,6 @@
         "elementegruppe": "4",
         "wertigkeit": "0.6",
         "dismount": false,
-        "image_path": "frontend/assets/images/Exercises/Device/Rings/FGH/RI_FGH_12.png"
+        "image_path": "./assets/images/Exercises/Device/Rings/FGH/RI_FGH_12.png"
     }
 ]
