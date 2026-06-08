@@ -651,9 +651,16 @@ def remove_learned_element():
 
 @account_bp.route('/users/all', methods=['GET'])
 def get_visible_users():
+    user_id = session.get("user_id")
+    if not user_id or not ObjectId.is_valid(user_id):
+        return jsonify({"ok": False, "message": "Ungültiger Wert oder fehlende User-ID"}), 400
+    user = users_collection.find_one({"_id": ObjectId(user_id)})
+    if not user:
+        return jsonify({"ok": False, "message": "Nicht erlaubt"}), 403
+    
     users = list(
         users_collection.find(
-            {"visibility": 1, "roles": {"$ne": "admin"}},
+            {"visibility": 1 },
             {"_id": 1, "firstName": 1, "lastName": 1, "roles": 1, "online": 1, "color_code": 1}
         )
     )

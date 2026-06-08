@@ -6,6 +6,7 @@ export async function fetchAllUser() {
     try {
         const resp = await fetch(`${config.serverURL}/users/all`, {
             method: "GET",
+            credentials: "include",
             headers: { "Content-Type": "application/json" }
         });
         const data = await resp.json();

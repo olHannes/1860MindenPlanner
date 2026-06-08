@@ -45,10 +45,10 @@ app.config["SESSION_COOKIE_NAME"] = "routineplanner_session"
 app.config["SESSION_COOKIE_HTTPONLY"] = True
 
 if IS_PRODUCTION:
-    app.config["SESSION_COOCKIE_SECURE"] = True
+    app.config["SESSION_COOKIE_SECURE"] = True
     app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
 else:
-    app.config["SESSION_COOCKIE_SECURE"] = False
+    app.config["SESSION_COOKIE_SECURE"] = False
     app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
 
 
