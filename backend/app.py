@@ -75,7 +75,7 @@ limiter.init_app(app)
 
 @app.route("/")
 def home():
-    return "Server is running! Visit https://routineplanner.de - Test"
+    return "Server is running! Visit https://routineplanner.de"
 
 @app.route("/awake")
 def awake():
