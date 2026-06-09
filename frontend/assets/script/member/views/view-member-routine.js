@@ -88,6 +88,7 @@ export async function buildUserContent(root, userId, detailsContainer) {
 
 function buildRatingButton(targetUser, apparatus) {
     if (!targetUser || !apparatus) return "";
+    return "";
 
     return `
         <button 
