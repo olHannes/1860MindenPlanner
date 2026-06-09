@@ -146,6 +146,24 @@
 
 
 
+.horizontal-container [data-action="prev-apparatus"] {
+    font-size: 0;
+}
+.horizontal-container [data-action="prev-apparatus"]::before {
+    content: "←";
+    font-size: 1rem;
+}
+
+.horizontal-container [data-action="next-apparatus"] {
+    font-size: 0;
+}
+.horizontal-container [data-action="next-apparatus"]::before {
+    content: "→";
+    font-size: 1rem;
+}
+
+
+
 
 @media (min-width: 1024px) {
     #view-apparatus-detail {
@@ -204,6 +222,15 @@
         grid-template-columns: auto 1fr auto;
         align-items: center;
         margin-top: 0.5rem;
+    }
+
+    .horizontal-container [data-action="prev-apparatus"]::before {
+        content: "← Vorheriges";
+        font-size: 1rem;
+    }
+    .horizontal-container [data-action="next-apparatus"]::before {
+        content: "Nächstes →";
+        font-size: 1rem;
     }
 
     #startEditor {
