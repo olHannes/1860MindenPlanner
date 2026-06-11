@@ -23,13 +23,17 @@ export async function handleRegistration(event) {
         return;
     } 
     showLoader(loader);
-    const result = await  registerUser({
+    const result = await registerUser({
         firstName: data.firstName, 
         lastName: data.lastName,
         email: data.email,
         password: data.password
     });
-    showInlineNotification(errorBox, result.message, result.ok ? "info" : "error");
+    showInlineNotification(
+        errorBox,
+        result.ok ? result.message : result.errors[0],
+        result.ok ? "info" : "error"
+    );
     hideLoader(loader);
     if(!result.ok) return;
 
