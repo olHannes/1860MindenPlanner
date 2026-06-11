@@ -291,7 +291,7 @@ def add_points(competition_id):
     for device, points in scores.items():
         if device not in ALLOWED_DEVICES:
             return jsonify({"ok": False, "message": f"Ungültiges Gerät: '{device}'"}), 400
-        if points is None or not isinstance(points, (int, float)) or points < 0:
+        if points is None or not isinstance(points, (int, float)) or points < 0 or points > 15:
             return jsonify({"ok": False, "message": f"Ungültige Punktzahl für Gerät '{device}'"}), 400
         
         if points == 0:
