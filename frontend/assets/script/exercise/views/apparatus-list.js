@@ -1,6 +1,7 @@
 
 import { APPARATUS } from "../../config.js";
 import { VIEWS } from "../constants.js";
+import { state } from "../state.js";
 import { renderApparatusDetail } from "./apparatus-detail.js";
 import { showView } from "./navigation.js";
 
@@ -42,6 +43,7 @@ export function renderApparatusCards(root, apparatusList) {
             <div class="name-container">
                 <h2 class="name-de">${a.nameDe}</h2>
                 <h3 class="name-en">${a.nameEn}</h3>
+                <span class="icon icon--favorite ${a.id == state.favoriteApparatusId ? "favorite-active" : ""}"></span>
             </div>
             <img src="${a.icon}" alt="${a.nameEn}" class="apparatus-image">
         </button>

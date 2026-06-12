@@ -345,9 +345,12 @@
                     <!--Apparatus description-->
                     <section id="view-apparatus-detail" class="sub-panel" hidden aria-label="Gerätedetails">
                         <header class="sub-panel--header">
-                            <button class="btn--return" type="button" data-action="back-to-list">←</button>
-                            <h2 id="detailNameDe"></h2>
-                            <div id="detailNameEn" class="muted"></div>
+                            <div id="apparatus-name-container">
+                                <button class="btn--return" type="button" data-action="back-to-list">←</button>
+                                <h2 id="detailNameDe"></h2>
+                                <div id="detailNameEn" class="muted"></div>
+                            </div>
+                            <button id="fav-btn" data-action="toggle-favorite"><span class="icon icon--favorite favorite-disabled"></span></button>
                         </header>
                         <article class="apparatus-overview">
                             <header class="apparatus-hero">

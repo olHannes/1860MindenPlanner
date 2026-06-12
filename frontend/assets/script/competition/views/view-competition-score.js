@@ -21,7 +21,6 @@ export function bindCompetitionScoreEvents(root) {
                 break;
             
             case 'submitScore':
-                //showScoreForm(root, compId, userId);
                 updateCompetitionScore(root, compId);
                 break;
 

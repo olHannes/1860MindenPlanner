@@ -10,10 +10,13 @@ import { bindElementFilterEvents } from "./filter.js";
 import { VIEWS } from "./constants.js";
 import { showView } from "./views/navigation.js";
 import { bindSecurityEvents } from "../settings/views/view-security-settings.js";
+import { initFavoriteApparatus } from "./views/apparatus-detail.js";
 
 
-export function initExerciseFeature(root) {
+export async function initExerciseFeature(root) {
     if(!root) return;
+    await initFavoriteApparatus();
+    
     renderApparatusCards(root, config.APPARATUS);
     renderFilterElements(root, config.FilterElements);
 

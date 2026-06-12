@@ -140,3 +140,42 @@ export async function removeLearnedElement({ elementId }) {
         return { message: "Element konnte nicht aus den 'gelernten' entfernt werden", ok: false };
     }
 }
+
+
+export async function fetchFavoriteApparatus() {
+    try {
+        const resp = await fetch(`${config.serverURL}/account/favorite-apparatus`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-Token": getCsrfToken()
+            },
+            credentials: "include"
+        });
+        const data = await resp.json();
+        return data;
+    } catch (error) {
+        console.log("Failed to fetch favorite-Apparatus", error);
+        return { ok: false, message: "Das Favoriten-Gerät konnte nicht geladen werden" };
+    }
+}
+
+export async function setFavoriteApparatus(apparatusId) {
+    try {
+        const resp = await fetch(`${config.serverURL}/account/favorite-apparatus`, {
+            method: "POST",
+            credentials: "include",
+            headers: { 
+                "Content-Type": "application/json",
+                "X-CSRF-Token": getCsrfToken()    
+            },
+            body: JSON.stringify({ apparatusId })
+        });
+        const data = await resp.json();
+        if(data.ok) state.favoriteApparatusId = apparatusId;
+        return data;
+    } catch (error) {
+        console.log("Failed to set favorite-Apparatus", error);
+        return { ok: false, message: "Das Favoriten-Gerät konnte nicht gespeichert werden" };
+    }
+}

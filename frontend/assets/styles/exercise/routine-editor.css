@@ -19,6 +19,7 @@
     border: none;
     border-radius: 999px;
     cursor: pointer;
+    color: black;
 }
 
 #view-apparatus-editor .sub-panel--header h2 {

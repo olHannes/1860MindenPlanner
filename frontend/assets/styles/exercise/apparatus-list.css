@@ -34,9 +34,8 @@
 .apparatus-card {
     flex: 0 0 auto;
     width: 86%;
-    
     aspect-ratio: 1 / 0.75;
-    
+    max-height: 400px;
     text-align: center;
     background: #ffffff;
     color: rgb(20, 20, 20);

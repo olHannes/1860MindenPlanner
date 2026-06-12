@@ -4,6 +4,7 @@ export const state = {
         selectedApparatusId: null,
         selectedApparatusIndex: -1
     },
+    favoriteApparatusId: null,
     routine: {
         mode: "competition",
         elements: [],

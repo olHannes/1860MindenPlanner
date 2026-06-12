@@ -670,3 +670,46 @@ def get_visible_users():
 
     return jsonify({"ok": True, "users": users}), 200
 
+
+@account_bp.route('/account/favorite-apparatus', methods=['GET'])
+@csrf_protect
+def get_favorite_apparatus():
+    user_id = session.get("user_id")
+    if not user_id or not ObjectId.is_valid(user_id):
+        return jsonify({"ok": False, "message": "Ungültiger Wert oder fehlende User-ID"}), 400
+    user = users_collection.find_one({"_id": ObjectId(user_id)})
+    if not user:
+        return jsonify({"ok": False, "message": "Nicht erlaubt"}), 403
+    
+    return jsonify({"ok": True, "message": "Favoriten-Gerät wurde geladen", "apparatusId": user.get("favorite_apparatus", None)}), 200
+
+
+@account_bp.route('/account/favorite-apparatus', methods=["POST"])
+@csrf_protect
+def set_favorite_apparatus():
+    user_id     = session.get("user_id")
+    data        = request.get_json(silent=True) or {}
+    apparatusId = data.get('apparatusId')
+
+    print(apparatusId)
+
+    if not user_id or not ObjectId.is_valid(user_id):
+        return jsonify({"ok": False, "message": "Ungültiger Wert oder fehlende User-ID"}), 400
+    if apparatusId is not None and apparatusId not in ["FL", "PO", "RI", "VA", "PA", "HI"]:
+        return jsonify({"ok": False, "message": "Ungültige Apparatus-ID"}), 400
+    
+    user = users_collection.find_one({"_id": ObjectId(user_id)})
+    if not user:
+        return jsonify({"ok": False, "message": "Nicht erlaubt"}), 403
+    
+    if apparatusId is None:
+        users_collection.update_one(
+            {"_id": ObjectId(user_id)},
+            {"$unset": {"favorite_apparatus": ""}}
+        )
+    else:
+        users_collection.update_one(
+            {"_id": ObjectId(user_id)},
+            {"$set": {"favorite_apparatus": apparatusId}}
+        )
+    return jsonify({"ok": True, "message": "Favoriten-Geräte wurde aktualisiert", "apparatusId": apparatusId}), 200

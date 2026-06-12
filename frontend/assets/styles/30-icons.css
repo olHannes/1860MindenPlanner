@@ -95,3 +95,8 @@
 .icon--rank-1 { background-color: #EDBF04; }
 .icon--rank-2 { background-color: #C0C0C0; }
 .icon--rank-3 { background-color: #CE8946; }
+
+.icon--favorite {
+  -webkit-mask-image: url("../images/icons/star-svgrepo-com.svg");
+  mask-image: url("../images/icons/star-svgrepo-com.svg");
+}
