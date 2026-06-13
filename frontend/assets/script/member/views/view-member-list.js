@@ -1,3 +1,4 @@
+import { APPARATUS } from "../../config.js";
 import { clearHTML, hideLoader, showLoader } from "../../panel-handling.js";
 import { fetchAllUser } from "../api.js";
 import { buildUserContent } from "./view-member-routine.js";
@@ -49,11 +50,21 @@ function buildUserEntry(root, user) {
     img.alt = "Profile Icon";
     img.style.filter = `drop-shadow(0px 0px 5px ${user.color_code})`;
 
+    const favApparatus = APPARATUS.find(
+        apparatus => apparatus.id === user.favorite_apparatus
+    );
+
     const nameContainer = root.createElement("div");
     nameContainer.className = "name-container";
+    
     nameContainer.innerHTML = `
         <span class="nameBig">${user.firstName}</span>
         <span class="nameLight">${user.lastName}</span>
+        ${
+            favApparatus
+                ? `<span class="fav-apparatus">${favApparatus.nameDe}</span>`
+                : `<span class="fav-apparatus">Kein Favoriten-Gerät</span>`
+        }
     `;
 
     const status = root.createElement("span");

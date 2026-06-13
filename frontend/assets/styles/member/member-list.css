@@ -92,6 +92,12 @@
     white-space: nowrap;
 }
 
+.member-entry .fav-apparatus {
+    letter-spacing: 1px;
+    color: var(--color-primary-hover);
+    font-size: 0.9rem;
+}
+
 .member-status {
     width: 12px;
     height: 12px;
