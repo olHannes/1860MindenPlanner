@@ -5,6 +5,7 @@ import { setupCurrentExercise } from "../actions.js";
 import { fetchFavoriteApparatus, setFavoriteApparatus } from "../api.js";
 import { VIEWS } from "../constants.js";
 import { state } from "../state.js";
+import { renderApparatusCards } from "./apparatus-list.js";
 import { renderElementList } from "./element-list.js";
 import { showView } from "./navigation.js";
 import { renderApparatusEditor } from "./routine-editor.js";
@@ -37,6 +38,10 @@ export function setupApparatusDetailsEvents(root) {
                 break;
 
             case 'toggle-favorite':
+                if(target.disabled == true) return;
+                console.log("###");
+                target.disabled = true;
+
                 let targetId = target.dataset.apparatusId == state.favoriteApparatusId ? null : target.dataset.apparatusId;
                 state.favoriteApparatusId = targetId;
                 const response = await setFavoriteApparatus(targetId);
@@ -46,7 +51,10 @@ export function setupApparatusDetailsEvents(root) {
                     response.message
                 );
 
-                root.querySelector("#fav-btn .icon").classList.toggle("favorite-active", targetId == null);
+                const favItem = root.querySelector("#fav-btn .icon");
+                favItem?.classList.toggle("favorite-active", targetId != null);
+                renderApparatusCards(root, APPARATUS);
+                target.disabled = false;
                 break;
 
             case 'to-exercise-editor':
