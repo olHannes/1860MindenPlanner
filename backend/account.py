@@ -661,7 +661,15 @@ def get_visible_users():
     users = list(
         users_collection.find(
             {"visibility": 1 },
-            {"_id": 1, "firstName": 1, "lastName": 1, "roles": 1, "online": 1, "color_code": 1}
+            {
+                "_id": 1, 
+                "firstName": 1, 
+                "lastName": 1, 
+                "roles": 1, 
+                "online": 1, 
+                "color_code": 1,
+                "favorite_apparatus": 1,
+             }
         )
     )
     for user in users:
