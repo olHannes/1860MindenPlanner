@@ -1,12 +1,19 @@
-from mongoConf import *
-from flask import session
-from extension import limiter
-from bson import ObjectId
-from datetime import datetime, timezone
-from werkzeug.security import check_password_hash, generate_password_hash
+import os
 import secrets
+from datetime import UTC, datetime, timedelta
 
-from security import csrf_protect, get_session_user, check_access
+from bson import ObjectId
+from flask import Blueprint, session, request, jsonify
+from werkzeug.security import check_password_hash, generate_password_hash
+
+import notification
+from extension import limiter
+from mongoConf import (
+    users_collection,
+    competition_entries_collection,
+    exercises_collection
+)
+from security import check_access, csrf_protect, get_session_user
 from validation import *
 
 account_bp = Blueprint("account", __name__)
@@ -18,7 +25,7 @@ def parse_expires_at(expires_at):
     if expires_at is None:
         return None
     if isinstance(expires_at, datetime):
-        return expires_at if expires_at.tzinfo else expires_at.replace(tzinfo=timezone.utc)
+        return expires_at if expires_at.tzinfo else expires_at.replace(tzinfo=UTC)
     if isinstance(expires_at, str):
         s = expires_at.strip().replace("Z", "+00:00")
         return datetime.fromisoformat(s)
@@ -100,7 +107,7 @@ def register():
 
     full_name = fn + " " + ln
     verify_link = (
-        f"{FRONTEND_URL}/verifyAccount.html#uid={str(result.inserted_id)}&token={verifyCode}"
+        f"{FRONTEND_URL}/verifyAccount.html#uid={result.inserted_id!s}&token={verifyCode}"
     )
     verifyEmail = notification.build_verify(em, verify_link, full_name)
     notification.send_mail(verifyEmail)
@@ -244,7 +251,7 @@ def request_new_password():
     attempts = pr.get("attempts", 0)
 
     expires_at = parse_expires_at(expires_at_raw)
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
 
     if not code_hash or not expires_at or expires_at <= now:
         users_collection.update_one({"_id": user["_id"]}, {"$unset": {"passwordReset": ""}})
@@ -300,7 +307,7 @@ def update_password():
     attempts = pr.get("attempts", 0)
 
     expires_at = parse_expires_at(expires_at_raw)
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
 
     if not code_hash or not expires_at or expires_at <= now:
         users_collection.update_one({"_id": user["_id"]}, {"$unset": {"passwordReset": ""}})
@@ -341,7 +348,7 @@ def request_password_reset():
 
     code = f"{secrets.randbelow(1_000_000):06d}"
     code_hash = generate_password_hash(code)
-    expires_at = datetime.now(timezone.utc) + timedelta(minutes=15)
+    expires_at = datetime.now(UTC) + timedelta(minutes=15)
 
     users_collection.update_one(
         {"_id": user["_id"]},
