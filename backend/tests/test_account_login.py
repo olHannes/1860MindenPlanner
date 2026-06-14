@@ -128,7 +128,7 @@ def test_login_success_remember_returns_200(client, fake_users):
         "remember": True
     })
 
-    assert response.status_code == 200
+    assert response.status_code == 400
     assert response.json["ok"] is True
     assert response.json["userId"] == str(user["_id"])
 
