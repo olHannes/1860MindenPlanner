@@ -1,10 +1,16 @@
-from mongoConf import *
+from datetime import datetime, timezone
 
-from security import csrf_protect
+from bson import ObjectId
 from flask import Blueprint, session, request, jsonify
 
-report_bp = Blueprint("reports", __name__)
+import notification
+from mongoConf import (
+    users_collection,
+    issues_collection
+)
+from security import csrf_protect
 
+report_bp = Blueprint("reports", __name__)
 
 def serialize_mongo(doc):
     if isinstance(doc, list):

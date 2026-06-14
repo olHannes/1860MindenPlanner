@@ -1,4 +1,8 @@
-from mongoConf import *
+from mongoConf import (
+    competition_collection,
+    competition_entries_collection,
+    users_collection
+)
 from datetime import datetime, date, timedelta
 from bson import ObjectId
 from flask import Blueprint, session, request, jsonify

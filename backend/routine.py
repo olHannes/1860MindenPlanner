@@ -1,6 +1,18 @@
-from mongoConf import *
-from validation import *
+from mongoConf import (
+    db_floorElements,
+    db_pommelhorseElements,
+    db_ringsElements,
+    db_vaultElements,
+    db_parralelbarsElements,
+    db_highbarElements,
+    users_collection,
+    exercises_collection
+)
+from validation import (
+    validate_routine
+)
 
+from bson import ObjectId
 from flask import Blueprint, session, request, jsonify
 
 from security import csrf_protect

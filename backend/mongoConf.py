@@ -1,11 +1,6 @@
-from werkzeug.security import generate_password_hash, check_password_hash
-from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
 from pymongo import MongoClient
-from datetime import datetime, timezone, timedelta
-import time
-from bson import ObjectId
-import notification
 
 load_dotenv()
 
