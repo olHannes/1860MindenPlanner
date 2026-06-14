@@ -1,11 +1,5 @@
-import pytest
 from bson import ObjectId
-
-from test_account_login import make_user, fake_users
-
-import account
-from tests.fakes.fake_collection import FakeCollection
-
+from test_account_login import make_user
 
 
 def set_session_user(client, user_id, permanent=False):
@@ -26,7 +20,7 @@ def test_get_current_user_without_session_returns_401(client):
 def test_get_current_user_with_invalid_objectId_clears_session(client):
     with client.session_transaction() as session:
         session["user_id"] = "not-a-valid-object-id"
-    
+
     response = client.get("/account/me")
 
     assert response.status_code == 401
@@ -114,7 +108,6 @@ def test_get_current_user_unverified_user_is_rejected(client, fake_users):
         assert "user_id" not in sess
 
 
-
 def test_get_current_user_uses_default_values(client, fake_users):
     user = make_user(verified=True)
 
@@ -138,7 +131,6 @@ def test_get_current_user_uses_default_values(client, fake_users):
     assert data["isAdmin"] is False
     assert data["color"] == "#000000"
     assert data["visibility"] == 1
-
 
 
 def test_get_current_user_autologin(client, fake_users):
