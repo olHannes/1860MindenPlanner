@@ -8,7 +8,7 @@ def set_session_user(client, user_id, permanent=False):
         session.permanent = permanent
 
 
-def test_get_current_user_without_session_returns_401(client):
+def test_get_current_user_without_session_returns_401(client, fake_users):
     response = client.get("/account/me")
 
     assert response.status_code == 401
@@ -17,7 +17,7 @@ def test_get_current_user_without_session_returns_401(client):
     assert data["message"] == "Nicht angemeldet"
 
 
-def test_get_current_user_with_invalid_objectId_clears_session(client):
+def test_get_current_user_with_invalid_objectId_clears_session(client, fake_users):
     with client.session_transaction() as session:
         session["user_id"] = "not-a-valid-object-id"
 
@@ -31,7 +31,7 @@ def test_get_current_user_with_invalid_objectId_clears_session(client):
         assert "user_id" not in session
 
 
-def test_get_current_user_not_found_clears_session(client):
+def test_get_current_user_not_found_clears_session(client, fake_users):
     user_id = ObjectId()
     set_session_user(client, user_id)
 
