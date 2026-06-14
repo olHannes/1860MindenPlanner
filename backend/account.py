@@ -3,18 +3,20 @@ import secrets
 from datetime import UTC, datetime, timedelta
 
 from bson import ObjectId
-from flask import Blueprint, session, request, jsonify
+from flask import Blueprint, jsonify, request, session
 from werkzeug.security import check_password_hash, generate_password_hash
 
 import notification
 from extension import limiter
-from mongoConf import (
-    users_collection,
-    competition_entries_collection,
-    exercises_collection
-)
+from mongoConf import competition_entries_collection, exercises_collection, users_collection
 from security import check_access, csrf_protect, get_session_user
-from validation import *
+from validation import (
+    NAME_RE,
+    normalize_email,
+    normalize_name,
+    validate_login,
+    validate_registration,
+)
 
 account_bp = Blueprint("account", __name__)
 
@@ -32,7 +34,7 @@ def parse_expires_at(expires_at):
     return None
 
 
-################################################################################################### Registrierung
+##################################################################### Registrierung
 @account_bp.route("/account/verify", methods=["POST"])
 def verify_account():
     data = request.get_json(silent=True) or {}
@@ -149,7 +151,7 @@ def get_current_user():
     ), 200
 
 
-################################################################################################### Login
+##################################################################### Login
 
 
 @account_bp.route("/account/login", methods=["POST"])
@@ -171,7 +173,7 @@ def login():
         return jsonify(
             {
                 "ok": False,
-                "message": "E-Mail oder Passwort ist falsch oder Nutzer wurde nicht freigeschaltet.",
+                "message": "E-Mail oder Passwort ist falsch oder Nutzer wurde nicht freigeschaltet."
             }
         ), 404
 
@@ -199,7 +201,7 @@ def login():
     return jsonify(response), 200
 
 
-################################################################################################### Logout
+##################################################################### Logout
 
 
 @account_bp.route("/account/logout", methods=["POST"])
@@ -217,7 +219,7 @@ def logout():
     return jsonify({"ok": True, "message": "Erfolgreich ausgeloggt!"}), 200
 
 
-################################################################################################### update Password after Request
+##################################################################### update Password after Request
 
 
 @account_bp.route("/account/forgot/updatePassword", methods=["POST"])
@@ -272,7 +274,7 @@ def request_new_password():
     return jsonify({"ok": True, "message": "Passwort erfolgreich aktualisiert!"}), 200
 
 
-################################################################################################### update Password
+##################################################################### update Password
 
 
 @account_bp.route("/account/change/password", methods=["POST"])
@@ -328,7 +330,7 @@ def update_password():
     return jsonify({"ok": True, "message": "Passwort erfolgreich aktualisiert!"}), 200
 
 
-################################################################################################### send Request Code (mail)
+##################################################################### send Request Code (mail)
 
 
 @account_bp.route("/account/passwordReset/request", methods=["POST"])
@@ -366,7 +368,7 @@ def request_password_reset():
     return jsonify({"ok": True, "message": "Reset erfolgreich versendet"}), 200
 
 
-################################################################################################### Delete Account
+##################################################################### Delete Account
 
 
 @account_bp.route("/account/delete", methods=["DELETE"])
@@ -403,7 +405,7 @@ def delete_account():
     ), 200
 
 
-################################################################################################### Getter -> User Information
+##################################################################### Getter -> User Information
 
 
 @account_bp.route("/account/info", methods=["GET"])
@@ -437,7 +439,7 @@ def get_user_info():
     ), 200
 
 
-################################################################################################### Setter -> User Information
+##################################################################### Setter -> User Information
 
 
 @account_bp.route("/account/change/name", methods=["POST"])
@@ -494,7 +496,7 @@ def changeData():
     ), 200
 
 
-################################################################################################### set Color Code
+##################################################################### set Color Code
 
 
 @account_bp.route("/account/change/color", methods=["POST"])
@@ -529,7 +531,7 @@ def change_user_color():
     return jsonify({"ok": True, "message": "Farbcode erfolgreich aktualisiert!"}), 200
 
 
-################################################################################################### set Visibility status
+##################################################################### set Visibility status
 
 
 @account_bp.route("/account/change/visibility", methods=["POST"])
@@ -569,13 +571,13 @@ def change_user_visibility():
     ), 200
 
 
-################################################################################################### toggle auto Login
+##################################################################### toggle auto Login
 
 
 @account_bp.route("/account/change/autoLogin", methods=["POST"])
 @csrf_protect
 def change_user_autoLogin():
-    session_user, error = get_session_user()
+    _session_user, error = get_session_user()
     if error:
         return error
 
@@ -587,7 +589,7 @@ def change_user_autoLogin():
     ), 200
 
 
-################################################################################################### add learned Element
+##################################################################### add learned Element
 
 
 @account_bp.route("/account/elements/learned/add", methods=["POST"])
@@ -619,7 +621,7 @@ def add_learned_element():
     ), 200
 
 
-################################################################################################### remove learned Element
+##################################################################### remove learned Element
 
 
 @account_bp.route("/account/elements/learned/remove", methods=["POST"])
@@ -651,7 +653,7 @@ def remove_learned_element():
     ), 200
 
 
-################################################################################################### Get visible Users
+##################################################################### Get visible Users
 
 
 @account_bp.route("/users/all", methods=["GET"])
