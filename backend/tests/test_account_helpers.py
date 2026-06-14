@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from account import parse_expires_at
 
@@ -12,7 +12,7 @@ def test_parse_expires_at_naive_datetime_gets_utc():
 
     result = parse_expires_at(dt)
 
-    assert result.tzinfo == timezone.utc
+    assert result.tzinfo == UTC
 
 
 def test_parse_expires_at_iso_z_string():

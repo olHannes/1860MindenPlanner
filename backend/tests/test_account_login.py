@@ -1,9 +1,8 @@
 import pytest
-
-import account
 from bson import ObjectId
 from werkzeug.security import generate_password_hash
 
+import account
 from tests.fakes.fake_collection import FakeCollection
 
 
