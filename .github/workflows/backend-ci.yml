@@ -17,13 +17,11 @@ jobs:
       run:
         working-directory: backend
 
-    env:
-      MONGO_URI: mongodb://localhost:27017/test
-      FRONTEND_URL: http://localhost:5500
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Create CI env file
+        run: cp ../.env.ci .env
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -44,7 +42,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Create CI env file
+        run: cp .env.ci .env
       - name: Validate Docker Compose
-        run: docker compose -f compose.yaml config
+        run: docker compose -f compose.dev.yaml config
       - name: Build Docker images
-        run: docker compose -f compose.yaml build
+        run: docker compose -f compose.dev.yaml build
