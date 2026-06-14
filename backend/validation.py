@@ -1,5 +1,6 @@
 import re
 from typing import Any, Dict, List, Union
+
 ValidationResult = Dict[str, Any]
 
 NAME_RE = re.compile(r"^[A-Za-zÄÖÜäöüß ^\-']+$")
@@ -7,14 +8,17 @@ EMAIL_RE = re.compile(r"^[^\s@]+@[^\s@]+\.[^\s@]+$")
 
 ROUTINE_MIN_ELEMENTS = 7
 
+
 def normalize_name(txt: str) -> str:
     if not txt:
         return ""
     txt = " ".join(txt.strip().split())
     return " ".join(w[:1].upper() + w[1:].lower() for w in txt.split(" "))
 
+
 def normalize_email(email: str) -> str:
     return (email or "").strip().lower()
+
 
 def validate_registration(first_name, last_name, email, password):
     errors = {}
@@ -45,6 +49,7 @@ def validate_registration(first_name, last_name, email, password):
 
     return fn, ln, em, errors
 
+
 def validate_login(email, password):
     errors = {}
     em = normalize_email(email)
@@ -53,25 +58,25 @@ def validate_login(email, password):
         errors["email"] = "Email fehlt."
     elif not EMAIL_RE.match(em):
         errors["email"] = "Email ist ungültig."
-    
+
     if not password:
         errors["password"] = "Passwort fehlt."
     elif len(password) < 4:
         errors["password"] = "Passwort muss mindestens 4 Zeichen lang sein."
-    
+
     return em, errors
 
 
-################################################################################################### Routine Validation and Rating 
+################################################################################################### Routine Validation and Rating
 def validate_routine(device: str, element_list: List[Dict[str, Any]]) -> ValidationResult:
     if not device or not isinstance(device, str):
         raise ValueError("device darf nicht leer sein")
-    
+
     device = device.strip().upper()
 
     if device == "VA":
         return _validate_routine_va(element_list)
-    
+
     return _analyze_routine_elements(device, element_list)
 
 
@@ -82,12 +87,14 @@ def _to_float(value: Any, default: float = 0.0) -> float:
         return float(value)
     except (TypeError, ValueError):
         return default
-    
+
+
 def _group_sort_key(g: Union[str, int]) -> float:
     try:
         return float(g)
     except Exception:
         return float("inf")
+
 
 def _validate_routine_va(element_list: List[Dict[str, Any]]) -> ValidationResult:
     warnings: List[str] = []
@@ -116,18 +123,18 @@ def _validate_routine_va(element_list: List[Dict[str, Any]]) -> ValidationResult
         "totalElements": len(element_list),
         "groupList": group_list,
         "isComplete": len(errors) == 0,
-        "baseDifficulty" : highest_difficulty,
+        "baseDifficulty": highest_difficulty,
         "groupBonus": 0,
-        "dismountBonus": 0
+        "dismountBonus": 0,
     }
 
 
 def _analyze_routine_elements(device: str, element_list: List[Dict[str, Any]]) -> ValidationResult:
     required_groups = {
-        "FL": { "1", "2", "3"},
-        "RI": { "1", "2", "3", "4"},
-        "PA": { "1", "2", "3", "4"},
-        "HI": { "1", "2", "3", "4"},
+        "FL": {"1", "2", "3"},
+        "RI": {"1", "2", "3", "4"},
+        "PA": {"1", "2", "3", "4"},
+        "HI": {"1", "2", "3", "4"},
         "VA": set(),
     }
     total_difficulty = 10.0
@@ -160,13 +167,13 @@ def _analyze_routine_elements(device: str, element_list: List[Dict[str, Any]]) -
         if is_dismount:
             has_dismount = True
             dismount_value = wertigkeit
-            if i == len(element_list)-1:
+            if i == len(element_list) - 1:
                 is_dismount_at_end = True
             else:
                 difficulties.append(wertigkeit)
         else:
             difficulties.append(wertigkeit)
-            
+
     top_six = sorted(difficulties, reverse=True)[:6]
     base_difficulty = (sum(top_six) + dismount_value) * 2
 
@@ -181,10 +188,7 @@ def _analyze_routine_elements(device: str, element_list: List[Dict[str, Any]]) -
     group_list = ", ".join(sorted(element_groups.keys(), key=_group_sort_key))
 
     is_complete = (
-        len(missing_groups) == 0
-        and total_elements >= 7
-        and has_dismount
-        and is_dismount_at_end
+        len(missing_groups) == 0 and total_elements >= 7 and has_dismount and is_dismount_at_end
     )
 
     if total_elements > ROUTINE_MIN_ELEMENTS:
@@ -196,11 +200,13 @@ def _analyze_routine_elements(device: str, element_list: List[Dict[str, Any]]) -
     duplicates = [f"{name} ({count}x)" for name, count in seen_elements.items() if count > 1]
     if duplicates:
         warnings.append("⚠️ Mehrface Elemente: " + ", ".join(duplicates))
-    
+
     if total_elements < ROUTINE_MIN_ELEMENTS:
         errors.append(f"❌ Zu wenig Elemente: {total_elements}! Minimum: {ROUTINE_MIN_ELEMENTS}")
     if missing_groups:
-        errors.append(f"❌ Fehlende Gruppen: " + ", ".join(sorted(missing_groups, key=_group_sort_key)))
+        errors.append(
+            f"❌ Fehlende Gruppen: " + ", ".join(sorted(missing_groups, key=_group_sort_key))
+        )
     if not has_dismount:
         errors.append("❌ Kein Abgang vorhanden!")
     if has_dismount and not is_dismount_at_end:
@@ -215,5 +221,5 @@ def _analyze_routine_elements(device: str, element_list: List[Dict[str, Any]]) -
         "isComplete": is_complete,
         "baseDifficulty": round(base_difficulty, 2),
         "groupBonus": group_bonus,
-        "dismountBonus": dismount_bonus
+        "dismountBonus": dismount_bonus,
     }

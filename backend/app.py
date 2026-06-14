@@ -1,4 +1,3 @@
-
 import os
 import secrets
 from datetime import timedelta
@@ -31,16 +30,14 @@ if IS_PRODUCTION and not secret_key:
 
 app.config["SECRET_KEY"] = secret_key
 
-#server side records via redis
+# server side records via redis
 app.config["SESSION_TYPE"] = "redis"
-app.config["SESSION_REDIS"] = Redis.from_url(
-    os.getenv("SESSION_REDIS_URL", "redis://redis:6379/1")
-)
+app.config["SESSION_REDIS"] = Redis.from_url(os.getenv("SESSION_REDIS_URL", "redis://redis:6379/1"))
 
 app.config["SESSION_PERMANENT"] = True
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(days=30)
 
-#cookie-config
+# cookie-config
 app.config["SESSION_COOKIE_NAME"] = "routineplanner_session"
 app.config["SESSION_COOKIE_HTTPONLY"] = True
 
@@ -52,23 +49,14 @@ else:
     app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
 
 
-
 Session(app)
 
 
 frontend_origins_raw = os.getenv("FRONTEND_ORIGINS", "")
-allowed_origins = [
-    origin.strip()
-    for origin in frontend_origins_raw.split(",")
-    if origin.strip()
-]
+allowed_origins = [origin.strip() for origin in frontend_origins_raw.split(",") if origin.strip()]
 
 
-CORS(
-    app,
-    resources={r"/*": {"origins": allowed_origins}},
-    supports_credentials=True
-)
+CORS(app, resources={r"/*": {"origins": allowed_origins}}, supports_credentials=True)
 
 limiter.init_app(app)
 
@@ -77,10 +65,12 @@ limiter.init_app(app)
 def home():
     return "Server is running! Visit https://routineplanner.de"
 
+
 @app.route("/awake")
 def awake():
     print("awake")
     return "awake Server"
+
 
 @app.route("/csrf", methods=["GET"])
 def generate_csrf():
@@ -94,25 +84,16 @@ def generate_csrf():
     return jsonify({"ok": True, "csrfToken": token})
 
 
-
 if not IS_PRODUCTION:
+
     @app.route("/debug-set-session")
     def debug_set_session():
         session["debug_test"] = "hello"
-        return jsonify({
-            "ok": True,
-            "session": dict(session)
-        })
+        return jsonify({"ok": True, "session": dict(session)})
 
     @app.route("/debug-get-session")
     def debug_get_session():
-        return jsonify({
-            "ok": True,
-            "session": dict(session)
-        })
-
-
-
+        return jsonify({"ok": True, "session": dict(session)})
 
 
 app.register_blueprint(routine.routine_bp)
@@ -121,6 +102,6 @@ app.register_blueprint(account.account_bp)
 app.register_blueprint(report.report_bp)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     port = int(os.getenv("PORT", 10000))
     app.run(host="0.0.0.0", port=port, debug=not IS_PRODUCTION)

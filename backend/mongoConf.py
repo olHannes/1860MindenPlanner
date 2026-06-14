@@ -13,22 +13,22 @@ load_dotenv()
 mongo_uri = os.getenv("MONGO_URI")
 client = MongoClient(mongo_uri)
 
-db_user = client['Users']
-users_collection = db_user['users']
-issues_collection = db_user['issues']
+db_user = client["Users"]
+users_collection = db_user["users"]
+issues_collection = db_user["issues"]
 
 
-db_exercises = client['Exercises']
-exercises_collection = db_exercises['User_Exercises']
+db_exercises = client["Exercises"]
+exercises_collection = db_exercises["User_Exercises"]
 
-db_floorElements = db_exercises['Floor']
-db_pommelhorseElements = db_exercises['Pommelhorse']
-db_ringsElements = db_exercises['Rings']
-db_vaultElements = db_exercises['Vault']
-db_parralelbarsElements = db_exercises['Parralelbars']
-db_highbarElements = db_exercises['Highbar']
+db_floorElements = db_exercises["Floor"]
+db_pommelhorseElements = db_exercises["Pommelhorse"]
+db_ringsElements = db_exercises["Rings"]
+db_vaultElements = db_exercises["Vault"]
+db_parralelbarsElements = db_exercises["Parralelbars"]
+db_highbarElements = db_exercises["Highbar"]
 
-db_competition = client['Competition']
-competition_collection = db_competition['Competition']
+db_competition = client["Competition"]
+competition_collection = db_competition["Competition"]
 
-competition_entries_collection = db_competition['Entries']
+competition_entries_collection = db_competition["Entries"]

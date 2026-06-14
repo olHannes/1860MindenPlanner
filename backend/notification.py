@@ -14,7 +14,9 @@ SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com")
 SMTP_PORT = os.getenv("SMTP_PORT", "465")
 
 
-def build_report(reportType, reportTitle, report, username, timestamp, to_email=None) -> EmailMessage:
+def build_report(
+    reportType, reportTitle, report, username, timestamp, to_email=None
+) -> EmailMessage:
     """Baut eine Report-Mail (default: TARGET_EMAIL)"""
     if to_email is None:
         to_email = REPORT_TARGET_EMAIL
@@ -29,15 +31,17 @@ def build_report(reportType, reportTitle, report, username, timestamp, to_email=
         </body></html>
     """
     em = EmailMessage()
-    em["From"]  = SENDER_EMAIL
-    em["To"]    = to_email
+    em["From"] = SENDER_EMAIL
+    em["To"] = to_email
     em["Subject"] = f"{reportType} - {reportTitle}"
     em.set_content(f"{reportType} von {username}.\n\nBericht:\n{report}")
     em.add_alternative(html_body, subtype="html")
     return em
 
 
-def build_reset(to_email: str, code: str, username: str = "", expires_minutes: int = 15) -> EmailMessage:
+def build_reset(
+    to_email: str, code: str, username: str = "", expires_minutes: int = 15
+) -> EmailMessage:
     """Baut eine Reset-Passwort Mail"""
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     subject = "Passwort zurücksetzen"
@@ -51,7 +55,7 @@ def build_reset(to_email: str, code: str, username: str = "", expires_minutes: i
     html = f"""
     <html><body>
         <h2>Passwort zurücksetzen</h2>
-        <p>Hallo {username or ''},</p>
+        <p>Hallo {username or ""},</p>
         <p>Dein Code zum Zurücksetzen des Passworts lautet:</p>
         <p style="font-size:24px; font-weight:bold; letter-spacing:2px;">{code}</p>
         <p>Der Code ist <strong>{expires_minutes} Minuten</strong> gültig.</p>
@@ -85,7 +89,7 @@ def build_verify(to_email: str, verify_link: str, username: str = "") -> EmailMe
       <body style="font-family: Arial, sans-serif;">
         <h2>Account bestätigen</h2>
 
-        <p>Hallo {username or ''},</p>
+        <p>Hallo {username or ""},</p>
 
         <p>
           bitte bestätige deine E-Mail-Adresse, um deinen Account zu aktivieren.
