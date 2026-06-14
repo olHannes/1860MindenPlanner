@@ -108,9 +108,7 @@ def register():
     )
 
     full_name = fn + " " + ln
-    verify_link = (
-        f"{FRONTEND_URL}/verifyAccount.html#uid={result.inserted_id!s}&token={verifyCode}"
-    )
+    verify_link = f"{FRONTEND_URL}/verifyAccount.html#uid={result.inserted_id!s}&token={verifyCode}"
     verifyEmail = notification.build_verify(em, verify_link, full_name)
     notification.send_mail(verifyEmail)
 
@@ -173,7 +171,9 @@ def login():
         return jsonify(
             {
                 "ok": False,
-                "message": "E-Mail oder Passwort ist falsch oder Nutzer wurde nicht freigeschaltet."
+                "message": (
+                    "E-Mail oder Passwort ist falsch oder Nutzer wurde nicht freigeschaltet."
+                ),
             }
         ), 404
 
