@@ -23,7 +23,7 @@ def csrf_protect(fn):
 
 
 def get_session_user():
-    user_id = session["user_id"]
+    user_id = session.get("user_id")
     if not user_id or not ObjectId.is_valid(user_id):
         return None, (jsonify({"ok": False, "message": "Nicht angemeldet"}), 401)
     user = users_collection.find_one({"_id": ObjectId(user_id), "emailVerify.email_verified": True})

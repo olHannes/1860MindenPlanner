@@ -1,27 +1,4 @@
-import pytest
-from bson import ObjectId
-from werkzeug.security import generate_password_hash
-
-import account
-from tests.fakes.fake_collection import FakeCollection
-
-
-@pytest.fixture
-def fake_users(monkeypatch):
-    fake_collection = FakeCollection(documents=[])
-    monkeypatch.setattr(account, "users_collection", fake_collection)
-    return fake_collection
-
-
-def make_user(email="test@gmail.com", password="test123", roles=None, verified=True):
-    return {
-        "_id": ObjectId(),
-        "email": email,
-        "password": generate_password_hash(password),
-        "emailVerify": {"email_verified": verified},
-        "roles": roles or ["member"],
-        "online": 0,
-    }
+from factories import make_user
 
 
 def test_login_without_data_returns_400(client, fake_users):
