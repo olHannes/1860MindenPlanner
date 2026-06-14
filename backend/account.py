@@ -178,7 +178,7 @@ def login():
     if not user:
         return jsonify({
             "ok": False,
-            "message": "E-Mail oder Passwort ist falsch.",
+            "message": "E-Mail oder Passwort ist falsch oder Nutzer wurde nicht freigeschaltet.",
         }), 404
     
     if not check_password_hash(user["password"], password):
