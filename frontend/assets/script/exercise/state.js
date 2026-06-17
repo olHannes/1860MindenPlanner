@@ -21,7 +21,7 @@ export const state = {
             group: null,
             learned: false,
             search: "",
-            order: "group_up"
+            order: "value_up"
         },
         items: [],
     },

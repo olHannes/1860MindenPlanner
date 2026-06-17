@@ -71,7 +71,6 @@ export async function renderElementList(root) {
     if(!container) return;
     clearHTML(container);
     renderElementListLoader(root, container);
-
     const data = await fetchFilteredElementList({ 
         apparatusId: state.navigation.selectedApparatusId,
         filter: state.elementList.filter,
@@ -155,25 +154,59 @@ function buildElementPickerElement(root, e) {
 
 function sortElements(elements, order) {
     const sorted = [...elements];
-    sorted.sort((a, b) => {
-        const groupA    = Number(a.elementegruppe ?? 0);
-        const groupB    = Number(b.elementegruppe ?? 0);
-        const valueA    = Number(String(a.wertigkeit ?? 0).replace(",", "."));
-        const valueB    = Number(String(b.wertigkeit ?? 0).replace(",", "."));
-        const nameA     = (a.bezeichnung ?? "").toLowerCase();
-        const nameB     = (b.bezeichnung ?? "").toLowerCase();
 
+    const parseGroup = (element) => 
+        Number(element.elementegruppe ?? 0);
+    const parseValue = (element) => 
+        Number(String(element.wertigkeit ?? 0).replace(",", "."));
+    const parseName = (element) => 
+        (element.bezeichnung ?? "").toLowerCase();
+
+    const compareGroupUp = (a, b) => 
+        parseGroup(a) - parseGroup(b);
+    const compareGroupDown = (a, b) =>
+        parseGroup(b) - parseGroup(a);
+    
+    const compareValueUp = (a, b) =>
+        parseValue(a) - parseValue(b);
+    const compareValueDown = (a, b) =>
+        parseValue(b) - parseValue(a);
+
+    const compareName = (a, b) =>
+        parseName(a).localeCompare(parseName(b), "de");
+
+    sorted.sort((a, b) => {
         switch(order) {
-            case 'group_up':
-                return (groupA - groupB) || nameA.localeCompare(nameB, "de");
-            case 'group_down':
-                return (groupB - groupA) || nameA.localeCompare(nameB, "de");
-            case 'value_up':
-                return (valueA - valueB) || nameA.localeCompare(nameB, "de");
-            case 'value_down':
-                return (valueB - valueA) || nameA.localeCompare(nameB, "de");
+            case "group_up":
+                return (
+                    compareGroupUp(a, b) ||
+                    compareValueUp(a, b) ||
+                    compareName(a, b)
+                );
+            case "group_down":
+                return (
+                    compareGroupDown(a, b) ||
+                    compareValueUp(a, b) ||
+                    compareName(a, b)
+                );
+            case "value_up":
+                return (
+                    compareValueUp(a, b) ||
+                    compareGroupUp(a, b) ||
+                    compareName(a, b)
+                );
+            case "value_down":
+                return (
+                    compareValueDown(a, b) ||
+                    compareGroupUp(a, b) ||
+                    compareName(a, b)
+                );
             default:
-                return nameA.localeCompare(nameB, "de");
+                return (
+                    compareValueUp(a, b) ||
+                    compareGroupUp(a, b) ||
+                    compareName(a, b)
+                );
         }
     });
     return sorted;
