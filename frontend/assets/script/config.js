@@ -36,7 +36,7 @@ export const APPARATUS = [
     },
     {
         id: "RI",
-        nameDe: "Rings", 
+        nameDe: "Ringe", 
         nameEn: "Rings",
         icon: "./assets/images/equipment/Rings_icon.png",
         facts: [
