@@ -151,4 +151,7 @@ export const DownloadElements = [
 export const NewsElements = [
     { label: "Refactoring", value: "Neue Styles, verbesserte Funktionalität und Bugfixes" },
     { label: "Account Verifizierung", value: "Account Erstellung ab jetzt mit E-Mail + Acountfreischaltung /-Passwortänderung nur noch mit E-Mail"},
+    { label: "Übungserstellung", value: "In der Übungserstellung können die Elemente in der Detailansicht geöffnet werden"},
+    { label: "Sicherheit", value: "Das System wurde mit verschiedenen Sicherheitsupdates und Funktionen versehen"},
+    { label: "Filter", value: "Die Elementefilterung wurde verbessert und neu gestaltet"}
 ]
