@@ -6,6 +6,7 @@ import { setupCurrentExercise } from "../actions.js";
 import { VIEWS } from "../constants.js";
 import { state } from "../state.js";
 import { showView } from "./navigation.js";
+import { openElementDetailsOverlay } from "./element-details-overlay.js";
 
 
 export function setupRoutineEditorEvents(root) {
@@ -19,7 +20,6 @@ export function setupRoutineEditorEvents(root) {
         switch (action) {
             case 'back-to-details':
                 if(!state.routine.saved) {
-                    //showMessage(root, "Übung ist noch nicht gespeichert", "Beim verlassen des Editors gehen Änderungen verloren.");
                     const shouldLeave = confirm("Ungespeicherte Änderungen verwerfen?");
                     if(!shouldLeave) return;
                  
@@ -75,6 +75,17 @@ export function setupRoutineEditorEvents(root) {
                 state.routine.elements.splice(index, 1);
                 state.routine.saved = false;
                 renderEditorRows(root);
+                break;
+            
+            case 'open-routine-element-details':
+                const idx = Number(target.dataset.index);
+                if(!Number.isInteger(idx)) return;
+                if(!state.routine.elements?.[idx]) return;
+
+                openElementDetailsOverlay(root, state.routine.elements, idx, {
+                    returnView: VIEWS.ROUTINE_EDITOR,
+                    source: "routine"
+                });
                 break;
 
             default:
@@ -196,16 +207,32 @@ function renderEditorRows(root) {
 
     container.innerHTML = state.routine.elements.map((el, i) => `
         <li class="routine-dnd-item" draggable="true" data-row-index="${i}">
-            <span class="routine-dnd-handle">☰</span>
+            <span
+                class="routine-dnd-handle"
+                aria-label="Element verschieben">
+                ☰
+            </span>
 
             <span class="routine-dnd-number">${i + 1}</span>
 
-            <img class="row-img" src="${el.image_path}" alt="">
+            <button
+                type="button"
+                class="routine-element-open"
+                data-action="open-routine-element-details"
+                data-index="${i}">
 
-            <div class="routine-dnd-content">
-                <div class="row-title">${el.bezeichnung}</div>
-                <small>${el.name ?? ""}</small>
-            </div>
+                <img 
+                    class="row-img" 
+                    src="${el.image_path}" 
+                    alt="" 
+                    draggable="false"
+                >
+
+                <span class="routine-dnd-content">
+                    <div class="row-title">${el.bezeichnung}</div>
+                    <small>${el.name ?? ""}</small>
+                </span>
+            </button>
 
             <button 
                 type="button" 

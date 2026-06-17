@@ -66,13 +66,15 @@ export function setupElementDetailEvents(root) {
 }
 
 
-export function openElementDetailsOverlay(root, elements, startIndex = 0) {
+export function openElementDetailsOverlay(root, elements, startIndex = 0, options = {}) {
     if(!root || !Array.isArray(elements) || elements.length === 0) return;
     if(startIndex < 0 || startIndex >= elements.length) return;
 
     state.elementDetails.isOpen = true;
     state.elementDetails.elements = elements;
     state.elementDetails.currentIndex = startIndex;
+    state.elementDetails.returnView = options.returnView ?? VIEWS.ELEMENT_LIST;
+    state.elementDetails.source = options.source ?? "element-list";
     state.elementDetails.startX = 0;
     state.elementDetails.currentTranslatePx = 0;
     state.elementDetails.baseTranslatePx = 0;
@@ -92,15 +94,20 @@ function showElementDetailsOverlay(root) {
 
 
 export function closeElementDetailsOverlay(root) {
+    const returnView = state.elementDetails.returnView ?? VIEWS.ELEMENT_LIST;
+
     state.elementDetails.isOpen = false;
     state.elementDetails.elements = [];
     state.elementDetails.currentIndex = 0;
+    state.elementDetails.returnView = VIEWS.ELEMENT_LIST;
+    state.elementDetails.source = "element-list";
+
     state.elementDetails.startX = 0;
     state.elementDetails.currentTranslatePx = 0;
     state.elementDetails.baseTranslatePx = 0;
     state.elementDetails.isDragging = false;
 
-    showView(root, VIEWS.ELEMENT_LIST);
+    showView(root, returnView);
 }
 
 

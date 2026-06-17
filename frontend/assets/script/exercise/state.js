@@ -1,3 +1,5 @@
+import { VIEWS } from "./constants.js";
+
 export const state = {
     navigation: {
         currentView: "apparatus-list",
@@ -26,6 +28,8 @@ export const state = {
     elementDetails: {
         isOpen: false,
         elements: [],
+        returnView: VIEWS.ELEMENT_LIST,
+        source: "element-list",
         currentIndex: 0,
         startX: 0,
         currentTranslatePx: 0,
