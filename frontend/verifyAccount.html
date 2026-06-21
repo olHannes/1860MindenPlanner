@@ -156,7 +156,7 @@
   </div>
 
   <script>
-    const LOGIN_URL = "https://routineplanner.de/";
+    const SERVER_URL = "https://routineplanner.de/";
 
     const statusBox = document.getElementById("statusBox");
     const statusIcon = document.getElementById("statusIcon");
@@ -167,7 +167,7 @@
     const debugLine = document.getElementById("debugLine");
     const debugText = document.getElementById("debugText");
 
-    loginBtn.href = LOGIN_URL;
+    loginBtn.href = SERVER_URL;
 
     /*Set Status Box Style and Icon*/
     function setState(typ, title, desc) {
@@ -206,7 +206,7 @@
         }
 
         try {
-            const res = await fetch('http://127.0.0.1:10000/account/verify', {
+            const res = await fetch(`${SERVER_URL}api/account/verify`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ uid, token })
