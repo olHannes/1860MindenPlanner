@@ -365,7 +365,7 @@ def request_password_reset():
     em = notification.build_reset(email, code, user["firstName"], 15)
     notification.send_mail(em)
 
-    return jsonify({"ok": True, "message": "Reset erfolgreich versendet"}), 200
+    return jsonify({"ok": True, "message": "Reset-Code erfolgreich versendet"}), 200
 
 
 ##################################################################### Delete Account

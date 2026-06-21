@@ -15,8 +15,12 @@ function showOnly(viewName) {
 
 export function showLogin() {
     const errMsg = document.getElementById("errorMsg");
+    const forgotPage1 = document.getElementById("pwdForgot-page-1");
+    const forgotPage2 = document.getElementById("pwdForgot-page-2");
     errMsg.classList = [];
     clearHTML(errMsg);
+    forgotPage1.hidden = false;
+    forgotPage2.hidden = true;
     showOnly("login");
 }
 

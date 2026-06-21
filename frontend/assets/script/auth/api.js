@@ -32,7 +32,6 @@ export async function loginUser({email, password, remember}) {
     }
 }
 
-
 export async function getCurrentUser() {
     try {
         const resp = await fetch(`${serverURL}/account/me`, {
@@ -49,5 +48,22 @@ export async function getCurrentUser() {
     } catch (error) {
         console.error("Failed to get current user:", error);
         return { ok: false, message: "Nutzer nicht gefunden - Netzwerkfehler" };
+    }
+}
+
+export async function sendResetEMail(email) {
+    try {
+        const resp = await fetch(`${serverURL}/account/passwordReset/request`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email})
+        });
+        const data = await resp.json();
+        return data;
+    } catch (error) {
+        console.error("Failed to send request-password-email");
+        return {ok: false, message: "Die E-Mail konnte nicht versendet werden."};
     }
 }
