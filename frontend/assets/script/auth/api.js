@@ -64,6 +64,25 @@ export async function sendResetEMail(email) {
         return data;
     } catch (error) {
         console.error("Failed to send request-password-email");
-        return {ok: false, message: "Die E-Mail konnte nicht versendet werden."};
+        return {ok: false, message: "Die E-Mail konnte nicht versendet werden - Netzwerkfehler." };
+    }
+}
+
+export async function requestNewPassword(email, pwd, auth) {
+    try {
+        const resp = await fetch(`${serverURL}/account/forgot/updatePassword`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                email: email,
+                confirm_code: auth,
+                new_password: pwd
+            })
+        });
+        const data = await resp.json();
+        return data;
+    } catch (error) {
+        console.error("Failed to reset new password", error);
+        return { ok: false, message: "Passwort konnte nicht zurückgesetzt werden - Netzwerkfehler." };
     }
 }

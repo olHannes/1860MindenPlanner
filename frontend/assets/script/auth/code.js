@@ -2,7 +2,7 @@
 import {showLogin, showRegistration, showPasswordForgot} from "./views.js";
 import {handleRegistration} from "./registration.js";
 import { handleAutoLogin, handleLogin } from "./login.js";
-import { handlePasswordForgotRequest } from "./passwordForgot.js";
+import { handlePasswordForgotRequest, requestPasswordReset } from "./passwordForgot.js";
 
 const actions = {
     "login": handleLogin,
@@ -13,7 +13,7 @@ const actions = {
     "cancel-pwd-forget": showLogin,
 
     "send-code-via-mail": handlePasswordForgotRequest,
-    //"request-new-pwd": handlePasswordReset,
+    "request-new-pwd": requestPasswordReset,
 
     "cancel-pwd-reset": showLogin,
 };

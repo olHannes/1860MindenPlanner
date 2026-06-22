@@ -1,6 +1,8 @@
-import { clearHTML, hideLoader, showInlineNotification, showLoader } from "../panel-handling.js";
-import { sendResetEMail } from "./api.js";
+import { serverURL } from "../config.js";
+import { clearHTML, hideLoader, showInlineNotification, showLoader, showMessage } from "../panel-handling.js";
+import { requestNewPassword, sendResetEMail } from "./api.js";
 import { isValidEmail } from "./registration.js";
+import { showLogin } from "./views.js";
 
 
 export async function handlePasswordForgotRequest(event) {
@@ -32,7 +34,49 @@ export async function handlePasswordForgotRequest(event) {
     hideLoader(loader);
     if(!result.ok) return;
 
+    localStorage.setItem("request_email", email);
+    console.log(localStorage);
     form.reset();
     page1.hidden = true;
     page2.hidden = false;
+}
+
+
+export async function requestPasswordReset(event) {
+    event.preventDefault();
+
+    const form = event.target.closest("form") ?? document.querySelector("#pwdForgotResetForm");
+    if(!form) return;
+
+    const loader = form.querySelector(".spinner");
+    const errorEl = document.querySelector("#pwdForgotErr");
+    
+    clearHTML(errorEl);
+
+    const formData = new FormData(form);
+    const authCode = formData.get("verificationCode");
+    const newPwd = formData.get("newPassword");
+    const email = localStorage.getItem("request_email");
+
+    if(!authCode) {
+        showInlineNotification(errorEl, "Der Authentifizierungscode muss gültig sein.", "error");
+        return;
+    }
+    if(!newPwd) {
+        showInlineNotification(errorEl, "Es muss ein neues Passwort angegeben werden.", "error");
+        return;
+    }
+    showLoader(loader);
+    const result = await requestNewPassword(email, newPwd, authCode);
+    showInlineNotification(
+        errorEl,
+        result.message,
+        result.ok ? "info" : "error"
+    );
+    showMessage(document, result.message, result.ok ? "Passwort zurückgesetzt" : "Passwort konnte nicht zurückgesetzt werden");
+    hideLoader(loader);
+    if(result.ok) {
+        localStorage.clear();
+        showLogin();
+    }
 }
