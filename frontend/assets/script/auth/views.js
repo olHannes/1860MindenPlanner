@@ -4,6 +4,7 @@ const views = {
     login: document.querySelector("#login_mask"),
     registration: document.querySelector("#registration_mask"),
     passwordForgot: document.querySelector("#pwdForgot_mask"),
+    confirmation: document.querySelector("#confirm_mask"),
 };
 
 function showOnly(viewName) {
@@ -36,4 +37,12 @@ export function showPasswordForgot() {
     errMsg.classList = [];
     clearHTML(errMsg);
     showOnly("passwordForgot");
+}
+
+export function showConfirm() {
+    showOnly("confirmation");
+}
+
+export function hideConfirm() {
+    showLogin();
 }

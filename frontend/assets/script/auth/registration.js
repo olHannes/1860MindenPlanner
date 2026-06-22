@@ -1,7 +1,7 @@
 
 import { clearHTML, hideLoader, showInlineNotification, showLoader, showMessage } from "../panel-handling.js";
 import { registerUser } from "./api.js";
-import { showLogin } from "./views.js";
+import { hideConfirm, showConfirm, showLogin } from "./views.js";
 
 export async function handleRegistration(event) {
     event.preventDefault();
@@ -42,7 +42,7 @@ export async function handleRegistration(event) {
         result.ok ? "Nutzer registriert" : "Nutzer konnte nicht registriert werden", 
         result.ok ? "E-Mail akzeptieren zum Freischalten" : "Bitte die Registrierung erneut versuchen");
     
-    showLogin();
+    if(result.ok) showConfirm();
 }
 
 

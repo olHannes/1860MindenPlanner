@@ -45,7 +45,7 @@
     <main class="auth--start-screen">
         <h1 class="auth--headline">Routine Planner</h1>
 
-
+        <!-- Password Reset -->
         <section id="pwdForgot_mask" class="pwdForgot--page auth--panel" hidden>
             <form id="pwdForgotEmailForm" novalidate>
                 <div class="loader-container">
@@ -120,6 +120,15 @@
 
             <p id="pwdForgotErr" aria-live="polite"></p>
         </section>
+
+        <!-- Confirm E-Mail -->
+         <section id="confirm_mask" class="confirm--page auth--panel" hidden>
+            <h2>Account bestätigen</h2>
+            <p>Öffne dein E-Mail Programm und aktiviere deinen Account über die Schaltfläche in der E-Mail</p>
+
+            <button id="finish-confirmation" data-action="finish-confirm">Fertig <span class="icon--login icon"></span></button>
+         </section>
+
 
         <!-- Login -->
         <section id="login_mask" class="login--page auth--panel">
@@ -278,11 +287,6 @@
             </form>
         </section>
 
-        <!--
-        <button class="btn" type="button" data-action="show-news">
-            Updates & News <span class="icon icon--update"></span>
-        </button>
-        -->
 
         <p class="auth--impressum">
             <a href="impressum/impressum.html">Impressum</a> &copy; 2026

@@ -1,5 +1,5 @@
 
-import {showLogin, showRegistration, showPasswordForgot} from "./views.js";
+import {showLogin, showRegistration, showPasswordForgot, hideConfirm} from "./views.js";
 import {handleRegistration} from "./registration.js";
 import { handleAutoLogin, handleLogin } from "./login.js";
 import { handlePasswordForgotRequest, requestPasswordReset } from "./passwordForgot.js";
@@ -9,6 +9,8 @@ const actions = {
     "registration": showRegistration,
     "cancel-registration": showLogin,
     "submit-registration": handleRegistration,
+    "finish-confirm": hideConfirm,
+
     "pwd-forget": showPasswordForgot,
     "cancel-pwd-forget": showLogin,
 
