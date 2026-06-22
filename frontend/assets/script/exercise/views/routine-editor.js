@@ -310,9 +310,9 @@ function renderCommunity(root) {
             starFull.repeat(avgFull) +
             (avgHalf ? starFull : "") +
             starEmpty.repeat(avgEmpty);
-        panel.show(num);
-        panel.show(avg);
-        panel.show(stars);
+        show(num);
+        show(avg);
+        show(stars);
     } else {
         num.innerText   = `0 Bewertungen`;
         avg.innerText   = ` - `;
