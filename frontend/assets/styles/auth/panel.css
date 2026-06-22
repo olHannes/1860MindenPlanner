@@ -115,6 +115,11 @@ body {
 
 #forgotPwd {
   cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  background: var(--color-border);
+  color: var(--color-primary-dark);
 }
 
 
