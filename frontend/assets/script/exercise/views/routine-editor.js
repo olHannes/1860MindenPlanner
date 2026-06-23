@@ -229,7 +229,7 @@ function renderEditorRows(root) {
                 >
 
                 <span class="routine-dnd-content">
-                    <div class="row-title">${el.bezeichnung}</div>
+                    <span class="row-title">${el.bezeichnung}</span>
                     <small>${el.name ?? ""}</small>
                 </span>
             </button>
