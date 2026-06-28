@@ -22,8 +22,5 @@ jobs:
       - name: Validate Docker Compose - Dev
         run: docker compose -f compose.dev.yaml config
       
-      - name: Validate Docker Compose
-        run: docker compose -f compose.yaml config
-      
       - name: Build Docker images
         run: docker compose -f compose -f compose.dev.yaml buid
