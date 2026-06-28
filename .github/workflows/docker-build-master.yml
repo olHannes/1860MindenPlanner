@@ -1,0 +1,29 @@
+name: Docker Build on Master
+
+on:
+  pull_request: 
+    branches:
+      - main
+
+permissions: 
+  contents: read
+
+jobs:
+  docker-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create CI env file
+        run: cp .env.ci .env
+      
+      - name: Validate Docker Compose - Dev
+        run: docker compose -f compose.dev.yaml config
+      
+      - name: Validate Docker Compose
+        run: docker compose -f compose.yaml config
+      
+      - name: Build Docker images
+        run: docker compose -f compose -f compose.dev.yaml buid
