@@ -448,15 +448,51 @@
     padding-left: 1.25rem;
 }
 
+
+
+#communitySection h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
 .rating-row {
     display: grid;
     gap: 0.35rem;
 }
-
 .rating-stars {
     font-size: 1.4rem;
     line-height: 1;
+    letter-spacing: 0.05rem;
+    color: #f5b301;
 }
+
+.rating-summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem 0.75rem;
+}
+
+.rating-average {
+    font-weight: 600;
+    color: var(--text-color, #222);
+}
+
+.rating-count {
+    font-size: 0.9rem;
+    color: var(--muted-color, #666);
+}
+
+@media(min-width: 1024px) {
+    .rating-row {
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 0.75rem;
+    }
+}
+
+
+
 
 
 @media (min-width: 1024px) {
@@ -520,11 +556,5 @@
 
     .eval-difficultis {
         grid-template-columns: 1fr 1fr;
-    }
-
-    .rating-row {
-        grid-template-columns: auto 1fr;
-        align-items: center;
-        gap: 0.75rem;
     }
 }
