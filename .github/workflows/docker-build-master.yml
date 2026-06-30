@@ -23,4 +23,4 @@ jobs:
         run: docker compose -f compose.dev.yaml config
       
       - name: Build Docker images
-        run: docker compose -f compose -f compose.dev.yaml buid
+        run: docker compose -f compose.dev.yaml buid
