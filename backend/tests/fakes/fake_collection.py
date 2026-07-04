@@ -1,5 +1,7 @@
 from types import SimpleNamespace
+
 from bson import ObjectId
+
 
 class FakeCollection:
     def __init__(self, documents=None):

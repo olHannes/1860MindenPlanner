@@ -1,7 +1,5 @@
-
 import pytest
 from factories import make_competition
-
 
 
 def test_create_competition_success(client, fake_competitions):
@@ -52,7 +50,6 @@ def test_create_competition_missing_required_fields(
     assert len(fake_competitions.documents) == 0
 
 
-
 def test_create_competition_without_json_body(client, fake_competitions):
     response = client.post("/competition/create")
 
@@ -62,7 +59,6 @@ def test_create_competition_without_json_body(client, fake_competitions):
         "message": "Name, Datum und Ort sind erforderlich!",
     }
     assert len(fake_competitions.documents) == 0
-
 
 
 def test_create_competition_with_invalid_json(client, fake_competitions):
