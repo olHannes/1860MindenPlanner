@@ -69,7 +69,7 @@ jobs:
         if: steps.ruff_lint.outcome == 'failure' || steps.ruff_format.outcome == 'failure'
         run: |
           python -m ruff check --fix $RUFF_TARGETS || true
-          python -m ruff format RUFF_TARGETS
+          python -m ruff format $RUFF_TARGETS
       
       - name: Commit Ruff auto-fixes
         if: >-
