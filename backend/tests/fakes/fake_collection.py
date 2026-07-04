@@ -1,7 +1,21 @@
+from types import SimpleNamespace
+
+from bson import ObjectId
+
+
 class FakeCollection:
     def __init__(self, documents=None):
         self.documents = documents or []
         self.update_calls = []
+        self.insert_calls = []
+
+    def insert_one(self, document):
+        self.insert_calls.append(document)
+
+        if "_id" not in document:
+            document["_id"] = ObjectId()
+        self.documents.append(document)
+        return SimpleNamespace(inserted_id=document["_id"])
 
     def find_one(self, query):
         for document in self.documents:

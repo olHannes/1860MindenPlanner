@@ -2,6 +2,7 @@ import pytest
 from flask import Flask
 
 import account
+import competition
 import security
 from tests.fakes.fake_collection import FakeCollection
 
@@ -15,6 +16,7 @@ def app():
     )
 
     app.register_blueprint(account.account_bp)
+    app.register_blueprint(competition.competition_bp)
 
     return app
 
@@ -27,7 +29,17 @@ def client(app):
 @pytest.fixture
 def fake_users(monkeypatch):
     fake_collection = FakeCollection(documents=[])
+
     monkeypatch.setattr(account, "users_collection", fake_collection)
     monkeypatch.setattr(security, "users_collection", fake_collection)
+
+    return fake_collection
+
+
+@pytest.fixture
+def fake_competitions(monkeypatch):
+    fake_collection = FakeCollection(documents=[])
+
+    monkeypatch.setattr(competition, "competition_collection", fake_collection)
 
     return fake_collection
