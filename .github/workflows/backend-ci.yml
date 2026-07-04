@@ -80,7 +80,6 @@ jobs:
           commit_message: "style: apply ruff auto-fixes"
           commit_user_name: github-actions[bot]
           commit_user_email: github-actions[bot]@users.noreply.git
-          commit_author: github-actions[bot]@users.noreply.git
     
       
       - name: Verify Ruff lint check
