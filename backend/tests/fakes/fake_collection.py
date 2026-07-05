@@ -8,12 +8,14 @@ class FakeCollection:
         self.documents = documents or []
         self.update_calls = []
         self.insert_calls = []
+        self.delete_calls = []
 
     def insert_one(self, document):
         self.insert_calls.append(document)
 
         if "_id" not in document:
             document["_id"] = ObjectId()
+
         self.documents.append(document)
         return SimpleNamespace(inserted_id=document["_id"])
 
@@ -22,6 +24,28 @@ class FakeCollection:
             if self._matches(document, query):
                 return document
         return None
+
+    def count_documents(self, query):
+        return sum(1 for document in self.documents if self._matches(document, query))
+    
+    def delete_one(self, query):
+        self.delete_calls.append(("delete_one", query))
+
+        for index, document in enumerate(self.documents):
+            if self._matches(document, query):
+                del self.documents[index]
+                return SimpleNamespace(deleted_count=1)
+
+        return SimpleNamespace(deleted_count=0)
+    
+    def delete_many(self, query):
+        self.delete_calls.append(("delete_many", query))
+
+        before = len(self.documents)
+        self.documents = [document for document in self.documents if not self._matches(document, query)]
+        deleted_count = before - len(self.documents)
+        
+        return SimpleNamespace(deleted_count=deleted_count)
 
     def update_one(self, query, update):
         self.update_calls.append((query, update))

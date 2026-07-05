@@ -43,3 +43,11 @@ def fake_competitions(monkeypatch):
     monkeypatch.setattr(competition, "competition_collection", fake_collection)
 
     return fake_collection
+
+@pytest.fixture
+def fake_competition_entries(monkeypatch):
+    fake_collection = FakeCollection(documents=[])
+
+    monkeypatch.setattr(competition, "competition_entries_collection", fake_collection)
+
+    return fake_collection
