@@ -44,6 +44,7 @@ def fake_competitions(monkeypatch):
 
     return fake_collection
 
+
 @pytest.fixture
 def fake_competition_entries(monkeypatch):
     fake_collection = FakeCollection(documents=[])

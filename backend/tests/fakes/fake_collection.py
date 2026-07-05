@@ -27,8 +27,6 @@ class FakeCursor(list):
         return current
 
 
-
-
 class FakeCollection:
     def __init__(self, documents=None):
         self.documents = documents or []
@@ -57,18 +55,13 @@ class FakeCollection:
 
         return FakeCursor(results)
 
-
     def _apply_projection(self, document, projection):
         if projection is None:
             return document.copy()
 
         projected_document = {}
 
-        include_fields = [
-            key
-            for key, value in projection.items()
-            if value == 1
-        ]
+        include_fields = [key for key, value in projection.items() if value == 1]
 
         for key in include_fields:
             if key in document:
@@ -89,7 +82,7 @@ class FakeCollection:
 
     def count_documents(self, query):
         return sum(1 for document in self.documents if self._matches(document, query))
-    
+
     def delete_one(self, query):
         self.delete_calls.append(("delete_one", query))
 
@@ -99,14 +92,16 @@ class FakeCollection:
                 return SimpleNamespace(deleted_count=1)
 
         return SimpleNamespace(deleted_count=0)
-    
+
     def delete_many(self, query):
         self.delete_calls.append(("delete_many", query))
 
         before = len(self.documents)
-        self.documents = [document for document in self.documents if not self._matches(document, query)]
+        self.documents = [
+            document for document in self.documents if not self._matches(document, query)
+        ]
         deleted_count = before - len(self.documents)
-        
+
         return SimpleNamespace(deleted_count=deleted_count)
 
     def update_one(self, query, update):
