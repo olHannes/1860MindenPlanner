@@ -1,70 +1,242 @@
-.routine-dnd-list {
-    list-style: none;
+
+/* --------------------------------------------------------------------------
+   1. Editor shell
+   -------------------------------------------------------------------------- */
+
+#view-apparatus-editor {
+    max-height: 96%;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+#view-apparatus-editor .sub-panel--header {
+    display: grid;
+    grid-template-columns: max-content 1fr auto;
+    align-items: start;
+    column-gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+#routine-editor-header-container {
+    display: grid;
+    grid-column: 1;
+    width: fit-content;
+    max-width: 100%;
+}
+
+#view-apparatus-editor .btn--return {
+    width: 100%;
+    height: 2.5rem;
+    border: none;
+    border-radius: 999px;
+    color: black;
+    cursor: pointer;
+}
+
+#view-apparatus-editor .sub-panel--header h2 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.05;
+}
+
+#view-apparatus-editor .sub-panel--header span {
+    font-size: 1rem;
+    letter-spacing: 0.15rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Editor layout
+   -------------------------------------------------------------------------- */
+
+.apparatus-exercise {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.apparatus-exercise section {
+    padding: clamp(1rem, 3vw, 2rem);
+    border-radius: 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.08) 0 10px 30px;
+}
+
+.editor-topbar {
     display: grid;
     gap: 0.75rem;
-    padding: 0;
+}
+
+.editor-topbar .segmented {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.editor-topbar button,
+.add-row-btn {
+    width: 100%;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Exercise list container
+   -------------------------------------------------------------------------- */
+
+.exercise-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.exercise-list > header {
+    font-size: 0.95rem;
+}
+
+.table-wrap {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.exercise-table {
+    display: block;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.routine-empty-msg {
     margin: 0;
+    padding: 1rem;
+    text-align: center;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Routine drag-and-drop list
+   -------------------------------------------------------------------------- */
+
+.routine-dnd-list {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .routine-dnd-item {
     display: grid;
-    grid-template-columns: 1.5rem 2rem minmax(0, 1fr) 2.75rem;
+    grid-template-columns: 1.75rem 2rem minmax(0, 1fr) 2.75rem;
     align-items: center;
     gap: 0.75rem;
+
     width: 100%;
     min-width: 0;
-    padding: 0.75rem;
     box-sizing: border-box;
+    padding: 0.75rem;
+
     border: 1px solid rgba(17, 24, 39, 0.10);
     border-radius: 1rem;
-    background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
-    box-shadow: 0 1px 2px rgba(17, 24, 39, 0.06), 0 8px 24px rgba(17, 24, 39, 0.08);
-    cursor: grab;
-    transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+    background: #ffffff;
+    box-shadow:
+        0 1px 2px rgba(17, 24, 39, 0.06),
+        0 8px 24px rgba(17, 24, 39, 0.08);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        border-color 0.15s ease,
+        opacity 0.15s ease;
 }
 
 .routine-dnd-item:hover,
 .routine-dnd-item:focus-within {
     border-color: rgba(17, 24, 39, 0.18);
-    background: #ffffff;
-    box-shadow: 0 2px 6px rgba(17, 24, 39, 0.08), 0 14px 32px rgba(17, 24, 39, 0.12);
-    transform: translateY(-1px);
-}
-
-.routine-dnd-item.is-dragging {
-    opacity: 0.68;
-    transform: scale(0.985);
-    box-shadow: 0 6px 18px rgba(17, 24, 39, 0.16);
+    box-shadow:
+        0 2px 6px rgba(17, 24, 39, 0.08),
+        0 14px 32px rgba(17, 24, 39, 0.12);
 }
 
 
+/* --------------------------------------------------------------------------
+   5. Routine drag handle and order number
+   -------------------------------------------------------------------------- */
+
+.routine-dnd-handle,
+.routine-dnd-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+}
+
+.routine-dnd-handle {
+    color: #4b5563;
+    font-size: 1.15rem;
+    line-height: 1;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+}
+
+.routine-dnd-number {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 999px;
+    background: #f3f4f6;
+    color: #374151;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
 
 
+/* --------------------------------------------------------------------------
+   6. Routine item content
+   -------------------------------------------------------------------------- */
 
+.routine-element-open {
+    display: grid;
+    grid-template-columns: clamp(4.75rem, 18vw, 6.25rem) minmax(0, 1fr);
+    align-items: center;
+    gap: 0.85rem;
 
+    width: 100%;
+    min-width: 0;
+    padding: 0.35rem;
 
+    border: none;
+    border-radius: 0.85rem;
+    background: transparent;
+    color: inherit;
 
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
 
-
+.routine-element-open:hover,
+.routine-element-open:focus-visible {
+    background: #f9fafb;
+    outline: none;
+}
 
 .row-img {
     width: 100%;
     height: clamp(4.75rem, 16vw, 6rem);
     aspect-ratio: 4 / 3;
+    box-sizing: border-box;
+
     object-fit: contain;
+    padding: 0.25rem;
+
+    border: 1px solid rgba(17, 24, 39, 0.08);
     border-radius: 0.75rem;
     background: #f3f4f6;
-    border: 1px solid rgba(17, 24, 39, 0.08);
-    padding: 0.25rem;
-    box-sizing: border-box;
-    flex-shrink: 0;
 }
 
 .routine-dnd-content {
-    min-width: 0;
     display: grid;
-    gap: 0.25rem;
     align-content: center;
+    gap: 0.25rem;
+    min-width: 0;
 }
 
 .row-title,
@@ -92,17 +264,25 @@
     line-height: 1.25;
 }
 
+
+/* --------------------------------------------------------------------------
+   7. Routine item actions
+   -------------------------------------------------------------------------- */
+
 .delete-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     width: 2.5rem;
     height: 2.5rem;
     justify-self: end;
+
     border: none;
     border-radius: 999px;
     background: #fee2e2;
     color: #991b1b;
+
     cursor: pointer;
 }
 
@@ -113,298 +293,48 @@
     outline-offset: 2px;
 }
 
-@media (max-width: 540px) {
-    .routine-dnd-item {
-        grid-template-columns: 1.5rem minmax(0, 1fr) 2.5rem;
-        gap: 0.55rem;
-        padding: 0.65rem;
-    }
 
-    .routine-dnd-number {
-        display: none;
-    }
+/* --------------------------------------------------------------------------
+   8. SortableJS states
+   -------------------------------------------------------------------------- */
 
-    .routine-element-open {
-        grid-template-columns: 4.5rem minmax(0, 1fr);
-        gap: 0.65rem;
-        padding: 0.25rem;
-    }
-
-    .row-img {
-        height: 4.5rem;
-    }
-
-    .row-title {
-        font-size: 0.95rem;
-    }
-
-    .routine-dnd-content small {
-        font-size: 0.8rem;
-    }
+.routine-dnd-chosen {
+    cursor: grabbing;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#view-apparatus-editor {
-    padding: 1rem;
-    max-height: 96%;
-    overflow-y: auto;
+.routine-dnd-chosen .routine-dnd-handle {
+    cursor: grabbing;
 }
 
-#view-apparatus-editor .sub-panel--header {
-    display: grid;
-    grid-template-columns: max-content 1fr auto;
-    align-items: start;
-    column-gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-#routine-editor-header-container {
-    grid-column: 1;
-    display: grid;
-    width: fit-content;
-    max-width: 100%;
-}
-
-#view-apparatus-editor .btn--return {
-    width: 100%;
-    height: 2.5rem;
-    border: none;
-    border-radius: 999px;
-    cursor: pointer;
-    color: black;
-}
-
-#view-apparatus-editor .sub-panel--header h2 {
-    margin: var(--gap, 1rem) 0 0 0;
-    margin: 0;
-    font-size: 1.75rem;
-    font-weight: 600;
-    line-height: 1.05;
-}
-
-#view-apparatus-editor .sub-panel--header span {
-    font-size: 1rem;
-    letter-spacing: 0.15rem;
-}
-
-.apparatus-exercise {
-    display: grid;
-    gap: 1.25rem;
-}
-
-.apparatus-exercise section {
-    padding: 2rem;
-    border-radius: 1.5rem;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 10px 30px;
-}
-
-.editor-topbar {
-    display: grid;
-    gap: 0.75rem;
-}
-
-.editor-topbar .segmented {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    align-items: center;
-}
-
-.editor-topbar button,
-.add-row-btn {
-    width: 100%;
-}
-
-.exercise-list {
-    display: grid;
-    gap: 0.75rem;
-}
-
-.exercise-list > header {
-    font-size: 0.95rem;
-}
-
-.table-wrap {
-    width: 100%;
-    overflow-x: hidden;
-}
-
-.exercise-table {
-    display: block;
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.routine-dnd-list {
-    list-style: none;
-    display: grid;
-    gap: 0.85rem;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.routine-dnd-item {
-    display: grid;
-    grid-template-columns: 1.75rem 1.75rem minmax(0, 1fr) 2.75rem;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem;
-    border: 1px solid rgba(17, 24, 39, 0.08);
-    border-radius: 12px;
-    background: white;
-    box-shadow: rgba(0, 0, 0, 0.15) 6px 5px 2.6px;
-    width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-    cursor: grab;
-    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-}
-.routine-dnd-item:hover,
-.routine-dnd-item:focus-within {
-    border-color: rgba(17, 24, 39, 0.18);
-    box-shadow: rgba(17, 24, 39, 0.16) 0 12px 28px;
-}
-.routine-dnd-item.is-dragging {
-    opacity: 0.72;
-    transform: scale(0.99);
-}
-
-
-.routine-dnd-handle,
-.routine-dnd-number {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 0;
-    color: #4b5563;
-}
-
-.routine-dnd-handle {
-    cursor: grab;
-    line-height: 1;
-    font-size: 1.1rem;
-    user-select: none;
-}
-
-.routine-dnd-number {
-    width: 1.75rem;
-    height: 1.75rem;
-    border-radius: 999px;
+.routine-dnd-ghost {
+    opacity: 0.35;
     background: #f3f4f6;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: #374151;
+    box-shadow: none;
 }
 
-.routine-element-open {
-    display: grid;
-    grid-template-columns: clamp(4.75rem, 18vw, 6.25rem) minmax(0, 1fr);
-    align-items: center;
-    gap: 0.85rem;
-    width: 100%;
-    min-width: 0;
-    padding: 0.35rem;
-    border: none;
-    border-radius: 0.85rem;
-    background: transparent;
-    color: inherit;
-    font: inherit;
-    text-align: left;
-    cursor: pointer;
-}
-.routine-element-open:hover,
-.routine-element-open:focus-visible {
-    background: #f9fafb;
-    outline: none;
+.routine-dnd-drag {
+    opacity: 0.95;
+    cursor: grabbing;
+    box-shadow:
+        0 8px 20px rgba(17, 24, 39, 0.18),
+        0 20px 48px rgba(17, 24, 39, 0.18);
 }
 
 
-.row-img {
-    width: 3.5rem;
-    height: 3.5rem;
-    object-fit: cover;
-    flex-shrink: 0;
-}
-
-.routine-dnd-content {
-    min-width: 0;
-    display: grid;
-    gap: 0.15rem;
-}
-
-.row-title,
-.routine-dnd-content small {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.row-title {
-    font-weight: 600;
-}
-.row-img {
-    height: 4rem;
-    width: auto;
-}
-
-.routine-dnd-item .icon-btn {
-    width: 2.5rem;
-    height: 2.5rem;
-    justify-self: end;
-}
-
-.routine-empty-msg {
-    margin: 0;
-    padding: 1rem;
-    text-align: center;
-}
-
+/* --------------------------------------------------------------------------
+   9. Routine feedback and evaluation
+   -------------------------------------------------------------------------- */
 
 .container-headline {
     margin-bottom: 1px;
 }
+
 .hint {
-    padding: 0;
     margin-top: 0;
-    letter-spacing: 1px;
-    font-style: italic;
+    padding: 0;
     font-size: 0.9rem;
+    font-style: italic;
+    letter-spacing: 1px;
 }
 
 .eval-grid {
@@ -449,21 +379,26 @@
 }
 
 
+/* --------------------------------------------------------------------------
+   10. Community rating
+   -------------------------------------------------------------------------- */
 
 #communitySection h3 {
     margin: 0 0 0.75rem;
     font-size: 1.1rem;
     font-weight: 600;
 }
+
 .rating-row {
     display: grid;
     gap: 0.35rem;
 }
+
 .rating-stars {
+    color: #f5b301;
     font-size: 1.4rem;
     line-height: 1;
     letter-spacing: 0.05rem;
-    color: #f5b301;
 }
 
 .rating-summary {
@@ -474,26 +409,54 @@
 }
 
 .rating-average {
-    font-weight: 600;
     color: var(--text-color, #222);
+    font-weight: 600;
 }
 
 .rating-count {
-    font-size: 0.9rem;
     color: var(--muted-color, #666);
+    font-size: 0.9rem;
 }
 
-@media(min-width: 1024px) {
-    .rating-row {
-        grid-template-columns: auto 1fr;
-        align-items: center;
-        gap: 0.75rem;
+
+/* --------------------------------------------------------------------------
+   11. Small screens
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 540px) {
+    .routine-dnd-item {
+        grid-template-columns: 1.5rem minmax(0, 1fr) 2.5rem;
+        gap: 0.55rem;
+        padding: 0.65rem;
+    }
+
+    .routine-dnd-number {
+        display: none;
+    }
+
+    .routine-element-open {
+        grid-template-columns: 4.5rem minmax(0, 1fr);
+        gap: 0.65rem;
+        padding: 0.25rem;
+    }
+
+    .row-img {
+        height: 4.5rem;
+    }
+
+    .row-title {
+        font-size: 0.95rem;
+    }
+
+    .routine-dnd-content small {
+        font-size: 0.8rem;
     }
 }
 
 
-
-
+/* --------------------------------------------------------------------------
+   12. Desktop layout
+   -------------------------------------------------------------------------- */
 
 @media (min-width: 1024px) {
     #view-apparatus-editor {
@@ -545,16 +508,9 @@
         grid-area: community;
     }
 
-    .routine-dnd-list {
-        gap: 0.6rem;
-    }
-
-    .routine-dnd-item {
-        gap: 0.85rem;
-        padding: 0.85rem 1rem;
-    }
-
-    .eval-difficultis {
-        grid-template-columns: 1fr 1fr;
+    .rating-row {
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 0.75rem;
     }
 }
