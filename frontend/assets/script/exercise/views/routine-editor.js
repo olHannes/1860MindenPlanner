@@ -8,6 +8,11 @@ import { state } from "../state.js";
 import { showView } from "./navigation.js";
 import { openElementDetailsOverlay } from "./element-details-overlay.js";
 
+import Sortable from "/vendor/sortable.complete.esm.js";
+
+
+let routineSortable = null;
+
 
 export function setupRoutineEditorEvents(root) {
     const routineEditorContainer = root.querySelector("#view-apparatus-editor");
@@ -97,6 +102,43 @@ export function setupRoutineEditorEvents(root) {
 
 
 function setupRoutineDragAndDrop(root) {
+    const list = root.querySelector("#editorRows");
+    if(!list) return;
+
+    routineSortable?.destroy();
+
+    routineSortable = Sortable.create(list, {
+        draggable: ".routine-dnd-item",
+        handle: ".routine-dnd-handle",
+        animation: 150,
+
+        delay: 120,
+        delayOnTouchOnly: true,
+        touchStartThreshold: 5,
+
+        ghostClass: "routine-dnd-ghost",
+        chosenClass: "routine-dnd-chosen",
+        dragClass: "routine-dnd-drag",
+
+        onEnd(event) {
+            const oldIndex = event.oldDraggableIndex ?? event.oldIndex;
+            const newIndex = event.newDraggableIndex ?? event.newIndex;
+
+            if(oldIndex == null || newIndex == null || oldIndex === newIndex) { return; }
+
+            const [movedElement] = state.routine.elements.splice(oldIndex, 1);
+            state.routine.elements.splice(newIndex, 0, movedElement);
+
+            state.routine.saved = false;
+            renderEditorRows(root);
+        }
+    });
+}
+
+
+
+
+function setupRoutineDragAndDrop_(root) {
     const tbody = root.querySelector("#editorRows");
     if(!tbody) return;
 
@@ -206,7 +248,7 @@ function renderEditorRows(root) {
     }
 
     container.innerHTML = state.routine.elements.map((el, i) => `
-        <li class="routine-dnd-item" draggable="true" data-row-index="${i}">
+        <li class="routine-dnd-item" data-row-index="${i}">
             <span
                 class="routine-dnd-handle"
                 aria-label="Element verschieben">
