@@ -22,6 +22,10 @@
 
     color: var(--color-primary-dark);
     box-shadow: 0 6px 16px rgba(0, 0, 0, .08);
+
+    position: sticky;
+    top: 0;
+    left: 0;
 }
 
 
@@ -301,6 +305,10 @@ input#searchInput:focus,
 
     .element {
         padding: 16px;
+    }
+
+    #view-element-list .btn--return {
+        position: unset;
     }
 }
 
