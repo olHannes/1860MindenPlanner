@@ -3,118 +3,248 @@
         "id": "FL_NE_01",
         "bezeichnung": "Winkel- oder Grätschwinkelstütz (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_01.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_01.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_NE_02",
         "bezeichnung": "Ellenbogenstützwaage (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_02.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_02.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_NE_03",
         "bezeichnung": "Sprung in den Liegestütz (auch mit 1/2 Drehung)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_03.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_NE_04",
         "bezeichnung": "Sprung oder Drehung auf einem Bein (min. 1/1 Drehung)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_04.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_04.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_NE_05",
         "bezeichnung": "flüchtiger Handstand (auch mit Abrollen)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_05.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_05.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_NE_06",
         "bezeichnung": "Rolle rückwärts durch den Handstand",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_06.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_06.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_NE_07",
         "bezeichnung": "Healy",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_07.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_07.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_NE_08",
         "bezeichnung": "Handstützüberschlag seitwärts (Rad)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_08.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_08.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_NE_09",
         "bezeichnung": "Bogengang rückwärts",
         "name": "Menichelli",
-        "elementegruppe": "1",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_09.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_09.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_NE_10",
         "bezeichnung": "Variante des Breakdance",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_10.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_10.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_NE_11",
         "bezeichnung": "Kopfstand (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_11.png"
+        "defaults": {  
+            "elementegruppe": "1",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_11.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_NE_12",
         "bezeichnung": "Sprung- / Flugrolle",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_12.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_12.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_NE_13",
         "bezeichnung": "Rondat",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_13.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Floor/NE/FL_NE_13.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
 
 
@@ -125,208 +255,438 @@
         "id": "FL_A_01",
         "bezeichnung": "Handstand, Senken i. d. Winkel- o. Grätschwinkelstütz (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_01.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_01.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_02",
         "bezeichnung": "Aus dem Grätschstand, heben zum hdst. (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_02.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_02.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_03",
         "bezeichnung": "A. d. Bauchlage, Schwingen i. d. Handstand (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_03.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_04",
         "bezeichnung": "Handstand (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_04.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_04.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_05",
         "bezeichnung": "Stützwaage m. gegr. Beinen (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_05.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_05.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_06",
         "bezeichnung": "1/2 o. 1/1 im Handstand",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_06.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_06.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_07",
         "bezeichnung": "From L-sit, etc., turn over backwards to stand",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_07.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_07.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_08",
         "bezeichnung": "Überschlag vw. langsam",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_08.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_08.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_09",
         "bezeichnung": "Längs o. Seitwärtsspagat",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_09.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_09.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_10",
         "bezeichnung": "Alle Standwaagen (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_10.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_10.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_11",
         "bezeichnung": "Sprung rw. i. d. Liegestütz vl.",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_11.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_11.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_12",
         "bezeichnung": "Schmetterling",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_12.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_12.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_13",
         "bezeichnung": "1 Kreisflanke o. gespr. Kreisflanken",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_13.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_13.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_14",
         "bezeichnung": "Gespr. Kreis. m. 1/2 Spindel",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_14.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_14.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_15",
         "bezeichnung": "Russenwendeschwung mit 360° o. 540°",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_15.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_15.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_16",
         "bezeichnung": "Rolle rw. d. d. Handstand m. 1/2 Drehung",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_16.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_16.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_17",
         "bezeichnung": "Überschlag vw. o. Hechtüberschlag",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_17.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_17.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_18",
         "bezeichnung": "Sprungrolle gehechtet",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_18.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_18.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_19",
         "bezeichnung": "Salto vw. geh. o. geb. auch mit 1/2 Drehung",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_19.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_19.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_20",
         "bezeichnung": "Salto rw. geh. o. geb.",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_20.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_20.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_21",
         "bezeichnung": "Salto rw. geh. o. geb. m. 1/2 Drehung",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_21.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_21.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_22",
         "bezeichnung": "Flick-Flack",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_22.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_22.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_A_23",
         "bezeichnung": "Sprung rw. m. 1/2 Drehung gehechtet zum Abrollen vw.",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_23.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_23.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
 
 
@@ -337,199 +697,419 @@
         "id": "FL_B_01",
         "bezeichnung": "Spitzwinkelstütz (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_01.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_01.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_B_02",
         "bezeichnung": "Heben m. geb. Hüften u. gestr. Armen o. m. gestr. Hüften u. geb. Armen i. d. Hdst. m. geschlossenen Beinen (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_02.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_02.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_B_03",
         "bezeichnung": "a.d. Spagat, Grätschwinkelstütz oder Liegestütz, Heben zum Handstand (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_03.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_B_04",
         "bezeichnung": "Heben o. Senken o. Schwung i. d. Kreuzhandstand (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_04.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_04.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_B_05",
         "bezeichnung": "Stützwaage (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_05.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_05.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_B_06",
         "bezeichnung": "From straddled support lever (2s) press hdst (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_06.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_06.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_B_07",
         "bezeichnung": "Endorolle gegr. i. d. Handstand (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_07.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_07.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_B_08",
         "bezeichnung": "Alle Standwaagen 180° gegr. ohne Handhalte (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_08.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_08.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_B_09",
         "bezeichnung": "Endo (Sprung rw. m. Bücken-Strecken o. m. 1/1 Drehungen i. d. Liegestütz vl.)",
         "name": "Endo",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_09.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_09.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_B_10",
         "bezeichnung": "Tong Fei (Schmetterling m. 1/1 Drehung vw. o. rw.)",
         "name": "Tong Fei",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_10.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_10.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_B_11",
         "bezeichnung": "Kreis. o. gespr. Kreis. i. d. Handstand",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_11.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_11.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_B_12",
         "bezeichnung": "Senken a. d. Hdst. i. d. Kreis. o. gespr. Kreis.",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_12.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_12.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_B_13",
         "bezeichnung": "Gespr. Kreisflanke m. 1/1 Spindel (in 2 Flanken)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_13.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_13.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_B_14",
         "bezeichnung": "Gespr. Kreisflanke m. 1/1 Spindel i. d. Hdst.",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_14.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_14.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_B_15",
         "bezeichnung": "Russenwendeschwung mit 720° o. 900°",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_15.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_15.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "FL_B_16",
         "bezeichnung": "Rolle rw. m. 1/1 Drehung gesprungen d. d. Handstand",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_16.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_16.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }    
     ,{
         "id": "FL_B_17",
         "bezeichnung": "Salto vw. gestr., auch mit 1/2 Drehung",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_17.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_17.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }   
     ,{
         "id": "FL_B_18",
         "bezeichnung": "Salto vw. geh. m. 1/1 Drehung, auch mit 3/2 Drehung",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_18.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_18.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_B_19",
         "bezeichnung": "Salto vw. geh. o. geb. i. d. Liegestütz",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_19.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_19.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }   
     ,{
         "id": "FL_B_20",
         "bezeichnung": "Salto rw. gestr. o. Temposalto rw.",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_20.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_20.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_B_21",
         "bezeichnung": "Salto rw. gestr. m. 1/2 o. 1/1 Drehung",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_21.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_21.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_B_22",
         "bezeichnung": "Salto rw. geh. m. 3/2 Drehung",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_22.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_22.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
 
 
@@ -538,127 +1118,267 @@
         "id": "FL_C_01",
         "bezeichnung": "Spitzwinkelstütz Beine waagerecht (2s)",
         "name": "Manna",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_01.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_01.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_C_02",
         "bezeichnung": "Spitzwinkelstütz (2s) u. heben i.d. Hdst.",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_02.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_02.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_C_03",
         "bezeichnung": "A. d. Spagat, Heben i. d. Kreuzhandstand (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_03.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_C_04",
         "bezeichnung": "Schwalbe (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_04.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_04.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_C_05",
         "bezeichnung": "From support lever 2s. press handstand (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_05.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_05.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_C_06",
         "bezeichnung": "Endorolle geb. i. d. Handstand (2s) Gegrätschte Beine in der Endphase möglich",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_06.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_06.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_C_07",
         "bezeichnung": "Schmetterling m. 2/1 Drehung",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_07.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_07.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_C_08",
         "bezeichnung": "Kreis. o. gespr. Kreis. i. d. Hdst. Senken i.d. Kreis. o. gespr. Kreis.",
         "name": "Gogoladze",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_08.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_08.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_C_09",
         "bezeichnung": "Gespr. Kreisfl. m. >270° Spindel (in 2 Flanken) direkt i.d. Hdst.",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_09.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_09.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_C_10",
         "bezeichnung": "Russenwendeschwung mit 1080° o. mehr.",
         "name": "Fedorchenko",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_10.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_10.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_C_11",
         "bezeichnung": "Salto vw. gestr. m. 1/1 Drehung, auch mit 3/2 Drehung",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.3",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_11.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_11.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_C_12",
         "bezeichnung": "Doppelsalto rw. geh.",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_12.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_12.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_C_13",
         "bezeichnung": "Doppelsalto rw. geb.",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_13.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_13.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_C_14",
         "bezeichnung": "Salto rw. gestr. m. 3/2 o. 2/1 Drehung",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_14.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_14.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
 
 
@@ -670,127 +1390,267 @@
         "id": "FL_D_01",
         "bezeichnung": "Spitzwinkelstütz, Beine waagrecht (2s) u. heben i.d. Hdst. m. geschlossenen Beinen (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_01.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_01.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_D_02",
         "bezeichnung": "Manna (2s) und Ausschultern i. d. Hdst. (2s)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_02.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_02.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_D_03",
         "bezeichnung": "Aus d. Schwalbe (2 s.), Heben i. d. Kreuzhandstand (2s)",
         "name": "Alvariño",
-        "elementegruppe": "1",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_03.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_D_04",
         "bezeichnung": "Gespr. Kreisfl. m. gesprungener 360° Dr. rw. d. d. Handstand, Senken z. gespr. Kreisfl. (2 Sprünge)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_04.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_04.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_D_05",
         "bezeichnung": "Gespr. Kreisfl. m. > 270° Spindel (in 2 Flanken) direkt i. d. Handstand, Senken z. (gespr.) Kreisfl.",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_05.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_05.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_D_06",
         "bezeichnung": "Überschlag Salto vw. geh.",
         "name": "Morandi",
-        "elementegruppe": "2",
-        "wertigkeit": "0.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_06.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_06.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_D_07",
         "bezeichnung": "Doppelsalto vw. geh., auch mit 1/2 Drehung",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_07.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_07.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_D_08",
         "bezeichnung": "Salto vw. gestr. m. 2/1 Drehung",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_08.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_08.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_D_09",
         "bezeichnung": "Sprung vw. 1/2 Drehung u. Doppelsalto rw. geh",
         "name": "Deferr",
-        "elementegruppe": "2",
-        "wertigkeit": "0.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_09.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_09.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_D_10",
         "bezeichnung": " Doppelsalto rw. geh. o. geb. m. 1/1 Drehung auch Doppeltwist geh. o. geb. m. 1/2 Drehung",
         "name": "Tsukahara",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_10.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_10.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_D_11",
         "bezeichnung": "Doppeltwist geh. o. geb. o. Doppelsalto rw. geh. o. geb. m. 1/2 Drehung",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_11.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_11.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_D_12",
         "bezeichnung": "Salto rw. gestr. m. 5/2 Drehung",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_12.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_12.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_D_13",
         "bezeichnung": "Salto rw. gestr. m. 3/1 Drehung",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_13.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_13.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_D_14",
         "bezeichnung": "Doppelsalto rw. gestr.",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_14.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_14.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
 
 
@@ -800,82 +1660,172 @@
         "id": "FL_E_01",
         "bezeichnung": "Doppelsalto vw. geb., auch mit 1/2 Drehung",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.5",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_01.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_01.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_E_02",
         "bezeichnung": "Salto vw. gestr. m. 5/2 Drehung",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.5",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_02.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_02.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_E_03",
         "bezeichnung": "Doppelsalto vw. geh. m. 1/1 Drehung",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.5",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_03.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_E_04",
         "bezeichnung": "Doppelsalto rw. geh. m. 2/1",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.5",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_04.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_04.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_E_05",
         "bezeichnung": "Doppelsalto rw. geh. m. 3/2 Dr. o. Salto rw. gestr. m. 3/2 Drehung z. Salto vw. geh.",
         "name": "Korosteljev",
-        "elementegruppe": "3",
-        "wertigkeit": "0.5",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_05.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_05.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_E_06",
         "bezeichnung": "Salto rw. gestr. m. 7/2 Drehung",
         "name": "González",
-        "elementegruppe": "3",
-        "wertigkeit": "0.5",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_06.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_06.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_E_07",
         "bezeichnung": "Doppelsalto sw. m. 1/1 Dr. gegr.",
         "name": "Lou Yun",
-        "elementegruppe": "3",
-        "wertigkeit": "0.5",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_07.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_07.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_E_08",
         "bezeichnung": "Doppeltwist gestr. o. Doppelsalto rw. gestr. m. 1/2 Drehung",
         "name": "Tamayo",
-        "elementegruppe": "3",
-        "wertigkeit": "0.5",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_08.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_08.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_E_09",
         "bezeichnung": "Doppelsalto rw. gestr. m 1/1 Dr. o. Doppeltwist gestr. m. 1/2 Drehung",
         "name": "Penev",
-        "elementegruppe": "3",
-        "wertigkeit": "0.5",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_09.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_09.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
 
 
@@ -883,117 +1833,247 @@
         "id": "FL_FGH_01",
         "bezeichnung": "Salto vw. gestr. m. 3/1 Drehungen",
         "name": "Shirai 2",
-        "elementegruppe": "2",
-        "wertigkeit": "0.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_01.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.6",
+            "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_01.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_FGH_02",
         "bezeichnung": "Salto vw. gestr. m. 7/2 Drehungen",
         "name": "Goshima",
-        "elementegruppe": "2",
-        "wertigkeit": "0.7",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_02.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.7",
+            "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_02.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_FGH_03",
         "bezeichnung": "Doppelsalto vw. geh. m. 3/2. Drehungen",
         "name": "Zapata",
-        "elementegruppe": "2",
-        "wertigkeit": "0.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_03.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.6",
+            "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_FGH_04",
         "bezeichnung": "Doppelsalto rw. geh. m. 3/1 Drehungen",
         "name": "Ri Jong Song",
-        "elementegruppe": "3",
-        "wertigkeit": "0.7",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_04.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.7",
+            "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_04.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_FGH_05",
         "bezeichnung": "Doppelsalto rw. geh. m. 5/2 Drehungen",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_05.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.6",
+            "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_05.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_FGH_06",
         "bezeichnung": "Dreifachsallto rw. geh.",
         "name": "Liukin",
-        "elementegruppe": "3",
-        "wertigkeit": "0.8",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_06.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.8",
+            "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_06.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_FGH_07",
         "bezeichnung": "Dreifachsallto rw. geb.",
         "name": "Nagorni",
-        "elementegruppe": "3",
-        "wertigkeit": "0.9",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_07.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.9",
+            "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_07.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_FGH_08",
         "bezeichnung": "Salto rw. gestr. m. 4/1 Drehungen",
         "name": "Shirai / Nguyen",
-        "elementegruppe": "3",
-        "wertigkeit": "0.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_08.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.6",
+            "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_08.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_FGH_09",
         "bezeichnung": "Salto rw. gestr. m. 2/1 Dr. und Salto rw. geb.",
         "name": "Kolyvanov",
-        "elementegruppe": "3",
-        "wertigkeit": "0.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_09.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.6",
+            "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_09.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_FGH_10",
         "bezeichnung": "Doppelsalto rw. gestr. m. 3/2 Dr. o. Doppeltwist gestr. m. 1/1 Drehungen",
         "name": "Hypolito",
-        "elementegruppe": "3",
-        "wertigkeit": "0.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_10.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.6",
+            "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_10.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_FGH_11",
         "bezeichnung": "Doppelsalto rw. gestr. m. 2/1 Drehungen",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_11.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.6",
+            "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_11.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_FGH_12",
         "bezeichnung": "Doppelsalto rw. gestr. m. 5/2 Drehungen",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.7",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_12.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.7",
+            "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_12.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "FL_FGH_13",
         "bezeichnung": "Doppelsalto rw. gestr. m. 3/1 Drehungen",
         "name": "Shirai 3",
-        "elementegruppe": "3",
-        "wertigkeit": "0.8",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_13.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.8",
+            "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_13.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
 ]

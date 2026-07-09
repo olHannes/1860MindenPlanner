@@ -3,181 +3,381 @@
         "id": "HI_NE_01",
         "bezeichnung": "Stemme rückwärts in den Stütz",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_01.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_01.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_NE_02",
         "bezeichnung": "gesprungene Pendeldrehung (min. 45°)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_02.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_02.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_NE_03",
         "bezeichnung": "Umspringen aus Vor- oder Rückschwung",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_03.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_NE_04",
         "bezeichnung": "Kippaufschwung, Überkehren in den Hang",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_04.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_04.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_NE_05",
         "bezeichnung": "Langhangkippe in den Stütz (auch Laufkippe o. gespreizt in der LK 4)",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_05.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_05.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_NE_06",
         "bezeichnung": "Fallkippe in den Stütz",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_06.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_06.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_NE_07",
         "bezeichnung": "Hüftumschwung rückwärts mit geschlossenen o. gespreizten Beinen (in LK 4 zwei versch. Elemente)",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_07.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_07.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_NE_08",
         "bezeichnung": "Hüftumschwung vorwärts mit geschlossenen o. gespreizten Beinen (in LK 4 zwei versch. Elemente)",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_08.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_08.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_NE_9",
         "bezeichnung": "Felgumschung (min. waagerecht)",
         "name": "freie Felge",
-        "elementegruppe": "3",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_09.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_09.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_NE_10",
         "bezeichnung": "Felgabschwung (frei, aufgegrätscht o. aufgebückt) mit 1/2 Drehung in den Vorschwung",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_10.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_10.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_NE_11",
         "bezeichnung": "Aufgrätsch- oder Aufbückumschwung zum Handstand",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_11.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_11.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_NE_12",
         "bezeichnung": "Kippaufschwung rücklings vorwärts / rückwärts (auch gespreizt) (in LK 4 2 Elemente)",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_12.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_12.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_NE_13",
         "bezeichnung": "Aufschwung (Hüftaufzug) oder Riesenfelgaufschwung in den Stütz",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_03.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_NE_14",
         "bezeichnung": "Vorschwung im Hang rücklings, 1/2 Drehung in den Hang o. Stütz",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_14.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_14.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_NE_15",
         "bezeichnung": "Felab- o. Aufschwung, Umspringen in den Ellgriff und Aufstemmen beim Rückschwung in Stützhöhe",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_15.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_15.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_NE_16",
         "bezeichnung": "Grätschumschwung vw. (Endo) oder rückwärts (Stalder) min. waagerecht",
         "name": "Endo / Stalder",
-        "elementegruppe": "3",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/system/profile_icon.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/system/profile_icon.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_NE_17",
         "bezeichnung": "Hocke, Bücke oder Grätsche",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.05",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_17.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_17.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_NE_18",
         "bezeichnung": "Salto rückwärts gehockt (auch mit 1/2 Drehung)",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.05",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_18.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_18.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_NE_19",
         "bezeichnung": "Felgabschwung (frei, aufgegrätscht o. aufgebückt, auch mit 1/2 Drehung oder Salto vw.)",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.05",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_19.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_19.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_NE_20",
         "bezeichnung": "Salto vw. gehockt (auch mit 1/2 Drehung)",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.05",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_20.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Highbar/NE/HI_NE_20.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
 
 
@@ -186,145 +386,305 @@
         "id": "HI_A_01",
         "bezeichnung": "Stemme rw. i. d. Handstand",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_01.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_01.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_A_02",
         "bezeichnung": "Stemme rw. i. d. Handstand m. 1/2 Drehung",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_02.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_02.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_A_03",
         "bezeichnung": "Riesenumschwung vw.",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_03.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_A_04",
         "bezeichnung": "Riesenumschwung vw. m. 1/2 Drehung d. d. Handstand",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_04.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_04.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_A_05",
         "bezeichnung": "Riesenumschwung rw.",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_05.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_05.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_A_06",
         "bezeichnung": "Riesenumschwung rw. m. 1/2 Drehung",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_06.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_06.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_A_07",
         "bezeichnung": "Riesenumschwung rw. gespr. i. d. Kgr.",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_07.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_07.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_A_08",
         "bezeichnung": "Riesenumschwung rw. m. Einschultern b. Abschwung u. Ausschultern z. Handstand",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_08.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_08.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_A_09",
         "bezeichnung": "Hang- o. Stützkippe i. d. Handstand",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_09.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_09.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_A_10",
         "bezeichnung": "A. d. Hang o. Stütz, Felgunterschwung d. d. Handstand",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_10.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_10.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_A_11",
         "bezeichnung": "A. d. Hang o. Stütz, Felgunterschwung gespr. i. d. Handstand",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_11.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_11.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_A_12",
         "bezeichnung": "Überschlag rl. rw. i. d. Hang rl.",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_12.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_12.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_A_13",
         "bezeichnung": "Bückumschwung vw. m. Rückgrätschen i. d. Hang o. i. d. Stütz.",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_13.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_13.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_A_14",
         "bezeichnung": "Salto vw. geb. o. gestr. - auch mit 1/2 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_14.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_14.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_A_15",
         "bezeichnung": "Salto rw. geb. o. gestr., auch m. 1/2 o. 1/1 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_15.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_15.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_A_16",
         "bezeichnung": "Hecht gegr., Hecht o. Hecht m. 1/2 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_16.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Highbar/A/HI_A_16.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
 
 
@@ -334,244 +694,514 @@
         "id": "HI_B_01", 
         "bezeichnung": "Stemme rw. i. d. Handstand m. 1/1 Drehung, a. z. Zwiegriff", 
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_01.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_01.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_02", 
         "bezeichnung": "Rückschwung u. Pirouette i. d. Hang", 
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_02.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_02.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_03", 
         "bezeichnung": "Riesenumschwung vw. m. 1/1 Drehung i. d. Mix-Ellgriff", 
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_03.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_03.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_04", 
         "bezeichnung": "Riesenumschwung vw. gespr. o. m. 1/2 Drehung", 
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_04.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_04.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_05", 
         "bezeichnung": "Einarmiger Riesenumschwung vw. i. Kgr. (360°)", 
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_05.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_05.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_06", 
         "bezeichnung": "Einarmiger Riesenumschwung rw. (360°)", 
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_06.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_06.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_07", 
         "bezeichnung": "Riesenumschwung rw. gespr.", 
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_07.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_07.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_08", 
         "bezeichnung": "Riesenumschwung rw. gespr. m. 1/2 Drehung i. d. Ellgriff", 
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_08.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_08.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_09", 
         "bezeichnung": "Riesenumschwung rw. m. 1/2 Drehung i. d. Ellgriff", 
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_09.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_09.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_10", 
         "bezeichnung": "Riesenumschwung rw. gespr. i. d. Ellgriff", 
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_10.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_10.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_11", 
         "bezeichnung": "Riesenumschwung m. Ellgriff", 
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_11.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_11.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_12", 
         "bezeichnung": "Steinemann Stemme m. 1/2 Drehung i. d. Stütz", 
         "name": "Ono",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_12.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_12.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_13", 
         "bezeichnung": "Stemme rw. u. Vorgrätschen i. d. Hang rl.", 
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_13.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_13.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_14", 
         "bezeichnung": "Stemme rw. u. Bücke gespr. m. 1/2 Drehung i. d. Hang", 
         "name": "Voronin",
-        "elementegruppe": "2",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_14.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_14.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_15", 
         "bezeichnung": "Stemme rw. u. Kehre m. 1/4 Drehung i. d. Hang", 
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_15.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_15.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_16", 
         "bezeichnung": "A. d. Hdst., Felge vw. d. d. Hdst.", 
         "name": "Weiler",
-        "elementegruppe": "3",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_16.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_16.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_17", 
         "bezeichnung": "Grätschumschwung vw. d. d. Hdst.", 
         "name": "Endo",
-        "elementegruppe": "3",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_17.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_17.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_18", 
         "bezeichnung": "Free circle bwd. straddle thr. hdst.", 
         "name": "Stalder",
-        "elementegruppe": "3",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_18.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_18.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_19", 
         "bezeichnung": "Stalder gesprungen d. d. Handstand", 
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_19.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_19.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_20", 
         "bezeichnung": "A. d. Hang rl., Stemme vw. i. d. Stütz rl.", 
         "name": "Steinemann",
-        "elementegruppe": "3",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_20.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_20.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_21", 
         "bezeichnung": "Steinemann Stemme m. Rückflanken i. d. Stütz o. Hang", 
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_21.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_21.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_22", 
         "bezeichnung": "Bückumschwung vw. m. Rückgrätschen d. d. Handstand", 
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.2", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_22.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_22.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_23", 
         "bezeichnung": "Salto vw. gestr. m. 1/1 o. 3/2 Drehung", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.2", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_23.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_23.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_24", 
         "bezeichnung": "Salto rw. gestr. m. 3/2 o. 2/1 Drehung", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.2", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_24.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_24.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_25", 
         "bezeichnung": "Doppelsalto rw. geh. o. geh.", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.2", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_25.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_25.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_26", 
         "bezeichnung": "Doppelsalto rw. geh. über die Stange", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.2", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_26.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_26.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "HI_B_27", 
         "bezeichnung": "Hecht m. 1/1 o. 3/2 Drehung", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.2", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_27.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.2", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/B/HI_B_27.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
 
 
@@ -582,289 +1212,609 @@
         "id": "HI_C_01", 
         "bezeichnung": "Rückschwung u. Pirouette i. d. Stütz", 
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_01.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_01.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_02", 
         "bezeichnung": "Riesenumschwung vw. m. 1/1 Drehungen i. d. beidarmigen Ellgriff", 
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_02.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_02.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_03", 
         "bezeichnung": "Riesenumschwung vw. gespr. m. 1/1 Drehung", 
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_03.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_03.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_04", 
         "bezeichnung": "Einarmiger Riesenumschwung vw. m. 1/1 Drehung i. d. Ellgr. u. 1/1 Drehung i. d. Kgr.", 
         "name": "Zou Li Min",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_04.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_04.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_05", 
         "bezeichnung": "Riesenumschwung rw. m. 1/1 Drehung gespr.", 
         "name": "Quast",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_05.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_05.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_06", 
         "bezeichnung": "Riesenumschwung rw. gespr. m. 3/2 Drehung i. d. Kgr. o. Mix-Ellgriff", 
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_06.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_06.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_07", 
         "bezeichnung": "Riesenumschwung rl. vw. (Russenriesen)", 
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_07.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_07.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_08", 
         "bezeichnung": "Riesenumschwung m. Ellgr. u. 1/1 Drehung i. d. Handstand m. Zwiegr.", 
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_08.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_08.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_09", 
         "bezeichnung": "Stemme rw. u. Hecht gegr. m. 1/2 Drehung i. d. Hang", 
         "name": "Markelov / Principi",
-        "elementegruppe": "2",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_09.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_09.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_10", 
         "bezeichnung": "Markelov gestr. m. geschlossenen Beinen, auch m. 1/2 Drehung", 
         "name": "Yamawaki / Muñoz-Pozzo",
-        "elementegruppe": "2",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_10.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_10.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_11", 
         "bezeichnung": "Vorschwung u. Kontergrätsche o. Konterbücke i. d. Hang auch m. 1/2 Drehung", 
         "name": "Tkatchev / Lynch",
-        "elementegruppe": "2",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_11.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_11.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_12", 
         "bezeichnung": "Vorschwung u.Konterbücke i. d. Hang. auch m.1/2 Drehung", 
         "name": "Samiloglu",
-        "elementegruppe": "2",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_12.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_12.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_13", 
         "bezeichnung": "Rückschwung u. Salto vw. geh., geb. o. gegr. i. d. Hang, auch aus dem Ellgriff.", 
         "name": "Jäger",
-        "elementegruppe": "2",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_13.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_13.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_14", 
         "bezeichnung": "a. d. Tschechenriesenumschwung vw. m. Rückgrät. Z. Hang", 
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_14.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_14.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_15", 
         "bezeichnung": "Vorschwung u. Salto rw. gegr. m. 1/2 Drehung i. d. Hang", 
         "name": "Deltchev",
-        "elementegruppe": "2",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_15.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_15.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_16", 
         "bezeichnung": "Vorschwung u. Salto rw. geb. m. 1/2 Drehung i. d. Hang", 
         "name": "Gienger / Sapronenko",
-        "elementegruppe": "2",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_16.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_16.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_17", 
         "bezeichnung": "Bückumschwung  vw. d. d. Hdst.", 
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_17.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_17.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_18", 
         "bezeichnung": "Stalder legs together thr. hdst.", 
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_18.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_18.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_19", 
         "bezeichnung": "Stalder m. geschl. Beinen gespr. d. d. Hdst.", 
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_19.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_19.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_20", 
         "bezeichnung": "Adlerschwung d. d. Handstand", 
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_20.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_20.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_21", 
         "bezeichnung": "Einbücken u. freier Überschlag rl. rw. i. d. Hang rl.", 
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_21.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_21.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_22", 
         "bezeichnung": "Steinemann Stemme m. Rückbücken i. d. Handstand", 
         "name": "Koste",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_22.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_22.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_23", 
         "bezeichnung": "Endo m. geschl. Beinen m. Ellgr. d. d. Hdst.", 
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_23.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_23.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_24", 
         "bezeichnung": "Bückumschwung vw. m. Rückgrätschen m. 1/2 Drehung d. d. Handstand", 
         "name": "Carballo",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_24.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_24.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_25", 
         "bezeichnung": "Salto vw. gestr. m. 2/1 o. 5/2 Drehung", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.3", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_25.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_25.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_26", 
         "bezeichnung": "Doppelsalto vw. geh. o. geb. o. m. 1/2 Drehung", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.3", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_26.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_26.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_27", 
         "bezeichnung": "Doppelsalto vw. geh. o. geb. o. m. 1/2 Drehung über d. Stange", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.3", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_27.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_27.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_28", 
         "bezeichnung": "Salto rw. gestr. m. 5/2 o. 3/1 Drehung", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.3", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_28.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_28.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_29", 
         "bezeichnung": "Doppelsalto rw. geh. m. 1/1 Drehung", 
         "name": "Tsukahara",
-        "elementegruppe": "4",
-        "wertigkeit": "0.3", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_29.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_29.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_30", 
         "bezeichnung": "Doppelsalto rw. gestr.", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.3", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_30.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_30.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_31", 
         "bezeichnung": "Doppelsalto rw. geh m. 1/1 Drehung über die Stange", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.3", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_31.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_31.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_C_32", 
         "bezeichnung": "Doppelsalto rw. gestr. über die Stange", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.3", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_32.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.3", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/C/HI_C_32.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
 
 
@@ -875,226 +1825,476 @@
         "id": "HI_D_01", 
         "bezeichnung": "Riesenumschwung rw. gespr. m. 3/2 Drehung i. d. Ellgr.", 
         "name": "Rybalko",
-        "elementegruppe": "1",
-        "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_01.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_01.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_02", 
         "bezeichnung": "Riesenumschwung rl. rw. (Tschechenriesen)", 
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_02.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_02.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_03", 
         "bezeichnung": "Tschechenriesen m. 1/2 Drehung zum Riesenumschwung vw.", 
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_03.png" 
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_03.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_04", 
         "bezeichnung": "Tkatchev gestr. m. 1/2 Drehung i. d. Zwiegriff zur Schwungstemme rw. i. d. Handstand", 
         "name": "Moznik",
-        "elementegruppe": "2",
-        "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_04.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_04.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_05", 
         "bezeichnung": "Stalder, Bückumschwung rw. o. freie Felge m. Tkatchev gegr.auch m. 1/2 Drehung", 
         "name": "Piatti",
-        "elementegruppe": "2",
-        "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_05.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_05.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_06", 
         "bezeichnung": "Piatti geb. auch m. 1/2 Drehung", 
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_06.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_06.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_07", 
         "bezeichnung": "Salto vw. gestr., auch aus dem Ellgriff.", 
         "name": "Balabanov",
-        "elementegruppe": "2",
-        "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_07.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_07.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_08", 
         "bezeichnung": "Vorschwung u. Kontersalto vw. gegr. i. d. Hang", 
         "name": "Xiao Ruizhi",
-        "elementegruppe": "2",
-        "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_08.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_08.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_09", 
         "bezeichnung": "Salto vw. über d. Stange geh. o. gegr. (auch a. d. Ellgriff)", 
         "name": "Gaylord",
-        "elementegruppe": "2",
-        "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_09.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_09.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_10", 
         "bezeichnung": "Salto rw. m. 1/2 Drehung geh. über d. Stange.", 
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_10.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_10.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_11", 
         "bezeichnung": "Doppelsalto rw. geh. über d. Stange", 
         "name": "Kovacs",
-        "elementegruppe": "2",
-        "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_11.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_11.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_12", 
         "bezeichnung": "Stalder m. 3/2 Drehung gesprungen d. d. Handstand i. d. Mix. Ellgriff", 
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_12.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_12.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_13", 
         "bezeichnung": "Adlerschwung m. 1/2 Drehung d. d. Handstand m. Rgr.", 
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_13.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_13.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_14", 
         "bezeichnung": "Adlerschwung m. Umspringen d. d. Handstand i. Kgr. o. Rgr., o. Zwiegriff", 
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_14.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_14.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_15", 
         "bezeichnung": "Adlerschwung m. 1/1 Drehungen d. d. Handstand i. d. Zwiegriff auch gesprungen", 
         "name": "Baldauf",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_15.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_15.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_16", 
         "bezeichnung": "Endo legs together in el-grip thr. hdst.", 
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_16.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_16.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_17", 
         "bezeichnung": "Carballo m. 1/2 Drehung i. d. Mix-Ellgriff", 
         "name": "Quintero",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_17.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_17.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_18", 
         "bezeichnung": "Doppelsalto vw. geh. o. geb. m. 1/1 o. 3/2 Drehung", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.4", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_18.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_18.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_19", 
         "bezeichnung": "Doppelsalto vw. gestr. o. m. 1/2 Drehung", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.4", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_19.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_19.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_20", 
         "bezeichnung": "Doppelsalto vw. geh. o. geb. m. 1/1 o. 3/2 Drehung über d. Stange", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.4", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_20.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_20.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_21", 
         "bezeichnung": "Doppelsalto rw. geh. m. 2/1 Drehung", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.4", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_21.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_21.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_22", 
         "bezeichnung": "Doppelsalto rw. gestr. m. 1/1 Drehung", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.4", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_22.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_22.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_23", 
         "bezeichnung": "Doppelsalto rw. geh m. 2/1 Drehung über die Stange", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.4", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_23.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_23.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_24", 
         "bezeichnung": "Doppelsalto rw. gestr. m. 1/1 Drehung über die Stange", 
         "name": "Hayden",
-        "elementegruppe": "4",
-        "wertigkeit": "0.4", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_24.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_24.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_D_25", 
         "bezeichnung": "Hecht m. 2/1 Drehung", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.4", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_25.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.4", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/D/HI_D_25.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
 
 
@@ -1104,109 +2304,229 @@
         "id": "HI_E_01", 
         "bezeichnung": "Tkatchev gegr. m. 1/2 Drehung i. d. beidarmigen Ellgriff.", 
         "name": "Kulesza",
-        "elementegruppe": "2",
-        "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_01.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.5", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_01.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_E_02", 
         "bezeichnung": "Piatti gestr. m. 1/2 Drehung i. d. Zwiegriff (Mix-Ellgriff) u. Rückschwung i.d. Hdst. auch m. 1/2 Drehung", 
         "name": "Kierzkowski",
-        "elementegruppe": "2",
-        "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_02.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.5", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_02.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_E_03", 
         "bezeichnung": "Gaylord geb.", 
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_03.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.5", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_03.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_E_04", 
         "bezeichnung": "Salto rw. m. 1/2 Drehung geb. über d. Stange", 
         "name": "Gaylord 2",
-        "elementegruppe": "2",
-        "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_04.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.5", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_04.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_E_05", 
         "bezeichnung": "Kovacs m. 1/1 Drehung", 
         "name": "Kolman",
-        "elementegruppe": "2",
-        "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_05.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.5", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_05.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_E_06", 
         "bezeichnung": "Kovacs geb o. gestr.", 
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_06.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.5", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_06.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_E_07", 
         "bezeichnung": "Stalder with hop 3/2 turn through hdst. in el-grip", 
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_07.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.5", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_07.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_E_08", 
         "bezeichnung": "Adlerschwung m. 1/1 Drehung d. d. Handstand i. d. Kgr.", 
         "name": "Fuentes",
-        "elementegruppe": "3",
-        "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_08.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.5", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_08.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_E_09", 
         "bezeichnung": "Quintero i. d. Ellgr.", 
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_09.png" 
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.5", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_09.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_E_10", 
         "bezeichnung": "Doppelsalto vw. geh. o. geb. m. 2/1 o. 5/2 Drehung", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_10.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.5", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_10.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_E_11", 
         "bezeichnung": "Doppelsalto vw. gestr. m. 1/1 o. 3/2 Drehung", 
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_11.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.5", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_11.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_E_12", 
         "bezeichnung": "Doppelsalto rw. gestr. m. 2/1 Dr", 
         "name": "Watanabe",
-        "elementegruppe": "4",
-        "wertigkeit": "0.5", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_12.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.5", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/E/HI_E_12.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
 
 
@@ -1215,162 +2535,342 @@
         "id": "HI_FGH_01", 
         "bezeichnung": "Stemme rw. u. Hecht m. 3/2 Drehungen i. d. Hang", 
         "name": "Walstrom",
-        "elementegruppe": "2",
-        "wertigkeit": "0.6", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_01.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.6", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_01.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_FGH_02", 
         "bezeichnung": "Tkatchev gestr. m. 1/1 Drehung", 
         "name": "Liukin",
-        "elementegruppe": "2",
-        "wertigkeit": "0.6", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_02.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.6", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_02.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_FGH_03", 
         "bezeichnung": "Piatti straight with 1/1 turn.", 
         "name": "Suarez",
-        "elementegruppe": "2",
-        "wertigkeit": "0.7", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_03.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.7", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_03.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_FGH_04", 
         "bezeichnung": "Salto vw. gestr. m. 1/1 Drehungen, auch aus dem Ellgriff.", 
         "name": "Winkler - Pogorelev",
-        "elementegruppe": "2",
-        "wertigkeit": "0.6", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_04.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.6", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_04.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_FGH_05", 
         "bezeichnung": "Salto vw. gestr. m. 2/1 Drehungen, auch aus dem Ellgriff.", 
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.7", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_05.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.7", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_05.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_FGH_06", 
         "bezeichnung": "Vorschwung u. Salto rw. m. 3/2 Drehungen i. d. Hang", 
         "name": "Deff",
-        "elementegruppe": "2",
-        "wertigkeit": "0.6", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_06.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.6", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_06.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_FGH_07", 
         "bezeichnung": "Gaylord geh. m. 1/2 Drehung", 
         "name": "Pegan",
-        "elementegruppe": "2",
-        "wertigkeit": "0.6", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_07.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.6", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_07.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_FGH_08", 
         "bezeichnung": "Gaylord geh. m. 1/1 Drehung", 
         "name": "Koudinov",
-        "elementegruppe": "2",
-        "wertigkeit": "0.7", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_08.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.7", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_08.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_FGH_09", 
         "bezeichnung": "Pegan geb.", 
         "name": "Maras",
-        "elementegruppe": "2",
-        "wertigkeit": "0.7", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_09.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.7", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_09.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_FGH_10", 
         "bezeichnung": "Kovacs gehockt mit 2/1 Drehungen", 
         "name": "Bretschneider",
-        "elementegruppe": "2",
-        "wertigkeit": "0.8", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_10.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.8", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_10.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_FGH_11", 
         "bezeichnung": "Kovacs gestr. o. geb. m. 1/1 Drehung", 
         "name": "Cassina (Pineda - piked)",
-        "elementegruppe": "2",
-        "wertigkeit": "0.7", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_11.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.7", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_11.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_FGH_12", 
         "bezeichnung": "Kovacs gestr. m. 1/1 Drehung", 
         "name": "Miyachi",
-        "elementegruppe": "2",
-        "wertigkeit": "0.9", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_12.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.9", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_12.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_FGH_13", 
         "bezeichnung": "Kovacs m. 3/2 Drehungen z. Zwiegriff.", 
         "name": "Shaham",
-        "elementegruppe": "2",
-        "wertigkeit": "0.7", 
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_13.png" 
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.7", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_13.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_FGH_14", 
         "bezeichnung": "Dreifachsalto vw.", 
         "name": "Rumbutis",
-        "elementegruppe": "4",
-        "wertigkeit": "0.8", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_14.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.8", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_14.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_FGH_15", 
         "bezeichnung": "Doppelsalto rw. gestr. m. 3/1 Drehungen", 
         "name": "Fedorchenko",
-        "elementegruppe": "4",
-        "wertigkeit": "0.7", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_15.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.7", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_15.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_FGH_16", 
         "bezeichnung": "Dreifachsalto rw. geh. o. über die Stange", 
         "name": "Andrianov / Hoffmann",
-        "elementegruppe": "4",
-        "wertigkeit": "0.7", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_16.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.7", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_16.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_FGH_17", 
         "bezeichnung": "Dreifachsalto rw. geb.", 
         "name": "Fardan",
-        "elementegruppe": "4",
-        "wertigkeit": "0.7", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_17.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.7", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_17.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
     ,{
         "id": "HI_FGH_18", 
         "bezeichnung": "Dreifachsalto rw. geh. m. 1/1 Drehung", 
         "name": "Belle",
-        "elementegruppe": "4",
-        "wertigkeit": "0.8", 
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_18.png" 
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.8", 
+            "image_path": "./assets/images/Exercises/Device/Highbar/FGH/HI_FGH_18.png" 
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
 ]

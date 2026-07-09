@@ -3,1180 +3,2432 @@
         "id": "PO_NE_01",
         "bezeichnung": "Unterspreizen oder -kreisen rückwärts (360°)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_01.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_01.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_NE_02",
         "bezeichnung": "Unterspreizen oder -kreisen vorwärts (360°) (auch als Angang)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_02.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_02.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_NE_03",
         "bezeichnung": "Schweiz einfach",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_03.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_NE_04",
         "bezeichnung": "Seitspreizen mit Wanderhüpfen 1/3 (ohne Schere)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_04.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_04.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_NE_05",
         "bezeichnung": "zweite Kreisflanke in direkter Folge",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_05.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_05.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_NE_06",
         "bezeichnung": "Kreisflanke im Wechselstütz",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_06.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_06.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_NE_07",
         "bezeichnung": "Tschechenkehre als Angang",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_07.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_07.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_NE_08",
         "bezeichnung": "Tschechenkehre in den Stütz rücklings",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_08.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_08.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_NE_09",
         "bezeichnung": "Kehre in den Stütz rücklings",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_09.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_09.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_NE_10",
         "bezeichnung": "Wander- oder Drehspreizen",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_10.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_10.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_NE_11",
         "bezeichnung": "Wandern seitwärts 1/3 (in den Stütz rücklings)",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_11.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_11.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_NE_12",
         "bezeichnung": "Kehre mit 90° aus der Kreisflanke",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_12.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_12.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_NE_13",
         "bezeichnung": "Rückflanken mit 1/4 Drehung in den Querstand",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.05",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_13.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_13.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_NE_14",
         "bezeichnung": "90°-Wende aus der Flanke oder einem anderen Element",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.05",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_14.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.05",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/NE/PO_NE_14.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
-    
-
-
-
     {
         "id": "PO_A_01",
         "bezeichnung": "Schere vw.",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_01.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_01.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_A_02",
         "bezeichnung": "Schere vw. m. 1/2 Drehung",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_02.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_02.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_A_03",
         "bezeichnung": "Schere rw.",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_03.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_A_04",
         "bezeichnung": "Schere rw. m. 1/2 Drehung",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_04.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_04.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_A_05",
         "bezeichnung": "Kreisflanken o. Kreisflanken gegr. im Seitstütz",
         "name": "Thomas",
-        "elementegruppe": "2",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_05.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_05.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_A_06",
         "bezeichnung": "Kreisflanke im Querstütz vl. a. d. Pferdende",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_06.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_06.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_A_07",
         "bezeichnung": "Kreisflanke i. Querstütz rl. a. d. Pferdende",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_07.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_07.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_A_08",
         "bezeichnung": "Jede 1/4 Spindel auf dem Pferdende",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_08.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_08.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_A_09",
         "bezeichnung": "Kreiskehre",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_09.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_09.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_A_10",
         "bezeichnung": "Wendeschwung vw. m. 1/2 Drehung z. Wechselstütz a. d. Pferdende, a. d. Seitstütz m. d. Nutzung 1 o. 2 Pauschen",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_10.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_10.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_A_11",
         "bezeichnung": "Schwabenflanke",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_11.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_11.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_A_12",
         "bezeichnung": "A. d. P. Russenwendeschwung mit 180° o. 270°",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_12.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_12.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_A_13",
         "bezeichnung": "A. d. Pferd, Russenwendeschwung mit 180°",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_13.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_13.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_A_14",
         "bezeichnung": "Wanderfl. vw. i. Seitst., auch mit 1/4 Drehung",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_14.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_14.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_A_15",
         "bezeichnung": "Wanderfl. rw. i. Wst. v. einem Pferdteil o. Pausche a. d. anderen Teil (1/3)",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.1",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_15.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_15.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_A_16",
         "bezeichnung": "Wende (a. d. Kreisfl. o. gespr. Kreisfl.)",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.1",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_16.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.1",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/A/PO_A_16.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
-
-
-
-
     {
         "id": "PO_B_01",
         "bezeichnung": "Schere vw. gespr. sw. (auch mit 1/2 Drehung)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_01.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_01.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_02",
         "bezeichnung": "Doppelschere vw. (1/4 Drehung vw. u. 1/4 Drehung rw.)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_02.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_02.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_03",
         "bezeichnung": "Schere rw. m. Springen sw. (auch m. 1/2 Drehung)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_03.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_04",
         "bezeichnung": "Doppelschere rw. (1/4 Drehung vw. 1/4 Drehung rw.)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_04.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_04.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_05",
         "bezeichnung": "Rückspreizen o. Unterkreisen rw. d. d. Hdst. u. Abschwingen d. d. Stütz m. gegr. Beinen",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_05.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_05.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_06",
         "bezeichnung": "Kreisflanke i. Seitstütz a. einer Pausche",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_06.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_06.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_07",
         "bezeichnung": "Kreisfl. m. Stütz a. d. Pferdenden o. zwischen den Pauschen",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_07.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_07.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_08",
         "bezeichnung": "Kreisflanke i. Querstütz a. einer Pausche (auch mit 1/4 Drehung davor o. danach)",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_08.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_08.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_09",
         "bezeichnung": "Kreisflanke i. Querstütz zwischen den Pauschen",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_09.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_09.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_10",
         "bezeichnung": "Jede 1/2 Spindel auf dem Pferdende",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_10.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_10.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_11",
         "bezeichnung": "Direktes Stöckli A (DSA)",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_11.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_11.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_12",
         "bezeichnung": "Direktes Stöckli B (DSB)",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_12.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_12.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_13",
         "bezeichnung": "Kehre mit 270° (Sohn Technik) auf 1 Pausche v. Qst. i. d. Sst.",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_13.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_13.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_14",
         "bezeichnung": "Tramlot direkt",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_14.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_14.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_15",
         "bezeichnung": "Stöckli umgekehrt (rw.) 180° o. 270° Drehung i. einer Flanke",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_15.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_15.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_16",
         "bezeichnung": "Tschechenkehre a. d. Pferdkörper o. a. d. Pauschen",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_16.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_16.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_17",
         "bezeichnung": "A. d. P. Russenwendeschwung mit 360° o. 540°",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_17.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_17.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_18",
         "bezeichnung": "A. d. Pferd, Russenwendeschwung mit 360° o. 540°",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_18.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_18.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_19",
         "bezeichnung": "Russenwendeschwung mit 180° o. 270° a. 1 Pausche o. zw. d. Pauschen",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_19.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_19.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_20",
         "bezeichnung": "Wanderflanken vw. i. Seitstütz (3/3)",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_20.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_20.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_21",
         "bezeichnung": "Wanderflanken vw. gesprungen i. Seitst.",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_21.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_21.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_22",
         "bezeichnung": "Wanderflanken rw. i. Seitstütz (3/3)",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_22.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_22.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_23",
         "bezeichnung": "Jedes Wandern im Qst. mit 1/2 Spindel (1/3 Transport)",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_23.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_23.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_24",
         "bezeichnung": "Wandern i. Qst. vw. o. rw. m. 1/4 Spindel zum Seitstütz",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_24.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_24.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_25",
         "bezeichnung": "Wanderflanken vw. i. Qst. (1/2 o. 2/3)",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_25.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_25.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_26",
         "bezeichnung": "Wanderflanken rw. i. Querstütz (1/2 o. 2/3)",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.2",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_26.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_26.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_27",
         "bezeichnung": "Chaguinian zur Wende",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_27.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_27.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_28",
         "bezeichnung": "A. d. Pferdende, Russenwendeschwung mit 360° o. 540° zur Wende",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_28.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_28.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_29",
         "bezeichnung": "A. d. Seitstütz vl., Wendeschwung vw. mit 1/2 Drehung i. d. Stütz vw. u. 1/4 Drehung m. Wende über den Pferdkörper zum Stand",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_29.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_29.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "PO_B_30",
         "bezeichnung": "Kreisflanke o. Kreisflanke gegr. d. d. Hdst. (auch mit 3/4 Drehung mit o. ohne Wandern)",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_30.png"
-    }
-    
-    
-    
-    
-    ,{
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/B/PO_B_30.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_01",
         "bezeichnung": "Doppelschere vorwärts durch den Handstand mit wandern seitwärts",
         "name": "Stepanyan",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_01.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_01.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_02",
         "bezeichnung": "Schere vw. gespr. v. einem Ende z. anderen (3/3)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_02.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_02.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_03",
         "bezeichnung": "Doppelschere vw. (1/4 Drehung vw. u. 1/4 Drehung rw.) mit Wandern seitwärts",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_03.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_04",
         "bezeichnung": "Schwung rw. m. 1/4 Drehung d.d. Hdst. a. 1 Pausche, Senken z. Stütz m. gegr. Beinen",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_04.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_04.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_05",
         "bezeichnung": "Schere rw. sw. v. einem Ende a.d. andere gespr. (1-2 bis 4-5)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_05.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_05.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_06",
         "bezeichnung": "Seitstütz, 1/2 Spindel m. beiden Pauschen zw. den Händen (Kreisfl. o. gespr. Kreisfl.)",
         "name": "Keikha 2",
-        "elementegruppe": "2",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_06.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_06.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_07",
         "bezeichnung": "Gespr. Kreisfl. o. Kreisfl. d.d. Hdst. (mit o. ohne 1/2 Drehung) u. Abschwingen i.d. kreisfl. o. gepsr. Kreisfl.",
         "name": "Tippelt",
-        "elementegruppe": "2",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_07.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_07.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_08",
         "bezeichnung": "Kehre mit 270° (Sohn Technik) auf 1 Pausche v. Sst. i.d. Qst.",
         "name": "Bertoncelj",
-        "elementegruppe": "2",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_08.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_08.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_09",
         "bezeichnung": "Stöckli umgekehrt (rw.) m. 270° Drehung auf 1 Pausche",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_09.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_09.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_10",
         "bezeichnung": "A. d. Pauschen, Russenwendeschwung mit 720° o. 900°",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_10.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_10.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_11",
         "bezeichnung": "A. d. Pferd, Russenwendeschwung mit 720° o. 900°",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_11.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_11.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_12",
         "bezeichnung": "Russenwendeschwung mit 360° o. 540° a. 1 Pausche o. zw. d. Pauschen",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_12.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_12.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_13",
         "bezeichnung": "A. d. vl. Seitstütz a. einem Pferdende, W. m. Stütz beider Hände zw. d. Pauschen a. d. andere Pferdende (3/3)",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_13.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_13.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_14",
         "bezeichnung": "Wanderflanken vw. gespr. 2 x i. Seitstütz (3/3)",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_14.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_14.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_15",
         "bezeichnung": "Jedes Wandern im Qst. mit 1/2 Spindel (1/2 o. 2/3 Transport)",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_15.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_15.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_16",
         "bezeichnung": "Alle Wandern mit 1/2 Spindel im Seitstütz",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_16.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_16.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_17",
         "bezeichnung": "Wanderfl. vw. i. Qst.: Pferdende-Pausche-Pausche-Pferdende (3/3) (1-2-4-5)",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_17.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_17.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_18",
         "bezeichnung": "Qst. vl. a. d. Pferdende, Wanderfl. vw. innerhalb v. 2 Kreisfl. m. Stütz a.d. 1.P.-2.P. m. 1/4 Drehung i. d. Sst. a.d. andere Pferdende (3/3)",
         "name": "Bilozerchev",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_18.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_18.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_19",
         "bezeichnung": "Wanderfl. rw. i. Qst. vom Pferdende-Pausche-Pausche-Pferdende (3/3) (5-4-2-1)",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_19.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_19.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_20",
         "bezeichnung": "A.d. Sst. a.d. Pferdende, Kehrschw. vw. um d. 1.P., Stöckli rw. um d. 2. P. i.d. Sst. Pausche zw. d. Händen",
         "name": "Urzica",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_20.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_20.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_21",
         "bezeichnung": "A. d. Stütz a. einer Pausche, Russenwende schw. vw. ohne Stütz a. d. o. zw. d. Pauschen a. d. andere Pferdende (Sst.-Sst., Sst.-Qst., Qst.-Sst.).",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_21.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_21.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_22",
         "bezeichnung": " A. d. Sst., Pausche zw. d. Händen, Russenwendeschwung mit 360° mit Wandern i. d. Sst. a. d. andere Pferdende.",
         "name": "Kroll",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_22.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_22.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_23",
         "bezeichnung": "Reverse Stöckli from cross support on end to the far pommel",
         "name": "Romero",
-        "elementegruppe": "3",
-        "wertigkeit": "0.3",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_23.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_23.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_24",
         "bezeichnung": " A. d. Pferdende, Russenwendeschwung mit 720° o. 900° zur Wende",
         "name": "Urzica",
-        "elementegruppe": "4",
-        "wertigkeit": "0.3",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_24.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_24.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_25",
         "bezeichnung": "DSA, Stöckli rw. o. Flanke auf 1 Pausche d. d. Handstand.",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.3",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_25.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_25.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_C_26",
         "bezeichnung": "Kreisfl. o. gegr. Kreisfl. m. gesprungenem Wandern d. d. Handstand.",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.3",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_26.png"
-    }
-
-
-
-
-
-
-    ,{
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/C/PO_C_26.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_01",
         "bezeichnung": "Schere vw. m. 1/4 Drehung d. d. Hdst. a. 1 Pausche, Abschwingen i. d. Stütz m. gegr. Beinen",
         "name": "Li Ning / Byan",
-        "elementegruppe": "1",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_01.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_01.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_02",
         "bezeichnung": "Doppelschere vw. von einem Pferdende zum anderen (3/3)",
         "name": "Mikulak",
-        "elementegruppe": "1",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_02.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_02.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_03",
         "bezeichnung": "Any side support 1/1 spindle w. legs strad inside max. 2 circles",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_03.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_04",
         "bezeichnung": "Im Querstütz alle 1/1 Spindeln innerhalb max. 2 Kreisflanken.",
         "name": "Magyar",
-        "elementegruppe": "2",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_04.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_04.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_05",
         "bezeichnung": "Gespr. Kreisfl. m. gesprungenem Wandern rw. d. d. Hdst. u. Abschwingen i. d. Kreisfl. o. gespr. Kreisfl.",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_05.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_05.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_06",
         "bezeichnung": "Direct Stöckli A (DSA) outside pommels",
         "name": "Keikha 3 / Keikha 6",
-        "elementegruppe": "2",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_06.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_06.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_07",
         "bezeichnung": "Tschechenkehre außerhalb der Pauschen",
         "name": "Pinheiro",
-        "elementegruppe": "2",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_07.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_07.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_08",
         "bezeichnung": "A. d. Pauschen, Russenwendeschwung mit 1080° o. mehr",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_08.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_08.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_09",
         "bezeichnung": "A. d. Pferd, Russenwendeschwung mit 1080° o. mehr",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_09.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_09.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_10",
         "bezeichnung": "Russenwendeschwung mit 720° o. 900° a. einer Pausche o. zw. d. Pauschen",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_10.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_10.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_11",
         "bezeichnung": "A. d. Seitstütz vl. a. einem Pferdende, W. vw. über d. Pauschen a. d. andere Pferdende innerhalb 1 Kreisflanke.",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_11.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_11.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_12",
         "bezeichnung": "A. d. St. vl. a. einem Pferdende, gespr. Wandern ü. d. Pauschen i. d. St. vl. a. d. andere Pferdende",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_12.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_12.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_13",
         "bezeichnung": "Querwandern vorwärts mit ½ Spindel auf die erste Pausche über die zweite Pausche",
         "name": "Nin Reyes",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_13.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_13.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_14",
         "bezeichnung": "Alle anderen Wanderfl. vw. i. Qst. von einem Pferdene auf das andere Pferdende (3/3)",
         "name": "Magyar",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_14.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_14.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_15",
         "bezeichnung": "Alle anderen Wanderfl. rw. i. Qst. a. d. andere  (3/3)",
         "name": "Sivado",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_15.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_15.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_16",
         "bezeichnung": "Seitstütz a. d. Pferdende, Kehre, Stöckli rw., Kehre a. d. andere Ende",
         "name": "Moguilny",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_16.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_16.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_17",
         "bezeichnung": "Seitst. a. d. Pferdende, Stöckli rw., Kehre, Stöckli rw. a. d. andere Pferdende",
         "name": "Belenki",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_17.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_17.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_18",
         "bezeichnung": "Stütz a. d. Pferdende, Russenwendeschw. vw. a. d. andere Pferdende ohne Stütz a. d. o. zw. d. Pausche (Sst.-Sst., Sst.-Qst., Qst.-Sst., Qst.-Qst.)",
         "name": "Tong Fei",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_18.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_18.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_19",
         "bezeichnung": "From sup. 1-2., 3/3 travel in Russian type wendeswing with 630° or more turning.",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_19.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_19.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_20",
         "bezeichnung": "Jeder Russenwendeschwung m. 360° Drehung u. 3/3 Wandern",
         "name": "Roth",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_20.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_20.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_21",
         "bezeichnung": "A. d. Qst. a. einem Pferdende, Stöckli umgekehrt (rw.) a. d. andere Pferdende",
         "name": "Abu Alsoud",
-        "elementegruppe": "3",
-        "wertigkeit": "0.4",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_21.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_21.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_22",
         "bezeichnung": "A. d. Pferdende, Kreisfl. o. Kreisfl. gegr. i. d. Hdst. u. 3/3 Wandern m. 450° Drehung o. mehr",
         "name": "Kolyvanov",
-        "elementegruppe": "4",
-        "wertigkeit": "0.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_22.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_22.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_23",
         "bezeichnung": "A. d. Pferdende, Russenwendeschwung mit 1080° Drehung o. mehr zur Wende",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_23.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_23.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_24",
         "bezeichnung": "DSA m. Springen rw. d. d. Hdst. a. d. andere Pferdende",
         "name": "Jessen",
-        "elementegruppe": "4",
-        "wertigkeit": "0.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_24.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_24.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_D_25",
         "bezeichnung": "180° Russian from one end of the horse to the other end through Handstand to dismount",
         "name": "Pellerin",
-        "elementegruppe": "4",
-        "wertigkeit": "0.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_25.png"
-    }
-
-
-
-
-
-    ,{
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/D/PO_D_25.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_E_01",
         "bezeichnung": "1/1 Spindel im Seitstütz m. Transport auf die andere Pferdseite u. zurück (max. 2 Kreisflanken)",
         "name": "Eichorn",
-        "elementegruppe": "2",
-        "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_01.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_01.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_E_02",
         "bezeichnung": "1/1 Spindel i. Qst. m. beiden Händen zw. d. Pauschen innerhalb max. 2. Kreisflanken",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_02.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_02.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_E_03",
         "bezeichnung": "1/1 Spindel auf den Pauschen m. geschl. o. gespr. Beinen innerhalb max. 2 Kreisfl.",
         "name": "Berki",
-        "elementegruppe": "2",
-        "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_03.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_E_04",
         "bezeichnung": "Kehre 1/1 Dr. a. einer Pausche",
         "name": "Sohn",
-        "elementegruppe": "2",
-        "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_04.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_04.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_E_05",
         "bezeichnung": "Stöckli umgekehrt (rw.) m. 360° Dr. auf 1 Pausche",
         "name": "Bezugo",
-        "elementegruppe": "2",
-        "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_05.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_05.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_E_06",
         "bezeichnung": "Russenwendeschwung mit 1080° o. mehr a. einer Pausche o. zw. d. Pauschen",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_06.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_06.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_E_07",
         "bezeichnung": "A. d. Seitst. a. einem Pferdende gespr. Wandern ü. d. Pauschen i. d. Stütz vl. a. d. andere Pferdende (1-1 bis 5-5)",
         "name": "Yamawaki",
-        "elementegruppe": "3",
-        "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_07.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_07.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_E_08",
         "bezeichnung": "Von einem Pferdende, Seitwandern  m. 2 x 1/2 Spindel a. d. andere Pferdende.",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_08.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_08.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_E_09",
         "bezeichnung": "Wandern 3/3 über beide Pauschen mit einer 1/2 Spindel",
         "name": "Nin Reyes 2",
-        "elementegruppe": "3",
-        "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_09.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_09.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_E_10",
         "bezeichnung": "Wandern rw. im Querstütz über beide Pauschen",
         "name": "Kurbanov",
-        "elementegruppe": "3",
-        "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_10.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_10.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_E_11",
         "bezeichnung": "Travel forward in cross support over both pommels",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_11.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_11.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_E_12",
         "bezeichnung": "Any 3/3 travel in Russian type wendeswing with 720° or more turning",
         "name": "Wu Guonian",
-        "elementegruppe": "3",
-        "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_12.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_12.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_E_13",
         "bezeichnung": "A. d. Pferdkörper, a. d. Qst., Russenwendeschw. m. 360° o. 540° über beide Pauschen",
         "name": "Vammen",
-        "elementegruppe": "3",
-        "wertigkeit": "0.5",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_13.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_13.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_E_14",
         "bezeichnung": "DSA oder Stöckli umgekehrt (rw.) i. D. Hdst. u. 3/3 Wandern m. 450° Dr. o. mehr.",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "0.5",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_14.png"
-    }
-
-
-
-
-    ,{
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/E/PO_E_14.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_FGH_01",
         "bezeichnung": "Seitstütz, 1/1 Spindelm. beiden Pauschen zw. den Händen (Kreisfl. o. gespr. Kreisfl.)",
         "name": "Keikha 1 / Keikha 5",
-        "elementegruppe": "2",
-        "wertigkeit": "0.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/FGH/PO_FGH_01.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.6",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/FGH/PO_FGH_01.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_FGH_02",
         "bezeichnung": "Stöckli rw. o. DSA gegr. d. d. Hdst. m. 3/3 Wandern (vw. – rw.) u. 360° Dr. u. Senken i. d. Kreisfl.",
         "name": "Busnari",
-        "elementegruppe": "2",
-        "wertigkeit": "0.6",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/FGH/PO_FGH_02.png"
-    }
-    ,{
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.6",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/FGH/PO_FGH_02.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    },
+    {
         "id": "PO_FGH_03",
         "bezeichnung": "T3/3 Wandern i. Querstütz vw. gesprungen",
         "name": "Driggs",
-        "elementegruppe": "3",
-        "wertigkeit": "0.6",
         "dismount": false,
-        "image_path": "./assets/images/Exercises/Device/Pommelhorse/FGH/PO_FGH_03.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.6",
+            "image_path": "./assets/images/Exercises/Device/Pommelhorse/FGH/PO_FGH_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
 ]
-    
