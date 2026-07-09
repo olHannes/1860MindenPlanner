@@ -348,7 +348,7 @@
     },
     {
         "id": "FL_A_06",
-        "bezeichnung": "1/2 o. 1/1 im Handstand",
+        "bezeichnung": "1/2 o. 1/1 im Handstand o. zum Handstand",
         "name": "",
         "dismount": false,
         "defaults": {
@@ -361,7 +361,8 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_06_01.png"
             }
         ]
     },
@@ -646,7 +647,8 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "image_path": "./assets/images/Exercises/Device/Floor/A/FL_A_21_01.png"
             }
         ]
     },
@@ -782,9 +784,6 @@
         "code_variants": [
             {
                 "code": "FIG_MAG_2022_2024"
-            },
-            {
-                "code": "FIG_MAG_2025_2028"
             }
         ]
     },
@@ -1029,9 +1028,6 @@
         "code_variants": [
             {
                 "code": "FIG_MAG_2022_2024"
-            },
-            {
-                "code": "FIG_MAG_2025_2028"
             }
         ]
     }
@@ -1088,7 +1084,10 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "bezeichnung": "Salto rw. gestr. m. 1/2 Drehung",
+                "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_21_01.png"
+
             }
         ]
     }
@@ -1105,7 +1104,52 @@
         "code_variants": [
             {
                 "code": "FIG_MAG_2022_2024"
-            },
+            }
+        ]
+    }
+    ,{
+        "id": "FL_B_23",
+        "bezeichnung": "Salto vw. geb. m. 1/1 Drehung o. mit 3/2 Drehung",
+        "name": "",
+        "dismount": true,
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_23.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    }
+    ,{
+        "id": "FL_B_24",
+        "bezeichnung": "Salto rw. gestr. m. 1/1 Drehung",
+        "name": "",
+        "dismount": true,
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_24.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    }
+    ,{
+        "id": "FL_B_25",
+        "bezeichnung": "Salto rw. geb. m. 3/2 Drehung",
+        "name": "",
+        "dismount": true,
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.2",
+            "image_path": "./assets/images/Exercises/Device/Floor/B/FL_B_25.png"
+        },
+        "code_variants": [
             {
                 "code": "FIG_MAG_2025_2028"
             }
@@ -1186,7 +1230,9 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "bezeichnung": "Planche (2s) / Swallow (2s)",
+                "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_04_01.png"
             }
         ]
     }
@@ -1203,9 +1249,6 @@
         "code_variants": [
             {
                 "code": "FIG_MAG_2022_2024"
-            },
-            {
-                "code": "FIG_MAG_2025_2028"
             }
         ]
     }
@@ -1317,9 +1360,6 @@
         "code_variants": [
             {
                 "code": "FIG_MAG_2022_2024"
-            },
-            {
-                "code": "FIG_MAG_2025_2028"
             }
         ]
     }
@@ -1357,7 +1397,8 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "wertigkeit": "0.4"
             }
         ]
     }
@@ -1374,7 +1415,36 @@
         "code_variants": [
             {
                 "code": "FIG_MAG_2022_2024"
-            },
+            }
+        ]
+    }
+    ,{
+        "id": "FL_C_15",
+        "bezeichnung": "Salto vw. gestr. mit 1/1 Drehung o. mit 3/2 Drehung",
+        "name": "",
+        "dismount": true,
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_15.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    }
+    ,{
+        "id": "FL_C_16",
+        "bezeichnung": "Salto rw. gestr. mit 3/2 Drehung o. 2/1 Drehung",
+        "name": "",
+        "dismount": true,
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.3",
+            "image_path": "./assets/images/Exercises/Device/Floor/C/FL_C_16.png"
+        },
+        "code_variants": [
             {
                 "code": "FIG_MAG_2025_2028"
             }
@@ -1439,7 +1509,9 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "bezeichnung": "Vom Planche (2 s.) heben i. d. Handstand (2s) / Aus d. Schwalbe (2 s.), Heben i. d. Kreuzhandstand (2s)",
+                "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_03_01.png"
             }
         ]
     }
@@ -1532,9 +1604,6 @@
         "code_variants": [
             {
                 "code": "FIG_MAG_2022_2024"
-            },
-            {
-                "code": "FIG_MAG_2025_2028"
             }
         ]
     }
@@ -1591,7 +1660,9 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "bezeichnung": "Doppeltwist geh. o. geb. o. Doppelsalto rw. geh. o. geb. m. 1/2 Drehung auch mit 1/2 Drehung",
+                "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_11.png"
             }
         ]
     }
@@ -1608,9 +1679,6 @@
         "code_variants": [
             {
                 "code": "FIG_MAG_2022_2024"
-            },
-            {
-                "code": "FIG_MAG_2025_2028"
             }
         ]
     }
@@ -1627,9 +1695,6 @@
         "code_variants": [
             {
                 "code": "FIG_MAG_2022_2024"
-            },
-            {
-                "code": "FIG_MAG_2025_2028"
             }
         ]
     }
@@ -1646,7 +1711,52 @@
         "code_variants": [
             {
                 "code": "FIG_MAG_2022_2024"
-            },
+            }
+        ]
+    }
+    ,{
+        "id": "FL_D_15",
+        "bezeichnung": "Salto vw. gestr. m. 2/1 Drehung",
+        "name": "",
+        "dismount": true,
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_15.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    }
+    ,{
+        "id": "FL_D_16",
+        "bezeichnung": "Salto rw. gestr. m. 5/2 Drehung",
+        "name": "",
+        "dismount": true,
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_16.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    }
+    ,{
+        "id": "FL_D_17",
+        "bezeichnung": "Salto rw. gestr. m. 3/1 Drehung",
+        "name": "",
+        "dismount": true,
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "0.4",
+            "image_path": "./assets/images/Exercises/Device/Floor/D/FL_D_17.png"
+        },
+        "code_variants": [
             {
                 "code": "FIG_MAG_2025_2028"
             }
@@ -1690,7 +1800,8 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "elementegruppe": "4"
             }
         ]
     }
@@ -1709,7 +1820,8 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "wertigkeit": "0.6"
             }
         ]
     }
@@ -1728,7 +1840,10 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "bezeichnung": "Doppelsalto rw. geh. m. 2/1 o. Doppelsalto rw. geh. m. 3/2 Dr. o. Salto rw. gestr. m. 3/2 Drehung z. Salto vw. geh.",
+                "name": "Korosteljev",
+                "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_04_01.png"
             }
         ]
     }
@@ -1747,7 +1862,10 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "bezeichnung": "Doppelsalto rw. geh. m. 2/1 o. Doppelsalto rw. geh. m. 3/2 Dr. o. Salto rw. gestr. m. 3/2 Drehung z. Salto vw. geh.",
+                "name": "Korosteljev",
+                "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_04_01.png"
             }
         ]
     }
@@ -1766,7 +1884,8 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "elementegruppe": "4"
             }
         ]
     }
@@ -1804,7 +1923,9 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "bezeichnung": "Doppeltwist gestr. o. Doppelsalto rw. gestr. m. 1/2 Drehung o. Sprung m. Doppelsalto vw. gestr.",
+                "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_08.png"
             }
         ]
     }
@@ -1823,10 +1944,44 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
+                "code": "FIG_MAG_2025_2028",
+                "wertigkeit": "0.6"
+            }
+        ]
+    },
+    {
+        "id": "FL_E_10",
+        "bezeichnung": "Sprung rw. m. Doppelsalto vw. geb. o. m. 1/2 Drehung",
+        "name": "",
+        "dismount": true,
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_10.png"
+        },
+        "code_variants": [
+            {
                 "code": "FIG_MAG_2025_2028"
             }
         ]
+    },
+    {
+        "id": "FL_E_11",
+        "bezeichnung": "Salto rw. gestr. m. 1/1 Drehung u. Salto rw. geb.",
+        "name": "",
+        "dismount": true,
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.5",
+            "image_path": "./assets/images/Exercises/Device/Floor/E/FL_E_11"
+        },
+        "code_variants": {
+            "code": "FIG_MAG_2025_2028"
+        }
     }
+
+
+
 
 
     ,{
@@ -1844,7 +1999,8 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "elementegruppe": "4"
             }
         ]
     }
@@ -1863,7 +2019,8 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "elementegruppe": "4"
             }
         ]
     }
@@ -1939,7 +2096,8 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "wertigkeit": "0.9"
             }
         ]
     }
@@ -1958,7 +2116,10 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "name": "Nagornyy",
+                "wertigkeit": "1.0",
+                "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_07_01.png"
             }
         ]
     }
@@ -1977,7 +2138,8 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "elementegruppe": "4"
             }
         ]
     }
@@ -2015,7 +2177,8 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "wertigkeit": "0.7"
             }
         ]
     }
@@ -2034,7 +2197,8 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "wertigkeit": "0.7"
             }
         ]
     }
@@ -2053,7 +2217,8 @@
                 "code": "FIG_MAG_2022_2024"
             },
             {
-                "code": "FIG_MAG_2025_2028"
+                "code": "FIG_MAG_2025_2028",
+                "wertigkeit": "0.8"
             }
         ]
     }
@@ -2071,6 +2236,55 @@
             {
                 "code": "FIG_MAG_2022_2024"
             },
+            {
+                "code": "FIG_MAG_2025_2028",
+                "wertigkeit": "0.9"
+            }
+        ]
+    }
+    ,{
+        "id": "FL_FGH_14",
+        "bezeichnung": "Doppelsalto vw. geb. m. 3/2. Drehungen",
+        "name": "Zapata",
+        "dismount": true,
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "0.7",
+            "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_14.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    }
+    ,{
+        "id": "FL_FGH_15",
+        "bezeichnung": "Doppelsalto rw. geh. m. 7/2 Drehung",
+        "name": "Minami",
+        "dismount": true,
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "0.8",
+            "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_15.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
+    }
+    ,{
+        "id": "FL_FGH_16",
+        "bezeichnung": "Doppelsalto rw. gestr. m. 7/2 Drehung",
+        "name": "Jarman",
+        "dismount": true,
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "1.0",
+            "image_path": "./assets/images/Exercises/Device/Floor/FGH/FL_FGH_16.png"
+        },
+        "code_variants": [
             {
                 "code": "FIG_MAG_2025_2028"
             }
