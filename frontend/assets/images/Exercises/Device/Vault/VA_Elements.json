@@ -3,844 +3,1748 @@
         "id": "VA_1_01",
         "bezeichnung": "Überschlag vw. u. Salto vw. geh. m. 1/1 Drehung (o. Cuervo geh. m. 1/2 Drehung)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "3.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_01.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "3.2",
+            "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_01.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_1_02",
         "bezeichnung": "Überschlag vw. u. Salto vw. geh. m. 3/2 Drehung (o. Cuervo geh. m. 1/1 Drehung)",
         "name": "Kroll",
-        "elementegruppe": "1",
-        "wertigkeit": "3.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_02.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "3.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_02.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_1_03",
         "bezeichnung": "Hdspr. fwd. and salto fwd. t. w. 2/1 t. (or Cuervo t. w. 3/2 t.).",
         "name": "Canbas",
-        "elementegruppe": "1",
-        "wertigkeit": "4.0",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_03.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "4.0",
+            "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_1_04",
         "bezeichnung": "Überschlag vw. u. Salto vw. geb. m. 1/1 Drehung (o. Cuervo geb. m. ½ Drehung)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "3.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_04.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "3.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_04.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_1_05",
         "bezeichnung": "Überschlag vw. u. Salto vw. geb. m. 3/2 Drehung (o. Cuervo geb. m. 1/1 Drehung).",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "4.0",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_05.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "4.0",
+            "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_05.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_1_06",
         "bezeichnung": "Überschlag vw. u. Salto vw. gestr. m. 1/1 Drehung (Cuervo gestr. m. 1/2 Drehung)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "4.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_06.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "4.4",
+            "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_06.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_1_07",
         "bezeichnung": "Überschlag vw. u. Salto vw. gestr. m. 3/2 Drehung (Cuervo gestr. m. 1/1 Drehung)",
         "name": "Lou Yun",
-        "elementegruppe": "1",
-        "wertigkeit": "4.8",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_07.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "4.8",
+            "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_07.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_1_08",
         "bezeichnung": "Überschlag vw. u. Salto vw. gestr. m. 2/1 Drehung (Cuervo gestr. m. 3/2 Drehung)",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "5.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_08.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "5.2",
+            "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_08.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_1_09",
         "bezeichnung": "Überschlag vw. u. Salto vw. gestr. m. 5/2 Drehung",
         "name": "Yeo 2",
-        "elementegruppe": "1",
-        "wertigkeit": "5.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_09.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "5.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_09.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_1_10",
         "bezeichnung": "Überschlag vw. u. Salto vw. gestr. m. 3/1 Drehung",
         "name": "Yang Hak Seon",
-        "elementegruppe": "1",
-        "wertigkeit": "6.0",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_10.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "6.0",
+            "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_10.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_1_11",
         "bezeichnung": "Tsukahara geh. m. 3/2 Drehung o. Kasamatsu geh. m. 1/2 Drehung",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "3.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_11.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "3.2",
+            "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_11.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_1_12",
         "bezeichnung": "Tsukahara geh. m. 2/1 Drehung",
         "name": "Barbieri",
-        "elementegruppe": "1",
-        "wertigkeit": "3.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_12.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "3.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_12.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_1_13",
         "bezeichnung": "Kasamatsu gestr. m. 1/2 Drehung o. Tsukahara gestr. m. 3/2 Drehung",
         "name": "",
-        "elementegruppe": "1",
-        "wertigkeit": "4.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_13.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "4.4",
+            "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_13.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_1_14",
         "bezeichnung": "Kasamatsu gestr. m. 1/1 Drehung o. Tsukahara gestr. m. 2/1 Drehung",
         "name": "Akopian",
-        "elementegruppe": "1",
-        "wertigkeit": "4.8",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_14.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "4.8",
+            "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_14.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_1_15",
         "bezeichnung": "Kasamatsu gestr. m. 3/2 Drehung",
         "name": "Driggs",
-        "elementegruppe": "1",
-        "wertigkeit": "5.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_15.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "5.2",
+            "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_15.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_1_16",
         "bezeichnung": "Kasamatsu gestr. m. 2/1 Drehung",
         "name": "López",
-        "elementegruppe": "1",
-        "wertigkeit": "5.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_16.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "5.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_16.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_1_17",
         "bezeichnung": "Kasamatsu gestr. m. 5/2 Drehung o. Tsukahara gestr. m. 7/2 Drehung",
         "name": "Yonekura",
-        "elementegruppe": "1",
-        "wertigkeit": "6.0",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_17.png"
+        "defaults": {
+            "elementegruppe": "1",
+            "wertigkeit": "6.0",
+            "image_path": "./assets/images/Exercises/Device/Vault/1/VA_1_17.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
-    
-    
-    
-    
     {
         "id": "VA_2_01",
         "bezeichnung": "Überschlag vw.",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "1.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_01.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "1.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_01.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_2_02",
         "bezeichnung": "Überschlag vw. m. 1/2 Drehung",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "1.8",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_02.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "1.8",
+            "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_02.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_2_03",
         "bezeichnung": "Überschlag vw. m. 1/1 Drehung",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "2.0",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_03.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "2.0",
+            "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_2_04",
         "bezeichnung": "Überschlag vw. m. 3/2 Drehung",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "2.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_04.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "2.2",
+            "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_04.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_2_05",
         "bezeichnung": "Überschlag vw. m. 2/1 Drehung",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "2.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_05.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "2.4",
+            "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_05.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_2_06",
         "bezeichnung": "Überschlag vw. u. Salto vw. geh.",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "2.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_06.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "2.4",
+            "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_06.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_2_07",
         "bezeichnung": "Überschlag vw. u. Salto vw. geh. m. 1/2 Drehung (o. Cuervo geh.)",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "2.8",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_07.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "2.8",
+            "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_07.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_2_08",
         "bezeichnung": "Überschlag vw. u. Salto vw. geb.",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "2.8",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_08.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "2.8",
+            "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_08.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_2_09",
         "bezeichnung": "Überschlag vw. u. Salto vw. geb. m. 1/2 Drehung (o. Cuervo geb.)",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "2.8",
         "dismount": true,
-        "image_path": "./assets/images/system/profile_icon.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "2.8",
+            "image_path": "./assets/images/system/profile_icon.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_2_10",
         "bezeichnung": "Überschlag vw. u. Salto vw. gestr.",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "3.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_10.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "3.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_10.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_2_11",
         "bezeichnung": "Überschlag vw. u. Salto vw. gestr. m. 1/2 Drehung (Cuervo gestr.)",
         "name": "",
-        "elementegruppe": "2",
-        "wertigkeit": "4.0",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_11.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "4.0",
+            "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_11.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_2_12",
         "bezeichnung": "Überschlag vw. u. Doppelsalto vw. geh.",
         "name": "Roche",
-        "elementegruppe": "2",
-        "wertigkeit": "5.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_12.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "5.2",
+            "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_12.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_2_13",
         "bezeichnung": "Roche m. 1/2 Drehung",
         "name": "Dragulescu",
-        "elementegruppe": "2",
-        "wertigkeit": "5.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_13.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "5.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_13.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_2_14",
         "bezeichnung": "Überschlag vw. u. Salto vw. geh. m. 1/2 Drehung u. Salto rw. geh.",
         "name": "Zimmerman",
-        "elementegruppe": "2",
-        "wertigkeit": "5.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_14.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "5.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_14.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_2_15",
         "bezeichnung": "Überschlag vw. u. Doppelsalto vw. geb.",
         "name": "Blanik",
-        "elementegruppe": "2",
-        "wertigkeit": "5.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_15.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "5.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_15.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_2_16",
         "bezeichnung": "Überschlag vw. u. Doppelsalto vw. geb. m. 1/2 Drehung",
         "name": "Ri Se Gwang 2",
-        "elementegruppe": "2",
-        "wertigkeit": "6.0",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_16.png"
+        "defaults": {
+            "elementegruppe": "2",
+            "wertigkeit": "6.0",
+            "image_path": "./assets/images/Exercises/Device/Vault/2/VA_2_16.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
-
-
-
-
-
-
     {
         "id": "VA_3_01",
         "bezeichnung": "Überschlag sw. m. 1/4 Drehung",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "1.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_01.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "1.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_01.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_3_02",
         "bezeichnung": "Überschlag sw. m. 3/4 Drehung",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "1.8",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_02.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "1.8",
+            "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_02.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_3_03",
         "bezeichnung": "Überschlag sw. m. 5/4 Drehung",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "2.0",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_03.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "2.0",
+            "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_3_04",
         "bezeichnung": "Überschlag sw. m. 1/4 Drehung u. Salto rw. geh.",
         "name": "Tsukahara",
-        "elementegruppe": "3",
-        "wertigkeit": "2.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_04.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "2.2",
+            "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_04.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_3_05",
         "bezeichnung": "Tsukahara geb.",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "2.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_05.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "2.4",
+            "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_05.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_3_06",
         "bezeichnung": "Tsukahara geh. m. 1/2 Drehung",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "2.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_06.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "2.4",
+            "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_06.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_3_07",
         "bezeichnung": "Überschlag sw. m. 1/4 Drehung u. Salto vw. geh. m. 1/2 Drehung o. Tsukahara geh. m. 1/1 Drehung",
         "name": "Kasamatsu",
-        "elementegruppe": "3",
-        "wertigkeit": "2.8",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_07.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "2.8",
+            "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_07.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_3_08",
         "bezeichnung": "Tsukahara gestr.",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "3.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_08.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "3.2",
+            "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_08.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_3_09",
         "bezeichnung": "Tsukahara gestr. m. 1/2 Drehung",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "3.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_09.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "3.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_09.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_3_10",
         "bezeichnung": "Tsukahara gestr. m. 1/1 Drehung o. Kasamatsu gestr.",
         "name": "",
-        "elementegruppe": "3",
-        "wertigkeit": "4.0",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_10.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "4.0",
+            "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_10.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_3_11",
         "bezeichnung": "Tsukahara geh. m. Salto rw. geh. ",
         "name": "Yeo",
-        "elementegruppe": "3",
-        "wertigkeit": "5.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_11.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "5.2",
+            "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_11.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_3_12",
         "bezeichnung": "Tsukahara geb. m. Salto rw. geb.",
         "name": "Lu Yu Fu",
-        "elementegruppe": "3",
-        "wertigkeit": "5.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_12.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "5.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_12.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_3_13",
         "bezeichnung": "Doppel Tsukahara geh. m. 1/1 Drehung",
         "name": "Ri Se Gwang",
-        "elementegruppe": "3",
-        "wertigkeit": "6.0",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_13.png"
+        "defaults": {
+            "elementegruppe": "3",
+            "wertigkeit": "6.0",
+            "image_path": "./assets/images/Exercises/Device/Vault/3/VA_3_13.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
-    
-
-
-
-
-
     {
         "id": "VA_4_01",
         "bezeichnung": "Rondat u. Überschlag rw.",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "1.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_01.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "1.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_01.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_02",
         "bezeichnung": "Rondat u. Überschlag rw. m. 1/2 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "1.8",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_02.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "1.8",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_02.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_03",
         "bezeichnung": "Rondat u. Überschlag rw. m. 1/1 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "2.0",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_03.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "2.0",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_03.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_04",
         "bezeichnung": "Rondat u. Überschlag rw. u. Salto rw. geh.",
         "name": "Yurchenko",
-        "elementegruppe": "4",
-        "wertigkeit": "2.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_04.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "2.2",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_04.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_05",
         "bezeichnung": "Yurchenko geh. m. 1/2 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "2.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_05.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "2.4",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_05.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_06",
         "bezeichnung": "Yurchenko geh. m. 1/1 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "2.8",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_06.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "2.8",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_06.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_07",
         "bezeichnung": "Yurchenko geh. m. 3/2 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "3.0",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_07.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "3.0",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_07.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_08",
         "bezeichnung": "Yurchenko geh. m. 2/1 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "3.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_08.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "3.2",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_08.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_09",
         "bezeichnung": "Yurchenko geb.",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "2.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_09.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "2.4",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_09.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_10",
         "bezeichnung": "Yurchenko gestr.",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "3.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_10.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "3.2",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_10.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_11",
         "bezeichnung": "Yurchenko gestr. m. 1/2 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "3.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_11.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "3.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_11.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_12",
         "bezeichnung": "Yurchenko gestr. m. 1/1 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "4.0",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_12.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "4.0",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_12.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_13",
         "bezeichnung": "Yurchenko gestr. m. 3/2 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "4.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_13.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "4.4",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_13.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_14",
         "bezeichnung": "Yurchenko gestr. m. 2/1 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "4.8",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_14.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "4.8",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_14.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_15",
         "bezeichnung": "Yurchenko gestr. m. 5/2 Drehung",
         "name": "Shewfelt",
-        "elementegruppe": "4",
-        "wertigkeit": "5.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_15.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "5.2",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_15.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_16",
         "bezeichnung": "Yurchenko gestr. m. 3/1 Drehung",
         "name": "Shirai - KIM Hee Hoon",
-        "elementegruppe": "4",
-        "wertigkeit": "5.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_16.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "5.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_16.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_17",
         "bezeichnung": "Yurchenko u. Salto rw. geh.",
         "name": "Melissandidis",
-        "elementegruppe": "4",
-        "wertigkeit": "5.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_17.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "5.2",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_17.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_18",
         "bezeichnung": "Melissanidis geb.",
         "name": "Yang Wei",
-        "elementegruppe": "4",
-        "wertigkeit": "5.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_18.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "5.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_18.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_19",
         "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw.",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "1.8",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_19.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "1.8",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_19.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_20",
         "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. m. 1/2 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "2.0",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_20.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "2.0",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_20.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_21",
         "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. m. 1/1 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "2.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_21.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "2.2",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_21.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_22",
         "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. u. salto vw. geh.",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "2.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_22.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "2.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_22.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_23",
         "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. u. salto vw. geh. m. 1/2 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "3.0",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_23.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "3.0",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_23.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_24",
         "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. u. salto vw. geb.",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "3.0",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_24.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "3.0",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_24.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_25",
         "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. u. salto vw. geb. m. 1/2 Drehung",
         "name": "Nemov",
-        "elementegruppe": "4",
-        "wertigkeit": "3.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_25.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "3.4",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_25.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_26",
         "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. u. salto vw. gestr.",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "3.8",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_26.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "3.8",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_26.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_27",
         "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. u. salto vw. gestr. m. 1/2 Drehung",
         "name": "Hutcheon",
-        "elementegruppe": "4",
-        "wertigkeit": "4.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_27.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "4.2",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_27.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_28",
         "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. u. salto vw. gestr. m. 1/1 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "4.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_28.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "4.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_28.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_29",
         "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. u. salto vw. gestr. m. 3/2 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "5.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_29.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "5.4",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_29.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_30",
         "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. u. salto vw. gestr. m. 2/1 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "5.8",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_30.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "5.8",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_30.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_31",
         "bezeichnung": "Rondat, 1/2 Drehung u. Überschlag vw. u. salto vw. gestr. m. 5/2 Drehung",
         "name": "Li Xiao Peng",
-        "elementegruppe": "4",
-        "wertigkeit": "5.8",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_31.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "5.8",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_31.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_32",
         "bezeichnung": "Rondat 1/2 Drehung u. Überschlag u. Doppelsalto vw. geh.",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "5.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_32.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "5.4",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_32.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_33",
         "bezeichnung": "Rondat, Sprung rw. m. 1/1 Drehung u. Überschlag rw.",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "2.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_33.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "2.2",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_33.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_34",
         "bezeichnung": "Rondat, Sprung rw. m. 1/1 Drehung u. Überschlag rw. m. 1/2 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "2.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_34.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "2.4",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_34.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_35",
         "bezeichnung": "Rondat, Sprung rw. m. 1/1 Drehung u. Überschlag rw. m. 1/1 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "2.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_35.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "2.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_35.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_36",
         "bezeichnung": "Rondat, Sprung rw. m. 1/1 Drehung u. Überschlag rw. u. Salto rw. geh.",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "2.8",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_36.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "2.8",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_36.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_37",
         "bezeichnung": "Rondat, Sprung rw. m. 1/1 Drehung u. Überschlag rw. u. Salto rw. geb.",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "3.0",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_37.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "3.0",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_37.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_38",
         "bezeichnung": "Rondat, Sprung rw. m. 1/1 Drehung u. Überschlag rw. u. Salto rw. geh. m. 1/2 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "3.0",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_38.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "3.0",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_38.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_39",
         "bezeichnung": "Rondat, Sprung rw. m. 1/1 Drehung u. Überschlag rw. u. Salto rw. geh. m. 1/1 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "3.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_39.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "3.4",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_39.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_40",
         "bezeichnung": "Rondat, Sprung rw. m. 1/1 Drehung u. Überschlag rw. u. Salto rw. geh. m. 3/2 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "3.8",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_40.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "3.8",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_40.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_41",
         "bezeichnung": "Rondat, Sprung rw. m. 1/1 Drehung u. Überschlag rw. u. Salto rw. gestr.",
         "name": "Scherbo",
-        "elementegruppe": "4",
-        "wertigkeit": "3.8",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_41.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "3.8",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_41.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_42",
         "bezeichnung": "Scherbo m. 1/2 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "4.2",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_42.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "4.2",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_42.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_43",
         "bezeichnung": "Scherbo m. 1/1 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "3.6",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_43.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "3.6",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_43.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_44",
         "bezeichnung": "Scherbo m. 3/2 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "5.0",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_44.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "5.0",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_44.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_45",
         "bezeichnung": "Scherbo m. 2/1 Drehung",
         "name": "Shirai 3",
-        "elementegruppe": "4",
-        "wertigkeit": "5.4",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_45.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "5.4",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_45.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     },
     {
         "id": "VA_4_46",
         "bezeichnung": "Scherbo m. 5/2 Drehung",
         "name": "",
-        "elementegruppe": "4",
-        "wertigkeit": "5.8",
         "dismount": true,
-        "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_46.png"
+        "defaults": {
+            "elementegruppe": "4",
+            "wertigkeit": "5.8",
+            "image_path": "./assets/images/Exercises/Device/Vault/4/VA_4_46.png"
+        },
+        "code_variants": [
+            {
+                "code": "FIG_MAG_2022_2024"
+            },
+            {
+                "code": "FIG_MAG_2025_2028"
+            }
+        ]
     }
 ]
