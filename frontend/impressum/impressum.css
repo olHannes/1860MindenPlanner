@@ -1,13 +1,18 @@
-/* Basis-Reset für allgemeine Standardisierung */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    background-color: #f0f7ff;
+    padding-left: 10dvw;
+    padding-right: 10dvw;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f7ff; /* Bläulicher Hintergrund */
     color: #333;
     line-height: 1.6;
     padding: 20px;
@@ -15,7 +20,7 @@ body {
 
 h1, h2, h3 {
     font-family: 'Arial', sans-serif;
-    color: #0066cc; /* Hauptfarbe für Überschriften */
+    color: #0066cc;
 }
 
 h1 {
@@ -34,7 +39,7 @@ h3 {
     margin-top: 20px;
 }
 
-/* Abschnittsstil für das Impressum */
+
 section {
     background-color: #ffffff;
     border-radius: 8px;
@@ -57,7 +62,6 @@ section a:hover {
     text-decoration: underline;
 }
 
-/* Footer */
 footer {
     text-align: center;
     font-size: 1rem;
@@ -65,12 +69,12 @@ footer {
     margin-top: 40px;
 }
 
-/* Hintergrundfarbe für Links in den Abschnitten */
+
 section a {
     transition: color 0.3s ease;
 }
 
-/* Stil für die Adresse und das Impressum */
+
 #impressum {
     font-size: 1rem;
     color: #444;
@@ -79,7 +83,7 @@ section a {
     margin: 0 auto;
 }
 
-/* Responsive Design - für kleinere Bildschirme */
+
 @media (max-width: 768px) {
     body {
         padding: 15px;
@@ -102,7 +106,6 @@ section a {
     }
 }
 
-/* Spezielle Stil für das Formular / Inputbereiche */
 input, button, select, textarea {
     font-size: 1rem;
     padding: 10px;
